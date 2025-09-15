@@ -4,5 +4,15 @@ Software architecture is the **high-level structure** of a software system, defi
 
 These documents outlines several common architectural styles with concrete examples, strength and weaknesses to aid in understanding.
 
+## Distributed
+
 * **[Client-Server Architecture](./client-server.md)**
+
+## Structural
+
 * **[Layered Architecture](./layered.md)**
+* **[Monolithic Architecture](./monolithic.md)**
+
+## Messaging
+
+## Unclassified
