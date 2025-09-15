@@ -72,3 +72,27 @@ The **Client-Server** architecture is the basis for many more sophisticated mode
 * **Microservices:** A distributed architecture where each service is a mini **Client-Server**. Each microservice exposes an API (via **REST** or **gRPC**) and acts as a server for other services (its clients).
 
 This architectural style, while old, remains the foundation for the majority of modern web and distributed applications. Its conceptual simplicity and robustness make it a pillar of software development.
+
+## **Resources & links**
+
+### **Articles**
+
+1.  **[Client-Server Architecture Explained with Examples, Diagrams, and Real-World Applications](https://medium.com/nerd-for-tech/client-server-architecture-explained-with-examples-diagrams-and-real-world-applications-407e9e04e2d1)**
+
+    This article by Harsh Gupta is an excellent starting point. It's well-structured, with clear diagrams and concrete examples for each concept. It covers the pros, cons, and real-world applications, making it a solid reference.
+
+2.  **[Client-Server Architecture: Deep Dive](https://dev.to/tanishtt/client-server-architecture-deep-dive-1a2e)**
+    
+    This article goes further by detailing the different **Client-Server** architecture models: **2-Tier**, **3-Tier**, and **N-Tier**. This is a very useful resource for understanding how the basic model has evolved to adapt to more complex systems, a topic of particular interest to an architect.
+
+---
+
+### **Videos**
+
+1.  **[Client Server Architecture | System Design Interview Basics](https://www.youtube.com/watch?v=yioOQ4ItYuo)**
+    
+    Although designed for **System Design** interviews, this video offers a concise and highly relevant explanation. It covers the basics effectively and links to modern concepts like Cloud service providers (**AWS**, **Azure**).
+
+2.  **[Client-Server Architecture: The Backbone of Modern Software](https://www.youtube.com/watch?v=YPlU0vt5KYw)**
+    
+    This video is an excellent deep dive that doesn't just stick to the basics but covers aspects like **DNS lookup**, the **TCP handshake**, and how modern architectures like **Microservices** are derived from it. It's ideal for an experienced audience.
