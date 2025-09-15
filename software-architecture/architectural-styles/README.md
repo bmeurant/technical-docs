@@ -13,6 +13,7 @@ These documents outlines several common architectural styles with concrete examp
 * **[Layered Architecture](./layered.md)**
 * **[Monolithic Architecture](./monolithic.md)**
 * **[Modular Monolith](./modular-monolith.md)**
+* **[Component based Architecture](./component-based.md)**
 
 ## Messaging
 
