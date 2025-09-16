@@ -11,4 +11,5 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 ## Topics
 
 * [Design Principles](./design-principles/)
+* [Architectural Principles](./architectural-principles/)
 * [Architectural Styles](./architectural-styles/)
