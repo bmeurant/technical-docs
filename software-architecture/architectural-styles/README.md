@@ -14,6 +14,7 @@ These documents outlines several common architectural styles with concrete examp
 * **[Monolithic Architecture](./monolithic.md)**
 * **[Modular Monolith](./modular-monolith.md)**
 * **[Component based Architecture](./component-based.md)**
+* **[Microkernel Architecture](./microkernel.md)**
 * **[Space based Architecture](./space-based.md)**
 
 ## Messaging
