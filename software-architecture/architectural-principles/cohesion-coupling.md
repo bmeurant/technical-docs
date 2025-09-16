@@ -81,12 +81,24 @@ To dive deeper into the concepts of cohesion and coupling in software engineerin
 
 #### Articles
 
-* **[Coupling and Cohesion - Software Engineering](https://www.geeksforgeeks.org/software-engineering/software-engineering-coupling-and-cohesion/)** by GeeksforGeeks: This article defines coupling and cohesion, explains their importance, and outlines the different types of each concept.
-* **[Cohesion and Coupling in Software with Examples](https://thevaluable.dev/cohesion-coupling-guide-examples/)** by The Valuable Dev: A detailed guide that explores the origin of these concepts, their importance, and how to apply them with practical examples.
+1. **[Coupling and Cohesion - Software Engineering](https://www.geeksforgeeks.org/software-engineering/software-engineering-coupling-and-cohesion/)** by GeeksforGeeks
+
+    This article defines coupling and cohesion, explains their importance, and outlines the different types of each concept.
+
+2. **[Cohesion and Coupling in Software with Examples](https://thevaluable.dev/cohesion-coupling-guide-examples/)** by The Valuable Dev
+
+    A detailed guide that explores the origin of these concepts, their importance, and how to apply them with practical examples.
 
 #### Videos
 
-* **[SOLID Principles? Nope, just Coupling and Cohesion](http://www.youtube.com/watch?v=YDNR_gfBk0Q)** by CodeOpinion: This video highlights the importance of coupling and cohesion, sometimes even beyond the well-known SOLID principles.
-* **[Lesson 59 - The Tradeoffs of Loose Coupling](https://www.youtube.com/watch?v=XnBhVwm_Lws)** by Mark Richards: This video discusses the tradeoffs of loose coupling, using a microservices example to illustrate the challenges of managing errors and data consistency.
-* **[Coupling and Cohesion Explained](http://www.youtube.com/watch?v=7pdrZDqEPIw)** by Gui Ferreira: 
-This video provides a clear and concise explanation of these two fundamental software design principles and their importance in creating maintainable code.
+1. **[SOLID Principles? Nope, just Coupling and Cohesion](http://www.youtube.com/watch?v=YDNR_gfBk0Q)** by CodeOpinion
+
+    This video highlights the importance of coupling and cohesion, sometimes even beyond the well-known SOLID principles.
+
+2. **[Lesson 59 - The Tradeoffs of Loose Coupling](https://www.youtube.com/watch?v=XnBhVwm_Lws)** by Mark Richards
+
+    This video discusses the tradeoffs of loose coupling, using a microservices example to illustrate the challenges of managing errors and data consistency.
+
+3. **[Coupling and Cohesion Explained](http://www.youtube.com/watch?v=7pdrZDqEPIw)** by Gui Ferreira
+
+    This video provides a clear and concise explanation of these two fundamental software design principles and their importance in creating maintainable code.
