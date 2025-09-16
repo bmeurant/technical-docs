@@ -13,3 +13,7 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [Design Principles](./design-principles/)
 * [Architectural Principles](./architectural-principles/)
 * [Architectural Styles](./architectural-styles/)
+
+## Other resources
+
+* [softwarearchitecture.fr (FR)](https://softwarearchitecture.fr/)
