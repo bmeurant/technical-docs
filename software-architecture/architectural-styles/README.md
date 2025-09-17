@@ -10,6 +10,7 @@ These documents outlines several common architectural styles with concrete examp
 * **[Peer to Peer Architecture](./peer-to-peer.md)**
 * **[Service Oriented Architecture](./soa.md)**
 * **[Microservices Architecture](./microservices.md)**
+* **[Serverless Architecture](./serverless.md)**
 
 ## Structural
 

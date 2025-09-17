@@ -93,7 +93,7 @@ The **Microservices** architecture is not a final architecture but an approach t
 
 * **Event-Driven Architecture (EDA):** Services communicate by emitting and consuming events via a **message broker** (e.g., **Kafka**, **RabbitMQ**). This promotes maximum decoupling.
 * **Service Mesh:** A dedicated infrastructure layer that handles communication between services. It provides features like **security**, **observability**, and **traffic control** (e.g., **Istio**, **Linkerd**).
-* **Serverless/Function-as-a-Service (FaaS):** A variation of microservices where the service is a function executed in a **serverless** environment (e.g., **AWS Lambda**, **Google Cloud Functions**). This reduces **operational overhead**.
+* **[[serverless|Serverless/Function-as-a-Service (FaaS)]]:** A variation of microservices where the service is a function executed in a [[serverless|serverless]] environment (e.g., **AWS Lambda**, **Google Cloud Functions**). This reduces **operational overhead**.
 
 This architecture is the de facto solution for modern large-scale applications and companies seeking greater agility, but it is not a universal solution. It requires a mature culture and skills in **DevOps** and **distributed systems management**.
 
@@ -123,4 +123,4 @@ This architecture is the de facto solution for modern large-scale applications a
     
     This video goes further by explaining not only what **Microservices** are, but also why they are used and what the operational considerations are for implementing them. It is useful for an audience seeking a more comprehensive understanding of the **Microservices** ecosystem.
 
-    On this channel, you will find [many other videos on microservices](https://www.youtube.com/@markrichards5014/search?query=%22microservices%22) addressing different aspects and challenges of these architectures, comparisons with other architectures such as [[soa|SOA]] or event-driven architecture.
+    On this channel, you will find [many other videos on microservices](https://www.developertoarchitect.com/lessons-microservices.html) addressing different aspects and challenges of these architectures, comparisons with other architectures such as [[soa|SOA]] or event-driven architecture.
