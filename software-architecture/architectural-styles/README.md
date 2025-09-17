@@ -7,6 +7,7 @@ These documents outlines several common architectural styles with concrete examp
 ## Distributed
 
 * **[Client-Server Architecture](./client-server.md)**
+* **[Peer to Peer Architecture](./peer-to-peer.md)**
 
 ## Structural
 
