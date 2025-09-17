@@ -36,7 +36,7 @@ graph TD
     B -- "Response" --> A
 ```
 
-1.  **Client:** The application or system that makes the request. It can be a **web browser**, a mobile app, or another server in a more complex architecture (for example, a **microservice** that acts as a client to another service).
+1.  **Client:** The application or system that makes the request. It can be a **web browser**, a mobile app, or another server in a more complex architecture (for example, a [[microservices|microservice]] that acts as a client to another service).
 2.  **Network:** The communication channel. Typical protocols include **TCP/IP**, **HTTP/HTTPS**, **FTP**, or more specific protocols like **gRPC**.
 3.  **Server:** The service that responds to requests. This can be a web server (**Nginx**, **Apache**), an application server (**Spring Boot**, **Node.js**), or a database server (**PostgreSQL**, **MySQL**).
 
@@ -72,7 +72,7 @@ The **Client-Server** architecture is the basis for many more sophisticated mode
 * **2-Tier Architecture:** This is the basic model, with a client communicating directly with a server. Example: a desktop application connected to a database.
 * **[[layered|3-Tier Architecture]]:** An intermediate level, the **Application Server**, is added between the client and the **Database Server**. This layer handles the business logic and communication, making the system more flexible and scalable. This is the most common model for enterprise applications.
 * **[[layered|N-Tier Architecture]]:** An extension of the 3-Tier model, with multiple server layers to distribute the load and responsibilities.
-* **Microservices:** A distributed architecture where each service is a mini **Client-Server**. Each microservice exposes an API (via **REST** or **gRPC**) and acts as a server for other services (its clients).
+* **[[microservices|Microservices]]:** A distributed architecture where each service is a mini **Client-Server**. Each microservice exposes an API (via **REST** or **gRPC**) and acts as a server for other services (its clients).
 
 This architectural style, while old, remains the foundation for the majority of modern web and distributed applications. Its conceptual simplicity and robustness make it a pillar of software development.
 
@@ -98,4 +98,4 @@ This architectural style, while old, remains the foundation for the majority of 
 
 2.  **[Client-Server Architecture: The Backbone of Modern Software](https://www.youtube.com/watch?v=YPlU0vt5KYw)**
     
-    This video is an excellent deep dive that doesn't just stick to the basics but covers aspects like **DNS lookup**, the **TCP handshake**, and how modern architectures like **Microservices** are derived from it. It's ideal for an experienced audience.
+    This video is an excellent deep dive that doesn't just stick to the basics but covers aspects like **DNS lookup**, the **TCP handshake**, and how modern architectures like [[microservices|Microservices]] are derived from it. It's ideal for an experienced audience.

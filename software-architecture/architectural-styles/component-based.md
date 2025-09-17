@@ -67,7 +67,7 @@ graph TD
 **Component-Based Architecture** is a core principle that has given rise to several modern architectures:
 
 * **[[soa|Service-Oriented Architecture (SOA)]]:** An evolution of CBA where components are distributed services accessible over a network via standard protocols like SOAP or REST.
-* **Microservices:** A variation of SOA. Each microservice is a small [[client-server|Client-Server]] that represents a functional component and can be deployed and scaled independently.
+* **[[microservices|Microservices]]:** A variation of SOA. Each microservice is a small [[client-server|Client-Server]] that represents a functional component and can be deployed and scaled independently.
 * **User Interface Frameworks:** Libraries like `React` or `Angular` build user interfaces from reusable graphical components.
 
 This architectural style is ubiquitous in modern software development, particularly in enterprise systems, web frameworks, and **cloud** service platforms. It promotes a modular approach and fosters the creation of more flexible and maintainable systems.
@@ -80,7 +80,7 @@ This architectural style is ubiquitous in modern software development, particula
 
 1.  **[Component Based Architecture. Revamping the architecture thoughts](https://medium.com/omarelgabrys-blog/component-based-architecture-3c3c23c7e348)**
     
-    This article discusses CBA principles in a simple, concise way. It draws a direct link between this architectural style and **Microservices**, a very useful perspective for modern developers and architects.
+    This article discusses CBA principles in a simple, concise way. It draws a direct link between this architectural style and [[microservices|Microservices]], a very useful perspective for modern developers and architects.
     
 2.  **[Component-Based Design in Software Architecture - DEV Community](https://dev.to/lovestaco/component-based-design-in-software-architecture-pbf)**
     

@@ -15,7 +15,7 @@ title: Monolithic Architecture
 
 ## Overview and Communication Flow
 
-The most generic and specific diagram for a monolith highlights its unified nature, contrasting it with a distributed architecture like microservices.
+The most generic and specific diagram for a monolith highlights its unified nature, contrasting it with a distributed architecture like [[microservices|microservices]].
 
 ```mermaid
 graph TD
@@ -70,7 +70,7 @@ graph TD
 ### **Articles**
 
 1.  **[Monolithic vs. Microservices Architecture](https://www.atlassian.com/microservices/microservices-architecture/microservices-vs-monolith)**
-    This article from Atlassian provides an overview of monolithic architecture, then compares it to microservices. It details the pros and cons of each approach, covering aspects such as development complexity, deployment, and scalability.
+    This article from Atlassian provides an overview of monolithic architecture, then compares it to [[microservices|microservices]]. It details the pros and cons of each approach, covering aspects such as development complexity, deployment, and scalability.
 
 2.  **[Monolithic architecture](https://www.techtarget.com/whatis/definition/monolithic-architecture)**
     This article from TechTarget offers a concise and clear definition of monolithic architecture. It explains its basic components, characteristics, and the reasons why this model is often chosen, especially for small to medium-sized projects.

@@ -95,7 +95,7 @@ SBA is often implemented with technologies like **Apache Ignite**, **Hazelcast**
     * **Gaming:** Backends for multiplayer online games.
     * **E-commerce:** Recommendation engines and shopping cart management that require ultra-fast responses.
 
-This architectural style is a highly specialized solution for specific **scalability** and **performance** problems. It is not a substitute for more traditional architectures like the [[layered|3-tier]] or **microservices**, but rather a complementary option for the most critical parts of an application.
+This architectural style is a highly specialized solution for specific **scalability** and **performance** problems. It is not a substitute for more traditional architectures like the [[layered|3-tier]] or [[microservices|microservices]], but rather a complementary option for the most critical parts of an application.
 
 ## **Resources & Links**
 

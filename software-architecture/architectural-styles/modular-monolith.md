@@ -3,7 +3,7 @@ title: Modular Monolith Architecture
 ---
 # Modular Monolith Architecture
 
-The **Modular Monolith** is an architectural style that combines the operational simplicity of a [[monolithic|monolith]] with the modularity benefits of **microservices**. It is a single application, deployed as a single unit, but its internal organization is highly structured into distinct and loosely coupled modules. Each module represents an independent business capability.
+The **Modular Monolith** is an architectural style that combines the operational simplicity of a [[monolithic|monolith]] with the modularity benefits of [[microservices|microservices]]. It is a single application, deployed as a single unit, but its internal organization is highly structured into distinct and loosely coupled modules. Each module represents an independent business capability.
 
 * **Core Principles:**
     * **Separation of Concerns:** Each module is a self-contained functional unit, with its own business logic, internal API, and, ideally, its own data schema. It does not directly access other modules' data.
@@ -14,7 +14,7 @@ The **Modular Monolith** is an architectural style that combines the operational
 
 ## Comparison: Classic Monolith vs. Modular Monolith
 
-| Characteristic | Classic Monolith | Modular Monolith | Microservices |
+| Characteristic | Classic Monolith | Modular Monolith | [[microservices|Microservices]] |
 | :--- | :--- | :--- | :--- |
 | **Structure** | A single application, a single codebase, often without clear boundaries between parts. | A single application, a single codebase but divided into autonomous modules. | A collection of independent, deployable services. |
 | **[[cohesion-coupling|Coupling]]** | Strong Coupling, components call each other directly and share the same state and database. | Loose Coupling internally between modules via well-defined interfaces. | Loose Coupling between services, communication over the network (e.g., REST, gRPC). |
@@ -42,7 +42,7 @@ graph TD
         B3 --> D
     end
     style Modular-Monolith fill:#b5f5b7,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
-    subgraph Microservices
+    subgraph [[microservices|Microservices]]
         direction LR
         subgraph Service A
             direction TB
@@ -62,13 +62,13 @@ graph TD
 ## Use Cases and Benefits
 
 * **Ideal for:**
-    * **Startups and initial projects:** It allows for quick time to market with simple deployment, while laying the groundwork for a future migration to **microservices** if needed.
+    * **Startups and initial projects:** It allows for quick time to market with simple deployment, while laying the groundwork for a future migration to [[microservices|microservices]] if needed.
     * **Complex Enterprise Applications:** A CRM (Customer Relationship Management) system can have modules for contact management, sales, and customer support, allowing dedicated teams to work on each module.
-    * **Migration Preparation (Transition to Microservices):** This is an excellent stepping stone. Once module boundaries are well-established, they can be extracted from the [[monolithic|monolith]] and deployed as independent services with less risk. This is often referred to as the **"strangler fig pattern"**.
+    * **Migration Preparation (Transition to [[microservices|Microservices]]):** This is an excellent stepping stone. Once module boundaries are well-established, they can be extracted from the [[monolithic|monolith]] and deployed as independent services with less risk. This is often referred to as the **"strangler fig pattern"**.
 
 * **Advantages (Benefits):**
     * **Simplicity of Deployment:** Like a [[monolithic|monolith]], there is only one application to deploy, which simplifies CI/CD pipelines.
-    * **Performance:** Communication between modules happens in memory, which is much faster than network calls between **microservices**.
+    * **Performance:** Communication between modules happens in memory, which is much faster than network calls between [[microservices|microservices]].
     * **Maintainability and Internal Scalability:** The modularity makes maintenance and modifications easier. While the entire application is deployed together, it is easier to identify and resolve internal bottlenecks.
 
 ---
@@ -86,10 +86,10 @@ graph TD
 ### **Articles**
 
 1.  **[What Is a Modular Monolith?](https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith)**
-    This article by Milan Jovanović gives a clear explanation of what a **modular monolith** is and why it can be an excellent alternative to **microservices**. It highlights how to get the benefits of decoupling without the complexity of a distributed system.
+    This article by Milan Jovanović gives a clear explanation of what a **modular monolith** is and why it can be an excellent alternative to [[microservices|microservices]]. It highlights how to get the benefits of decoupling without the complexity of a distributed system.
 
 2.  **[When (modular) monolith is the better way to build software](https://www.thoughtworks.com/insights/blog/microservices/modular-monolith-better-way-build-software)**
-    Published by Thoughtworks, a leader in software architecture, this article argues that the **modular monolith** is often a better starting point for projects. It emphasizes the simplicity of management, deployment, and the ability to evolve toward a **microservices** architecture if the need arises.
+    Published by Thoughtworks, a leader in software architecture, this article argues that the **modular monolith** is often a better starting point for projects. It emphasizes the simplicity of management, deployment, and the ability to evolve toward a [[microservices|microservices]] architecture if the need arises.
 
 ### **Videos**
 

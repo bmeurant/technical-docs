@@ -57,7 +57,7 @@ Coupling measures the degree of interdependence between modules. Low coupling is
     * **Example**: A `processFile(file, mode)` method where `mode` determines if the file should be read in `read-only` or `read-write` mode.
 
 4.  **External Coupling**: Modules depend on a common external factor (e.g., a file format, a communication protocol, a shared database).
-    * **Example**: Two microservices that both depend on the same version of a database schema.
+    * **Example**: Two [[microservices|microservices]] that both depend on the same version of a database schema.
 
 5.  **Common Coupling**: Modules share a global state, like a global variable. This is extremely dangerous because any module can modify this data, making the system unpredictable.
     * **Example**: Two modules that both read and write to a global `application_state` variable.
@@ -100,7 +100,7 @@ To dive deeper into the concepts of cohesion and coupling in software engineerin
 
 2. **[Lesson 59 - The Tradeoffs of Loose Coupling](https://www.youtube.com/watch?v=XnBhVwm_Lws)** by Mark Richards
 
-    This video discusses the tradeoffs of loose coupling, using a microservices example to illustrate the challenges of managing errors and data consistency.
+    This video discusses the tradeoffs of loose coupling, using a [[microservices|microservices]] example to illustrate the challenges of managing errors and data consistency.
 
 3. **[Coupling and Cohesion Explained](http://www.youtube.com/watch?v=7pdrZDqEPIw)** by Gui Ferreira
 
