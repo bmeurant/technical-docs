@@ -75,7 +75,7 @@ The **Event-Driven Architecture** has several variations:
 * **Event Notification:** A service sends a notification about an event without including the data. Consumers must then call the original service to get detailed information.
 * **Event-Carried State Transfer:** The event contains all the data needed for the consumer to act without having to contact the producer. This is a common model with [[microservices|microservices]].
 * **Event Sourcing:** Instead of persisting an entity's current state, a chronological sequence of events that led to that state is stored. This provides a complete history of changes.
-* **Message-Driven Architecture:** This is a broader architectural pattern that includes EDA as a subset. It is based on messages rather than events, which implies more formal notions of **commands** and **queries**. In this pattern, a component sends a message with a specific intent (e.g., "create an order"), whereas EDA focuses on state changes (e.g., "an order has been created").
+* **[[message-driven|Message-Driven Architecture]]:** This is a broader architectural pattern that includes EDA as a subset. It is based on messages rather than events, which implies more formal notions of **commands** and **queries**. In this pattern, a component sends a message with a specific intent (e.g., "create an order"), whereas EDA focuses on state changes (e.g., "an order has been created").
 
 This architectural style has become the foundation of many modern systems, particularly in the areas of [[microservices|microservices]], **IoT**, and **real-time data platforms**.
 

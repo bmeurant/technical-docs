@@ -24,3 +24,4 @@ These documents outlines several common architectural styles with concrete examp
 ## Communication
 
 * **[Event Driven Architecture](./event-driven.md)**
+* **[Message Driven Architecture](./message-driven.md)**
