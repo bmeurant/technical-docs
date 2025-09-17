@@ -9,7 +9,7 @@ The **Serverless architecture** is a design pattern for systems where the **clou
     * **No Server Management:** The developer no longer needs to provision or maintain servers (OS patching, etc.).
     * **Pay-per-use:** Billing is based on the resources actually consumed (execution time, memory, requests), with no idle costs.
     * **Automatic Scalability:** The system scales automatically and instantly to adapt to the load, from zero to thousands of instances.
-    * **Event-driven Architecture:** Functions are often triggered by events, such as an HTTP request, a file upload, or a message in a queue.
+    * **[[event-driven|Event-driven Architecture]]:** Functions are often triggered by events, such as an HTTP request, a file upload, or a message in a queue.
 
 ---
 
@@ -51,7 +51,7 @@ graph TD
 
 ## Typical Data Flow
 
-The data flow in a **Serverless** architecture is fundamentally different from the traditional [[client-server|Client-Server]] model because it is **event-driven**. Instead of a persistent connection between a client and a server, communication is triggered by events.
+The data flow in a **Serverless** architecture is fundamentally different from the traditional [[client-server|Client-Server]] model because it is [[event-driven|event-driven]]. Instead of a persistent connection between a client and a server, communication is triggered by events.
 
 1.  **Event Triggered**: An event occurs. For example, a user sends an HTTP request to an API endpoint.
 2.  **Function Invocation**: The **cloud provider** detects this event and, in response, invokes the associated **Serverless** function. If the function isn't "warm" (already in memory), a "cold start" occurs, which can introduce initial latency to initialize the execution environment.
@@ -59,7 +59,7 @@ The data flow in a **Serverless** architecture is fundamentally different from t
 4.  **Result Handling**: Once execution is complete, the function returns a response (e.g., an HTTP status code and a JSON response body) or writes data to another service. The function then stops, and the execution environment is released.
 5.  **No Persistent Connection**: There is no long-lasting connection maintained. Each invocation is a distinct, isolated execution.
 
-This **stateless**, **event-driven** model is what enables the massive **scalability** and reduced costs associated with a **Serverless** architecture.
+This **stateless**, [[event-driven|event-driven]] model is what enables the massive **scalability** and reduced costs associated with a **Serverless** architecture.
 
 ---
 
@@ -83,7 +83,7 @@ This **stateless**, **event-driven** model is what enables the massive **scalabi
 
 ## Use Cases and Practical Examples
 
-* **Event-driven APIs:** Create **REST** or **gRPC** **APIs** where each endpoint is managed by a **serverless** function.
+* **[[event-driven|Event-driven APIs]]:** Create **REST** or **gRPC** **APIs** where each endpoint is managed by a **serverless** function.
 * **Data Processing:** A function triggered by adding an image to an **S3** bucket that resizes the image and adds it to another bucket.
 * **Scheduled Tasks:** Replace **cron jobs** with functions triggered at regular intervals to, for example, generate reports or clean up data.
 * **[[microservices|Microservices]]:** A [[microservices|microservices]] architecture where each service is implemented as one or more **serverless** functions.
@@ -95,7 +95,7 @@ This **stateless**, **event-driven** model is what enables the massive **scalabi
 
 * **FaaS (Function as a Service):** The concept that allows for the execution of functions in response to events without managing the underlying infrastructure.
 * **BaaS (Backend as a Service):** Provides managed backend services, such as databases, authentication, and storage, so the developer can focus on front-end code or **FaaS** functions.
-* **Event-Driven Architecture:** This is a fundamental design principle, not just a variation. It is centered around producing, consuming, and reacting to events to orchestrate data flow and communication between services. **Serverless** is the perfect technical example of this.
+* **[[event-driven|Event-Driven Architecture]]:** This is a fundamental design principle, not just a variation. It is centered around producing, consuming, and reacting to events to orchestrate data flow and communication between services. **Serverless** is the perfect technical example of this.
 
 ---
 

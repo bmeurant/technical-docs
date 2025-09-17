@@ -7,7 +7,7 @@ The **Modular Monolith** is an architectural style that combines the operational
 
 * **Core Principles:**
     * **Separation of Concerns:** Each module is a self-contained functional unit, with its own business logic, internal API, and, ideally, its own data schema. It does not directly access other modules' data.
-    * **[[cohesion-coupling|Loose Coupling]]:** Modules communicate via well-defined interfaces (like services or internal events), which reduces direct dependencies. This allows a team to work on one module with less risk of breaking the rest of the application.
+    * **[[cohesion-coupling|Loose Coupling]]:** Modules communicate via well-defined interfaces (like services or internal [[event-driven|events]]), which reduces direct dependencies. This allows a team to work on one module with less risk of breaking the rest of the application.
     * **[[cohesion-coupling|High Cohesion]]:** A module's code is tightly related and serves a single business responsibility. This makes the code easier to understand and maintain.
 
 ---

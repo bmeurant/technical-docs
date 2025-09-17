@@ -21,6 +21,6 @@ These documents outlines several common architectural styles with concrete examp
 * **[Microkernel Architecture](./microkernel.md)**
 * **[Space based Architecture](./space-based.md)**
 
-## Messaging
+## Communication
 
-## Unclassified
+* **[Event Driven Architecture](./event-driven.md)**

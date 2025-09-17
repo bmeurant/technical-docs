@@ -81,7 +81,7 @@ The data flow in a microservices architecture is often a multi-step process, orc
 
 * **Challenges:**
     * **Operational Complexity:** Managing a large number of distributed services is complex and requires **DevOps** expertise and a robust infrastructure.
-    * **Data Consistency:** Maintaining data **consistency** across the isolated databases of different services is a challenge (e.g., via the **event-driven** model and the **Saga** pattern).
+    * **Data Consistency:** Maintaining data **consistency** across the isolated databases of different services is a challenge (e.g., via the [[event-driven|event-driven]] model and the **Saga** pattern).
     * **Debugging and Monitoring:** Debugging a request flow across multiple services and **networks** is more difficult than in a [[monolithic|monolith]]. **Distributed tracing** tools are necessary.
     * **Security:** Each service is potentially an entry point, which increases the attack surface. Implementing **security** across dozens of services can be complex.
 
@@ -91,7 +91,7 @@ The data flow in a microservices architecture is often a multi-step process, orc
 
 The **Microservices** architecture is not a final architecture but an approach that is combined with other patterns.
 
-* **Event-Driven Architecture (EDA):** Services communicate by emitting and consuming events via a **message broker** (e.g., **Kafka**, **RabbitMQ**). This promotes maximum decoupling.
+* **[[event-driven|Event-Driven Architecture (EDA)]]:** Services communicate by emitting and consuming events via a **message broker** (e.g., **Kafka**, **RabbitMQ**). This promotes maximum decoupling.
 * **Service Mesh:** A dedicated infrastructure layer that handles communication between services. It provides features like **security**, **observability**, and **traffic control** (e.g., **Istio**, **Linkerd**).
 * **[[serverless|Serverless/Function-as-a-Service (FaaS)]]:** A variation of microservices where the service is a function executed in a [[serverless|serverless]] environment (e.g., **AWS Lambda**, **Google Cloud Functions**). This reduces **operational overhead**.
 
@@ -123,4 +123,4 @@ This architecture is the de facto solution for modern large-scale applications a
     
     This video goes further by explaining not only what **Microservices** are, but also why they are used and what the operational considerations are for implementing them. It is useful for an audience seeking a more comprehensive understanding of the **Microservices** ecosystem.
 
-    On this channel, you will find [many other videos on microservices](https://www.developertoarchitect.com/lessons-microservices.html) addressing different aspects and challenges of these architectures, comparisons with other architectures such as [[soa|SOA]] or event-driven architecture.
+    On this channel, you will find [many other videos on microservices](https://www.developertoarchitect.com/lessons-microservices.html) addressing different aspects and challenges of these architectures, comparisons with other architectures such as [[soa|SOA]] or [[event-driven|event-driven architecture]].
