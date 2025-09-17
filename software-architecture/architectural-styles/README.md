@@ -8,6 +8,7 @@ These documents outlines several common architectural styles with concrete examp
 
 * **[Client-Server Architecture](./client-server.md)**
 * **[Peer to Peer Architecture](./peer-to-peer.md)**
+* **[Service Oriented Architecture](./soa.md)**
 
 ## Structural
 

@@ -66,7 +66,7 @@ graph TD
 
 **Component-Based Architecture** is a core principle that has given rise to several modern architectures:
 
-* **Service-Oriented Architecture (SOA):** An evolution of CBA where components are distributed services accessible over a network via standard protocols like SOAP or REST.
+* **[[soa|Service-Oriented Architecture (SOA)]]:** An evolution of CBA where components are distributed services accessible over a network via standard protocols like SOAP or REST.
 * **Microservices:** A variation of SOA. Each microservice is a small [[client-server|Client-Server]] that represents a functional component and can be deployed and scaled independently.
 * **User Interface Frameworks:** Libraries like `React` or `Angular` build user interfaces from reusable graphical components.
 
