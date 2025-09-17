@@ -1,4 +1,7 @@
-# **Monolithic Architecture**
+---
+title: Monolithic Architecture
+---
+# Monolithic Architecture
 
 **Monolithic architecture** is a software design style where the entire application is built as a **single, indivisible deployment unit**. All application functionalities (the user interface, business logic, and data access) are packaged into a single artifact, which is then deployed to a single server or a cluster of servers acting as a unified entity.
 
@@ -10,7 +13,7 @@
 
 ---
 
-## **Overview and Communication Flow**
+## Overview and Communication Flow
 
 The most generic and specific diagram for a monolith highlights its unified nature, contrasting it with a distributed architecture like microservices.
 
@@ -48,7 +51,7 @@ graph TD
 
 ---
 
-## **Advantages and Challenges (Technical and Operational)**
+## Advantages and Challenges (Technical and Operational)
 
 * **Advantages (Benefits):**
     * **Development and Deployment Simplicity:** A single codebase and a single binary to deploy. This makes Continuous Integration / Continuous Deployment (CI/CD) pipelines initially simple and fast for a small team.

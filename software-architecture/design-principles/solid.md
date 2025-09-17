@@ -1,4 +1,7 @@
-# **The SOLID Principles**
+---
+title: The SOLID Principles
+---
+# The SOLID Principles
 
 The **SOLID** principles are a set of five design guidelines for software development that, when applied, help to create systems that are more maintainable, flexible, and scalable. It is an acronym for:
 
@@ -10,7 +13,7 @@ The **SOLID** principles are a set of five design guidelines for software develo
 
 ---
 
-## **1. Single Responsibility Principle (SRP)**
+## 1. Single Responsibility Principle (SRP)
 
 **The Principle:** A class should have only one reason to change. Its purpose is to keep classes focused and cohesive, preventing them from becoming "God objects" that are difficult to manage.
 
@@ -18,7 +21,7 @@ The **SOLID** principles are a set of five design guidelines for software develo
 
 ---
 
-## **2. Open/Closed Principle (OCP)**
+## 2. Open/Closed Principle (OCP)
 
 **The Principle:** Software entities should be **open for extension**, but **closed for modification**. This means you should be able to add new functionality to a class without changing its existing source code.
 
@@ -26,7 +29,7 @@ The **SOLID** principles are a set of five design guidelines for software develo
 
 ---
 
-## **3. Liskov Substitution Principle (LSP)**
+## 3. Liskov Substitution Principle (LSP)
 
 **The Principle:** Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. It ensures that inheritance is used correctly based on behavior rather than just a conceptual "is-a" relationship.
 
@@ -34,7 +37,7 @@ The **SOLID** principles are a set of five design guidelines for software develo
 
 ---
 
-## **4. Interface Segregation Principle (ISP)**
+## 4. Interface Segregation Principle (ISP)
 
 **The Principle:** Clients should not be forced to depend on interfaces they do not use. In simpler terms, it's better to have multiple small, specific interfaces than one large, generic interface.
 
@@ -42,7 +45,7 @@ The **SOLID** principles are a set of five design guidelines for software develo
 
 ---
 
-## **5. Dependency Inversion Principle (DIP)**
+## 5. Dependency Inversion Principle (DIP)
 
 **The Principle:**
 1. High-level modules should not depend on low-level modules. Both should depend on abstractions.

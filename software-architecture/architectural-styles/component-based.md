@@ -1,4 +1,7 @@
-# **Component-Based Architecture (CBA)**
+---
+title: Component-Based Architecture
+---
+# Component-Based Architecture (CBA)
 
 **Component-Based Architecture (CBA)** is a software architectural style that focuses on decomposing a system into reusable, independent, and self-contained software components. A **component** is a software unit with a clearly defined interface that encapsulates its functionality and data, without exposing its internal complexity.
 
@@ -10,7 +13,7 @@
 
 ---
 
-## **Key Components and Communication Flow**
+## Key Components and Communication Flow
 
 ```mermaid
 graph TD
@@ -43,7 +46,7 @@ graph TD
 
 ---
 
-## **Advantages and Technical Challenges**
+## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
     * **Reusability:** Components can be reused in different applications, which reduces development costs and time-to-market.
@@ -59,12 +62,12 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Variations and Derived Architectures
 
 **Component-Based Architecture** is a core principle that has given rise to several modern architectures:
 
 * **Service-Oriented Architecture (SOA):** An evolution of CBA where components are distributed services accessible over a network via standard protocols like SOAP or REST.
-* **Microservices:** A variation of SOA. Each microservice is a small **Client-Server** that represents a functional component and can be deployed and scaled independently.
+* **Microservices:** A variation of SOA. Each microservice is a small [[client-server|Client-Server]] that represents a functional component and can be deployed and scaled independently.
 * **User Interface Frameworks:** Libraries like `React` or `Angular` build user interfaces from reusable graphical components.
 
 This architectural style is ubiquitous in modern software development, particularly in enterprise systems, web frameworks, and **cloud** service platforms. It promotes a modular approach and fosters the creation of more flexible and maintainable systems.

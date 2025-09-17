@@ -1,10 +1,13 @@
-# **Microkernel Architecture**
+---
+title: Microkernel Architecture
+---
+# Microkernel Architecture
 
 The **Microkernel** architecture, also known as the **Plug-in architecture**, is a software design pattern that separates a small, core functionality from extended functionalities, known as plug-ins. The microkernel only manages essential functions, while plug-ins add specific features.
 
 ***
 
-## **Core Principles**
+## Core Principles
 
 * **Separation of Concerns:** The microkernel handles the minimal, core functions of the system, such as managing plug-ins and communication. Plug-ins contain all the application-specific logic.
 * **Extensibility:** New features can be easily added by developing and deploying new plug-ins without modifying the microkernel or other existing plug-ins.
@@ -12,7 +15,7 @@ The **Microkernel** architecture, also known as the **Plug-in architecture**, is
 
 ***
 
-## **Key Components and Communication Flow**
+## Key Components and Communication Flow
 
 ```mermaid
 graph TD
@@ -42,7 +45,7 @@ graph TD
 
 ***
 
-## **Advantages and Technical Challenges**
+## Advantages and Technical Challenges
 
 * **Advantages:**
     * **Extensibility:** Easy to add new features without modifying the core system.
@@ -53,11 +56,11 @@ graph TD
 * **Challenges:**
     * **Complexity of Communication:** The indirect communication through the microkernel can add complexity to the design.
     * **Initial Design:** Defining the microkernel's boundaries and creating a robust plug-in API is a difficult but crucial task.
-    * **Performance Overhead:** The communication layer can introduce latency compared to a monolithic architecture.
+    * **Performance Overhead:** The communication layer can introduce latency compared to a [[monolithic|monolithic architecture]].
 
 ***
 
-## **Variations and Derived Architectures**
+## Variations and Derived Architectures
 
 * **Operating Systems:** The core kernel manages basic functions, while features like device drivers and file systems are implemented as plug-ins.
 * **Integrated Development Environments (IDEs):** A basic IDE is the microkernel, extended with plug-ins for different programming languages, debuggers, etc.
@@ -75,7 +78,7 @@ graph TD
 
 2.  **[OS Design: Monolithic vs. Microkernel Architecture](https://learningdaily.dev/os-design-monolithic-vs-microkernel-architecture-78981dd41c49)**
 
-    An excellent article for understanding the place of this architecture in the history of computer science. It provides a direct and well-illustrated comparison between monolithic and **Microkernel** architectures, which is perfect for solidifying basic knowledge.
+    An excellent article for understanding the place of this architecture in the history of computer science. It provides a direct and well-illustrated comparison between [[monolithic|monolithic]] and **Microkernel** architectures, which is perfect for solidifying basic knowledge.
 
 ---
 

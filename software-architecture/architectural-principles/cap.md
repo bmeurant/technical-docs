@@ -1,3 +1,6 @@
+---
+title: The CAP Theorem
+---
 # The CAP Theorem
 
 The **CAP theorem** is a fundamental principle in distributed computing that states a distributed data system can only guarantee a maximum of two out of the following three properties at the same time:
@@ -48,7 +51,7 @@ The choice between Consistency and Availability is a critical architectural deci
 
 ### The Theoretical Case: CA (Consistency & Availability)
 
-A system that guarantees both consistency and availability is only possible if it **does not tolerate partitions**. This means it is a **single-node system** where there is no risk of communication failure between different parts. If that single node fails, the entire system becomes unavailable. This is why the CA model is largely considered a theoretical impossibility for modern, distributed systems.
+A system that guarantees both consistency and availability is only possible if it **does not tolerate partitions**. This means it is a [[monolithic|single-node system]] where there is no risk of communication failure between different parts. If that single node fails, the entire system becomes unavailable. This is why the CA model is largely considered a theoretical impossibility for modern, distributed systems.
 
 ## **Resources & Links**
 

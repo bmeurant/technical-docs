@@ -1,22 +1,25 @@
-# **Modular Monolith Architecture**
+---
+title: Modular Monolith Architecture
+---
+# Modular Monolith Architecture
 
-The **Modular Monolith** is an architectural style that combines the operational simplicity of a **monolith** with the modularity benefits of **microservices**. It is a single application, deployed as a single unit, but its internal organization is highly structured into distinct and loosely coupled modules. Each module represents an independent business capability.
+The **Modular Monolith** is an architectural style that combines the operational simplicity of a [[monolithic|monolith]] with the modularity benefits of **microservices**. It is a single application, deployed as a single unit, but its internal organization is highly structured into distinct and loosely coupled modules. Each module represents an independent business capability.
 
 * **Core Principles:**
     * **Separation of Concerns:** Each module is a self-contained functional unit, with its own business logic, internal API, and, ideally, its own data schema. It does not directly access other modules' data.
-    * **Loose Coupling:** Modules communicate via well-defined interfaces (like services or internal events), which reduces direct dependencies. This allows a team to work on one module with less risk of breaking the rest of the application.
-    * **High Cohesion:** A module's code is tightly related and serves a single business responsibility. This makes the code easier to understand and maintain.
+    * **[[cohesion-coupling|Loose Coupling]]:** Modules communicate via well-defined interfaces (like services or internal events), which reduces direct dependencies. This allows a team to work on one module with less risk of breaking the rest of the application.
+    * **[[cohesion-coupling|High Cohesion]]:** A module's code is tightly related and serves a single business responsibility. This makes the code easier to understand and maintain.
 
 ---
 
-## **Comparison: Classic Monolith vs. Modular Monolith**
+## Comparison: Classic Monolith vs. Modular Monolith
 
 | Characteristic | Classic Monolith | Modular Monolith | Microservices |
 | :--- | :--- | :--- | :--- |
 | **Structure** | A single application, a single codebase, often without clear boundaries between parts. | A single application, a single codebase but divided into autonomous modules. | A collection of independent, deployable services. |
-| **Coupling** | Strong Coupling, components call each other directly and share the same state and database. | Loose Coupling internally between modules via well-defined interfaces. | Loose Coupling between services, communication over the network (e.g., REST, gRPC). |
+| **[[cohesion-coupling|Coupling]]** | Strong Coupling, components call each other directly and share the same state and database. | Loose Coupling internally between modules via well-defined interfaces. | Loose Coupling between services, communication over the network (e.g., REST, gRPC). |
 | **Deployment** | A single binary to deploy. | A single binary to deploy. | Multiple deployments, one per service. |
-| **Database** | A monolithic database shared by the entire application. | A single database, but each module is responsible for its own data schema. Discipline is required to manage this. | Each microservice has its own database. |
+| **Database** | A [[monolithic|monolithic]] database shared by the entire application. | A single database, but each module is responsible for its own data schema. Discipline is required to manage this. | Each microservice has its own database. |
 
 ```mermaid
 graph TD
@@ -56,25 +59,25 @@ graph TD
 
 ---
 
-## **Use Cases and Benefits**
+## Use Cases and Benefits
 
 * **Ideal for:**
     * **Startups and initial projects:** It allows for quick time to market with simple deployment, while laying the groundwork for a future migration to **microservices** if needed.
     * **Complex Enterprise Applications:** A CRM (Customer Relationship Management) system can have modules for contact management, sales, and customer support, allowing dedicated teams to work on each module.
-    * **Migration Preparation (Transition to Microservices):** This is an excellent stepping stone. Once module boundaries are well-established, they can be extracted from the **monolith** and deployed as independent services with less risk. This is often referred to as the **"strangler fig pattern"**.
+    * **Migration Preparation (Transition to Microservices):** This is an excellent stepping stone. Once module boundaries are well-established, they can be extracted from the [[monolithic|monolith]] and deployed as independent services with less risk. This is often referred to as the **"strangler fig pattern"**.
 
 * **Advantages (Benefits):**
-    * **Simplicity of Deployment:** Like a **monolith**, there is only one application to deploy, which simplifies CI/CD pipelines.
+    * **Simplicity of Deployment:** Like a [[monolithic|monolith]], there is only one application to deploy, which simplifies CI/CD pipelines.
     * **Performance:** Communication between modules happens in memory, which is much faster than network calls between **microservices**.
     * **Maintainability and Internal Scalability:** The modularity makes maintenance and modifications easier. While the entire application is deployed together, it is easier to identify and resolve internal bottlenecks.
 
 ---
 
-## **Challenges and Technical Considerations**
+## Challenges and Technical Considerations
 
 * **Team Discipline:** This is the biggest challenge. Developers must commit to respecting module boundaries and avoiding cross-module dependencies.
 * **Data Coupling:** Managing a single database for multiple modules is tricky. Each module should own its own data schema, and direct relationships between module tables should be avoided to maintain independence.
-* **Scalability:** While you can replicate the entire **monolith** behind a **Load Balancer**, you cannot scale a single module independently.
+* **Scalability:** While you can replicate the entire [[monolithic|monolith]] behind a **Load Balancer**, you cannot scale a single module independently.
 
 ---
 

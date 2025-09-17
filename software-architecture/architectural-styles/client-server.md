@@ -1,4 +1,7 @@
-# **Client-Server Architecture**
+---
+title: Client-Server Architecture
+---
+# Client-Server Architecture
 
 The **Client-Server** architecture is a fundamental distributed system model where responsibilities are divided into two distinct roles. A **client** is an entity that requests services, while a **server** is an entity that listens for requests and provides the services. This model is based on message exchange over a **network**.
 
@@ -11,7 +14,7 @@ The **Client-Server** architecture is a fundamental distributed system model whe
 
 ---
 
-## **Key Components and Communication Flow**
+## Key Components and Communication Flow
 
 ```mermaid
 graph TD
@@ -46,7 +49,7 @@ graph TD
 
 ---
 
-## **Advantages and Technical Challenges**
+## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
     * **Centralized management:** The management of security, updates, and **data storage** is centralized on the server, which simplifies administration.
@@ -62,13 +65,13 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Variations and Derived Architectures
 
 The **Client-Server** architecture is the basis for many more sophisticated models, including:
 
 * **2-Tier Architecture:** This is the basic model, with a client communicating directly with a server. Example: a desktop application connected to a database.
-* **3-Tier Architecture:** An intermediate level, the **Application Server**, is added between the client and the **Database Server**. This layer handles the business logic and communication, making the system more flexible and scalable. This is the most common model for enterprise applications.
-* **N-Tier Architecture:** An extension of the 3-Tier model, with multiple server layers to distribute the load and responsibilities.
+* **[[layered|3-Tier Architecture]]:** An intermediate level, the **Application Server**, is added between the client and the **Database Server**. This layer handles the business logic and communication, making the system more flexible and scalable. This is the most common model for enterprise applications.
+* **[[layered|N-Tier Architecture]]:** An extension of the 3-Tier model, with multiple server layers to distribute the load and responsibilities.
 * **Microservices:** A distributed architecture where each service is a mini **Client-Server**. Each microservice exposes an API (via **REST** or **gRPC**) and acts as a server for other services (its clients).
 
 This architectural style, while old, remains the foundation for the majority of modern web and distributed applications. Its conceptual simplicity and robustness make it a pillar of software development.

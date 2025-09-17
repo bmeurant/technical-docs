@@ -1,4 +1,7 @@
-# Software Architecture Cheatsheet: Cohesion & Coupling
+---
+title: Cohesion & Coupling
+---
+# Cohesion & Coupling
 
 In software engineering, **cohésion** and **coupling** are two fundamental principles used to evaluate the quality of an architecture. Together, they determine a system's robustness and flexibility. The goal of good design is to achieve **high cohesion** and **low coupling**.
 
@@ -15,7 +18,7 @@ Cohesion is a qualitative measure of a module's focus. The more a module has one
 
 ### Cohesion Levels (from best to worst):
 
-1.  **Functional Cohesion (Ideal)**: All parts of the module are essential to performing a single, well-defined task. This is the essence of the **Single Responsibility Principle (SRP)**.
+1.  **Functional Cohesion (Ideal)**: All parts of the module are essential to performing a single, well-defined task. This is the essence of the [[solid#Single Responsibility Principle (SRP)|Single Responsibility Principle (SRP)]].
     * **Example**: An `EmailValidator` class with a single `validate(emailAddress)` method.
 
 2.  **Sequential Cohesion**: The output from one element of the module serves as the input to the next. The elements are dependent in a sequence of operations.
@@ -93,7 +96,7 @@ To dive deeper into the concepts of cohesion and coupling in software engineerin
 
 1. **[SOLID Principles? Nope, just Coupling and Cohesion](http://www.youtube.com/watch?v=YDNR_gfBk0Q)** by CodeOpinion
 
-    This video highlights the importance of coupling and cohesion, sometimes even beyond the well-known SOLID principles.
+    This video highlights the importance of coupling and cohesion, sometimes even beyond the well-known [[solid|SOLID principles]].
 
 2. **[Lesson 59 - The Tradeoffs of Loose Coupling](https://www.youtube.com/watch?v=XnBhVwm_Lws)** by Mark Richards
 

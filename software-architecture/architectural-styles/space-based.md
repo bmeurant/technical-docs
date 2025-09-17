@@ -1,4 +1,7 @@
-# **Space-Based Architecture (SBA)**
+---
+title: Space-Based Architecture
+---
+# Space-Based Architecture (SBA)
 
 The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architecture**, is a distributed system design style focused on high performance, scalability, and resilience, particularly suited for applications with high transaction volumes and low latency. This model relies on replicating data and application logic in memory across multiple nodes ("spaces"), eliminating **single points of failure** and bottlenecks associated with a centralized database.
 
@@ -10,7 +13,7 @@ The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architect
 
 ---
 
-## **Key Components and Communication Flow**
+## Key Components and Communication Flow
 
 ```mermaid
 graph TD
@@ -66,7 +69,7 @@ graph TD
 
 ---
 
-## **Advantages and Technical Challenges**
+## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
     * **Horizontal Scalability (Scale-out):** The ability to add nodes indefinitely to increase processing capacity. It is an ideal solution for **bursts of traffic**.
@@ -82,7 +85,7 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Variations and Derived Architectures
 
 SBA is often implemented with technologies like **Apache Ignite**, **Hazelcast**, or **Oracle Coherence**. It is typically used in highly specific contexts and is not a universal architecture.
 
@@ -92,7 +95,7 @@ SBA is often implemented with technologies like **Apache Ignite**, **Hazelcast**
     * **Gaming:** Backends for multiplayer online games.
     * **E-commerce:** Recommendation engines and shopping cart management that require ultra-fast responses.
 
-This architectural style is a highly specialized solution for specific **scalability** and **performance** problems. It is not a substitute for more traditional architectures like the **3-tier** or **microservices**, but rather a complementary option for the most critical parts of an application.
+This architectural style is a highly specialized solution for specific **scalability** and **performance** problems. It is not a substitute for more traditional architectures like the [[layered|3-tier]] or **microservices**, but rather a complementary option for the most critical parts of an application.
 
 ## **Resources & Links**
 

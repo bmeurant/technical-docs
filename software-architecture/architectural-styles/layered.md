@@ -1,4 +1,7 @@
-# **Layered Architecture**
+---
+title: Layered Architecture
+---
+# Layered Architecture
 
 The **Layered architecture** is an architectural pattern that structures an application by grouping components with similar functionalities into horizontal layers. Each layer has a specific responsibility and can only communicate with the layer directly beneath it. This clear separation of concerns is the main strength of this model.
 
@@ -9,7 +12,7 @@ The **Layered architecture** is an architectural pattern that structures an appl
 
 ---
 
-## **Key Components and Communication Flow**
+## Key Components and Communication Flow
 
 ```mermaid
 graph TD
@@ -51,7 +54,7 @@ The most common model is the four-layer architecture, but there can be more or f
 
 ---
 
-## **Advantages and Technical Challenges**
+## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
     * **Clear and Familiar Design:** It is a very common and easy-to-understand model for most developers, which accelerates onboarding.
@@ -60,14 +63,14 @@ The most common model is the four-layer architecture, but there can be more or f
     * **Reusability:** Components in a layer can often be reused by different clients or other parts of the application.
 
 * **Challenges:**
-    * **Monolithic Deployment:** Traditionally, all layers are deployed together, which can lead to typical **monolith** problems: deployment complexity and difficulty in scaling each layer independently.
+    * **Monolithic Deployment:** Traditionally, all layers are deployed together, which can lead to typical [[monolithic|monolith]] problems: deployment complexity and difficulty in scaling each layer independently.
     * **Performance:** Each request must pass through multiple layers, which can introduce additional latency. Solutions like "layer skipping" can improve performance, but they compromise the strict separation and can create unexpected dependencies.
     * **Tightly Coupled Layers:** Although the architecture encourages separation, there can be strong coupling between adjacent layers if the design is not well-managed.
     * **Increasing Complexity:** While the model is simple at its core, adding new features can complicate the interactions between layers and make the architecture rigid.
 
 ---
 
-## **Variations and Derived Architectures**
+## Variations and Derived Architectures
 
 * **2-Tier vs. N-Tier:** The basic 2-tier model (client and database) has evolved into the **N-Tier** model, which inserts intermediate layers (like the **Business Logic Layer**) to improve flexibility and scalability.
 * **Hexagonal Architecture (Ports and Adapters):** Although not a direct derivation, the hexagonal architecture is inspired by the principle of separation of concerns. It is often used to decouple the application's core (**Business Logic**) from external technologies (databases, user interfaces, etc.) by using **ports** and **adapters**.
