@@ -50,7 +50,11 @@ The most common model is the four-layer architecture, but there can be more or f
 3.  **Data Access Layer (DAL) / Persistence Layer:** This layer is responsible for communication with databases or any other data source. It manages data persistence and retrieval. Objects in this layer are often called **Repositories** or **Data Access Objects (DAOs)**. Examples: **Spring Data**, **Hibernate**, **JPA** for Java, or ORMs like **Sequelize** for Node.js.
 4.  **Database Layer:** The lowest layer. It is the physical implementation of the database. It has no knowledge of the higher layers. Examples: **PostgreSQL**, **MySQL**, **MongoDB**, **Redis**.
 
-**Typical Data Flow:** A user request starts at the **Presentation Layer**, is processed by the **Business Logic Layer** (which may interact with third-party services or other layers), which in turn uses the **Data Access Layer** to interact with the **Database Layer**. The response follows the reverse path.
+**Typical Data Flow:** 
+
+- A user request starts at the **Presentation Layer**
+- It is processed by the **Business Logic Layer** (which may interact with third-party services or other layers)
+- Which in turn uses the **Data Access Layer** to interact with the **Database Layer**. The response follows the reverse path.
 
 ---
 

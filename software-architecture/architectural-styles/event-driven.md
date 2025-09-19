@@ -45,7 +45,10 @@ graph TD
 
 ### **Typical Data Flow:**
 
-The producer detects a state change and creates an event. It publishes this event to the **Event Broker**. The broker stores the event and notifies all subscribed consumers. The consumers receive the event and execute their respective tasks (e.g., sending an email, updating a database). Each service performs its task independently, with no direct communication with the other services involved.
+- The **producer** detects a state change and creates an **event**. 
+- It publishes this event to the **Event Broker**. 
+- The broker stores the event and notifies all subscribed **consumers**. 
+- The consumers receive the event and execute their respective tasks (e.g., sending an email, updating a database). Each service performs its task independently, with no direct communication with the other services involved.
 
 ---
 
