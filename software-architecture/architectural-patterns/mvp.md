@@ -19,22 +19,17 @@ The **MVP** pattern is a user interface design pattern that decouples an applica
 
 ```mermaid
 graph LR
-    subgraph Model
-        M[Data & Business Logic]
-    end
+    U[User]
+    M[Model]
+    V[View]
+    P[Presenter]
 
-    subgraph View
-        V[User Interface]
-    end
-
-    subgraph Presenter
-        P[Logic & Intermediary]
-    end
-
-    V -- "User Action" --> P
+    U -- "Input/Action" --> V
+    V -- "User Event" --> P
     P -- "Updates" --> M
-    P -- "Requests Display" --> V
-    M -- "Data" --> P
+    M -- "Notifies" --> P
+    P -- "Updates" --> V
+    V -- "Displays State" --> U
 ```
 
 1.  **Model:** The **Model** represents the application's data layer and business logic. It knows nothing about the **View** or the **Presenter**. It exposes data and methods to manipulate that data. This can be a simple **POJO** (Plain Old Java Object) class or an interaction with a database or a remote **REST API**.
