@@ -60,11 +60,10 @@ graph TD
 
 ## Variations and Derived Architectures
 
-The MVC pattern has given rise to several variants that attempt to solve its challenges and adapt to new environments, particularly the web.
+The MVC pattern has given rise to [[mvw|several variants]] that attempt to solve its challenges and adapt to new environments, particularly the web.
 
 * **[[mvp|Model-View-Presenter (MVP)]]:** The Presenter is a stronger intermediary than the Controller. It manipulates the View directly via an interface, making the View passive and easier to test. This is a common model in **Android** applications.
 * **Model-View-ViewModel (MVVM):** The ViewModel acts as an abstraction layer between the View and the Model. It exposes data and commands through **"bindings,"** allowing the View to update automatically when the data changes, without direct interaction. This is the pattern behind frameworks like **Angular** and **Vue.js**.
-* **Hierarchical Model-View-Controller (HMVC):** An extension of MVC that allows an application to be broken down into complete MVC sub-modules, creating a modular structure.
 
 This pattern, though dating back to the 1970s, remains the foundation for many modern frameworks and is essential for understanding web and mobile application architectures.
 
