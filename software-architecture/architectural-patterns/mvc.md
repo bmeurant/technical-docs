@@ -47,7 +47,7 @@ The **Model-View-Controller (MVC)** [[index|architectural pattern]] is a fundame
 
 The MVC pattern has given rise to several variants that attempt to solve its challenges and adapt to new environments, particularly the web.
 
-* **Model-View-Presenter (MVP):** The Presenter is a stronger intermediary than the Controller. It manipulates the View directly via an interface, making the View passive and easier to test. This is a common model in **Android** applications.
+* **[[mvp|Model-View-Presenter (MVP)]]:** The Presenter is a stronger intermediary than the Controller. It manipulates the View directly via an interface, making the View passive and easier to test. This is a common model in **Android** applications.
 * **Model-View-ViewModel (MVVM):** The ViewModel acts as an abstraction layer between the View and the Model. It exposes data and commands through **"bindings,"** allowing the View to update automatically when the data changes, without direct interaction. This is the pattern behind frameworks like **Angular** and **Vue.js**.
 * **Hierarchical Model-View-Controller (HMVC):** An extension of MVC that allows an application to be broken down into complete MVC sub-modules, creating a modular structure.
 
@@ -73,8 +73,8 @@ This pattern, though dating back to the 1970s, remains the foundation for many m
 
 1.  **[What is MVC Architecture?](https://www.youtube.com/watch?v=mtZdybMV4Bw)**
 
-    This video from **Abhay Redkar Academy** provides a clear and concise introduction to the **MVC** pattern. It explains how it works based on a request/response system analogy and details the role of each component.
+This video from **Abhay Redkar Academy** provides a clear and concise introduction to the **MVC** pattern. It explains how it works based on a request/response system analogy and details the role of each component.
 
 2.  **[MVC Explained in 4 Minutes](https://www.youtube.com/watch?v=DUg2SWWK18I)**
 
-    This video from **Web Dev Simplified** explains what the **MVC** pattern is, why it's important, and how the three components interact in a web application in under four minutes.
+This video from **Web Dev Simplified** explains what the **MVC** pattern is, why it's important, and how the three components interact in a web application in under four minutes.
