@@ -63,7 +63,7 @@ graph TD
 The MVC pattern has given rise to [[mvw|several variants]] that attempt to solve its challenges and adapt to new environments, particularly the web.
 
 * **[[mvp|Model-View-Presenter (MVP)]]:** The Presenter is a stronger intermediary than the Controller. It manipulates the View directly via an interface, making the View passive and easier to test. This is a common model in **Android** applications.
-* **Model-View-ViewModel ([[mvvm|MVVM]]):** The ViewModel acts as an abstraction layer between the View and the Model. It exposes data and commands through **"bindings,"** allowing the View to update automatically when the data changes, without direct interaction. This is the pattern behind frameworks like **Angular** and **Vue.js**.
+* **[[mvvm|Model-View-ViewModel (MVVM)]]:** The ViewModel acts as an abstraction layer between the View and the Model. It exposes data and commands through **"bindings,"** allowing the View to update automatically when the data changes, without direct interaction. This is the pattern behind frameworks like **Angular** and **Vue.js**.
 
 This pattern, though dating back to the 1970s, remains the foundation for many modern frameworks and is essential for understanding web and mobile application architectures.
 
@@ -75,11 +75,11 @@ This pattern, though dating back to the 1970s, remains the foundation for many m
 
 1.  **[MVC in Computer Science – The MVC Model](https://www.freecodecamp.org/news/what-does-mvc-mean-in-computer-science/)**
 
-    This freeCodeCamp article provides a clear and simple introduction to the **MVC** pattern. It explains the roles of the **Model**, **View**, and **Controller** using an easy-to-understand analogy and highlights the principle of **separation of concerns**.
+This freeCodeCamp article provides a clear and simple introduction to the **MVC** pattern. It explains the roles of the **Model**, **View**, and **Controller** using an easy-to-understand analogy and highlights the principle of **separation of concerns**.
 
 2.  **[Model-view-controller (MVC)](https://www.techtarget.com/whatis/definition/model-view-controller-MVC)**
 
-    This TechTarget resource offers a concise and technical definition of **MVC**. It introduces the pattern, its terminology, and its main advantages and disadvantages.
+This TechTarget resource offers a concise and technical definition of **MVC**. It introduces the pattern, its terminology, and its main advantages and disadvantages.
 
 ---
 

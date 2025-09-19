@@ -3,7 +3,7 @@ title: Model-View-ViewModel (MVVM)
 ---
 # Model-View-ViewModel(MVVM)
 
-The **MVVM** pattern is a **UI [[index|architectural pattern]]** that clearly separates the user interface logic from the business logic. It is considered an evolution of the [[mvc|MVC]] and [[mvp|MVP]] patterns. Initially developed by Microsoft for frameworks like **WPF** and **Silverlight**, it is now widely used in **mobile** (**iOS**, **Android**) and **web** environments (**React**, **Vue.js**, **Angular**). It is often considered an evolution of the [[mvc|MVC]] pattern.
+The **MVVM** pattern is a **UI architectural pattern** that clearly separates the user interface logic from the business logic. It is considered an evolution of the [[mvc|MVC]] and [[mvp|MVP]] patterns. Initially developed by Microsoft for frameworks like **WPF** and **Silverlight**, it is now widely used in **mobile** (**iOS**, **Android**) and **web** environments (**React**, **Vue.js**, **Angular**). It is often considered an evolution of the [[mvc|MVC]] pattern.
 
 * **Core Principles:**
     * **Separation of Concerns:** This pattern divides the application into three interconnected components: the **Model**, the **View**, and the **ViewModel**. This separation facilitates development, testing, and maintenance.

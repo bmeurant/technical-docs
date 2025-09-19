@@ -44,7 +44,7 @@ Here is a comparison table to better understand the nuances between these three 
 
 ## Conclusion
 
-**MVW** represents a pragmatic and flexible approach to software architecture. The choice between [[mvc|MVC]], [[mvp|MVP]], and **MVVM** depends on the technology, project constraints, and user interface complexity. While [[mvc|MVC]] is ideal for traditional server-side architectures, [[mvp|MVP]] is often preferred for applications where testability is critical, and MVVM is the go-to for modern frameworks that leverage `data binding`, offering excellent separation and ease of maintenance.
+**MVW** represents a pragmatic and flexible approach to software architecture. The choice between [[mvc|MVC]], [[mvp|MVP]], and [[mvvm|MVVM]] depends on the technology, project constraints, and user interface complexity. While [[mvc|MVC]] is ideal for traditional server-side architectures, [[mvp|MVP]] is often preferred for applications where testability is critical, and MVVM is the go-to for modern frameworks that leverage `data binding`, offering excellent separation and ease of maintenance.
 
 ---
 
@@ -54,11 +54,11 @@ Here is a comparison table to better understand the nuances between these three 
 
 1.  **[MVC vs MVP vs MVVM](https://www.bacancytechnology.com/blog/mvc-vs-mvp-vs-mvvm)**
 
-    This **Bacancy Technology** article compares the [[mvc|MVC]], [[mvp|MVP]], and **MVVM** architectural patterns. It explains their role in managing complex code and improving UI code cleanliness, analyzing their performance, testability, and ease of modification, particularly in the context of Android development.
+    This **Bacancy Technology** article compares the [[mvc|MVC]], [[mvp|MVP]], and [[mvvm|MVVM]] architectural patterns. It explains their role in managing complex code and improving UI code cleanliness, analyzing their performance, testability, and ease of modification, particularly in the context of Android development.
 
 2.  **[Architecture Patterns for Beginners: MVC, MVP, and MVVM](https://dev.to/chiragagg5k/architecture-patterns-for-beginners-mvc-mvp-and-mvvm-2pe7)**
 
-    This article on **dev.to** is aimed at beginners and introduces the [[mvc|MVC]], [[mvp|MVP]], and **MVVM** architectural patterns. It defines the common components (**Model**, **View**) and then details the specific roles of the **Controller**, **Presenter**, and **ViewModel** for each pattern, offering a comparison of their key differences.
+    This article on **dev.to** is aimed at beginners and introduces the [[mvc|MVC]], [[mvp|MVP]], and [[mvvm|MVVM]] architectural patterns. It defines the common components (**Model**, **View**) and then details the specific roles of the **Controller**, **Presenter**, and **ViewModel** for each pattern, offering a comparison of their key differences.
 
 ---
 
@@ -66,8 +66,8 @@ Here is a comparison table to better understand the nuances between these three 
 
 1.  **[Exploring UI Design Patterns: MVC, MVP, and MVVM](https://www.youtube.com/watch?v=tm_paZsPsrI)**
 
-    This video from **Andrey Tech** explores the [[mvc|MVC]], [[mvp|MVP]], and **MVVM** UI design patterns, focusing on their application in mobile development. It explains how these patterns organize and optimize the logic of the presentation layer to improve code modularity and testability.
+    This video from **Andrey Tech** explores the [[mvc|MVC]], [[mvp|MVP]], and [[mvvm|MVVM]] UI design patterns, focusing on their application in mobile development. It explains how these patterns organize and optimize the logic of the presentation layer to improve code modularity and testability.
 
 2.  **[Everything You NEED to Know About Client Architecture Patterns](https://www.youtube.com/watch?v=I5c7fBgvkNY)**
 
-    This video from **ByteByteGo** dives into the world of client architectural patterns, covering the workings of [[mvc|MVC]], [[mvp|MVP]], and **MVVM** through a practical example of a user updating their profile picture. It also compares more advanced patterns such as **MVVC** and **VIPER**.
+    This video from **ByteByteGo** dives into the world of client architectural patterns, covering the workings of [[mvc|MVC]], [[mvp|MVP]], and [[mvvm|MVVM]] through a practical example of a user updating their profile picture. It also compares more advanced patterns such as **MVVC** and **VIPER**.

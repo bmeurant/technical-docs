@@ -58,27 +58,6 @@ graph LR
 
 ---
 
-## MVP vs. [[mvc|MVC]]: Similarities and Differences
-
-Both **MVP** and [[mvc|MVC]] are user interface design patterns that aim to separate responsibilities to improve maintainability and testability.
-
-* **Similarities**
-    * **Model:** Both patterns have a **Model** that represents the data layer and business logic.
-    * **Separation of Concerns:** The fundamental principle of separating the **Model** from the **View** is the basis of both architectures.
-
-* **Differences**
-
-| Characteristic | MVP (Model-View-Presenter) | [[mvc|MVC (Model-View-Controller)]] |
-| :--- | :--- | :--- |
-| **View/Presenter Relationship** | The **View** has a reference (via a contractual interface) to the **Presenter**. The **Presenter** has a direct reference to the **View**. | The **View** has no reference to the **Controller**. The **Controller** does not directly manipulate the **View**. |
-| **View Responsibility** | The **View** is **passive** and only displays what the **Presenter** tells it to. | The **View** is **active**. It can manage its own rendering and interact directly with the **Model** to display data. |
-| **Intermediary's Role** | The **Presenter** acts as a direct **intermediary**. It is responsible for the presentation logic and updates to the **View**. | The **Controller** acts as an **action router**. It receives user actions and decides which **Model** to update or which **View** to display. |
-| **Communication** | The **Presenter** is the single entry point for presentation logic. The **View** notifies the **Presenter** of events, and the **Presenter** updates the **View**. | User events are captured by the **Controller**, which updates the **Model**. The **View** observes the **Model** to update itself (in "Observer" variants). |
-
-**MVP** is not a complement to [[mvc|MVC]] but rather an **alternative** that solves some of its weaknesses, particularly in contexts where the testability of the presentation layer is critical. It is a particularly relevant architecture for **desktop** and mobile applications.
-
----
-
 ## Variations and Derived Architectures
 
 * **Passive View:** The **View** is entirely managed by the **Presenter**. It has no logic of its own and simply displays what the **Presenter** requests.
