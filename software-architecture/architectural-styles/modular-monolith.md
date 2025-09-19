@@ -14,7 +14,7 @@ The **Modular Monolith** is an architectural style that combines the operational
 
 ## Comparison: Classic Monolith vs. Modular Monolith
 
-| Characteristic | Classic Monolith | Modular Monolith | [[microservices|Microservices]] |
+| Characteristic | Classic Monolith | Modular Monolith | Microservices |
 | :--- | :--- | :--- | :--- |
 | **Structure** | A single application, a single codebase, often without clear boundaries between parts. | A single application, a single codebase but divided into autonomous modules. | A collection of independent, deployable services. |
 | **[[cohesion-coupling|Coupling]]** | Strong Coupling, components call each other directly and share the same state and database. | Loose Coupling internally between modules via well-defined interfaces. | Loose Coupling between services, communication over the network (e.g., REST, gRPC). |
@@ -42,7 +42,7 @@ graph TD
         B3 --> D
     end
     style Modular-Monolith fill:#b5f5b7,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
-    subgraph [[microservices|Microservices]]
+    subgraph Microservices
         direction LR
         subgraph Service A
             direction TB
