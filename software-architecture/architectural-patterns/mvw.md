@@ -31,7 +31,7 @@ The "Whatever" highlights the flexibility of this approach. The main goal isn't 
 
 ---
 
-## Detailed Comparison ([[mvc|MVC]] vs. [[mvp|MVP]] vs. MVVM)
+## Detailed Comparison ([[mvc|MVC]] vs. [[mvp|MVP]] vs. [[mvvm|MVVM]])
 
 Here is a comparison table to better understand the nuances between these three patterns.
 

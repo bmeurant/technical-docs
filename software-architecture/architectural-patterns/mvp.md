@@ -85,7 +85,7 @@ Both **MVP** and [[mvc|MVC]] are user interface design patterns that aim to sepa
 * **Supervising Controller:** The **Presenter** delegates some of the data binding logic to the **View**. It only intervenes for complex tasks or business logic.
 * **MVVM (Model-View-ViewModel):** A pattern derived from **MVP** where the **Presenter** is replaced by a **ViewModel**. The **ViewModel** exposes properties and commands that the **View** can bind to (**data binding**), which reduces the explicit communication boilerplate found in **MVP**. This is the predominant pattern in modern frameworks like **Angular**, **Vue.js**, and **React**.
 
-The **MVP** pattern, although sometimes considered "legacy" compared to **MVVM**, remains a solid foundation for understanding the separation of concerns in user interface applications. Its principles have directly influenced modern architectures and continue to form the basis for designing robust and testable software.
+The **MVP** pattern, although sometimes considered "legacy" compared to **[[mvvm|MVVM]]**, remains a solid foundation for understanding the separation of concerns in user interface applications. Its principles have directly influenced modern architectures and continue to form the basis for designing robust and testable software.
 
 ---
 
