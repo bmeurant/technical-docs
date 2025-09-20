@@ -1,7 +1,16 @@
 # Architectural Patterns
 
+## User interaction
+
 * **[MVW](./mvw.md)**
 * **[MVC](./mvc.md)**
 * **[MVP](./mvp.md)**
 * **[MVVM](./mvvm.md)**
+
+## Collaboration
+
 * **[Blackboard Architectural Pattern](./blackboard.md)**
+
+## Architecture
+
+* **[Modular Monolith](./modular-monolith.md)**
