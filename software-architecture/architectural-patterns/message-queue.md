@@ -1,6 +1,9 @@
+---
+title: Message Queues / Streams Pattern
+---
 # **Message Queues / Streams Pattern**
 
-The **Message Queues / Streams** pattern is an [[software-architecture/architectural-patterns/|architectural pattern]] for asynchronous communication that allows for the decoupling of system components. It separates responsibilities between message senders (**producers**) and receivers (**consumers**) via an intermediary. This pattern is more generic and high-level than the **Pub/Sub** pattern, which is actually one of its broadcast variants.
+The **Message Queues / Streams** pattern is an [[software-architecture/architectural-patterns/|architectural pattern]] for asynchronous communication that allows for the [[cohesion-coupling|decoupling]] of system components. It separates responsibilities between message senders (**producers**) and receivers (**consumers**) via an intermediary. This pattern is more generic and high-level than the **[[publish-subscribe|Pub/Sub]]** pattern, which is actually one of its broadcast variants.
 
 ---
 
@@ -62,7 +65,7 @@ graph TD
 
 ### **Advantages (Benefits)**
 
-* **Decoupling**: Services have no direct dependency on one another, which simplifies system development, maintenance, and evolution.
+* **[[cohesion-coupling|Decoupling]]**: Services have no direct dependency on one another, which simplifies system development, maintenance, and evolution.
 * **Resilience**: If a **consumer** fails, messages are not lost; they remain in the **broker** until a service resumes processing.
 * **Scalability**: The **broker** handles traffic spikes by acting as a buffer. It is easy to add more **consumers** to increase processing capacity without impacting the rest of the system.
 * **Flexibility**: Different services can be developed using distinct technologies as long as they adhere to the common communication protocol with the **broker**.
@@ -82,7 +85,7 @@ The **Message Queues / Streams** pattern is a foundation upon which many modern 
 
 * **[[layered|2-Tier Architecture]]:** This is the basic model, with a **producer** communicating directly with a **consumer** via a queue.
 * **[[publish-subscribe|Fan-out / Pub-Sub Architecture]]:** This variation is a derivative of **Message Streams**. A message sent by a **producer** is broadcast to multiple **consumers**.
-* **[[layered|N-Tier Architecture]]**: In complex systems, the pattern can be used to decouple different layers.
+* **[[layered|N-Tier Architecture]]**: In complex systems, the pattern can be used to [[cohesion-coupling|decouple different layers]].
 * **[[microservices|Microservices]]**: This is arguably the most common use case today. Each microservice can act as both a **producer** and a **consumer**, exchanging messages asynchronously.
 * **Event Sourcing**: A variation of the pattern that uses a **stream** as the single source of truth for an application's state. Every state change is an event recorded in the stream.
 
@@ -110,4 +113,4 @@ The **Message Queues / Streams** pattern is a foundation upon which many modern 
 
 2.  **[What is a Message Queue?](https://www.youtube.com/watch?v=xErwDaOc-Gs)**
 
-    **Jamil Spain** from **IBM Technology** explains what a **Message Queue** is, defining it as an architectural technique for asynchronous communication in distributed applications. The video breaks down the concepts of messages and queues, provides examples like email, and discusses different messaging patterns (point-to-point, pub/sub, request-reply) and the benefits of decoupling and scalability.ity.ecoupling and scalability.
+    **Jamil Spain** from **IBM Technology** explains what a **Message Queue** is, defining it as an architectural technique for asynchronous communication in distributed applications. The video breaks down the concepts of messages and queues, provides examples like email, and discusses different messaging patterns (point-to-point, [[publish-subscribe|pub/sub]], request-reply) and the benefits of decoupling and scalability.

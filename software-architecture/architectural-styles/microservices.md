@@ -75,7 +75,7 @@ The data flow in a microservices architecture is often a multi-step process, orc
 
 * **Advantages (Benefits):**
     * **Independent Scalability:** Each service can be scaled vertically or horizontally based on its specific needs, without affecting the others.
-    * **Resilience:** If one service fails, the rest of the system can continue to operate, unlike in a [[monolithic|monolithic]] architecture where a single failure can bring down the whole system.
+    * **Resilience:** If one service fails, the rest of the system can continue to operate, unlike in a [[monolithic|monolithic architecture]] where a single failure can bring down the whole system.
     * **Technological Flexibility:** Teams can choose the most appropriate technologies for each service.
     * **Independent Deployments:** Teams can deploy new versions of their services autonomously, which accelerates **time-to-market** and reduces risk.
 

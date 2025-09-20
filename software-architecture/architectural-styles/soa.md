@@ -9,7 +9,7 @@ title: Service-Oriented Architecture (SOA)
 
 ## Fundamental Principles
 
-* **Loose Coupling**: Services are designed to be independent of each other. A change in a service's implementation should not affect its consumers, as long as the service interface remains stable.
+* **[[cohesion-coupling|Loose Coupling]]**: Services are designed to be independent of each other. A change in a service's implementation should not affect its consumers, as long as the service interface remains stable.
 * **Reusability**: Services encapsulate business functionalities and can be reused by multiple applications within the enterprise.
 * **Interoperability**: Services communicate via standard protocols, such as **SOAP** (Simple Object Access Protocol) or **REST** (Representational State Transfer). This allows applications developed in different programming languages to interact with each other.
 * **Abstraction**: Services hide the complexity of their internal logic, exposing only a clear and well-defined interface.
