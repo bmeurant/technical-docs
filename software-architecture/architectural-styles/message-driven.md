@@ -38,7 +38,7 @@ graph TD
 
 1.  **Producer:** The component that creates and sends a message. This could be a **web application**, a [[microservices|microservice]], an **IoT device**, or any other system.
 2.  **Message Broker:** The central point of the architecture. It is a specialized service that stores, routes, and manages messages. Common examples include **RabbitMQ**, **Apache Kafka**, or cloud services like **Google Cloud Pub/Sub** and **AWS SQS/SNS**.
-3.  **Channel (Queue/Topic):** The channel through which messages are exchanged. A **Queue** is for point-to-point communication, where only one consumer reads the message. A **Topic** is for the **Publish/Subscribe** model, where multiple consumers can receive a copy of the same message.
+3.  **Channel (Queue/Topic):** The channel through which messages are exchanged. A **Queue** is for point-to-point communication, where only one consumer reads the message. A **Topic** is for the **[[publish-subscribe|Publish/Subscribe]]** model, where multiple consumers can receive a copy of the same message.
 4.  **Consumer:** The component that receives and processes a message. It subscribes to one or more channels and acts on the message content.
 
 **Typical Data Flow:**
@@ -92,7 +92,7 @@ Although the terms are often used interchangeably, **[[event-driven|Event-Driven
 | **Communication Purpose** | To execute a specific command or action by a known recipient. | To notify that a fact or state has occurred without caring about recipients. |
 | **Message Nature** | Can be a **command** or an **event**. There's a clear intent. | Represents a past fact (`a fact about something that has occurred`). |
 | **Coupling** | Less coupled than [[client-server|Client-Server]], but the producer may have some knowledge of the consumer (e.g., it knows it's sending a message for a specific task). | **Very loosely coupled**. Producers and consumers are completely decoupled and unaware of each other. |
-| **Communication Model**| Based on **Queues** (message queues). A message is generally consumed by a single consumer. | Based on **Topics** (Pub/Sub model). An event can be consumed by multiple interested consumers. |
+| **Communication Model**| Based on **Queues** (message queues). A message is generally consumed by a single consumer. | Based on **Topics** ([[publish-subscribe|Pub/Sub]] model). An event can be consumed by multiple interested consumers. |
 | **Use Case** | **Sequential task processing** and **transactional workflows** where reliability and order are critical. | **Real-time systems**, **IoT**, and **[[microservices|microservices]]** where multiple independent actions must be triggered by a single event. |
 
 ---

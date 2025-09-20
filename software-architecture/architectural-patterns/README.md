@@ -13,6 +13,10 @@ see [index](./index.md)
 
 * **[Blackboard Architectural Pattern](./blackboard.md)**
 
+## Communication
+
+* **[Publish Subscribe Pattern](./publish-subscribe.md)**
+
 ## Architecture
 
 * **[Modular Monolith](./modular-monolith.md)**
