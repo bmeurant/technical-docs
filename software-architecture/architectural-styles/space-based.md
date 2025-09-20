@@ -17,9 +17,7 @@ The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architect
 
 ```mermaid
 graph TD
-    subgraph Client
-        A[Client Application]
-    end
+    A[Client Application]
 
     subgraph Service Grid
         B(Gateway)

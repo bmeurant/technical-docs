@@ -20,27 +20,19 @@ The most generic and specific diagram for a monolith highlights its unified natu
 ```mermaid
 graph TD
     subgraph Frontend
-        A[Web/Mobile Client]
+        C[Web/Mobile Client]
     end
 
-    subgraph The Internet
-        B[Internet/Network]
-    end
+    N[Internet/Network]
+    M[Monolith Application]
+    D[Shared Database]
 
-    subgraph Monolith
-        C[Monolith Application]
-    end
-
-    subgraph Database
-        D[Shared Database]
-    end
-
-    A -- "Requests" --> B
-    B -- "Requests" --> C
-    C -- "Queries/Updates" --> D
-    D -- "Data" --> C
-    C -- "Responses" --> B
-    B -- "Responses" --> A
+    C -- "Requests" --> N
+    N -- "Requests" --> M
+    M -- "Queries/Updates" --> D
+    D -- "Data" --> M
+    M -- "Responses" --> N
+    N -- "Responses" --> C
 ```
 
 1. A **Client** (web browser, mobile app) sends requests to the application.

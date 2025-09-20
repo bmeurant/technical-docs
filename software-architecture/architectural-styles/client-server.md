@@ -18,22 +18,14 @@ The **Client-Server** architecture is a fundamental distributed system model whe
 
 ```mermaid
 graph TD
-    subgraph Client
-        A[Client Application]
-    end
+    C[Client Application]
+    N[Network]
+    S[Server]
 
-    subgraph Network
-        B[Network]
-    end
-
-    subgraph Server
-        C[Server]
-    end
-
-    A -- "Request" --> B
-    B -- "Request" --> C
-    C -- "Response" --> B
-    B -- "Response" --> A
+    C -- "Request" --> N
+    N -- "Request" --> S
+    S -- "Response" --> N
+    N -- "Response" --> C
 ```
 
 1.  **Client:** The application or system that makes the request. It can be a **web browser**, a mobile app, or another server in a more complex architecture (for example, a [[microservices|microservice]] that acts as a client to another service).

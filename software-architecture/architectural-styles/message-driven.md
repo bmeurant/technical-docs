@@ -21,21 +21,19 @@ graph TD
         A[Application A]
     end
 
-    subgraph Message Broker - Queue/Topic
-        B[Message Queue / Topic]
-    end
+    M[Message Broker Queue / Topic]
 
     subgraph Consumer - Receiver
+        B[Application B]
         C[Application C]
-        D[Application D]
     end
 
-    A -- "1. Sends Message" --> B
-    B -- "2. Message stored" --> B
-    B -- "3. Delivers Message" --> C
-    B -- "3. Delivers Message" --> D
-    C -- "4. Acknowledges" --> B
-    D -- "4. Acknowledges" --> B
+    A -- "1. Sends Message" --> M
+    M -- "2. Message stored" --> M
+    M -- "3. Delivers Message" --> B
+    M -- "3. Delivers Message" --> C
+    B -- "4. Acknowledges" --> M
+    C -- "4. Acknowledges" --> M
 ```
 
 1.  **Producer:** The component that creates and sends a message. This could be a **web application**, a [[microservices|microservice]], an **IoT device**, or any other system.

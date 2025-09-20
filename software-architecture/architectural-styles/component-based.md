@@ -17,17 +17,9 @@ title: Component-Based Architecture
 
 ```mermaid
 graph TD
-    subgraph System A
-        A[Component A]
-    end
-
-    subgraph System B
-        B[Component B]
-    end
-
-    subgraph System C
-        C[Component C]
-    end
+    A[Component A]
+    B[Component B]
+    C[Component C]
 
     A -- "Calls B's API" --> B
     A -- "Calls C's API" --> C

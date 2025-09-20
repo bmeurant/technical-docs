@@ -17,14 +17,12 @@ The **Peer-to-Peer** (P2P) architecture is a distributed system model where each
 
 ```mermaid
 graph TD
-    subgraph P2P Network
-        A[Peer A] --- B[Peer B]
-        A --- C[Peer C]
-        B --- D[Peer D]
-        C --- E[Peer E]
-        D --- A
-        E --- B
-    end
+    A[Peer A] --- B[Peer B]
+    A --- C[Peer C]
+    B --- D[Peer D]
+    C --- E[Peer E]
+    D --- A
+    E --- B
 
     A -- "Request" --> B
     B -- "Response" --> A

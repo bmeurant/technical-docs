@@ -32,12 +32,6 @@ graph TD
     C -- "Activates" --> KS1
     C -- "Activates" --> KS2
     C -- "Activates" --> KS3
-
-    style C fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style KS1 fill:#ffc,stroke:#333,stroke-width:2px
-    style KS2 fill:#ffc,stroke:#333,stroke-width:2px
-    style KS3 fill:#ffc,stroke:#333,stroke-width:2px
 ```
 
 The interaction between the components is [[event-driven|event-driven]] and indirect, as the Knowledge Sources do not communicate with each other directly but only through the Blackboard.

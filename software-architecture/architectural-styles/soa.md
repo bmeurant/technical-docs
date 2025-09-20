@@ -21,31 +21,23 @@ title: Service-Oriented Architecture (SOA)
 
 ```mermaid
 graph TD
-    subgraph Service Consumer
-        A[Client Application]
+    C[Service Consumer]
+    R[Service Registry]
+    E[Enterprise Service Bus]
+
+    subgraph Service Providers
+        S1[Service 1]
+        S2[Service 2]
+        SN[Service N]
     end
 
-    subgraph Service Registry
-        B[Registry / Repository]
-    end
-
-    subgraph Enterprise Service Bus - ESB
-        C[ESB]
-    end
-
-    subgraph Service Provider
-        D[Service 1]
-        E[Service 2]
-        F[Service N]
-    end
-
-    A -- "Discover Service" --> B
-    B -- "Service Location" --> A
-    A -- "Request" --> C
-    C -- "Routing, Transformation" --> D
-    D -- "Response" --> C
-    C -- "Response" --> A
-    D -- "Data" --> G(Database)
+    C -- "Discover Service" --> R
+    R -- "Service Location" --> C
+    C -- "Request" --> E
+    E -- "Routing, Transformation" --> S1
+    S1 -- "Response" --> E
+    E -- "Response" --> C
+    S1 -- "Data" --> G(Database)
 ```
 
 SOA typically relies on an **Enterprise Service Bus (ESB)**, a centralized communication "backbone" that manages the message exchange between services.

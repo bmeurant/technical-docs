@@ -16,21 +16,11 @@ The **Layered architecture** is an architectural pattern that structures an appl
 
 ```mermaid
 graph TD
-    subgraph User
-        U[User]
-    end
-    subgraph Presentation Layer
-        PL[Presentation Layer]
-    end
-    subgraph Business Logic Layer
-        BLL[Business Logic Layer]
-    end
-    subgraph Data Access Layer
-        DAL[Data Access Layer]
-    end
-    subgraph Database Layer
-        DBL[Database Layer]
-    end
+    U[User]
+    PL[Presentation Layer]
+    BLL[Business Logic Layer]
+    DAL[Data Access Layer]
+    DBL[Database Layer]
 
     U -- "Request" --> PL
     PL -- "Service Request" --> BLL
