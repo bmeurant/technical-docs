@@ -3,7 +3,7 @@ title: Service-Oriented Architecture (SOA)
 ---
 # Service-Oriented Architecture (SOA)
 
-**Service-Oriented Architecture (SOA)** is a software architecture style where application components are structured as a set of **services**. These services are autonomous, loosely coupled, and can be invoked by other applications or services. SOA is not a specific technology, but rather a design model that focuses on exposing business functionalities as reusable services.
+**Service-Oriented Architecture (SOA)** is a software [[software-architecture/architectural-styles/|architectural style]] where application components are structured as a set of **services**. These services are autonomous, loosely coupled, and can be invoked by other applications or services. SOA is not a specific technology, but rather a design model that focuses on exposing business functionalities as reusable services.
 
 ---
 

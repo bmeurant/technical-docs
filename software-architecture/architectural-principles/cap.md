@@ -3,7 +3,7 @@ title: The CAP Theorem
 ---
 # The CAP Theorem
 
-The **CAP theorem** is a fundamental principle in distributed computing that states a distributed data system can only guarantee a maximum of two out of the following three properties at the same time:
+The **CAP theorem** is a fundamental [[software-architecture/architectural-principles/|architectural principle]] in distributed computing that states a distributed data system can only guarantee a maximum of two out of the following three properties at the same time:
 
 - **Consistency (C):** All clients see the same data at the same time, regardless of which node they connect to. Every read receives the most recent write. This is like a single, unified source of truth for all data.
 - **Availability (A):** Every client request receives a response, without a guarantee that it contains the most recent data. The system remains operational and responsive even if some nodes fail.

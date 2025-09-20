@@ -3,7 +3,7 @@ title: Event-Driven Architecture (EDA)
 ---
 # Event-Driven Architecture (EDA)
 
-**Event-Driven Architecture** (EDA) is a software design pattern where the production, detection, consumption, and reaction to events govern system behavior. Instead of a synchronous, request-response communication between services, the system operates on an asynchronous flow of events. An **event** represents a significant state change, such as a payment being processed or a file being uploaded.
+**Event-Driven Architecture** (EDA) is an [[software-architecture/architectural-styles/|architectural style]] where the production, detection, consumption, and reaction to events govern system behavior. Instead of a synchronous, request-response communication between services, the system operates on an asynchronous flow of events. An **event** represents a significant state change, such as a payment being processed or a file being uploaded.
 
 ### **Core Principles**
 

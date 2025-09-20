@@ -1,9 +1,9 @@
 ---
-title: Modular Monolith Architecture
+title: Modular Monolith
 ---
-# Modular Monolith Architecture
+# Modular Monolith
 
-The **Modular Monolith** is an architectural style that combines the operational simplicity of a [[monolithic|monolith]] with the modularity benefits of [[microservices|microservices]]. It is a single application, deployed as a single unit, but its internal organization is highly structured into distinct and loosely coupled modules. Each module represents an independent business capability.
+The **Modular Monolith** is an [[software-architecture/architectural-patterns/|architectural pattern]] that combines the operational simplicity of a [[monolithic|monolith]] with the modularity benefits of [[microservices|microservices]]. It is a single application, deployed as a single unit, but its internal organization is highly structured into distinct and loosely coupled modules. Each module represents an independent business capability.
 
 * **Core Principles:**
     * **Separation of Concerns:** Each module is a self-contained functional unit, with its own business logic, internal API, and, ideally, its own data schema. It does not directly access other modules' data.

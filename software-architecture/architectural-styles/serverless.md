@@ -3,7 +3,7 @@ title: Serverless Architecture
 ---
 # Serverless Architecture
 
-The **Serverless architecture** is a design pattern for systems where the **cloud provider** dynamically handles the allocation and management of servers. The developer focuses on writing code, often as functions, without having to worry about provisioning, scaling, or maintaining the underlying infrastructure. This model is another step in the abstraction of infrastructure, following virtual machines and containers.
+The **Serverless architecture** is an [[software-architecture/architectural-styles/|architectural style]] where the **cloud provider** dynamically handles the allocation and management of servers. The developer focuses on writing code, often as functions, without having to worry about provisioning, scaling, or maintaining the underlying infrastructure. This model is another step in the abstraction of infrastructure, following virtual machines and containers.
 
 * **Core Principles:**
     * **No Server Management:** The developer no longer needs to provision or maintain servers (OS patching, etc.).

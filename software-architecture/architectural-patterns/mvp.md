@@ -3,7 +3,7 @@ title: Model-View-Presenter (MVP)
 ---
 # MVP (Model-View-Presenter) Architecture
 
-The **MVP** pattern is a user interface design pattern that decouples an application's presentation from its business logic. Its primary goal is to make the code easier to test, maintain, and evolve by clearly separating responsibilities. This architecture is often used in **desktop** and mobile applications, but its principles are also applicable in the context of **web** applications.
+The **MVP** pattern is a user interface [[software-architecture/architectural-patterns/|architectural pattern]] that decouples an application's presentation from its business logic. Its primary goal is to make the code easier to test, maintain, and evolve by clearly separating responsibilities. This architecture is often used in **desktop** and mobile applications, but its principles are also applicable in the context of **web** applications.
 
 ---
 

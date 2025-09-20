@@ -3,7 +3,7 @@ title: Layered Architecture
 ---
 # Layered Architecture
 
-The **Layered architecture** is an architectural pattern that structures an application by grouping components with similar functionalities into horizontal layers. Each layer has a specific responsibility and can only communicate with the layer directly beneath it. This clear separation of concerns is the main strength of this model.
+The **Layered architecture** is an [[software-architecture/architectural-styles/|architectural style]] that structures an application by grouping components with similar functionalities into horizontal layers. Each layer has a specific responsibility and can only communicate with the layer directly beneath it. This clear separation of concerns is the main strength of this model.
 
 * **Core Principles:**
     * **Separation of Concerns:** Each layer has a well-defined role, which makes the system easier to understand, maintain, and evolve.

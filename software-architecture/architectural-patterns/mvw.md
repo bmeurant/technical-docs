@@ -3,7 +3,7 @@ title: Model-View-Whatever (MVW)
 ---
 # Model-View-Whatever (MVW)
 
-The term **MVW**, or **Model-View-Whatever**, isn't a strict architectural pattern but a generic concept. It's used to describe a family of design patterns, including [[mvc|MVC]], [[mvp|MVP]], and **MVVM**, that share the fundamental principle of **separation of concerns**. They divide application logic into three distinct layers: the **Model**, the **View**, and an intermediary that handles presentation logic and communication.
+The term **MVW**, or **Model-View-Whatever**, isn't a strict [[software-architecture/architectural-patterns/|architectural pattern]] but a generic concept. It's used to describe a family of design patterns, including [[mvc|MVC]], [[mvp|MVP]], and **MVVM**, that share the fundamental principle of **separation of concerns**. They divide application logic into three distinct layers: the **Model**, the **View**, and an intermediary that handles presentation logic and communication.
 
 The "Whatever" highlights the flexibility of this approach. The main goal isn't to follow a specific pattern name but to apply sound design principles to create maintainable, reusable, and easily testable code. This philosophy is especially relevant in the modern web framework ecosystem, where each technology may have its own implementation.
 

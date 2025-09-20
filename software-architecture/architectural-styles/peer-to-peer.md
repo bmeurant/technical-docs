@@ -3,7 +3,7 @@ title: Peer-to-Peer Architecture
 ---
 # Peer-to-Peer Architecture
 
-The **Peer-to-Peer** (P2P) architecture is a distributed system model where each node, called a **peer**, acts as both a [[client-server|client]] and a [[client-server|server]]. There is no centralized [[client-server|server]] or single authority. Communication takes place directly between peers, eliminating the need for a central intermediary to coordinate services.
+The **Peer-to-Peer** (P2P) architecture is a distributed [[software-architecture/architectural-styles/|architectural style]] where each node, called a **peer**, acts as both a [[client-server|client]] and a [[client-server|server]]. There is no centralized [[client-server|server]] or single authority. Communication takes place directly between peers, eliminating the need for a central intermediary to coordinate services.
 
 * **Core Principles :**
     * **Decentralization** : There is no single point of failure (`SPOF`). Resilience is an inherent characteristic of the system as the failure of one `peer` does not impact the entire network.

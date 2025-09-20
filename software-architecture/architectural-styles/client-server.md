@@ -3,7 +3,7 @@ title: Client-Server Architecture
 ---
 # Client-Server Architecture
 
-The **Client-Server** architecture is a fundamental distributed system model where responsibilities are divided into two distinct roles. A **client** is an entity that requests services, while a **server** is an entity that listens for requests and provides the services. This model is based on message exchange over a **network**.
+The **Client-Server** architecture is a fundamental distributed [[software-architecture/architectural-styles/|architectural style]] where responsibilities are divided into two distinct roles. A **client** is an entity that requests services, while a **server** is an entity that listens for requests and provides the services. This model is based on message exchange over a **network**.
 
 * **Core Principles:**
     * **Separation of Concerns:** The client handles the user interface and presentation logic, while the server is responsible for the business logic, data storage, and security. This separation simplifies the independent development, maintenance, and evolution of each part.

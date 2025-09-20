@@ -4,7 +4,7 @@ title: Model-View-Controller (MVC)
 
 # Model-View-Controller (MVC) Pattern
 
-The **Model-View-Controller (MVC)** architectural pattern is a fundamental design pattern used to develop user interfaces. Its main objective is to separate an application into three interconnected and well-defined components to manage complexity.
+The **Model-View-Controller (MVC)** [[software-architecture/architectural-patterns/|architectural pattern]] is a fundamental design pattern used to develop user interfaces. Its main objective is to separate an application into three interconnected and well-defined components to manage complexity.
 
 * **Core Principles:**
     * **Separation of Concerns:** MVC clearly separates responsibilities. The **Model** handles data and business logic, the **View** is responsible for presentation to the user, and the **Controller** acts as an intermediary, handling user input and orchestrating interactions between the Model and the View.

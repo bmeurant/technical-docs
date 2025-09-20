@@ -3,7 +3,7 @@ title: Component-Based Architecture
 ---
 # Component-Based Architecture (CBA)
 
-**Component-Based Architecture (CBA)** is a software architectural style that focuses on decomposing a system into reusable, independent, and self-contained software components. A **component** is a software unit with a clearly defined interface that encapsulates its functionality and data, without exposing its internal complexity.
+**Component-Based Architecture (CBA)** is a software [[software-architecture/architectural-styles/|architectural style]] that focuses on decomposing a system into reusable, independent, and self-contained software components. A **component** is a software unit with a clearly defined interface that encapsulates its functionality and data, without exposing its internal complexity.
 
 * **Key Principles:**
     * **Encapsulation:** The component hides its internal implementation and exposes functionalities via a public interface (API).

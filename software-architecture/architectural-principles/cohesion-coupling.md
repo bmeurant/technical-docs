@@ -3,7 +3,7 @@ title: Cohesion & Coupling
 ---
 # Cohesion & Coupling
 
-In software engineering, **cohésion** and **coupling** are two fundamental principles used to evaluate the quality of an architecture. Together, they determine a system's robustness and flexibility. The goal of good design is to achieve **high cohesion** and **low coupling**.
+In software engineering, **cohésion** and **coupling** are two fundamental [[software-architecture/architectural-principles/|architectural principles]] used to evaluate the quality of an architecture. Together, they determine a system's robustness and flexibility. The goal of good design is to achieve **high cohesion** and **low coupling**.
 
 | **Concept** | **Definition** | **Analogy** | **Goal** |
 | :--- | :--- | :--- | :--- |

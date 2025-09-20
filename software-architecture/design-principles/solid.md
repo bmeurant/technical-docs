@@ -1,9 +1,9 @@
 ---
-title: The SOLID Principles
+title: SOLID
 ---
 # The SOLID Principles
 
-The **SOLID** principles are a set of five design guidelines for software development that, when applied, help to create systems that are more maintainable, flexible, and scalable. It is an acronym for:
+The **SOLID** principles are a set of five [[software-architecture/design-principles/|design guidelines]] for software development that, when applied, help to create systems that are more maintainable, flexible, and scalable. It is an acronym for:
 
 * **S** - Single Responsibility Principle (SRP)
 * **O** - Open/Closed Principle (OCP)

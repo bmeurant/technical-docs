@@ -3,7 +3,7 @@ title: Message-Driven Architecture
 ---
 # Message-Driven Architecture
 
-**Message-Driven Architecture** is a distributed system model based on **asynchronous communication** between its components via messages. Unlike synchronous models like the [[client-server|Client-Server]] architecture where the caller waits for an immediate response, components in a message-driven system do not call each other directly. They exchange messages through an intermediary, a **message broker**. This temporal and spatial decoupling allows components to operate independently.
+**Message-Driven Architecture** is an [[software-architecture/architectural-styles/|architectural style]] based on **asynchronous communication** between its components via messages. Unlike synchronous models like the [[client-server|Client-Server]] architecture where the caller waits for an immediate response, components in a message-driven system do not call each other directly. They exchange messages through an intermediary, a **message broker**. This temporal and spatial decoupling allows components to operate independently.
 
 * **Core Principles:**
     * **Asynchronous Communication:** Components send messages and continue their work without waiting for a response. The receiver processes the message at its own pace.

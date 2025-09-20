@@ -3,7 +3,7 @@ title: Microkernel Architecture
 ---
 # Microkernel Architecture
 
-The **Microkernel** architecture, also known as the **Plug-in architecture**, is a software design pattern that separates a small, core functionality from extended functionalities, known as plug-ins. The microkernel only manages essential functions, while plug-ins add specific features.
+The **Microkernel** architecture, also known as the **Plug-in architecture**, is a software [[software-architecture/architectural-styles/|architectural style]] that separates a small, core functionality from extended functionalities, known as plug-ins. The microkernel only manages essential functions, while plug-ins add specific features.
 
 ***
 

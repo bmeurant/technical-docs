@@ -3,7 +3,7 @@ title: Space-Based Architecture
 ---
 # Space-Based Architecture (SBA)
 
-The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architecture**, is a distributed system design style focused on high performance, scalability, and resilience, particularly suited for applications with high transaction volumes and low latency. This model relies on replicating data and application logic in memory across multiple nodes ("spaces"), eliminating **single points of failure** and bottlenecks associated with a centralized database.
+The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architecture**, is an [[software-architecture/architectural-styles/|architectural style]] focused on high performance, scalability, and resilience, particularly suited for applications with high transaction volumes and low latency. This model relies on replicating data and application logic in memory across multiple nodes ("spaces"), eliminating **single points of failure** and bottlenecks associated with a centralized database.
 
 * **Core Principles:**
     * **Shared-Nothing:** Each processing node is independent and does not share memory or disk with others. Data is replicated between nodes.

@@ -3,7 +3,7 @@ title: Blackboard Pattern
 ---
 # **The Blackboard Architectural Pattern**
 
-The **Blackboard Pattern** is a specialized architectural pattern used for problem-solving in complex, ill-defined domains where a deterministic algorithm is not known. It facilitates collaboration between multiple independent, and often opportunistic, components to incrementally build a solution on a shared data repository. This model is particularly suited for Artificial Intelligence systems and other complex problem-solving applications.
+The **Blackboard Pattern** is a specialized [[software-architecture/architectural-patterns/|architectural pattern]] used for problem-solving in complex, ill-defined domains where a deterministic algorithm is not known. It facilitates collaboration between multiple independent, and often opportunistic, components to incrementally build a solution on a shared data repository. This model is particularly suited for Artificial Intelligence systems and other complex problem-solving applications.
 
 * **Core Principles:**
     * **Shared Data Repository (The Blackboard):** This is a global data store accessible to all components. It contains the current state of the problem and the partial solutions. All communication and coordination between components happen through the Blackboard.

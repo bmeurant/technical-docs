@@ -3,7 +3,7 @@ title: Microservices Architecture
 ---
 # Microservices Architecture
 
-The **Microservices** architecture is a design style that structures an application as a collection of small, independent, and loosely coupled services. Each service is autonomous: it has its own codebase, its own business logic, and often its own database. These services communicate with each other over a **network** using well-defined APIs.
+The **Microservices** architecture is an [[software-architecture/architectural-styles/|architectural style]] that structures an application as a collection of small, independent, and loosely coupled services. Each service is autonomous: it has its own codebase, its own business logic, and often its own database. These services communicate with each other over a **network** using well-defined APIs.
 
 * **Core Principles:**
     * **Functional Decomposition:** The application is divided into services based on specific **business domains** (e.g., an order service, a payments service, an inventory service).
