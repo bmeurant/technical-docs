@@ -92,7 +92,7 @@ Although the terms are often used interchangeably, **[[event-driven|Event-Driven
 | **Communication Purpose** | To execute a specific command or action by a known recipient. | To notify that a fact or state has occurred without caring about recipients. |
 | **Message Nature** | Can be a **command** or an **event**. There's a clear intent. | Represents a past fact (`a fact about something that has occurred`). |
 | **Coupling** | Less coupled than [[client-server|Client-Server]], but the producer may have some knowledge of the consumer (e.g., it knows it's sending a message for a specific task). | **Very loosely coupled**. Producers and consumers are completely decoupled and unaware of each other. |
-| **Communication Model**| Based on **Queues** (message queues). A message is generally consumed by a single consumer. | Based on **Topics** ([[publish-subscribe|Pub/Sub]] model). An event can be consumed by multiple interested consumers. |
+| **Communication Model**| Based on **Queues** ([[message-queue|message queues]]). A message is generally consumed by a single consumer. | Based on **Topics** ([[publish-subscribe|Pub/Sub]] model). An event can be consumed by multiple interested consumers. |
 | **Use Case** | **Sequential task processing** and **transactional workflows** where reliability and order are critical. | **Real-time systems**, **IoT**, and **[[microservices|microservices]]** where multiple independent actions must be triggered by a single event. |
 
 ---

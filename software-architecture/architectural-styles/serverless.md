@@ -55,7 +55,7 @@ The data flow in a **Serverless** architecture is fundamentally different from t
 
 1.  **Event Triggered**: An event occurs. For example, a user sends an HTTP request to an API endpoint.
 2.  **Function Invocation**: The **cloud provider** detects this event and, in response, invokes the associated **Serverless** function. If the function isn't "warm" (already in memory), a "cold start" occurs, which can introduce initial latency to initialize the execution environment.
-3.  **Code Execution**: The function runs, processing the business logic. It may interact with other cloud services (databases like **DynamoDB**, message queues, or other APIs) to complete its task.
+3.  **Code Execution**: The function runs, processing the business logic. It may interact with other cloud services (databases like **DynamoDB**, [[message-queue|message queues]], or other APIs) to complete its task.
 4.  **Result Handling**: Once execution is complete, the function returns a response (e.g., an HTTP status code and a JSON response body) or writes data to another service. The function then stops, and the execution environment is released.
 5.  **No Persistent Connection**: There is no long-lasting connection maintained. Each invocation is a distinct, isolated execution.
 

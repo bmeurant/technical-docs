@@ -1,94 +1,89 @@
----
-title: Blackboard Pattern
----
-# **The Blackboard Architectural Pattern**
+# **Message Queues / Streams Pattern**
 
-The **Blackboard Pattern** is a specialized [[software-architecture/architectural-patterns/|architectural pattern]] used for problem-solving in complex, ill-defined domains where a deterministic algorithm is not known. It facilitates collaboration between multiple independent, and often opportunistic, components to incrementally build a solution on a shared data repository. This model is particularly suited for Artificial Intelligence systems and other complex problem-solving applications.
-
-* **Core Principles:**
-    * **Shared Data Repository (The Blackboard):** This is a global data store accessible to all components. It contains the current state of the problem and the partial solutions. All communication and coordination between components happen through the Blackboard.
-    * **Independent Components (Knowledge Sources):** These are autonomous modules, each specialized in a specific area of the problem. They react to changes on the Blackboard and contribute their own partial solutions. Each Knowledge Source has its own set of rules or logic.
-    * **Centralized Control (The Controller):** Also known as the **Mediator** or **Scheduler**, this component orchestrates the overall process. It monitors the Blackboard for changes and decides which Knowledge Source to activate next. The Controller's primary role is to manage the flow of problem-solving until a final solution is found or a predefined termination condition is met.
+The **Message Queues / Streams** pattern is a method for asynchronous communication that allows for the decoupling of system components. It separates responsibilities between message senders (**producers**) and receivers (**consumers**) via an intermediary. This pattern is more generic and high-level than the **Pub/Sub** pattern, which is actually one of its broadcast variants.
 
 ---
+
+### **Core Principles**
+
+This pattern is based on a **broker** (a message queue or a streaming platform) that acts as a buffer between services.
+
+* **Message Queues**: This is a **point-to-point** model. A sent message is stored in a queue and is consumed by a single, unique **consumer**. Once processed, it is removed from the queue. This model is ideal for distributing tasks to a group of workers.
+* **Message Streams**: This is a **broadcast** model. Messages are added to an ordered and persistent log. They are not deleted after being read, which allows multiple **consumers** to read the same data stream independently and at their own pace. This is the foundation of **Event-Driven Architectures**.
+
+---
+
 ## **Key Components and Communication Flow**
 
 ```mermaid
 graph TD
-    C[Controller]
+    P[Producer]
 
-    B[Blackboard]
-
-    subgraph Knowledge_Sources
-        KS1[Knowledge Source 1]
-        KS2[Knowledge Source 2]
-        KS3[Knowledge Source 3]
+    subgraph Broker
+        Q[Queue]
+        S[Stream]
     end
 
-    KS1 -- "Updates" --> B
-    KS2 -- "Updates" --> B
-    KS3 -- "Updates" --> B
-    B -- "Triggers" --> C
-    C -- "Activates" --> KS1
-    C -- "Activates" --> KS2
-    C -- "Activates" --> KS3
+    subgraph Consumer
+        C1[Consumer 1]
+        C2[Consumer 2]
+    end
+
+    P -- "Send Message" --> Q
+    Q -- "Consume and Remove" --> C1
+
+    P -- "Append Event" --> S
+    S -- "Read" --> C1
+    S -- "Read" --> C2
 ```
 
-The interaction between the components is [[event-driven|event-driven]] and indirect, as the Knowledge Sources do not communicate with each other directly but only through the Blackboard.
+1.  **Producer**: The application or service that creates and sends a message to the broker. It doesn't need to know who will process the message or when.
+2.  **Broker**: The intermediary service that stores the messages. It can be a queue or a stream.
+3.  **Consumer**: The application or service that retrieves and processes the messages. It can be a group of workers or multiple services that subscribe to data streams.
 
-1.  **Blackboard:** The central repository. It's often structured into different levels of abstraction or hierarchies to organize the data and solutions. For example, in a speech recognition system, the Blackboard might contain levels for phonemes, words, and sentences.
-2.  **Knowledge Sources:** These components are self-contained and "know" how to solve a specific sub-problem. They continuously monitor the Blackboard, and when they detect a change they can act upon, they become active. Their contribution modifies the Blackboard, which in turn can trigger other Knowledge Sources.
-3.  **Controller:** This is the brains of the system. Its role is to prioritize and select the next Knowledge Source to execute based on the state of the Blackboard. The Control logic can be simple (e.g., round-robin) or highly complex (e.g., using heuristics or AI rules).
-
-**Typical Data Flow:**
-* The process starts when the Controller places an initial problem on the Blackboard.
-* Knowledge Sources monitor the Blackboard. When a condition they can act upon is met, they signal the Controller.
-* The Controller selects one or more Knowledge Sources to activate.
-* The activated Knowledge Source executes its logic, reading from and writing to the Blackboard, which represents a new partial solution.
-* This process repeats in a cycle (perceive, act, react) until the final solution is complete or the Controller determines that no further progress can be made.
+**Typical Data Flow**
+* The **producer** sends a message to the **broker**.
+* The **broker** stores the message in a queue or a log.
+* The **consumer(s)** read the message and process it.
+* The **consumer** sends an **acknowledgment** to confirm message processing.
 
 ---
+
 ## **Advantages and Technical Challenges**
 
-* **Advantages (Benefits):**
-    * **Flexibility and Extensibility:** New Knowledge Sources can be added to the system easily without affecting existing ones. This makes the pattern ideal for research and development projects where the problem-solving strategy evolves.
-    * **Concurrent Processing:** Knowledge Sources can operate in parallel, which makes the pattern suitable for multi-core and distributed environments.
-    * **Problem-Solving for ill-defined problems:** It is designed for problems where no single algorithm exists to find a solution directly. The emergent behavior from the collaboration of multiple simple components leads to a solution.
-    * **Separation of Concerns:** The pattern strictly separates the problem-solving logic (Knowledge Sources), the data (Blackboard), and the control flow (Controller).
+### **Advantages (Benefits)**
 
-* **Challenges:**
-    * **Synchronization and Concurrency:** Managing concurrent access to the Blackboard can be complex, especially in a distributed environment. Mechanisms like locks, semaphores, or transactional systems are often required.
-    * **Single Point of Failure (SPOF):** The Blackboard itself can become a **bottleneck** if not properly managed, as all communication must flow through it. If it fails, the entire system fails.
-    * **Debugging and Testing:** The non-deterministic nature and the absence of a clear control flow make debugging and tracing the system's behavior very difficult. It can be hard to know which Knowledge Source made a particular modification.
-    * **Overhead:** The constant monitoring and a complex Controller can introduce significant overhead, making it less efficient for simpler problems.
+* **Decoupling**: Services have no direct dependency on one another, which simplifies system development, maintenance, and evolution.
+* **Resilience**: If a **consumer** fails, messages are not lost; they remain in the **broker** until a service resumes processing.
+* **Scalability**: The **broker** handles traffic spikes by acting as a buffer. It is easy to add more **consumers** to increase processing capacity without impacting the rest of the system.
+* **Flexibility**: Different services can be developed using distinct technologies as long as they adhere to the common communication protocol with the **broker**.
+
+### **Challenges**
+
+* **Infrastructure Complexity**: Setting up and administering a **broker** introduces a new layer of operational complexity.
+* **Debugging**: Following a message through an asynchronous distributed system can be complex, as there is no direct, synchronous request-response link.
+* **Delivery Guarantees**: It is essential to understand the different delivery guarantees offered (**at-most-once**, **at-least-once**, **exactly-once**) to ensure messages are not lost or duplicated.
+* **Eventual Consistency**: Systems based on this pattern are inherently **eventually consistent**, which may not be suitable for applications requiring immediate data consistency.
 
 ---
+
 ## **Variations and Derived Architectures**
 
-* **Hierarchical Blackboard:** The Blackboard is organized into multiple levels of abstraction, with Knowledge Sources specialized to operate at specific levels. This is common in complex AI systems.
-* **Open Blackboard:** This variation loosens the strict control of the Controller. Knowledge Sources can write directly to the Blackboard without a centralized scheduler, relying on event-based triggers. This is less common due to the increased complexity of managing concurrency.
-* **Integration with other patterns:** The Blackboard pattern is often combined with other patterns. For example, Knowledge Sources can be implemented as **[[microservices]]** communicating via a message queue, which serves as a sort of "Blackboard" in a distributed system.
+The **Message Queues / Streams** pattern is a foundation upon which many modern communication models are built.
 
-This pattern, though less common in standard enterprise applications, remains a powerful tool for specific, highly complex domains. Its strength lies in its ability to manage complexity through a collaborative, incremental approach.
+* **2-Tier Architecture:** This is the basic model, with a **producer** communicating directly with a **consumer** via a queue.
+* **Fan-out / Pub-Sub Architecture:** This variation is a derivative of **Message Streams**. A message sent by a **producer** is broadcast to multiple **consumers**.
+* **N-Tier Architecture**: In complex systems, the pattern can be used to decouple different layers.
+* **Microservices**: This is arguably the most common use case today. Each microservice can act as both a **producer** and a **consumer**, exchanging messages asynchronously.
 
 ---
 
-## **Resources & links**
+## **Resources & Links**
 
 ### **Articles**
-
-1.  **[Solving Non-Determinism with Blackboard Architecture](https://www.geeksforgeeks.org/system-design/solving-non-determinism-with-blackboard-architecture/)**
-
-    This **GeeksforGeeks** article explains how the **Blackboard Architecture** pattern can be used to solve non-deterministic problems in system design. It details five methods this pattern uses, including parallelism, concurrency, and iterative refinement, to handle complex issues with incomplete information.
-
----
+1.  **[Introduction to Message Queues](https://www.cloudamqp.com/blog/2014-04-16-introduction-to-rabbitmq.html)**
+2.  **[Message Queues vs. Message Streams: A Comparison](https://www.confluent.io/blog/message-queues-vs-kafka-message-streams/)**
 
 ### **Videos**
-
-1.  **[Blackboard architecture](https://www.youtube.com/watch?v=G8KroDXt4qc)**
-
-    This video from **Sreelakshmi Manoharan** provides an overview of the **Blackboard architecture** in the context of problem-solving within AI. It defines the core components of the system—the blackboard, knowledge sources, and the control strategy—and discusses its applications in areas like healthcare and intelligent robotics.
-
-2.  **[Blackboard Architecture](https://www.youtube.com/watch?v=gNiL6u_hIWY)**
-
-    This video from **Dr. Muhammad Yaseen** offers an introductory lecture on **Blackboard Architecture**. It explains the fundamental concepts of the pattern and its components, providing a clear explanation of how the system works.
+1.  **[What are Message Queues?](https://www.youtube.com/watch?v=F3zV336N9tA)**
+2.  **[Apache Kafka Explained](https://www.youtube.com/watch?v=Ch5XeQz82r0)**

@@ -80,9 +80,21 @@ graph TD
 
 ---
 
+## **Comparison with Message Queues and Streams**
+
+| Characteristic | Message Queues (e.g., RabbitMQ) | Message Streams (e.g., Apache Kafka) | Publish/Subscribe (e.g., GCP Pub/Sub) |
+| :--- | :--- | :--- | :--- |
+| **Communication Model** | Point-to-point (one-to-one) | Broadcast (one-to-many) | Broadcast (one-to-many) |
+| **Consumption Logic** | A single consumer retrieves and **deletes** the message from the queue. The message is not reusable. | Multiple consumers can read the **same** message in parallel, and keep track of their own **offset**. The message remains available for other readers. | The broker ensures that each subscribed consumer receives a delivery of the message. |
+| **Message Persistence** | Messages are generally deleted after consumption (limited lifespan). | Messages are stored **persistently** in an ordered log. Messages can be **replayed** at any time. | Persistence can vary. It is often less durable than in streams, focusing on real-time delivery rather than historical storage. |
+| **Use Cases** | Asynchronous tasks (e.g., sending emails, image processing), worker pools, load distribution. | Data stream processing (IoT), event logging, **Event Sourcing**, data pipelines. | Notifications, events, real-time data broadcasting (e.g., stock market updates, chat messages). |
+| **Historical Relationship** | Not designed for history. | It is an event log by nature. The history of messages is a key feature. | History is not its primary function. It focuses on immediate dissemination. |
+
+---
+
 ## **Variations and Derived Architectures**
 
-* **Point-to-Point Messaging (Message Queues):** Often contrasted with Pub/Sub. A message is consumed by only one consumer. Queues are useful for distributing tasks to a pool of workers. The **Client-Server** pattern can rely on a message queue for its communication.
+* **Point-to-Point Messaging ([[message-queue|Message Queues]]):** Often contrasted with Pub/Sub. A message is consumed by only one consumer. Queues are useful for distributing tasks to a pool of workers. The **[[client-server|Client-Server]]** pattern can rely on a [[message-queue|message queue]] for its communication.
 * **[[event-driven|Event-Driven Architecture (EDA)]]:** Pub/Sub is the basic pattern of EDA. Systems are designed around events, where each business action is an event (e.g., `OrderCreated`). Services react to these events to execute their own logic.
 * **CQRS (Command and Query Responsibility Segregation):** Can use Pub/Sub to broadcast "events" which are the results of "commands". The "Query" service can then listen to these events to update its own data model optimized for reading.
 
