@@ -2,6 +2,7 @@
 title: The Broker Pattern
 tags:
   - communication
+  - posa
 ---
 # **The Broker Pattern**
 

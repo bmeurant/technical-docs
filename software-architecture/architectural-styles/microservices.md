@@ -111,7 +111,7 @@ This architecture is the de facto solution for modern large-scale applications a
 
 2.  **[Microservices Architecture: A Detailed Guide](https://medium.com/design-microservices-architecture-with-patterns/microservices-architecture-2bec9da7d42a)**
     
-    This article goes beyond a simple introduction and explores the challenges and design patterns in more depth. It is particularly relevant for understanding architectural choices and the trade-offs involved.
+    This article goes beyond a simple introduction and explores the challenges and [[software-architecture/design-patterns/|design patterns]] in more depth. It is particularly relevant for understanding architectural choices and the trade-offs involved.
 
 ---
 

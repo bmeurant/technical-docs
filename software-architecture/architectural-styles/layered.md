@@ -2,6 +2,7 @@
 title: Layered Architecture
 tags:
   - structure
+  - posa
 ---
 # Layered Architecture
 
@@ -70,7 +71,7 @@ The most common model is the four-layer architecture, but there can be more or f
 
 * **2-Tier vs. N-Tier:** The basic 2-tier model (client and database) has evolved into the **N-Tier** model, which inserts intermediate layers (like the **Business Logic Layer**) to improve flexibility and scalability.
 * **Hexagonal Architecture (Ports and Adapters):** Although not a direct derivation, the hexagonal architecture is inspired by the principle of separation of concerns. It is often used to decouple the application's core (**Business Logic**) from external technologies (databases, user interfaces, etc.) by using **ports** and **adapters**.
-* **[[microservices|Microservices]]:** While [[microservices|microservices]] are a distributed architecture, each individual microservice can be structured using a simple layered model to manage its own business logic and persistence. The **Layered Architecture** remains a very relevant internal design pattern within a [[microservices|microservices]] context.
+* **[[microservices|Microservices]]:** While [[microservices|microservices]] are a distributed architecture, each individual microservice can be structured using a simple layered model to manage its own business logic and persistence. The **Layered Architecture** remains a very relevant internal [[software-architecture/design-patterns/|design pattern]] within a [[microservices|microservices]] context.
 
 ## **Resources & links**
 

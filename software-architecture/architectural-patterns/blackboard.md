@@ -3,6 +3,7 @@ title: Blackboard Pattern
 tags:
   - collaboration
   - ai
+  - posa
 ---
 # **The Blackboard Architectural Pattern**
 
