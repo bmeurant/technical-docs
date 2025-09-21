@@ -32,7 +32,7 @@ graph TD
     V -- "Displays State" --> U
 ```
 
-1.  **Model:** The core of the application. It is the object that contains the **data** and the **business logic**. It is completely unaware of Views and Controllers. Its role is to manage the application's state and notify its observers (often the Views) when its data changes.
+1.  **Model:** The core of the application. It is the object that contains the **data** and the **business logic**. It is completely unaware of Views and Controllers. Its role is to manage the application's state and notify its [[gof|observers]] (often the Views) when its data changes.
 2.  **View:** This is the user interface. It presents the Model's information to the user. The View does not contain business logic; it simply displays the data and sends user inputs to the Controller. There can be multiple Views for a single Model.
 3.  **Controller:** The intermediary. It receives user inputs (via the View), interprets these actions, and updates the Model accordingly. It then selects the appropriate View to display.
 
