@@ -67,7 +67,7 @@ The data flow in a microservices architecture is often a multi-step process, orc
 * The **API Gateway** performs initial validation and forwards the request to the **Load Balancer** for the appropriate service.
 * The **Load Balancer** routes the request to one of the available instances of the target microservice.
 * Microservice A (e.g., an order service) may need information from another microservice B (e.g., a product service). It uses **Service Discovery** to find the location of B and makes an API call.
-* Alternatively, Microservice A can publish an **event** to the **Message Broker** (e.g., "new order placed"), and Microservice C (e.g., a stock service) that is subscribed to this event, receives it and updates its state asynchronously.
+* Alternatively, Microservice A can publish an **event** to the **[[broker|Message Broker]]** (e.g., "new order placed"), and Microservice C (e.g., a stock service) that is subscribed to this event, receives it and updates its state asynchronously.
 * Microservice A receives the response from B, compiles its own response, and sends it back to the **API Gateway**, which ultimately forwards the final response to the client.
 
 

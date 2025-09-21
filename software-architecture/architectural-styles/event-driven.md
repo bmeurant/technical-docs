@@ -42,7 +42,7 @@ graph TD
 ```
 
 1.  **Event Producer:** The service or component that generates and publishes an event. It has no knowledge of the consumers.
-2.  **Event Broker:** A central service (often an **Event Bus**, a **queue**, or a **streaming platform** like **Apache Kafka** or **RabbitMQ**) that acts as an intermediary between producers and consumers. It receives events and routes them to interested services.
+2.  **Event [[broker|Broker]]:** A central service (often an **Event Bus**, a **queue**, or a **streaming platform** like **Apache Kafka** or **RabbitMQ**) that acts as an intermediary between producers and consumers. It receives events and routes them to interested services.
 3.  **Event Consumer:** The service that subscribes to one or more event types and reacts to their reception by executing business logic.
 
 ### **Typical Data Flow:**

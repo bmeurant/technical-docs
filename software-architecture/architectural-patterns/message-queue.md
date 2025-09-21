@@ -12,7 +12,7 @@ The **Message Queues / Streams** pattern is an [[software-architecture/architect
 
 ### **Core Principles**
 
-This pattern is based on a **broker** (a message queue or a streaming platform) that acts as a buffer between services.
+This pattern is based on a **[[broker]]** (a message queue or a streaming platform) that acts as a buffer between services.
 
 ### **Message Queues vs. Message Streams: Comparison Table**
 
@@ -32,7 +32,7 @@ This pattern is based on a **broker** (a message queue or a streaming platform) 
 graph TD
     P[Producer]
 
-    subgraph Broker
+    subgraph [[broker|Broker]]
         Q[Queue]
         S[Stream]
     end
@@ -52,13 +52,13 @@ graph TD
     C2 -- "Acknowmedgment" --> S
 ```
 
-1.  **Producer**: The application or service that creates and sends a message to the broker. It doesn't need to know who will process the message or when.
-2.  **Broker**: The intermediary service that stores the messages. It can be a queue or a stream.
+1.  **Producer**: The application or service that creates and sends a message to the [[broker]]. It doesn't need to know who will process the message or when.
+2.  **[[broker|Broker]]**: The intermediary service that stores the messages. It can be a queue or a stream.
 3.  **Consumer**: The application or service that retrieves and processes the messages. It can be a group of workers or multiple services that subscribe to data streams.
 
 **Typical Data Flow**
-* The **producer** sends a message to the **broker**.
-* The **broker** stores the message in a queue or a log.
+* The **producer** sends a message to the **[[broker]]**.
+* The **[[broker]]** stores the message in a queue or a log.
 * The **consumer(s)** read the message and process it.
 * The **consumer** sends an **acknowledgment** to confirm message processing.
 
@@ -69,13 +69,13 @@ graph TD
 ### **Advantages (Benefits)**
 
 * **[[cohesion-coupling|Decoupling]]**: Services have no direct dependency on one another, which simplifies system development, maintenance, and evolution.
-* **Resilience**: If a **consumer** fails, messages are not lost; they remain in the **broker** until a service resumes processing.
-* **Scalability**: The **broker** handles traffic spikes by acting as a buffer. It is easy to add more **consumers** to increase processing capacity without impacting the rest of the system.
-* **Flexibility**: Different services can be developed using distinct technologies as long as they adhere to the common communication protocol with the **broker**.
+* **Resilience**: If a **consumer** fails, messages are not lost; they remain in the **[[broker]]** until a service resumes processing.
+* **Scalability**: The **[[broker]]** handles traffic spikes by acting as a buffer. It is easy to add more **consumers** to increase processing capacity without impacting the rest of the system.
+* **Flexibility**: Different services can be developed using distinct technologies as long as they adhere to the common communication protocol with the **[[broker]]**.
 
 ### **Challenges**
 
-* **Infrastructure Complexity**: Setting up and administering a **broker** introduces a new layer of operational complexity.
+* **Infrastructure Complexity**: Setting up and administering a **[[broker]]** introduces a new layer of operational complexity.
 * **Debugging**: Following a message through an asynchronous distributed system can be complex, as there is no direct, synchronous request-response link.
 * **Delivery Guarantees**: It is essential to understand the different delivery guarantees offered (**at-most-once**, **at-least-once**, **exactly-once**) to ensure messages are not lost or duplicated.
 * **Eventual Consistency**: Systems based on this pattern are inherently **eventually consistent**, which may not be suitable for applications requiring immediate data consistency.
