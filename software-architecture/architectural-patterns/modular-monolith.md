@@ -1,5 +1,9 @@
 ---
 title: Modular Monolith
+tags:
+  - structure
+  - deployment
+  - modularity
 ---
 # Modular Monolith
 

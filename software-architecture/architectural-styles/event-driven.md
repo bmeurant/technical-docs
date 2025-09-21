@@ -1,5 +1,7 @@
 ---
 title: Event-Driven Architecture (EDA)
+tags:
+  - communication
 ---
 # Event-Driven Architecture (EDA)
 

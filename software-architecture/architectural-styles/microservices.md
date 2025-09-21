@@ -1,5 +1,7 @@
 ---
 title: Microservices Architecture
+tags:
+  - distributed
 ---
 # Microservices Architecture
 

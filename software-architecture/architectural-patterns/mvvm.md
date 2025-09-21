@@ -1,5 +1,7 @@
 ---
 title: Model-View-ViewModel (MVVM)
+tags:
+  - ui
 ---
 # Model-View-ViewModel(MVVM)
 

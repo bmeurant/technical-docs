@@ -1,5 +1,7 @@
 ---
 title: Model-View-Presenter (MVP)
+tags:
+  - ui
 ---
 # MVP (Model-View-Presenter) Architecture
 

@@ -1,5 +1,7 @@
 ---
 title: Model-View-Whatever (MVW)
+tags:
+  - ui
 ---
 # Model-View-Whatever (MVW)
 

@@ -1,5 +1,8 @@
 ---
 title: Message-Driven Architecture
+tags:
+  - communication
+  - messaging
 ---
 # Message-Driven Architecture
 

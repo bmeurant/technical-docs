@@ -1,5 +1,8 @@
 ---
 title: Publish-Subscribe Pattern
+tags:
+  - messaging
+  - communication
 ---
 # **Publish-Subscribe Pattern**
 

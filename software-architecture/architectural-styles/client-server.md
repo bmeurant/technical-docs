@@ -1,5 +1,7 @@
 ---
 title: Client-Server Architecture
+tags:
+  - distributed
 ---
 # Client-Server Architecture
 

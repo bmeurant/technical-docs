@@ -1,5 +1,7 @@
 ---
 title: Peer-to-Peer Architecture
+tags:
+  - distributed
 ---
 # Peer-to-Peer Architecture
 

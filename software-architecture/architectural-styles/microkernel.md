@@ -1,5 +1,8 @@
 ---
 title: Microkernel Architecture
+tags:
+  - structure
+  - modularity
 ---
 # Microkernel Architecture
 

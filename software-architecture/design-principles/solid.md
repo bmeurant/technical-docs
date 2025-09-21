@@ -1,5 +1,8 @@
 ---
 title: SOLID
+tags:
+  - quality
+  - maintanability
 ---
 # The SOLID Principles
 

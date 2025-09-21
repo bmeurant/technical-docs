@@ -13,8 +13,9 @@ see [index](./index.md)
 
 * **[Blackboard Architectural Pattern](./blackboard.md)**
 
-## Communication
+## Messaging
 
+* **[Message Queues / Streams Pattern](./message-queue.md)**
 * **[Publish Subscribe Pattern](./publish-subscribe.md)**
 
 ## Architecture

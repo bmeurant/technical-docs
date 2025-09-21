@@ -1,5 +1,7 @@
 ---
 title: Monolithic Architecture
+tags:
+  - structure
 ---
 # Monolithic Architecture
 

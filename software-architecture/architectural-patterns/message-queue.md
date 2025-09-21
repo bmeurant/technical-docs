@@ -1,5 +1,8 @@
 ---
 title: Message Queues / Streams Pattern
+tags:
+  - messaging
+  - communication
 ---
 # **Message Queues / Streams Pattern**
 

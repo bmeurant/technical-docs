@@ -1,5 +1,7 @@
 ---
 title: Serverless Architecture
+tags:
+  - distributed
 ---
 # Serverless Architecture
 

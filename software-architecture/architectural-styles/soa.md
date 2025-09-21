@@ -1,5 +1,7 @@
 ---
 title: Service-Oriented Architecture (SOA)
+tags:
+  - distributed
 ---
 # Service-Oriented Architecture (SOA)
 

@@ -1,5 +1,7 @@
 ---
 title: Model-View-Controller (MVC)
+tags:
+  - ui
 ---
 
 # Model-View-Controller (MVC) Pattern

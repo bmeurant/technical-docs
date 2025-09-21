@@ -1,5 +1,8 @@
 ---
 title: Component-Based Architecture
+tags:
+  - structure
+  - modularity
 ---
 # Component-Based Architecture (CBA)
 

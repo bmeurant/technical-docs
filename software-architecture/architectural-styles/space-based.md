@@ -1,5 +1,7 @@
 ---
 title: Space-Based Architecture
+tags:
+  - structure
 ---
 # Space-Based Architecture (SBA)
 

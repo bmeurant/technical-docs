@@ -1,5 +1,8 @@
 ---
 title: Blackboard Pattern
+tags:
+  - collaboration
+  - ai
 ---
 # **The Blackboard Architectural Pattern**
 

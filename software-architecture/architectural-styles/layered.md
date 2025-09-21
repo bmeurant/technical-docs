@@ -1,5 +1,7 @@
 ---
 title: Layered Architecture
+tags:
+  - structure
 ---
 # Layered Architecture
 
