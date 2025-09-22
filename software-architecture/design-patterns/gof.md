@@ -852,9 +852,9 @@ tags:
 
 ### **Videos**
 
-1.  **[The Strategy and Template Method Patterns and Section Summary](https://www.youtube.com/watch?v=AmcA8wWCHQQ)**
+1.  **[Appendix: Introduction to the Case Study of Gang of Four Patterns](https://www.youtube.com/watch?v=aJn2sJBNxv8)**
 
-    This video by **Douglas Schmidt** explores the **Strategy** and **Template Method** patterns as alternatives for encapsulating algorithmic variability. It shows how these patterns, in the context of an expression tree processing application, simplify the management of different operation modes and improve code modularity and testability.
+    This video by **Douglas Schmidt** is an introduction to a case study on **Gang of Four (GoF) patterns**, part of a larger series. It describes an object-oriented expression tree processing application used as a running example, illustrating how to implement it with patterns and frameworks in C++ and Java. It also compares object-oriented and non-object-oriented approaches, and highlights the use of scope, commonality, and variability analysis.
 
 2.  **[Design Patterns Video Tutorial](https://www.youtube.com/watch?v=vNHpsC5ng_E)**
 
