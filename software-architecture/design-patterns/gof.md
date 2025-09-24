@@ -852,9 +852,9 @@ tags:
 
 ### **Videos**
 
-1.  **[Appendix: Introduction to the Case Study of Gang of Four Patterns](https://www.youtube.com/watch?v=aJn2sJBNxv8)**
+1.  **[Case Study of Gang of Four Patterns](https://www.youtube.com/watch?v=iigIg684uEA&list=PLZ9NgFYEMxp4ZsvD10uXmClGnukcu3Uff&index=15)**
 
-    This video by **Douglas Schmidt** is an introduction to a case study on **Gang of Four (GoF) patterns**, part of a larger series. It describes an object-oriented expression tree processing application used as a running example, illustrating how to implement it with patterns and frameworks in C++ and Java. It also compares object-oriented and non-object-oriented approaches, and highlights the use of scope, commonality, and variability analysis.
+    This series of videos by **Douglas Schmidt** describes the **Gang of Four (GoF) patterns** and their application.
 
 2.  **[Design Patterns Video Tutorial](https://www.youtube.com/watch?v=vNHpsC5ng_E)**
 
