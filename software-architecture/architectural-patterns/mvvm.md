@@ -66,7 +66,7 @@ This automation of data flow is what makes the **View** "passive" and the **View
 
 * **MVVM-C (Coordinator):** Adds a **Coordinator** layer to manage navigation and transitions between **Views** and **ViewModels**, making them even more independent.
 * **RxMVVM:** Uses **reactive programming** frameworks like **RxJava** or **RxSwift** to manage data flows between components in a more efficient and declarative way.
-* **Clean Architecture & MVVM:** **MVVM** is often used as a presentation pattern within larger architectures like **Clean Architecture**, where the **Model** is divided into **Domain** and **Data layers**.
+* **[[clean|Clean Architecture]] & MVVM:** **MVVM** is often used as a presentation pattern within larger architectures like **[[clean|Clean Architecture]]**, where the **Model** is divided into **Domain** and **Data layers**.
 
 The **MVVM** pattern has become an essential reference for user interface-based applications, providing a robust and testable approach to modern software design.
 

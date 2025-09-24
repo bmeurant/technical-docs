@@ -79,7 +79,7 @@ graph TD
 
 ## **Variations and Derived Architectures**
 
-**Onion Architecture**, Robert C. Martin's ("Uncle Bob") **Clean Architecture**, and Alistair Cockburn's **[[hexagonal|Hexagonal Architecture]]** all share fundamental principles and are often considered [[modern-application-architectures|variations of the same core concept]].
+**Onion Architecture**, Robert C. Martin's ("Uncle Bob") **[[clean|Clean Architecture]]**, and Alistair Cockburn's **[[hexagonal|Hexagonal Architecture]]** all share fundamental principles and are often considered [[modern-application-architectures|variations of the same core concept]].
 
 * **Similarities:**
     * All three architectures focus on separating the **business logic** (the "core") from the infrastructure (UI, databases, etc.).
@@ -89,7 +89,7 @@ graph TD
 * **Differences:**
     * **Onion Architecture:** Focuses on concentric layers. The emphasis is on communication from the outside in, with dependencies always directed toward the core.
     * **[[hexagonal|Hexagonal Architecture]] (Ports and Adapters):** Uses "ports" and "adapters". A port is an interface (a contract) that the core application exposes or uses. An adapter is an implementation of that interface. The core is a hexagon with ports. Adapters (e.g., a database, a **REST API**) connect to these ports. This is a more interface- and external "actor"-focused view.
-    * **Clean Architecture:** This is a composite architecture that integrates the ideas of both **Onion** and **[[hexagonal|Hexagonal]]** and adds other layers like **use cases**. It proposes a more rigid structure with clearly named layers (Entities, Use Cases, Interface Adapters, Frameworks and Drivers) but follows the same core principles of dependency inversion and infrastructure independence.
+    * **[[clean|Clean Architecture]]:** This is a composite architecture that integrates the ideas of both **Onion** and **[[hexagonal|Hexagonal]]** and adds other layers like **use cases**. It proposes a more rigid structure with clearly named layers (Entities, Use Cases, Interface Adapters, Frameworks and Drivers) but follows the same core principles of dependency inversion and infrastructure independence.
 
 In summary, these architectures are different ways to implement the same principles. **Onion Architecture** is an excellent starting point for understanding how to isolate the business core from infrastructure, a key concept for any modern software architect.
 
@@ -113,8 +113,8 @@ In summary, these architectures are different ways to implement the same princip
 
 1.  **[Onion Architecture - Software Design Patterns Explained](https://www.youtube.com/watch?v=oC2Ty8H9jck)**
 
-    This video from the **Professional Programming** channel explains the concepts of **Onion Architecture**, **Clean Architecture**, and **[[hexagonal|Hexagonal Architecture]]**. It uses diagrams to illustrate how these patterns solve the problem of tight coupling in traditional software design by putting the business logic at the center and abstracting external concerns like databases and user interfaces. The video provides a clear and visual introduction to the core principles of these architectural styles.
+    This video from the **Professional Programming** channel explains the concepts of **Onion Architecture**, **[[clean|Clean Architecture]]**, and **[[hexagonal|Hexagonal Architecture]]**. It uses diagrams to illustrate how these patterns solve the problem of tight coupling in traditional software design by putting the business logic at the center and abstracting external concerns like databases and user interfaces. The video provides a clear and visual introduction to the core principles of these architectural styles.
 
 2.  **[Onion Architecture vs Clean Architecture Comparison](https://www.youtube.com/watch?v=KqWNtCpjUi8)**
 
-    In this video, **Milan Jovanović** compares **Onion Architecture** and **Clean Architecture**. He demonstrates that they are conceptually very similar, with both placing the **domain layer** at the core and enforcing a strict rule that dependencies must point inward. The video shows practical implementations of both architectures, highlighting their shared goal of decoupling the application from its infrastructure and ensuring the core business logic remains independent.
+    In this video, **Milan Jovanović** compares **Onion Architecture** and **[[clean|Clean Architecture]]**. He demonstrates that they are conceptually very similar, with both placing the **domain layer** at the core and enforcing a strict rule that dependencies must point inward. The video shows practical implementations of both architectures, highlighting their shared goal of decoupling the application from its infrastructure and ensuring the core business logic remains independent.

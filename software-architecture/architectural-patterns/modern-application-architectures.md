@@ -36,7 +36,7 @@ While sharing the same core principle, these three architectures differ in their
 * **Key Idea:** A more structured take on the hexagonal approach. It arranges the application in concentric rings, with the **Domain Model** at the very center. Dependencies only ever point inward.
 * **Focus:** It is more prescriptive and places a strong emphasis on **Domain-Driven Design (DDD)**. It formalizes the layers around the core: `Domain Model`, `Domain Services`, `Application Services`, and `Infrastructure`.
 
-### **Clean Architecture**
+### **[[clean|Clean Architecture]]**
 
 * **Key Idea:** A synthesis of the best ideas from [[hexagonal|Hexagonal]], [[onion|Onion]], and other domain-centric architectures, popularized by Robert C. Martin ("Uncle Bob"). It is the most opinionated and well-defined of the three.
 * **Focus:** It introduces specific names for its concentric circles and their responsibilities: `Entities`, `Use Cases`, `Interface Adapters`, and `Frameworks & Drivers`. It's highly prescriptive and formalizes the concept of `Use Cases` as the application's specific business logic.
@@ -45,7 +45,7 @@ While sharing the same core principle, these three architectures differ in their
 
 ### **Comprehensive Comparison**
 
-| Characteristic | **[[layered|Layered Architecture]]** | **[[hexagonal|Hexagonal Architecture]]** | **[[onion|Onion Architecture]]** | **Clean Architecture** |
+| Characteristic | **[[layered|Layered Architecture]]** | **[[hexagonal|Hexagonal Architecture]]** | **[[onion|Onion Architecture]]** | **[[clean|Clean Architecture]]** |
 | :--- | :--- | :--- | :--- | :--- |
 | **Philosophy** | **Stacking** of layers. | **Isolation** via **Ports & Adapters**. | **Concentric** around the **Domain Model**. | **Synthesis** for independence. |
 | **Origin** | Traditional | Alistair Cockburn (2005) | Jeffrey Palermo (2008) | Robert C. Martin (2012) |

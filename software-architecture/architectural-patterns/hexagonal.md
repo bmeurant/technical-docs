@@ -80,7 +80,7 @@ flowchart TD
 
 ## **Variations and Derived Concepts**
 
-Hexagonal Architecture is the foundation for many other [[modern-application-architectures|modern architectural patterns]], such as **[[onion|Onion Architecture]]** and **Clean Architecture**. All these models share the same fundamental idea: the **domain** is at the center of the application and should not depend on anything else. Dependencies only flow from the outside in.
+Hexagonal Architecture is the foundation for many other [[modern-application-architectures|modern architectural patterns]], such as **[[onion|Onion Architecture]]** and **[[clean|Clean Architecture]]**. All these models share the same fundamental idea: the **domain** is at the center of the application and should not depend on anything else. Dependencies only flow from the outside in.
 
 * **Usage in the Web Ecosystem:** In a **Spring Boot** or **Node.js** application, the **Driving Adapter** would be a `RestController`, the **Driving Port** a service interface annotated with `@Service`, the **Driven Port** a `Repository` interface, and the **Driven Adapter** a class implementing `JpaRepository`.
 
@@ -98,7 +98,7 @@ Hexagonal Architecture is an initial investment that pays off in the long run, e
 
 2.  **[Everything You Need to Know About Hexagonal Architecture: Kernel, Ports, Adapters](https://scalastic.io/en/hexagonal-architecture/)**
 
-    This article provides a comprehensive overview of **Hexagonal Architecture** by defining its core principles: isolating business logic within a "hexagon" and using ports and adapters for communication with the outside world. It compares the architecture to other approaches like [[mvc|MVC]] and Clean Architecture, emphasizing its benefits for reducing functional regressions, simplifying feature additions, and making business logic easier to test. It also acknowledges the potential for increased project complexity in simpler contexts.
+    This article provides a comprehensive overview of **Hexagonal Architecture** by defining its core principles: isolating business logic within a "hexagon" and using ports and adapters for communication with the outside world. It compares the architecture to other approaches like [[mvc|MVC]] and [[clean|Clean Architecture]], emphasizing its benefits for reducing functional regressions, simplifying feature additions, and making business logic easier to test. It also acknowledges the potential for increased project complexity in simpler contexts.
 
 ---
 
