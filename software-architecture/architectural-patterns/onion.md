@@ -1,5 +1,5 @@
 ---
-title: Oignon Architecture
+title: Onion Architecture
 tags:
   - structure
 ---
@@ -79,7 +79,7 @@ graph TD
 
 ## **Variations and Derived Architectures**
 
-**Onion Architecture**, Robert C. Martin's ("Uncle Bob") **Clean Architecture**, and Alistair Cockburn's **[[hexagonal|Hexagonal Architecture]]** all share fundamental principles and are often considered variations of the same core concept.
+**Onion Architecture**, Robert C. Martin's ("Uncle Bob") **Clean Architecture**, and Alistair Cockburn's **[[hexagonal|Hexagonal Architecture]]** all share fundamental principles and are often considered [[modern-application-architectures|variations of the same core concept]].
 
 * **Similarities:**
     * All three architectures focus on separating the **business logic** (the "core") from the infrastructure (UI, databases, etc.).
