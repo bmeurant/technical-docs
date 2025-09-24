@@ -80,7 +80,7 @@ flowchart TD
 
 ## **Variations and Derived Concepts**
 
-Hexagonal Architecture is the foundation for many other modern architectural patterns, such as **Onion Architecture** and **Clean Architecture**. All these models share the same fundamental idea: the **domain** is at the center of the application and should not depend on anything else. Dependencies only flow from the outside in.
+Hexagonal Architecture is the foundation for many other modern architectural patterns, such as **[[oignon|Onion Architecture]]** and **Clean Architecture**. All these models share the same fundamental idea: the **domain** is at the center of the application and should not depend on anything else. Dependencies only flow from the outside in.
 
 * **Usage in the Web Ecosystem:** In a **Spring Boot** or **Node.js** application, the **Driving Adapter** would be a `RestController`, the **Driving Port** a service interface annotated with `@Service`, the **Driven Port** a `Repository` interface, and the **Driven Adapter** a class implementing `JpaRepository`.
 
