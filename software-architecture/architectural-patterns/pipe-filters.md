@@ -71,18 +71,18 @@ The **Pipe and Filters** pattern is a foundation for many data processing system
 
 1.  **[Pipes and Filters pattern (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters)**
 
-    Microsoft's documentation is an essential reference. It is clear, well-structured, and provides use cases, pros/cons, and implementation considerations, especially in a cloud context.
+    Microsoft's documentation is an essential reference. It is clear, well-structured, and provides use cases, pros/cons, and implementation considerations, especially in a cloud context.
 
 2.  **[Pipe and Filter Architecture - System Design (GeeksforGeeks)](https://www.geeksforgeeks.org/system-design/pipe-and-filter-architecture-system-design/)**
     
-    This article provides a comprehensive overview of the pattern, its core concepts, benefits (modularity, scalability), and real-world examples like Unix command-line tools.
+    This article provides a comprehensive overview of the pattern, its core concepts, benefits (modularity, scalability), and real-world examples like Unix command-line tools.
 
 ### **Videos**
 
 1.  **[Building a Request Pipeline for Separating Concerns with Pipes & Filters (CodeOpinion)](https://www.youtube.com/watch?v=msXtN15qXOE)**
     
-    This video explains how to use the pattern to build a request processing pipeline, separating concerns such as logging, validation, and exception handling into distinct steps.
+    This video explains how to use the pattern to build a request processing pipeline, separating concerns such as logging, validation, and exception handling into distinct steps.
 
 2.  **[Pipe and Filter Pattern - Architectural Patterns (Devsena Mishra)](https://www.youtube.com/watch?v=ZbmpkiLgbwY)**
     
-    A tutorial that describes the software architecture pattern and its use in Java, as part of a broader series on architectural patterns.
+    A tutorial that describes the software architecture pattern and its use in Java, as part of a broader series on architectural patterns.
