@@ -101,7 +101,7 @@ graph TD
 * **[[event-driven|Event-Driven Architecture (EDA)]]:** Pub/Sub is the basic pattern of EDA. Systems are designed around events, where each business action is an event (e.g., `OrderCreated`). Services react to these events to execute their own logic.
 * **CQRS (Command and Query Responsibility Segregation):** Can use Pub/Sub to broadcast "events" which are the results of "commands". The "Query" service can then listen to these events to update its own data model optimized for reading.
 
-This pattern, with its variations, is at the heart of **[[microservices]]** and real-time data processing systems. Its ability to decouple services makes it indispensable for designing modern and resilient systems.
+This pattern, with its variations, is at the heart of **[[microservices]]** and real-time [[pipe-filters|data processing]] systems. Its ability to decouple services makes it indispensable for designing modern and resilient systems.
 
 ---
 

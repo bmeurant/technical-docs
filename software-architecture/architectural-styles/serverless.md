@@ -86,7 +86,7 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
 ## Use Cases and Practical Examples
 
 * **[[event-driven|Event-driven APIs]]:** Create **REST** or **gRPC** **APIs** where each endpoint is managed by a **serverless** function.
-* **Data Processing:** A function triggered by adding an image to an **S3** bucket that resizes the image and adds it to another bucket.
+* **[[pipe-filters|Data Processing]]:** A function triggered by adding an image to an **S3** bucket that resizes the image and adds it to another bucket.
 * **Scheduled Tasks:** Replace **cron jobs** with functions triggered at regular intervals to, for example, generate reports or clean up data.
 * **[[microservices|Microservices]]:** A [[microservices|microservices]] architecture where each service is implemented as one or more **serverless** functions.
 * **Real-time Processing:** Process real-time data streams from IoT or user events.
