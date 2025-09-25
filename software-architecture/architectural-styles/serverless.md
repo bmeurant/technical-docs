@@ -2,6 +2,7 @@
 title: Serverless Architecture
 tags:
   - distributed
+date: 2025-09-17
 ---
 # Serverless Architecture
 

@@ -3,6 +3,7 @@ title: Component-Based Architecture
 tags:
   - structure
   - modularity
+date: 2025-09-15
 ---
 # Component-Based Architecture (CBA)
 

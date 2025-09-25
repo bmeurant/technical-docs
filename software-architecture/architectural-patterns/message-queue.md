@@ -3,6 +3,7 @@ title: Message Queues / Streams Pattern
 tags:
   - messaging
   - communication
+date: 2025-09-20
 ---
 # **Message Queues / Streams Pattern**
 

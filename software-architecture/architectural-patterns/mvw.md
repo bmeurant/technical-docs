@@ -2,6 +2,7 @@
 title: Model-View-Whatever (MVW)
 tags:
   - ui
+date: 2025-09-19
 ---
 # Model-View-Whatever (MVW)
 

@@ -3,6 +3,7 @@ title: Microkernel Architecture
 tags:
   - structure
   - modularity
+date: 2025-09-16
 ---
 # Microkernel Architecture
 

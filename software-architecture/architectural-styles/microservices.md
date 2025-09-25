@@ -2,6 +2,7 @@
 title: Microservices Architecture
 tags:
   - distributed
+date: 2025-09-17
 ---
 # Microservices Architecture
 

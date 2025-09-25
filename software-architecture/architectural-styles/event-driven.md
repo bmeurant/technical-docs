@@ -2,6 +2,7 @@
 title: Event-Driven Architecture (EDA)
 tags:
   - communication
+date: 2025-09-17
 ---
 # Event-Driven Architecture (EDA)
 

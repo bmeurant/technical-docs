@@ -2,6 +2,7 @@
 title: Client-Server Architecture
 tags:
   - distributed
+date: 2025-09-15
 ---
 # Client-Server Architecture
 

@@ -2,6 +2,7 @@
 title: Modern Application Architectures
 tags:
   - structure
+date: 2025-09-24
 ---
 
 # **Modern Application Architectures**

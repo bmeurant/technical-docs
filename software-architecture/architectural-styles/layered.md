@@ -3,6 +3,7 @@ title: Layered Architecture
 tags:
   - structure
   - posa
+date: 2025-09-15
 ---
 # Layered Architecture
 

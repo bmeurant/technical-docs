@@ -2,6 +2,7 @@
 title: Model-View-ViewModel (MVVM)
 tags:
   - ui
+date: 2025-09-19
 ---
 # Model-View-ViewModel(MVVM)
 

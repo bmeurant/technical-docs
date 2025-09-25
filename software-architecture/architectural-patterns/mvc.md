@@ -2,6 +2,7 @@
 title: Model-View-Controller (MVC)
 tags:
   - ui
+date: 2025-09-19
 ---
 
 # Model-View-Controller (MVC) Pattern

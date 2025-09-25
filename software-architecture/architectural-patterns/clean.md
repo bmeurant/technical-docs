@@ -2,6 +2,7 @@
 title: Clean Architecture
 tags:
   - structure
+date: 2025-09-25
 ---
 
 # **Clean Architecture**

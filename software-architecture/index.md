@@ -1,5 +1,6 @@
 ---
 title: Software Architecture & System Design
+date: 2025-09-15
 ---
 
 A list of topics related to Software design and architecture principles, styles, patterns, practices, etc.

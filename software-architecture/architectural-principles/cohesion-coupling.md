@@ -3,6 +3,7 @@ title: Cohesion & Coupling
 tags:
   - quality
   - maintanability
+date: 2025-09-17
 ---
 # Cohesion & Coupling
 

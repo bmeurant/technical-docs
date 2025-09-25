@@ -2,7 +2,7 @@
 title: Pipe and Filters Pattern
 tags:
   - data-processing
-date: 2025-09-24
+date: 2025-09-25
 ---
 # Pipe and Filters Pattern
 

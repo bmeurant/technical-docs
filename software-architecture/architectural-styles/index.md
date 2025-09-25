@@ -1,5 +1,6 @@
 ---
 title: Architectural Styles
+date: 2025-09-17
 ---
 
 # Architecture Styles

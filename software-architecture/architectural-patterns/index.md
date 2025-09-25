@@ -1,5 +1,6 @@
 ---
 title: Architectural Patterns
+date: 2025-09-19
 ---
 
 # Architecture Patterns

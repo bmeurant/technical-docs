@@ -2,6 +2,7 @@
 title: Monolithic Architecture
 tags:
   - structure
+date: 2025-09-15
 ---
 # Monolithic Architecture
 

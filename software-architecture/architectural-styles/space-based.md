@@ -2,6 +2,7 @@
 title: Space-Based Architecture
 tags:
   - structure
+date: 2025-09-16
 ---
 # Space-Based Architecture (SBA)
 

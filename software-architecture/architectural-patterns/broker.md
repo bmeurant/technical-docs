@@ -3,6 +3,7 @@ title: The Broker Pattern
 tags:
   - communication
   - posa
+date: 2025-09-21
 ---
 # **The Broker Pattern**
 

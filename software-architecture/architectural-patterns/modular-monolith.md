@@ -4,6 +4,7 @@ tags:
   - structure
   - deployment
   - modularity
+date: 2025-09-15
 ---
 # Modular Monolith
 

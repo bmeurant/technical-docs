@@ -4,6 +4,7 @@ tags:
   - collaboration
   - ai
   - posa
+date: 2025-09-19
 ---
 # **The Blackboard Architectural Pattern**
 

@@ -2,6 +2,7 @@
 title: Peer-to-Peer Architecture
 tags:
   - distributed
+date: 2025-09-17
 ---
 # Peer-to-Peer Architecture
 

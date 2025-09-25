@@ -3,6 +3,7 @@ title: The CAP Theorem
 tags:
   - resiliency
   - distributed
+date: 2025-09-16
 ---
 # The CAP Theorem
 

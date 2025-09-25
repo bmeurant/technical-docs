@@ -2,6 +2,7 @@
 title: GoF Design Patterns
 tags:
   - gof
+date: 2025-09-21
 ---
 
 # GoF Design Patterns

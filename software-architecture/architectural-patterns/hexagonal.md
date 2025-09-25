@@ -2,6 +2,7 @@
 title: Hexagonal Architecture
 tags:
   - structure
+date: 2025-09-23
 ---
 
 # **Hexagonal Architecture (Ports-and-Adapters)**

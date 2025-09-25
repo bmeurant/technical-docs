@@ -3,6 +3,7 @@ title: Message-Driven Architecture
 tags:
   - communication
   - messaging
+date: 2025-09-18
 ---
 # Message-Driven Architecture
 

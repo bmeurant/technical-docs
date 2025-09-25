@@ -3,6 +3,7 @@ title: SOLID
 tags:
   - quality
   - maintanability
+date: 2025-09-16
 ---
 # The SOLID Principles
 

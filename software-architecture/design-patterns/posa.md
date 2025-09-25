@@ -2,6 +2,7 @@
 title: POSA Design Patterns
 tags:
   - posa
+date: 2025-09-21
 ---
 
 # POSA Design Patterns
