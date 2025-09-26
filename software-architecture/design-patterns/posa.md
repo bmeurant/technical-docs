@@ -586,7 +586,46 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
 
 #### Retry
 
-*(This pattern is not yet documented in this file)*
+* **Problem**: How to handle temporary failures when communicating with remote services without immediately failing the operation?
+* **Synopsis**: The **Retry** pattern enables an application to handle transient failures by transparently retrying a failed operation. This pattern is particularly useful in distributed systems where temporary network issues or service unavailability are common. The core idea is to retry the operation a certain number of times with a delay between each attempt.
+
+    ```mermaid
+    sequenceDiagram
+        participant Client
+        participant Service
+
+        Client->>Service: Attempt 1
+        Service-->>Client: Fail (transient error)
+
+        note over Client: Wait (backoff strategy)
+
+        Client->>Service: Attempt 2
+        Service-->>Client: Fail (transient error)
+
+        note over Client: Wait (increased backoff)
+
+        Client->>Service: Attempt 3
+        Service-->>Client: Success
+    ```
+
+* **Key Characteristics**:
+    * **Transient Fault Handling**: Specifically designed to handle temporary issues like network glitches or short-lived service outages.
+    * **Backoff Strategy**: To avoid overwhelming a struggling service, a backoff strategy (e.g., exponential backoff) is used to introduce a delay between retries.
+    * **Idempotency**: The pattern should only be applied to operations that are idempotent, meaning they can be repeated multiple times without changing the outcome.
+    * **Configurable**: The number of retry attempts and the backoff strategy should be configurable.
+* **Applicability**:
+    * **Unreliable Network Communications**: When calling services over a network that may experience intermittent connectivity issues.
+    * **Throttled Services**: When a service may temporarily reject requests due to rate limiting.
+    * **Database Connections**: When there are transient issues with database connections or deadlocks.
+* **Limitations and Challenges**:
+    * **Non-transient failures**: The pattern is not suitable for non-transient (permanent) failures. Retrying a permanent failure will only waste resources.
+    * **Retry Storms**: If not implemented carefully with a backoff strategy, multiple clients retrying at the same time can create a "retry storm" that overwhelms the service.
+    * **Latency**: Retrying an operation adds latency to the overall response time.
+
+**Relationship with other patterns**:
+*   **[[#circuit-breaker|Circuit Breaker]]**: The Retry pattern is often used in conjunction with the **Circuit Breaker** pattern. After a certain number of retries, the circuit breaker can trip to prevent further calls to a failing service.
+*   **[[#timeout|Timeout]]**: A **Timeout** pattern is essential to prevent a retry from waiting indefinitely for a response. Each retry attempt should have a timeout.
+*   **Exponential Backoff**: This is a common strategy used with the Retry pattern to increase the wait time between retries, giving the service time to recover.
 
 #### Timeout
 
