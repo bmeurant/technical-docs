@@ -516,7 +516,73 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 
 #### Bulkhead
 
-*(This pattern is not yet documented in this file)*
+* **Problem**: How to prevent a failure in one part of a system from cascading and bringing down the entire system? A single misbehaving component can exhaust critical resources, such as threads or connections, causing a system-wide outage.
+* **Synopsis**: The **Bulkhead** pattern isolates elements of an application into separate pools so that if one fails, the others can continue to function. The name comes from the bulkheads in a ship's hull, which prevent a single breach from flooding the entire ship. This pattern partitions resources, such as connection pools or thread pools, and allocates them to specific components. If a component fails, it only affects its own resource pool, leaving the rest of the system unaffected.
+
+    ```mermaid
+    graph TD
+        subgraph Client
+            direction LR
+            C1[Client Application]
+        end
+
+        subgraph Server
+            direction LR
+            subgraph Bulkhead_A
+                direction TB
+                P1[Connection Pool A]
+                T1[Thread Pool A]
+                S1[Service A]
+                P1 --> T1 --> S1
+            end
+            subgraph Bulkhead_B
+                direction TB
+                P2[Connection Pool B]
+                T2[Thread Pool B]
+                S2[Service B]
+                P2 --> T2 --> S2
+            end
+            subgraph Bulkhead_C
+                direction TB
+                P3[Connection Pool C]
+                T3[Thread Pool C]
+                S3[Service C]
+                P3 --> T3 --> S3
+            end
+        end
+
+        C1 --> P1
+        C1 --> P2
+        C1 --> P3
+
+        style Bulkhead_A fill:#ccc,stroke:#333,stroke-width:2px
+        style Bulkhead_B fill:#ccc,stroke:#333,stroke-width:2px
+        style Bulkhead_C fill:#ccc,stroke:#333,stroke-width:2px
+    ```
+
+* **Key Characteristics**:
+    * **Isolation**: Failures are contained within a "bulkhead," preventing them from spreading.
+    * **Resource Partitioning**: System resources are divided into pools dedicated to specific components.
+    * **Resilience**: The system can withstand partial failures and continue to operate with reduced functionality.
+    * **Predictable Performance**: By limiting the resources a single component can consume, the pattern prevents "noisy neighbors" from degrading the performance of the entire system.
+* **Applicability**:
+    * **Microservices Architectures**: To isolate individual services and prevent cascading failures.
+    * **Multi-tenant Systems**: To ensure that the load from one tenant does not affect others.
+    * **Resource-Intensive Applications**: To manage and partition resources like thread pools and connection pools.
+* **Limitations and Challenges**:
+    * **Increased Complexity**: Partitioning the system into isolated components can make the overall design more complex.
+    * **Resource Utilization**: Segregated resource pools can sometimes lead to underutilization if one pool is idle while another is overwhelmed.
+    * **Configuration**: The size of each bulkhead (e.g., the number of threads in a pool) needs to be carefully configured.
+
+**Relationship with Circuit Breaker**:
+
+The **Bulkhead** and **Circuit Breaker** patterns are often used together to create a comprehensive fault-tolerance strategy. While both patterns aim to improve system resilience, they do so in different ways:
+
+*   **Bulkhead** is a structural pattern that isolates components by partitioning resources. It's about preventing a failure in one area from exhausting resources needed by another. It's a static partitioning of the system.
+*   **Circuit Breaker** is a stateful behavioral pattern that stops requests to a service that is known to be failing. It's about giving a failing service time to recover and preventing the application from wasting resources on calls that are likely to fail.
+
+In a typical scenario, a **Bulkhead** might be used to create separate thread pools for different services, and each of these pools would be protected by a **Circuit Breaker**. If a service becomes unresponsive, the **Circuit Breaker** for that service will trip, and only the threads in the corresponding **Bulkhead** pool will be blocked, leaving the rest of the system unaffected.
+
 
 #### Retry
 
