@@ -836,7 +836,52 @@ graph TD
 
 #### Ambassador
 
-*(This pattern is not yet documented in this file)*
+* **Problem**: How can an application offload and standardize the way it communicates with external services, especially when dealing with concerns like resiliency, routing, and monitoring across multiple languages and frameworks?
+* **Synopsis**: The **Ambassador** pattern uses a helper process or container that acts as a proxy for outbound network connections from the main application. It is deployed alongside the main application and abstracts the details of accessing external services. All outbound traffic from the application is routed through the Ambassador, which can handle tasks like service discovery, retries, circuit breaking, and monitoring, transparently to the application code.
+
+    ```mermaid
+    graph TD
+        subgraph "Client Application Pod"
+            direction LR
+            MainApp[Main Application]
+            AmbassadorContainer[Ambassador Container]
+            
+            MainApp -- "localhost:port" --> AmbassadorContainer
+        end
+
+        subgraph "External Services"
+            ServiceA[Service A]
+            ServiceB[Service B]
+            ServiceC[Service C]
+        end
+
+        AmbassadorContainer -- "mTLS, Retries, etc." --> ServiceA
+        AmbassadorContainer -- "Load Balancing" --> ServiceB
+        AmbassadorContainer -- "Monitoring" --> ServiceC
+
+        style AmbassadorContainer fill:#cde,stroke:#333,stroke-width:2px
+    ```
+
+* **Key Characteristics**:
+    * **Proxy for Outbound Traffic**: The Ambassador specifically intercepts outgoing requests from the application to remote services.
+    * **Transparency**: The application is often unaware of the Ambassador's existence; it simply makes requests to what it thinks is the remote service (e.g., via `localhost`).
+    * **Simplifies Application Logic**: It moves complex network-related logic (like retry mechanisms or authentication) out of the application and into a reusable, language-agnostic component.
+    * **Co-located Deployment**: Like a Sidecar, the Ambassador is deployed and managed alongside the main application.
+* **Applicability**:
+    * **Service Discovery**: An Ambassador can find the current endpoint for a remote service, shielding the application from the dynamics of a distributed environment.
+    * **Resiliency**: It can implement the **[[#retry|Retry]]** and **[[#circuit-breaker|Circuit Breaker]]** patterns for all outgoing requests, making the application more resilient without adding code to it.
+    * **Sharding/Routing**: An Ambassador can route requests to the correct shard or instance of a remote service based on request data.
+    * **Monitoring**: It can record metrics (like latency, success rate) for all calls to external services.
+    * **Legacy Application Modernization**: It allows legacy applications to interact with modern microservice-based infrastructure without being rewritten.
+* **Limitations and Challenges**:
+    * **Latency**: Adds an extra network hop, which can introduce a small amount of latency, although this is usually negligible as it's on the same host.
+    * **Deployment Complexity**: Increases the number of components to deploy and manage for each application instance.
+    * **Potential Bottleneck**: If not properly configured and scaled, the Ambassador itself can become a bottleneck for all outgoing traffic.
+* **Relationship with other patterns**:
+    * **[[#sidecar|Sidecar]]**: The Ambassador pattern is a specialized form of the **Sidecar** pattern. While a Sidecar can perform a wide range of tasks, an Ambassador is specifically focused on proxying and managing outbound communication to remote services.
+    * **[[#proxy|Proxy]]**: The Ambassador *is* a **Proxy**. It acts as a local proxy for one or more remote services.
+    * **[[#retry|Retry]]** & **[[#circuit-breaker|Circuit Breaker]]**: These resilience patterns are commonly implemented within the Ambassador, providing fault tolerance for the main application without requiring any changes to its code.
+    * **[[broker|Broker]]**: In some scenarios, the Ambassador can act as a client-side **Broker**, deciding which remote service instance should handle a request.
 
 #### Service Mesh
 
