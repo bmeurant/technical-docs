@@ -885,7 +885,71 @@ graph TD
 
 #### Service Mesh
 
-*(This pattern is not yet documented in this file)*
+* **Problem**: In a large microservices architecture, how do you manage the complex and unreliable network communication between services? Handling service discovery, load balancing, fault tolerance, security, and observability for every service becomes a significant operational burden.
+* **Synopsis**: A **Service Mesh** is a dedicated, configurable infrastructure layer that handles inter-service communication. It provides a transparent and language-agnostic way to manage, secure, and observe services. It works by deploying a network of **[[#sidecar|Sidecar]]** proxies alongside each service instance. These proxies (the **Data Plane**) intercept all traffic between services and are centrally managed by a **Control Plane**. The Control Plane provides the policies and configuration for all the proxies in the mesh.
+
+    ```mermaid
+    graph TD
+        subgraph Control Plane
+            direction LR
+            PolicyEngine[Policy Engine]
+            ConfigAPI[Configuration API]
+            MetricsCollector[Metrics Collector]
+        end
+
+        subgraph Data Plane
+            subgraph Pod1
+                ServiceA[Service A]
+                ProxyA[Sidecar Proxy]
+                ServiceA <--> ProxyA
+            end
+            subgraph Pod2
+                ServiceB[Service B]
+                ProxyB[Sidecar Proxy]
+                ServiceB <--> ProxyB
+            end
+            subgraph Pod3
+                ServiceC[Service C]
+                ProxyC[Sidecar Proxy]
+                ServiceC <--> ProxyC
+            end
+        end
+
+        ConfigAPI -- "Pushes Config" --> ProxyA
+        ConfigAPI -- "Pushes Config" --> ProxyB
+        ConfigAPI -- "Pushes Config" --> ProxyC
+
+        ProxyA -- "Reports Telemetry" --> MetricsCollector
+        ProxyB -- "Reports Telemetry" --> MetricsCollector
+        ProxyC -- "Reports Telemetry" --> MetricsCollector
+
+        ProxyA -- "mTLS, Retries, LB" --> ProxyB
+        ProxyB -- "mTLS, Retries, LB" --> ProxyC
+
+        style Control Plane fill:#dff,stroke:#333,stroke-width:2px
+        style Data Plane fill:#fdf,stroke:#333,stroke-width:2px
+    ```
+
+* **Key Characteristics**:
+    * **Control Plane & Data Plane**: The architecture is split into a Data Plane (the sidecar proxies that handle traffic) and a Control Plane (the management layer that configures the proxies).
+    * **Transparent to Applications**: The service mesh is largely transparent to the application code. Services are unaware that their communication is being intercepted and managed by the mesh.
+    * **Centralized Management**: Provides a single point of control for managing policies related to security, routing, and observability across the entire fleet of services.
+    * **Uniform Observability**: Delivers consistent metrics, logs, and traces for all traffic within the mesh, providing deep insights into application behavior.
+* **Applicability**:
+    * **Large-Scale Microservices**: Essential for managing the complexity of communication in systems with a large number of microservices.
+    * **Polyglot Environments**: When services are written in many different languages, a service mesh provides a consistent way to manage communication without needing language-specific libraries.
+    * **High-Security Environments**: To enforce security policies like mutual TLS (mTLS) for all service-to-service communication by default.
+    * **Canary Deployments & A/B Testing**: The fine-grained traffic control capabilities are ideal for implementing advanced deployment strategies.
+* **Limitations and Challenges**:
+    * **Operational Complexity**: A service mesh is a complex distributed system in its own right. It requires expertise to deploy, manage, and troubleshoot.
+    * **Resource Overhead**: The sidecar proxies in the data plane consume additional CPU and memory for every service instance.
+    * **Latency**: The extra proxy hop for every service call introduces a small amount of latency.
+    * **Control Plane as a Single Point of Failure**: While the data plane can often continue to function if the control plane goes down, configuration changes and policy updates will not be possible.
+* **Relationship with other patterns**:
+    * **[[#sidecar|Sidecar]]**: The Service Mesh pattern is implemented *using* the **Sidecar** pattern. The data plane of a service mesh is a network of sidecar proxies.
+    * **[[#proxy|Proxy]]**: The sidecar proxies that form the data plane are all instances of the **Proxy** pattern.
+    * **[[#ambassador|Ambassador]]**: A service mesh can be seen as a sophisticated evolution of the **Ambassador** pattern, applied systematically to *all* services in a system for both inbound and outbound traffic, and managed by a central control plane.
+    * **[[#circuit-breaker|Circuit Breaker]]**, **[[#retry|Retry]]**, **[[#timeout|Timeout]]**: A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.
 
 ---
 
