@@ -76,6 +76,10 @@ graph TD
     * **Encapsulation**: The `Whole` encapsulates the behavior and data of its `Parts`, providing a single point of control.
 * **Applicability**: This pattern is ideal for any system where objects are logically composed of other objects, such as a graphical user interface composed of widgets, or a complex order composed of individual line items.
 * **Limitations and Challenges**: Can lead to a monolithic `Whole` object with too many responsibilities. The management of complex interactions between `Parts` can be difficult to manage.
+* **Relationship with Other Patterns**:
+    * The **Whole-Part** pattern is fundamentally the same as the **Composite** pattern from the GoF book, which allows clients to treat individual objects and compositions of objects uniformly.
+    * It can be used within an **[[mvc|MVC]]** architecture, where a complex `View` (the `Whole`) is composed of smaller UI widgets (the `Parts`).
+    * The `Parts` can be lazily loaded using the **[[#proxy|Proxy]]** pattern to improve performance.
 
 ---
 
@@ -116,6 +120,10 @@ graph TD
     * **Results aggregation**: The `Master` reassembles the individual results from the `Slaves` into a single, cohesive final solution.
 * **Applicability**: This pattern is commonly used in parallel computing, data processing systems (e.g., MapReduce frameworks), and large-scale search algorithms.
 * **Limitations and Challenges**: Performance depends heavily on the ability to effectively decompose the task. Synchronization and managing failures of the `Slaves` (e.g., what if a `Slave` crashes?) can be complex.
+* **Relationship with Other Patterns**:
+    * The **Master-Slave** pattern is a specific implementation of task parallelism and is related to patterns like **Fork/Join**.
+    * The `Master` can use the **[[#command-processor|Command Processor]]** pattern to create and manage the sub-tasks that are sent to the `Slaves`.
+    * In distributed systems, this pattern is often a building block for more complex architectures like MapReduce.
 
 ---
 
@@ -155,6 +163,11 @@ graph TD
     * **Lazy initialization**: The `Proxy` can defer the creation of the `RealSubject` until it is actually needed, improving startup performance.
 * **Applicability**: This pattern is widely used in object-relational mapping (ORM) frameworks for lazy loading, in remote procedure call (RPC) mechanisms, and for implementing security and caching.
 * **Limitations and Challenges**: Can introduce an overhead due to the extra layer of indirection. Overuse of this pattern can make the architecture unnecessarily complex.
+* **Relationship with Other Patterns**:
+    * The **Proxy** pattern is one of the original **GoF patterns**.
+    * It is often used in conjunction with the **[[#forwarder-receiver|Forwarder-Receiver]]** pattern, where the `Forwarder` acts as a proxy for a remote object.
+    * A **[[#client-dispatcher-server|Client-Dispatcher-Server]]** can use a `Proxy` on the client side to hide the `Dispatcher`'s location.
+    * It can also be used to implement lazy loading for the `Parts` in a **[[#whole-part|Whole-Part]]** structure.
 
 ---
 
@@ -186,6 +199,10 @@ graph TD
     * **Extended functionality**: The pattern's structure makes it easy to add features like a transaction log (for persistence), undo/redo functionality, and macros.
 * **Applicability**: This pattern is a cornerstone of text editors (`undo/redo` functionality), workflow systems, and any application that needs to manage a history of operations.
 * **Limitations and Challenges**: Can introduce complexity for simple applications. Implementing `undo/redo` can be difficult for commands that have side effects.
+* **Relationship with Other Patterns**:
+    * This pattern is an extension of the **Command** pattern from the GoF book. It adds the "processor" component that manages a queue of commands.
+    * It can be used in a **[[#master-slave|Master-Slave]]** architecture, where the `Master` creates `Command` objects and sends them to `Slaves` for execution.
+    * The queueing mechanism is a form of **[[message-queue|Message Queue]]**.
 
 #### View Handler
 
@@ -218,6 +235,10 @@ graph TD
     * **[[cohesion-coupling|Decoupling]]**: It decouples the `Views` from each other, as they only need to communicate with the `View Handler` or the `Model` directly.
 * **Applicability**: This pattern is fundamental to GUI frameworks, `single-page` web applications (SPAs), and dashboard systems where multiple views of the same data need to be managed.
 * **Limitations and Challenges**: Can become a `god object` or a central point of contention if its logic is not carefully managed.
+* **Relationship with Other Patterns**:
+    * The **View Handler** is a key component in presentation patterns like **[[mvc|MVC]]**, **[[mvp|MVP]]**, and **[[mvvm|MVVM]]**, where it often plays the role of the `Controller` or `Presenter`.
+    * It frequently manages a **[[#whole-part|Whole-Part]]** structure, where the main view is composed of smaller, nested views.
+    * It often works with the **[[publish-subscribe|Publisher-Subscriber]]** pattern to receive updates from the `Model` and refresh the `Views`.
 
 ---
 
@@ -249,6 +270,9 @@ graph TD
     * **Simplicity**: Provides a relatively straightforward way to achieve point-to-point communication without building a complex messaging system.
 * **Applicability**: This pattern is suitable for `Inter-Process Communication` (IPC) and simple distributed systems where direct, encapsulated communication is required.
 * **Limitations and Challenges**: It does not natively handle distributing messages to multiple recipients. It is also not suitable for systems that require a high degree of [[cohesion-coupling|loose coupling]] or [[message-driven|asynchronous communication]].
+* **Relationship with Other Patterns**:
+    * The **Forwarder-Receiver** pattern is a foundational pattern for building distributed systems and can be seen as a simplified version of the **[[broker|Broker]]** pattern.
+    * It is often used with the **[[#proxy|Proxy]]** pattern, where the `Forwarder` acts as a local proxy for a remote service, hiding the network communication details from the client.
 
 #### Client-Dispatcher-Server
 
@@ -276,6 +300,10 @@ graph TD
     * **[[cohesion-coupling|Decoupling]]**: `Clients` do not need to know the location of the `Servers`, only the address of the `Dispatcher`.
 * **Applicability**: This pattern is well-suited for dynamic distributed systems, service registries, and [[microservices]] architectures where services may be added or removed frequently.
 * **Limitations and Challenges**: The `Dispatcher` can become a performance bottleneck or a `single point of failure`. A robust implementation requires built-in redundancy and failover mechanisms.
+* **Relationship with Other Patterns**:
+    * This pattern is a specific implementation of the **[[broker|Broker]]** pattern, where the `Dispatcher` acts as the central message broker.
+    * It is conceptually similar to the **Service Locator** pattern.
+    * In modern **[[microservices]]** architectures, the `Dispatcher` role is often fulfilled by an **API Gateway** or a combination of a **Service Registry** and **Service Discovery** mechanism.
 
 #### Publisher-Subscriber
 
@@ -298,6 +326,10 @@ graph TD
     * **Scalability**: The pattern is highly scalable, as new `Publishers` or `Subscribers` can be added without modifying existing components.
 * **Applicability**: This pattern is fundamental to real-time data streams, notification systems, and [[microservices]] that communicate via events.
 * **Limitations and Challenges**: The reliability of message delivery can be a challenge. The system's complexity increases if message ordering or guaranteed delivery is required.
+* **Relationship with Other Patterns**:
+    * The **Publisher-Subscriber** pattern is a more scalable and decoupled version of the **Observer** pattern from the GoF book.
+    * It is the foundation of **[[event-driven|event-driven architectures]]** and is often implemented using a **[[message-queue|Message Queue]]** or a **[[broker|Broker]]**.
+    * In **[[microservices]]**, this pattern is the primary way services communicate asynchronously.
 
 ---
 
@@ -365,6 +397,10 @@ graph TD
     * **Event handlers**: Objects that encapsulate the processing logic for each event.
 * **Applicability**: High-performance servers, event loops for GUIs, and notification systems.
 * **Limitations and Challenges**: Can become complex for managing intricate states. The `event handler` logic must be very fast to avoid blocking the main thread.
+* **Relationship with Other Patterns**:
+    * The **Reactor** pattern is often contrasted with the **[[#proactor|Proactor]]** pattern. `Reactor` handles readiness events (e.g., "data is ready to be read"), while `Proactor` handles completion events (e.g., "the read operation has completed").
+    * It implements the **Observer** pattern, where the `Reactor` observes multiple event sources (handles) on behalf of the application.
+    * It is often used in conjunction with the **[[#acceptor-connector|Acceptor-Connector]]** pattern to handle connection and service initialization.
 
 #### Proactor
 
@@ -397,6 +433,10 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
     * **Proactor event loop**: A thread or `thread pool` waits for notification of operation completion.
 * **Applicability**: Server architectures that manage intense I/O (e.g., file servers, databases).
 * **Limitations and Challenges**: Depends on native OS support for asynchronous I/O operations. Implementation complexity is often higher.
+* **Relationship with Other Patterns**:
+    * The **Proactor** pattern is the asynchronous counterpart to the **[[#reactor|Reactor]]** pattern. While `Reactor` is based on synchronous event demultiplexing, `Proactor` is based on asynchronous operation completion.
+    * It is often used with the **[[#acceptor-connector|Acceptor-Connector]]** pattern to handle asynchronous connection establishment and service processing.
+    * The callback-based nature of the `CompletionHandler` is similar to how the **Command** pattern can be used to encapsulate a piece of work to be executed later.
 
 #### Acceptor-Connector
 
@@ -438,6 +478,9 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
     * **Connector**: Manages the active establishment of connections.
 * **Applicability**: Middleware frameworks, [[peer-to-peer]] architectures, [[client-server]] systems.
 * **Limitations and Challenges**: Can introduce some complexity if the connection logic is very simple.
+* **Relationship with Other Patterns**:
+    * The **Acceptor-Connector** pattern is almost always used with either the **[[#reactor|Reactor]]** or **[[#proactor|Proactor]]** pattern. The `Acceptor` or `Connector` creates a `ServiceHandler`, which is then registered with the `Reactor` to handle I/O events.
+    * It is also an example of the **Separation of Concerns** principle, as it decouples the connection logic from the application-level service logic.
 
 #### Active Object
 
@@ -479,6 +522,10 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
     * **Proxy**: An object that manages the `Active Object`'s interface and places requests into the queue.
 * **Applicability**: Systems that require concurrent or parallel execution and thread management.
 * **Limitations and Challenges**: Can introduce communication overhead due to the queues.
+* **Relationship with Other Patterns**:
+    * The **Active Object** pattern combines several other patterns to achieve concurrency. It uses a **[[#proxy|Proxy]]** to provide an asynchronous interface to clients.
+    * The `MethodRequestQueue` is a form of **[[message-queue|Message Queue]]**, and the `Scheduler` acts as a consumer in a **Producer-Consumer** relationship.
+    * Each `MethodRequest` is an implementation of the **Command** pattern, encapsulating a method call as an object.
 
 ### Resilience and fault tolerance
 
