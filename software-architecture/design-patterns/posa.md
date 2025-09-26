@@ -717,7 +717,53 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
 
 #### Leader Election
 
-*(This pattern is not yet documented in this file)*
+* **Problem**: In a distributed system, how to ensure that only one instance out of a group of identical instances performs a specific task at a time? This is necessary to avoid conflicts, reduce redundancy, and designate a coordinator for a group of nodes.
+* **Synopsis**: The **Leader Election** pattern provides a mechanism for a group of nodes (or instances) to dynamically elect a single leader. All nodes participate in an election process. Once a leader is chosen, it is responsible for a specific set of tasks (e.g., coordination, task scheduling, state management). The other nodes act as followers (or standbys) and are ready to take over if the leader fails. The system must be able to detect leader failure and trigger a new election.
+
+    ```mermaid
+    sequenceDiagram
+        participant NodeA
+        participant NodeB
+        participant NodeC
+        
+        Note over NodeA, NodeC: All nodes are candidates
+        
+        NodeA->>NodeB: Election Message (Vote for me)
+        NodeB-->>NodeA: Acknowledgment
+        NodeA->>NodeC: Election Message (Vote for me)
+        NodeC-->>NodeA: Acknowledgment
+        
+        Note over NodeA: NodeA receives enough votes
+        NodeA->>NodeA: Becomes Leader
+        
+        NodeA->>NodeB: Announce Leadership
+        NodeA->>NodeC: Announce Leadership
+        
+        loop Regular Operation
+            Leader (NodeA) ->> Followers: Heartbeat
+        end
+    ```
+
+* **Key Characteristics**:
+    * **Dynamic Election**: A leader is chosen at runtime, not pre-configured.
+    * **Fault Tolerance**: If the leader fails, the remaining nodes can elect a new leader, ensuring the system continues to operate.
+    * **Single Point of Coordination**: The elected leader acts as a central coordinator, simplifying decision-making within the group.
+    * **State Management**: The leader is often responsible for managing the shared state and replicating it to followers.
+* **Applicability**:
+    * **Distributed Databases**: To designate a primary node for handling write operations (e.g., Raft, Paxos).
+    * **High-Availability Clusters**: To select a primary instance that handles requests while others are on standby (e.g., Kubernetes controller manager, ZooKeeper).
+    * **Task Scheduling**: In a distributed system, to ensure a scheduled task (e.g., a cron job) is executed by only one worker instance.
+    * **Distributed Locking**: The leader can be responsible for granting locks on shared resources.
+* **Limitations and Challenges**:
+    * **Complexity**: Implementing a robust leader election algorithm (like Paxos or Raft) is complex and error-prone.
+    * **Split-Brain Scenarios**: Network partitions can lead to a "split-brain" situation where multiple leaders are elected in different partitions, potentially causing data inconsistency.
+    * **Election Time**: The time it takes to elect a new leader can be a period of unavailability for the coordinated task.
+    * **Scalability**: The election process can become a bottleneck in very large clusters as it requires communication between nodes.
+* **Relationship with other patterns**:
+    * **[[#master-slave|Master-Slave]]**: The Leader Election pattern is a way to dynamically assign the `Master` role in a Master-Slave setup, making it more resilient. The elected `Leader` is the `Master`, and the other nodes are `Slaves` (or followers).
+    * **[[#circuit-breaker|Circuit Breaker]]** & **[[#timeout|Timeout]]**: Followers use `Timeout` mechanisms to detect a leader's failure (e.g., by missing heartbeats). This failure detection can trigger a `Circuit Breaker` for services relying on the leader, and it initiates a new election.
+    * **[[publish-subscribe|Publisher-Subscriber]]**: The leader can act as a central [[#broker|`Broker`]] or a trusted `Publisher` in a pub/sub system, managing the flow of events.
+    * **Stateful vs. Stateless**: This pattern is fundamental for managing state in a distributed system. The leader often holds the authoritative state, while followers maintain replicas.
 
 ### Deployment and Infrastructure
 
@@ -741,12 +787,12 @@ These patterns belong to other categories (architectural, etc.) but are also fun
 
 ### Architectural Patterns
 
-* `[[layered|Layers]]`
-* `[[pipe-filters|Pipes and Filters]]`
-* `[[broker|Broker]]`
-* `[[blackboard|Blackboard]]`
-* `[[mvc|Model View Controler]]`
-* `[[microkernel|Microkernel]]`
+* [[layered|Layers]]
+* [[pipe-filters|Pipes and Filters]]
+* [[broker|Broker]]
+* [[blackboard|Blackboard]]
+* [[mvc|Model View Controler]]
+* [[microkernel|Microkernel]]
 * ...
 
 ### Idioms
