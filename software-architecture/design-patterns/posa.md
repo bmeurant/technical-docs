@@ -77,7 +77,7 @@ graph TD
 * **Applicability**: This pattern is ideal for any system where objects are logically composed of other objects, such as a graphical user interface composed of widgets, or a complex order composed of individual line items.
 * **Limitations and Challenges**: Can lead to a monolithic `Whole` object with too many responsibilities. The management of complex interactions between `Parts` can be difficult to manage.
 * **Relationship with Other Patterns**:
-    * The **Whole-Part** pattern is fundamentally the same as the **Composite** pattern from the GoF book, which allows clients to treat individual objects and compositions of objects uniformly.
+    * The **Whole-Part** pattern is fundamentally the same as the [[gof|Composite pattern]] from the GoF book, which allows clients to treat individual objects and compositions of objects uniformly.
     * It can be used within an **[[mvc|MVC]]** architecture, where a complex `View` (the `Whole`) is composed of smaller UI widgets (the `Parts`).
     * The `Parts` can be lazily loaded using the **[[#proxy|Proxy]]** pattern to improve performance.
 
@@ -200,7 +200,7 @@ graph TD
 * **Applicability**: This pattern is a cornerstone of text editors (`undo/redo` functionality), workflow systems, and any application that needs to manage a history of operations.
 * **Limitations and Challenges**: Can introduce complexity for simple applications. Implementing `undo/redo` can be difficult for commands that have side effects.
 * **Relationship with Other Patterns**:
-    * This pattern is an extension of the **Command** pattern from the GoF book. It adds the "processor" component that manages a queue of commands.
+    * This pattern is an extension of the [[gof|Command pattern]] from the GoF book. It adds the "processor" component that manages a queue of commands.
     * It can be used in a **[[#master-slave|Master-Slave]]** architecture, where the `Master` creates `Command` objects and sends them to `Slaves` for execution.
     * The queueing mechanism is a form of **[[message-queue|Message Queue]]**.
 
@@ -327,7 +327,7 @@ graph TD
 * **Applicability**: This pattern is fundamental to real-time data streams, notification systems, and [[microservices]] that communicate via events.
 * **Limitations and Challenges**: The reliability of message delivery can be a challenge. The system's complexity increases if message ordering or guaranteed delivery is required.
 * **Relationship with Other Patterns**:
-    * The **Publisher-Subscriber** pattern is a more scalable and decoupled version of the **Observer** pattern from the GoF book.
+    * The Publisher-Subscriber pattern is a more scalable and decoupled version of the [[gof|Observer pattern]] from the GoF book.
     * It is the foundation of **[[event-driven|event-driven architectures]]** and is often implemented using a **[[message-queue|Message Queue]]** or a **[[broker|Broker]]**.
     * In **[[microservices]]**, this pattern is the primary way services communicate asynchronously.
 
@@ -474,7 +474,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Limitations and Challenges**: Can introduce some complexity if the connection logic is very simple.
 * **Relationship with Other Patterns**:
     * The **Acceptor-Connector** pattern is almost always used with either the **[[#reactor|Reactor]]** or **[[#proactor|Proactor]]** pattern. The `Acceptor` or `Connector` creates a `ServiceHandler`, which is then registered with the `Reactor` to handle I/O events.
-    * It is also an example of the **Separation of Concerns** principle, as it decouples the connection logic from the application-level service logic.
+    * It is also an example of the [[cohesion-coupling|Separation of Concerns]] principle, as it decouples the connection logic from the application-level service logic.
 
 #### Active Object
 
@@ -519,7 +519,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Relationship with Other Patterns**:
     * The **Active Object** pattern combines several other patterns to achieve concurrency. It uses a **[[#proxy|Proxy]]** to provide an asynchronous interface to clients.
     * The `MethodRequestQueue` is a form of **[[message-queue|Message Queue]]**, and the `Scheduler` acts as a consumer in a **Producer-Consumer** relationship.
-    * Each `MethodRequest` is an implementation of the **Command** pattern, encapsulating a method call as an object.
+    * Each `MethodRequest` is an implementation of the [[gof|Command pattern]], encapsulating a method call as an object.
 
 ### Resilience and fault tolerance
 
@@ -626,13 +626,12 @@ graph TD
 
 **Relationship with Circuit Breaker**:
 
-The **Bulkhead** and **Circuit Breaker** patterns are often used together to create a comprehensive fault-tolerance strategy. While both patterns aim to improve system resilience, they do so in different ways:
+The Bulkhead and [[#Circuit Breaker|Circuit Breaker]] patterns are often used together to create a comprehensive fault-tolerance strategy. While both patterns aim to improve system resilience, they do so in different ways:
 
-*   **Bulkhead** is a structural pattern that isolates components by partitioning resources. It's about preventing a failure in one area from exhausting resources needed by another. It's a static partitioning of the system.
-*   **Circuit Breaker** is a stateful behavioral pattern that stops requests to a service that is known to be failing. It's about giving a failing service time to recover and preventing the application from wasting resources on calls that are likely to fail.
+*  Bulkhead is a structural pattern that isolates components by partitioning resources. It's about preventing a failure in one area from exhausting resources needed by another. It's a static partitioning of the system.
+*   [[#Circuit Breaker|Circuit Breaker]] is a stateful behavioral pattern that stops requests to a service that is known to be failing. It's about giving a failing service time to recover and preventing the application from wasting resources on calls that are likely to fail.
 
-In a typical scenario, a **Bulkhead** might be used to create separate thread pools for different services, and each of these pools would be protected by a **Circuit Breaker**. If a service becomes unresponsive, the **Circuit Breaker** for that service will trip, and only the threads in the corresponding **Bulkhead** pool will be blocked, leaving the rest of the system unaffected.
-
+In a typical scenario, a Bulkhead might be used to create separate thread pools for different services, and each of these pools would be protected by a [[#Circuit Breaker|Circuit Breaker]]. If a service becomes unresponsive, the [[#Circuit Breaker|Circuit Breaker]] for that service will trip, and only the threads in the corresponding Bulkhead pool will be blocked, leaving the rest of the system unaffected.
 
 #### Retry
 
@@ -673,8 +672,8 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
     * **Latency**: Retrying an operation adds latency to the overall response time.
 
 **Relationship with other patterns**:
-*   **[[#circuit-breaker|Circuit Breaker]]**: The Retry pattern is often used in conjunction with the **Circuit Breaker** pattern. After a certain number of retries, the circuit breaker can trip to prevent further calls to a failing service.
-*   **[[#timeout|Timeout]]**: A **Timeout** pattern is essential to prevent a retry from waiting indefinitely for a response. Each retry attempt should have a timeout.
+*   **[[#circuit-breaker|Circuit Breaker]]**: The Retry pattern is often used in conjunction with the [[#Circuit Breaker|Circuit Breaker]] pattern. After a certain number of retries, the circuit breaker can trip to prevent further calls to a failing service.
+*   **[[#timeout|Timeout]]**: A [[#Timeout|Timeout]] pattern is essential to prevent a retry from waiting indefinitely for a response. Each retry attempt should have a timeout.
 *   **Exponential Backoff**: This is a common strategy used with the Retry pattern to increase the wait time between retries, giving the service time to recover.
 
 #### Timeout
@@ -712,9 +711,9 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
     * **Cascading Timeouts**: In a chain of service calls, the timeout of the calling service should be shorter than the timeout of the called service to get a meaningful error.
 
 **Relationship with other patterns**:
-*   **[[#retry|Retry]]**: The Timeout pattern is often used with the **Retry** pattern. Each retry attempt should have its own timeout.
+*   **[[#retry|Retry]]**: The Timeout pattern is often used with the [[#Retry|Retry]] pattern. Each retry attempt should have its own timeout.
 *   **[[#circuit-breaker|Circuit Breaker]]**: A timeout can be a signal that a service is failing. The **Circuit Breaker** can count timeouts as failures and trip if the threshold is exceeded.
-*   **[[#bulkhead|Bulkhead]]**: Timeouts can help prevent a slow service from consuming all the threads in a bulkhead.
+*   **[[#bulkhead|Bulkhead]]**: Timeouts can help prevent a slow service from consuming all the threads in a [[#Bulkhead|bulkhead]].
 
 ### Coordination
 
@@ -771,7 +770,7 @@ graph TD
 * **Relationship with other patterns**:
     * **[[#master-slave|Master-Slave]]**: The Leader Election pattern is a way to dynamically assign the `Master` role in a Master-Slave setup, making it more resilient. The elected `Leader` is the `Master`, and the other nodes are `Slaves` (or followers).
     * **[[#circuit-breaker|Circuit Breaker]]** & **[[#timeout|Timeout]]**: Followers use `Timeout` mechanisms to detect a leader's failure (e.g., by missing heartbeats). This failure detection can trigger a `Circuit Breaker` for services relying on the leader, and it initiates a new election.
-    * **[[publish-subscribe|Publisher-Subscriber]]**: The leader can act as a central [[broker|`Broker`]] or a trusted `Publisher` in a pub/sub system, managing the flow of events.
+    * **[[#publisher-subscriber|Publisher-Subscriber]]**: The leader can act as a central [[broker|Broker]] or a trusted `Publisher` in a pub/sub system, managing the flow of events.
     * **Stateful vs. Stateless**: This pattern is fundamental for managing state in a distributed system. The leader often holds the authoritative state, while followers maintain replicas.
 
 ### Deployment and Infrastructure
@@ -829,7 +828,7 @@ graph TD
     * **Testing**: End-to-end testing can be more complex as it requires running the application with its sidecar.
 * **Relationship with other patterns**:
     * **[[#service-mesh|Service Mesh]]**: The Sidecar pattern is the core implementation detail of a **Service Mesh**. The mesh's data plane is composed of sidecar proxies deployed next to each service.
-    * **[[#ambassador|Ambassador]]**: The Ambassador pattern is a specialized type of Sidecar. While a general Sidecar augments an application, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
+    * **[[#ambassador|Ambassador]]**: The [[#Ambassador|Ambassador]] pattern is a specialized type of Sidecar. While a general Sidecar augments an application, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
     * **[[#proxy|Proxy]]**: The sidecar itself is often implemented as a **Proxy**. It intercepts network traffic to and from the main application to add its functionality.
     * **[[layered|Layers]]** & **[[cohesion-coupling|Decoupling]]**: The Sidecar pattern provides a way to add a "layer" of functionality at the infrastructure level rather than in the application code, promoting better **decoupling** and **separation of concerns**.
 
@@ -946,7 +945,7 @@ graph TD
     * **Latency**: The extra proxy hop for every service call introduces a small amount of latency.
     * **Control Plane as a Single Point of Failure**: While the data plane can often continue to function if the control plane goes down, configuration changes and policy updates will not be possible.
 * **Relationship with other patterns**:
-    * **[[#sidecar|Sidecar]]**: The Service Mesh pattern is implemented *using* the **Sidecar** pattern. The data plane of a service mesh is a network of sidecar proxies.
+    * **[[#sidecar|Sidecar]]**: The Service Mesh pattern is implemented *using* the [[#Sidecar|Sidecar]] pattern. The data plane of a service mesh is a network of sidecar proxies.
     * **[[#proxy|Proxy]]**: The sidecar proxies that form the data plane are all instances of the **Proxy** pattern.
     * **[[#ambassador|Ambassador]]**: A service mesh can be seen as a sophisticated evolution of the **Ambassador** pattern, applied systematically to *all* services in a system for both inbound and outbound traffic, and managed by a central control plane.
     * **[[#circuit-breaker|Circuit Breaker]]**, **[[#retry|Retry]]**, **[[#timeout|Timeout]]**: A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.
@@ -981,4 +980,4 @@ These patterns belong to other categories (architectural, etc.) but are also fun
 
 1.  **[GoF and POSA Pattern Examples (Part 1)](https://www.youtube.com/watch?v=iYNa_KcWxCU)**
 
-    In this video by **Douglas Schmidt**, the section starting at [00:06:45] focuses on the **patterns from the POSA 1 book**. It explains how these patterns are structured, differentiating between architectural patterns and design patterns. The creator also discusses specific POSA 1 patterns such as **[[broker|Broker]]** and **Command Processor**, and highlights the relevance of many POSA patterns for concurrent and networked software, including [[publish-subscribe|Publisher-Subscriber]] and [[layered|Layers]].
+    In this video by **Douglas Schmidt**, the section starting at [00:06:45] focuses on the **patterns from the POSA 1 book**. It explains how these patterns are structured, differentiating between architectural patterns and design patterns. The creator also discusses specific POSA 1 patterns such as **[[broker|Broker]]** and **[[#Command Processor|Command Processor]]**, and highlights the relevance of many POSA patterns for concurrent and networked software, including [[publish-subscribe|Publisher-Subscriber]] and [[layered|Layers]].

@@ -7,7 +7,7 @@ date: 2025-09-21
 ---
 # **The Broker Pattern**
 
-The **Broker** architectural style is a distributed system model that organizes components by [[cohesion-coupling|decoupling]] them via an intermediary component called a **Broker**. Its primary purpose is to allow heterogeneous entities to communicate without direct knowledge of each other. Components specialize as **clients** or **servers**, but their interaction is always mediated by the broker.
+The Broker architectural style is a distributed system model that organizes components by [[cohesion-coupling|decoupling]] them via an intermediary component called a **Broker**. Its primary purpose is to allow heterogeneous entities to communicate without direct knowledge of each other. Components specialize as **clients** or **servers**, but their interaction is always mediated by the broker.
 
 * **Core Principles:**
     * **[[cohesion-coupling|Decoupling]]:** This is the central principle. Clients and servers do not communicate directly, which reduces design dependencies and allows for independent development and maintenance.
