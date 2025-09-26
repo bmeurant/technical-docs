@@ -629,7 +629,42 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
 
 #### Timeout
 
-*(This pattern is not yet documented in this file)*
+* **Problem**: How to prevent an application from waiting indefinitely for a response from a remote service that may be slow or unresponsive?
+* **Synopsis**: The **Timeout** pattern sets a time limit on how long an application will wait for a response to a request. If no response is received within the time limit, the operation is considered to have failed. This prevents resources from being tied up waiting for a response that may never come.
+
+    ```mermaid
+    sequenceDiagram
+        participant Client
+        participant Service
+
+        Client->>Service: Request
+        note over Client: Start timer
+
+        alt Response received in time
+            Service-->>Client: Success
+        else Timeout
+            note over Client: Timer expires
+            Client->>Client: Handle timeout (e.g., fail operation)
+        end
+    ```
+
+* **Key Characteristics**:
+    * **Time Limit**: A predefined duration to wait for a response.
+    * **Fail-Fast**: If the time limit is exceeded, the operation fails immediately.
+    * **Resource Protection**: Prevents system resources (like threads) from being blocked indefinitely.
+    * **Improved User Experience**: Provides quicker feedback to the user when a service is unresponsive.
+* **Applicability**:
+    * **Remote Service Calls**: Any interaction with an external service over a network.
+    * **Database Queries**: To prevent long-running queries from blocking the application.
+    * **Resource-intensive operations**: Any operation that has the potential to hang.
+* **Limitations and Challenges**:
+    * **Choosing the right timeout value**: Too short, and it might fail operations that are just slow. Too long, and it defeats the purpose of the pattern. The value often needs to be configurable and sometimes dynamically adjusted.
+    * **Cascading Timeouts**: In a chain of service calls, the timeout of the calling service should be shorter than the timeout of the called service to get a meaningful error.
+
+**Relationship with other patterns**:
+*   **[[#retry|Retry]]**: The Timeout pattern is often used with the **Retry** pattern. Each retry attempt should have its own timeout.
+*   **[[#circuit-breaker|Circuit Breaker]]**: A timeout can be a signal that a service is failing. The **Circuit Breaker** can count timeouts as failures and trip if the threshold is exceeded.
+*   **[[#bulkhead|Bulkhead]]**: Timeouts can help prevent a slow service from consuming all the threads in a bulkhead.
 
 ### Coordination
 
