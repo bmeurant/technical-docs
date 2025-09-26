@@ -13,13 +13,45 @@ date: 2025-09-21
 
 This section focuses on the **[[software-architecture/design-patterns/|design patterns]]** from the POSA series that solve intermediate-level design problems, often related to object collaboration or managing concurrency and network communication.
 
+The POSA series is divided into two main volumes: POSA1, which focuses on fundamental design patterns, and POSA2, which covers patterns for concurrent and networked objects.
+
+```mermaid
+graph TD
+    A[PoSA Patterns] --> A1(POSA1 Design Patterns);
+    A[PoSA Patterns] --> A2(POSA2 Patterns for Concurrent and Networked Objects);
+
+    %% POSA1 Patterns
+    A1 --> A1_F(POSA1 Fundamental Patterns);
+    
+
+    %% POSA2 Patterns
+    A2 --> A2_B(Event Handling & Concurrency Primitives);    
+    A2 --> A2_C(Resilience and Fault Tolerance);
+    A2 --> A2_E(Deployment and Infrastructure);
+```
+
 ---
 
 ## POSA1 Design Patterns
 
-This section focuses on the **[[software-architecture/design-patterns/|design patterns]]** described in **POSA Volume 1: A System of Patterns**, organized by the categories found in its table of contents. These patterns often serve as a bridge between high-level architectural decisions and object-oriented design.
+This section focuses on the **[[software-architecture/design-patterns/|design patterns]]** described in **POSA Volume 1: A System of Patterns**. These patterns often serve as a bridge between high-level architectural decisions and object-oriented design.
 
-### Whole-Part
+### POSA1 Fundamental Patterns
+
+```mermaid
+graph TD
+    A1_F(POSA1 Fundamental Patterns);
+    A1_F --> P1(Whole-Part);
+    A1_F --> P2(Master-Slave);
+    A1_F --> P3(Proxy);
+    A1_F --> P4(Command Processor);
+    A1_F --> P5(View Handler);
+    A1_F --> P6(Forwarder-Receiver);
+    A1_F --> P7(Client-Dispatcher-Server);
+    A1_F --> P8(Publisher-Subscriber);
+```
+
+#### Whole-Part
 
 * **Problem**: How to organize objects that are the components of a larger, composite object?
 * **Synopsis**: The **Whole-Part** (or Composition) pattern allows for structuring a composite aggregate of objects. The **Whole** is responsible for managing the collection of its **Parts** and coordinating their interactions. This pattern is foundational for any system that deals with hierarchical or composite data, like a company's organizational chart or a document's structure.
@@ -51,7 +83,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 
 ---
 
-### Master-Slave
+#### Master-Slave
 
 * **Problem**: How to decompose a complex and resource-intensive task into smaller sub-tasks that can be executed by independent entities?
 * **Synopsis**: The **Master-Slave** pattern separates the coordination logic of a task from its execution. The `Master` is responsible for decomposing the task and distributing sub-tasks to the `Slaves`, as well as for aggregating the final results. This pattern is a fundamental approach for parallel and distributed computing.
@@ -91,7 +123,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 
 ---
 
-### Proxy
+#### Proxy
 
 * **Problem**: How to provide a substitute or **placeholder** for another object to control its access?
 * **Synopsis**: The **Proxy** pattern offers an intermediary that controls access to an underlying object. The `Proxy` and the real object (`Subject`) share the same interface, allowing the `Proxy` to intercept method calls and add functionality, such as security checks, remote communication, or `lazy loading`.
@@ -130,7 +162,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 
 ---
 
-### Command Processor
+#### Command Processor
 
 * **Problem**: How to encapsulate requests so they can be handled transparently, queued, logged, or undone?
 * **Synopsis**: The **Command Processor** pattern separates a command's invocation from its execution. A command is encapsulated in a `Command` object that can be stored in a [[message-queue|queue]]. A `Processor` then executes these commands sequentially, providing a robust mechanism for managing a sequence of actions.
@@ -159,7 +191,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 * **Applicability**: This pattern is a cornerstone of text editors (`undo/redo` functionality), workflow systems, and any application that needs to manage a history of operations.
 * **Limitations and Challenges**: Can introduce complexity for simple applications. Implementing `undo/redo` can be difficult for commands that have side effects.
 
-### View Handler
+#### View Handler
 
 * **Problem**: How to manage the dependencies and coordination between multiple views in an interactive system?
 * **Synopsis**: The **View Handler** pattern manages the creation, destruction, and switching between different views of an application. It acts as a coordinator that ensures the views' consistency with the data model. This pattern is crucial for maintaining a clean separation between the user interface and the underlying business logic.
@@ -193,7 +225,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 
 ---
 
-### Forwarder-Receiver
+#### Forwarder-Receiver
 
 * **Problem**: How to provide transparent point-to-point communication in a distributed system, hiding network details?
 * **Synopsis**: The **Forwarder-Receiver** pattern separates communication layers from the applications that use them. A **Forwarder** is responsible for sending messages from one process to another, while the **Receiver** receives and distributes incoming messages. This pattern is often used as a building block for more complex communication systems.
@@ -222,7 +254,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 * **Applicability**: This pattern is suitable for `Inter-Process Communication` (IPC) and simple distributed systems where direct, encapsulated communication is required.
 * **Limitations and Challenges**: It does not natively handle distributing messages to multiple recipients. It is also not suitable for systems that require a high degree of [[cohesion-coupling|loose coupling]] or [[message-driven|asynchronous communication]].
 
-### Client-Dispatcher-Server
+#### Client-Dispatcher-Server
 
 * **Problem**: How to manage communication between clients and servers in a flexible way, hiding the location of services?
 * **Synopsis**: The **Client-Dispatcher-Server** pattern introduces a central `Dispatcher` component that acts as a [[broker]]. `Clients` send their requests to the `Dispatcher`, which then routes them to the appropriate `Server`. This pattern provides a level of indirection that simplifies service management and adds flexibility.
@@ -249,7 +281,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 * **Applicability**: This pattern is well-suited for dynamic distributed systems, service registries, and [[microservices]] architectures where services may be added or removed frequently.
 * **Limitations and Challenges**: The `Dispatcher` can become a performance bottleneck or a `single point of failure`. A robust implementation requires built-in redundancy and failover mechanisms.
 
-### Publisher-Subscriber
+#### Publisher-Subscriber
 
 * **Problem**: How to enable asynchronous and decoupled communication between entities?
 * **Synopsis**: The **[[publish-subscribe|Publisher-Subscriber]]** pattern allows entities (**Subscribers**) to subscribe to events or messages of interest. A **Publisher** emits messages without knowing the `Subscribers`, which creates a [[cohesion-coupling|loose coupling]] between them. This pattern is the cornerstone of [[event-driven|event-driven architectures]].
@@ -275,7 +307,35 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 
 ## POSA2 Patterns for Concurrent and Networked Objects
 
-### Reactor
+```mermaid
+graph TD
+    A2(POSA2 Patterns for Concurrent and Networked Objects);
+
+    %% POSA2 Patterns
+    A2 --> A2_B(Event Handling & Concurrency Primitives);
+    A2_B --> B1(Reactor);
+    A2_B --> B2(Proactor);
+    A2_B --> B3(Acceptor-Connector);
+    A2_B --> B4(Active Object);
+    
+    A2 --> A2_C(Resilience and Fault Tolerance);
+    A2_C --> C1(Circuit Breaker);
+    A2_C --> C2(Bulkhead);
+    A2_C --> C3(Retry);
+    A2_C --> C4(Timeout);
+
+    A2 --> A2_D(Coordination);
+    A2_D --> D1(Leader Election);
+
+    A2 --> A2_E(Deployment and Infrastructure);
+    A2_E --> E1(Sidecar);
+    A2_E --> E2(Ambassador);
+    A2_E --> E3(Service Mesh);
+```
+
+### Event Handling & Concurrency Primitives
+
+#### Reactor
 
 * **Problem**: How to efficiently handle multiple service requests from various sources without blocking the program's execution?
 * **Synopsis**: The `Reactor` pattern demultiplexes events from multiple sources and dispatches them to their corresponding `handlers`. It's the foundation of many non-blocking I/O frameworks.
@@ -310,7 +370,7 @@ This section focuses on the **[[software-architecture/design-patterns/|design pa
 * **Applicability**: High-performance servers, event loops for GUIs, and notification systems.
 * **Limitations and Challenges**: Can become complex for managing intricate states. The `event handler` logic must be very fast to avoid blocking the main thread.
 
-### Proactor
+#### Proactor
 
 * **Problem**: How to efficiently manage multiple long-running asynchronous operations in a non-blocking manner without using active polling?
 * **Synopsis**: The `Proactor` pattern delegates the execution of long-running operations to separate threads or components. It notifies a `completion handler` once the operation is done, which is the inverse of the `Reactor`.
@@ -342,7 +402,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Applicability**: Server architectures that manage intense I/O (e.g., file servers, databases).
 * **Limitations and Challenges**: Depends on native OS support for asynchronous I/O operations. Implementation complexity is often higher.
 
-### Acceptor-Connector
+#### Acceptor-Connector
 
 * **Problem**: How to separate the logic of establishing a connection (accepting/connecting) from the service's processing logic itself?
 * **Synopsis**: This pattern facilitates code reuse by decoupling the connection mechanics from the service implementation. The `Acceptor` creates a service `handler` that manages the communication.
@@ -383,7 +443,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Applicability**: Middleware frameworks, [[peer-to-peer]] architectures, [[client-server]] systems.
 * **Limitations and Challenges**: Can introduce some complexity if the connection logic is very simple.
 
-### Active Object
+#### Active Object
 
 * **Problem**: How to manage concurrency using an object-oriented approach, synchronizing access to shared data and separating a method's invocation from its execution?
 * **Synopsis**: An `Active Object` encapsulates a control thread and a [[message-queue|queue]]. Clients interact with it asynchronously, which protects the object's internal state from concurrent access.
@@ -424,6 +484,44 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Applicability**: Systems that require concurrent or parallel execution and thread management.
 * **Limitations and Challenges**: Can introduce communication overhead due to the queues.
 
+### Resilience and fault tolerance
+
+#### Circuit Breaker
+
+*(This pattern is not yet documented in this file)*
+
+#### Bulkhead
+
+*(This pattern is not yet documented in this file)*
+
+#### Retry
+
+*(This pattern is not yet documented in this file)*
+
+#### Timeout
+
+*(This pattern is not yet documented in this file)*
+
+### Coordination
+
+#### Leader Election
+
+*(This pattern is not yet documented in this file)*
+
+### Deployment and Infrastructure
+
+#### Sidecar
+
+*(This pattern is not yet documented in this file)*
+
+#### Ambassador
+
+*(This pattern is not yet documented in this file)*
+
+#### Service Mesh
+
+*(This pattern is not yet documented in this file)*
+
 ---
 
 ## Other POSA Patterns
@@ -433,7 +531,7 @@ These patterns belong to other categories (architectural, etc.) but are also fun
 ### Architectural Patterns
 
 * `[[layered|Layers]]`
-* `Pipes and Filters`
+* `[[pipe-filters|Pipes and Filters]]`
 * `[[broker|Broker]]`
 * `[[blackboard|Blackboard]]`
 * `[[mvc|Model View Controler]]`
