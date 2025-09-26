@@ -340,28 +340,22 @@ graph TD
     A2(POSA2 Patterns for Concurrent and Networked Objects);
 
     %% POSA2 Patterns
-    A2 --> A2_B(Event Handling & Concurrency Primitives);
+    A2 --> A2_B(Event Handling & Concurrency Primitives);  
+    A2 --> A2_C(Resilience and Fault Tolerance);
+    A2 --> A2_D(Coordination);
+    A2 --> A2_E(Deployment and Infrastructure);
+```
+
+### Event Handling & Concurrency Primitives
+
+```mermaid
+graph TD
+    A2_B(Event Handling & Concurrency Primitives);
     A2_B --> B1(Reactor);
     A2_B --> B2(Proactor);
     A2_B --> B3(Acceptor-Connector);
     A2_B --> B4(Active Object);
-    
-    A2 --> A2_C(Resilience and Fault Tolerance);
-    A2_C --> C1(Circuit Breaker);
-    A2_C --> C2(Bulkhead);
-    A2_C --> C3(Retry);
-    A2_C --> C4(Timeout);
-
-    A2 --> A2_D(Coordination);
-    A2_D --> D1(Leader Election);
-
-    A2 --> A2_E(Deployment and Infrastructure);
-    A2_E --> E1(Sidecar);
-    A2_E --> E2(Ambassador);
-    A2_E --> E3(Service Mesh);
 ```
-
-### Event Handling & Concurrency Primitives
 
 #### Reactor
 
@@ -528,6 +522,15 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
     * Each `MethodRequest` is an implementation of the **Command** pattern, encapsulating a method call as an object.
 
 ### Resilience and fault tolerance
+
+```mermaid
+graph TD   
+    A2_C(Resilience and Fault Tolerance);
+    A2_C --> C1(Circuit Breaker);
+    A2_C --> C2(Bulkhead);
+    A2_C --> C3(Retry);
+    A2_C --> C4(Timeout);
+```
 
 #### Circuit Breaker
 
@@ -715,6 +718,12 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
 
 ### Coordination
 
+```mermaid
+graph TD
+    A2_D(Coordination);
+    A2_D --> D1(Leader Election);
+```
+
 #### Leader Election
 
 * **Problem**: In a distributed system, how to ensure that only one instance out of a group of identical instances performs a specific task at a time? This is necessary to avoid conflicts, reduce redundancy, and designate a coordinator for a group of nodes.
@@ -766,6 +775,14 @@ In a typical scenario, a **Bulkhead** might be used to create separate thread po
     * **Stateful vs. Stateless**: This pattern is fundamental for managing state in a distributed system. The leader often holds the authoritative state, while followers maintain replicas.
 
 ### Deployment and Infrastructure
+
+```mermaid
+graph TD
+    A2_E(Deployment and Infrastructure);
+    A2_E --> E1(Sidecar);
+    A2_E --> E2(Ambassador);
+    A2_E --> E3(Service Mesh);
+```
 
 #### Sidecar
 
