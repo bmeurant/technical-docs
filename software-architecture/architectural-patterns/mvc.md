@@ -16,33 +16,71 @@ The **Model-View-Controller (MVC)** [[software-architecture/architectural-patter
 
 ---
 
-## Key Components and Interaction Flow
+## Interaction Models: Active vs. Passive MVC
+
+The interaction between the components can vary, leading to two main interpretations of the pattern.
+
+### 1. Active MVC (Classic MVC)
+
+This is the original model, common in desktop GUI applications. In this version, the **View actively observes the Model** for changes using the **[[gof|Observer pattern]]**. The Controller's only job is to handle user input and update the Model.
 
 ```mermaid
-graph TD
-    U[User]
-    M[Model]
-    V[View]
-    C[Controler]
-    
-    U -- "Input/Action" --> V
-    V -- "Events" --> C
-    C -- "Manipulates" --> M
-    C -- "Selects" --> V
-    M -- "Notifies" --> V
-    V -- "Displays State" --> U
+sequenceDiagram
+    participant User
+    participant View
+    participant Controller
+    participant Model
+
+    User->>View: Interacts (e.g., clicks button)
+    View->>Controller: Forwards user action
+    activate Controller
+    Controller->>Model: Updates state
+    deactivate Controller
+    activate Model
+    Model-->>View: Notifies of change (Observer pattern)
+    deactivate Model
+    activate View
+    View->>Model: Pulls updated data
+    View->>View: Refreshes display
+    deactivate View
 ```
 
-1.  **Model:** The core of the application. It is the object that contains the **data** and the **business logic**. It is completely unaware of Views and Controllers. Its role is to manage the application's state and notify its [[gof|observers]] (often the Views) when its data changes.
-2.  **View:** This is the user interface. It presents the Model's information to the user. The View does not contain business logic; it simply displays the data and sends user inputs to the Controller. There can be multiple Views for a single Model.
-3.  **Controller:** The intermediary. It receives user inputs (via the View), interprets these actions, and updates the Model accordingly. It then selects the appropriate View to display.
+**Data Flow (Active MVC):**
+1.  The user interacts with the **View**.
+2.  The **View** calls the **Controller**, passing along the user's action.
+3.  The **Controller** updates the **Model**.
+4.  The **Model**, having changed its state, notifies all its observers (the **View**).
+5.  The **View** receives the notification and pulls the updated data directly from the **Model** to refresh its display.
 
-**Typical Data Flow:**
-* The user interacts with the **View** (clicks a button, fills out a form).
-* The View notifies the **Controller** of the user action.
-* The Controller processes the input, executes the business logic by interacting with the **Model** (for example, it asks the Model to save data).
-* The Model updates its state and notifies the View(s) attached to it.
-* The View refreshes its display to reflect the Model's new state.
+### 2. Passive MVC (Web MVC)
+
+This is the model most commonly found in web application frameworks. In this version, the **Controller is more central**. It updates the Model and then prepares the data for the View, often passing a data transfer object (DTO) to it. The View is entirely passive and does not interact with the Model directly.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant View
+    participant Controller
+    participant Model
+
+    User->>Controller: Sends HTTP Request
+    activate Controller
+    Controller->>Model: Updates state
+    activate Model
+    Model-->>Controller: Returns updated data
+    deactivate Model
+    Controller->>View: Renders with data
+    deactivate Controller
+    activate View
+    View-->>User: Sends HTTP Response
+    deactivate View
+```
+
+**Data Flow (Passive MVC):**
+1.  The user sends an HTTP request, which is routed to a specific **Controller** action.
+2.  The **Controller** processes the request and updates the **Model**.
+3.  The **Controller** then selects a **View** and passes the necessary data (often as a DTO) to it.
+4.  The **View** renders itself using the data provided by the Controller and sends the final HTTP response to the user. The View does not know that the Model exists.
 
 ---
 
@@ -56,7 +94,7 @@ graph TD
 
 * **Challenges:**
     * **Increased Complexity:** For simple applications, implementing the pattern can be overkill and make the project more complex than it needs to be.
-    * **Tight Coupling (MVC "Fat Controller"):** In practice, Controllers can become too "big" or complex, handling too much logic and creating a tight coupling with the Views, which goes against the principle of loose coupling.
+    * **The "Fat Controller" Anti-Pattern:** A common pitfall is placing business logic inside the Controller instead of the Model. This leads to "Fat Controllers" that are bloated, hard to test, and violate the separation of concerns. The Controller's role should be limited to input processing and coordinating calls to the Model, not implementing business rules itself.
     * **Learning Curve:** The complexity of MVC is relative. While the basic concept is simple to understand, its correct implementation, particularly in avoiding the trap of "Fat Controllers" where business logic accumulates in the controller, can present a challenge. For novice developers, learning the flow of indirect interactions between the three components and the specific implementation in different frameworks can also require an initial effort, although the pattern remains an excellent starting point for modern application architecture.
 
 ---

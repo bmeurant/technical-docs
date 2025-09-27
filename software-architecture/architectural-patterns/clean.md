@@ -22,55 +22,32 @@ date: 2025-09-25
 
 ```mermaid
 graph TD
-    subgraph Frameworks - DBs - Web
-        E[Frameworks & Drivers]
+    subgraph Outer Layer
+        D(Frameworks & Drivers <br> UI, DB, Web, Devices)
+    end
+    subgraph Middle Layer
+        C(Interface Adapters <br> Controllers, Presenters, Gateways)
+    end
+    subgraph Inner Layer
+        B(Application Business Rules <br> Use Cases)
+    end
+    subgraph Core
+        A(Enterprise Business Rules <br> Entities)
     end
 
-    subgraph Interface Adapters
-        C[Interface Adapters]
-    end
+    D -- "Dependency" --> C
+    C -- "Dependency" --> B
+    B -- "Dependency" --> A
 
-    subgraph Use Cases
-        B[Use Cases]
-    end
-
-    subgraph Entities
-        A[Entities]
-    end
-
-    E -- "Calls" --> C
-    C -- "Calls" --> B
-    B -- "Uses" --> A
-    B -- "Controls" --> C
-    C -- "Uses" --> E
-
-    style A fill:#ffcc99,stroke:#333
-    style B fill:#ffe6cc,stroke:#333
-    style C fill:#fff2e6,stroke:#333
-    style E fill:#ffffff,stroke:#333
-
-    A[Entities]
-    B[Use Cases]
-    C[Interface Adapters]
-    D[Frameworks & Drivers]
-
-    A --- B
-    B --- C
-    C --- D
-    D --- B
-    C --- B
-
-    subgraph "The Dependency Rule"
-        direction LR
-        a[Outer Layers]
-        b[Inner Layers]
-        a -->|"Depend on"|b
-    end
+    style A fill:#ffcc99,stroke:#333,stroke-width:2px
+    style B fill:#ffe6cc,stroke:#333,stroke-width:2px
+    style C fill:#fff2e6,stroke:#333,stroke-width:2px
+    style D fill:#ffffff,stroke:#333,stroke-width:2px
 ```
 
 1.  **Entities (Enterprise Business Rules):** The innermost circle. It contains the most general and stable business rules. An **Entity** can be an object with methods that encapsulate the application's fundamental rules, independent of any other layer. These are the core domain classes.
 2.  **Use Cases (Application Business Rules):** This circle contains the business logic specific to the application. It orchestrates the flow of data to and from the **Entities**. **Use Cases** are invoked by **controllers** to perform specific tasks (e.g., create a new user, validate an order).
-3.  **Interface Adapters (Gateways, Controllers, Presenters):** This layer is a set of adapters that convert data between external formats (database, **web request**) and the internal formats used by the **Use Cases** and **Entities**. This is where you find **controllers**, **presenters**, and **gateways** to interact with external services.
+3.  **Interface Adapters (Gateways, Controllers, Presenters):** This layer's primary role is to **adapt** data from the format most convenient for external agencies (like a database or the web) to the format most convenient for the core business logic (Use Cases and Entities). It is a set of adapters that convert data and includes components like **controllers**, **presenters**, and **gateways**.
 4.  **Frameworks & Drivers (Web, DB, Devices):** The outermost circle, it contains implementation details. Web frameworks, databases, **ORMs**, the UI, etc. These are the least important elements for the business logic.
 
 **The Dependency Rule:** Dependencies must only point inward. No inner layer should have knowledge of an outer layer. For example, a **Use Case** should not know that its data is stored in a **SQL** database via a specific **ORM**. This is managed by the **[[solid|Dependency Inversion Principle]]**.
@@ -80,7 +57,7 @@ graph TD
 1.  The UI or a **Framework** (the outermost layer) detects a user action.
 2.  A **Controller** (in the **Interface Adapters** layer) receives the request and converts it into an internal data format. It then calls the appropriate **Use Case**, passing this data.
 3.  The **Use Case** executes the application's business logic. It may interact with one or more **Entities** and use a **Gateway** to persist or retrieve data, without concern for the underlying mechanism (e.g., whether it's a database, a file, or an external API).
-4.  **Gateways** (in the **Interface Adapters** layer) manage the interaction with the external world, such as a database. They implement an interface defined in the **Use Cases** layer (**Dependency Inversion**).
+4.  **Gateways** (in the **Interface Adapters** layer) manage the interaction with the external world. Crucially, they implement an interface defined by and belonging to the **Use Cases** layer. This inverts the flow of control: the inner layer dictates the contract that the outer layer must fulfill, which is the essence of the **Dependency Inversion Principle**.
 5.  Once the business logic is complete, the **Use Case** returns the result to the **Controller**.
 6.  The **Controller** uses a **Presenter** (in the **Interface Adapters** layer) to format the output data for the UI, and the UI displays the result to the user.
 

@@ -7,13 +7,35 @@ date: 2025-09-16
 ---
 # The CAP Theorem
 
-The **CAP theorem** is a fundamental [[software-architecture/architectural-principles/|architectural principle]] in distributed computing that states a distributed data system can only guarantee a maximum of two out of the following three properties at the same time:
+The **CAP theorem** is a fundamental principle in distributed systems design. While often summarized as "you can only pick two out of three," a more precise statement is: **in the presence of a network partition (P), a distributed system must choose between Consistency (C) and Availability (A).**
 
-- **Consistency (C):** All clients see the same data at the same time, regardless of which node they connect to. Every read receives the most recent write. This is like a single, unified source of truth for all data.
-- **Availability (A):** Every client request receives a response, without a guarantee that it contains the most recent data. The system remains operational and responsive even if some nodes fail.
-- **Partition Tolerance (P):** The system continues to function despite communication failures between its nodes. A network "partition" occurs when a failure isolates a node or group of nodes from the rest of the network.
+```mermaid
+graph TD
+    subgraph CAP Theorem
+        C(C: Consistency)
+        A(A: Availability)
+        P(P: Partition Tolerance)
+    end
 
-In a real-world distributed system, network partitions are an inevitable fact of life. Because of this, the CAP theorem effectively forces a choice between **Consistency** and **Availability** in the event of a partition. A system designer must decide which property is more critical for their application, as it is impossible to have both while maintaining partition tolerance.
+    subgraph "Choices during a Partition"
+        CP(CP: Consistent but not Available)
+        AP(AP: Available but not Consistent)
+    end
+
+    C --- P
+    A --- P
+    P -.-> CP
+    P -.-> AP
+
+    style CP fill:#e6f2ff,stroke:#333
+    style AP fill:#e6ffe6,stroke:#333
+```
+
+- **Consistency (C):** Every read receives the most recent write or an error. This ensures that all clients see the same data at the same time, regardless of which node they connect to. This is also known as **strong consistency** or linearizability.
+- **Availability (A):** Every request receives a (non-error) response, without the guarantee that it contains the most recent write. The system remains operational and responsive even if some nodes are down.
+- **Partition Tolerance (P):** The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes. In modern distributed systems, **partition tolerance is not a choice; it is a necessity.** Network failures will happen.
+
+Therefore, the theorem forces a trade-off between C and A. When a network partition occurs, you must decide: do you cancel the operation to ensure consistency (making the system unavailable), or do you proceed with the operation and risk data inconsistency (keeping the system available)?
 
 ---
 
@@ -56,6 +78,17 @@ The choice between Consistency and Availability is a critical architectural deci
 ### The Theoretical Case: CA (Consistency & Availability)
 
 A system that guarantees both consistency and availability is only possible if it **does not tolerate partitions**. This means it is a [[monolithic|single-node system]] where there is no risk of communication failure between different parts. If that single node fails, the entire system becomes unavailable. This is why the CA model is largely considered a theoretical impossibility for modern, distributed systems.
+
+---
+
+## Beyond CAP: The PACELC Theorem
+
+A limitation of the CAP theorem is that it only describes the trade-off during a network partition. The **PACELC theorem**, proposed by Daniel Abadi, provides a more complete model. It states:
+
+*   If there is a **P**artition, a system must choose between **A**vailability and **C**onsistency.
+*   **E**lse (during normal operation), a system must choose between **L**atency and **C**onsistency.
+
+The "Else" part is critical: even without a partition, a system often has to trade lower latency for weaker consistency. For example, to achieve strong consistency, a write operation may need to be replicated to multiple nodes and confirmed before returning a success message, which increases latency. An eventually consistent system can respond faster (lower latency) by writing to a single node and replicating in the background.
 
 ## **Resources & Links**
 

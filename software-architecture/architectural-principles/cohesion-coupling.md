@@ -7,12 +7,25 @@ date: 2025-09-17
 ---
 # Cohesion & Coupling
 
-In software engineering, **cohesion** and **coupling** are two fundamental [[software-architecture/architectural-principles/|architectural principles]] used to evaluate the quality of an architecture. Together, they determine a system's robustness and flexibility. The goal of good design is to achieve **high cohesion** and **low coupling**.
+In software engineering, **cohesion** and **coupling** are two of the most important principles for evaluating the quality of a software architecture. The goal of a good design is to achieve **high cohesion** and **low coupling**.
+
+```mermaid
+quadrantChart
+    title Cohesion vs. Coupling
+    x-axis Low Coupling --> High Coupling
+    y-axis Low Cohesion --> High Cohesion
+    quadrant-1 Unmaintainable
+    quadrant-2 Difficult to Reuse
+    quadrant-3 Ideal
+    quadrant-4 Hard to Maintain
+    points
+    Ideal, [0.8, 0.8]
+```
 
 | **Concept** | **Definition** | **Analogy** | **Goal** |
 | :--- | :--- | :--- | :--- |
-| **Cohesion** | A measure of how well a module's internal elements are united to accomplish a single, well-defined task. | The unity of a football team. Each player has a specific function that contributes to the common goal. | **High** |
-| **Coupling** | The degree of interdependence between different modules. | The connections between a train's cars. Strong links (high coupling) can limit flexibility. | **Low** |
+| **Cohesion** | A measure of how well the internal elements of a module are related and focused on a single, well-defined task. | The unity of a football team. Each player has a specific function that contributes to the common goal. | **High** |
+| **Coupling** | The degree of interdependence between different modules. It measures how much a change in one module will affect others. | The connections between a train's cars. Strong links (high coupling) can limit flexibility and cause a ripple effect when changes are made. | **Low** |
 
 ---
 
@@ -75,10 +88,10 @@ Coupling measures the degree of interdependence between modules. Low coupling is
 
 Cohesion and coupling are inversely related and are two sides of the same architectural coin.
 
-* **High Cohesion → Low Coupling**: A module with a single, well-defined responsibility is autonomous. It needs less information from the outside and interacts with others in a simple way, which reduces dependencies.
-* **Low Cohesion → High Coupling**: A module that does many unrelated things often needs to rely on other modules to perform its various tasks, creating complex and fragile dependencies.
+* **High Cohesion → Low Coupling**: A module with a single, well-defined responsibility (**high cohesion**, following the SRP) is more autonomous. It needs less information from the outside and interacts with others in a simple, well-defined way, which naturally leads to **low coupling**.
+* **Low Cohesion → High Coupling**: A module that does many unrelated things (**low cohesion**) often needs to rely on other modules to perform its various tasks, creating a complex and fragile web of dependencies (**high coupling**).
 
-Striving for high cohesion and low coupling leads to systems that are **maintainable** (bugs are easier to isolate), **reusable** (modules are independent units that can be used elsewhere), and **scalable** (changes are localized). As an architect, the goal is to design modules that are like "black boxes": you know what they do (**high cohesion**) and how to interact with them (**low coupling**), without worrying about their internal workings.
+Striving for high cohesion and low coupling leads to systems that are **maintainable**, **reusable**, and **scalable**. Principles like **[[solid|SOLID]]** are tools to achieve this. For example, the **[[solid#Single Responsibility Principle (SRP)|SRP]]** is a direct path to high cohesion, while the **[[solid#Dependency Inversion Principle (DIP)|DIP]]** is a powerful technique for achieving low coupling by depending on abstractions instead of concrete implementations. In modern architectures like **[[microservices]]**, these principles are paramount: a well-designed microservice is, by definition, a highly cohesive unit of functionality that is loosely coupled with other services.
 
 ---
 

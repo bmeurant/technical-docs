@@ -28,8 +28,11 @@ graph TD
 ```
 
 1.  **Source (or Pump)**: The origin point of the data. It can be a file, a network request, a sensor, etc. It initiates the flow.
-2.  **Filter**: An autonomous processing component that receives data from an input pipe, performs a transformation, and writes the result to an output pipe.
-3.  **Pipe**: The connector that links the filters. It handles the asynchronous transport of data, often via a buffer ([[message-queue|queue]]), allowing filters to work at their own pace.
+2.  **Filter**: An autonomous processing component that performs a specific transformation. Common filter types include:
+    *   **Transformer:** Modifies the input data (e.g., converting format, encrypting).
+    *   **Tester:** Checks data against one or more criteria and may discard it or route it differently.
+    *   **Aggregator:** Collects and combines multiple data points into one.
+3.  **Pipe**: The connector that links the filters. It is a unidirectional channel that moves data from one filter to the next. In distributed systems, a pipe is often implemented with a **[[asynchronous-messaging|Message Queue]]** to provide buffering and asynchronicity.
 4.  **Sink**: The final destination for the data after it has passed through the entire filter chain. Examples: a database, a file, a user interface.
 
 **Typical Data Flow:**
@@ -37,6 +40,16 @@ graph TD
 *   **Filter A** reads data from the pipe as soon as it is available, processes it (e.g., validation), and writes the result to **Pipe 1**. Filter A can start its work before the Source has finished producing all the data.
 *   The process repeats for each filter in the chain (**Filter B**, **Filter C**), with each filter potentially running in parallel on a different batch of data.
 *   The **Sink** consumes the final data from the last pipe and stores or displays it.
+
+---
+
+## Implementation Models: Push vs. Pull
+
+The data flow through the pipeline can be managed in two ways:
+
+*   **Push Sequence:** The pipeline is driven by the data source. The `Source` "pushes" data down the pipeline. Each `Filter` receives data, processes it, and immediately pushes the result to the next filter. This model is simple to implement but can cause a filter to be overwhelmed if the preceding filter produces data faster than it can consume it.
+
+*   **Pull Sequence:** The pipeline is driven by the data sink. The `Sink` "pulls" data by requesting it from the last filter. This request propagates up the pipeline, with each filter pulling data from its predecessor as needed. This model gives the consumer control over the data flow rate but can be more complex to coordinate.
 
 ---
 

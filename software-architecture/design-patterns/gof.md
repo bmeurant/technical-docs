@@ -76,7 +76,7 @@ date: 2025-09-21
 #### **Abstract Factory**
 
 * **Problem**: How to provide an interface for creating families of related or dependent objects without specifying their concrete classes?
-* **Synopsis**: The **Abstract Factory** pattern creates a "super-factory" that groups individual factories together without specifying their concrete classes. It provides a way to create a family of objects that belong together without specifying their concrete classes.
+* **Synopsis**: The **Abstract Factory** pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes. The client is configured with a concrete factory and uses its methods to create product objects. This ensures that the client receives a consistent family of products (e.g., UI elements for a specific operating system) without being coupled to the concrete product classes.
 
     ```mermaid
     classDiagram
@@ -133,7 +133,7 @@ date: 2025-09-21
 #### **Builder**
 
 * **Problem**: How to separate the construction of a complex object from its representation, so that the same construction process can create different representations?
-* **Synopsis**: The **Builder** pattern provides a step-by-step approach to creating a complex object. It allows you to build different variations of an object by using the same construction process.
+* **Synopsis**: The **Builder** pattern separates the construction of a complex object from its representation. It uses a `Builder` object to construct a `Product` step-by-step, and a `Director` to control the construction process. The client creates a `ConcreteBuilder` instance, passes it to the `Director`, and then retrieves the final `Product` from the `Builder`. This allows for different representations of the `Product` to be created using the same construction logic.
 
     ```mermaid
     classDiagram
@@ -318,7 +318,7 @@ date: 2025-09-21
     * **Uniformity**: The client can treat individual objects and compositions uniformly.
     * **Recursion**: Operations can be performed recursively on the entire hierarchy.
 * **Applicability**: Representing part-whole hierarchies such as file systems, graphical user interface elements, or an organizational chart.
-* **Limitations and Challenges**: The `Composite` can introduce unnecessary complexity for a simple, flat structure. It can also be challenging to restrict the types of components that can be added to a composite.
+* **Limitations and Challenges**: The `Composite` can introduce unnecessary complexity for a simple, flat structure. A key design decision is whether to define child management operations (`add`, `remove`) in the `Component` interface (transparent) or only in the `Composite` class (safe). The transparent approach (shown here) allows clients to treat leaves and composites uniformly but forces leaves to implement methods they don't support, potentially violating the **[[solid|Interface Segregation Principle]]**.
 
 #### **Decorator**
 
@@ -633,7 +633,7 @@ date: 2025-09-21
 #### **Memento**
 
 * **Problem**: How to capture and externalize an object's internal state without violating encapsulation, so that the object can be restored to this state later?
-* **Synopsis**: The **Memento** pattern provides a way to save and restore an object's state. It involves a `Caretaker` that stores a `Memento` object, which holds a snapshot of an `Originator`'s state. The `Caretaker` cannot access the `Memento`'s content, preserving encapsulation.
+* **Synopsis**: The **Memento** pattern provides a way to save and restore an object's state without violating its encapsulation. It involves three roles: the `Originator` (the object with the state), the `Caretaker` (which stores the state), and the `Memento` (the state snapshot). The `Caretaker` holds onto the `Memento` but treats it as an opaque token, ensuring it cannot access the originator's internal data.
 
     ```mermaid
     classDiagram
@@ -656,9 +656,9 @@ date: 2025-09-21
     The diagram shows the `Originator` object creating a `Memento` with its current state. The `Caretaker` receives this `Memento` and stores it. Later, the `Caretaker` can pass the `Memento` back to the `Originator` to restore its state. The `Caretaker` cannot access the `Memento`'s internal state, upholding encapsulation.
 
 * **Key Characteristics**:
-    * **State Saving**: Allows for saving an object's state.
-    * **Encapsulation**: The internal state of the `Memento` is not exposed to the outside world.
-    * **Undo/Redo**: Enables functionality like undoing and redoing operations.
+    * **Encapsulation Preservation**: The `Caretaker` cannot access the `Memento`'s content, only the `Originator` can. This preserves the `Originator`'s encapsulation.
+    * **State Snapshot**: The `Memento` acts as a snapshot of the `Originator`'s state at a specific point in time.
+    * **Simplified Originator**: The `Originator` does not need to manage the history of its states; this responsibility is delegated to the `Caretaker`.
 * **Applicability**: Implementing undo/redo features, creating save points in a game, or any system requiring a history of object states.
 * **Limitations and Challenges**: The `Memento` object can be very large if the originator's state is big, potentially consuming significant memory.
 
@@ -802,7 +802,7 @@ date: 2025-09-21
     classDiagram
         class Client
         class Element {
-            lt;&lt;interface&gt;&gt;
+            <<interface>>
             +accept(Visitor)
         }
         class ElementA {
@@ -812,7 +812,7 @@ date: 2025-09-21
             +accept(Visitor)
         }
         class Visitor {
-            lt;&lt;interface&gt;&gt;
+            <<interface>>
             +visit(ElementA)
             +visit(ElementB)
         }

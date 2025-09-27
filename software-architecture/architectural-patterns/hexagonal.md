@@ -12,9 +12,10 @@ date: 2025-09-23
 * **Core Principles:**
     * **Isolation of the Business Core:** The business logic and rules of the application are at the center of the architecture and are independent of any infrastructure technology. The application's core contains only pure business code.
     * **Ports and Adapters:** Communication with the outside world occurs via "ports" and "adapters".
-        * **Ports:** These are **interfaces** or contracts that define how the application's core communicates with the outside. There are two types of ports:
-            * **Driving Ports (or API):** These ports are consumed by external actors (clients, UI). They represent the functionalities the application exposes. For example, an `IStockService` with an `addToStock(item)` method.
-            * **Driven Ports (or SPI):** These ports are used by the application's core to interact with external services. For example, an `IStockRepository` with a `save(item)` method.
+    * **The Dependency Rule:** All dependencies must point **inward**, toward the application core. The core business logic knows nothing about the outside world (e.g., databases, UI frameworks). This is achieved by applying the **[[solid|Dependency Inversion Principle]]**: the core defines the interfaces (ports), and the external components (adapters) implement them.
+        * **Ports:** These are interfaces owned by the application core that define its communication contracts. They are the only entry and exit points to the hexagon.
+            * **Driving Ports (Primary Ports or Application API):** These interfaces define the public API of the application. They are the entry points called by external actors (e.g., a UI or a test script) to interact with the application. They answer the question, "What can the application do?"
+            * **Driven Ports (Secondary Ports or SPI):** These interfaces define the requirements that the application core has for the outside world. They are the exit points used by the core to get data from or send data to external systems (e.g., a database). They are essentially callbacks and represent a Service Provider Interface (SPI) that the outside world must implement.
         * **Adapters:** These are the concrete implementations of the ports. They translate requests between the outside world and the application's core interfaces.
             * **Driving Adapters:** They call the "driving port". For example, a `RESTController` or a `CLI` that translates an HTTP request or a command into a method call on the application's interface.
             * **Driven Adapters:** They implement the "driven port". For example, a `JpaStockRepository` or an `InMemoryStockRepository` that manages data persistence.
@@ -23,7 +24,7 @@ date: 2025-09-23
 
 ## **Key Components and Communication Flow**
 
-The model is often visualized as a **hexagon**, symbolizing the application's core, with ports as facets of the hexagon and adapters as plugins that connect to it.
+The model is often visualized as a **hexagon**. The shape is not arbitrary; Alistair Cockburn chose it to emphasize that there can be multiple "ports" on the sides of the application core, not just the four sides of a traditional layered diagram (top, bottom, left, right). It symbolizes the ability to add new kinds of adapters as needed without disturbing the core.
 
 ```mermaid
 flowchart TD
@@ -75,6 +76,7 @@ flowchart TD
     * **Clarity of Design:** The architecture forces the separation of business code from infrastructure, making the code more readable and easier to maintain. The focus is on the **domain model**, which aligns with the principles of **Domain-Driven Design (DDD)**.
 * **Challenges:**
     * **Initial Complexity:** The pattern can be excessive for simple applications. Setting up interfaces and multiple layers might seem "over-engineered" for a small project.
+    * **Risk of Leaky Abstractions:** It is critical to ensure that no infrastructure-specific details (like database annotations or framework-specific classes) "leak" into the application core. The ports must use plain, technology-agnostic data structures.
     * **Concept of Ports and Adapters:** Understanding the concepts of **[[solid|Dependency Inversion]]** and interfaces is crucial. A poor implementation can turn the adapters into simple "glue code" without real benefits.
 
 ---

@@ -21,34 +21,27 @@ The **Onion Architecture**, proposed by Jeffrey Palermo in 2008, is a software a
 
 ```mermaid
 graph TD
-    subgraph UI/Infrastructure
-        A[Web UI]
-        B[REST API]
+    subgraph Outer Layer - Infrastructure
+        D(Infrastructure <br> UI, Database, Tests)
+    end
+    subgraph Application Layer
+        C(Application Services)
+    end
+    subgraph Domain Services Layer
+        B(Domain Services)
+    end
+    subgraph Core Domain Layer
+        A(Domain Model <br> Entities, Value Objects, Interfaces)
     end
 
-    subgraph Application Services
-        C[Application Services]
-    end
+    D -- "Dependency" --> C
+    C -- "Dependency" --> B
+    B -- "Dependency" --> A
 
-    subgraph Domain Services
-        D[Domain Services]
-    end
-
-    subgraph Core Domain
-        E[Entities]
-        F[Repositories Interfaces]
-    end
-
-    subgraph Repositories Impl
-        G[Database Repositories]
-    end
-
-    A -- "Calls" --> C
-    B -- "Calls" --> C
-    C -- "Uses" --> D
-    D -- "Uses" --> E
-    D -- "Uses" --> F
-    G -- "Implements" --> F
+    style A fill:#ffcc99,stroke:#333,stroke-width:2px
+    style B fill:#ffe6cc,stroke:#333,stroke-width:2px
+    style C fill:#fff2e6,stroke:#333,stroke-width:2px
+    style D fill:#ffffff,stroke:#333,stroke-width:2px
 ```
 
 1.  **Core Domain (Core):** Contains the most critical entities and business rules. It is the heart of the application and depends on nothing else. It defines interfaces for **repositories** for outer layers to implement.
@@ -59,7 +52,7 @@ graph TD
 **Typical Data Flow:**
 * The user interface (e.g., a **REST** controller) calls an **application service**.
 * The **application service** uses the **domain services** and the **repository** interfaces to execute the **use case**.
-* The **repository** implementations in the infrastructure layer (e.g., a **JPA** class) handle data persistence in a database.
+* The **repository** implementations in the infrastructure layer (e.g., a **JPA** class) handle data persistence. Crucially, these implementations conform to the repository *interfaces* defined in the Core Domain. This inverts the control flow, ensuring the core remains independent of the database technology.
 * Dependencies are inverted: the application layer depends on the domain layer, but the domain layer depends on nothing else.
 
 ---
@@ -73,8 +66,8 @@ graph TD
 
 * **Challenges:**
     * **Complexity and Overhead:** For simple applications, setting up all the layers can seem like overkill. The architecture introduces additional complexity and **boilerplate code**.
+    * **Risk of Anemic Domain Model:** A common pitfall is placing all business logic in the "services" layers, leaving the core "domain model" as just a collection of data structures (an anemic domain). This defeats the purpose of the architecture. The core domain entities should encapsulate as much business logic as possible.
     * **Learning Curve:** The principle of dependency inversion and the layered structure can be difficult for less experienced teams to master.
-    * **Performance Overhead:** In some extreme cases, the extra layers may introduce a slight performance overhead, though this is usually negligible compared to the maintainability benefits.
 
 ---
 

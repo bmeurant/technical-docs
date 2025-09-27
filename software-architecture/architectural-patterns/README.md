@@ -15,7 +15,7 @@ see [index](./index.md)
 
 ## Communication
 
-* **[Message Queues / Streams Pattern](./message-queue.md)**
+* **[Asynchronous Messaging Patterns](./asynchronous-messaging.md)**
 * **[Publish Subscribe Pattern](./publish-subscribe.md)**
 * **[Broker Pattern](./broker.md)**
 

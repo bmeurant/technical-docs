@@ -19,7 +19,7 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 
 ## 1. Single Responsibility Principle (SRP)
 
-**The Principle:** A class should have only one reason to change. Its purpose is to keep classes focused and cohesive, preventing them from becoming "God objects" that are difficult to manage.
+**The Principle:** A class should have only one reason to change, which means it should have only one responsibility or be responsible to a single "actor" (a user, a stakeholder, or another system). This keeps classes focused and cohesive, preventing them from becoming "God objects" that are difficult to manage.
 
 **Example:** Imagine a class named `User` that is responsible for handling user data, sending email notifications, and generating PDF reports. This class violates the SRP because it has three reasons to change: if the user data structure changes, if the email service changes, or if the PDF report format changes. To adhere to the principle, these responsibilities should be separated into individual classes, such as `UserData`, `EmailService`, and `ReportGenerator`.
 
@@ -37,7 +37,9 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 
 **The Principle:** Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. It ensures that inheritance is used correctly based on behavior rather than just a conceptual "is-a" relationship.
 
-**Example:** Consider a base `Bird` class with a `fly()` method. It would seem logical to create a subclass `Ostrich` that inherits from `Bird`. However, a program that expects a `Bird` and calls the `fly()` method would fail or behave unpredictably when given an `Ostrich` object, as ostriches can't fly.  The `Ostrich`, as a subtype, violates the implicit contract of its parent. The LSP teaches us that if a subtype can't behave as its parent, the inheritance relationship is a poor design choice.
+**Example:** The classic example is the `Rectangle` and `Square` problem. Let's say you have a `Rectangle` class with `setWidth()` and `setHeight()` methods. A `Square` class might inherit from `Rectangle`. However, a `Square` must maintain the property that its width and height are always equal. If you set the width of a `Square` object, its height must also change.
+
+A function that takes a `Rectangle` and sets its width to 5 and its height to 10 would expect the final area to be 50. If you pass a `Square` object to this function, setting the width to 5 would also set the height to 5. Then, setting the height to 10 would also set the width to 10. The final area would be 100, which violates the expected behavior of the `Rectangle` superclass. The `Square` is not substitutable for a `Rectangle`, thus violating the LSP.
 
 ---
 
@@ -54,6 +56,8 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 **The Principle:**
 1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
 2. Abstractions should not depend on details. Details should depend on abstractions.
+
+This principle is the key mechanism that enables the decoupling in domain-centric architectures like **[[hexagonal|Hexagonal]]**, **[[onion|Onion]]**, and **[[clean|Clean Architecture]]**.
 
 **Example:** A high-level `PaymentService` module needs to log transaction details. A violation of the DIP occurs if `PaymentService` directly depends on a specific `FileLogger` class. If you want to change the logging method to a database or a cloud service, you must modify the `PaymentService` code. To follow the DIP, both the `PaymentService` and the `FileLogger` would depend on an `ILogger` interface. The `PaymentService` would use the `ILogger` interface, and the `FileLogger` (or a new `DatabaseLogger`) would implement it. This inverts the dependency, allowing you to change the low-level details without touching the high-level business logic.
 
