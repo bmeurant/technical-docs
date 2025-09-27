@@ -7,7 +7,7 @@ date: 2025-09-21
 ---
 # **The Broker Pattern**
 
-The Broker architectural pattern is a design for distributed systems that decouples components by using a central intermediary—the **Broker**. Its primary purpose is to manage communication between different parts of a system, so that components do not need to know about each other's location, implementation, or even existence.
+The Broker architectural pattern is an [[software-architecture/architectural-patterns/|architectural pattern]] for distributed systems that decouples components by using a central intermediary—the **Broker**. Its primary purpose is to manage communication between different parts of a system, so that components do not need to know about each other's location, implementation, or even existence.
 
 The Broker can facilitate two main styles of communication:
 *   **Synchronous (Request-Reply):** The Broker acts as a service directory or a proxy, routing a client's request to a specific server and returning the response. An **API Gateway** is a modern example of a synchronous broker.

@@ -7,7 +7,7 @@ date: 2025-09-20
 ---
 # **Publish-Subscribe Pattern**
 
-The **Publish-Subscribe** (or Pub/Sub) pattern is one of the two primary models for [[asynchronous-messaging|asynchronous messaging]]. It enables one-to-many, broadcast-style communication where message senders (**Publishers**) are completely decoupled from message receivers (**Subscribers**).
+The **Publish-Subscribe** (or Pub/Sub) [[software-architecture/architectural-patterns/|architectural pattern]] is one of the two primary models for [[asynchronous-messaging|asynchronous messaging]]. It enables one-to-many, broadcast-style communication where message senders (**Publishers**) are completely decoupled from message receivers (**Subscribers**).
 
 Communication is organized by **topics** (sometimes called channels). Publishers send messages to a topic on a central **[[broker]]**, and all subscribers interested in that topic receive a copy of the message. This pattern is foundational to building scalable, [[event-driven]] systems.
 

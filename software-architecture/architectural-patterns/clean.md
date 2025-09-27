@@ -7,7 +7,7 @@ date: 2025-09-25
 
 # **Clean Architecture**
 
-**Clean Architecture** is a software architecture that focuses on separating concerns by organizing code into concentric layers. The main goal is to create systems whose most important parts (the **business rules**) are independent of external implementation details, such as frameworks, databases, user interfaces, or external services.
+**Clean Architecture** is a software [[software-architecture/architectural-patterns/|architectural pattern]] that focuses on separating concerns by organizing code into concentric layers. The main goal is to create systems whose most important parts (the **business rules**) are independent of external implementation details, such as frameworks, databases, user interfaces, or external services.
 
 * **Core Principles (The Rules):**
     * **Framework Independence:** The system does not depend on external libraries or frameworks. They can be replaced or modified without impacting the core **business rules** of the application.

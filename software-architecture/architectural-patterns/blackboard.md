@@ -8,7 +8,7 @@ date: 2025-09-19
 ---
 # **The Blackboard Architectural Pattern**
 
-The **Blackboard Pattern** is a specialized architectural pattern for solving complex problems where a deterministic solution path is not known in advance. The pattern gets its name from the physical analogy of a group of human experts collaborating to solve a problem by writing on a shared blackboard. Each expert watches the blackboard for new information and adds their own contributions, gradually building towards a solution.
+The **Blackboard Pattern** is a specialized [[software-architecture/architectural-patterns/|architectural pattern]] for solving complex problems where a deterministic solution path is not known in advance. The pattern gets its name from the physical analogy of a group of human experts collaborating to solve a problem by writing on a shared blackboard. Each expert watches the blackboard for new information and adds their own contributions, gradually building towards a solution.
 
 This model is particularly suited for complex, opportunistic problem-solving systems, such as in Artificial Intelligence, sensor data fusion, and speech recognition.
 

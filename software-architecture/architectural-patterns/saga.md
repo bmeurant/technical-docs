@@ -7,7 +7,7 @@ date: 2025-09-27
 ---
 # Saga Pattern
 
-The **Saga** pattern is a design pattern for managing data consistency in a distributed [[software-architecture/architectural-styles/microservices|microservices architecture]]. It provides a way to handle long-lived transactions (LLTs) that span multiple services without relying on traditional two-phase commit (2PC) protocols, which are often impractical in a distributed environment due to their locking nature. A saga is a sequence of local transactions where each transaction updates the database within a single service and publishes an event or message that triggers the next transaction in the saga.
+The **Saga** pattern is an [[software-architecture/architectural-patterns/|architectural pattern]] for managing data consistency in a distributed [[microservices|microservices architecture]]. It provides a way to handle long-lived transactions (LLTs) that span multiple services without relying on traditional two-phase commit (2PC) protocols, which are often impractical in a distributed environment due to their locking nature. A saga is a sequence of local transactions where each transaction updates the database within a single service and publishes an event or message that triggers the next transaction in the saga.
 
 * **Core Principles:**
     *   **Sequence of Local Transactions:** A saga is composed of a series of atomic, local transactions, where each one is executed by a different service.

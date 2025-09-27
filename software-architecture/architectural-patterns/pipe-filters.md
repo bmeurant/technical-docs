@@ -6,7 +6,7 @@ date: 2025-09-25
 ---
 # Pipe and Filters Pattern
 
-The **Pipe and Filters** is an architectural pattern that decomposes a data processing task into a series of independent and reusable processing steps, called **Filters**. These filters are connected by unidirectional communication channels called **Pipes**, which transport a stream of data.
+The **Pipe and Filters** is an [[software-architecture/architectural-patterns/|architectural pattern]] that decomposes a data processing task into a series of independent and reusable processing steps, called **Filters**. These filters are connected by unidirectional communication channels called **Pipes**, which transport a stream of data.
 
 * **Core Principles:**
     * **Modularity and [[solid|Single Responsibility]]:** Each filter performs a unique and specific transformation. It is unaware of the other filters in the chain.
