@@ -24,7 +24,7 @@ There are two primary ways to structure an event-driven architecture:
 
 ### 1. Broker Topology (Choreography)
 
-This is the most common and decentralized approach. There is no central orchestrator; each service is "smart" enough to know which events it should listen to and how to react. The system's workflow emerges from the independent actions of its components. This is often described as **"smart endpoints and dumb pipes."**
+This is the most common and decentralized approach, and it is a direct implementation of the **[[publish-subscribe|Publish-Subscribe]]** pattern. There is no central orchestrator; each service is "smart" enough to know which events it should listen to and how to react. The system's workflow emerges from the independent actions of its components. This is often described as **"smart endpoints and dumb pipes."**
 
 ```mermaid
 graph TD
@@ -105,7 +105,7 @@ graph TD
 
 ---
 
-## Related Patterns, Concepts and Variationsand Concepts
+## Related Patterns, Concepts and Variations
 
 EDA is often implemented using other patterns that define how events are structured and used.
 
@@ -116,7 +116,7 @@ EDA is often implemented using other patterns that define how events are structu
 
 ### Related Architectural Patterns
 
-*   **Event Sourcing:** A pattern where all changes to an application's state are stored as a sequence of immutable events. Instead of storing the current state of a domain object, you store the history of events that led to that state. This provides a full audit log and allows for powerful temporal queries.
+*   **[[event-sourcing|Event Sourcing]]:** A pattern where all changes to an application's state are stored as a sequence of immutable events. Instead of storing the current state of a domain object, you store the history of events that led to that state. This provides a full audit log and allows for powerful temporal queries.
 *   **CQRS (Command and Query Responsibility Segregation):** EDA is a natural fit for CQRS. After a **Command** modifies data, an event is published. The **Query** side of the system can then subscribe to these events to update its own read-optimized data store.
 
 ---

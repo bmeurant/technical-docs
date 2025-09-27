@@ -95,7 +95,7 @@ While the terms "Topic" and "Stream" are often used interchangeably, there is a 
 *   **Event Stream (Log-based Pub/Sub):** An event stream is a durable, ordered, and replayable sequence of events. It acts more like a log file than a simple message channel.
     *   **Durability:** Events are not deleted after being consumed. They are stored for a configurable period (e.g., days or forever), creating a persistent record of what happened.
     *   **Replayability:** New subscribers can join at any time and choose to read events from the very beginning of the stream, or from any other point in time. This allows for rebuilding state or adding new services that can process historical data.
-    *   **Ordering:** Events within a partition of the stream are strictly ordered, which is critical for stateful processing and event sourcing.
+    *   **Ordering:** Events within a partition of the stream are strictly ordered, which is critical for stateful processing and [[event-sourcing|event sourcing]].
 
 This "log-based" approach has made event streams the backbone of modern [[event-driven]] architectures and real-time [[pipe-filters|data processing]] systems.
 

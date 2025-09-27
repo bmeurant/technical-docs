@@ -7,7 +7,7 @@ date: 2025-09-15
 ---
 # Layered Architecture
 
-The **Layered Architecture** is one of the most common and foundational architectural styles, serving as the default starting point for many applications. It organizes an application by grouping related functionality into stacked, horizontal layers. Each layer has a specific responsibility and should ideally only communicate with the layer directly below it.
+The **Layered Architecture** is one of the most common and foundational [[software-architecture/architectural-styles/|architectural style]], serving as the default starting point for many applications. It organizes an application by grouping related functionality into stacked, horizontal layers. Each layer has a specific responsibility and should ideally only communicate with the layer directly below it.
 
 * **Core Principles:**
     * **Separation of Concerns:** Each layer is responsible for a specific concern (e.g., presentation, business logic, data access). This makes the system easier to understand and maintain.
