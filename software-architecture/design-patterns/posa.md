@@ -780,7 +780,6 @@ graph TD
     A2_E(Deployment and Infrastructure);
     A2_E --> E1(Sidecar);
     A2_E --> E2(Ambassador);
-    A2_E --> E3(Service Mesh);
 ```
 
 #### Sidecar
@@ -817,7 +816,7 @@ graph TD
     * **Encapsulation of Concerns**: The sidecar encapsulates cross-cutting concerns (e.g., observability, security, routing), keeping the main application's code clean and focused on its core business logic.
     * **Language Agnostic**: The sidecar can be written in a different programming language than the main application, allowing teams to use the best tool for each job.
 * **Applicability**:
-    * **Service Mesh**: Sidecars are the fundamental building block of a **[[#service-mesh|Service Mesh]]**. A sidecar proxy (like Envoy or Linkerd) is deployed alongside each service instance to handle inter-service communication, routing, and security.
+    * **Service Mesh**: Sidecars are the fundamental building block of a **[[service-mesh|Service Mesh]]**. A sidecar proxy (like Envoy or Linkerd) is deployed alongside each service instance to handle inter-service communication, routing, and security.
     * **Logging and Monitoring**: A sidecar can collect logs and metrics from the main application and forward them to a centralized logging/monitoring system.
     * **Security**: A sidecar can handle tasks like TLS termination, authentication, and authorization, offloading these concerns from the application.
     * **Configuration Management**: A sidecar can fetch configuration data from a central store and provide it to the main application, often through a shared file.
@@ -827,7 +826,7 @@ graph TD
     * **Latency**: Communication between the application and the sidecar (even over localhost) can introduce a small amount of latency compared to in-process communication.
     * **Testing**: End-to-end testing can be more complex as it requires running the application with its sidecar.
 * **Relationship with other patterns**:
-    * **[[#service-mesh|Service Mesh]]**: The Sidecar pattern is the core implementation detail of a **Service Mesh**. The mesh's data plane is composed of sidecar proxies deployed next to each service.
+    * **[[service-mesh|Service Mesh]]**: The Sidecar pattern is the core implementation detail of a **Service Mesh**. The mesh's data plane is composed of sidecar proxies deployed next to each service.
     * **[[#ambassador|Ambassador]]**: The [[#Ambassador|Ambassador]] pattern is a specialized type of Sidecar. While a general Sidecar augments an application, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
     * **[[#proxy|Proxy]]**: The sidecar itself is often implemented as a **Proxy**. It intercepts network traffic to and from the main application to add its functionality.
     * **[[layered|Layers]]** & **[[cohesion-coupling|Decoupling]]**: The Sidecar pattern provides a way to add a "layer" of functionality at the infrastructure level rather than in the application code, promoting better **decoupling** and **separation of concerns**.
@@ -882,74 +881,6 @@ graph TD
     * **[[#retry|Retry]]** & **[[#circuit-breaker|Circuit Breaker]]**: These resilience patterns are commonly implemented within the Ambassador, providing fault tolerance for the main application without requiring any changes to its code.
     * **[[broker|Broker]]**: In some scenarios, the Ambassador can act as a client-side **Broker**, deciding which remote service instance should handle a request.
 
-#### Service Mesh
-
-* **Problem**: In a large microservices architecture, how do you manage the complex and unreliable network communication between services? Handling service discovery, load balancing, fault tolerance, security, and observability for every service becomes a significant operational burden.
-* **Synopsis**: A **Service Mesh** is a dedicated, configurable infrastructure layer that handles inter-service communication. It provides a transparent and language-agnostic way to manage, secure, and observe services. It works by deploying a network of **[[#sidecar|Sidecar]]** proxies alongside each service instance. These proxies (the **Data Plane**) intercept all traffic between services and are centrally managed by a **Control Plane**. The Control Plane provides the policies and configuration for all the proxies in the mesh.
-
-    ```mermaid
-    graph TD
-        subgraph Control Plane
-            direction LR
-            PolicyEngine[Policy Engine]
-            ConfigAPI[Configuration API]
-            MetricsCollector[Metrics Collector]
-        end
-
-        subgraph Data Plane
-            subgraph Pod1
-                ServiceA[Service A]
-                ProxyA[Sidecar Proxy]
-                ServiceA <--> ProxyA
-            end
-            subgraph Pod2
-                ServiceB[Service B]
-                ProxyB[Sidecar Proxy]
-                ServiceB <--> ProxyB
-            end
-            subgraph Pod3
-                ServiceC[Service C]
-                ProxyC[Sidecar Proxy]
-                ServiceC <--> ProxyC
-            end
-        end
-
-        ConfigAPI -- "Pushes Config" --> ProxyA
-        ConfigAPI -- "Pushes Config" --> ProxyB
-        ConfigAPI -- "Pushes Config" --> ProxyC
-
-        ProxyA -- "Reports Telemetry" --> MetricsCollector
-        ProxyB -- "Reports Telemetry" --> MetricsCollector
-        ProxyC -- "Reports Telemetry" --> MetricsCollector
-
-        ProxyA -- "mTLS, Retries, LB" --> ProxyB
-        ProxyB -- "mTLS, Retries, LB" --> ProxyC
-
-        style Control Plane fill:#dff,stroke:#333,stroke-width:2px
-        style Data Plane fill:#fdf,stroke:#333,stroke-width:2px
-    ```
-
-* **Key Characteristics**:
-    * **Control Plane & Data Plane**: The architecture is split into a Data Plane (the sidecar proxies that handle traffic) and a Control Plane (the management layer that configures the proxies).
-    * **Transparent to Applications**: The service mesh is largely transparent to the application code. Services are unaware that their communication is being intercepted and managed by the mesh.
-    * **Centralized Management**: Provides a single point of control for managing policies related to security, routing, and observability across the entire fleet of services.
-    * **Uniform Observability**: Delivers consistent metrics, logs, and traces for all traffic within the mesh, providing deep insights into application behavior.
-* **Applicability**:
-    * **Large-Scale Microservices**: Essential for managing the complexity of communication in systems with a large number of microservices.
-    * **Polyglot Environments**: When services are written in many different languages, a service mesh provides a consistent way to manage communication without needing language-specific libraries.
-    * **High-Security Environments**: To enforce security policies like mutual TLS (mTLS) for all service-to-service communication by default.
-    * **Canary Deployments & A/B Testing**: The fine-grained traffic control capabilities are ideal for implementing advanced deployment strategies.
-* **Limitations and Challenges**:
-    * **Operational Complexity**: A service mesh is a complex distributed system in its own right. It requires expertise to deploy, manage, and troubleshoot.
-    * **Resource Overhead**: The sidecar proxies in the data plane consume additional CPU and memory for every service instance.
-    * **Latency**: The extra proxy hop for every service call introduces a small amount of latency.
-    * **Control Plane as a Single Point of Failure**: While the data plane can often continue to function if the control plane goes down, configuration changes and policy updates will not be possible.
-* **Relationship with other patterns**:
-    * **[[#sidecar|Sidecar]]**: The Service Mesh pattern is implemented *using* the [[#Sidecar|Sidecar]] pattern. The data plane of a service mesh is a network of sidecar proxies.
-    * **[[#proxy|Proxy]]**: The sidecar proxies that form the data plane are all instances of the **Proxy** pattern.
-    * **[[#ambassador|Ambassador]]**: A service mesh can be seen as a sophisticated evolution of the **Ambassador** pattern, applied systematically to *all* services in a system for both inbound and outbound traffic, and managed by a central control plane.
-    * **[[#circuit-breaker|Circuit Breaker]]**, **[[#retry|Retry]]**, **[[#timeout|Timeout]]**: A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.
-
 ---
 
 ## Other POSA Patterns
@@ -964,6 +895,7 @@ These patterns belong to other categories (architectural, etc.) but are also fun
 * [[blackboard|Blackboard]]
 * [[mvc|Model View Controler]]
 * [[microkernel|Microkernel]]
+* [[service-mesh|Service Mesh]]
 * ...
 
 ### Idioms

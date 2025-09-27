@@ -113,7 +113,7 @@ A mature microservices architecture often uses a combination of both styles: syn
 The **Microservices** architecture is not a final architecture but an approach that is combined with other patterns.
 
 * **[[event-driven|Event-Driven Architecture (EDA)]]:** Services communicate by emitting and consuming events via a **message broker** (e.g., **Kafka**, **RabbitMQ**). This promotes maximum decoupling.
-* **Service Mesh:** A dedicated infrastructure layer that handles communication between services. It provides features like **security**, **observability**, and **traffic control** (e.g., **Istio**, **Linkerd**).
+* **[[service-mesh|Service Mesh]]:** A dedicated infrastructure layer that handles communication between services. It provides features like **security**, **observability**, and **traffic control** (e.g., **Istio**, **Linkerd**).
 * **[[serverless|Serverless/Function-as-a-Service (FaaS)]]:** A variation of microservices where the service is a function executed in a [[serverless|serverless]] environment (e.g., **AWS Lambda**, **Google Cloud Functions**). This reduces **operational overhead**.
 
 This architecture is the de facto solution for modern large-scale applications and companies seeking greater agility, but it is not a universal solution. It requires a mature culture and skills in **DevOps** and **distributed systems management**.

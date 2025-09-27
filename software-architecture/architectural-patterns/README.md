@@ -18,6 +18,8 @@ see [index](./index.md)
 * **[Asynchronous Messaging Patterns](./asynchronous-messaging.md)**
 * **[Publish Subscribe Pattern](./publish-subscribe.md)**
 * **[Broker Pattern](./broker.md)**
+* **[Point-to-Point Messaging](./point-to-point-messaging.md)**
+* **[Service Mesh](./service-mesh.md)**
 
 ## Structure
 
@@ -30,3 +32,7 @@ see [index](./index.md)
 ## Data Processing
 
 * **[Pipe and Filters Pattern](./pipe-filters.md)**
+
+## Infrastructure & Deployment
+
+* **[Service Mesh](./service-mesh.md)**

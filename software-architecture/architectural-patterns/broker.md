@@ -1,5 +1,5 @@
 ---
-title: The Broker Pattern
+title: Broker Pattern
 tags:
   - communication
   - posa
@@ -89,7 +89,7 @@ The **Broker** style is a foundation for many modern, often specialized or exten
 
 * **[[message-queue|Message Brokers]]:** Technologies like **Apache Kafka**, **RabbitMQ**, or **ActiveMQ** are direct implementations of this model. They manage message queues or [[publish-subscribe|publish-subscribe (Pub/Sub)]] systems.
 * **[[soa|Service-Oriented Architecture (SOA)]]:** The broker is often implemented as an **Enterprise Service Bus (ESB)** that manages communication and orchestration between different enterprise services.
-* **[[microservices|Microservices]]:** While microservices can use direct communication (**REST**), it is very common to pair them with an **API Gateway** or a **Service Mesh** that acts as a broker for service discovery, traffic management, and security.
+* **[[microservices|Microservices]]:** While microservices can use direct communication (**REST**), it is very common to pair them with an **API Gateway** or a **[[service-mesh|Service Mesh]]** that acts as a broker for service discovery, traffic management, and security.
 
 ---
 
