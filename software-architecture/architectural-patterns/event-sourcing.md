@@ -57,9 +57,9 @@ sequenceDiagram
     * **Decoupling and Scalability:** Events can be published on a bus. Other services can subscribe to them to update read models, trigger workflows, or notify external systems, promoting a reactive and decoupled architecture.
 
 * **Challenges:**
-    * **Querying Complexity:** The event log is optimized for writing, not for reading. Answering a simple question like "What are all the active users?" may require replaying thousands of events. This problem is almost always solved by using the **CQRS** pattern.
+    * **Querying Complexity:** The event log is optimized for writing, not for reading. Answering a simple question like "What are all the active users?" may require replaying thousands of events. This problem is almost always solved by using the **[[cqrs|CQRS]]** pattern.
     * **Event Schema Evolution (Versioning):** The schema of events evolves over time. Managing different versions of the same event (e.g., a `userName` field becomes `fullName`) is a major technical challenge that requires migration or on-the-fly transformation strategies ("upcasting").
-    * **Eventual Consistency:** In an architecture with **CQRS**, the read models (projections) are updated asynchronously. The system thus becomes "eventually consistent," a paradigm shift from traditional transactional systems.
+    * **Eventual Consistency:** In an architecture with **[[cqrs|CQRS]]**, the read models (projections) are updated asynchronously. The system thus becomes "eventually consistent," a paradigm shift from traditional transactional systems.
     * **Reconstruction Optimization (Snapshotting):** For long-lived aggregates (with thousands of events), state reconstruction can become slow. **Snapshots** are used in this case—captures of the aggregate's state at a specific version (e.g., every 100 versions) to speed up the replay process.
 
 ---
@@ -71,7 +71,7 @@ Event Sourcing is rarely used alone. It is part of an ecosystem of complementary
 * **[[event-driven|Event-Driven Architecture]]:** Event Sourcing is a specific implementation strategy for the persistence layer within a broader Event-Driven Architecture. It provides the immutable log of events that other services can react to.
 * **[[publish-subscribe|Publish-Subscribe Pattern]]:** This pattern is the primary mechanism for broadcasting the events captured by Event Sourcing. After an event is persisted to the event store, it is often published on a topic so that any interested microservice or component can react to it.
 * **[[microservices|Microservices Architecture]]:** Event Sourcing is a powerful pattern for inter-service communication in a microservices landscape. Services can publish events about their state changes, and other services can subscribe to these events to update their own local state, ensuring eventual consistency without creating tight coupling.
-* **CQRS (Command Query Responsibility Segregation):** The almost inseparable partner of Event Sourcing. ES handles the "write" side (Command), while materialised projections of events create read models optimized for the "query" side.
+* **[[cqrs|CQRS (Command Query Responsibility Segregation)]]:** The almost inseparable partner of Event Sourcing. ES handles the "write" side (Command), while materialised projections of events create read models optimized for the "query" side.
 * **Saga Pattern:** In distributed architectures, sagas manage long-running transactions that span multiple services. These sagas are often orchestrated or choreographed in response to event streams.
 * **Transactional Outbox:** A pattern that ensures events are reliably published *after* being persisted in the Event Store. This prevents inconsistencies where an event might be published without being saved, or vice versa.
 * **Snapshotting:** An optimization technique to reduce the loading time of aggregates by periodically saving a snapshot of their state, thereby limiting the need to replay the entire event stream.
@@ -91,8 +91,8 @@ Event Sourcing is rarely used alone. It is part of an ecosystem of complementary
 
 ### Videos
 
-1.  **[Event Sourcing • Martin Fowler • YOW! 2016](http://www.youtube.com/watch?v=ck7t592bvBg)** (GOTO Conferences)
-    Martin Fowler explains Event Sourcing using the analogy of a **Source Control System** (like Git), where the history of commits (events) is primary. Key benefits are unparalleled **auditability**, powerful debugging via event **replay**, and inherent support for **historical querying**. He emphasizes that it decouples change processing from state representation, facilitating patterns like **CQRS** and high-performance **in-memory** systems.
+1. * **[Event Sourcing • Martin Fowler • YOW! 2016](http://www.youtube.com/watch?v=ck7t592bvBg)** (GOTO Conferences)
+    Martin Fowler explains Event Sourcing using the analogy of a **Source Control System** (like Git), where the history of commits (events) is primary. Key benefits are unparalleled **auditability**, powerful debugging via event **replay**, and inherent support for **historical querying**. He emphasizes that it decouples change processing from state representation, facilitating patterns like **[[cqrs|CQRS]]** and high-performance **in-memory** systems.
 
-2.  **[Master Event Sourcing in Just 10 Minutes](http://www.youtube.com/watch?v=ID-_ic1fLkY)** (ByteMonk)
-    This video defines Event Sourcing as an architectural pattern that turns the application into a **"time machine"** by storing only events. It naturally fits with **CQRS**, where the command side generates events and the query side builds **read models** by consuming them. To ensure performance, it leverages **snapshots** and **materialized views** to avoid replaying the entire history for every state retrieval (**hydration**).
+2. * **[Master Event Sourcing in Just 10 Minutes](http://www.youtube.com/watch?v=ID-_ic1fLkY)** (ByteMonk)
+    This video defines Event Sourcing as an architectural pattern that turns the application into a **"time machine"** by storing only events. It naturally fits with **[[cqrs|CQRS]]**, where the command side generates events and the query side builds **read models** by consuming them. To ensure performance, it leverages **snapshots** and **materialized views** to avoid replaying the entire history for every state retrieval (**hydration**).

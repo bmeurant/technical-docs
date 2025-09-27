@@ -114,7 +114,7 @@ Pub/Sub is often considered the distributed, asynchronous version of the classic
 *   **[[event-driven|Event-Driven Architecture (EDA)]]:** Pub/Sub is the core communication mechanism for choreographed, event-driven systems. Producers publish events about state changes, and consumers subscribe to these events to trigger their own business logic.
 *   **[[microservices|Microservices]]:** This pattern is a primary enabler of asynchronous communication between microservices, promoting loose coupling and resilience. Services can communicate without direct knowledge of each other's location or status.
 *   **[[pipe-filters|Pipe and Filters]]:** In distributed data processing pipelines, Pub/Sub topics or streams often act as the "pipes," broadcasting data from one processing stage (a "filter") to one or more subsequent stages.
-*   **CQRS (Command and Query Responsibility Segregation):** Pub/Sub is commonly used to keep the read and write sides of a CQRS system synchronized. After a **Command** modifies data on the write side, an event is published. The **Query** side subscribes to this event to update its own read-optimized data store.
+*   **[[cqrs|CQRS (Command and Query Responsibility Segregation)]]:** Pub/Sub is commonly used to keep the read and write sides of a [[cqrs|CQRS]] system synchronized. After a **Command** modifies data on the write side, an event is published. The **Query** side subscribes to this event to update its own read-optimized data store.
 
 ---
 
