@@ -17,7 +17,7 @@ This document compares the two fundamental low-level models of asynchronous comm
 
 There are two primary models for asynchronous messaging, each serving a different purpose:
 
-1.  **[[point-to-point-messaging|Point-to-Point (Queue)]]:** This model is used for **one-to-one** communication. A message is sent to a queue and delivered to a single consumer. It is ideal for distributing tasks and commands.
+1.  **[[message-queue|Message Queue]]:** This model is used for **one-to-one** communication. A message is sent to a queue and delivered to a single consumer. It is ideal for distributing tasks and commands.
 
 2.  **[[publish-subscribe|Publish-Subscribe (Topic or Stream)]]:** This model is used for **one-to-many** communication. A message is published to a central channel and broadcast to all interested subscribers. It is ideal for notifying different parts of a system about an event. The implementation of this channel can be a simple topic or a more robust **[[publish-subscribe#Topics vs. Event Streams|Event Stream]]**.
 
@@ -30,8 +30,8 @@ There are two primary models for asynchronous messaging, each serving a differen
 | **Primary Use Case** | **Task/Command Distribution**. Ideal for distributing work among a pool of identical workers. | **Event Notification**. Ideal for broadcasting that something has happened, allowing different parts of a system to react independently. |
 
 For a detailed explanation of each pattern, please refer to their dedicated documents:
-*   **Deep Dive: [[point-to-point-messaging]]**
-*   **Deep Dive: [[publish-subscribe]]**
+*   **Deep Dive: [[message-queue|Message Queue]]**
+*   **Deep Dive: [[publish-subscribe|Publish-Subscribe]]**
 
 ---
 

@@ -1,18 +1,18 @@
 ---
-title: Point-to-Point (Queue) Messaging
+title: Message Queue
 tags:
   - messaging
   - communication
 ---
-# Point-to-Point (Queue) Communication
+# The Message Queue Pattern
 
-The **Point-to-Point (P2P)** messaging pattern is one of the two fundamental models of [[asynchronous-messaging]]. It is used to distribute tasks to a pool of workers in a reliable and decoupled manner.
+The **Message Queue** pattern is an [[software-architecture/architectural-patterns/|architectural pattern]] for [[asynchronous-messaging|asynchronous communication]] between distributed components. It uses a central **Queue** to manage messages sent from a **Producer** to a **Consumer**, ensuring reliable one-to-one delivery and decoupling the components.
 
 In this model, a message producer sends a message to a specific destination called a **Queue**. The message is then delivered to a single consumer that is listening on that queue. This ensures a **one-to-one** relationship for each message, even if multiple consumers are available. This is often implemented using the **Competing Consumers** pattern, where several consumers compete to be the first to receive and process a message from the queue.
 
 * **Core Principles:**
     * **One-to-One Delivery:** Each message is processed by exactly one consumer.
-    * **Decoupling:** The message producer does not know which specific consumer will process the message.
+    * **[[cohesion-coupling|Decoupling]]:** The message producer does not know which specific consumer will process the message.
     * **Load Balancing:** The queue naturally distributes the load among available consumers.
     * **Task Distribution:** Ideal for offloading work, where each message represents a self-contained task or command.
 
@@ -68,14 +68,12 @@ graph TD
 ## Related Patterns
 
 *   **[[publish-subscribe|Publish-Subscribe]]:** The other fundamental messaging model, which uses a one-to-many broadcast approach instead of one-to-one.
-*   **[[message-driven|Message-Driven Architecture]]:** Point-to-Point messaging is a key enabler for command-driven architectures, a flavor of MDA.
+*   **[[message-driven|Message-Driven Architecture]]:** The Message Queue pattern is a key enabler for command-driven architectures, a flavor of MDA.
 *   **Dead-Letter Queue (DLQ):** A critical complementary pattern where messages that repeatedly fail processing are moved to a separate queue for manual inspection, preventing them from blocking the main queue.
 
 ---
 
 ## **Resources & links**
-
-### **Articles**
 
 ### **Articles**
 

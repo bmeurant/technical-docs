@@ -18,7 +18,7 @@ see [index](./index.md)
 * **[Asynchronous Messaging Patterns](./asynchronous-messaging.md)**
 * **[Publish Subscribe Pattern](./publish-subscribe.md)**
 * **[Broker Pattern](./broker.md)**
-* **[Point-to-Point Messaging](./point-to-point-messaging.md)**
+* **[Message Queue Pattern](./message-queue.md)**
 * **[Service Mesh](./service-mesh.md)**
 
 ## Structure

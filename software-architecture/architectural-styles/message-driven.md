@@ -34,7 +34,7 @@ This distinction is crucial, as it leads to the two main flavors of Message-Driv
 
 This model is organized around processing **commands**. It is ideal for distributing tasks, managing workflows, or offloading heavy processing from a primary application thread.
 
-The communication is typically **one-to-one**, using the **[[point-to-point-messaging|Point-to-Point (Queue)]]** messaging model. A producer sends a command to a queue, and a single consumer from a pool of workers picks it up and processes it.
+The communication is typically **one-to-one**, using the **[[message-queue|Point-to-Point (Queue)]]** messaging model. A producer sends a command to a queue, and a single consumer from a pool of workers picks it up and processes it.
 
 ```mermaid
 graph TD
