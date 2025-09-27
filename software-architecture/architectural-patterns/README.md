@@ -37,4 +37,5 @@ see [index](./index.md)
 
 * **[CQRS (Command Query Responsibility Segregation)](./cqrs.md)**
 * **[Event Sourcing](./event-sourcing.md)**
+* **[Saga Pattern](./saga.md)**
 
