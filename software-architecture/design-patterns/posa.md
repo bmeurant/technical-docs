@@ -77,9 +77,9 @@ graph TD
 * **Applicability**: This pattern is ideal for any system where objects are logically composed of other objects, such as a graphical user interface composed of widgets, or a complex order composed of individual line items.
 * **Limitations and Challenges**: Can lead to a monolithic `Whole` object with too many responsibilities. The management of complex interactions between `Parts` can be difficult to manage.
 * **Relationship with Other Patterns**:
-    * The **Whole-Part** pattern is fundamentally the same as the [[gof|Composite pattern]] from the GoF book, which allows clients to treat individual objects and compositions of objects uniformly.
+    * The **Whole-Part** pattern is fundamentally the same as the [[gof#composite|Composite pattern]] from the GoF book, which allows clients to treat individual objects and compositions of objects uniformly.
     * It can be used within an **[[mvc|MVC]]** architecture, where a complex `View` (the `Whole`) is composed of smaller UI widgets (the `Parts`).
-    * The `Parts` can be lazily loaded using the **[[#proxy|Proxy]]** pattern to improve performance.
+    * The `Parts` can be lazily loaded using the [[gof#proxy|Proxy pattern]] to improve performance.
 
 ---
 
@@ -164,7 +164,7 @@ graph TD
 * **Applicability**: This pattern is widely used in object-relational mapping (ORM) frameworks for lazy loading, in remote procedure call (RPC) mechanisms, and for implementing security and caching.
 * **Limitations and Challenges**: Can introduce an overhead due to the extra layer of indirection. Overuse of this pattern can make the architecture unnecessarily complex.
 * **Relationship with Other Patterns**:
-    * The **Proxy** pattern is one of the original **GoF patterns**.
+    * The **Proxy** pattern is one of the original **[[gof#proxy|GoF patterns]]**.
     * It is often used in conjunction with the **[[#forwarder-receiver|Forwarder-Receiver]]** pattern, where the `Forwarder` acts as a proxy for a remote object.
     * A **[[#client-dispatcher-server|Client-Dispatcher-Server]]** can use a `Proxy` on the client side to hide the `Dispatcher`'s location.
     * It can also be used to implement lazy loading for the `Parts` in a **[[#whole-part|Whole-Part]]** structure.
@@ -200,7 +200,7 @@ graph TD
 * **Applicability**: This pattern is a cornerstone of text editors (`undo/redo` functionality), workflow systems, and any application that needs to manage a history of operations.
 * **Limitations and Challenges**: Can introduce complexity for simple applications. Implementing `undo/redo` can be difficult for commands that have side effects.
 * **Relationship with Other Patterns**:
-    * This pattern is an extension of the [[gof|Command pattern]] from the GoF book. It adds the "processor" component that manages a queue of commands.
+    * This pattern is an extension of the [[gof#command|Command pattern]] from the GoF book. It adds the "processor" component that manages a queue of commands.
     * It can be used in a **[[#master-slave|Master-Slave]]** architecture, where the `Master` creates `Command` objects and sends them to `Slaves` for execution.
     * The queueing mechanism is a form of **[[message-queue|Message Queue]]**.
 
@@ -272,7 +272,7 @@ graph TD
 * **Limitations and Challenges**: It does not natively handle distributing messages to multiple recipients. It is also not suitable for systems that require a high degree of [[cohesion-coupling|loose coupling]] or [[message-driven|asynchronous communication]].
 * **Relationship with Other Patterns**:
     * The **Forwarder-Receiver** pattern is a foundational pattern for building distributed systems and can be seen as a simplified version of the **[[broker|Broker]]** pattern.
-    * It is often used with the **[[#proxy|Proxy]]** pattern, where the `Forwarder` acts as a local proxy for a remote service, hiding the network communication details from the client.
+    * It is often used with the [[gof#proxy|Proxy pattern]], where the `Forwarder` acts as a local proxy for a remote service, hiding the network communication details from the client.
 
 #### Client-Dispatcher-Server
 
@@ -327,7 +327,7 @@ graph TD
 * **Applicability**: This pattern is fundamental to real-time data streams, notification systems, and [[microservices]] that communicate via events.
 * **Limitations and Challenges**: The reliability of message delivery can be a challenge. The system's complexity increases if message ordering or guaranteed delivery is required.
 * **Relationship with Other Patterns**:
-    * The Publisher-Subscriber pattern is a more scalable and decoupled version of the [[gof|Observer pattern]] from the GoF book.
+    * The Publisher-Subscriber pattern is a more scalable and decoupled version of the [[gof#observer|Observer pattern]] from the GoF book.
     * It is the foundation of **[[event-driven|event-driven architectures]]** and is often implemented using a **[[message-queue|Message Queue]]** or a **[[broker|Broker]]**.
     * In **[[microservices]]**, this pattern is the primary way services communicate asynchronously.
 
@@ -393,7 +393,7 @@ graph TD
 * **Limitations and Challenges**: Can become complex for managing intricate states. The `event handler` logic must be very fast to avoid blocking the main thread.
 * **Relationship with Other Patterns**:
     * The **Reactor** pattern is often contrasted with the **[[#proactor|Proactor]]** pattern. `Reactor` handles readiness events (e.g., "data is ready to be read"), while `Proactor` handles completion events (e.g., "the read operation has completed").
-    * It implements the **Observer** pattern, where the `Reactor` observes multiple event sources (handles) on behalf of the application.
+    * It implements the **[[gof#observer|Observer pattern]]**, where the `Reactor` observes multiple event sources (handles) on behalf of the application.
     * It is often used in conjunction with the **[[#acceptor-connector|Acceptor-Connector]]** pattern to handle connection and service initialization.
 
 #### Proactor
@@ -430,7 +430,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Relationship with Other Patterns**:
     * The **Proactor** pattern is the asynchronous counterpart to the **[[#reactor|Reactor]]** pattern. While `Reactor` is based on synchronous event demultiplexing, `Proactor` is based on asynchronous operation completion.
     * It is often used with the **[[#acceptor-connector|Acceptor-Connector]]** pattern to handle asynchronous connection establishment and service processing.
-    * The callback-based nature of the `CompletionHandler` is similar to how the **Command** pattern can be used to encapsulate a piece of work to be executed later.
+    * The callback-based nature of the `CompletionHandler` is similar to how the **[[gof#command|Command pattern]]** can be used to encapsulate a piece of work to be executed later.
 
 #### Acceptor-Connector
 
@@ -517,9 +517,9 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Applicability**: Systems that require concurrent or parallel execution and thread management.
 * **Limitations and Challenges**: Can introduce communication overhead due to the queues.
 * **Relationship with Other Patterns**:
-    * The **Active Object** pattern combines several other patterns to achieve concurrency. It uses a **[[#proxy|Proxy]]** to provide an asynchronous interface to clients.
+    * The **Active Object** pattern combines several other patterns to achieve concurrency. It uses a [[gof#proxy|Proxy]] to provide an asynchronous interface to clients.
     * The `MethodRequestQueue` is a form of **[[message-queue|Message Queue]]**, and the `Scheduler` acts as a consumer in a **Producer-Consumer** relationship.
-    * Each `MethodRequest` is an implementation of the [[gof|Command pattern]], encapsulating a method call as an object.
+    * Each `MethodRequest` is an implementation of the [[gof#command|Command pattern]], encapsulating a method call as an object.
 
 ### Resilience and fault tolerance
 
@@ -828,7 +828,7 @@ graph TD
 * **Relationship with other patterns**:
     * **[[service-mesh|Service Mesh]]**: The Sidecar pattern is the core implementation detail of a **Service Mesh**. The mesh's data plane is composed of sidecar proxies deployed next to each service.
     * **[[#ambassador|Ambassador]]**: The [[#Ambassador|Ambassador]] pattern is a specialized type of Sidecar. While a general Sidecar augments an application, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
-    * **[[#proxy|Proxy]]**: The sidecar itself is often implemented as a **Proxy**. It intercepts network traffic to and from the main application to add its functionality.
+    * **[[gof#proxy|Proxy]]**: The sidecar itself is often implemented as a **[[gof#proxy|Proxy]]**. It intercepts network traffic to and from the main application to add its functionality.
     * **[[layered|Layers]]** & **[[cohesion-coupling|Decoupling]]**: The Sidecar pattern provides a way to add a "layer" of functionality at the infrastructure level rather than in the application code, promoting better **decoupling** and **separation of concerns**.
 
 
@@ -877,7 +877,7 @@ graph TD
     * **Potential Bottleneck**: If not properly configured and scaled, the Ambassador itself can become a bottleneck for all outgoing traffic.
 * **Relationship with other patterns**:
     * **[[#sidecar|Sidecar]]**: The Ambassador pattern is a specialized form of the **Sidecar** pattern. While a Sidecar can perform a wide range of tasks, an Ambassador is specifically focused on proxying and managing outbound communication to remote services.
-    * **[[#proxy|Proxy]]**: The Ambassador *is* a **Proxy**. It acts as a local proxy for one or more remote services.
+    * **[[gof#proxy|Proxy]]**: The Ambassador *is* a **[[gof#proxy|Proxy]]**. It acts as a local proxy for one or more remote services.
     * **[[#retry|Retry]]** & **[[#circuit-breaker|Circuit Breaker]]**: These resilience patterns are commonly implemented within the Ambassador, providing fault tolerance for the main application without requiring any changes to its code.
     * **[[broker|Broker]]**: In some scenarios, the Ambassador can act as a client-side **Broker**, deciding which remote service instance should handle a request.
 
