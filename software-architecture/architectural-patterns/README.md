@@ -33,6 +33,8 @@ see [index](./index.md)
 
 * **[Pipe and Filters Pattern](./pipe-filters.md)**
 
-## Infrastructure & Deployment
+## Data Management
 
-* **[Service Mesh](./service-mesh.md)**
+* **[CQRS (Command Query Responsibility Segregation)](./cqrs.md)**
+* **[Event Sourcing](./event-sourcing.md)**
+
