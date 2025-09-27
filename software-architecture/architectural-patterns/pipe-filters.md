@@ -69,7 +69,7 @@ The data flow through the pipeline can be managed in two ways:
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 The **Pipe and Filters** pattern is a foundation for many data processing systems.
 

@@ -64,7 +64,7 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Related Patterns, Concepts and Variations
 
 The **Peer-to-Peer** architecture is the basis for many more sophisticated models, including:
 

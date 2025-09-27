@@ -65,7 +65,7 @@ graph TD
 
 ---
 
-## Related Patterns
+## Related Patterns, Concepts and Variations
 
 *   **[[publish-subscribe|Publish-Subscribe]]:** The other fundamental messaging model, which uses a one-to-many broadcast approach instead of one-to-one.
 *   **[[message-driven|Message-Driven Architecture]]:** The Message Queue pattern is a key enabler for command-driven architectures, a flavor of MDA.

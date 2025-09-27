@@ -66,7 +66,7 @@ graph TD
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 **Component-Based Architecture** is a core principle that has given rise to several modern architectures:
 

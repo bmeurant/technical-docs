@@ -92,7 +92,7 @@ graph TD
 
 ---
 
-## Relationship with Other Patterns
+## Related Patterns, Concepts and Variations
 
 A Service Mesh is not a standalone concept; it integrates and implements several other patterns.
 

@@ -81,7 +81,7 @@ flowchart TD
 
 ---
 
-## **Variations and Derived Concepts**
+## Related Patterns, Concepts and Variations
 
 Hexagonal Architecture is the foundation for many other [[modern-application-architectures|modern architectural patterns]], such as **[[onion|Onion Architecture]]** and **[[clean|Clean Architecture]]**. All these models share the same fundamental idea: the **domain** is at the center of the application and should not depend on anything else. Dependencies only flow from the outside in.
 

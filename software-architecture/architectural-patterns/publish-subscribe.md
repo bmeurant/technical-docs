@@ -101,7 +101,7 @@ This "log-based" approach has made event streams the backbone of modern [[event-
 
 ---
 
-## Related Patterns and Concepts
+## Related Patterns, Concepts and Variations
 
 The Publish-Subscribe pattern is a foundational concept that relates to and enables several other important patterns and architectures.
 

@@ -82,7 +82,7 @@ A key architectural decision is whether to make the layers "closed" or "open":
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 * **2-Tier vs. N-Tier:** The basic 2-tier model (client and database) has evolved into the **N-Tier** model, which inserts intermediate layers (like the **Business Logic Layer**) to improve flexibility and scalability.
 * **[[modular-monolith|Modular Monolith]]:** A layered architecture is often the foundation for a monolith. The [[modular-monolith|Modular Monolith]] pattern is an evolution of this, where the application is divided into independent modules, each with its own layers. This improves maintainability and prepares the ground for a potential future migration to [[microservices|microservices]].

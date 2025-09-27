@@ -72,7 +72,7 @@ The interaction between the components is [[event-driven|event-driven]] and indi
     * **Overhead:** The constant monitoring and a complex Controller can introduce significant overhead, making it less efficient for simpler problems.
 
 ---
-## **Variations and Derived Architectures**
+## Related Patterns, Concepts and Variations
 
 * **Hierarchical Blackboard:** The Blackboard is organized into multiple levels of abstraction, with Knowledge Sources specialized to operate at specific levels. This is common in complex AI systems.
 * **Open Blackboard:** This variation loosens the strict control of the Controller. Knowledge Sources can write directly to the Blackboard without a centralized scheduler, relying on event-based triggers. This is less common due to the increased complexity of managing concurrency.

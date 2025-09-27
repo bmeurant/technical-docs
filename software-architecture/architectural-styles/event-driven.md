@@ -105,7 +105,7 @@ graph TD
 
 ---
 
-## Related Patterns and Concepts
+## Related Patterns, Concepts and Variationsand Concepts
 
 EDA is often implemented using other patterns that define how events are structured and used.
 

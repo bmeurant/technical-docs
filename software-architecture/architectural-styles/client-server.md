@@ -62,7 +62,7 @@ graph TD
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 The **Client-Server** architecture is the basis for many more sophisticated models, including:
 

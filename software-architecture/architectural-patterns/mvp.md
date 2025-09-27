@@ -74,7 +74,7 @@ classDiagram
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 MVP has two primary flavors that define how much logic the View is allowed to have:
 

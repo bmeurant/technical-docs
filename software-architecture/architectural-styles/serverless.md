@@ -94,7 +94,7 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
 
 ---
 
-## Variations and Related Concepts
+## Related Patterns, Concepts and Variations
 
 * **FaaS (Function as a Service):** The concept that allows for the execution of functions in response to events without managing the underlying infrastructure.
 * **BaaS (Backend as a Service):** Provides managed backend services, such as databases, authentication, and storage, so the developer can focus on front-end code or **FaaS** functions.

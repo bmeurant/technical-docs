@@ -71,7 +71,7 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Related Patterns, Concepts and Variations
 
 **Onion Architecture**, Robert C. Martin's ("Uncle Bob") **[[clean|Clean Architecture]]**, and Alistair Cockburn's **[[hexagonal|Hexagonal Architecture]]** all share fundamental principles and are often considered [[modern-application-architectures|variations of the same core concept]].
 

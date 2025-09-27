@@ -101,7 +101,7 @@ This mechanism decouples user actions (like button clicks) from the code that ha
 
 ---
 
-## Variants and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 * **MVVM-C (Coordinator):** Adds a **Coordinator** layer to manage navigation and transitions between **Views** and **ViewModels**, making them even more independent.
 * **RxMVVM:** Uses **reactive programming** frameworks like **RxJava** or **RxSwift** to manage data flows between components in a more efficient and declarative way.

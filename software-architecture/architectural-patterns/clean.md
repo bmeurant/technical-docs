@@ -78,7 +78,7 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Related Patterns, Concepts and Variations
 
 * **[[layered|Layered Architecture]]:** **Clean Architecture** is a form of **[[layered|layered architecture]]**, but with a stricter and more explicit dependency rule. In a classic **[[layered|layered architecture]]**, the dependency is often unidirectional (e.g., `Web Layer` -> `Business Layer` -> `Data Layer`), but the core of the system is not as protected from external technologies.
 

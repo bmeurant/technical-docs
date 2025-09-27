@@ -108,7 +108,7 @@ A mature microservices architecture often uses a combination of both styles: syn
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 The **Microservices** architecture is not a final architecture but an approach that is combined with other patterns.
 

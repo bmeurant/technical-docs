@@ -85,7 +85,7 @@ The scalability of SBA relies on effective data partitioning. The data grid is t
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 SBA is often implemented with technologies like **Apache Ignite**, **Hazelcast**, or **Oracle Coherence**. It is typically used in highly specific contexts and is not a universal architecture.
 

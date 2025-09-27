@@ -83,7 +83,7 @@ graph TD
 
 ---
 
-## **Variations and Derived Architectures**
+## Related Patterns, Concepts and Variations
 
 The **Broker** style is a foundation for many modern, often specialized or extended models.
 

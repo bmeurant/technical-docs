@@ -107,7 +107,7 @@ sequenceDiagram
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns, Concepts and Variations
 
 The MVC pattern has given rise to [[mvw|several variants]] that attempt to solve its challenges and adapt to new environments, particularly the web.
 
