@@ -86,7 +86,7 @@ graph TD
 #### Master-Slave
 
 * **Problem**: How to decompose a complex and resource-intensive task into smaller sub-tasks that can be executed by independent entities?
-* **Synopsis**: The **Master-Slave** pattern separates the coordination logic of a task from its execution. The `Master` is responsible for decomposing the task and distributing sub-tasks to the `Slaves`, as well as for aggregating the final results. This pattern is a fundamental approach for parallel and distributed computing.
+* **Synopsis**: The **Master-Slave** pattern separates the coordination logic of a task from its execution. The `Master` is responsible for decomposing the task, distributing sub-tasks to the `Slaves`, and aggregating the final results. This pattern is a fundamental approach for parallel and distributed computing. *Note: In modern terminology, this pattern is often referred to as **Leader-Follower**, **Primary-Secondary**, or **Controller-Worker** to use more inclusive language.*
 
     ```mermaid
     sequenceDiagram
@@ -155,7 +155,7 @@ graph TD
 
     This class diagram shows the structural relationship between a `Client`, a `Proxy`, and the real `Subject`. It illustrates how the `Client` interacts with the `Proxy` via a shared interface. The `Proxy` then delegates the requests to the real `Subject`, adding a layer of control over the interaction.
 
-    The `Whole` object doesn't just hold its `Parts`; it acts as an **orchestrator and abstraction layer**. It's the `Whole` that aggregates the behavior and state of its `Parts` to provide a coherent, high-level functionality. For example, a `Car` object (the `Whole`) has `Wheels`, a `Chassis`, and an `Engine` (the `Parts`). The client only interacts with the `Car`'s `drive()` method, while the `Car` internally coordinates the actions of its `Parts` to make the entire system work. This strong **composition** ensures that the `Parts` cannot exist without the `Whole`, and the client is shielded from their internal complexity.
+    This class diagram shows the structural relationship between a `Client`, a `Proxy`, and the `RealSubject`. It illustrates how the `Client` interacts with the `Proxy` via a shared `Subject` interface, making the `Proxy` transparent. The `Proxy` then delegates requests to the `RealSubject`, adding a layer of control and potentially managing the `RealSubject`'s lifecycle (e.g., creating it on demand). This structure allows the `Proxy` to act as a surrogate for the `RealSubject` while adding functionality like access control or lazy initialization.
 
 * **Key Characteristics**:
     * **Shared interface**: The `Proxy` implements the same interface as the real `Subject`, making it transparent to the client.
@@ -234,7 +234,7 @@ graph TD
     * **State management**: It is responsible for handling view state changes and ensuring that views are properly synchronized with the `Model`.
     * **[[cohesion-coupling|Decoupling]]**: It decouples the `Views` from each other, as they only need to communicate with the `View Handler` or the `Model` directly.
 * **Applicability**: This pattern is fundamental to GUI frameworks, `single-page` web applications (SPAs), and dashboard systems where multiple views of the same data need to be managed.
-* **Limitations and Challenges**: Can become a `god object` or a central point of contention if its logic is not carefully managed.
+* **Limitations and Challenges**: The `View Handler` can become a **god object** if it accumulates too much coordination logic. To mitigate this, complex views can be further decomposed using smaller, nested controllers or mediators that manage subsets of the UI, distributing the responsibility.
 * **Relationship with Other Patterns**:
     * The **View Handler** is a key component in presentation patterns like **[[mvc|MVC]]**, **[[mvp|MVP]]**, and **[[mvvm|MVVM]]**, where it often plays the role of the `Controller` or `Presenter`.
     * It frequently manages a **[[#whole-part|Whole-Part]]** structure, where the main view is composed of smaller, nested views.

@@ -20,17 +20,20 @@ The **Peer-to-Peer** (P2P) architecture is a distributed [[software-architecture
 
 ```mermaid
 graph TD
-    A[Peer A] --- B[Peer B]
-    A --- C[Peer C]
-    B --- D[Peer D]
-    C --- E[Peer E]
-    D --- A
-    E --- B
+    subgraph "P2P Network"
+        A(Peer A)
+        B(Peer B)
+        C(Peer C)
+        D(Peer D)
+    end
 
-    A -- "Request" --> B
-    B -- "Response" --> A
-    C -- "Request" --> D
-    D -- "Response" --> C
+    A -- "Requests file" --> B
+    B -- "Serves file" --> A
+
+    C -- "Requests service" --> A
+    A -- "Serves service" --> C
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 1.  **Peers :** Each node in the network, which can be a personal computer, a [[client-server|server]], or a mobile device. Each `peer` must be able to locate the resources and services of other `peers`.
@@ -56,7 +59,7 @@ graph TD
 
 * **Challenges :**
     * **Security & Trust** : It is difficult to authenticate `peers` and guarantee data reliability. `Peers` can be malicious (`malicious actors`). The problem of "freeriding" (using resources without providing any in return) is common.
-    * **Discovery & Routing Complexity** : Finding `peers` or resources in a large P2P network can be complex, especially in unstructured networks. Managing dynamic nodes (`churn`) is a major challenge.
+    * **Discovery & Routing Complexity** : Finding peers or resources in a large, dynamic network is a major challenge. This is often solved in **Hybrid P2P** systems by using a central server (a "bootstrap server" or "tracker") to help peers find each other initially.
     * **Reliability & Availability** : The availability of a resource depends on the reliability of the `peers` holding it. If the `peers` with the resource disconnect, the resource becomes unavailable.
 
 ---
@@ -67,19 +70,8 @@ The **Peer-to-Peer** architecture is the basis for many more sophisticated model
 
 * **Pure P2P :** `Peers` are strictly equal, with no centralized infrastructure. Ex: Gnutella.
 * **Hybrid P2P :** Uses a central [[client-server|server]] for certain functions, such as `peer discovery` or authentication. Once the connection is established, communication happens directly in a P2P manner. Ex: BitTorrent (which uses central `trackers` to initiate the connection).
-* **Decentralized Ledger Technologies (DLT) :** Ex: **Blockchain** (Bitcoin, Ethereum). These systems are applications of the P2P model where each `peer` holds a copy of the `ledger` and participates in transaction validation, ensuring the integrity of the system.
+* **Decentralized Ledger Technologies (DLT) :** Ex: **Blockchain** (Bitcoin, Ethereum). These systems are applications of the P2P model where a shared, immutable ledger is replicated across all peers. Transactions are validated by a consensus algorithm, ensuring data integrity without a central authority.
 * **Distributed File Systems :** Ex: IPFS (InterPlanetary File System). Files are stored and retrieved on a network of `peers`, optimizing content distribution and resilience.
-
----
-
-### **Note on the Ledger**
-
-A **Ledger** is a chronological and immutable database that records transactions or events within a system.
-
-* **Centralized Ledger :** In a classic system (like a bank), a single actor has total control and manages the ledger.
-* **Distributed Ledger (DLT) :** In a P2P system, the `ledger` is replicated and shared across multiple network nodes, and each node has an identical copy. Transactions are validated by a consensus algorithm to ensure all copies remain synchronized and identical.
-
-This decentralization makes the `ledger` much more resistant to censorship, fraud, and attacks. It is a fundamental principle of cryptocurrencies, where the distributed `ledger` (the **blockchain**) records every transaction transparently and immutably, without the need for a trusted third party.
 
 ---
 

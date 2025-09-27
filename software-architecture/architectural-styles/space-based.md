@@ -6,13 +6,15 @@ date: 2025-09-16
 ---
 # Space-Based Architecture (SBA)
 
-The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architecture**, is an [[software-architecture/architectural-styles/|architectural style]] focused on high performance, scalability, and resilience, particularly suited for applications with high transaction volumes and low latency. This model relies on replicating data and application logic in memory across multiple nodes ("spaces"), eliminating **single points of failure** and bottlenecks associated with a centralized database.
+The **Space-Based Architecture** (SBA) is a high-performance [[software-architecture/architectural-styles/|architectural style]] designed for extreme scalability and elasticity. The name comes from the concept of a **"tuple space,"** a shared memory space where multiple processes can read and write data concurrently. In SBA, this concept is realized as a grid of self-sufficient **processing units**, each hosting a copy of the application logic and a portion of the in-memory data.
+
+This style, also known as **Shared-Nothing Architecture**, avoids the bottleneck of a central database by processing data in memory and replicating it across the grid.
 
 * **Core Principles:**
-    * **Shared-Nothing:** Each processing node is independent and does not share memory or disk with others. Data is replicated between nodes.
-    * **In-Memory Data Grid (IMDG):** The heart of SBA is the in-memory data grid. Data is stored and processed directly in RAM for maximum performance.
-    * **Elastic Scalability:** The architecture can scale out elastically by adding new nodes to handle increased load.
-    * **Self-Healing:** In case of a node failure, data and processing are automatically switched to a replicated node without service interruption.
+    * **Shared-Nothing Processing:** Each Processing Unit (PU) is independent and does not share resources (CPU, memory) with others for request processing. While the data grid is replicated and "shared" across the network, the PUs themselves are autonomous.
+    * **In-Memory Data Grid (IMDG):** The heart of SBA is the distributed in-memory data grid. Data is stored and processed directly in RAM for maximum performance.
+    * **Elastic Scalability:** The architecture can scale out elastically by adding new processing units to handle increased load.
+    * **Self-Healing:** In case of a node failure, the virtual middleware automatically fails over to a replica node without service interruption.
 
 ---
 
@@ -20,45 +22,38 @@ The **Space-Based Architecture** (SBA), also known as **Shared-Nothing Architect
 
 ```mermaid
 graph TD
-    A[Client Application]
-
-    subgraph Service Grid
-        B(Gateway)
-        subgraph Node 1
-            C[Processing Unit]
-            D[Replicated Data Space]
-        end
-        subgraph Node 2
-            F[Processing Unit]
-            G[Replicated Data Space]
-        end
-        H(Synchronisation)
-    end
+    Client --> Gateway;
     
-    subgraph External System
-        E[Centralized Data Source]
+    subgraph "Processing Grid"
+        direction LR
+        PU1(Processing Unit 1 <br> App Logic + Data Partition A)
+        PU2(Processing Unit 2 <br> App Logic + Data Partition B)
+        PU3(Processing Unit 3 <br> App Logic + Data Partition C)
     end
 
-    A -- "Request" --> B
-    B -- "Request Routing" --> C & F
-    C -- "Data Access" --> D
-    F -- "Data Access" --> G
-    D --> H
-    H --> G
-    C -- "Update" --> D
-    F -- "Update" --> G
-    D -- "Persistence (write-behind)" --> E
-    G -- "Persistence (write-behind)" --> E
-    C -- "Response" --> A
-    E -- "Initial Load/Read-through" --> D
-    E -- "Initial Load/Read-through" --> G
+    Gateway -- "Routes request" --> PU2;
+    PU2 -- "Replicates data" <--> PU1;
+    PU2 -- "Replicates data" <--> PU3;
+
+    PU1 -.-> DB[(Backing Database)];
+    PU2 -.-> DB;
+    PU3 -.-> DB;
+
+    n1["Processes request in-memory"] -.-> PU2
+    n2["Write-behind persistence (optional)"] -.-> DB
+
+   n1@{ shape: text}
+   n2@{ shape: text}
+   style n1 fill:#FFF9C4
+   style n2 fill:#FFF9C4
 ```
 
-1.  **Client:** The application or service that interacts with the service grid.
-2.  **Processing Unit (Processing Grid):** A container that includes both the application's business logic and a portion of the data. This component handles requests.
-3.  **Data Space (IMDG):** The distributed in-memory data grid. Data is partitioned and replicated here. Each **processing unit** has local, direct access to the data it is responsible for.
-4.  **Gateway:** The entry point that routes incoming requests to the appropriate **processing units**, often based on the data's partitioning key.
-5.  **Centralized Data Source:** A **single, external persistence database** (relational or NoSQL) that serves as the source of truth for all data. **Processing units** interact with it to load data and persist it durably.
+1.  **Processing Unit (PU):** A self-sufficient component containing the application logic and an in-memory data store for a subset of the application's data. All PUs are identical.
+2.  **Virtual Middleware:** The infrastructure that manages the grid. It includes:
+    *   **Gateway:** Routes requests to the correct processing unit, typically based on a partition key in the request.
+    *   **Messaging Grid:** Manages input request processing.
+    *   **Data Grid:** The core of the pattern. It's the distributed in-memory data store that handles data replication and synchronization between processing units.
+3.  **Backing Database:** A permanent data store (e.g., SQL or NoSQL) that is used for initial data loading and for long-term persistence via an asynchronous "write-behind" mechanism.
 
 **Typical Data Flow:**
 * A request is sent by the client.
@@ -67,6 +62,10 @@ graph TD
 * Data modifications are replicated synchronously or asynchronously to one or more backup nodes to ensure resilience.
 * The in-memory writes are **persisted asynchronously** to the central **Data Source**. This mechanism is typically called **write-behind** to avoid blocking the in-memory operation on disk write latency.
 * The **processing unit** returns the response to the client.
+
+### A Note on Data Partitioning
+
+The scalability of SBA relies on effective data partitioning. The data grid is typically divided into partitions using a **routing key** (e.g., a customer ID, a product ID). The gateway uses this key to route a request directly to the Processing Unit that holds the relevant data partition. This ensures that each PU only manages a subset of the data, allowing the system to scale horizontally as more data and traffic are added.
 
 ---
 

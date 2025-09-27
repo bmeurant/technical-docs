@@ -6,54 +6,85 @@ date: 2025-09-17
 ---
 # Event-Driven Architecture (EDA)
 
-**Event-Driven Architecture** (EDA) is an [[software-architecture/architectural-styles/|architectural style]] where the production, detection, consumption, and reaction to events govern system behavior. Instead of a synchronous, request-response communication between services, the system operates on an asynchronous flow of events. An **event** represents a significant state change, such as a payment being processed or a file being uploaded.
+**Event-Driven Architecture** (EDA) is a specific, popular implementation of a **[[message-driven|Message-Driven Architecture]]** where the messages are exclusively **events**.
+
+An event is a declarative notification that a significant change in state has occurred (e.g., "Order #123 was shipped"). The service that produces the event (the producer) is not concerned with who is listening or what the outcome of the event will be. It simply broadcasts the fact that something happened. This approach promotes extreme loose coupling and is ideal for building highly responsive and scalable distributed systems.
 
 ### **Core Principles**
 
-* **Decoupling:** Services are independent. An event producer does not need to know about its consumers, and vice versa.
-* **Asynchronicity:** Communication is non-blocking. A producer sends an event and continues its work without waiting for a response.
-* **Responsiveness:** Components react to events in real time, which is ideal for systems that require quick responses.
-* **Scalability:** Producers and consumers can scale independently to handle large loads.
+*   **Asynchronous Communication:** Components communicate without waiting for an immediate response. This non-blocking nature is fundamental to EDA.
+*   **Loose Coupling:** Event producers are completely unaware of the consumers, and vice-versa. They only share knowledge of the event itself.
+*   **Real-time Responsiveness:** Services can react to events as they happen, enabling dynamic and responsive applications.
 
 ---
 
-## Key Components and Communication Flow
+## EDA Topologies: Orchestration vs. Choreography
+
+There are two primary ways to structure an event-driven architecture:
+
+### 1. Broker Topology (Choreography)
+
+This is the most common and decentralized approach. There is no central orchestrator; each service is "smart" enough to know which events it should listen to and how to react. The system's workflow emerges from the independent actions of its components. This is often described as **"smart endpoints and dumb pipes."**
 
 ```mermaid
 graph TD
-    subgraph Service A - Producer
-        A[Generate an Event]
-    end
-
     subgraph Event Broker
-        B[Event Bus / Queue]
+        B(Topic/Stream)
     end
 
-    subgraph Service B - Consumer
-        C[React to the Event]
-    end
+    S1(Service A)
+    S2(Service B)
+    S3(Service C)
 
-    subgraph Service C - Consumer
-        D[React to the Event]
-    end
-
-    A -- "Publish Event" --> B
-    B -- "Deliver Event" --> C
-    B -- "Deliver Event" --> D
+    S1 -- "Publishes 'Event 1'" --> B
+    B -- "Delivers 'Event 1'" --> S2
+    S2 -- "Publishes 'Event 2'" --> B
+    B -- "Delivers 'Event 2'" --> S3
 ```
 
-1.  **Event Producer:** The service or component that generates and publishes an event. It has no knowledge of the consumers.
-2.  **Event [[broker|Broker]]:** A central service (often an **Event Bus**, a **queue**, or a **streaming platform** like **Apache Kafka** or **RabbitMQ**) that acts as an intermediary between producers and consumers. It receives events and routes them to interested services.
-3.  **Event Consumer:** The service that subscribes to one or more event types and reacts to their reception by executing business logic.
+*   **Description:** The diagram illustrates a decentralized topology where services communicate through a central **Event Broker**. `Service A` publishes an event, which is received by `Service B`. `Service B` then processes it and publishes a new event, which is consumed by `Service C`. Each service reacts independently to the events it is subscribed to.
 
-### **Typical Data Flow:**
+*   **Data Flow:**
+    1.  `Service A` (producer) publishes an event (e.g., `OrderCreated`) to a specific topic on the **Event Broker**.
+    2.  The Broker immediately delivers the event to all subscribed services. In this case, `Service B` (e.g., a notification service) is a subscriber.
+    3.  `Service B` consumes the event, processes it (e.g., sends an email to the customer), and may publish a new, independent event (e.g., `NotificationSent`) to another topic.
+    4.  `Service C` (e.g., a shipping service), which is subscribed to the `OrderCreated` event, also receives it and starts its own process. The flow is parallel and decentralized.
 
-- The **producer** detects a state change and creates an **event**. 
-- It publishes this event to the **Event Broker**. 
-- The broker stores the event and notifies all subscribed **consumers**. 
-- The consumers receive the event and execute their respective tasks (e.g., sending an email, updating a database). Each service performs its task independently, with no direct communication with the other services involved.
+*   **How it works:** A service publishes an event to a central broker. Other services subscribe to that event and react by performing their own tasks, which may in turn publish new events.
+*   **Pros:** Highly decoupled, resilient, and scalable. Services can be added or removed without reconfiguring a central workflow.
+*   **Cons:** The overall business process flow can be difficult to see and debug, as it is distributed across many independent services.
 
----
+### 2. Mediator Topology (Orchestration)
+
+This approach uses a central **Mediator** or **Orchestrator** to manage and coordinate complex event workflows. The individual services are "dumb" and only know how to perform their specific task. The Mediator subscribes to events and sends explicit commands to other services, telling them what to do next.
+
+```mermaid
+graph TD
+    subgraph Mediator
+        M(Orchestrator)
+    end
+
+    S1(Service A)
+    S2(Service B)
+    S3(Service C)
+
+    S1 -- "Publishes 'Event 1'" --> M
+    M -- "Sends Command" --> S2
+    S2 -- "Publishes 'Event 2'" --> M
+    M -- "Sends Command" --> S3
+```
+
+*   **Description:** This diagram shows a centralized model where a **Mediator** (or **Orchestrator**) directs the flow of work. `Service A` sends an event to the Mediator, which then issues a direct command to `Service B`. After `Service B` completes its task, it notifies the Mediator, which in turn commands `Service C`. The logic is centralized in the Mediator.
+
+*   **Data Flow:**
+    1.  `Service A` publishes an initial event (e.g., `OrderPlacementRequested`) to the **Mediator**.
+    2.  The Mediator receives the event and, based on its internal logic, sends a specific command (e.g., `ProcessPayment`) to `Service B` (the payment service).
+    3.  `Service B` processes the payment and publishes a result event (e.g., `PaymentProcessed`) back to the Mediator.
+    4.  The Mediator receives `PaymentProcessed`, and its orchestration logic determines the next step is to send a command (e.g., `ShipOrder`) to `Service C` (the shipping service). The flow is sequential and centralized.
+
+*   **How it works:** An initial event is sent to the Mediator. The Mediator processes this event and sends a specific command to the next service in the workflow. This continues until the entire process is complete.
+*   **Pros:** The business workflow is centralized and explicit, making it easier to understand, manage, and modify.
+*   **Cons:** The Mediator can become a bottleneck or a single point of failure. It also introduces some coupling, as the Mediator needs to know about the downstream services.---
 
 ## Advantages and Technical Challenges
 
@@ -74,16 +105,19 @@ graph TD
 
 ---
 
-## Variations and Derived Architectures
+## Related Patterns and Concepts
 
-The **Event-Driven Architecture** has several variations:
+EDA is often implemented using other patterns that define how events are structured and used.
 
-* **Event Notification:** A service sends a notification about an event without including the data. Consumers must then call the original service to get detailed information.
-* **Event-Carried State Transfer:** The event contains all the data needed for the consumer to act without having to contact the producer. This is a common model with [[microservices|microservices]].
-* **Event Sourcing:** Instead of persisting an entity's current state, a chronological sequence of events that led to that state is stored. This provides a complete history of changes.
-* **[[message-driven|Message-Driven Architecture]]:** This is a broader architectural pattern that includes EDA as a subset. It is based on messages rather than events, which implies more formal notions of **commands** and **queries**. In this pattern, a component sends a message with a specific intent (e.g., "create an order"), whereas EDA focuses on state changes (e.g., "an order has been created").
+### Event Content Patterns
 
-This architectural style has become the foundation of many modern systems, particularly in the areas of [[microservices|microservices]], **IoT**, and **real-time data platforms**.
+*   **Event Notification:** The event is a small, lightweight notification that a state change has occurred. It contains minimal data (e.g., just an ID). The consumer, upon receiving the event, must query the producer service to get the full details. This keeps events small but creates coupling, as the consumer now depends on an API from the producer.
+*   **Event-Carried State Transfer:** The event contains all the data related to the state change. The consumer has all the information it needs to act without having to contact the producer. This promotes better decoupling but can lead to larger event payloads and data duplication.
+
+### Related Architectural Patterns
+
+*   **Event Sourcing:** A pattern where all changes to an application's state are stored as a sequence of immutable events. Instead of storing the current state of a domain object, you store the history of events that led to that state. This provides a full audit log and allows for powerful temporal queries.
+*   **CQRS (Command and Query Responsibility Segregation):** EDA is a natural fit for CQRS. After a **Command** modifies data, an event is published. The **Query** side of the system can then subscribe to these events to update its own read-optimized data store.
 
 ---
 

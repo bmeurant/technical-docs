@@ -31,9 +31,11 @@ graph TD
     N -- "Response" --> C
 ```
 
-1.  **Client:** The application or system that makes the request. It can be a **web browser**, a mobile app, or another server in a more complex architecture (for example, a [[microservices|microservice]] that acts as a client to another service).
-2.  **Network:** The communication channel. Typical protocols include **TCP/IP**, **HTTP/HTTPS**, **FTP**, or more specific protocols like **gRPC**.
-3.  **Server:** The service that responds to requests. This can be a web server (**Nginx**, **Apache**), an application server (**Spring Boot**, **Node.js**), or a database server (**PostgreSQL**, **MySQL**).
+1.  **Client:** The entity that initiates requests. Clients can be categorized as:
+    *   **Thin Client:** A client with minimal processing logic (e.g., a web browser rendering HTML). Most of the business logic resides on the server.
+    *   **Thick Client:** A client that handles a significant amount of processing logic itself (e.g., a desktop application like a video game or a complex mobile app).
+2.  **Network:** The communication channel that connects clients and servers. Typical protocols include **HTTP/HTTPS** for web traffic, **gRPC** for efficient inter-service communication, or **WebSockets** for real-time, bidirectional communication.
+3.  **Server:** The powerful, centralized entity that listens for requests and provides services. It is responsible for the core business logic, data persistence, and security.
 
 **Typical Data Flow:**
 * The client opens a connection with the server.

@@ -19,7 +19,7 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 
 ## 1. Single Responsibility Principle (SRP)
 
-**The Principle:** A class should have only one reason to change. Its purpose is to keep classes focused and cohesive, preventing them from becoming "God objects" that are difficult to manage.
+**The Principle:** A class should have only one reason to change, which means it should have only one responsibility or be responsible to a single "actor" (a user, a stakeholder, or another system). This keeps classes focused and cohesive, preventing them from becoming "God objects" that are difficult to manage.
 
 **Example:** Imagine a class named `User` that is responsible for handling user data, sending email notifications, and generating PDF reports. This class violates the SRP because it has three reasons to change: if the user data structure changes, if the email service changes, or if the PDF report format changes. To adhere to the principle, these responsibilities should be separated into individual classes, such as `UserData`, `EmailService`, and `ReportGenerator`.
 
@@ -54,6 +54,8 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 **The Principle:**
 1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
 2. Abstractions should not depend on details. Details should depend on abstractions.
+
+This principle is the key mechanism that enables the decoupling in domain-centric architectures like **[[hexagonal|Hexagonal]]**, **[[onion|Onion]]**, and **[[clean|Clean Architecture]]**.
 
 **Example:** A high-level `PaymentService` module needs to log transaction details. A violation of the DIP occurs if `PaymentService` directly depends on a specific `FileLogger` class. If you want to change the logging method to a database or a cloud service, you must modify the `PaymentService` code. To follow the DIP, both the `PaymentService` and the `FileLogger` would depend on an `ILogger` interface. The `PaymentService` would use the `ILogger` interface, and the `FileLogger` (or a new `DatabaseLogger`) would implement it. This inverts the dependency, allowing you to change the low-level details without touching the high-level business logic.
 

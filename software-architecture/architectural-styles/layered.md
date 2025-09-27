@@ -7,12 +7,12 @@ date: 2025-09-15
 ---
 # Layered Architecture
 
-The **Layered architecture** is an [[software-architecture/architectural-styles/|architectural style]] that structures an application by grouping components with similar functionalities into horizontal layers. Each layer has a specific responsibility and can only communicate with the layer directly beneath it. This clear separation of concerns is the main strength of this model.
+The **Layered Architecture** is one of the most common and foundational architectural styles, serving as the default starting point for many applications. It organizes an application by grouping related functionality into stacked, horizontal layers. Each layer has a specific responsibility and should ideally only communicate with the layer directly below it.
 
 * **Core Principles:**
-    * **Separation of Concerns:** Each layer has a well-defined role, which makes the system easier to understand, maintain, and evolve.
-    * **Unidirectional Dependency:** A higher layer can invoke the services of a lower layer, but the reverse is not allowed. This principle creates a strict and predictable hierarchy.
-    * **Abstractions:** Each layer exposes a well-defined set of services (often via an API) to the layer above it, hiding the implementation complexities of the lower layer.
+    * **Separation of Concerns:** Each layer is responsible for a specific concern (e.g., presentation, business logic, data access). This makes the system easier to understand and maintain.
+    * **Unidirectional Dependency (The Dependency Rule):** Dependencies flow in a single direction, downwards. A higher layer can call services in a lower layer, but a lower layer must not have any knowledge of the layers above it.
+    * **Abstraction:** Each layer hides its implementation details from the layers above it, communicating only through a well-defined interface.
 
 ---
 
@@ -20,21 +20,25 @@ The **Layered architecture** is an [[software-architecture/architectural-styles/
 
 ```mermaid
 graph TD
-    U[User]
-    PL[Presentation Layer]
-    BLL[Business Logic Layer]
-    DAL[Data Access Layer]
-    DBL[Database Layer]
+    subgraph Presentation Layer
+        UI(Web UI, API Endpoints)
+    end
 
-    U -- "Request" --> PL
-    PL -- "Service Request" --> BLL
-    BLL -- "Data Request" --> DAL
-    DAL -- "SQL Query" --> DBL
+    subgraph Business Logic Layer
+        Services(Application & Domain Services)
+    end
 
-    DBL -- "Result" --> DAL
-    DAL -- "Data Response" --> BLL
-    BLL -- "Service Response" --> PL
-    PL -- "Display" --> U
+    subgraph Data Access Layer
+        Repositories(Repositories / DAOs)
+    end
+
+    subgraph Database Layer
+        DB[(Database)]
+    end
+
+    UI -- "Calls" --> Services
+    Services -- "Calls" --> Repositories
+    Repositories -- "Accesses" --> DB
 ```
 
 The most common model is the four-layer architecture, but there can be more or fewer layers.
@@ -52,6 +56,16 @@ The most common model is the four-layer architecture, but there can be more or f
 
 ---
 
+## Strict vs. Relaxed Layering (Closed vs. Open Layers)
+
+A key architectural decision is whether to make the layers "closed" or "open":
+
+*   **Closed Layers (Strict Layering):** This is the ideal. A layer can **only** communicate with the layer directly below it. For example, the Presentation Layer is not allowed to call the Data Access Layer directly; it must go through the Business Logic Layer. This enforces maximum separation of concerns but can create the "sinkhole" anti-pattern if a layer provides no value.
+
+*   **Open Layers (Relaxed Layering):** A layer is allowed to bypass the layer directly below it and communicate with any lower layer. For example, the Presentation Layer might be allowed to call a simple read service in the Data Access Layer directly if no business logic is required. This can improve performance and reduce boilerplate but weakens the architectural separation and can lead to a loss of control.
+
+---
+
 ## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
@@ -61,16 +75,17 @@ The most common model is the four-layer architecture, but there can be more or f
     * **Reusability:** Components in a layer can often be reused by different clients or other parts of the application.
 
 * **Challenges:**
-    * **Monolithic Deployment:** Traditionally, all layers are deployed together, which can lead to typical [[monolithic|monolith]] problems: deployment complexity and difficulty in scaling each layer independently.
-    * **Performance:** Each request must pass through multiple layers, which can introduce additional latency. Solutions like "layer skipping" can improve performance, but they compromise the strict separation and can create unexpected dependencies.
-    * **Tightly Coupled Layers:** Although the architecture encourages separation, there can be strong coupling between adjacent layers if the design is not well-managed.
-    * **Increasing Complexity:** While the model is simple at its core, adding new features can complicate the interactions between layers and make the architecture rigid.
+    * **The "Sinkhole" Anti-Pattern:** A common pitfall is when layers become mere pass-throughs that add no value (e.g., a Business Logic Layer that only calls the Data Access Layer without performing any logic). This adds unnecessary complexity and boilerplate without providing any benefit.
+    * **Performance Overhead:** In a strictly layered architecture, each request must pass through multiple layers, which can introduce latency. This is a trade-off for maintainability.
+    * **Monolithic Nature:** Traditionally, all layers are deployed as a single unit, which can lead to the challenges of a [[monolithic]] architecture (e.g., coarse-grained scaling, risky deployments).
+    * **Risk of "Leaky" Abstractions:** It can be difficult to prevent details from lower layers (like database-specific exceptions) from "leaking" into higher layers, which violates the separation of concerns.
 
 ---
 
 ## Variations and Derived Architectures
 
 * **2-Tier vs. N-Tier:** The basic 2-tier model (client and database) has evolved into the **N-Tier** model, which inserts intermediate layers (like the **Business Logic Layer**) to improve flexibility and scalability.
+* **[[modular-monolith|Modular Monolith]]:** A layered architecture is often the foundation for a monolith. The [[modular-monolith|Modular Monolith]] pattern is an evolution of this, where the application is divided into independent modules, each with its own layers. This improves maintainability and prepares the ground for a potential future migration to [[microservices|microservices]].
 * **[[hexagonal|Hexagonal Architecture (Ports and Adapters)]]:** Although not a direct derivation, the hexagonal architecture is inspired by the principle of separation of concerns. It is often used to decouple the application's core (**Business Logic**) from external technologies (databases, user interfaces, etc.) by using **ports** and **adapters**.
 * **[[microservices|Microservices]]:** While [[microservices|microservices]] are a distributed architecture, each individual microservice can be structured using a simple layered model to manage its own business logic and persistence. The **Layered Architecture** remains a very relevant internal [[software-architecture/design-patterns/|design pattern]] within a [[microservices|microservices]] context.
 

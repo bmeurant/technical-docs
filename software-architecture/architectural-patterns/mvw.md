@@ -15,24 +15,47 @@ The "Whatever" highlights the flexibility of this approach. The main goal isn't 
 ## Key "Model-View" Patterns
 
 ### 1. [[mvc|MVC (Model-View-Controller)]]
-**[[mvc|MVC]]** is the predecessor to many other patterns. It separates the application into three key components:
-* **Model**: Manages the application's data and business logic. It is independent of the user interface and notifies the **View** of any changes.
-* **View**: Represents the user interface. It observes the **Model** and updates itself accordingly. It can also capture user actions and send them to the **Controller**.
-* **Controller**: Acts as an "action router." It receives user requests from the **View**, processes them, updates the **Model**, and/or decides which **View** to display.
+The original pattern. Its key characteristic is that the **Controller** is responsible for receiving input and updating the **Model**. The **View** then updates itself, either by directly observing the Model (**Active MVC**) or by receiving data from the Controller (**Passive MVC**), which is more common in web frameworks. The View and Controller are often closely coupled.
 
 ### 2. [[mvp|MVP (Model-View-Presenter)]]
-**[[mvp|MVP]]** is an alternative to [[mvc|MVC]], often used in desktop and mobile applications. It aims to make presentation logic more easily testable by creating a passive **View**.
-* **Model**: Similar to [[mvc|MVC]], it contains the data and business logic.
-* **View**: The user interface. It is considered "passive" because it only displays what the **Presenter** tells it to and delegates all user actions to the **Presenter**. It contains no presentation logic.
-* **Presenter**: Acts as the link between the **Model** and the **View**. It holds all the presentation logic, retrieves data from the **Model**, formats it, and sends it to the **View** for display. It has a direct dependency on the **View** via an interface.
+An evolution of MVC focused on improving testability. Its defining feature is the **Presenter**, which acts as a strong intermediary. The Presenter communicates with the View through a specific **interface (`IView`)**, which decouples it from any concrete UI framework. The **View** becomes completely passive, delegating all logic to the Presenter.
 
-### 3. MVVM (Model-View-ViewModel)
-**MVVM** is a very popular pattern in modern web frameworks. It's designed to simplify **two-way data binding**.
-* **Model**: The data and business logic, as in the other patterns.
-* **View**: The user interface. It is **declarative** and is bound to the **ViewModel** via a binding mechanism. It doesn't know about the **Model** directly.
-* **ViewModel**: The intermediary layer that exposes the **Model**'s data in a way that the **View** can easily bind to it. Unlike the **Presenter**, the **ViewModel** has no reference to the **View**, making it highly testable. Communication between the **View** and the **ViewModel** happens through a binding system and commands.
+### 3. [[mvvm|MVVM (Model-View-ViewModel)]]
+A refinement of MVP popular in modern UI frameworks. It replaces the Presenter with a **ViewModel** and largely eliminates the need for the intermediary to call the View directly. Instead, the **View** declaratively **binds** to the ViewModel's properties and commands. When data in the ViewModel changes, the View updates automatically through the data-binding engine. This creates a very clean separation and excellent testability.
 
 ---
+
+## Visual Comparison
+
+This diagram shows the primary communication flows for each pattern, highlighting their key differences.
+
+```mermaid
+graph TD
+    subgraph MVC
+        direction TB
+        MVC_C(Controller) --> MVC_M(Model)
+        MVC_C --> MVC_V(View)
+        MVC_V --> MVC_C
+    end
+
+    subgraph MVP
+        direction TB
+        MVP_P(Presenter) --> MVP_M(Model)
+        MVP_P --> MVP_IV(IView)
+        MVP_V(View) --> MVP_P
+        MVP_V -- implements --o MVP_IV
+    end
+
+    subgraph MVVM
+        direction TB
+        MVVM_VM(ViewModel) --> MVVM_M(Model)
+        MVVM_V(View) -- "Data Binding" --o MVVM_VM
+    end
+
+    style MVC_V fill:#e6f2ff,stroke:#333
+    style MVP_V fill:#e6f2ff,stroke:#333
+    style MVVM_V fill:#e6f2ff,stroke:#333
+```
 
 ## Detailed Comparison ([[mvc|MVC]] vs. [[mvp|MVP]] vs. [[mvvm|MVVM]])
 
@@ -40,10 +63,9 @@ Here is a comparison table to better understand the nuances between these three 
 
 | Characteristic | MVC (Model-View-Controller) | MVP (Model-View-Presenter) | MVVM (Model-View-ViewModel) |
 | :--- | :--- | :--- | :--- |
-| **View/Intermediary Relationship** | The **View** has no direct reference to the **Controller**. The **Controller** does not directly manipulate the **View**. | The **View** has a reference to the **Presenter** (via an interface). The **Presenter** has a direct reference to the **View**. | The **View** has a reference to the **ViewModel**. The **ViewModel** has **no knowledge** of the **View**. |
-| **View's Role** | **Active**. It can update itself by observing the **Model**. | **Passive**. It only displays what the **Presenter** tells it to. | **Declarative**. It updates automatically via `data binding` with the **ViewModel**. |
-| **Intermediary's Role** | **Action router**. It handles user interactions and updates the **Model**. | **Direct intermediary**. It contains the presentation logic and manually updates the **View**. | **Model for the View**. It exposes the necessary data and `commands` for the **View** via binding. |
-| **Communication** | The **Controller** receives events, updates the **Model**. The **View** updates by observing the **Model**. | The **View** notifies the **Presenter** of events. The **Presenter** updates the **View** and the **Model**. | The **View** and the **ViewModel** are synchronized via a **data binding** mechanism. |
+| **Intermediary's Knowledge of View** | Controller often has a direct reference to a concrete View. Tightly coupled. | Presenter holds a reference to the View **only through an interface**. Decoupled from UI tech. | ViewModel has **no reference** to the View. Completely decoupled. |
+| **How the View is Updated** | Controller can update the View directly (Passive MVC) or the View updates itself by observing the Model (Active MVC). | The Presenter calls methods on the View's interface to update it manually. | The View updates automatically through a **data binding** engine. |
+| **Primary Goal** | Separation of concerns between Model, View, and Controller. | **Testability**. By decoupling the Presenter from the concrete View, all presentation logic can be unit tested. | **Simplify the View**. Remove as much logic as possible from the View by leveraging data binding and commands. |
 
 ## Conclusion
 

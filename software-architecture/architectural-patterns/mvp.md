@@ -21,23 +21,36 @@ The **MVP** pattern is a user interface [[software-architecture/architectural-pa
 ## Key Components and Communication Flow
 
 ```mermaid
-graph LR
-    U[User]
-    M[Model]
-    V[View]
-    P[Presenter]
+classDiagram
+    direction LR
+    class Model {
+        +getData()
+        +updateData()
+    }
+    class IView {
+        lt;&lt;&gt;&gt;
+        +displayData(data)
+        +showError(message)
+    }
+    class ConcreteView {
+        +displayData(data)
+        +showError(message)
+    }
+    class Presenter {
+        -view: IView
+        -model: Model
+        +onUserAction()
+    }
 
-    U -- "Input/Action" --> V
-    V -- "User Event" --> P
-    P -- "Updates" --> M
-    M -- "Notifies" --> P
-    P -- "Updates" --> V
-    V -- "Displays State" --> U
+    ConcreteView ..|> IView : implements
+    Presenter o-- "1" IView : has a
+    Presenter o-- "1" Model : has a
+    ConcreteView o-- "1" Presenter : has a
 ```
 
-1.  **Model:** The **Model** represents the application's data layer and business logic. It knows nothing about the **View** or the **Presenter**. It exposes data and methods to manipulate that data. This can be a simple **POJO** (Plain Old Java Object) class or an interaction with a database or a remote **REST API**.
-2.  **View:** The **View** is the user interface. It is **passive** and contains no logic. Its sole responsibility is to display the data the **Presenter** sends to it and to notify the **Presenter** of user actions (clicks, input, etc.). It implements a contractual interface that the **Presenter** uses.
-3.  **Presenter:** The **Presenter** contains all the presentation logic. It interacts with the **Model** to retrieve or update data and with the **View** to display the results. Unlike the **Controller** in the [[mvc|MVC]] pattern, the **Presenter** has a direct reference to the **View** (via the interface) and programmatically manipulates the interface.
+1.  **Model:** Represents the application's data and business logic. It is completely decoupled from the UI and has no knowledge of the View or Presenter.
+2.  **View:** A **passive** component that displays data and routes user commands to the Presenter. The defining characteristic of MVP is that the View implements a specific interface (`IView`) that the Presenter uses to interact with it. The View itself should be as "dumb" as possible.
+3.  **Presenter:** The heart of the pattern. It contains the presentation logic and acts as the mediator between the Model and the View. Crucially, the **Presenter only interacts with the View through the `IView` interface**, meaning it has no dependency on any concrete UI framework. It retrieves data from the Model, formats it, and then calls methods on the `IView` interface to update the display.
 
 **Typical Data Flow:**
 * The user interacts with the **View** (e.g., by clicking a button).
@@ -51,7 +64,7 @@ graph LR
 ## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
-    * **High Testability:** Decoupling the **Presenter**'s presentation logic makes it very easy to test with unit tests, without needing a graphical interface environment.
+    * **High Testability:** This is the primary benefit. Because the **Presenter** depends only on an `IView` interface, not a concrete UI framework (like Android or WinForms), it can be tested with simple, fast unit tests. You can mock the `IView` to verify that the Presenter calls the correct methods in response to events, without ever needing to render a single pixel on screen.
     * **Improved Maintainability:** The separation of responsibilities simplifies maintenance. Changes to business logic do not affect the user interface, and vice versa.
     * **Portability:** The **Model** and **Presenter** can be reused with different **Views** (for example, a web application and a mobile application can share the same **Presenter** and **Model**).
 * **Challenges:**
@@ -63,9 +76,13 @@ graph LR
 
 ## Variations and Derived Architectures
 
-* **Passive View:** The **View** is entirely managed by the **Presenter**. It has no logic of its own and simply displays what the **Presenter** requests.
-* **Supervising Controller:** The **Presenter** delegates some of the data binding logic to the **View**. It only intervenes for complex tasks or business logic.
-* **MVVM (Model-View-ViewModel):** A pattern derived from **MVP** where the **Presenter** is replaced by a **ViewModel**. The **ViewModel** exposes properties and commands that the **View** can bind to (**data binding**), which reduces the explicit communication boilerplate found in **MVP**. This is the predominant pattern in modern frameworks like **Angular**, **Vue.js**, and **React**.
+MVP has two primary flavors that define how much logic the View is allowed to have:
+
+*   **Passive View:** This is the purest (and most common) form of MVP. The **View** is completely passive and contains zero presentation logic. It exposes fine-grained setters (e.g., `setUserName(string name)`, `showErrorMessage(string message)`) that the **Presenter** uses to meticulously control every aspect of the UI. This provides maximum testability but can lead to more boilerplate code.
+
+*   **Supervising Controller:** In this variation, the **View** is given more responsibility. It can handle simple UI logic and data binding on its own (e.g., binding a list of strings to a dropdown). The **Presenter** acts as a "supervisor," stepping in only to handle complex presentation logic or to coordinate with the Model. This reduces boilerplate but makes the View slightly harder to test in isolation.
+
+*   **[[mvvm|MVVM (Model-View-ViewModel)]]:** MVVM can be seen as an evolution of MVP's Supervising Controller, where the data binding responsibilities are formalized into a `ViewModel`. The `ViewModel` exposes data and commands that the View binds to, almost completely eliminating the need for the Presenter/ViewModel to hold a direct reference to the View.
 
 The **MVP** pattern, although sometimes considered "legacy" compared to **[[mvvm|MVVM]]**, remains a solid foundation for understanding the separation of concerns in user interface applications. Its principles have directly influenced modern architectures and continue to form the basis for designing robust and testable software.
 

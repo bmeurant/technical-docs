@@ -7,13 +7,14 @@ date: 2025-09-15
 ---
 # Component-Based Architecture (CBA)
 
-**Component-Based Architecture (CBA)** is a software [[software-architecture/architectural-styles/|architectural style]] that focuses on decomposing a system into reusable, independent, and self-contained software components. A **component** is a software unit with a clearly defined interface that encapsulates its functionality and data, without exposing its internal complexity.
+**Component-Based Architecture (CBA)** is an [[software-architecture/architectural-styles/|architectural style]] that structures a system as an assembly of loosely coupled, independently replaceable **components**. A component is a binary, reusable unit of software that encapsulates its implementation and exposes its functionality only through a well-defined **public interface**.
+
+The core idea is to build systems by composing pre-built, standardized components, similar to how physical systems are built from off-the-shelf parts.
 
 * **Key Principles:**
-    * **Encapsulation:** The component hides its internal implementation and exposes functionalities via a public interface (API).
-    * **Clear Contracts:** Communication between components occurs only through their defined interfaces. This is crucial for ensuring independence.
-    * **Independence:** A component is designed to be independent and interchangeable. It can be replaced by another one, as long as the new implementation adheres to the same contract.
-    * **Decoupling:** Components are loosely coupled, which means that changes in one component have a minimal impact on others.
+    * **Strict Encapsulation (Black Box):** A component's internal implementation is completely hidden from the outside world. All interaction happens exclusively through its public interface.
+    * **Interchangeability:** Any component can be replaced by another component that implements the same interface, without affecting the rest of the system.
+    * **Component Independence:** Components are designed to be as autonomous as possible. They are often developed, tested, and deployed as individual units.
 
 ---
 
@@ -21,18 +22,25 @@ date: 2025-09-15
 
 ```mermaid
 graph TD
-    A[Component A]
-    B[Component B]
-    C[Component C]
+    subgraph "Application"
+        C1(Component A)
+        C2(Component B)
+    end
 
-    A -- "Calls B's API" --> B
-    A -- "Calls C's API" --> C
-    B -- "Uses C's service" --> C
+    subgraph "Component B Internals"
+        direction LR
+        B_API(Public Interface) --o B_Internal(Implementation Details)
+    end
+
+    C1 -- "Calls Interface" --> B_API
+
+    style C1 fill:#f9f,stroke:#333
+    style B_Internal fill:#ccc,stroke:#333
 ```
 
-1.  **Component:** A reusable, binary software unit that can be a simple code module or a more complex functional block. Examples include libraries like `React.js` for **UI components**, authentication services, or shopping cart management modules in an e-commerce application.
-2.  **Interface (Contract):** The set of methods, events, or properties a component exposes for use by others. For instance, an `IAuthentication` interface might have a `login(username, password)` method.
-3.  **Assembly:** The process of integrating different components to build a larger application or system. Assembly can be done via a platform, a framework, or directly through the application's code.
+1.  **Component:** A self-contained, binary unit of software. It is a "black box" that hides its internal implementation.
+2.  **Interface:** The component's "contract." It defines the public methods, events, and properties that other components can use to interact with it. This is the only permissible entry point to the component.
+3.  **Runtime Environment (or Container):** A crucial, often implicit, part of CBA. This is the execution environment that manages the lifecycle of components (e.g., creation, destruction) and facilitates their assembly and communication, often through **Dependency Injection**.
 
 **Typical Data Flow:**
 * A component (the **client**) needs a certain functionality.
