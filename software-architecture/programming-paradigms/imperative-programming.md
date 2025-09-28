@@ -23,15 +23,53 @@ graph TD
 
 ## 1. Procedural Programming
 
-Procedural programming organizes imperative code into **procedures** (also known as functions or subroutines). These are blocks of code that perform a specific task. The program is essentially a master procedure that calls other sub-procedures to complete its overall goal.
-
-This approach encourages a **top-down design**, where a complex problem is broken down into smaller, more manageable functions. Data is often stored in a separate set of variables and is passed between these functions as needed.
+Procedural programming organizes imperative code into **procedures** (also known as functions or subroutines). A procedure is a self-contained block of code that performs a specific, well-defined task. This approach encourages a **top-down design**: a developer starts by outlining the main function of the application as a series of high-level steps, and then recursively breaks down each step into smaller, more detailed procedures. The program becomes a master procedure (`main`) that orchestrates calls to these sub-procedures in a highly controlled, sequential manner to accomplish the overall goal. The data on which these procedures operate is kept separate, often passed between procedures as parameters or stored in a shared, global scope.
 
 ### Key Characteristics
-- **Focus on Process:** The primary focus is on the sequence of actions or the "procedure" to be followed.
-- **Functional Decomposition:** The main design activity is breaking down a task into a collection of functions.
-- **Shared Data:** Data is often treated as a second-class citizen, separate from the procedures. It is passed around from function to function, and multiple functions may modify the same piece of shared data. This can become a significant drawback in large systems, as it becomes difficult to track data modifications, leading to bugs and high coupling.
+- **Focus on Process:** The primary focus is on the sequence of actions, the algorithm, or the "procedure" to be followed. The code is a direct, step-by-step implementation of a process that transforms an input into an output. The developer must explicitly manage the entire flow of control.
+
+- **Functional Decomposition:** This is the primary technique for managing complexity. Large, complex problems are not solved by modeling real-world objects, but by breaking the required process down into a hierarchy of simpler, more understandable functions. Each function abstracts a single action or computation.
+
+- **Shared Data:** This is the most critical and defining characteristic, and often the main drawback. Data is treated as a passive entity, separate from the procedures that act upon it. Because there is no mechanism bundling the data with the functions that are meant to modify it, there is no inherent protection. In large applications, this leads to a complex web of dependencies where it becomes unclear which functions can read or write to which data. A change to a global data structure can cause a ripple effect, forcing changes in every single function that uses it. This makes it extremely difficult to track state changes and debug issues, leading to high [[cohesion-coupling|coupling]] and a fragile system where a local change can have unexpected global consequences.
+
 - **Examples of Languages:** C, Pascal, Fortran, COBOL.
+
+**Pseudo-code Example:**
+
+```
+// Global variable representing shared state
+let account_balance = 100
+
+procedure deposit(amount) {
+  // Direct modification of shared state
+  account_balance = account_balance + amount
+}
+
+procedure withdraw(amount) {
+  // Direct modification of shared state
+  if (account_balance >= amount) {
+    account_balance = account_balance - amount
+  } else {
+    print("Insufficient funds")
+  }
+}
+
+// Main execution flow
+deposit(50)
+withdraw(30)
+```
+
+This example illustrates the key points of procedural programming: the data (`account_balance`) is passive and global. The procedures (`deposit`, `withdraw`) are active but separate units of logic that have direct, uncontrolled access to modify this data. There is no intrinsic link between the data and the operations, which is the fundamental problem that encapsulation in Object-Oriented Programming is designed to solve.
+
+### Resources & links
+
+1. **[What Is Procedural Programming?](https://www.baeldung.com/cs/procedural-programming)**
+
+    An **imperative programming paradigm** organizing code into **procedures** (functions/subroutines) executed **sequentially**. It promotes **modularity** and **procedural abstraction**, focusing on separating **data structures** from the operations that act on them.
+
+2. **[The Return of Procedural Programming - Richard Feldman](http://www.youtube.com/watch?v=vQPHtAxOZZw)**
+
+    A talk on the **resurgence of PP** (**Rust**, **Go**), driven by **disillusionment** with **OOP complexity**. It advocates for the **procedural style**: programming with **plain functions and data**, **less hierarchy**, and favoring **static typing** and **composition** over traditional **OOP** features like **inheritance** and **extreme late binding** [00:48:02].
 
 ## 2. Object-Oriented Programming (OOP)
 
