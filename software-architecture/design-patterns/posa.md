@@ -9,7 +9,7 @@ date: 2025-09-21
 
 ## What is POSA?
 
-**POSA**, which stands for **Pattern-Oriented Software Architecture**, is a series of books that catalogue and describe fundamental patterns for building robust and resilient software systems. Unlike the more focused **[[gof|Gang of Four (GoF) patterns]]** for object-oriented design, POSA patterns address broader architectural and design issues, particularly in areas like [[transversal-programming-models#1-concurrent-programming|concurrent]], distributed, and networked systems. The series provides a common language and a systematic approach for tackling complex software design challenges.
+**POSA**, which stands for **Pattern-Oriented Software Architecture**, is a series of books that catalogue and describe fundamental patterns for building robust and resilient software systems. Unlike the more focused **[[gof|Gang of Four (GoF) patterns]]** for [[object-oriented-programming|object-oriented design]], POSA patterns address broader architectural and design issues, particularly in areas like [[transversal-programming-models#1-concurrent-programming|concurrent]], distributed, and networked systems. The series provides a common language and a systematic approach for tackling complex software design challenges.
 
 This section focuses on the **[[software-architecture/design-patterns/|design patterns]]** from the POSA series that solve intermediate-level design problems, often related to object collaboration or managing concurrency and network communication.
 
@@ -30,7 +30,7 @@ graph TD
 
 ## POSA1 Design Patterns
 
-This section focuses on the **[[software-architecture/design-patterns/|design patterns]]** described in **POSA Volume 1: A System of Patterns**. These patterns often serve as a bridge between high-level architectural decisions and object-oriented design.
+This section focuses on the **[[software-architecture/design-patterns/|design patterns]]** described in **POSA Volume 1: A System of Patterns**. These patterns often serve as a bridge between high-level architectural decisions and [[object-oriented-programming|object-oriented design]].
 
 ### POSA1 Fundamental Patterns
 
@@ -478,7 +478,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 
 #### Active Object
 
-* **Problem**: How to manage concurrency using an object-oriented approach, synchronizing access to shared data and separating a method's invocation from its execution?
+* **Problem**: How to manage concurrency using an [[object-oriented-programming|object-oriented approach]], synchronizing access to shared data and separating a method's invocation from its execution?
 * **Synopsis**: An `Active Object` encapsulates a control thread and a [[message-queue|queue]]. Clients interact with it asynchronously, which protects the object's internal state from concurrent access.
 
     ```mermaid

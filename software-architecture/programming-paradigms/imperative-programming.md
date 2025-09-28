@@ -2,6 +2,7 @@
 title: Imperative Programming
 tags:
   - programming-paradigm
+  - imperative
 date: 2025-09-28
 ---
 # Imperative Programming
@@ -13,7 +14,7 @@ This paradigm is built on three core concepts:
 - **Sequence of Commands:** Instructions are executed in a specific, predefined order, using control flow statements like loops (`for`, `while`) and conditionals (`if-else`).
 - **Mutability:** The state is mutable, meaning that commands can directly modify the values of variables as the program runs.
 
-**Main Imperative Paradigms**: Imperative programming is primarily divided into two major sub-paradigms: **Procedural Programming** and **Object-Oriented Programming** but others paradigms can also fall into this category.
+**Main Imperative Paradigms**: Imperative programming is primarily divided into two major sub-paradigms: **Procedural Programming** and **[[object-oriented-programming|Object-Oriented Programming]]** but others paradigms can also fall into this category.
 
 ```mermaid
 graph TD
@@ -59,7 +60,7 @@ deposit(50)
 withdraw(30)
 ```
 
-This example illustrates the key points of procedural programming: the data (`account_balance`) is passive and global. The procedures (`deposit`, `withdraw`) are active but separate units of logic that have direct, uncontrolled access to modify this data. There is no intrinsic link between the data and the operations, which is the fundamental problem that encapsulation in Object-Oriented Programming is designed to solve.
+This example illustrates the key points of procedural programming: the data (`account_balance`) is passive and global. The procedures (`deposit`, `withdraw`) are active but separate units of logic that have direct, uncontrolled access to modify this data. There is no intrinsic link between the data and the operations, which is the fundamental problem that encapsulation in [[object-oriented-programming|Object-Oriented Programming]] is designed to solve.
 
 ### Resources & links
 
@@ -71,7 +72,7 @@ This example illustrates the key points of procedural programming: the data (`ac
 
     A talk on the **resurgence of PP** (**Rust**, **Go**), driven by **disillusionment** with **OOP complexity**. It advocates for the **procedural style**: programming with **plain functions and data**, **less hierarchy**, and favoring **static typing** and **composition** over traditional **OOP** features like **inheritance** and **extreme late binding** [00:48:02].
 
-## 2. Object-Oriented Programming (OOP)
+## 2. [[object-oriented-programming|Object-Oriented Programming (OOP)]]
 
 Object-Oriented Programming (OOP) evolved as a solution to the challenges of procedural programming, particularly the difficulty of managing complexity and shared state in large applications. OOP organizes code by bundling data and the operations that work on that data into single units called **objects**.
 
@@ -82,7 +83,7 @@ While still imperative at its core (methods of an object are sequences of comman
 - **Abstraction:** Objects hide their internal complexity behind a simplified public interface. For example, to drive a car, you use the steering wheel and pedals (the interface), without needing to understand the complex mechanics of the engine (the implementation).
 - **Inheritance:** Allows a new class (subclass) to inherit properties and methods from an existing class (superclass), promoting code reuse.
 - **Polymorphism:** Allows objects of different classes to be treated as objects of a common superclass, enabling flexible and dynamic behavior.
-- **Examples of Languages:** Java, C++, C#, Python, Ruby, Smalltalk.
+- **Examples of Languages:** Java, C++, C#, C#, Python, Ruby, Smalltalk.
 
 These concepts are explored in greater detail on the dedicated [[object-oriented-programming|Object-Oriented Programming]] page.
 

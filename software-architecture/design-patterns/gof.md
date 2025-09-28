@@ -7,7 +7,7 @@ date: 2025-09-21
 
 # GoF Design Patterns
 
-**[[software-architecture/design-patterns/|Design patterns]]** are general, reusable solutions to common problems in software development. The book "Design Patterns: Elements of Reusable Object-Oriented Software" by the "Gang of Four" (**GoF**) — Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides — formalized 23 of these [[software-architecture/design-patterns/|patterns]], making them a cornerstone of object-oriented programming. These patterns are not ready-to-use code libraries but rather abstract descriptions of how objects and classes can interact to solve specific issues, improving code flexibility, reusability, and maintainability. They are grouped into three main categories: **Creational**, **Structural**, and **Behavioral**.
+**[[software-architecture/design-patterns/|Design patterns]]** are general, reusable solutions to common problems in software development. The book "Design Patterns: Elements of Reusable Object-Oriented Software" by the "Gang of Four" (**GoF**) — Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides — formalized 23 of these [[software-architecture/design-patterns/|patterns]], making them a cornerstone of [[object-oriented-programming|object-oriented programming]]. These patterns are not ready-to-use code libraries but rather abstract descriptions of how objects and classes can interact to solve specific issues, improving code flexibility, reusability, and maintainability. They are grouped into three main categories: **Creational**, **Structural**, and **Behavioral**.
 
 ---
 
@@ -859,4 +859,4 @@ date: 2025-09-21
 
 2.  **[Design Patterns Video Tutorial](https://www.youtube.com/watch?v=vNHpsC5ng_E)**
 
-    This video by **Derek Banas** is a tutorial on **design patterns** using Java. It starts by reviewing fundamental object-oriented programming concepts such as inheritance, encapsulation, and the difference between instance and local variables, before diving into design patterns.
+    This video by **Derek Banas** is a tutorial on **design patterns** using Java. It starts by reviewing fundamental [[object-oriented-programming|object-oriented programming]] concepts such as inheritance, encapsulation, and the difference between instance and local variables, before diving into design patterns.

@@ -33,7 +33,7 @@ The imperative paradigm focuses on **how** to execute a task. It describes a seq
 [[imperative-programming|Learn more about Imperative Programming]]
 
 - **Procedural:** Organizes code into procedures or functions that are called in a specific order.
-- **Object-Oriented:** Groups data (attributes) and the operations that modify that data (methods) into objects.
+- **[[object-oriented-programming|Object-Oriented]]:** Groups data (attributes) and the operations that modify that data (methods) into objects.
 
 ## Declarative Programming
 
