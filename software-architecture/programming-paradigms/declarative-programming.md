@@ -40,13 +40,29 @@ This emphasis on purity and immutability naturally leads to systems with very hi
 
 ## 2. Logical Programming
 
-Logical Programming is based on the principles of formal logic. A program in this paradigm is a collection of **facts** and **rules**. Execution involves posing a **query** to the system, which then uses a process of logical deduction to determine if the query is true or false based on the existing knowledge base. If the query contains variables, the system will attempt to find all possible values that make the query true.
+Logical Programming is a paradigm based on the principles of formal logic, where a program is a collection of **facts** and **rules**. Instead of writing a sequence of steps, the developer builds a knowledge base. Execution involves posing a **query** to this knowledge base, and the language's engine uses a process of logical deduction to find the answer. It's less about computing a result and more about proving a theorem.
 
 ### Key Characteristics
-- **Facts and Rules:** The program is a database of logical statements (e.g., "Socrates is a human," "All humans are mortal").
-- **Queries:** The program is executed by asking a question (e.g., "Is Socrates mortal?").
-- **Unification and Backtracking:** The engine works by trying to match the query against the facts and rules. If a path fails, it can automatically backtrack and try another one.
+- **Facts and Rules:** The program is a database of logical statements. A **fact** is a simple, true statement (e.g., `parent(john, pete)`). A **rule** is a more complex statement that defines a relationship, typically in the form "Head is true if Body is true" (e.g., `grandparent(X, Z) :- parent(X, Y), parent(Y, Z)`).
+- **Queries:** The program is executed by asking a question, or posing a query, to the knowledge base. For example, `?- grandparent(john, X).` asks the system to find all values of `X` for which "john" is a grandparent.
+- **Unification and Backtracking:** The engine works by trying to match variables in the query with values from the facts and rules (unification). If one path of reasoning leads to a dead end (fails to prove the query), the engine automatically goes back and tries an alternative path (backtracking). This powerful search mechanism is built into the language itself.
 - **Examples of Languages:** Prolog, Datalog.
+
+**Pseudo-code Example (Prolog-like):**
+```prolog
+// Facts: state what is true
+human(socrates).
+human(plato).
+
+// Rule: defines a relationship
+// "X is mortal if X is human"
+mortal(X) :- human(X).
+
+// Query: ask a question to the knowledge base
+?- mortal(socrates).
+```
+
+This example demonstrates the essence of logical programming. We don't write a function to check if Socrates is mortal. Instead, we provide the system with knowledge: a fact (`human(socrates)`) and a rule (`mortal(X) :- human(X)`). When we pose the query `?- mortal(socrates).`, the engine uses its deduction capabilities. It unifies `X` with `socrates`, sees that `mortal(socrates)` is true if `human(socrates)` is true, and finds that `human(socrates)` is a known fact. The system therefore answers `true`. We only described the logic, and the engine figured out how to get the answer.
 
 ## Key Differences Summarized
 

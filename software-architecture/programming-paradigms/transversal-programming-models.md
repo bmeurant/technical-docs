@@ -40,8 +40,6 @@ Concurrent programming is a paradigm that deals with structuring a program as mu
 
     This introductory article explores the fundamental differences between **concurrent programming** and **parallel programming**. It also details the concepts of **multi-threading** (using **threads**) and **multi-processing** (using **processes**).
 
----
-
 2. **[Overview of Concurrent Programming](http://www.youtube.com/watch?v=I-jSd4q9qU0)**
 
     This video from **Douglas Schmidt** provides an overview of **concurrent programming**, explaining its key concepts and comparing it to **sequential programming**. It includes an essential definition of a **thread**.
