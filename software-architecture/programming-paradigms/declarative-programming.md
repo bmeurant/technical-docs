@@ -49,6 +49,7 @@ Logical Programming is a paradigm based on the principles of formal logic, where
 - **Examples of Languages:** Prolog, Datalog.
 
 **Pseudo-code Example (Prolog-like):**
+
 ```prolog
 // Facts: state what is true
 human(socrates).

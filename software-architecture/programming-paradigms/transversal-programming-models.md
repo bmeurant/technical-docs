@@ -22,27 +22,37 @@ graph TD
 
 ### 1. Concurrent Programming
 
-Concurrent programming is a paradigm that deals with structuring a program as multiple, simultaneously executing instruction sequences. The primary goal is to improve throughput (by doing more work at the same time) and responsiveness (by not letting a long task block the entire application, such as a user interface).
+Concurrent programming is a paradigm that deals with structuring a program to handle multiple, simultaneously progressing tasks. The primary goal is to improve throughput (by doing more work at the same time) and responsiveness (by not letting a long task block the entire application, such as a user interface).
+
+It's important to distinguish concurrency from **parallelism**: 
+- **Concurrency** is about *dealing* with many things at once (managing multiple tasks over a period).
+- **Parallelism** is about *doing* many things at once (physically executing multiple tasks at the exact same instant, which requires multiple CPU cores).
 
 #### Key Concepts
-- **Processes and Threads:** Concurrency can be achieved with separate processes (which have their own isolated memory space) or threads (which share memory with other threads in the same process). Threads are more lightweight but introduce the complexity of managing shared data.
-- **Synchronization:** To prevent data corruption when multiple threads access the same data, access must be controlled. This is done using synchronization primitives like **locks**, **semaphores**, or **mutexes**.
-- **Communication:** Concurrent tasks can communicate either by sharing memory (and using locks) or by [[message-driven|passing messages]] between each other, which avoids many of the risks associated with shared state.
+- **Processes and Threads:** Concurrency can be achieved with separate processes (which have their own isolated memory space, making them safer but heavier) or threads (which share memory, making them lightweight but introducing the complexity of shared data).
+- **Synchronization:** To prevent data corruption when multiple threads access the same data, access must be controlled. This is done using synchronization primitives like **locks** (like a key to a single-occupancy restroom), **semaphores**, or **mutexes**.
+- **Communication:** Concurrent tasks can communicate either by sharing memory (and using locks) or by [[message-driven|passing messages]] between each other. The latter approach, often formalized in the **Actor Model**, avoids many of the risks associated with shared state.
 
 #### Common Challenges
+
 - **Race Conditions:** Occur when the result of a computation depends on the non-deterministic scheduling of two or more threads. For example, if two threads try to increment the same counter at the same time, one of the increments might be lost.
+
+  ```javascript
+  // Shared state
+  let counter = 0
+
+  // Thread 1 runs:
+  let value1 = read(counter) // value1 is 0
+  // Thread 2 is scheduled here!
+  let value2 = read(counter) // value2 is also 0!
+  write(counter, value2 + 1) // counter becomes 1
+  // Thread 1 resumes
+  write(counter, value1 + 1) // counter becomes 1 again!
+  // Expected result was 2, but one increment was lost.
+  ```
+
 - **Deadlocks:** A situation where two or more threads are blocked forever, each waiting for the other to release a resource.
 - **Starvation:** A thread is perpetually denied necessary resources to process its work, often because other, "greedier" threads are monopolizing them.
-
-#### Resources & links
-
-1. **[How to use Multithreading and Multiprocessing — A Beginner's guide to parallel and concurrent programming](https://medium.com/terramate/how-to-use-multithreading-and-multiprocessing-a-beginners-guide-to-parallel-and-concurrent-a69b9dd21e9d)**
-
-    This introductory article explores the fundamental differences between **concurrent programming** and **parallel programming**. It also details the concepts of **multi-threading** (using **threads**) and **multi-processing** (using **processes**).
-
-2. **[Overview of Concurrent Programming](http://www.youtube.com/watch?v=I-jSd4q9qU0)**
-
-    This video from **Douglas Schmidt** provides an overview of **concurrent programming**, explaining its key concepts and comparing it to **sequential programming**. It includes an essential definition of a **thread**.
 
 ### 2. Reactive Programming
 
@@ -136,9 +146,25 @@ When `myService.doWork()` is called, the AOP framework will automatically execut
 
 ### 4. Functional Reactive Programming (FRP)
 
-Functional Reactive Programming (FRP) is a **purely functional** approach to reactive programming. Its goal is to eliminate the side effects that are common in mainstream reactive libraries (like the imperative actions in the `subscribe` block shown above).
+Functional Reactive Programming (FRP) is a **purely functional** approach to reactive programming. Its goal is to eliminate the side effects that are common in mainstream reactive libraries (like the imperative actions in the `subscribe` block shown above) and to model the entire system declaratively.
 
-In a true FRP system, everything is composed declaratively. Instead of imperatively updating a UI element, you would create a declarative binding between the final data stream and the UI property itself, letting the framework handle the update. This makes FRP a stricter, purely [[declarative-programming|declarative]] paradigm, whereas general Reactive Programming is a more flexible, hybrid model. It is particularly powerful for continuous-time systems like animations, robotics, or complex UI event handling, where reasoning about state changes over time without side effects is a major benefit.
+In a true FRP system, everything is a stream, including UI properties and events. You build a system by describing the relationships between these streams. Instead of imperatively updating a UI element inside a subscription, you would declaratively state that a UI element's property *is* a transformation of some other stream.
+
+**Pseudo-code Example:**
+
+```javascript
+// Define a stream of mouse positions from mouse-move events
+mouse_positions = stream_of(mouse.x, mouse.y)
+
+// Declaratively define the circle's position as being equal to the mouse position stream.
+// There is no .subscribe() block with imperative commands.
+circle.position = mouse_positions
+
+// The FRP framework understands this continuous binding and ensures the circle's
+// position always reflects the latest value from the mouse_positions stream.
+```
+
+This makes FRP a stricter, purely [[declarative-programming|declarative]] paradigm. It is particularly powerful for continuous-time systems like animations, complex UI interactions, and robotics, where reasoning about state changes over time without side effects is a major benefit.
 
 #### **Resources & links**
 

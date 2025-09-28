@@ -36,7 +36,7 @@ Procedural programming organizes imperative code into **procedures** (also known
 
 **Pseudo-code Example:**
 
-```
+```javascript
 // Global variable representing shared state
 let account_balance = 100
 
