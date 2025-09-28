@@ -8,7 +8,7 @@ date: 2025-09-17
 
 **Event-Driven Architecture** (EDA) is a specific, popular implementation of a **[[message-driven|Message-Driven Architecture]]** where the messages are exclusively **events**.
 
-An event is a declarative notification that a significant change in state has occurred (e.g., "Order #123 was shipped"). The service that produces the event (the producer) is not concerned with who is listening or what the outcome of the event will be. It simply broadcasts the fact that something happened. This approach promotes extreme loose coupling and is ideal for building highly responsive and scalable distributed systems.
+An event is a [[declarative-programming|declarative]] notification that a significant change in state has occurred (e.g., "Order #123 was shipped"). The service that produces the event (the producer) is not concerned with who is listening or what the outcome of the event will be. It simply broadcasts the fact that something happened. This approach promotes extreme loose coupling and is ideal for building highly responsive and scalable distributed systems.
 
 ### **Core Principles**
 

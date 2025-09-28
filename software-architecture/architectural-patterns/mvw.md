@@ -21,7 +21,7 @@ The original pattern. Its key characteristic is that the **Controller** is respo
 An evolution of MVC focused on improving testability. Its defining feature is the **Presenter**, which acts as a strong intermediary. The Presenter communicates with the View through a specific **interface (`IView`)**, which decouples it from any concrete UI framework. The **View** becomes completely passive, delegating all logic to the Presenter.
 
 ### 3. [[mvvm|MVVM (Model-View-ViewModel)]]
-A refinement of MVP popular in modern UI frameworks. It replaces the Presenter with a **ViewModel** and largely eliminates the need for the intermediary to call the View directly. Instead, the **View** declaratively **binds** to the ViewModel's properties and commands. When data in the ViewModel changes, the View updates automatically through the data-binding engine. This creates a very clean separation and excellent testability.
+A refinement of MVP popular in modern UI frameworks. It replaces the Presenter with a **ViewModel** and largely eliminates the need for the intermediary to call the View directly. Instead, the **View** [[declarative-programming|declaratively]] **binds** to the ViewModel's properties and commands. When data in the ViewModel changes, the View updates automatically through the data-binding engine. This creates a very clean separation and excellent testability.
 
 ---
 

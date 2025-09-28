@@ -11,7 +11,7 @@ This paradigm is built on three core concepts:
 - **Sequence of Commands:** Instructions are executed in a specific, predefined order, using control flow statements like loops (`for`, `while`) and conditionals (`if-else`).
 - **Mutability:** The state is mutable, meaning that commands can directly modify the values of variables as the program runs.
 
-**Main Imperative Paradigms**: Imperative programming is primarily divided into two major sub-paradigms: Procedural Programming and Object-Oriented Programming but others paradigms can also fall into this category.
+**Main Imperative Paradigms**: Imperative programming is primarily divided into two major sub-paradigms: **Procedural Programming** and **Object-Oriented Programming** but others paradigms can also fall into this category.
 
 ```mermaid
 graph TD
@@ -71,4 +71,4 @@ In essence, while both paradigms tell the computer *how* to perform tasks, OOP p
 
 2. **[Imperative programming: Overview of the oldest programming paradigm](https://www.ionos.com/digitalguide/websites/web-development/imperative-programming/)** (IONOS)
 
-    The **oldest** programming paradigm. Programs consist of a **clear sequence of instructions** (the "how") that directly manipulate variables. While easy to learn, it can lead to high **code volume** and **complexity** for large applications, unlike the declarative paradigm (the "what").
+    The **oldest** programming paradigm. Programs consist of a **clear sequence of instructions** (the "how") that directly manipulate variables. While easy to learn, it can lead to high **code volume** and **complexity** for large applications, unlike the [[declarative-programming|declarative paradigm]] (the "what").

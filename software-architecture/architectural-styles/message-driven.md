@@ -22,7 +22,7 @@ There are two primary types of messages, and the type used defines the architect
 
 1.  **Command:** A message that is an **[[imperative-programming|imperative]] instruction** telling a service to perform a specific action (e.g., `ProcessPayment`, `GenerateReport`). Commands are typically directed at a single receiver.
 
-2.  **Event:** A message that is a **declarative notification** that a significant state change has occurred (e.g., `OrderShipped`, `UserRegistered`). Events are facts about the past, broadcast to any component that might be interested.
+2.  **Event:** A message that is a **[[declarative-programming|declarative]] notification** that a significant state change has occurred (e.g., `OrderShipped`, `UserRegistered`). Events are facts about the past, broadcast to any component that might be interested.
 
 This distinction is crucial, as it leads to the two main flavors of Message-Driven Architecture.
 

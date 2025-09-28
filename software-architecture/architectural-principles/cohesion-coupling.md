@@ -42,7 +42,7 @@ Cohesion is a qualitative measure of a module's focus. The more a module has one
 3.  **Communicational Cohesion**: Elements all operate on the same set of data. Their actions are distinct but share the same data context.
     * **Example**: A `UserProfileManager` class that contains methods like `loadProfile()`, `validateProfileData()`, and `updateLastLoginDate()`. All operate on a user's profile data.
 
-4.  **[[imperative-programming#1-procedural-programming|Procedural]] Cohesion**: Elements are grouped to follow a specific order of execution but have no data link.
+4.  **Procedural Cohesion**: Elements are grouped to follow a specific order of execution but have no data link.
     * **Example**: An `OrderProcessor` module that executes `checkInventory()`, `processPayment()`, and `sendConfirmationEmail()` in that specific order.
 
 5.  **Temporal Cohesion**: Elements are grouped because they are executed at the same time (e.g., at system startup or shutdown), without any functional or data relationship.

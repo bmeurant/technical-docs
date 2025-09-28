@@ -40,7 +40,7 @@ classDiagram
     note for ViewModel "Exposes state and behavior for the View"
 ```
 
-1.  **View:** The user interface (UI). Its primary job is to declaratively bind to the properties and commands exposed by the ViewModel. The View is responsible for the visual structure and layout, but it contains no application logic. It is "dumb" by design.
+1.  **View:** The user interface (UI). Its primary job is to [[declarative-programming|declaratively]] bind to the properties and commands exposed by the ViewModel. The View is responsible for the visual structure and layout, but it contains no application logic. It is "dumb" by design.
 2.  **ViewModel:** The heart of the pattern. It acts as an abstraction of the View and a container for the View's state and logic. It retrieves data from the Model and **transforms** it into a format that the View can easily display (e.g., converting a `Date` object to a formatted string). It also exposes **Commands** (e.g., `SaveCommand`, `DeleteCommand`) that the View can bind to. The ViewModel has no reference to any specific UI elements, making it highly testable.
 3.  **Model:** Represents the application's non-visual business logic and data. It is completely independent of the UI and knows nothing about the ViewModel or the View.
 
@@ -104,7 +104,7 @@ This mechanism decouples user actions (like button clicks) from the code that ha
 ## Related Patterns, Concepts and Variations
 
 * **MVVM-C (Coordinator):** Adds a **Coordinator** layer to manage navigation and transitions between **Views** and **ViewModels**, making them even more independent.
-* **RxMVVM:** Uses **reactive programming** frameworks like **RxJava** or **RxSwift** to manage data flows between components in a more efficient and declarative way.
+* **RxMVVM:** Uses **reactive programming** frameworks like **RxJava** or **RxSwift** to manage data flows between components in a more efficient and [[declarative-programming|declarative]] way.
 * **[[clean|Clean Architecture]] & MVVM:** **MVVM** is often used as a presentation pattern within larger architectures like **[[clean|Clean Architecture]]**, where the **Model** is divided into **Domain** and **Data layers**.
 
 The **MVVM** pattern has become an essential reference for user interface-based applications, providing a robust and testable approach to modern software design.
