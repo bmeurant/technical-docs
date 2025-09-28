@@ -61,12 +61,12 @@ The interaction between the components is [[event-driven|event-driven]] and indi
 
 * **Advantages (Benefits):**
     * **Flexibility and Extensibility:** New Knowledge Sources can be added to the system easily without affecting existing ones. This makes the pattern ideal for research and development projects where the problem-solving strategy evolves.
-    * **Concurrent Processing:** Knowledge Sources can operate in parallel, which makes the pattern suitable for multi-core and distributed environments.
+    * **[[transversal-programming-models#1-concurrent-programming|Concurrent]] Processing:** Knowledge Sources can operate in parallel, which makes the pattern suitable for multi-core and distributed environments.
     * **Problem-Solving for ill-defined problems:** It is designed for problems where no single algorithm exists to find a solution directly. The emergent behavior from the collaboration of multiple simple components leads to a solution.
     * **Separation of Concerns:** The pattern strictly separates the problem-solving logic (Knowledge Sources), the data (Blackboard), and the control flow (Controller).
 
 * **Challenges:**
-    * **Synchronization and Concurrency:** Managing concurrent access to the Blackboard can be complex, especially in a distributed environment. Mechanisms like locks, semaphores, or transactional systems are often required.
+    * **Synchronization and [[transversal-programming-models#1-concurrent-programming|Concurrency]]:** Managing [[transversal-programming-models#1-concurrent-programming|concurrent]] access to the Blackboard can be complex, especially in a distributed environment. Mechanisms like locks, semaphores, or transactional systems are often required.
     * **Single Point of Failure (SPOF):** The Blackboard itself can become a **bottleneck** if not properly managed, as all communication must flow through it. If it fails, the entire system fails.
     * **Debugging and Testing:** The non-deterministic nature and the absence of a clear control flow make debugging and tracing the system's behavior very difficult. It can be hard to know which Knowledge Source made a particular modification.
     * **Overhead:** The constant monitoring and a complex Controller can introduce significant overhead, making it less efficient for simpler problems.
@@ -77,7 +77,7 @@ The interaction between the components is [[event-driven|event-driven]] and indi
 * **Hierarchical Blackboard:** The Blackboard is organized into multiple levels of abstraction, with Knowledge Sources specialized to operate at specific levels. This is common in complex AI systems.
 * **Open Blackboard:** This variation loosens the strict control of the Controller. Knowledge Sources can write directly to the Blackboard without a centralized scheduler, relying on event-based triggers. This is less common due to the increased complexity of managing concurrency.
 * **Integration with other patterns:** The Blackboard pattern is often combined with other patterns. For example, Knowledge Sources can be implemented as **[[microservices]]** communicating via a message queue, which serves as a sort of "Blackboard" in a distributed system.
-* **Modern Collaborative Tools:** Conceptually, modern real-time collaborative tools (like Google Docs or Figma) share similarities with the Blackboard pattern. The document or canvas acts as the "blackboard," and multiple users (the "knowledge sources") contribute concurrently to build a final product.
+* **Modern Collaborative Tools:** Conceptually, modern real-time collaborative tools (like Google Docs or Figma) share similarities with the Blackboard pattern. The document or canvas acts as the "blackboard," and multiple users (the "knowledge sources") contribute [[transversal-programming-models#1-concurrent-programming|concurrently]] to build a final product.
 
 This pattern, though less common in standard enterprise applications, remains a powerful tool for specific, highly complex domains. Its strength lies in its ability to manage complexity through a collaborative, incremental approach.
 

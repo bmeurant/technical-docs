@@ -57,7 +57,7 @@ The data flow through the pipeline can be managed in two ways:
 
 * **Advantages (Benefits):**
     * **Reusability and Flexibility:** Filters are independent components that can be easily reused, reorganized, or replaced to build new pipelines.
-    * **Parallelism and Performance:** The model allows for natural concurrent execution. Each filter can run on a separate thread or machine, which is ideal for processing massive data streams and optimizing performance.
+    * **Parallelism and Performance:** The model allows for natural [[transversal-programming-models#1-concurrent-programming|concurrent]] execution. Each filter can run on a separate thread or machine, which is ideal for processing massive data streams and optimizing performance.
     * **Development Simplicity:** Each filter has a unique and well-defined responsibility, making it simple to design, implement, test, and maintain.
     * **Scalability:** Processing capacity can be increased by parallelizing a specific filter that constitutes a bottleneck.
 

@@ -1,4 +1,4 @@
---- 
+---
 title: Event Sourcing
 tags:
   - data-management
@@ -54,7 +54,7 @@ sequenceDiagram
     * **Complete Audit Trail:** Provides a perfect and unalterable audit trail of all actions that have occurred in the system. This is a major asset for financial, medical, or regulated systems.
     * **Temporal Queries ("Time Travel"):** Allows for reconstructing the system's state at any point in time, which is extremely powerful for debugging, bug analysis, or business intelligence.
     * **Write Performance:** Writing is reduced to an `append` operation in a log, which is extremely fast and avoids complex transactional locks.
-    * **Decoupling and Scalability:** Events can be published on a bus. Other services can subscribe to them to update read models, trigger workflows, or notify external systems, promoting a reactive and decoupled architecture.
+    * **Decoupling and Scalability:** Events can be published on a bus. Other services can subscribe to them to update read models, trigger workflows, or notify external systems, promoting a [[transversal-programming-models#2-reactive-programming|reactive]] and decoupled architecture.
 
 * **Challenges:**
     * **Querying Complexity:** The event log is optimized for writing, not for reading. Answering a simple question like "What are all the active users?" may require replaying thousands of events. This problem is almost always solved by using the **[[cqrs|CQRS]]** pattern.
@@ -70,7 +70,7 @@ Event Sourcing is rarely used alone. It is part of an ecosystem of complementary
 
 * **[[event-driven|Event-Driven Architecture]]:** Event Sourcing is a specific implementation strategy for the persistence layer within a broader Event-Driven Architecture. It provides the immutable log of events that other services can react to.
 * **[[publish-subscribe|Publish-Subscribe Pattern]]:** This pattern is the primary mechanism for broadcasting the events captured by Event Sourcing. After an event is persisted to the event store, it is often published on a topic so that any interested microservice or component can react to it.
-* **[[microservices|Microservices Architecture]]:** Event Sourcing is a powerful pattern for inter-service communication in a microservices landscape. Services can publish events about their state changes, and other services can subscribe to these events to update their own local state, ensuring eventual consistency without creating tight coupling.
+* **[[microservices|Microservices Architecture]]::** Event Sourcing is a powerful pattern for inter-service communication in a microservices landscape. Services can publish events about their state changes, and other services can subscribe to these events to update their own local state, ensuring eventual consistency without creating tight coupling.
 * **[[cqrs|CQRS (Command Query Responsibility Segregation)]]:** The almost inseparable partner of Event Sourcing. ES handles the "write" side (Command), while materialised projections of events create read models optimized for the "query" side.
 * **[[saga|Saga Pattern]]:** In distributed architectures, sagas manage long-running transactions that span multiple services. These sagas are often orchestrated or choreographed in response to event streams.
 * **Transactional Outbox:** A pattern that ensures events are reliably published *after* being persisted in the Event Store. This prevents inconsistencies where an event might be published without being saved, or vice versa.

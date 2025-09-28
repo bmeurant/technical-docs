@@ -104,7 +104,7 @@ This mechanism decouples user actions (like button clicks) from the code that ha
 ## Related Patterns, Concepts and Variations
 
 * **MVVM-C (Coordinator):** Adds a **Coordinator** layer to manage navigation and transitions between **Views** and **ViewModels**, making them even more independent.
-* **RxMVVM:** Uses **reactive programming** frameworks like **RxJava** or **RxSwift** to manage data flows between components in a more efficient and [[declarative-programming|declarative]] way.
+* **RxMVVM:** Uses **[[transversal-programming-models#2-reactive-programming|reactive programming]]** frameworks like **RxJava** or **RxSwift** to manage data flows between components in a more efficient and [[declarative-programming|declarative]] way.
 * **[[clean|Clean Architecture]] & MVVM:** **MVVM** is often used as a presentation pattern within larger architectures like **[[clean|Clean Architecture]]**, where the **Model** is divided into **Domain** and **Data layers**.
 
 The **MVVM** pattern has become an essential reference for user interface-based applications, providing a robust and testable approach to modern software design.

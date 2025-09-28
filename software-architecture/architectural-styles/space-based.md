@@ -6,7 +6,7 @@ date: 2025-09-16
 ---
 # Space-Based Architecture (SBA)
 
-The **Space-Based Architecture** (SBA) is a high-performance [[software-architecture/architectural-styles/|architectural style]] designed for extreme scalability and elasticity. The name comes from the concept of a **"tuple space,"** a shared memory space where multiple processes can read and write data concurrently. In SBA, this concept is realized as a grid of self-sufficient **processing units**, each hosting a copy of the application logic and a portion of the in-memory data.
+The **Space-Based Architecture** (SBA) is a high-performance [[software-architecture/architectural-styles/|architectural style]] designed for extreme scalability and elasticity. The name comes from the concept of a **"tuple space,"** a shared memory space where multiple processes can read and write data [[transversal-programming-models#1-concurrent-programming|concurrently]]. In SBA, this concept is realized as a grid of self-sufficient **processing units**, each hosting a copy of the application logic and a portion of the in-memory data.
 
 This style, also known as **Shared-Nothing Architecture**, avoids the bottleneck of a central database by processing data in memory and replicating it across the grid.
 

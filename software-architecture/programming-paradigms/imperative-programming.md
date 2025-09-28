@@ -1,5 +1,7 @@
 ---
 title: Imperative Programming
+tags:
+  - programming-paradigm
 date: 2025-09-28
 ---
 # Imperative Programming

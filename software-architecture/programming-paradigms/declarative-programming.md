@@ -1,5 +1,7 @@
----
+--- 
 title: Declarative Programming
+tags:
+  - programming-paradigm
 date: 2025-09-28
 ---
 # Declarative Programming
@@ -27,7 +29,7 @@ Functional Programming (FP) treats computation as the evaluation of mathematical
 
 ### Key Characteristics
 - **Pure Functions:** Predictable and easy to test, as they have no hidden state or side effects.
-- **Immutability:** Data is never changed in place. This eliminates a whole class of bugs related to concurrent access and unexpected state changes.
+- **Immutability:** Data is never changed in place. This eliminates a whole class of bugs related to [[transversal-programming-models#1-concurrent-programming|concurrent]] access and unexpected state changes.
 - **First-Class Functions:** Functions are treated like any other data type. They can be passed as arguments to other functions, returned as values, and stored in variables.
 - **Composition:** Complex behavior is built by composing simpler functions together, much like a [[pipe-filters|pipeline]].
 - **Examples of Languages:** Haskell, Lisp, F#, Clojure. Many modern languages like JavaScript, Python, and C# have incorporated strong functional features.

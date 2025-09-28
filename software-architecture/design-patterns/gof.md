@@ -1,4 +1,4 @@
----
+--- 
 title: GoF Design Patterns
 tags:
   - gof
@@ -587,7 +587,7 @@ date: 2025-09-21
 
 * **Key Characteristics**:
     * **Encapsulation**: Hides the internal structure of the collection.
-    * **Multiple Traversals**: Allows multiple concurrent traversals over the same collection.
+    * **Multiple Traversals**: Allows multiple [[transversal-programming-models#1-concurrent-programming|concurrent]] traversals over the same collection.
     * **[[solid|Single Responsibility Principle]]**: Separates the traversal logic from the collection itself.
 * **Applicability**: Traversing a variety of data structures such as lists, trees, or graphs without exposing their internal implementation.
 * **Limitations and Challenges**: For simple collections, it may introduce a small amount of unnecessary overhead.
@@ -792,7 +792,7 @@ date: 2025-09-21
     * **[[solid|Inversion of Control]]**: The base class controls the overall algorithm, while the subclasses provide the details.
 * **Applicability**: Frameworks, algorithms with a fixed structure, or any situation where different subclasses need to follow a common process but with variations in specific steps.
 * **Limitations and Challenges**: The rigid structure of the template can be a limitation if the algorithm needs to be changed significantly in the future.
-
+	
 #### **Visitor**
 
 * **Problem**: How to represent an operation to be performed on the elements of an object structure, allowing you to define a new operation without changing the classes of the elements on which it operates?
