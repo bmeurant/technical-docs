@@ -1,4 +1,4 @@
----
+--- 
 title: CQRS (Command Query Responsibility Segregation)
 tags:
   - data-management
@@ -49,7 +49,7 @@ sequenceDiagram
     ReadModel-->>Client: 9. Return DTO
 ```
 
-1.  **Command:** An object representing an intent to change the state of the system (e.g., `UpdateUserAddress`). It is imperative and should not return data.
+1.  **Command:** An object representing an intent to change the state of the system (e.g., `UpdateUserAddress`). It is [[imperative-programming|imperative]] and should not return data.
 2.  **Write Model:** Handles the command, executes business rules, and persists the state change. In an [[event-sourcing|Event Sourcing]] context, this would be an **Aggregate** that produces events.
 3.  **Write Database:** The data store for the write model. It is optimized for writes (e.g., a normalized SQL database or an Event Store).
 4.  **Data Synchronization Mechanism:** A process that updates the read model. This is often done by publishing events from the write model (e.g., via a message bus) that the read side subscribes to.

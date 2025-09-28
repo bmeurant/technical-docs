@@ -1,4 +1,4 @@
----
+--- 
 title: Event Sourcing
 tags:
   - data-management
@@ -41,7 +41,7 @@ sequenceDiagram
     deactivate Aggregate
 ```
 
-1.  **Command:** An object representing an intent to change the system's state (e.g., `CreateUserCommand`). It is imperative and addressed to a specific aggregate.
+1.  **Command:** An object representing an intent to change the system's state (e.g., `CreateUserCommand`). It is [[imperative-programming|imperative]] and addressed to a specific aggregate.
 2.  **Aggregate:** A domain entity that ensures the consistency of a set of objects. It receives commands, validates business rules, and, if successful, produces one or more events. To make its decision, the aggregate loads its state by replaying its past events.
 3.  **Event:** An object that describes a change that has occurred (e.g., `UserCreatedEvent`). It is named in the past tense and contains all data relevant to the change.
 4.  **Event Store:** A database optimized for appending events (append-only). It acts as an immutable log and allows retrieving the event stream for a given aggregate.

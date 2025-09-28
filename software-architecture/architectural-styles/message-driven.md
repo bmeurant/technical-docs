@@ -20,7 +20,7 @@ A "message" is a self-contained package of data sent from one component to anoth
 
 There are two primary types of messages, and the type used defines the architectural flavor:
 
-1.  **Command:** A message that is an **imperative instruction** telling a service to perform a specific action (e.g., `ProcessPayment`, `GenerateReport`). Commands are typically directed at a single receiver.
+1.  **Command:** A message that is an **[[imperative-programming|imperative]] instruction** telling a service to perform a specific action (e.g., `ProcessPayment`, `GenerateReport`). Commands are typically directed at a single receiver.
 
 2.  **Event:** A message that is a **declarative notification** that a significant state change has occurred (e.g., `OrderShipped`, `UserRegistered`). Events are facts about the past, broadcast to any component that might be interested.
 
