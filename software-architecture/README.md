@@ -15,6 +15,7 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [Architectural Styles](./architectural-styles/)
 * [Design Patterns](./design-patterns/)
 * [Design Principles](./design-principles/)
+* [Programming Paradigms](./programming-paradigms/)
 
 ## Other resources
 
