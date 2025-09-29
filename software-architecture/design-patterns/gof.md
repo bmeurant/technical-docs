@@ -9,9 +9,26 @@ date: 2025-09-21
 
 **[[software-architecture/design-patterns/|Design patterns]]** are general, reusable solutions to common problems in software development. The book "Design Patterns: Elements of Reusable Object-Oriented Software" by the "Gang of Four" (**GoF**) — Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides — formalized 23 of these [[software-architecture/design-patterns/|patterns]], making them a cornerstone of [[object-oriented-programming|object-oriented programming]]. These patterns are not ready-to-use code libraries but rather abstract descriptions of how objects and classes can interact to solve specific issues, improving code flexibility, reusability, and maintainability. They are grouped into three main categories: **Creational**, **Structural**, and **Behavioral**.
 
+```mermaid
+graph TD
+    A[GoF Patterns] --> C(Creational);
+    A --> S(Structural);
+    A --> B(Behavioral);
+```
+
 ---
 
 ## 1. Creational Patterns
+
+```mermaid
+graph TD
+    C(Creational Patterns);
+    C --> C1(Singleton);
+    C --> C2(Factory Method);
+    C --> C3(Abstract Factory);
+    C --> C4(Builder);
+    C --> C5(Prototype);
+```
 
 ### **Singleton**
 
@@ -206,7 +223,19 @@ date: 2025-09-21
 
 ---
 
-### 2. Structural Patterns
+## 2. Structural Patterns
+
+```mermaid
+graph TD
+    S(Structural Patterns);
+    S --> S1(Adapter);
+    S --> S2(Bridge);
+    S --> S3(Composite);
+    S --> S4(Decorator);
+    S --> S5(Facade);
+    S --> S6(Flyweight);
+    S --> S7(Proxy);
+```
 
 #### **Adapter**
 
@@ -474,7 +503,23 @@ date: 2025-09-21
 
 ---
 
-### 3. Behavioral Patterns
+## 3. Behavioral Patterns
+
+```mermaid
+graph TD
+    B(Behavioral Patterns);
+    B --> B1(Chain of Responsibility);
+    B --> B2(Command);
+    B --> B3(Interpreter);
+    B --> B4(Iterator);
+    B --> B5(Mediator);
+    B --> B6(Memento);
+    B --> B7(Observer);
+    B --> B8(State);
+    B --> B9(Strategy);
+    B --> B10(Template Method);
+    B --> B11(Visitor);
+```
 
 #### **Chain of Responsibility**
 
