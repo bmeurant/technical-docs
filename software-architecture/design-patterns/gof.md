@@ -552,6 +552,43 @@ date: 2025-09-21
 * **Applicability**: Implementing undo/redo functionality, queuing tasks, or creating macro capabilities.
 * **Limitations and Challenges**: Can result in a large number of `Command` classes if there are many different requests.
 
+#### **Interpreter**
+
+* **Problem**: How to define a grammatical representation for a language and provide an interpreter to deal with this grammar?
+* **Synopsis**: The **Interpreter** pattern is used to define a grammatical representation for a language and provides an interpreter to deal with this grammar. It involves creating a class for each symbol (terminal or non-terminal) in a specialized computer language. The syntax tree of a sentence in the language is an instance of the **Composite** pattern and is used to evaluate (interpret) the sentence.
+
+    ```mermaid
+    classDiagram
+        class Client
+        class Context
+        class AbstractExpression {
+            &lt;&lt;interface&gt;&gt;
+            +interpret(Context)
+        }
+        class TerminalExpression {
+            +interpret(Context)
+        }
+        class NonterminalExpression {
+            -expression1 : AbstractExpression
+            -expression2 : AbstractExpression
+            +interpret(Context)
+        }
+        Client --> Context
+        Client --> AbstractExpression
+        AbstractExpression <|.. TerminalExpression
+        AbstractExpression <|.. NonterminalExpression
+        NonterminalExpression o-- AbstractExpression
+    ```
+
+    The diagram illustrates the Interpreter pattern's structure. The `Client` builds (or is given) a syntax tree of `AbstractExpression` objects. The `AbstractExpression` declares the `interpret()` operation, which is common to all nodes in the tree. `TerminalExpression` represents the leaves of the tree (the elementary operands). `NonterminalExpression` represents the composite nodes; it stores other `AbstractExpression` objects and implements the `interpret()` method by recursively calling it on its subexpressions. The `Context` contains global information that the interpreter might need.
+
+* **Key Characteristics**:
+    * **Grammar Representation**: Each rule in the grammar is represented by a class.
+    * **Interpretation Engine**: The pattern provides a way to interpret sentences of the language.
+    * **Composite Structure**: The syntax tree is often a composite structure.
+* **Applicability**: When there is a language to interpret and you can represent sentences in the language as abstract syntax trees. Good for simple grammars, such as SQL parsing or communication protocols.
+* **Limitations and Challenges**: Can be complex to implement. For complex grammars, the class hierarchy can become large and unmanageable. Other tools like parser generators (e.g., ANTLR) are often a better choice.
+
 #### **Iterator**
 
 * **Problem**: How to provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation?
