@@ -54,53 +54,11 @@ It's important to distinguish concurrency from **parallelism**:
 - **Deadlocks:** A situation where two or more threads are blocked forever, each waiting for the other to release a resource.
 - **Starvation:** A thread is perpetually denied necessary resources to process its work, often because other, "greedier" threads are monopolizing them.
 
-### 2. Reactive Programming
+### 2. [[reactive-programming|Reactive Programming]]
 
-Reactive Programming is a paradigm that provides a model for managing reactions to **[[event-driven|data streams]]** and the propagation of change. While the need for a system to be "reactive" is a transversal concern, this paradigm offers a specific, and generally [[declarative-programming|declarative]], approach to handle it.
+Reactive Programming is a paradigm centered around the concept of **[[event-driven|data streams]]** and the propagation of change. It offers a powerful model for handling asynchronous data flows and is particularly well-suited for applications that need to respond to a high volume of events, such as user interfaces, real-time systems, and microservices.
 
-An excellent analogy is a spreadsheet: when you change the value in one cell, all other cells that depend on it are automatically recalculated.
-
-#### Key Concepts
-- **Observable Streams:** Any source of data—user inputs, messages, API responses—is treated as an observable stream of events over time.
-- **Observers:** Components that subscribe to an observable stream and execute a reaction for each new event.
-- **Operators:** A rich set of functions (`map`, `filter`, `merge`, `scan`, etc.) used to combine, transform, and manage streams in a declarative way.
-
-#### Declarative Core vs. Imperative Side-Effects
-
-The confusion around Reactive Programming often stems from how it is used. The creation and composition of streams is declarative, but the final action can be imperative.
-
-- **The Declarative Part:** You *declare* a processing pipeline by chaining operators. You describe *what* data you want, not *how* to process it step-by-step.
-- **The Imperative Part:** The action executed when a value is received (the `subscribe` or `onNext` method) often contains imperative code that produces a **side effect**—like updating the UI, logging to a console, or writing to a database.
-
-**Pseudo-code Example:**
-```javascript
-// Declarative part: Describing the data pipeline
-const newValues = sourceStream
-  .filter(value => value > 10) // Keep values greater than 10
-  .map(value => value * 2);   // Double them
-
-// Imperative part: The subscription performs a side effect
-newValues.subscribe(processedValue => {
-  // This is an imperative command: "Set the element's text!"
-  document.getElementById('my-label').innerText = processedValue;
-});
-```
-Because it combines a declarative data flow with potentially imperative actions, it is best classified as a transversal model rather than a purely declarative one.
-
-#### Applicability
-- **User Interfaces:** Handling user events like clicks and keyboard input.
-- **Asynchronous Backend Services:** Managing complex chains of non-blocking API calls.
-- **Real-time Data Processing:** Analyzing and reacting to live streams of data from sensors or financial markets.
-
-#### **Resources & links**
-
-1. **[Introduction to Reactive Programming](https://projectreactor.io/docs/core/release/reference/reactiveProgramming.html)**
-
-    This guide from the Project Reactor documentation introduces **Reactive Programming** as an **asynchronous paradigm** for handling **data streams** and the **propagation of change**. It illustrates how libraries like Reactor simplify complex asynchronous code, such as **Callback Hell** or complicated `CompletableFuture` orchestration, using a declarative chain of operators like `flatMap` and `zipWith`.
-
-2. **[Intro to Reactive Programming by Jordan Jozwiak of Google - CS50 Tech Talk](https://www.youtube.com/watch?v=KOjC3RhwKU4)**
-
-    This CS50 Tech Talk by **Jordan Jozwiak of Google** provides an excellent introduction to **Reactive Programming** and the **ReactiveX (Rx)** specification. The video focuses on the three core principles: **data streams**, [[functional-programming|functional programming]], and **asynchronous observers**, using **RxJava** examples to compare imperative versus reactive solutions for handling data and sensor updates.
+These concepts are explored in greater detail on the dedicated [[reactive-programming|Reactive Programming]] page.
 
 ### 3. Aspect-Oriented Programming (AOP)
 
