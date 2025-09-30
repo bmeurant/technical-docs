@@ -2,6 +2,7 @@
 title: Declarative Programming
 tags:
   - programming-paradigm
+  - declarative-programming
 date: 2025-09-28
 ---
 # Declarative Programming
@@ -15,7 +16,7 @@ This paradigm is built on core concepts like:
 - **Immutability:** State changes are often avoided. Instead of modifying data, new data structures are created from existing ones.
 - **No Explicit Control Flow:** You typically do not use loops (`for`, `while`) or complex conditional branching. The underlying engine handles the iteration and flow.
 
-**Main Declarative Paradigms**: Declarative programming is primarily expressed through two major sub-paradigms: **Functional Programming** and **Logical Programming**.
+**Main Declarative Paradigms**: Declarative programming is primarily expressed through two major sub-paradigms: [[functional-programming|Functional Programming]] and **Logical Programming**.
 
 ```mermaid
 graph TD
@@ -23,9 +24,9 @@ graph TD
     A --> C[Logical Programming];
 ```
 
-## 1. Functional Programming
+## 1. [[functional-programming|Functional Programming]]
 
-Functional Programming (FP) treats computation as the evaluation of mathematical functions. It emphasizes the use of **pure functions** and **immutable data**. A pure function is one whose output value depends only on its input values, without any observable side effects (like modifying a global variable or writing to a file).
+[[functional-programming|Functional Programming]] (FP) treats computation as the evaluation of mathematical functions. It emphasizes the use of **pure functions** and **immutable data**. A pure function is one whose output value depends only on its input values, without any observable side effects (like modifying a global variable or writing to a file).
 
 ### Key Characteristics
 - **Pure Functions:** Predictable and easy to test, as they have no hidden state or side effects.
@@ -67,14 +68,14 @@ This example demonstrates the essence of logical programming. We don't write a f
 
 ## Key Differences Summarized
 
-| Characteristic | Functional Programming | Logical Programming |
+| Characteristic | [[functional-programming|Functional Programming]] | Logical Programming |
 | :--- | :--- | :--- |
 | **Based On** | Mathematical Functions | Formal Logic & Relations |
 | **Core Idea** | Composing functions to transform data | Proving theorems based on facts and rules |
 | **Execution Model** | Function application and reduction | Querying, unification, and backtracking |
 | **Primary Use Case** | Data processing, concurrency, mathematical computation | Artificial intelligence, expert systems, database querying |
 
-In summary, declarative programming provides a higher level of abstraction that allows developers to focus on the problem's logic rather than the machine's execution details. Functional programming achieves this through the composition of pure functions, while logical programming uses the power of formal deduction.
+In summary, declarative programming provides a higher level of abstraction that allows developers to focus on the problem's logic rather than the machine's execution details. [[functional-programming|Functional programming]] achieves this through the composition of pure functions, while logical programming uses the power of formal deduction.
 
 ## **Resources & Links**
 

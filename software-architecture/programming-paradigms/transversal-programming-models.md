@@ -2,13 +2,13 @@
 title: Transversal Programming Models
 tags:
   - programming-paradigm
-  - concurrent
-  - reactive
+  - concurrent-programming
+  - reactive-programming
 date: 2025-09-28
 ---
 # Transversal Programming Models
 
-Unlike the primary paradigms of [[imperative-programming|imperative]] and [[declarative-programming|declarative]] programming, which define the fundamental way code is structured, **transversal models** (or cross-cutting paradigms) address specific problems that span across an entire application. They are not mutually exclusive and can be combined with other paradigms like [[object-oriented-programming|Object-Oriented]] or Functional Programming to solve complex challenges such as concurrency, data flow, or the [[cohesion-coupling|separation of concerns]].
+Unlike the primary paradigms of [[imperative-programming|imperative]] and [[declarative-programming|declarative]] programming, which define the fundamental way code is structured, **transversal models** (or cross-cutting paradigms) address specific problems that span across an entire application. They are not mutually exclusive and can be combined with other paradigms like [[object-oriented-programming|Object-Oriented]] or [[functional-programming|Functional Programming]] to solve complex challenges such as concurrency, data flow, or the [[cohesion-coupling|separation of concerns]].
 
 ```mermaid
 graph TD
@@ -100,7 +100,7 @@ Because it combines a declarative data flow with potentially imperative actions,
 
 2. **[Intro to Reactive Programming by Jordan Jozwiak of Google - CS50 Tech Talk](https://www.youtube.com/watch?v=KOjC3RhwKU4)**
 
-    This CS50 Tech Talk by **Jordan Jozwiak of Google** provides an excellent introduction to **Reactive Programming** and the **ReactiveX (Rx)** specification. The video focuses on the three core principles: **data streams**, **functional programming**, and **asynchronous observers**, using **RxJava** examples to compare imperative versus reactive solutions for handling data and sensor updates.
+    This CS50 Tech Talk by **Jordan Jozwiak of Google** provides an excellent introduction to **Reactive Programming** and the **ReactiveX (Rx)** specification. The video focuses on the three core principles: **data streams**, [[functional-programming|functional programming]], and **asynchronous observers**, using **RxJava** examples to compare imperative versus reactive solutions for handling data and sensor updates.
 
 ### 3. Aspect-Oriented Programming (AOP)
 
@@ -170,7 +170,7 @@ This makes FRP a stricter, purely [[declarative-programming|declarative]] paradi
 
 1. **[Functional Reactive Programming, first concepts must be looked into further.](https://medium.com/@tuyenbq/functional-reactive-programing-first-concepts-must-be-looked-into-further-c17db2cc51ac)**
 
-    This article provides an introduction to **Functional Reactive Programming (FRP)**, defining it as the combination of **Functional Programming** (pure functions, immutable state) and **Reactive Programming** (automatic propagation of change, like a spreadsheet). It contrasts this **Declarative programming** style with **Imperative programming** and introduces the core concept of a **signal**—an observable **data stream** that sends values over time, which can be easily transformed using operators like **map**.
+    This article provides an introduction to **Functional Reactive Programming (FRP)**, defining it as the combination of [[functional-programming|Functional Programming]] (pure functions, immutable state) and **Reactive Programming** (automatic propagation of change, like a spreadsheet). It contrasts this **Declarative programming** style with **Imperative programming** and introduces the core concept of a **signal**—an observable **data stream** that sends values over time, which can be easily transformed using operators like **map**.
 
 2. **[Spring Tutorial 24 - Introduction to AOP](http://www.youtube.com/watch?v=QdyLsX0nG30)**
 

@@ -2,7 +2,7 @@
 title: Object-Oriented Programming (OOP)
 tags:
   - programming-paradigm
-  - imperative
+  - imperative-programming
 date: 2025-09-28
 ---
 # Object-Oriented Programming (OOP)
