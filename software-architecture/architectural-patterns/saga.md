@@ -103,6 +103,8 @@ sequenceDiagram
 *   **Transactional Outbox:** This pattern can be used to ensure that events are published reliably after a local transaction is committed. This is crucial for choreography-based sagas.
 *   **Two-Phase Commit (2PC):** The Saga pattern is an alternative to 2PC. While 2PC provides strong consistency, it is often not suitable for distributed systems due to its blocking nature.
 
+---
+
 ## **Resources & links**
 
 ### **Articles**
@@ -120,8 +122,6 @@ sequenceDiagram
 1. **[The Saga Pattern in Microservices (EDA - part 2)](http://www.youtube.com/watch?v=C0rGwyJkDTU)** (A Dev' Story)
 
     Explains the **Saga Pattern** for managing **distributed transactions** across multiple **Microservices** that each have their own database. Details the two main implementation methods: **Orchestration** (centralized service controls the flow) and **Choreography** (services communicate via **Events**) with compensation logic for failures.
-
----
 
 2. **[Saga Pattern For Microservice Architecture With Rebus And RabbitMQ](http://www.youtube.com/watch?v=dlXCodLxhag)** (Milan Jovanović)
 
