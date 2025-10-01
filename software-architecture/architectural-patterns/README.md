@@ -39,3 +39,8 @@ see [index](./index.md)
 * **[Event Sourcing](./event-sourcing.md)**
 * **[Saga Pattern](./saga.md)**
 
+## Migration & Refactoring
+
+* **[Strangler Fig Pattern](./strangler-fig.md)**
+
+
