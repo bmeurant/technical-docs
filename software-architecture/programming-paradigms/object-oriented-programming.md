@@ -57,7 +57,7 @@ class BankAccount {
 
 ### 2. Abstraction
 
-- **What it is:** The process of hiding complex implementation details and exposing only the essential features of an object. It focuses on *what* an object does, not *how* it does it. It is a form of [[cohesion-coupling|separation of concerns]].
+- **What it is:** The process of hiding complex implementation details and exposing only the essential features of an object. It focuses on *what* an object does, not *how* it does it. It is a form of [[soc|separation of concerns]].
 - **Why it's important:** Abstraction simplifies the interaction between objects, making the system easier to understand and use. It is a key tool for managing complexity.
 - **Analogy:** A TV remote control. You use simple buttons (the abstraction) like "volume up" or "change channel" without needing to understand the complex electronic signals being sent to the TV.
 

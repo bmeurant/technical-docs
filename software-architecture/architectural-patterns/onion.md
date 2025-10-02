@@ -7,7 +7,7 @@ date: 2025-09-24
 
 # **Onion Architecture**
 
-The **Onion Architecture**, proposed by Jeffrey Palermo in 2008, is a software [[software-architecture/architectural-patterns/|architectural pattern]] that emphasizes the [[cohesion-coupling|separation of concerns]] by organizing code into concentric layers. Its primary goal is to ensure that the **domain objects** and core **business logic** are completely independent of any external infrastructure. This makes the system easier to test, more resilient to technological changes, and more maintainable.
+The **Onion Architecture**, proposed by Jeffrey Palermo in 2008, is a software [[software-architecture/architectural-patterns/|architectural pattern]] that emphasizes the [[soc|separation of concerns]] by organizing code into concentric layers. Its primary goal is to ensure that the **domain objects** and core **business logic** are completely independent of any external infrastructure. This makes the system easier to test, more resilient to technological changes, and more maintainable.
 
 * **Core Principles:**
     * **[[solid|Dependency Inversion Principle]]:** Dependencies always point inward, from the outer layers to the core of the onion. Outer layers can only depend on inner layers.

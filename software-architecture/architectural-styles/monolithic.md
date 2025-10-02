@@ -20,7 +20,7 @@ The defining characteristic is **deployment**, not size or complexity. All featu
 
 ## Overview and Communication Flow
 
-A well-designed monolith is not an unstructured "big ball of mud." It is often a **[[modular-monolith|Modular Monolith]]** with a clear internal structure, such as a **[[layered]]** architecture, to enforce separation of concerns. For scalability and availability, it is deployed as multiple identical instances behind a load balancer.
+A well-designed monolith is not an unstructured "big ball of mud." It is often a **[[modular-monolith|Modular Monolith]]** with a clear internal structure, such as a **[[layered]]** architecture, to enforce [[soc|separation of concerns]]. For scalability and availability, it is deployed as multiple identical instances behind a load balancer.
 
 ```mermaid
 graph TD

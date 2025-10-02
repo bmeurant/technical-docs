@@ -102,7 +102,7 @@ sequenceDiagram
 
 * **Challenges:**
     * **Increased Complexity:** For simple applications, implementing the pattern can be overkill and make the project more complex than it needs to be.
-    * **The "Fat Controller" Anti-Pattern:** A common pitfall is placing business logic inside the Controller instead of the Model. This leads to "Fat Controllers" that are bloated, hard to test, and violate the separation of concerns. The Controller's role should be limited to input processing and coordinating calls to the Model, not implementing business rules itself.
+    * **The "Fat Controller" Anti-Pattern:** A common pitfall is placing business logic inside the Controller instead of the Model. This leads to "Fat Controllers" that are bloated, hard to test, and violate the [[soc|separation of concerns]]. The Controller's role should be limited to input processing and coordinating calls to the Model, not implementing business rules itself.
     * **Learning Curve:** The complexity of MVC is relative. While the basic concept is simple to understand, its correct implementation, particularly in avoiding the trap of "Fat Controllers" where business logic accumulates in the controller, can present a challenge. For novice developers, learning the flow of indirect interactions between the three components and the specific implementation in different frameworks can also require an initial effort, although the pattern remains an excellent starting point for modern application architecture.
 
 ---
@@ -124,7 +124,7 @@ This pattern, though dating back to the 1970s, remains the foundation for many m
 
 1.  **[MVC in Computer Science – The MVC Model](https://www.freecodecamp.org/news/what-does-mvc-mean-in-computer-science/)**
 
-This freeCodeCamp article provides a clear and simple introduction to the **MVC** pattern. It explains the roles of the **Model**, **View**, and **Controller** using an easy-to-understand analogy and highlights the principle of **separation of concerns**.
+This freeCodeCamp article provides a clear and simple introduction to the **MVC** pattern. It explains the roles of the **Model**, **View**, and **Controller** using an easy-to-understand analogy and highlights the principle of **[[soc|separation of concerns]]**.
 
 2.  **[Model-view-controller (MVC)](https://www.techtarget.com/whatis/definition/model-view-controller-MVC)**
 

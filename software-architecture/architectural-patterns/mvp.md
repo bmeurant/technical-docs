@@ -84,7 +84,7 @@ MVP has two primary flavors that define how much logic the View is allowed to ha
 
 *   **[[mvvm|MVVM (Model-View-ViewModel)]]:** MVVM can be seen as an evolution of MVP's Supervising Controller, where the data binding responsibilities are formalized into a `ViewModel`. The `ViewModel` exposes data and commands that the View binds to, almost completely eliminating the need for the Presenter/ViewModel to hold a direct reference to the View.
 
-The **MVP** pattern, although sometimes considered "legacy" compared to **[[mvvm|MVVM]]**, remains a solid foundation for understanding the separation of concerns in user interface applications. Its principles have directly influenced modern architectures and continue to form the basis for designing robust and testable software.
+The **MVP** pattern, although sometimes considered "legacy" compared to **[[mvvm|MVVM]]**, remains a solid foundation for understanding the [[soc|separation of concerns]] in user interface applications. Its principles have directly influenced modern architectures and continue to form the basis for designing robust and testable software.
 
 ---
 
@@ -94,7 +94,7 @@ The **MVP** pattern, although sometimes considered "legacy" compared to **[[mvvm
 
 1.  **[Understanding the Model-View-Presenter (MVP) Pattern in Java – A Comprehensive Guide](https://moldstud.com/articles/p-understanding-the-model-view-presenter-mvp-pattern-in-java-a-comprehensive-guide)**
 
-    This **MoldStud** article provides a detailed guide to the **Model-View-Presenter (MVP)** pattern in Java. It explains the roles of the **Model**, **View**, and **Presenter**, and emphasizes how this approach improves testability and the separation of concerns in an application.
+    This **MoldStud** article provides a detailed guide to the **Model-View-Presenter (MVP)** pattern in Java. It explains the roles of the **Model**, **View**, and **Presenter**, and emphasizes how this approach improves testability and the [[soc|separation of concerns]] in an application.
 
 2.  **[Model-view-presenter (MVP)](https://java-design-patterns.com/patterns/model-view-presenter/)**
 

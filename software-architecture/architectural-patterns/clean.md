@@ -69,7 +69,7 @@ graph TD
     * **Longevity:** The business logic is at the core of the system and is not contaminated by rapidly evolving technology choices. The code remains relevant for a longer time.
     * **Increased Testability:** Due to the independence of the **business rules**, unit tests can be written quickly and easily without having to **mock** entire frameworks or databases.
     * **Flexibility:** Changing the database, framework, or even the user interface becomes a simple, isolated task.
-    * **Maintainability:** The clear structure and separation of concerns make the code easier to understand and maintain, even for new teams.
+    * **Maintainability:** The clear structure and [[soc|separation of concerns]] make the code easier to understand and maintain, even for new teams.
 
 * **Challenges:**
     * **Initial Complexity:** Setting up **Clean Architecture** requires more work and a more rigid structure at the outset.
@@ -94,11 +94,11 @@ graph TD
 
 1.  **[The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)**
 
-    This seminal article by **Robert C. Martin (Uncle Bob)** introduces **Clean Architecture**, a software design philosophy that aims to create systems independent of frameworks, databases, and UI. The core principle is "The Dependency Rule," which states that source code dependencies must only point inwards, towards higher-level policies. The article details the architecture's concentric layers—from the core **Entities** to the outer **Frameworks & Drivers**—to show how this separation of concerns results in a system that is highly testable and maintainable.
+    This seminal article by **Robert C. Martin (Uncle Bob)** introduces **Clean Architecture**, a software design philosophy that aims to create systems independent of frameworks, databases, and UI. The core principle is "The Dependency Rule," which states that source code dependencies must only point inwards, towards higher-level policies. The article details the architecture's concentric layers—from the core **Entities** to the outer **Frameworks & Drivers**—to show how this [[soc|separation of concerns]] results in a system that is highly testable and maintainable.
 
 2.  **[Clean Architecture](https://medium.com/@rudrakshnanavaty/clean-architecture-7c1b3b4cb181)**
 
-    This **Medium** article by Rudrakshna Nanavaty provides a clear overview of **Clean Architecture**. It explains the core principles, such as the **separation of concerns** and the **Dependency Rule**, which ensures inner layers remain decoupled from outer layers. The article likens the architecture to an onion, detailing the four main layers: **Entity**, **Use Case**, **Controller**, and **Infrastructure**. It also explains how **Dependency Injection** helps manage the flow of dependencies, promoting a flexible, testable, and maintainable codebase.
+    This **Medium** article by Rudrakshna Nanavaty provides a clear overview of **Clean Architecture**. It explains the core principles, such as the **[[soc|separation of concerns]]** and the **Dependency Rule**, which ensures inner layers remain decoupled from outer layers. The article likens the architecture to an onion, detailing the four main layers: **Entity**, **Use Case**, **Controller**, and **Infrastructure**. It also explains how **Dependency Injection** helps manage the flow of dependencies, promoting a flexible, testable, and maintainable codebase.
 
 ---
 

@@ -10,7 +10,7 @@ date: 2025-09-15
 The **Layered Architecture** is one of the most common and foundational [[software-architecture/architectural-styles/|architectural style]], serving as the default starting point for many applications. It organizes an application by grouping related functionality into stacked, horizontal layers. Each layer has a specific responsibility and should ideally only communicate with the layer directly below it.
 
 * **Core Principles:**
-    * **Separation of Concerns:** Each layer is responsible for a specific concern (e.g., presentation, business logic, data access). This makes the system easier to understand and maintain.
+    * **[[soc|Separation of Concerns]]:** Each layer is responsible for a specific concern (e.g., presentation, business logic, data access). This makes the system easier to understand and maintain.
     * **Unidirectional Dependency (The Dependency Rule):** Dependencies flow in a single direction, downwards. A higher layer can call services in a lower layer, but a lower layer must not have any knowledge of the layers above it.
     * **Abstraction:** Each layer hides its implementation details from the layers above it, communicating only through a well-defined interface.
 
@@ -60,7 +60,7 @@ The most common model is the four-layer architecture, but there can be more or f
 
 A key architectural decision is whether to make the layers "closed" or "open":
 
-*   **Closed Layers (Strict Layering):** This is the ideal. A layer can **only** communicate with the layer directly below it. For example, the Presentation Layer is not allowed to call the Data Access Layer directly; it must go through the Business Logic Layer. This enforces maximum separation of concerns but can create the "sinkhole" anti-pattern if a layer provides no value.
+*   **Closed Layers (Strict Layering):** This is the ideal. A layer can **only** communicate with the layer directly below it. For example, the Presentation Layer is not allowed to call the Data Access Layer directly; it must go through the Business Logic Layer. This enforces maximum [[soc|separation of concerns]] but can create the "sinkhole" anti-pattern if a layer provides no value.
 
 *   **Open Layers (Relaxed Layering):** A layer is allowed to bypass the layer directly below it and communicate with any lower layer. For example, the Presentation Layer might be allowed to call a simple read service in the Data Access Layer directly if no business logic is required. This can improve performance and reduce boilerplate but weakens the architectural separation and can lead to a loss of control.
 
@@ -78,7 +78,7 @@ A key architectural decision is whether to make the layers "closed" or "open":
     * **The "Sinkhole" Anti-Pattern:** A common pitfall is when layers become mere pass-throughs that add no value (e.g., a Business Logic Layer that only calls the Data Access Layer without performing any logic). This adds unnecessary complexity and boilerplate without providing any benefit.
     * **Performance Overhead:** In a strictly layered architecture, each request must pass through multiple layers, which can introduce latency. This is a trade-off for maintainability.
     * **Monolithic Nature:** Traditionally, all layers are deployed as a single unit, which can lead to the challenges of a [[monolithic]] architecture (e.g., coarse-grained scaling, risky deployments).
-    * **Risk of "Leaky" Abstractions:** It can be difficult to prevent details from lower layers (like database-specific exceptions) from "leaking" into higher layers, which violates the separation of concerns.
+    * **Risk of "Leaky" Abstractions:** It can be difficult to prevent details from lower layers (like database-specific exceptions) from "leaking" into higher layers, which violates the [[soc|separation of concerns]].
 
 ---
 
@@ -86,7 +86,7 @@ A key architectural decision is whether to make the layers "closed" or "open":
 
 * **2-Tier vs. N-Tier:** The basic 2-tier model (client and database) has evolved into the **N-Tier** model, which inserts intermediate layers (like the **Business Logic Layer**) to improve flexibility and scalability.
 * **[[modular-monolith|Modular Monolith]]:** A layered architecture is often the foundation for a monolith. The [[modular-monolith|Modular Monolith]] pattern is an evolution of this, where the application is divided into independent modules, each with its own layers. This improves maintainability and prepares the ground for a potential future migration to [[microservices|microservices]].
-* **[[hexagonal|Hexagonal Architecture (Ports and Adapters)]]:** Although not a direct derivation, the hexagonal architecture is inspired by the principle of separation of concerns. It is often used to decouple the application's core (**Business Logic**) from external technologies (databases, user interfaces, etc.) by using **ports** and **adapters**.
+* **[[hexagonal|Hexagonal Architecture (Ports and Adapters)]]:** Although not a direct derivation, the hexagonal architecture is inspired by the principle of [[soc|separation of concerns]]. It is often used to decouple the application's core (**Business Logic**) from external technologies (databases, user interfaces, etc.) by using **ports** and **adapters**.
 * **[[microservices|Microservices]]:** While [[microservices|microservices]] are a distributed architecture, each individual microservice can be structured using a simple layered model to manage its own business logic and persistence. The **Layered Architecture** remains a very relevant internal [[software-architecture/design-patterns/|design pattern]] within a [[microservices|microservices]] context.
 
 For a detailed comparison of how patterns like Hexagonal and Onion evolved from the layered model, see [[modern-application-architectures|Modern Application Architectures]].

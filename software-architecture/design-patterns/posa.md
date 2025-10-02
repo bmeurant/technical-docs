@@ -467,7 +467,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
     This class diagram illustrates the structural separation of roles in the `Acceptor-Connector` pattern. It clearly shows how the `Acceptor` and `Connector` components are responsible for connection management. The `Acceptor` is used by the `Server` for passive connections, while the `Connector` is used by the `Client` for active connections. Both roles ultimately delegate the service logic to a `ServiceHandler` instance.
 
 * **Key Characteristics**:
-    * **Separation of concerns**: Separates the roles of the `Acceptor` and the `Connector` from the service `handler`.
+    * **[[soc|Separation of concerns]]**: Separates the roles of the `Acceptor` and the `Connector` from the service `handler`.
     * **Acceptor**: Manages the passive acceptance of client connections.
     * **Connector**: Manages the active establishment of connections.
 * **Applicability**: Middleware frameworks, [[peer-to-peer]] architectures, [[client-server]] systems.
@@ -829,7 +829,7 @@ graph TD
     * **[[service-mesh|Service Mesh]]**: The Sidecar pattern is the core implementation detail of a **Service Mesh**. The mesh's data plane is composed of sidecar proxies deployed next to each service.
     * **[[#ambassador|Ambassador]]**: The [[#Ambassador|Ambassador]] pattern is a specialized type of Sidecar. While a general Sidecar augments an application, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
     * **[[gof#proxy|Proxy]]**: The sidecar itself is often implemented as a **[[gof#proxy|Proxy]]**. It intercepts network traffic to and from the main application to add its functionality.
-    * **[[layered|Layers]]** & **[[cohesion-coupling|Decoupling]]**: The Sidecar pattern provides a way to add a "layer" of functionality at the infrastructure level rather than in the application code, promoting better **decoupling** and **separation of concerns**.
+    * **[[layered|Layers]]** & **[[cohesion-coupling|Decoupling]]**: The Sidecar pattern provides a way to add a "layer" of functionality at the infrastructure level rather than in the application code, promoting better **decoupling** and **[[soc|separation of concerns]]**.
 
 
 #### Ambassador
