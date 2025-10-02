@@ -1,6 +1,7 @@
 ---
 title: SOLID
 tags:
+  - design-principle
   - quality
   - maintanability
 date: 2025-09-16

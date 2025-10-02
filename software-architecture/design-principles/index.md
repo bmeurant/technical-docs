@@ -9,3 +9,4 @@ This section covers fundamental principles that guide the design of software sys
 
 - [[solid]]
 - [[soc]]
+- [[dry]]
