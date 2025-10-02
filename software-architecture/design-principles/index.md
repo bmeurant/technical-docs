@@ -7,6 +7,6 @@ date: 2025-09-17
 
 This section covers fundamental principles that guide the design of software systems for better quality and maintainability.
 
-- [[solid]]
-- [[soc]]
-- [[dry]]
+- [[solid|SOLID]]
+- [[soc|Separation of Concerns (SoC)]]
+- [[dry|Don't Repeat Yourself (DRY)]]
