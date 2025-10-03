@@ -46,10 +46,53 @@ A developer following YAGNI would simply add a `role` field to the `User` model 
 
 ---
 
+## Code-Level Illustration
+
+Let's contrast this with a code example.
+
+### Violation of YAGNI (Anticipating Future Needs)
+
+A developer is asked to create a function that returns a greeting. The only requirement is for it to greet in English. Fearing that more languages will be requested later, they build a more extensible solution upfront.
+
+```javascript
+function getGreeting(language = 'en') {
+    switch (language) {
+        case 'en':
+            return 'Hello, World!';
+        case 'es':
+            return '¡Hola, Mundo!';
+        // A developer might even leave placeholders for future work
+        // case 'fr':
+        //     return 'Bonjour, le monde!';
+        default:
+            return 'Hello, World!';
+    }
+}
+
+// The feature was built, but only the 'en' case is actually used.
+console.log(getGreeting('en'));
+```
+The problem here is that time and effort were spent implementing and testing the Spanish case (`'es'`) which was never requested. This is a classic YAGNI violation.
+
+### Application of YAGNI (Implementing Only What's Necessary)
+
+Following YAGNI, the developer implements only the feature that was explicitly asked for.
+
+```javascript
+function getGreeting() {
+    return 'Hello, World!';
+}
+
+console.log(getGreeting());
+```
+This code is not only simpler (adhering to KISS), but it perfectly matches the current requirements. It took less time to write, is easier to test, and fully delivers the required value. If Spanish support is needed later, it can be added *at that time*.
+
+---
+
 ## Relationship with Other Principles
 
 - **[[dry|Don't Repeat Yourself (DRY)]]:** YAGNI and DRY are complementary. While DRY is about avoiding duplication, YAGNI is about avoiding unnecessary work. Both principles lead to simpler, more maintainable code.
-- **KISS (Keep It Simple, Stupid):** YAGNI is a direct application of the KISS principle. It's about keeping the design and implementation as simple as possible.
+- **[[kiss|KISS (Keep It Simple, Stupid)]]:** YAGNI is a direct and practical application of the KISS principle. While KISS is a general philosophy to avoid unnecessary complexity in all its forms, YAGNI provides a clear rule to achieve that simplicity: do not implement features that are not currently required. Every time you successfully apply YAGNI, you are also adhering to KISS because you are preventing the introduction of code that would make the system more complex. They are complementary: YAGNI addresses *what* to build (or rather, what *not* to build), while KISS addresses *how* to build it (simply). Following YAGNI is one of the most effective ways to maintain a simple system.
 
 ---
 
