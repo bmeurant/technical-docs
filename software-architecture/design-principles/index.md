@@ -12,3 +12,4 @@ This section covers fundamental principles that guide the design of software sys
 - [[dry|Don't Repeat Yourself (DRY)]]
 - [[yagni|You Aren't Gonna Need It (YAGNI)]]
 - [[kiss|Keep It Simple, Stupid (KISS)]]
+- [[defensive-programming|Defensive Programming]]
