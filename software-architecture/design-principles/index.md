@@ -10,3 +10,4 @@ This section covers fundamental principles that guide the design of software sys
 - [[solid|SOLID]]
 - [[soc|Separation of Concerns (SoC)]]
 - [[dry|Don't Repeat Yourself (DRY)]]
+- [[yagni|You Aren't Gonna Need It (YAGNI)]]
