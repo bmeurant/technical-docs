@@ -23,7 +23,7 @@ The mindset of a defensive programmer is "trust nothing." This means assuming th
 -   **External systems are unreliable:** Network requests can fail, APIs can change their contract, and databases can be unavailable.
 -   **Code will be misused:** Other developers (or your future self) might use your functions or classes in ways you didn't originally intend.
 
-This contrasts with a pure "Offensive Programming" (or "Fail-Fast") approach. However, the relationship is nuanced. It's better to see Fail-Fast as one of the tools available to a defensive programmer. The choice depends on the context:
+This contrasts with a pure "Offensive Programming" (or [[fail-fast|Fail-Fast]]) approach. However, the relationship is nuanced. It's better to see Fail-Fast as one of the tools available to a defensive programmer. The choice depends on the context:
 
 *   **Handle Gracefully:** For predictable errors or invalid external inputs (e.g., user input, network failures), a defensive approach provides a fallback or default behavior to ensure a smooth user experience.
 *   **Fail Fast:** For internal logic errors (bugs) where a contract is violated, crashing immediately is the best defensive move. It prevents the error from propagating and causing more damage, making the bug easier to find and fix.
@@ -146,7 +146,7 @@ function sortScores(scores) {
 
 ## Relationship with Other Concepts
 
--   **Fail-Fast:** Rather than being a true opposite, Fail-Fast is a specific *strategy* within a defensive mindset. When a defensive check reveals an *internal* state that should be impossible (a contract violation, indicating a bug), the most defensive action is to "fail fast" by throwing an exception. This prevents the corrupted state from spreading and makes the bug's origin immediately obvious. This is different from gracefully handling expected external failures (like API errors), where the program should continue to run.
+-   **[[fail-fast|Fail-Fast]]:** A key strategy within a defensive mindset, used to immediately halt execution upon detecting an internal bug or contract violation.
 -   **[[design-by-contract|Design by Contract]]:** A formal methodology for implementing defensive checks through preconditions, postconditions, and invariants.
 -   **[[soc|Separation of Concerns (SoC)]]:** A good separation of concerns helps identify the "boundaries" where defensive programming is most needed. Each component should defend itself from data crossing its boundary.
 -   **[[kiss|KISS]] & [[yagni|YAGNI]]:** These principles help reduce the surface area that needs to be defended. A simpler system with fewer features is inherently easier to make robust. However, excessive defensive programming (e.g., redundant checks) can sometimes violate KISS by adding unnecessary complexity.

@@ -159,7 +159,7 @@ class BankAccount {
 ## Relationship with Other Concepts
 
 -   **[[defensive-programming|Defensive Programming]]:** DbC is a formal and structured way to implement defensive checks. While general defensive programming might handle errors gracefully (e.g., returning a default value), DbC typically advocates for failing fast when a contract is broken, as a contract violation signals a bug.
--   **Fail-Fast:** DbC is one of the most systematic ways to implement a Fail-Fast strategy. A contract violation is a clear signal that the system is in an invalid state, and execution should be halted immediately.
+-   **[[fail-fast|Fail-Fast]]:** DbC is one of the most systematic ways to implement a Fail-Fast strategy. A contract violation is a clear signal that the system is in an invalid state, and execution should be halted immediately.
 -   **[[solid|Liskov Substitution Principle (LSP)]]:** DbC provides the rules for applying LSP correctly in object-oriented programming. For a subclass to be a valid substitute for its superclass, it must adhere to the parent's contract:
     -   It must not strengthen the preconditions (it must accept at least everything the parent accepts).
     -   It must not weaken the postconditions or the invariants (it must guarantee at least everything the parent guarantees).

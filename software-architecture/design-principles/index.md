@@ -14,3 +14,4 @@ This section covers fundamental principles that guide the design of software sys
 - [[kiss|Keep It Simple, Stupid (KISS)]]
 - [[defensive-programming|Defensive Programming]]
 - [[design-by-contract|Design by Contract (DbC)]]
+- [[fail-fast|Fail-Fast]]

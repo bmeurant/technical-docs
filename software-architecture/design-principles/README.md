@@ -9,3 +9,4 @@ see [index](./index.md)
 * **[Keep It Simple, Stupid (KISS)](./kiss.md)**
 * **[Defensive Programming](./defensive-programming.md)**
 * **[Design by Contract (DbC)](./design-by-contract.md)**
+* **[Fail-Fast](./fail-fast.md)**
