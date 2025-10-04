@@ -63,7 +63,7 @@ The interaction between the components is [[event-driven|event-driven]] and indi
     * **Flexibility and Extensibility:** New Knowledge Sources can be added to the system easily without affecting existing ones. This makes the pattern ideal for research and development projects where the problem-solving strategy evolves.
     * **[[transversal-programming-models#1-concurrent-programming|Concurrent]] Processing:** Knowledge Sources can operate in parallel, which makes the pattern suitable for multi-core and distributed environments.
     * **Problem-Solving for ill-defined problems:** It is designed for problems where no single algorithm exists to find a solution directly. The emergent behavior from the collaboration of multiple simple components leads to a solution.
-    * **Separation of Concerns:** The pattern strictly separates the problem-solving logic (Knowledge Sources), the data (Blackboard), and the control flow (Controller).
+    * **[[soc|Separation of Concerns]]:** The pattern strictly separates the problem-solving logic (Knowledge Sources), the data (Blackboard), and the control flow (Controller).
 
 * **Challenges:**
     * **Synchronization and [[transversal-programming-models#1-concurrent-programming|Concurrency]]:** Managing [[transversal-programming-models#1-concurrent-programming|concurrent]] access to the Blackboard can be complex, especially in a distributed environment. Mechanisms like locks, semaphores, or transactional systems are often required.

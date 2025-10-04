@@ -10,7 +10,7 @@ date: 2025-09-19
 The **Model-View-Controller (MVC)** [[software-architecture/architectural-patterns/|architectural pattern]] is a fundamental design pattern used to develop user interfaces. Its main objective is to separate an application into three interconnected and well-defined components to manage complexity.
 
 * **Core Principles:**
-    * **Separation of Concerns:** MVC clearly separates responsibilities. The **Model** handles data and business logic, the **View** is responsible for presentation to the user, and the **Controller** acts as an intermediary, handling user input and orchestrating interactions between the Model and the View.
+    * **[[soc|Separation of Concerns]]:** MVC clearly separates responsibilities. The **Model** handles data and business logic, the **View** is responsible for presentation to the user, and the **Controller** acts as an intermediary, handling user input and orchestrating interactions between the Model and the View.
     * **[[cohesion-coupling|Loose Coupling]]:** The components are designed to be as independent as possible. The Controller does not need to know the implementation details of the View, and the Model is completely independent of the UI. This increases the reusability and testability of the components.
     * **Triadic Interaction:** The pattern implements a specific communication flow. The user interacts with the View, which triggers an action in the Controller. The Controller updates the Model, which in turn can notify the View of any changes so it can refresh itself.
 

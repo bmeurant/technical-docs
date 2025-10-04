@@ -9,7 +9,7 @@ date: 2025-09-27
 **CQRS** is an [[software-architecture/architectural-patterns/|architectural pattern]] that separates the model for writing data (the **Command** side) from the model for reading data (the **Query** side). While in traditional architectures the same data model is used for both reading and writing, CQRS proposes that these two aspects have very different requirements and should be optimized independently.
 
 * **Core Principles:**
-    * **Separation of Concerns:** The core idea is to have two distinct models:
+    * **[[soc|Separation of Concerns]]:** The core idea is to have two distinct models:
         * The **Write Model** (or Command Model) is optimized for validation, business logic execution, and consistency. It processes commands and produces events or state changes.
         * The **Read Model** (or Query Model) is a denormalized and optimized representation of the data, designed specifically for efficient querying and display.
     * **Asymmetrical Models:** The write model can be a fully normalized, transactional database, while the read model could be a NoSQL database, a full-text search index, or simply materialized views.

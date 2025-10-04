@@ -12,7 +12,7 @@ The **MVP** pattern is a user interface [[software-architecture/architectural-pa
 
 ## Core Principles:
 
-* **Separation of Concerns:** **MVP** divides the application into three interconnected components.
+* **[[soc|Separation of Concerns]]:** **MVP** divides the application into three interconnected components.
 * **Testability:** The strict decoupling between the **View** and the **Presenter** allows the **Presenter**'s business logic to be tested independently of the user interface.
 * **Presenter as a mediator:** The **Presenter** acts as an intermediary between the **Model** and the **View**. It receives user actions from the **View**, updates the **Model** accordingly, and then updates the **View** to reflect the changes.
 

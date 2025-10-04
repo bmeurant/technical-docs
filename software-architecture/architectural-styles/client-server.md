@@ -9,7 +9,7 @@ date: 2025-09-15
 The **Client-Server** architecture is a fundamental distributed [[software-architecture/architectural-styles/|architectural style]] where responsibilities are divided into two distinct roles. A **client** is an entity that requests services, while a **server** is an entity that listens for requests and provides the services. This model is based on message exchange over a **network**.
 
 * **Core Principles:**
-    * **Separation of Concerns:** The client handles the user interface and presentation logic, while the server is responsible for the business logic, data storage, and security. This separation simplifies the independent development, maintenance, and evolution of each part.
+    * **[[soc|Separation of Concerns]]:** The client handles the user interface and presentation logic, while the server is responsible for the business logic, data storage, and security. This separation simplifies the independent development, maintenance, and evolution of each part.
     * **Request/Response:** This is the standard communication pattern. The client sends a synchronous or asynchronous request, and the server provides a response.
     * **Stateless vs. Stateful:**
         * **Stateless:** Each request from the client to the server contains all the information needed for the server to process it. The server does not store any information about the client's session state between requests. This is the **HTTP** model, which is ideal for scalability.

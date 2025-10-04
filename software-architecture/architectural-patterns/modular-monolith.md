@@ -13,7 +13,7 @@ The **Modular Monolith** is an [[software-architecture/architectural-patterns/|a
 The core trade-off of this pattern is to intentionally accept **data coupling** (typically a single database) in order to gain the immense operational simplicity of a [[monolith]], while still achieving the **loose logical [[cohesion-coupling|coupling]]** and developer autonomy benefits of [[microservices]].
 
 * **Core Principles:**
-    * **Separation of Concerns:** Each module is a self-contained functional unit, with its own business logic, internal API, and, ideally, its own data schema. It does not directly access other modules' data.
+    * **[[soc|Separation of Concerns]]:** Each module is a self-contained functional unit, with its own business logic, internal API, and, ideally, its own data schema. It does not directly access other modules' data.
     * **[[cohesion-coupling|Loose Coupling]]:** Modules communicate via well-defined interfaces (like services or internal [[event-driven|events]]), which reduces direct dependencies. This allows a team to work on one module with less risk of breaking the rest of the application.
     * **[[cohesion-coupling|High Cohesion]]:** A module's code is tightly related and serves a single business responsibility. This makes the code easier to understand and maintain.
 

@@ -911,7 +911,7 @@ graph TD
     The diagram shows a set of `Element` classes that have an `accept(Visitor)` method. A separate `Visitor` interface defines a `visit()` method for each type of element. A `ConcreteVisitor` implements these visit methods to perform a specific operation. This allows adding new operations (new `ConcreteVisitor` classes) without modifying the element classes.
 
 * **Key Characteristics**:
-    * **Separation of Concerns**: Separates the algorithm from the object structure.
+    * **[[soc|Separation of Concerns]]**: Separates the algorithm from the object structure.
     * **Extensibility**: Allows for adding new operations easily.
     * **Centralized Logic**: All logic for a specific operation is centralized in a single `Visitor` class.
 * **Applicability**: Compilers (visiting a syntax tree), exporting data to different formats (XML, JSON), or performing operations on a complex object structure.

@@ -9,7 +9,7 @@ date: 2025-09-19
 The **MVVM** pattern is a **UI [[software-architecture/architectural-patterns/|architectural pattern]]** that clearly separates the user interface logic from the business logic. It is considered an evolution of the [[mvc|MVC]] and [[mvp|MVP]] patterns. Initially developed by Microsoft for frameworks like **WPF** and **Silverlight**, it is now widely used in **mobile** (**iOS**, **Android**) and **web** environments (**React**, **Vue.js**, **Angular**). It is often considered an evolution of the [[mvc|MVC]] pattern.
 
 * **Core Principles:**
-    * **Separation of Concerns:** This pattern divides the application into three interconnected components: the **Model**, the **View**, and the **ViewModel**. This separation facilitates development, testing, and maintenance.
+    * **[[soc|Separation of Concerns]]:** This pattern divides the application into three interconnected components: the **Model**, the **View**, and the **ViewModel**. This separation facilitates development, testing, and maintenance.
     * **Data Binding and Commands:** **MVVM** relies heavily on bidirectional **data binding** to automatically synchronize data between the **View** and the **ViewModel**. User actions in the **View** are managed via **commands** in the **ViewModel**, eliminating the need to handle events directly in the **View**.
     * **Testability:** The **View** has minimal logic. The majority of the presentation logic resides in the **ViewModel**, which can be tested through **unit testing** without any dependency on the graphical interface.
 

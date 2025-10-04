@@ -474,7 +474,7 @@ This sequence diagram shows the asynchronous behavior of the `Proactor` pattern.
 * **Limitations and Challenges**: Can introduce some complexity if the connection logic is very simple.
 * **Relationship with Other Patterns**:
     * The **Acceptor-Connector** pattern is almost always used with either the **[[#reactor|Reactor]]** or **[[#proactor|Proactor]]** pattern. The `Acceptor` or `Connector` creates a `ServiceHandler`, which is then registered with the `Reactor` to handle I/O events.
-    * It is also an example of the [[cohesion-coupling|Separation of Concerns]] principle, as it decouples the connection logic from the application-level service logic.
+    * It is also an example of the [[soc|Separation of Concerns]] principle, as it decouples the connection logic from the application-level service logic.
 
 #### Active Object
 
@@ -552,7 +552,7 @@ graph TD
 
 * **Key Characteristics**:
     * **Stateful**: The pattern is inherently stateful, tracking the state of the external service.
-    * **Fail-Fast**: It provides a fast-failing response when the service is known to be down, preventing the application from waiting for long timeouts.
+    * **[[fail-fast|Fail-Fast]]**: It provides a fast-failing response when the service is known to be down, preventing the application from waiting for long timeouts.
     * **Automatic Recovery**: The `Half-Open` state allows the circuit breaker to automatically detect when the service has recovered.
     * **Resilience**: It improves the resilience of the system by isolating failures and preventing them from cascading.
 * **Applicability**:
@@ -699,7 +699,7 @@ In a typical scenario, a Bulkhead might be used to create separate thread pools 
 
 * **Key Characteristics**:
     * **Time Limit**: A predefined duration to wait for a response.
-    * **Fail-Fast**: If the time limit is exceeded, the operation fails immediately.
+    * **[[fail-fast|Fail-Fast]]**: If the time limit is exceeded, the operation fails immediately.
     * **Resource Protection**: Prevents system resources (like threads) from being blocked indefinitely.
     * **Improved User Experience**: Provides quicker feedback to the user when a service is unresponsive.
 * **Applicability**:

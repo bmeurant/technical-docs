@@ -8,7 +8,7 @@ date: 2025-09-28
 ---
 # Transversal Programming Models
 
-Unlike the primary paradigms of [[imperative-programming|imperative]] and [[declarative-programming|declarative]] programming, which define the fundamental way code is structured, **transversal models** (or cross-cutting paradigms) address specific problems that span across an entire application. They are not mutually exclusive and can be combined with other paradigms like [[object-oriented-programming|Object-Oriented]] or [[functional-programming|Functional Programming]] to solve complex challenges such as concurrency, data flow, or the [[cohesion-coupling|separation of concerns]].
+Unlike the primary paradigms of [[imperative-programming|imperative]] and [[declarative-programming|declarative]] programming, which define the fundamental way code is structured, **transversal models** (or cross-cutting paradigms) address specific problems that span across an entire application. They are not mutually exclusive and can be combined with other paradigms like [[object-oriented-programming|Object-Oriented]] or [[functional-programming|Functional Programming]] to solve complex challenges such as concurrency, data flow, or the [[soc|separation of concerns]].
 
 ```mermaid
 graph TD
