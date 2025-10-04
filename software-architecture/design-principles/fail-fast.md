@@ -48,3 +48,22 @@ function getInternalApiUrl(user) {
 -   **[[defensive-programming|Defensive Programming]]:** Fail-Fast is a key *strategy* within a defensive mindset. It is the strategy of choice when a defensive check reveals an impossible *internal* state that indicates a bug.
 
 -   **[[design-by-contract|Design by Contract (DbC)]]:** DbC is the most formal and systematic way to implement a fail-fast system. A violation of a precondition, postcondition, or invariant is a contract violation that should immediately trigger a failure.
+
+---
+
+## Resources & links
+
+These resources provide more depth on the Fail-Fast principle.
+
+### Articles
+
+1.  **[Fail Fast by Martin Fowler](https://martinfowler.com/ieeeSoftware/failFast.pdf)**
+    In this foundational article, Martin Fowler explains why systems that fail immediately upon detecting an error are more robust and easier to debug than those that try to continue.
+
+2.  **[The Fail Fast Principle](https://www.codereliant.io/p/fail-fast-pattern)**
+    This article details the Fail-Fast pattern, especially in the context of distributed systems, where it helps to localize failures and improve overall reliability.
+
+### Videos
+
+1.  **[The Fail Fast Principle](https://www.youtube.com/watch?v=_SlnC4v-PK8)**
+    A video explaining the importance of the principle in software design, covering its effective application through early error detection and automated testing.
