@@ -163,3 +163,25 @@ class BankAccount {
 -   **[[solid|Liskov Substitution Principle (LSP)]]:** DbC provides the rules for applying LSP correctly in object-oriented programming. For a subclass to be a valid substitute for its superclass, it must adhere to the parent's contract:
     -   It must not strengthen the preconditions (it must accept at least everything the parent accepts).
     -   It must not weaken the postconditions or the invariants (it must guarantee at least everything the parent guarantees).
+
+---
+
+## Resources & links
+
+These resources provide more depth on the theory and practice of Design by Contract.
+
+### Articles
+
+1.  **[Design by Contract and Assertions](https://www.eiffel.org/doc/solutions/Design_by_Contract_and_Assertions)**
+    A foundational text from eiffel.org, the home of DbC's creator. It explains how contracts are embedded into code using assertions to improve reliability.
+
+2.  **[Design by contracts (in Ada)](https://learn.adacore.com/courses/intro-to-ada/chapters/contracts.html)**
+    This article provides a practical look at implementing preconditions, postconditions, and invariants in the Ada programming language, which has native support for contracts.
+
+### Videos
+
+1.  **[Defensive Programming and Design By Contract](https://www.youtube.com/watch?v=PG-c2vJ0Woo)**
+    This video explains how DbC serves as a key strategy for building robust code that can detect and handle bad data, using asserts and frameworks.
+
+2.  **[Let Design by Contract Be Your Highest-Valued Design Method](https://www.youtube.com/watch?v=E30N4FJwP3w)**
+    A talk that argues for the value of DbC in everyday class design to prevent common bugs, drawing parallels to service contracts in microservices.
