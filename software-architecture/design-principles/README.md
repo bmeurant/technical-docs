@@ -8,3 +8,4 @@ see [index](./index.md)
 * **[You Aren't Gonna Need It (YAGNI)](./yagni.md)**
 * **[Keep It Simple, Stupid (KISS)](./kiss.md)**
 * **[Defensive Programming](./defensive-programming.md)**
+* **[Design by Contract (DbC)](./design-by-contract.md)**

@@ -147,7 +147,9 @@ function sortScores(scores) {
 ## Relationship with Other Concepts
 
 -   **Fail-Fast:** Rather than being a true opposite, Fail-Fast is a specific *strategy* within a defensive mindset. When a defensive check reveals an *internal* state that should be impossible (a contract violation, indicating a bug), the most defensive action is to "fail fast" by throwing an exception. This prevents the corrupted state from spreading and makes the bug's origin immediately obvious. This is different from gracefully handling expected external failures (like API errors), where the program should continue to run.
--   **Design by Contract:** This is a more formal approach to defensive programming where preconditions (what must be true before a function runs), postconditions (what must be true after), and invariants (what must always be true) are explicitly defined and checked.
+-   **[[design-by-contract|Design by Contract]]:** A formal methodology for implementing defensive checks through preconditions, postconditions, and invariants.
+-   **[[soc|Separation of Concerns (SoC)]]:** A good separation of concerns helps identify the "boundaries" where defensive programming is most needed. Each component should defend itself from data crossing its boundary.
+-   **[[kiss|KISS]] & [[yagni|YAGNI]]:** These principles help reduce the surface area that needs to be defended. A simpler system with fewer features is inherently easier to make robust. However, excessive defensive programming (e.g., redundant checks) can sometimes violate KISS by adding unnecessary complexity.
 
 ---
 

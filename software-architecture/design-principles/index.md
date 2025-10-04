@@ -13,3 +13,4 @@ This section covers fundamental principles that guide the design of software sys
 - [[yagni|You Aren't Gonna Need It (YAGNI)]]
 - [[kiss|Keep It Simple, Stupid (KISS)]]
 - [[defensive-programming|Defensive Programming]]
+- [[design-by-contract|Design by Contract (DbC)]]
