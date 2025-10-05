@@ -4,6 +4,9 @@ tags:
   - programming-paradigm
   - concurrent-programming
   - reactive-programming
+  - aspect-oriented-programming
+  - functional-reactive-programming
+  - transversal-programming-models
 date: 2025-09-28
 ---
 # Transversal Programming Models

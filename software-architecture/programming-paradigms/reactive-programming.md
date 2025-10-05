@@ -2,6 +2,10 @@
 title: Reactive Programming
 tags:
   - programming-paradigm
+  - transversal-programming-models
+  - reactive-programming
+  - streams
+  - operators
 date: 2025-09-30
 ---
 # Reactive Programming

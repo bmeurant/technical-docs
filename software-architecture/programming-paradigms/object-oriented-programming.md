@@ -3,6 +3,11 @@ title: Object-Oriented Programming (OOP)
 tags:
   - programming-paradigm
   - imperative-programming
+  - object-oriented-programming
+  - encapsulation
+  - abstraction
+  - inheritance
+  - polymorphism
 date: 2025-09-28
 ---
 # Object-Oriented Programming (OOP)

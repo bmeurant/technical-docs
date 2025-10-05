@@ -3,6 +3,9 @@ title: Functional Programming (FP)
 tags:
   - programming-paradigm
   - declarative-programming
+  - functional-programming
+  - pure-functions
+  - immutability
 date: 2025-09-30
 ---
 # Functional Programming (FP)

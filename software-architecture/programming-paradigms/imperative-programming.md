@@ -3,6 +3,8 @@ title: Imperative Programming
 tags:
   - programming-paradigm
   - imperative-programming
+  - procedural-programming
+  - object-oriented-programming
 date: 2025-09-28
 ---
 # Imperative Programming

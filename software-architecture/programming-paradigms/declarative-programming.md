@@ -3,6 +3,8 @@ title: Declarative Programming
 tags:
   - programming-paradigm
   - declarative-programming
+  - functional-programming
+  - logical-programming
 date: 2025-09-28
 ---
 # Declarative Programming

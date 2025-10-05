@@ -11,3 +11,4 @@ see [index](./index.md)
 * **[Design by Contract (DbC)](./design-by-contract.md)**
 * **[Fail-Fast](./fail-fast.md)**
 * **[The Law of Demeter (LoD)](./law-of-demeter.md)**
+* **[Tell, Don't Ask](./tell-dont-ask.md)**
