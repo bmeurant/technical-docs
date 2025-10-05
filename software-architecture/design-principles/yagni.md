@@ -5,7 +5,7 @@ tags:
   - yagni
   - simplicity
   - kiss
-date: 2025-10-02
+date: 2025-10-03
 ---
 # You Aren't Gonna Need It (YAGNI)
 

@@ -5,7 +5,7 @@ tags:
   - defensive-programming
   - robustness
   - fail-fast
-date: 2025-10-02
+date: 2025-10-03
 ---
 # Defensive Programming
 

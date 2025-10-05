@@ -5,7 +5,7 @@ tags:
   - kiss
   - simplicity
   - yagni
-date: 2025-10-02
+date: 2025-10-03
 ---
 # Keep It Simple, Stupid (KISS)
 

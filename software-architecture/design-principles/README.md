@@ -10,3 +10,4 @@ see [index](./index.md)
 * **[Defensive Programming](./defensive-programming.md)**
 * **[Design by Contract (DbC)](./design-by-contract.md)**
 * **[Fail-Fast](./fail-fast.md)**
+* **[The Law of Demeter (LoD)](./law-of-demeter.md)**

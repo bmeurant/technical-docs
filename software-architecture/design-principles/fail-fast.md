@@ -5,7 +5,7 @@ tags:
   - fail-fast
   - debugging
   - defensive-programming
-date: 2025-10-02
+date: 2025-10-04
 ---
 # Fail-Fast
 

@@ -19,3 +19,4 @@ This section covers fundamental principles that guide the design of software sys
 - [[defensive-programming|Defensive Programming]]
 - [[design-by-contract|Design by Contract (DbC)]]
 - [[fail-fast|Fail-Fast]]
+- [[law-of-demeter|The Law of Demeter (LoD)]]

@@ -5,7 +5,7 @@ tags:
   - design-by-contract
   - robustness
   - defensive-programming
-date: 2025-10-02
+date: 2025-10-04
 ---
 # Design by Contract (DbC)
 
