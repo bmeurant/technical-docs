@@ -12,3 +12,4 @@ see [index](./index.md)
 * **[Fail-Fast](./fail-fast.md)**
 * **[The Law of Demeter (LoD)](./law-of-demeter.md)**
 * **[Tell, Don't Ask](./tell-dont-ask.md)**
+* **[The Hollywood Principle (IoC)](./hollywood-principle.md)**

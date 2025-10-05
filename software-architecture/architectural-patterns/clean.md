@@ -101,7 +101,7 @@ graph TD
 
 2.  **[Clean Architecture](https://medium.com/@rudrakshnanavaty/clean-architecture-7c1b3b4cb181)**
 
-    This **Medium** article by Rudrakshna Nanavaty provides a clear overview of **Clean Architecture**. It explains the core principles, such as the **[[soc|separation of concerns]]** and the **Dependency Rule**, which ensures inner layers remain decoupled from outer layers. The article likens the architecture to an onion, detailing the four main layers: **Entity**, **Use Case**, **Controller**, and **Infrastructure**. It also explains how **Dependency Injection** helps manage the flow of dependencies, promoting a flexible, testable, and maintainable codebase.
+    This **Medium** article by Rudrakshna Nanavaty provides a clear overview of **Clean Architecture**. It explains the core principles, such as the **[[soc|separation of concerns]]** and the **Dependency Rule**, which ensures inner layers remain decoupled from outer layers. The article likens the architecture to an onion, detailing the four main layers: **Entity**, **Use Case**, **Controller**, and **Infrastructure**. It also explains how **[[hollywood-principle|Dependency Injection]]** helps manage the flow of dependencies, promoting a flexible, testable, and maintainable codebase.
 
 ---
 

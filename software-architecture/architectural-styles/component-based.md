@@ -42,7 +42,7 @@ graph TD
 
 1.  **Component:** A self-contained, binary unit of software. It is a "black box" that hides its internal implementation.
 2.  **Interface:** The component's "contract." It defines the public methods, events, and properties that other components can use to interact with it. This is the only permissible entry point to the component.
-3.  **Runtime Environment (or Container):** A crucial, often implicit, part of CBA. This is the execution environment that manages the lifecycle of components (e.g., creation, destruction) and facilitates their assembly and communication, often through **Dependency Injection**.
+3.  **Runtime Environment (or Container):** A crucial, often implicit, part of CBA. This is the execution environment that manages the lifecycle of components (e.g., creation, destruction) and facilitates their assembly and communication, often through **[[hollywood-principle|Dependency Injection]]**.
 
 **Typical Data Flow:**
 * A component (the **client**) needs a certain functionality.
@@ -64,7 +64,7 @@ graph TD
     * **Dependency Management:** Complex projects can have numerous dependencies between components, making management and deployment difficult.
     * **Discovery & Suitability:** Finding or creating a component that precisely meets a need can be challenging. "Off-the-shelf" components may not be suitable and could require costly customization.
     * **Performance:** Inter-component communications can introduce overhead, especially if the components are distributed over a network.
-    * **Assembly Complexity:** The phase of integrating components to form the application can be complex and may require specific tools or **Dependency Injection Frameworks** (e.g., Spring, Guice).
+    * **Assembly Complexity:** The phase of integrating components to form the application can be complex and may require specific tools or **[[hollywood-principle|Dependency Injection]] Frameworks** (e.g., Spring, Guice).
 
 ---
 

@@ -874,7 +874,7 @@ graph TD
 * **Key Characteristics**:
     * **Algorithmic Skeleton**: Defines a fixed sequence of steps.
     * **Behavioral Customization**: Subclasses can customize specific steps.
-    * **[[solid|Inversion of Control]]**: The base class controls the overall algorithm, while the subclasses provide the details.
+    * **[[hollywood-principle|Inversion of Control]]**: The base class controls the overall algorithm, while the subclasses provide the details.
 * **Applicability**: Frameworks, algorithms with a fixed structure, or any situation where different subclasses need to follow a common process but with variations in specific steps.
 * **Limitations and Challenges**: The rigid structure of the template can be a limitation if the algorithm needs to be changed significantly in the future.
 	

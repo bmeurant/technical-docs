@@ -78,7 +78,7 @@ graph TD
     * **Performance:** Communication between modules happens in memory, which is much faster than network calls between [[microservices]].
     * **Maintainability and Internal Scalability:** The modularity makes maintenance and modifications easier. While the entire application is deployed together, it is easier to identify and resolve internal bottlenecks.
 
----
+--- 
 
 ## Challenges and Technical Considerations
 
@@ -86,9 +86,9 @@ graph TD
     *   **Code Structure:** Organize the code into distinct modules (e.g., separate packages, projects, or source folders).
     *   **Visibility Modifiers:** Use language features like `public`, `private`, and `internal` to ensure modules only expose their intended public API and hide their implementation details.
     *   **Static Analysis:** Use linting rules or static analysis tools (like ArchUnit for Java or NetArchTest for .NET) to create automated tests that fail the build if an architectural rule (like an illegal cross-module dependency) is violated.
+    *   **[[hollywood-principle|Inversion of Control (IoC)]]:** Use dependency injection frameworks to enforce module boundaries. Instead of letting modules create their dependencies directly, an IoC container can be configured to provide instances, preventing direct coupling and enforcing communication through public, defined interfaces. This aligns with the [[hollywood-principle]].
 * **Data Coupling:** Managing a single database for multiple modules is tricky. Each module should logically own its own tables, and direct foreign key relationships between tables owned by different modules should be avoided to maintain independence.
 * **Scalability:** While you can replicate the entire [[monolithic|monolith]] behind a **Load Balancer**, you cannot scale a single module independently.
-
 ---
 
 ## **Resources & Links**
