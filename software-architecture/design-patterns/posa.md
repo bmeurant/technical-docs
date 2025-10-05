@@ -1,7 +1,10 @@
 ---
 title: POSA Design Patterns
 tags:
+  - design-pattern
   - posa
+  - concurrency
+  - distributed-systems
 date: 2025-09-21
 ---
 
@@ -340,7 +343,7 @@ graph TD
     A2(POSA2 Patterns for Concurrent and Networked Objects);
 
     %% POSA2 Patterns
-    A2 --> A2_B(Event Handling & Concurrency Primitives);  
+    A2 --> A2_B(Event Handling & Concurrency Primitives);
     A2 --> A2_C(Resilience and Fault Tolerance);
     A2 --> A2_D(Coordination);
     A2 --> A2_E(Deployment and Infrastructure);

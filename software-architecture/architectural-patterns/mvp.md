@@ -1,7 +1,10 @@
 ---
 title: Model-View-Presenter (MVP)
 tags:
+  - architectural-pattern
+  - mvp
   - ui
+  - testability
 date: 2025-09-19
 ---
 # MVP (Model-View-Presenter) Architecture

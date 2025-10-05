@@ -1,5 +1,10 @@
 ---
 title: Algorithm Complexity Analysis
+tags:
+  - algorithm
+  - complexity
+  - big-o
+  - performance
 date: 2025-10-02
 ---
 # Algorithm Complexity Analysis

@@ -2,8 +2,9 @@
 title: Separation of Concerns (SoC)
 tags:
   - design-principle
+  - soc
   - modularity
-  - cohesion
+  - solid
 date: 2025-10-02
 ---
 # Separation of Concerns (SoC)

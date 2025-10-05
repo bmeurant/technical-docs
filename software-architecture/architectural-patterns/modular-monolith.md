@@ -1,8 +1,9 @@
 ---
 title: Modular Monolith
 tags:
-  - structure
-  - deployment
+  - architectural-pattern
+  - modular-monolith
+  - monolith
   - modularity
 date: 2025-09-15
 ---

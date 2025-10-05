@@ -1,7 +1,10 @@
---- 
+---
 title: CQRS (Command Query Responsibility Segregation)
 tags:
-  - data-management
+  - architectural-pattern
+  - cqrs
+  - event-sourcing
+  - scalability
 date: 2025-09-27
 ---
 # CQRS (Command Query Responsibility Segregation)
@@ -62,7 +65,7 @@ sequenceDiagram
 
 * **Advantages (Benefits):**
     * **Scalability:** The read and write workloads can be scaled independently. You can add more nodes to your read cluster to handle high query volumes without impacting the write side.
-    * **Performance:** Each model can be optimized with the best data store for its task. The read model can be denormalized to avoid complex joins, leading to very fast queries.
+    * **Performance:** Each model can be aotomized with the best data store for its task. The read model can be denormalized to avoid complex joins, leading to very fast queries.
     * **Flexibility & Simplicity:** The write model can focus solely on business logic and transactional consistency without being polluted by read concerns. The read model is simple and doesn't contain complex business logic.
     * **Security:** It's easier to enforce security rules by restricting access to the command side.
 
@@ -104,4 +107,3 @@ CQRS is often used with other patterns to build robust and scalable systems.
 2. **[CQRS System Design Pattern](http://www.youtube.com/watch?v=vNplj9LwQSw)** (Piyush Garg)
 
     Detailed guide on separating **Commands and Queries** to eliminate database bottlenecks. Discusses using different DB types (SQL/NoSQL) for each side and integrating **Event Sourcing** via a message broker (Kafka) for **eventual consistency** in large-scale systems.
-

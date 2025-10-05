@@ -1,7 +1,10 @@
 ---
 title: Event-Driven Architecture (EDA)
 tags:
-  - communication
+  - architectural-style
+  - event-driven
+  - asynchronous-messaging
+  - publish-subscribe
 date: 2025-09-17
 ---
 # Event-Driven Architecture (EDA)

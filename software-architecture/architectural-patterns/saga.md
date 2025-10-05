@@ -1,8 +1,10 @@
 ---
 title: Saga Pattern
 tags:
-  - data-management
-  - communication
+  - architectural-pattern
+  - saga
+  - distributed-transactions
+  - microservices
 date: 2025-09-27
 ---
 # Saga Pattern

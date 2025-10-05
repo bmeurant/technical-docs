@@ -1,7 +1,10 @@
 ---
 title: Client-Server Architecture
 tags:
-  - distributed
+  - architectural-style
+  - client-server
+  - distributed-systems
+  - layered-architecture
 date: 2025-09-15
 ---
 # Client-Server Architecture

@@ -1,7 +1,10 @@
 ---
 title: Clean Architecture
 tags:
-  - structure
+  - architectural-pattern
+  - clean-architecture
+  - dependency-inversion
+  - testability
 date: 2025-09-25
 ---
 

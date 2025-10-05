@@ -1,7 +1,10 @@
 ---
 title: Service Mesh
 tags:
-  - communication
+  - architectural-pattern
+  - service-mesh
+  - microservices
+  - observability
   - posa
 date: 2025-09-27
 ---

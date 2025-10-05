@@ -1,7 +1,11 @@
 ---
 title: Pipe and Filters Pattern
 tags:
+  - architectural-pattern
+  - pipe-and-filters
   - data-processing
+  - etl
+  - posa
 date: 2025-09-25
 ---
 # Pipe and Filters Pattern

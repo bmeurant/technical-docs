@@ -1,8 +1,10 @@
 ---
 title: Message Queue
 tags:
-  - messaging
-  - communication
+  - architectural-pattern
+  - message-queue
+  - asynchronous-messaging
+  - competing-consumers
 ---
 # The Message Queue Pattern
 

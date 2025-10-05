@@ -1,7 +1,10 @@
 ---
 title: Event Sourcing
 tags:
-  - data-management
+  - architectural-pattern
+  - event-sourcing
+  - event-driven
+  - cqrs
 date: 2025-09-27
 ---
 # Event Sourcing

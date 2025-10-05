@@ -1,7 +1,10 @@
 ---
 title: Layered Architecture
 tags:
-  - structure
+  - architectural-style
+  - layered-architecture
+  - n-tier
+  - monolith
   - posa
 date: 2025-09-15
 ---

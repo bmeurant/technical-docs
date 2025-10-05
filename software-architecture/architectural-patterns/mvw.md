@@ -1,7 +1,11 @@
 ---
 title: Model-View-Whatever (MVW)
 tags:
-  - ui
+  - architectural-pattern
+  - mvw
+  - mvc
+  - mvp
+  - mvvm
 date: 2025-09-19
 ---
 # Model-View-Whatever (MVW)

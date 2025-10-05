@@ -2,9 +2,9 @@
 title: Design by Contract (DbC)
 tags:
   - design-principle
+  - design-by-contract
   - robustness
-  - formal-methods
-  - code-quality
+  - defensive-programming
 date: 2025-10-02
 ---
 # Design by Contract (DbC)

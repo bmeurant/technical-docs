@@ -1,7 +1,10 @@
 ---
 title: Broker Pattern
 tags:
-  - communication
+  - architectural-pattern
+  - broker
+  - distributed-systems
+  - decoupling
   - posa
 date: 2025-09-21
 ---

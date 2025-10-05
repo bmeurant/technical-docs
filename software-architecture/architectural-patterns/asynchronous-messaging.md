@@ -1,8 +1,10 @@
 ---
 title: Asynchronous Messaging Models
 tags:
-  - messaging
-  - communication
+  - asynchronous-messaging
+  - message-queue
+  - publish-subscribe
+  - decoupling
 date: 2025-09-20
 ---
 # Asynchronous Messaging Models: Queues vs. Topics & Streams

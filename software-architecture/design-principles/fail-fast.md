@@ -2,8 +2,9 @@
 title: Fail-Fast
 tags:
   - design-principle
+  - fail-fast
   - debugging
-  - robustness
+  - defensive-programming
 date: 2025-10-02
 ---
 # Fail-Fast

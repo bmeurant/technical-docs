@@ -3,6 +3,7 @@ title: Microkernel Architecture
 tags:
   - structure
   - modularity
+  - posa
 date: 2025-09-16
 ---
 # Microkernel Architecture (Plug-in Architecture)

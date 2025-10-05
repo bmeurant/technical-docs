@@ -1,7 +1,10 @@
---- 
+---
 title: GoF Design Patterns
 tags:
+  - design-pattern
   - gof
+  - object-oriented
+  - pattern-catalogue
 date: 2025-09-21
 ---
 

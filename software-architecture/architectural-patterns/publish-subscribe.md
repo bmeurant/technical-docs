@@ -1,8 +1,10 @@
 ---
 title: Publish-Subscribe Pattern
 tags:
-  - messaging
-  - communication
+  - architectural-pattern
+  - publish-subscribe
+  - asynchronous-messaging
+  - event-driven
 date: 2025-09-20
 ---
 # **Publish-Subscribe Pattern**

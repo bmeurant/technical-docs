@@ -1,8 +1,10 @@
 ---
 title: Strangler Fig Pattern
 tags:
-  - refactoring
+  - architectural-pattern
+  - strangler-fig
   - migration
+  - monolith
 date: 2025-10-01
 ---
 # Strangler Fig Pattern

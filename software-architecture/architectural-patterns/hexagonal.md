@@ -1,7 +1,10 @@
 ---
 title: Hexagonal Architecture
 tags:
-  - structure
+  - architectural-pattern
+  - hexagonal
+  - ports-and-adapters
+  - dependency-inversion
 date: 2025-09-23
 ---
 

@@ -1,7 +1,10 @@
 ---
 title: Onion Architecture
 tags:
-  - structure
+  - architectural-pattern
+  - onion-architecture
+  - dependency-inversion
+  - domain-driven-design
 date: 2025-09-24
 ---
 

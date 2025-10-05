@@ -2,8 +2,9 @@
 title: Don't Repeat Yourself (DRY)
 tags:
   - design-principle
-  - code-quality
+  - dry
   - maintainability
+  - soc
 date: 2025-10-02
 ---
 # Don't Repeat Yourself (DRY)

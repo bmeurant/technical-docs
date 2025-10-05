@@ -2,8 +2,9 @@
 title: You Aren't Gonna Need It (YAGNI)
 tags:
   - design-principle
-  - agile
+  - yagni
   - simplicity
+  - kiss
 date: 2025-10-02
 ---
 # You Aren't Gonna Need It (YAGNI)

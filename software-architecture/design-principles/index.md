@@ -1,5 +1,9 @@
 ---
 title: Design Principles
+tags:
+  - design-principle
+  - solid
+  - dry
 date: 2025-09-17
 ---
 

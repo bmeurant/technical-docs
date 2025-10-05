@@ -1,7 +1,11 @@
 ---
 title: Model-View-Controller (MVC)
 tags:
+  - architectural-pattern
+  - mvc
   - ui
+  - separation-of-concerns
+  - posa
 date: 2025-09-19
 ---
 

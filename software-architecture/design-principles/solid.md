@@ -2,8 +2,9 @@
 title: SOLID
 tags:
   - design-principle
-  - quality
-  - maintanability
+  - solid
+  - object-oriented
+  - dependency-inversion
 date: 2025-09-16
 ---
 # The SOLID Principles

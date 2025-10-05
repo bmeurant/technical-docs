@@ -2,8 +2,9 @@
 title: Keep It Simple, Stupid (KISS)
 tags:
   - design-principle
+  - kiss
   - simplicity
-  - maintainability
+  - yagni
 date: 2025-10-02
 ---
 # Keep It Simple, Stupid (KISS)

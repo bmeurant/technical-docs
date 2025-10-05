@@ -1,5 +1,9 @@
 ---
 title: Architectural Styles
+tags:
+  - architectural-style
+  - client-server
+  - microservices
 date: 2025-09-17
 ---
 

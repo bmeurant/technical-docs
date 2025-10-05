@@ -1,8 +1,10 @@
 ---
 title: Blackboard Pattern
 tags:
-  - collaboration
+  - architectural-pattern
+  - blackboard
   - ai
+  - problem-solving
   - posa
 date: 2025-09-19
 ---

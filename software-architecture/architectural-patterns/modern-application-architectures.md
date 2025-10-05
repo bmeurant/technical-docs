@@ -1,7 +1,10 @@
 ---
 title: Modern Application Architectures
 tags:
-  - structure
+  - architectural-pattern
+  - hexagonal
+  - onion
+  - clean-architecture
 date: 2025-09-24
 ---
 

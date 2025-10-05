@@ -2,9 +2,9 @@
 title: Defensive Programming
 tags:
   - design-principle
+  - defensive-programming
   - robustness
-  - security
-  - code-quality
+  - fail-fast
 date: 2025-10-02
 ---
 # Defensive Programming
