@@ -13,3 +13,4 @@ see [index](./index.md)
 * **[The Law of Demeter (LoD)](./law-of-demeter.md)**
 * **[Tell, Don't Ask](./tell-dont-ask.md)**
 * **[The Hollywood Principle (IoC)](./hollywood-principle.md)**
+* **[Composition Over Inheritance](./composition-over-inheritance.md)**

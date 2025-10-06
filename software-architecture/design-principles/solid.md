@@ -39,7 +39,7 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 
 **The Principle:** Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. It ensures that inheritance is used correctly based on behavior rather than just a conceptual "is-a" relationship.
 
-**Example:** Consider a base `Bird` class with a `fly()` method. It would seem logical to create a subclass `Ostrich` that inherits from `Bird`. However, a program that expects a `Bird` and calls the `fly()` method would fail or behave unpredictably when given an `Ostrich` object, as ostriches can't fly.  The `Ostrich`, as a subtype, violates the implicit contract of its parent. The LSP teaches us that if a subtype can't behave as its parent, the inheritance relationship is a poor design choice.
+**Example:** Consider a base `Bird` class with a `fly()` method. It would seem logical to create a subclass `Ostrich` that inherits from `Bird`. However, a program that expects a `Bird` and calls the `fly()` method would fail or behave unpredictably when given an `Ostrich` object, as ostriches can't fly.  The `Ostrich`, as a subtype, violates the implicit contract of its parent. The LSP teaches us that if a subtype can't behave as its parent, the inheritance relationship is a poor design choice. This is a key reason to favor [[composition-over-inheritance|composition over inheritance]].
 
 ---
 

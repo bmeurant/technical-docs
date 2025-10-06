@@ -112,9 +112,9 @@ myDog.eat();  // Inherited from Animal
 myDog.bark(); // Defined in Dog
 ```
 
-#### Composition over Inheritance
+#### [[composition-over-inheritance|Composition over Inheritance]]
 
-A key principle of modern object-oriented design is to **favor composition over inheritance**. While inheritance is powerful, it creates a very strong, static [[cohesion-coupling|coupling]] between a parent and child class. A change in the parent can easily break the child.
+A key principle of modern object-oriented design is to **favor composition over inheritance**. This principle is so fundamental for building flexible and maintainable systems that it is detailed in its own [[composition-over-inheritance|dedicated page]]. While inheritance is powerful, it creates a very strong, static [[cohesion-coupling|coupling]] between a parent and child class. A change in the parent can easily break the child.
 
 **Composition**, on the other hand, models a "has-a" relationship. Instead of a class *being* something, it *has* something. This is achieved by including an instance of another class as a field.
 

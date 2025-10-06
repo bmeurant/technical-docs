@@ -309,7 +309,7 @@ graph TD
 * **Key Characteristics**:
     * **[[cohesion-coupling|Decoupling]]**: Separates the abstraction from its implementation.
     * **Independent Variation**: Allows both class hierarchies to be extended independently.
-    * **Composition over Inheritance**: Uses composition to link the abstraction and implementation.
+    * **[[composition-over-inheritance|Composition over Inheritance]]**: Uses composition to link the abstraction and implementation.
 * **Applicability**: When a system needs to be extensible in two independent dimensions, such as different platforms (Windows, macOS) and different features (shapes, colors).
 * **Limitations and Challenges**: Adds complexity to the design, as it introduces two new layers of abstraction. It's often overkill for a simple problem.
 

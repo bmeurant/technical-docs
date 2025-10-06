@@ -2,8 +2,6 @@
 title: Design Principles
 tags:
   - design-principle
-  - solid
-  - dry
 date: 2025-09-17
 ---
 
@@ -16,6 +14,7 @@ This section covers fundamental principles that guide the design of software sys
 - [[dry|Don't Repeat Yourself (DRY)]]
 - [[yagni|You Aren't Gonna Need It (YAGNI)]]
 - [[kiss|Keep It Simple, Stupid (KISS)]]
+- [[composition-over-inheritance|Composition Over Inheritance]]
 - [[defensive-programming|Defensive Programming]]
 - [[design-by-contract|Design by Contract (DbC)]]
 - [[fail-fast|Fail-Fast]]
