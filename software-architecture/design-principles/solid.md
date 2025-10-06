@@ -57,6 +57,8 @@ The **SOLID** principles are a set of five [[software-architecture/design-princi
 1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
 2. Abstractions should not depend on details. Details should depend on abstractions.
 
+This is the formalization of the principle to [[program-against-abstractions|program to an interface, not an implementation]].
+
 This principle is the key mechanism that enables the decoupling in domain-centric architectures like **[[hexagonal|Hexagonal]]**, **[[onion|Onion]]**, and **[[clean|Clean Architecture]]**.
 
 **Example:** A high-level `PaymentService` module needs to log transaction details. A violation of the DIP occurs if `PaymentService` directly depends on a specific `FileLogger` class. If you want to change the logging method to a database or a cloud service, you must modify the `PaymentService` code. To follow the DIP, both the `PaymentService` and the `FileLogger` would depend on an `ILogger` interface. The `PaymentService` would use the `ILogger` interface, and the `FileLogger` (or a new `DatabaseLogger`) would implement it. This inverts the dependency, allowing you to change the low-level details without touching the high-level business logic. This inversion of control is a powerful concept, further explored in the [[hollywood-principle|Hollywood Principle]], where it is applied more broadly at an architectural level.

@@ -15,7 +15,7 @@ The **Layered Architecture** is one of the most common and foundational [[softwa
 * **Core Principles:**
     * **[[soc|Separation of Concerns]]:** Each layer is responsible for a specific concern (e.g., presentation, business logic, data access). This makes the system easier to understand and maintain.
     * **Unidirectional Dependency (The Dependency Rule):** Dependencies flow in a single direction, downwards. A higher layer can call services in a lower layer, but a lower layer must not have any knowledge of the layers above it.
-    * **Abstraction:** Each layer hides its implementation details from the layers above it, communicating only through a well-defined interface.
+    * **[[program-against-abstractions|Abstraction]]:** Each layer hides its implementation details from the layers above it, communicating only through a well-defined interface.
 
 ---
 

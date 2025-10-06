@@ -9,12 +9,12 @@ date: 2025-09-15
 ---
 # Component-Based Architecture (CBA)
 
-**Component-Based Architecture (CBA)** is an [[software-architecture/architectural-styles/|architectural style]] that structures a system as an assembly of loosely coupled, independently replaceable **components**. A component is a binary, reusable unit of software that encapsulates its implementation and exposes its functionality only through a well-defined **public interface**.
+**Component-Based Architecture (CBA)** is an [[software-architecture/architectural-styles/|architectural style]] that structures a system as an assembly of loosely coupled, independently replaceable **components**. A component is a binary, reusable unit of software that encapsulates its implementation and exposes its functionality only through a well-defined **public [[program-against-abstractions|interface]]**.
 
 The core idea is to build systems by composing pre-built, standardized components, similar to how physical systems are built from off-the-shelf parts.
 
 * **Key Principles:**
-    * **Strict Encapsulation (Black Box):** A component's internal implementation is completely hidden from the outside world. All interaction happens exclusively through its public interface.
+    * **Strict Encapsulation (Black Box):** A component's internal implementation is completely hidden from the outside world. All interaction happens exclusively through its public [[program-against-abstractions|interface]].
     * **Interchangeability:** Any component can be replaced by another component that implements the same interface, without affecting the rest of the system.
     * **Component Independence:** Components are designed to be as autonomous as possible. They are often developed, tested, and deployed as individual units.
 
@@ -41,7 +41,7 @@ graph TD
 ```
 
 1.  **Component:** A self-contained, binary unit of software. It is a "black box" that hides its internal implementation.
-2.  **Interface:** The component's "contract." It defines the public methods, events, and properties that other components can use to interact with it. This is the only permissible entry point to the component.
+2.  **[[program-against-abstractions|Interface]]:** The component's "contract." It defines the public methods, events, and properties that other components can use to interact with it. This is the only permissible entry point to the component.
 3.  **Runtime Environment (or Container):** A crucial, often implicit, part of CBA. This is the execution environment that manages the lifecycle of components (e.g., creation, destruction) and facilitates their assembly and communication, often through **[[hollywood-principle|Dependency Injection]]**.
 
 **Typical Data Flow:**

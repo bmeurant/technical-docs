@@ -274,7 +274,7 @@ graph TD
 
 #### **Bridge**
 
-* **Problem**: How to decouple an abstraction from its implementation so that the two can vary independently?
+* **Problem**: How to decouple an [[program-against-abstractions|abstraction from its implementation]] so that the two can vary independently?
 * **Synopsis**: The **Bridge** pattern separates a class into two distinct hierarchies: one for the abstraction and one for the implementation. This allows both hierarchies to evolve independently, promoting flexibility and extensibility.
 
     ```mermaid

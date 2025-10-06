@@ -14,3 +14,4 @@ see [index](./index.md)
 * **[Tell, Don't Ask](./tell-dont-ask.md)**
 * **[The Hollywood Principle (IoC)](./hollywood-principle.md)**
 * **[Composition Over Inheritance](./composition-over-inheritance.md)**
+* **[Program against Abstractions](./program-against-abstractions.md)**

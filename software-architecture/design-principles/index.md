@@ -15,6 +15,7 @@ This section covers fundamental principles that guide the design of software sys
 - [[yagni|You Aren't Gonna Need It (YAGNI)]]
 - [[kiss|Keep It Simple, Stupid (KISS)]]
 - [[composition-over-inheritance|Composition Over Inheritance]]
+- [[program-against-abstractions|Program againts Abstractions]]
 - [[defensive-programming|Defensive Programming]]
 - [[design-by-contract|Design by Contract (DbC)]]
 - [[fail-fast|Fail-Fast]]
