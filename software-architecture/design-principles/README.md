@@ -15,3 +15,4 @@ see [index](./index.md)
 * **[The Hollywood Principle (IoC)](./hollywood-principle.md)**
 * **[Composition Over Inheritance](./composition-over-inheritance.md)**
 * **[Program against Abstractions](./program-against-abstractions.md)**
+* **[Encapsulate What Varies](./encapsulate-what-varies.md)**

@@ -817,7 +817,7 @@ graph TD
 #### **Strategy**
 
 * **Problem**: How to define a family of algorithms, encapsulate each one, and make them interchangeable?
-* **Synopsis**: The **Strategy** pattern encapsulates different algorithms within separate classes. It allows a client to select and use different algorithms at runtime, without having to change the client's code.
+* **Synopsis**: The **Strategy** pattern is a perfect example of the [[encapsulate-what-varies|Encapsulate What Varies]] principle. It defines a family of algorithms, encapsulates each one, and makes them interchangeable. It allows a client to select and use different algorithms at runtime, without having to change the client's code.
 
     ```mermaid
     classDiagram

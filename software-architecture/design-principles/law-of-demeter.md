@@ -145,7 +145,7 @@ Now, the client is completely decoupled from the internal implementation of `Cus
 
 ## Relationship with Other Principles
 
--   **Encapsulation & [[object-oriented-programming|Object-Oriented Programming]]:** The Law of Demeter is a powerful tool for enforcing **Encapsulation**, a core pillar of OOP. By preventing objects from exposing their internal structure, it forces a clear separation between an object's public interface and its private implementation.
+-   **[[encapsulate-what-varies|Encapsulation]] & [[object-oriented-programming|Object-Oriented Programming]]:** The Law of Demeter is a powerful tool for enforcing **Encapsulation**, a core pillar of OOP. By preventing objects from exposing their internal structure, it forces a clear separation between an object's public interface and its private implementation. This is a direct application of the [[encapsulate-what-varies|Encapsulate What Varies]] principle.
 -   **[[soc|Separation of Concerns]]:** By enforcing strict encapsulation, LoD helps in achieving a better separation of concerns, where a component does not need to know the internal workings of another.
 -   **[[solid|Single Responsibility Principle (SRP)]]:** By encouraging objects to expose high-level behaviors rather than their internal components, LoD naturally leads to classes that are more cohesive and focused on a single responsibility.
 -   **[[tell-dont-ask|Tell, Don't Ask]]:** The Law of Demeter is closely related to the "Tell, Don't Ask" principle, which states that you should tell objects what to do rather than asking them for their state and then making decisions based on that state.

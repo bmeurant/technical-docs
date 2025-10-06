@@ -37,7 +37,7 @@ These four principles are the foundation of any robust object-oriented design.
 
 ### 1. Encapsulation
 
-- **What it is:** The bundling of data (attributes) and the methods that operate on that data into a single object. Encapsulation also involves restricting direct access to an object's internal state; this is known as **information hiding**.
+- **What it is:** The bundling of data (attributes) and the methods that operate on that data into a single object. Encapsulation also involves restricting direct access to an object's internal state; this is known as **information hiding**. This is a key technique for applying the [[encapsulate-what-varies|Encapsulate What Varies]] principle.
 - **Why it's important:** It protects an object's data from accidental or unauthorized modification from the outside (data integrity). It also reduces system complexity by hiding implementation details, leading to higher [[cohesion-coupling|cohesion]].
 - **Analogy:** The engine of a car. You don't need to know how the pistons, valves, and spark plugs work internally. You interact with it through a simple, public interface: the ignition key.
 
