@@ -161,6 +161,6 @@ These resources will provide you with a solid foundation to master the Hollywood
 
     This video offers a clear visual explanation of Inversion of Control and its relationship with Dependency Injection, helping to solidify the concepts.
 
-2.  **[Inversion of Control, simplified](https.www.youtube.com/watch?v=5r8Byu2KRuU)**
+2.  **[Inversion of Control, simplified](https://www.youtube.com/watch?v=5r8Byu2KRuU)**
 
     A concise and simplified explanation of IoC, perfect for getting a quick and clear understanding of this fundamental design principle.
