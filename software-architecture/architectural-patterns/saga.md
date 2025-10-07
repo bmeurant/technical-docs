@@ -98,6 +98,76 @@ sequenceDiagram
 
 ---
 
+## Saga Persistence
+
+In the Saga pattern, it is often necessary to store and persist the state of the saga itself, especially if the distributed transactions it orchestrates are long-running, involve multiple services, and require fault tolerance and resilience against restarts or intermediate failures.
+
+### The Need for Persistence
+
+The need to persist the state of a saga depends on the implementation approach:
+
+#### 1. Choreography-Based Saga
+
+-   **Persistence Not Required (Generally):** In this approach, there is no central coordinator. Services communicate via events. Each service knows what to do when it receives an event from a previous service, including sending a compensating event in case of a local failure.
+-   **Distributed State:** The state of the execution is implicit and distributed across the states of each participating service and the messages (events) they have produced and consumed.
+-   **Minimal Persistence:** Each service must persist its own transactional state change before emitting the next event (often with the **Transactional Outbox** pattern or **Transaction Log Tailing**), but the "saga" as a single object is not persisted.
+
+#### 2. Orchestration-Based Saga
+
+-   **Persistence Required (Very Often):** Here, a dedicated service, the **Orchestrator** (or Saga Manager), manages the logic of the sequence of steps and compensations.
+-   **Centralized State:** The Orchestrator must maintain the current state of the execution (what is the next step? which step failed? which steps need to be compensated?).
+-   **Reasons for Persistence:**
+    -   **Resilience:** If the orchestrator fails or restarts, it must be able to resume the saga exactly where it left off to avoid blocking the transaction or creating inconsistencies.
+    -   **Audit/Traceability:** Allows tracking the progress and diagnosing problems.
+    -   **Compensation:** The Orchestrator needs to know which steps have been completed to be able to trigger the appropriate compensation actions in case of a late failure.
+
+### How to Persist a Saga (Orchestration)
+
+If you opt for the Orchestration approach and need to persist the state, here are the common methods:
+
+#### 1. Using a Relational or NoSQL Database
+
+This is the most direct method for the Orchestrator:
+
+-   **Saga Instance Entity:** Create a table (or a NoSQL collection) to store saga instances.
+-   **Typical Fields:**
+    -   `sagaId` (primary key)
+    -   `state` / `status` (e.g., `STARTED`, `STEP_1_COMPLETED`, `FAILED`, `COMPENSATING`, `COMPLETED`)
+    -   `currentStep`
+    -   `creationTime`, `lastUpdatedTime`
+    -   `sagaData` (payload/context of the transaction, often stored in JSON)
+
+```mermaid
+classDiagram
+    class SagaInstance {
+        +String sagaId
+        +String status
+        +String currentStep
+        +JSON sagaData
+        +DateTime creationTime
+        +DateTime lastUpdatedTime
+    }
+```
+
+-   **Transactional Update:** The state of the saga must be updated transactionally (or at least "atomically" if NoSQL) before sending the command for the next step. This ensures that in case of a failure right after sending, the restarted orchestrator will know that it needs to send the command again (if it has not received a response) or that it needs to move forward.
+
+#### 2. [[event-sourcing|Event Sourcing]] for the Saga
+
+This is a powerful approach for complex and long-running sagas:
+
+-   **Principle:** Instead of storing the current state of the saga, you store an immutable sequence of events (e.g., `SagaStartedEvent`, `Step1CompletedEvent`, `Step2FailedEvent`).
+-   **Advantages:**
+    -   The current state is determined by replaying the events.
+    -   Provides a complete and unalterable history of the saga's execution (perfect for auditing).
+    -   Simplifies the logic of resumption and compensation because the complete history is available.
+-   **Implementation:** The Orchestrator stores these events in an **Event Store**. After a restart, it reloads the events for the relevant `sagaId` and rebuilds the state to resume work.
+
+#### 3. Specialized Frameworks
+
+For large-scale development, specialized frameworks for Distributed Transactions or Workflow Management can be used, and they often handle the persistence of the saga state for you (e.g., **Camunda**, **Zeebe**, **Temporal/Cadence**, **Axon Framework**). These tools are designed for the execution of persistent state and the management of long-running enterprise workflows.
+
+---
+
 ## Related Patterns, Concepts and Variations
 
 *   **[[microservices|Microservices]]:** The Saga pattern is a common solution for managing distributed transactions in a microservices architecture.
@@ -105,7 +175,7 @@ sequenceDiagram
 *   **Transactional Outbox:** This pattern can be used to ensure that events are published reliably after a local transaction is committed. This is crucial for choreography-based sagas.
 *   **Two-Phase Commit (2PC):** The Saga pattern is an alternative to 2PC. While 2PC provides strong consistency, it is often not suitable for distributed systems due to its blocking nature.
 
----
+--- 
 
 ## **Resources & links**
 
