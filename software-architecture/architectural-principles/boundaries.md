@@ -3,7 +3,9 @@ title: Boundaries
 tags:
   - design-principle
   - coupling
-  - hexagonal-architecture
+  - modularity
+  - testability
+  - maintainability
 date: 2025-10-08
 ---
 # Boundaries

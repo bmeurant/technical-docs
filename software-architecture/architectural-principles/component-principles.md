@@ -4,6 +4,8 @@ tags:
   - design-principle
   - modularity
   - quality
+  - testability
+  - maintainability
 date: 2025-10-08
 ---
 # Component Principles

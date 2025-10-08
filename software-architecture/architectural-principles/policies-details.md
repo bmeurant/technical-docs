@@ -2,8 +2,9 @@
 title: Policies vs. Details
 tags:
   - design-principle
-  - architecture-decision
-  - clean-architecture
+  - testability
+  - maintainability
+  - modularity
 date: 2025-10-08
 ---
 # Policies vs. Details (The Policy/Detail Dichotomy)
