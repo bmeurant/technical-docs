@@ -32,7 +32,7 @@ While sharing the same core principle, these three architectures differ in their
 
 ### **[[hexagonal|Hexagonal Architecture]] (Ports and Adapters)**
 
-* **Key Idea:** Focuses on the **boundary between the inside and outside**. The application's core logic is an isolated "hexagon" that communicates with the external world (UI, databases, external services) via **Ports** (interfaces) and **Adapters** (concrete implementations of those interfaces).
+* **Key Idea:** Focuses on the **[[boundaries|boundary]] between the inside and outside**. The application's core logic is an isolated "hexagon" that communicates with the external world (UI, databases, external services) via **Ports** (interfaces) and **Adapters** (concrete implementations of those interfaces).
 * **Focus:** It's a pragmatic principle. It emphasizes that external components are just "pluggable adapters" that can be swapped out easily. It doesn't provide strict rules on how to structure the code **inside** the hexagon.
 
 ### **[[onion|Onion Architecture]]**

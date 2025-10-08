@@ -6,3 +6,4 @@ see [index](./index.md)
 * **[CAP Theorem](./cap.md)**
 * **[Component Principles](./component-principles.md)**
 * **[Policies vs Details](./policies-details.md)**
+* **[Boundaries](./boundaries.md)**

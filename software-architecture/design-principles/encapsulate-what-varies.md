@@ -21,7 +21,7 @@ The goal is to minimize the impact of change. By isolating the parts of your sys
 ## Key Concepts
 
 -   **Identify Variability:** The first step is to carefully analyze your system and identify the parts that are likely to change. This could be anything: business rules, algorithms, data formats, external dependencies, or UI components.
--   **Encapsulate and Isolate:** Once you've identified a variable aspect, you should encapsulate it behind a stable [[program-against-abstractions|interface]]. This creates a boundary that protects the rest of the system from changes in the encapsulated part. The rest of the system interacts with the variable part only through this stable interface.
+-   **Encapsulate and Isolate:** Once you've identified a variable aspect, you should encapsulate it behind a stable [[program-against-abstractions|interface]]. This creates a **[[boundaries|boundary]]** that protects the rest of the system from changes in the encapsulated part. The rest of the system interacts with the variable part only through this stable interface.
 
 ---
 

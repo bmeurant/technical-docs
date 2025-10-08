@@ -148,7 +148,7 @@ function sortScores(scores) {
 
 -   **[[fail-fast|Fail-Fast]]:** A key strategy within a defensive mindset, used to immediately halt execution upon detecting an internal bug or contract violation.
 -   **[[design-by-contract|Design by Contract]]:** A formal methodology for implementing defensive checks through preconditions, postconditions, and invariants.
--   **[[soc|Separation of Concerns (SoC)]]:** A good separation of concerns helps identify the "boundaries" where defensive programming is most needed. Each component should defend itself from data crossing its boundary.
+-   **[[soc|Separation of Concerns (SoC)]]:** A good separation of concerns helps identify the **[[boundaries]]** where defensive programming is most needed. Each component should defend itself from data crossing its boundary.
 -   **[[kiss|KISS]] & [[yagni|YAGNI]]:** These principles help reduce the surface area that needs to be defended. A simpler system with fewer features is inherently easier to make robust. However, excessive defensive programming (e.g., redundant checks) can sometimes violate KISS by adding unnecessary complexity.
 
 ---
