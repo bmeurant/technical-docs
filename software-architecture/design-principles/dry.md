@@ -30,7 +30,7 @@ The core idea behind DRY is to avoid having the same piece of information or log
 - **Improved Maintainability:** When a piece of logic is in only one place, it's easier to maintain and update.
 - **Reduced Bugs:** Less code means fewer places for bugs to hide. It also eliminates the risk of inconsistencies that arise from duplicated logic.
 - **Increased Readability:** Code is easier to read and understand when it's not cluttered with repetitive logic.
-- **Enhanced Reusability:** By abstracting common logic, you create reusable components that can be used elsewhere.
+- **Enhanced Reusability:** By abstracting common logic, you create reusable components that can be used elsewhere. This is a core tenet of [[component-principles|component design principles]].
 - **Cost and Time Savings:** Less code to write and maintain saves time and money.
 
 ---

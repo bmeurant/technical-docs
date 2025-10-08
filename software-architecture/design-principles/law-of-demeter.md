@@ -134,7 +134,7 @@ Now, the client is completely decoupled from the internal implementation of `Cus
 -   **[[cohesion-coupling|Loose Coupling]]:** This is the primary benefit. Components are less dependent on the internal structure of other components.
 -   **Improved Maintainability:** Changes to a class's internal logic do not ripple through the system, as long as its public interface remains the same.
 -   **Enhanced Encapsulation:** It forces objects to hide their implementation details and expose only high-level, meaningful operations.
--   **Increased Reusability:** Components with a well-defined, minimal interface are easier to reuse.
+-   **Increased Reusability:** Components with a well-defined, minimal interface are easier to reuse, a core idea of [[component-principles|component design principles]].
 
 **Downsides:**
 

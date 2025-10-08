@@ -188,6 +188,7 @@ This separation is the foundation for building robust, scalable, and maintainabl
 
 - **[[solid|SOLID Principles]]:** SoC is the foundational concept behind the **Single Responsibility Principle (SRP)**. While SoC is a broad principle that can be applied at different levels (architecture, module, class), the SRP is a more specific application of SoC at the class level. It states that a class should have only one reason to change, effectively meaning it should only have one concern.
 - **[[cohesion-coupling|Cohesion and Coupling]]:** SoC is the primary driver for achieving **high cohesion** and **low coupling**. By separating concerns into distinct modules, you increase the internal cohesion of each module (as it focuses on a single purpose) and decrease the coupling between modules (as they are less dependent on each other's internal workings).
+- **[[component-principles|Component Principles]]:** SoC is a core tenet of component-based design. Each component in a system is designed to address a specific concern, which is what allows them to be modular, reusable, and interchangeable.
 
 ---
 

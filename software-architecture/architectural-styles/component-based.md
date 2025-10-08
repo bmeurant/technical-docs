@@ -78,6 +78,8 @@ graph TD
 
 This architectural style is ubiquitous in modern software development, particularly in enterprise systems, web frameworks, and **cloud** service platforms. It promotes a modular approach and fosters the creation of more flexible and maintainable systems.
 
+See also: [[component-principles]]
+
 ---
 
 ## **Resources & Links**
