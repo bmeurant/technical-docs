@@ -16,6 +16,11 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [Design Patterns](./design-patterns/)
 * [Design Principles](./design-principles/)
 * [Programming Paradigms](./programming-paradigms/)
+* [Clean code](./clean-code/)
+
+---
+
+
 
 ## Other resources
 
