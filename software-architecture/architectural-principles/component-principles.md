@@ -242,3 +242,29 @@ By following these component principles, software can be developed in a way that
 - **Less prone to bugs**, as changes are localized.
 - **More reusable**, as components can be leveraged in different contexts.
 - **Easier to test and deploy**, enabling faster development cycles.
+
+---
+
+## **Resources & Links**
+
+These resources offer further insight into component design, modularity, and the principles that lead to robust, maintainable software.
+
+### **Articles**
+
+1.  **[Mastering Fundamental Software Design Principles](https://learningfuze.framer.website/library/software-design-principles)**
+
+    An overview of fundamental software design principles that are foundational to component design, covering topics like simplicity, modularity, and abstraction.
+
+2.  **[Designing React Components for Modularity, Reusability, and Testability](https://medium.com/@mjewell/designing-react-components-for-modularity-reusability-and-testability-edf4a68147e9)**
+
+    A practical guide to applying component principles in a modern UI framework, exploring how to use the Single Responsibility Principle to create reusable and testable React components.
+
+### **Videos**
+
+1.  **[Lesson 82 - Defining Testability](https://www.youtube.com/watch?v=f5TGIYPBV78)**
+
+    In this "Software Architecture Monday" video, Mark Richards defines and discusses testability, explaining its relationship to architecture and how to measure it objectively.
+
+2.  **[Lesson 211 - Architectural Modularity](https://www.youtube.com/watch?v=DApenk3-0Gc)**
+
+    This video discusses architectural modularity, covering the drivers behind it and how it differs from granularity in software design.
