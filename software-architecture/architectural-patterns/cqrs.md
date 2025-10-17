@@ -57,7 +57,7 @@ sequenceDiagram
 3.  **Write Database:** The data store for the write model. It is optimized for writes (e.g., a normalized SQL database or an Event Store).
 4.  **Data Synchronization Mechanism:** A process that updates the read model. This is often done by publishing events from the write model (e.g., via a message bus) that the read side subscribes to.
 5.  **Read Model:** A denormalized data store optimized for queries. It can be a NoSQL database, a search index, or any other suitable storage. It is essentially a materialized view of the data.
-6.  **Query:** A request for data that does not change the state of the system. It returns a Data Transfer Object (DTO).
+6.  **[[poeaa#Commands-and-Queries|Query]]:** A request for data that does not change the state of the system. It returns a [[poeaa#Data-Transfer-Object-DTO|Data Transfer Object (DTO)]].
 
 ---
 

@@ -14,7 +14,7 @@ The **Onion Architecture**, proposed by Jeffrey Palermo in 2008, is a software [
 
 * **Core Principles:**
     * **[[solid|Dependency Inversion Principle]]:** Dependencies always point inward, from the outer layers to the core of the onion. Outer layers can only depend on inner layers.
-    * **Core Domain as the Center:** The **domain model** and **business rules** are at the very center of the application and are completely independent of the infrastructure (databases, frameworks, UI).
+    * **Core Domain as the Center:** The **[[poeaa#Domain-Model|domain model]]** and **business rules** are at the very center of the application and are completely independent of the infrastructure (databases, frameworks, UI).
     * **Interface Segregation:** Interfaces define the contracts for services. The core defines interfaces, and the outer layers implement them.
     * **Testability:** The core of the application can be tested in isolation, without the need for a database or other external services.
 
@@ -69,7 +69,7 @@ graph TD
 
 * **Challenges:**
     * **Complexity and Overhead:** For simple applications, setting up all the layers can seem like overkill. The architecture introduces additional complexity and **boilerplate code**.
-    * **Risk of Anemic Domain Model:** A common pitfall is placing all business logic in the "services" layers, leaving the core "domain model" as just a collection of data structures (an anemic domain). This defeats the purpose of the architecture. The core domain entities should encapsulate as much business logic as possible.
+    * **Risk of Anemic Domain Model:** A common pitfall is placing all business logic in the "services" layers, leaving the core "[[poeaa#Domain-Model|domain model]]" as just a collection of data structures (an anemic domain). This defeats the purpose of the architecture. The core domain entities should encapsulate as much business logic as possible.
     * **Learning Curve:** The principle of dependency inversion and the layered structure can be difficult for less experienced teams to master.
 
 ---

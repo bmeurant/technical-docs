@@ -48,7 +48,7 @@ graph TD
     style D fill:#ffffff,stroke:#333,stroke-width:2px
 ```
 
-1.  **Entities (Enterprise Business Rules):** The innermost circle. It contains the most general and stable business rules. An **Entity** can be an object with methods that encapsulate the application's fundamental rules, independent of any other layer. These are the core domain classes.
+1.  **[[poeaa#Entity|Entity]]** (Enterprise Business Rules):** The innermost circle. It contains the most general and stable business rules. An **Entity** can be an object with methods that encapsulate the application's fundamental rules, independent of any other layer. These are the core domain classes.
 2.  **Use Cases (Application Business Rules):** This circle contains the business logic specific to the application. It orchestrates the flow of data to and from the **Entities**. **Use Cases** are invoked by **controllers** to perform specific tasks (e.g., create a new user, validate an order).
 3.  **Interface Adapters (Gateways, Controllers, Presenters):** This layer's primary role is to **adapt** data from the format most convenient for external agencies (like a database or the web) to the format most convenient for the core business logic (Use Cases and Entities). It is a set of adapters that convert data and includes components like **controllers**, **presenters**, and **gateways**.
 4.  **Frameworks & Drivers (Web, DB, Devices):** The outermost circle, it contains implementation details. Web frameworks, databases, **ORMs**, the UI, etc. These are the least important elements for the business logic.
@@ -85,7 +85,7 @@ graph TD
 
 * **[[layered|Layered Architecture]]:** **Clean Architecture** is a form of **[[layered|layered architecture]]**, but with a stricter and more explicit dependency rule. In a classic **[[layered|layered architecture]]**, the dependency is often unidirectional (e.g., `Web Layer` -> `Business Layer` -> `Data Layer`), but the core of the system is not as protected from external technologies.
 
-* **[[onion|Onion Architecture]]:** Proposed by Jeffrey Palermo, it is the conceptual basis of **Clean Architecture**. The concentric layers represent the same idea of inward dependency. The core contains the **Domain Model** and interfaces, while the outer layers handle infrastructure and the UI. **Clean Architecture** is a more formal and detailed vision of this concept.
+* **[[onion|Onion Architecture]]:** Proposed by Jeffrey Palermo, it is the conceptual basis of **Clean Architecture**. The concentric layers represent the same idea of inward dependency. The core contains the **[[poeaa#Domain-Model|Domain Model]]** and interfaces, while the outer layers handle infrastructure and the UI. **Clean Architecture** is a more formal and detailed vision of this concept.
 
 * **[[hexagonal|Hexagonal Architecture]]:** Also known as **Ports and Adapters**, it focuses on isolating business logic from the outside. The application "core" exposes **ports** (interfaces), and external "adapters" (database, UI) connect to them. It's the same idea as **Clean Architecture** but expressed differently: the hexagon concept symbolizes that the system can be driven in any manner (UI, automated tests, batch script) and can interact with any external service. **Clean Architecture** integrates this concept by formalizing it through its layers.
 

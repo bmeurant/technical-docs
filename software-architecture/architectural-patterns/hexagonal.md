@@ -54,10 +54,10 @@ flowchart TD
     E -- Manipulates --> F
 ```
 
-1.  **Application Core (Hexagon):** This is the heart of the architecture. It contains the **Domain Model** (entities, value objects) and the **Application Services** that orchestrate the business logic. It is completely independent of external technologies.
+1.  **Application Core (Hexagon):** This is the heart of the architecture. It contains the **[[poeaa#Domain-Model|Domain Model]]** ([[poeaa#Entity|entities]], [[poeaa#Value-Object|value objects]]) and the **[[poeaa#Usecase-Application-Service|Application Services]]** that orchestrate the business logic. It is completely independent of external technologies.
 2.  **Ports:** These are interfaces that define the contract for communication with the outside world.
     * **Driving Ports (or API):** Interfaces that the application's core offers to external callers (e.g., a `UserService` interface).
-    * **Driven Ports (or SPI):** Interfaces that the application's core needs to interact with external systems (e.g., a `UserRepository` interface).
+    * **Driven Ports (or SPI):** Interfaces that the application's core needs to interact with external systems (e.g., a `[[poeaa#Repository|UserRepository]]` interface).
 3.  **Adapters:** These are concrete implementations that connect the outside world to the Ports. They translate specific technologies into a format the core can understand.
     * **Driving Adapters:** They call a **Driving Port**. For example, a `RESTController` that receives an HTTP request and calls an `Application Service`.
     * **Driven Adapters:** They implement a **Driven Port**. For example, a `JpaUserRepository` that saves data to a database.

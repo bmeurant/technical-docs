@@ -36,7 +36,7 @@ Consistency should be applied at multiple levels:
 
 *   **Naming and Formatting:** Using consistent naming conventions (e.g., `camelCase` for methods, `PascalCase` for classes) and a shared code style (enforced by tools like formatters and linters) is the most basic level of consistency.
 *   **Data Structures and Interfaces:** Use similar data structures for similar problems. For example, consistently use `Optional` to handle absent values or ensure all service interfaces are asynchronous and return `Future`/`Promise` objects. This creates a predictable API contract.
-*   **Design and Architectural Patterns:** Adhere to the established design principles and patterns chosen for the project. If the team decides to use the Repository pattern for data access, it should be used everywhere data access is needed. This architectural integrity prevents the system from devolving into a mix of conflicting styles.
+*   **Design and Architectural Patterns:** Adhere to the established design principles and patterns chosen for the project. If the team decides to use the [[poeaa#Repository|Repository pattern]] for data access, it should be used everywhere data access is needed. This architectural integrity prevents the system from devolving into a mix of conflicting styles.
 
 By maintaining consistency, you create a system that is more understandable, maintainable, and extensible.
 
@@ -570,7 +570,7 @@ public class PerformanceReviewService {
 ```
 In this improved design, `PayrollService` is responsible only to the accounting department. `PerformanceReviewService` is responsible only to HR. A change in payroll calculation has no chance of breaking performance reviews. The code is now organized by actor, making it far more robust and easier to maintain.
 
-## Command Query Separation (CQS)
+## [[poeaa#Commands-and-Queries|Command Query Separation (CQS)]]
 **Explanation:** Coined by Bertrand Meyer as part of his **[[design-by-contract|Design by Contract]]** methodology, the Command-Query Separation (CQS) principle states that every method should be either a **command** that performs an action or a **query** that returns data, but *never* both.
 
 In essence, asking a question should not change the answer.
