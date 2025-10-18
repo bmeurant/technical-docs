@@ -425,7 +425,7 @@ public boolean canAccess(String userRole) {
 **Explanation:** An automated test suite is the most effective safety net for a project. It enables confident refactoring, simplifies adding new features, and provides living documentation of the system's behavior. For a test suite to be effective, its tests should follow the **F.I.R.S.T.** principles.
 
 *   **Fast (F):** Slow tests are a major obstacle to productivity. If running the test suite takes too long, developers will run it less frequently, which defeats its purpose as a rapid feedback mechanism.
-    *   **Why it matters:** Fast tests provide an immediate feedback loop, allowing developers to quickly validate their changes. This is essential for practices like Test-Driven Development (TDD) and for maintaining a state of continuous integration where tests are run on every commit.
+    *   **Why it matters:** Fast tests provide an immediate feedback loop, allowing developers to quickly validate their changes. This is essential for practices like [[tdd|Test-Driven Development (TDD)]] and for maintaining a state of continuous integration where tests are run on every commit.
     *   **What makes tests slow:** The primary culprits are I/O operations—interacting with databases, making network calls, or accessing the file system. These operations are orders of magnitude slower than in-memory computations.
     *   **How to achieve it:** Favor **unit tests** that run entirely in memory. Use **Test Doubles** (Mocks, Stubs, Fakes) to replace slow external dependencies like databases or network services.
 
@@ -439,7 +439,7 @@ public boolean canAccess(String userRole) {
     *   **How to achieve it:** Use assertion libraries (like JUnit's `assertEquals`, AssertJ, or Chai) to programmatically check if the actual output matches the expected output.
 
 *   **Timely / Thorough (T):**
-    *   **Timely:** Tests should be written in a timely manner, which ideally means writing the test *just before* writing the production code that makes it pass. This is the core discipline of Test-Driven Development (TDD) and it ensures that the production code is designed to be testable from the start.
+    *   **Timely:** Tests should be written in a timely manner, which ideally means writing the test *just before* writing the production code that makes it pass. This is the core discipline of [[tdd|Test-Driven Development (TDD)]] and it ensures that the production code is designed to be testable from the start.
     *   **Thorough:** Tests should be thorough, covering not just the "happy path" but also edge cases, boundary conditions, and potential errors.
 
 **Example:**

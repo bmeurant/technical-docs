@@ -75,7 +75,7 @@ These resources will provide you with a solid foundation to master the SOLID pri
 
 2.  **[SOLID Design Principles](https://sandimetz.com/blog/2009/03/21/solid-design-principles)**
 
-    This article by Sandi Metz offers a clear and practical perspective on how SOLID principles integrate into daily code development, particularly with the use of Test-Driven Development (TDD).
+    This article by Sandi Metz offers a clear and practical perspective on how SOLID principles integrate into daily code development, particularly with the use of [[tdd|Test-Driven Development (TDD)]].
 
 ---
 
