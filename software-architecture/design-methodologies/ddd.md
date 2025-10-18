@@ -15,7 +15,7 @@ Domain-Driven Design (DDD) is an approach to software development for complex ne
 
 The central premise of DDD is to place the project's primary focus on the **core domain** and its logic, and to ground the software design in a rich, expressive **domain model**. This model is not just a data schema; it is a system of interconnected objects that encapsulates both the data and the behavior of the business domain.
 
-A critical success factor in DDD is the development of a **Ubiquitous Language**, a shared vocabulary used by all stakeholders—developers, domain experts, and business analysts—to talk about the system. This language is used in all communication, in the code, and in the documentation, eliminating ambiguity and ensuring that the software model accurately reflects the business reality.
+A critical success factor in DDD is the development of a **Ubiquitous Language**, a shared vocabulary used by all stakeholders—developers, domain experts, and business analysts—to talk about the system. This language is used in all communication, in the code, and in the documentation, eliminating ambiguity and ensuring that the software model accurately reflects the business reality. Practices like [[bdd|Behavior-Driven Development (BDD)]] take this concept a step further by formalizing the Ubiquitous Language into executable specifications.
 
 ---
 
