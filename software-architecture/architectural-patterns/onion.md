@@ -102,7 +102,7 @@ In summary, these architectures are different ways to implement the same princip
 
 2.  **[Onion Architecture: Let's slice it like a Pro](https://medium.com/expedia-group-tech/onion-architecture-deed8a554423)**
 
-    In this article, **Ritesh Kapoor** provides an in-depth look at the **Onion Architecture** based on **Domain-Driven Design (DDD)** principles. It breaks down the architecture's different layers—from the core **Domain Model** to the outer **Infrastructure Services**—and explains how the inward flow of dependencies enhances code quality, testability, and flexibility. The article highlights how this pattern allows for easy swapping of technologies and frameworks without impacting the business logic.
+    In this article, **Ritesh Kapoor** provides an in-depth look at the **Onion Architecture** based on **[[ddd|Domain-Driven Design (DDD)]]** principles. It breaks down the architecture's different layers—from the core **Domain Model** to the outer **Infrastructure Services**—and explains how the inward flow of dependencies enhances code quality, testability, and flexibility. The article highlights how this pattern allows for easy swapping of technologies and frameworks without impacting the business logic.
 
 ---
 

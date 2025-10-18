@@ -89,6 +89,8 @@ graph TD
 
 * **[[hexagonal|Hexagonal Architecture]]:** Also known as **Ports and Adapters**, it focuses on isolating business logic from the outside. The application "core" exposes **ports** (interfaces), and external "adapters" (database, UI) connect to them. It's the same idea as **Clean Architecture** but expressed differently: the hexagon concept symbolizes that the system can be driven in any manner (UI, automated tests, batch script) and can interact with any external service. **Clean Architecture** integrates this concept by formalizing it through its layers.
 
+* **[[ddd|Domain-Driven Design (DDD)]]:** Clean Architecture is an ideal framework for applying the principles of DDD. The core of the Clean Architecture (Entities and Use Cases) is where the rich domain model, composed of Aggregates, Entities, and Value Objects from DDD, resides.
+
 ---
 
 ## **Resources & links**

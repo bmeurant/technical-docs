@@ -76,7 +76,7 @@ flowchart TD
 * **Advantages (Benefits):**
     * **Increased Testability:** The application's core is independent of databases or APIs. You can test the business logic in isolation by mocking the Adapters, which is simpler, faster, and more reliable.
     * **Flexibility and Interoperability:** It's easy to change infrastructure technologies. Switching from a SQL database to a NoSQL database only requires writing a new adapter. The application's core is not affected.
-    * **Clarity of Design:** The architecture forces the separation of business code from infrastructure, making the code more readable and easier to maintain. The focus is on the **domain model**, which aligns with the principles of **Domain-Driven Design (DDD)**.
+    * **Clarity of Design:** The architecture forces the separation of business code from infrastructure, making the code more readable and easier to maintain. The focus is on the **domain model**, which aligns with the principles of **[[ddd|Domain-Driven Design (DDD)]]**.
 * **Challenges:**
     * **Initial Complexity:** The pattern can be excessive for simple applications. Setting up interfaces and multiple layers might seem "over-engineered" for a small project.
     * **Risk of Leaky Abstractions:** It is critical to ensure that no infrastructure-specific details (like database annotations or framework-specific classes) "leak" into the application core. The ports must use plain, technology-agnostic data structures.
@@ -100,7 +100,7 @@ Hexagonal Architecture is an initial investment that pays off in the long run, e
 
 1.  **[Hexagonal Architecture, There Are Always Two Sides to Every Story](https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c)**
 
-    This article by Pablo Martinez discusses **Hexagonal Architecture**, also known as Ports and Adapters, as an alternative to the traditional [[layered|Layered Architecture]]. It explains how this design isolates the application's core business logic from external actors and technologies (like the user interface or databases) using **Ports** (technology-agnostic interfaces) and **Adapters** (technology-specific implementations). The article highlights how this approach improves testability, prevents technology lock-in, and aligns with **Domain-Driven Design**.
+    This article by Pablo Martinez discusses **Hexagonal Architecture**, also known as Ports and Adapters, as an alternative to the traditional [[layered|Layered Architecture]]. It explains how this design isolates the application's core business logic from external actors and technologies (like the user interface or databases) using **Ports** (technology-agnostic interfaces) and **Adapters** (technology-specific implementations). The article highlights how this approach improves testability, prevents technology lock-in, and aligns with **[[ddd|Domain-Driven Design]]**.
 
 2.  **[Everything You Need to Know About Hexagonal Architecture: Kernel, Ports, Adapters](https://scalastic.io/en/hexagonal-architecture/)**
 

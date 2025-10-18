@@ -12,7 +12,7 @@ date: 2025-10-17
 
 The patterns described here are largely drawn from Martin Fowler's seminal book, "Patterns of Enterprise Application Architecture". This document covers a selection of these patterns, but the original book is a much more comprehensive catalogue. Unlike the classic [[gof|GoF patterns]] that focus on object-oriented design in a general sense, P of EAA patterns provide proven solutions to the specific, recurring problems encountered when building large-scale, data-intensive enterprise applications.
 
-These patterns offer a vocabulary and a set of blueprints for structuring business logic, managing data persistence, and handling the complexities of web presentation and concurrency. They are foundational for understanding modern application frameworks and architectures like [[clean|Clean Architecture]] and [[domain-driven-design|Domain-Driven Design (DDD)]].
+These patterns offer a vocabulary and a set of blueprints for structuring business logic, managing data persistence, and handling the complexities of web presentation and concurrency. They are foundational for understanding modern application frameworks and architectures like [[clean|Clean Architecture]] and [[ddd|Domain-Driven Design (DDD)]].
 
 ```mermaid
 graph TD
@@ -73,7 +73,7 @@ These patterns describe different ways to organize the core business logic of an
 ### **Domain Model**
 
 *   **Problem**: How to manage complex and ever-changing business rules in a structured and maintainable way?
-*   **Synopsis**: The **Domain Model** pattern represents the business logic as an object model with both data and behavior. This model is composed of a network of interconnected objects that directly reflect the domain concepts. It's the foundation of **[[domain-driven-design|Domain-Driven Design (DDD)]]**.
+    **Synopsis**: The **Domain Model** pattern represents the business logic as an object model with both data and behavior. This model is composed of a network of interconnected objects that directly reflect the domain concepts. It's the foundation of **[[ddd|Domain-Driven Design (DDD)]]**.
 
     ```mermaid
     classDiagram
@@ -103,7 +103,7 @@ These patterns describe different ways to organize the core business logic of an
     *   **Behavioral Encapsulation**: Business rules are encapsulated within the relevant domain objects.
     *   **Reflects Reality**: The object model is a rich representation of the business domain.
 *   **Applicability**: Complex applications with a lot of business logic and rules that change over time.
-*   **Limitations and Challenges**: Requires a deeper understanding of object-oriented design and [[domain-driven-design|Domain-Driven Design (DDD)]]. Can be overkill for simple applications.
+*   **Limitations and Challenges**: Requires a deeper understanding of object-oriented design and [[ddd|Domain-Driven Design (DDD)]]. Can be overkill for simple applications.
 
 *   **Related Patterns**:
     *   A Domain Model is composed of [[#Entity|Entities]] and [[#Value Object|Value Objects]].
@@ -159,7 +159,7 @@ These patterns deal with how the application communicates with the database.
     *   **Abstraction**: Hides the data store implementation from the business logic.
     *   **Collection-like Interface**: Provides methods like `findById`, `save`, `findAll`.
     *   **Testability**: Allows for easy mocking or stubbing of the data layer for unit tests.
-*   **Applicability**: Almost any application that requires a clean separation between business logic and data persistence. It's a cornerstone of [[clean|Clean Architecture]] and [[domain-driven-design|Domain-Driven Design (DDD)]].
+*   **Applicability**: Almost any application that requires a clean separation between business logic and data persistence. It's a cornerstone of [[clean|Clean Architecture]] and [[ddd|Domain-Driven Design (DDD)]].
 *   **Limitations and Challenges**: Can add a layer of abstraction that is not necessary for very simple applications.
 
 *   **Related Patterns**:

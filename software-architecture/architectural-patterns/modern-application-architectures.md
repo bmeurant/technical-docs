@@ -38,7 +38,7 @@ While sharing the same core principle, these three architectures differ in their
 ### **[[onion|Onion Architecture]]**
 
 * **Key Idea:** A more structured take on the hexagonal approach. It arranges the application in concentric rings, with the **Domain Model** at the very center. Dependencies only ever point inward.
-* **Focus:** It is more prescriptive and places a strong emphasis on **Domain-Driven Design (DDD)**. It formalizes the layers around the core: `Domain Model`, `Domain Services`, `Application Services`, and `Infrastructure`.
+* **Focus:** It is more prescriptive and places a strong emphasis on **[[ddd|Domain-Driven Design (DDD)]]**. It formalizes the layers around the core: `Domain Model`, `Domain Services`, `Application Services`, and `Infrastructure`.
 
 ### **[[clean|Clean Architecture]]**
 
@@ -58,7 +58,7 @@ While sharing the same core principle, these three architectures differ in their
 | **Key Components** | `UI`, `Business Logic`, `Data Access`. | `Core`, `Ports`, `Adapters`. | `Domain Model`, `Domain Services`, `Application Services`, `Infrastructure`. | `Entities`, `Use Cases`, `Interface Adapters`, `Frameworks & Drivers`. |
 | **Testability** | **Difficult** in isolation. | **Excellent**. The core is testable in isolation. | **Excellent**. The domain is testable. | **Excellent**. `Use Cases` and `Entities` are easily unit-tested. |
 | **Flexibility** | **Low**. Difficult to change technologies. | **High**. Allows changing technologies easily. | **High**. Facilitates technological changes. | **Very High**. The most robust and flexible. |
-| **Ideal Use Case** | Small applications, simple services. | [[microservices|Microservices]], apps with multiple interfaces. | Projects with rich domain models (**DDD**). | Large-scale enterprise projects, critical services. |
+| **Ideal Use Case** | Small applications, simple services. | [[microservices|Microservices]], apps with multiple interfaces. | Projects with rich domain models (**[[ddd|DDD]]**). | Large-scale enterprise projects, critical services. |
 
 ---
 
