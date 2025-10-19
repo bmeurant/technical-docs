@@ -119,6 +119,30 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 const databaseUrl = process.env.DATABASE_URL;
 ```
 
+### Nuances: Configuration Files and the Hybrid Approach
+
+While the Twelve-Factor principle is strict about using environment variables, modern practices have adopted a hybrid approach that respects its spirit while offering more flexibility.
+
+The anti-pattern would be to package environment-specific configuration files (e.g., `config.prod.json`) directly into the build artifact. This violates the strict separation of code and config.
+
+The recommended approach combines two strategies:
+
+1.  **Config files for defaults**: A configuration file (`application.yml`, `appsettings.json`) is included in the build. It contains non-sensitive default values that do not change between environments (e.g., thread pool settings, default routes).
+
+2.  **Overrides via the environment**: Any configuration that varies between environments (database credentials, API keys) or is sensitive (secrets) must be supplied via the environment, thereby overriding the default values. Modern frameworks like Spring Boot or ASP.NET Core handle this priority natively.
+
+This approach is made possible and secure by ecosystem tools that externalize configuration and secret management:
+
+*   **Container Orchestrators**:
+    *   **Kubernetes ConfigMaps**: To inject non-sensitive configuration files or environment variables.
+    *   **Kubernetes Secrets**: To securely manage and mount sensitive data like passwords or API tokens.
+*   **Centralized Secret Managers**:
+    *   **HashiCorp Vault**: A dedicated solution to centrally store, manage, and access secrets.
+    *   **Cloud Services**: Managed services like **Google Secret Manager**, **AWS Secrets Manager**, or **Azure Key Vault** allow secrets to be stored securely and made available to applications at runtime, often via specific SDKs or integrations with the orchestrator.
+
+By using these tools, the build artifact remains environment-agnostic, and secrets are never stored in plaintext or in the source code, thus respecting the fundamental principles of security and portability of the Twelve-Factor methodology.
+
+
 ## IV. Backing Services
 
 **Treat backing services as attached resources.**
