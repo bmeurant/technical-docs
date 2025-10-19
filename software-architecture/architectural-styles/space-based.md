@@ -74,7 +74,7 @@ The scalability of SBA relies on effective data partitioning. The data grid is t
 * **Advantages (Benefits):**
     * **Horizontal Scalability (Scale-out):** The ability to add nodes indefinitely to increase processing capacity. It is an ideal solution for **bursts of traffic**.
     * **High Performance:** Using RAM for data storage and business logic execution eliminates the latency of disk and network access.
-    * **High Availability and Resilience:** The lack of a **single point of failure** and the replication and failover mechanisms ensure service continuity.
+    * **[[availability-patterns|High Availability]] and Resilience:** The lack of a **single point of failure** and the replication and failover mechanisms ensure service continuity.
     * **Low Latency:** Crucial for financial trading, online gaming, or real-time bidding applications.
 
 * **Challenges:**

@@ -96,7 +96,7 @@ The goal is always to achieve the **maximum possible throughput while maintainin
 
 In distributed systems, availability and consistency represent a fundamental trade-off, famously described by the **[[cap|CAP Theorem]]**.
 
-*   **Availability** is the guarantee that the system is operational and able to respond to every request, even if some of its nodes have failed. It is often measured in "nines" of uptime (e.g., 99.9% availability, or "three nines," allows for about 8.77 hours of downtime per year).
+*   **[[availability-patterns|Availability]]** is the guarantee that the system is operational and able to respond to every request, even if some of its nodes have failed. It is often measured in "nines" of uptime (e.g., 99.9% availability, or "three nines," allows for about 8.77 hours of downtime per year).
 
 *   **Consistency** (in the context of CAP) is the guarantee that every read operation returns the most recent write. This ensures all clients see the same view of the data at the same time.
 

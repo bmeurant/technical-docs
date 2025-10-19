@@ -32,7 +32,7 @@ graph TD
 ```
 
 - **Consistency (C):** Every read receives the most recent write or an error. This ensures that all clients see the same data at the same time, regardless of which node they connect to. This is also known as **strong consistency** or linearizability.
-- **Availability (A):** Every request receives a (non-error) response, without the guarantee that it contains the most recent write. The system remains operational and responsive even if some nodes are down.
+- **[[availability-patterns|Availability]] (A):** Every request receives a (non-error) response, without the guarantee that it contains the most recent write. The system remains operational and responsive even if some nodes are down.
 - **Partition Tolerance (P):** The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes. In modern distributed systems, **partition tolerance is not a choice; it is a necessity.** Network failures will happen.
 
 Therefore, the theorem forces a trade-off between C and A. When a network partition occurs, you must decide: do you cancel the operation to ensure consistency (making the system unavailable), or do you proceed with the operation and risk data inconsistency (keeping the system available)?
