@@ -93,7 +93,14 @@ A key architectural decision is whether to make the layers "closed" or "open":
 * **[[microservices|Microservices]]:** While [[microservices|microservices]] are a distributed architecture, each individual microservice can be structured using a simple layered model to manage its own business logic and persistence. The **Layered Architecture** remains a very relevant internal [[software-architecture/design-patterns/|design pattern]] within a [[microservices|microservices]] context.
 * **[[hollywood-principle|Inversion of Control]]:** While traditional layered architecture has a top-down control flow, modern implementations often use [[hollywood-principle|Inversion of Control (IoC)]] and dependency injection. This inverts the dependency flow, where layers do not create the components they depend on but receive them from an external container. This practice increases decoupling and testability, evolving the traditional layered model.
 
-For a detailed comparison of how patterns like Hexagonal and Onion evolved from the layered model, see [[modern-application-architectures|Modern Application Architectures]].
+### Layers vs. Tiers
+
+It is crucial not to confuse the **Layered** architectural pattern with an **[[n-tier-architecture|N-Tier Architecture]]**. 
+
+*   **Layers** are a **logical** separation of concerns within a single application or service. It is an organizational principle for your code.
+*   **Tiers** are a **physical** separation of those layers onto different infrastructure (e.g., separate servers or containers). It is a deployment topology.
+
+You can have a layered monolith that runs on a single tier, or you can deploy the layers of your application across multiple tiers to create an N-Tier architecture.
 
 ## **Resources & links**
 

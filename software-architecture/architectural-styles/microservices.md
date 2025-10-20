@@ -112,6 +112,7 @@ A mature microservices architecture often uses a combination of both styles: syn
 
 The **Microservices** architecture is not a final architecture but an approach that is combined with other patterns.
 
+* **[[n-tier-architecture|N-Tier Architecture]]:** Microservices are often used to implement the "Application Tier" in a modern N-Tier system.
 * **[[event-driven|Event-Driven Architecture (EDA)]]:** Services communicate by emitting and consuming events via a **message broker** (e.g., **Kafka**, **RabbitMQ**). This promotes maximum decoupling.
 * **[[service-mesh|Service Mesh]]:** A dedicated infrastructure layer that handles communication between services. It provides features like **security**, **observability**, and **traffic control** (e.g., **Istio**, **Linkerd**).
 * **[[serverless|Serverless/Function-as-a-Service (FaaS)]]:** A variation of microservices where the service is a function executed in a [[serverless|serverless]] environment (e.g., **AWS Lambda**, **Google Cloud Functions**). This reduces **operational overhead**.
