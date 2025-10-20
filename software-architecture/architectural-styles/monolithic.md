@@ -11,7 +11,7 @@ date: 2025-09-15
 The defining characteristic is **deployment**, not size or complexity. All features are contained within a single deployable artifact.
 
 * **Key Principles:**
-    * **Single Deployment Unit:** All code for the application is released as a single artifact. For availability and scale, this unit is typically deployed as multiple identical instances behind a load balancer.
+    * **Single Deployment Unit:** All code for the application is released as a single artifact. For availability and scale, this unit is typically deployed as multiple identical instances behind a [[load-balancing|load balancer]].
     * **Single Codebase:** The application is usually managed in a single source code repository.
     * **Direct Communication:** Components communicate with each other via in-process, local method calls, which are fast and reliable.
     * **Shared Database:** All modules typically share a single, common database schema.

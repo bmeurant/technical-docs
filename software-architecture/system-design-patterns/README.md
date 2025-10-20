@@ -6,3 +6,4 @@ see [index](./index.md)
 * **[Availability Patterns](./availability-patterns.md)**
 * **[Background-jobs](./background-jobs.md)**
 * **[CDN](./cdn.md)**
+* **[Load Balancing](./load-balancing.md)**

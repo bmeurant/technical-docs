@@ -36,7 +36,7 @@ Understanding how component availability affects the total system availability i
 *   **In Sequence:** If components are chained sequentially (A calls B), the total availability is the product of their individual availabilities. The system is only up if *all* components are up.
     *   `A_total = A_component1 * A_component2 * ...`
 
-*   **In Parallel:** If components are redundant and in parallel (e.g., multiple servers behind a load balancer), the total availability is calculated based on the probability of all components failing simultaneously.
+*   **In Parallel:** If components are redundant and in parallel (e.g., multiple servers behind a [[load-balancing|load balancer]]), the total availability is calculated based on the probability of all components failing simultaneously.
     *   `A_total = 1 - (1 - A_component1) * (1 - A_component2) * ...`
 
 ```mermaid
@@ -120,7 +120,7 @@ Fail-over is the mechanism of switching to a redundant standby system when the p
 
 This pattern is the classic high-availability pairing. An active node handles traffic while a passive (standby) node is kept in sync but does not serve traffic. This synchronization is typically achieved using **[[#Master-Slave Replication|Master-Slave Replication]]**, where the active node is the master and the passive node is the slave.
 
-A monitoring component (like a load balancer or cluster manager) detects when the active node fails and automatically redirects traffic to the passive node, promoting it to become the new master.
+A monitoring component (like a [[load-balancing|load balancer]] or cluster manager) detects when the active node fails and automatically redirects traffic to the passive node, promoting it to become the new master.
 
 ```mermaid
 sequenceDiagram
@@ -154,7 +154,7 @@ sequenceDiagram
 
 ### Active-Active Fail-Over
 
-In this configuration, all nodes are active and simultaneously serve traffic, typically behind a load balancer. If one node fails, the load balancer detects the failure (e.g., via health checks) and simply removes it from the pool, distributing its traffic among the remaining healthy nodes.
+In this configuration, all nodes are active and simultaneously serve traffic, typically behind a [[load-balancing|load balancer]]. If one node fails, the [[load-balancing|load balancer]] detects the failure (e.g., via health checks) and simply removes it from the pool, distributing its traffic among the remaining healthy nodes.
 
 This is not so much a fail-over pattern as it is the natural state of a [[system-design-fundamentals|horizontally-scaled, load-balanced system]].
 
@@ -171,7 +171,7 @@ graph TD
         LB -. stops sending traffic .-> N2;
     end
 ```
-*Description: All nodes serve traffic. When a node fails, the load balancer simply stops routing requests to it.*
+*Description: All nodes serve traffic. When a node fails, the [[load-balancing|load balancer]] simply stops routing requests to it.*
 
 *   **Pros:** Efficient use of resources, seamless failover with no downtime.
 *   **Cons:** The system must be designed to be [[twelve-factor-app|stateless]] or have its state distributed.

@@ -15,7 +15,7 @@ In this model, a message producer sends a message to a specific destination call
 * **Core Principles:**
     * **One-to-One Delivery:** Each message is processed by exactly one consumer.
     * **[[cohesion-coupling|Decoupling]]:** The message producer does not know which specific consumer will process the message.
-    * **Load Balancing:** The queue naturally distributes the load among available consumers.
+    * **[[load-balancing|Load Balancing]]:** The queue naturally distributes the load among available consumers.
     * **Task Distribution:** Ideal for offloading work, where each message represents a self-contained task or command.
 
 ---
@@ -81,7 +81,7 @@ graph TD
 
 1.  **[Message Queues - System Design (GeeksforGeeks)](https://www.geeksforgeeks.org/system-design/message-queues-system-design/)**
 
-    This article details how **Message Queues (MQs)** are crucial for distributed systems, providing a buffer for **asynchronous communication**. It outlines the core components (**Producer**, **Queue**, **Consumer**, and optional **Broker**) and highlights key benefits like **scalability**, **fault tolerance**, and **load balancing**. It also differentiates between two main types: **Point-to-Point** and **Publish-Subscribe** message queues, and touches upon advanced features like **Dead Letter Queues (DLQs)** and **Message Prioritization**.
+    This article details how **Message Queues (MQs)** are crucial for distributed systems, providing a buffer for **asynchronous communication**. It outlines the core components (**Producer**, **Queue**, **Consumer**, and optional **Broker**) and highlights key benefits like **scalability**, **fault tolerance**, and **[[load-balancing|load balancing]]**. It also differentiates between two main types: **Point-to-Point** and **Publish-Subscribe** message queues, and touches upon advanced features like **Dead Letter Queues (DLQs)** and **Message Prioritization**.
 
 2.  **[Message Queues: The Backbone of Scalable Systems (Medium)](https://medium.com/@amoljadhav_48655/message-queues-the-backbone-of-scalable-systems-2d015d9fa645)**
 

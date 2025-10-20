@@ -271,7 +271,7 @@ Stateless processes are fundamental to achieving horizontal scalability and faul
 ### Examples
 *   Storing user session data in a shared, external datastore like Redis, rather than in the application's local memory.
 *   Any file uploads should be stored in a distributed file system like Amazon S3, not on the local filesystem of a process.
-*   The use of "sticky sessions" in a load balancer is a clear violation of this principle, as it attempts to route a user to the same stateful process for every request.
+*   The use of "sticky sessions" in a [[load-balancing|load balancer]] is a clear violation of this principle, as it attempts to route a user to the same stateful process for every request.
 
 ## VII. Port Binding
 
@@ -301,7 +301,7 @@ The diagram shows that the application process is completely self-contained, bin
 ### Rationale
 This makes the application self-contained and independent of the execution environment. The app knows nothing about the public-facing network; it only binds to a port. This separation of concerns is key.
 
-In production, a routing layer (like a load balancer or API gateway) handles **port forwarding** from the public port (e.g., 80) to the container/process-internal port. This allows multiple applications to run on the same host, each on its own internal port, without conflicting. It also simplifies development, as the app can be run locally with a simple command.
+In production, a routing layer (like a [[load-balancing|load balancer]] or API gateway) handles **port forwarding** from the public port (e.g., 80) to the container/process-internal port. This allows multiple applications to run on the same host, each on its own internal port, without conflicting. It also simplifies development, as the app can be run locally with a simple command.
 
 ### Examples
 *   A Python web application using Gunicorn to listen on a port specified by the `$PORT` environment variable.
@@ -342,7 +342,7 @@ graph TD
     LB --> P4;
 ```
 
-This diagram shows horizontal scaling: a load balancer distributes incoming requests from multiple users across a number of identical, concurrent `web` processes.
+This diagram shows horizontal scaling: a [[load-balancing|load balancer]] distributes incoming requests from multiple users across a number of identical, concurrent `web` processes.
 
 ### Rationale
 This approach enables simple **horizontal scaling** (adding more processes) as opposed to **vertical scaling** (making a single process more powerful). It allows different parts of the application to be scaled independently based on their specific workload. For example, CPU-intensive background jobs can be scaled separately from the web processes that handle user requests.

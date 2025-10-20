@@ -88,7 +88,7 @@ graph TD
     *   **Static Analysis:** Use linting rules or static analysis tools (like ArchUnit for Java or NetArchTest for .NET) to create automated tests that fail the build if an architectural rule (like an illegal cross-module dependency) is violated.
     *   **[[hollywood-principle|Inversion of Control (IoC)]]:** Use dependency injection frameworks to enforce module boundaries. Instead of letting modules create their dependencies directly, an IoC container can be configured to provide instances, preventing direct coupling and enforcing communication through public, defined interfaces. This aligns with the [[hollywood-principle]].
 * **Data Coupling:** Managing a single database for multiple modules is tricky. Each module should logically own its own tables, and direct foreign key relationships between tables owned by different modules should be avoided to maintain independence.
-* **Scalability:** While you can replicate the entire [[monolithic|monolith]] behind a **Load Balancer**, you cannot scale a single module independently.
+* **Scalability:** While you can replicate the entire [[monolithic|monolith]] behind a **[[load-balancing|Load Balancer]]**, you cannot scale a single module independently.
 ---
 
 ## **Resources & Links**

@@ -53,7 +53,7 @@ graph TD
 
 * **Advantages (Benefits):**
     * **Centralized management:** The management of security, updates, and **data storage** is centralized on the server, which simplifies administration.
-    * **Scalability:** The server can be scaled vertically (more power on a single machine) or horizontally (adding new machines) to handle a larger load. The use of **load balancers** and **server clusters** is common.
+    * **Scalability:** The server can be scaled vertically (more power on a single machine) or horizontally (adding new machines) to handle a larger load. The use of **[[load-balancing|load balancers]]** and **server clusters** is common.
     * **Resource efficiency:** Clients can be lighter machines (**thin clients**), because most of the processing load is on the server.
     * **Flexibility:** Clients and servers can be developed with different technologies and platforms, as long as they adhere to a common communication protocol.
 

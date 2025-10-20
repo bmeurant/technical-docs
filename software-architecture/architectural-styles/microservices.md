@@ -53,7 +53,7 @@ graph TD
 
 1.  **Client:** The starting point of the request (for example, a web browser or a mobile app). It only interacts with the API Gateway, without knowing about the individual services.
 2.  **API Gateway:** A single entry point that handles client requests, authentication, and routing to the appropriate microservices. It can also manage **rate limiting**.
-3.  **Load Balancer:** Distributes the incoming traffic load among different instances of the same service. This is an essential component for the **horizontal scalability** of services.
+3.  **[[load-balancing|Load Balancer]]:** Distributes the incoming traffic load among different instances of the same service. This is an essential component for the **horizontal scalability** of services.
 4.  **Service Discovery:** A mechanism that allows microservices to find and communicate with each other dynamically, without needing to hard-code their network addresses. Services register with a **Service Registry** and can query it.
 5.  **Microservices:** The services themselves, containing the business logic. They can be developed with different technologies and languages. Their communication can be synchronous (via an API) or asynchronous (via a message broker).
 6.  **Message Broker / Event Bus:** An asynchronous communication system that allows services to exchange messages or events. This model promotes **loose coupling**, as the sender does not need to know the recipients of the message.
@@ -65,8 +65,8 @@ graph TD
 The data flow in a microservices architecture is often a multi-step process, orchestrated by the intermediary components:
 
 * The client sends an HTTP request to the **API Gateway**.
-* The **API Gateway** performs initial validation and forwards the request to the **Load Balancer** for the appropriate service.
-* The **Load Balancer** routes the request to one of the available instances of the target microservice.
+* The **API Gateway** performs initial validation and forwards the request to the **[[load-balancing|Load Balancer]]** for the appropriate service.
+* The **[[load-balancing|Load Balancer]]** routes the request to one of the available instances of the target microservice.
 * Microservice A (e.g., an order service) may need information from another microservice B (e.g., a product service). It uses **Service Discovery** to find the location of B and makes an API call.
 * Alternatively, Microservice A can publish an **event** to the **[[broker|Message Broker]]** (e.g., "new order placed"), and Microservice C (e.g., a stock service) that is subscribed to this event, receives it and updates its state asynchronously.
 * Microservice A receives the response from B, compiles its own response, and sends it back to the **API Gateway**, which ultimately forwards the final response to the client.
