@@ -13,13 +13,7 @@ see [index](./index.md)
 
 * **[Blackboard Pattern](./blackboard.md)**
 
-## Communication
 
-* **[Asynchronous Messaging Patterns](./asynchronous-messaging.md)**
-* **[Publish Subscribe Pattern](./publish-subscribe.md)**
-* **[Broker Pattern](./broker.md)**
-* **[Message Queue Pattern](./message-queue.md)**
-* **[Service Mesh](./service-mesh.md)**
 
 ## Structure
 
@@ -37,10 +31,7 @@ see [index](./index.md)
 
 * **[CQRS (Command Query Responsibility Segregation)](./cqrs.md)**
 * **[Event Sourcing](./event-sourcing.md)**
-* **[Saga Pattern](./saga.md)**
 
-## Migration & Refactoring
 
-* **[Strangler Fig Pattern](./strangler-fig.md)**
 
 
