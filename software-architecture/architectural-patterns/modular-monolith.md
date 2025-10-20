@@ -27,7 +27,7 @@ The core trade-off of this pattern is to intentionally accept **data coupling** 
 | **Structure** | A single application, a single codebase, often without clear boundaries between parts. | A single application, a single codebase but divided into autonomous modules. | A collection of independent, deployable services. |
 | **[[cohesion-coupling|Coupling]]** | Strong Coupling, components call each other directly and share the same state and database. | Loose Coupling internally between modules via well-defined interfaces. | Loose Coupling between services, communication over the network (e.g., REST, gRPC). |
 | **Deployment** | A single binary to deploy. | A single binary to deploy. | Multiple deployments, one per service. |
-| **Database** | A [[monolithic|monolithic]] database shared by the entire application. | A single database, but each module is responsible for its own data schema. Discipline is required to manage this. | Each microservice has its own database. |
+| **Database** | A [[monolithic|monolithic]] [[software-architecture/databases/|database]] shared by the entire application. | A single database, but each module is responsible for its own data schema. Discipline is required to manage this. | Each microservice has its own database. |
 
 ```mermaid
 graph TD
@@ -87,7 +87,7 @@ graph TD
     *   **Visibility Modifiers:** Use language features like `public`, `private`, and `internal` to ensure modules only expose their intended public API and hide their implementation details.
     *   **Static Analysis:** Use linting rules or static analysis tools (like ArchUnit for Java or NetArchTest for .NET) to create automated tests that fail the build if an architectural rule (like an illegal cross-module dependency) is violated.
     *   **[[hollywood-principle|Inversion of Control (IoC)]]:** Use dependency injection frameworks to enforce module boundaries. Instead of letting modules create their dependencies directly, an IoC container can be configured to provide instances, preventing direct coupling and enforcing communication through public, defined interfaces. This aligns with the [[hollywood-principle]].
-* **Data Coupling:** Managing a single database for multiple modules is tricky. Each module should logically own its own tables, and direct foreign key relationships between tables owned by different modules should be avoided to maintain independence.
+* **Data Coupling:** Managing a single [[software-architecture/databases/|database]] for multiple modules is tricky. Each module should logically own its own tables, and direct foreign key relationships between tables owned by different modules should be avoided to maintain independence.
 * **Scalability:** While you can replicate the entire [[monolithic|monolith]] behind a **[[load-balancing|Load Balancer]]**, you cannot scale a single module independently.
 ---
 

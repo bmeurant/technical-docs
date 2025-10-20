@@ -57,7 +57,7 @@ These patterns describe different ways to organize the core business logic of an
         PresentationLayer-->>Client: HTTP Response
     ```
 
-    The sequence diagram shows a client request being handled by a single procedural script. The script directly interacts with the database to perform all the steps of the business transaction within one method call.
+    The sequence diagram shows a client request being handled by a single procedural script. The script directly interacts with the [[databases|database]] to perform all the steps of the business transaction within one method call.
 
 *   **Key Characteristics**:
     *   **[[imperative-programming|Procedural]]**: Logic is organized by procedure, not by object.
@@ -121,12 +121,12 @@ graph TD
     A --> D(Identity Map);
 ```
 
-These patterns deal with how the application communicates with the database.
+These patterns deal with how the application communicates with the [[databases|database]].
 
 ### **Repository**
 
 *   **Problem**: How to separate the domain and business logic from the details of data access, making the system more testable and flexible?
-*   **Synopsis**: The **Repository** pattern mediates between the domain and data mapping layers. It provides a collection-like interface for accessing domain objects, hiding the underlying persistence mechanism (like a database or a web service).
+*   **Synopsis**: The **Repository** pattern mediates between the domain and data mapping layers. It provides a collection-like interface for accessing domain objects, hiding the underlying persistence mechanism (like a [[databases|database]] or a web service).
 
     ```mermaid
     classDiagram
@@ -169,8 +169,8 @@ These patterns deal with how the application communicates with the database.
 
 ### **Data Mapper**
 
-*   **Problem**: How to move data between objects and a database while keeping both the objects and the database schema independent of each other?
-*   **Synopsis**: A **Data Mapper** is a layer of software that separates the in-memory objects from the database. Its responsibility is to transfer data between the two and to isolate them from each other.
+*   **Problem**: How to move data between objects and a [[databases|database]] while keeping both the objects and the [[databases|database]] schema independent of each other?
+*   **Synopsis**: A **Data Mapper** is a layer of software that separates the in-memory objects from the [[databases|database]]. Its responsibility is to transfer data between the two and to isolate them from each other.
 
     ```mermaid
     classDiagram
@@ -188,10 +188,10 @@ These patterns deal with how the application communicates with the database.
         UserMapper <--> Database : SQL queries
     ```
 
-    The diagram shows a `UserMapper` that is solely responsible for mapping data from the `User` domain object to database tables and back. The `User` object itself has no knowledge of the database.
+    The diagram shows a `UserMapper` that is solely responsible for mapping data from the `User` domain object to [[databases|database]] tables and back. The `User` object itself has no knowledge of the [[databases|database]].
 
 *   **Key Characteristics**:
-    *   **[[cohesion-coupling|Decoupling]]**: The domain model and the database schema can evolve independently.
+    *   **[[cohesion-coupling|Decoupling]]**: The domain model and the [[databases|database]] schema can evolve independently.
     *   **[[soc|Separation of Concerns]]**: The mapping logic is completely isolated in the mapper.
     *   **Complexity**: More complex to set up than simpler patterns like Active Record.
 *   **Applicability**: Applications with a rich [[#domain-model|Domain Model]] where keeping the domain logic free from persistence concerns is critical.
@@ -203,8 +203,8 @@ These patterns deal with how the application communicates with the database.
 
 ### **Identity Map**
 
-*   **Problem**: How to ensure that each object is loaded from the database only once per transaction, preventing inconsistencies from multiple in-memory copies of the same data?
-*   **Synopsis**: An **Identity Map** is a map-like object that keeps track of all objects that have been read from the database in a single session or transaction. Whenever you need an object, you first check the Identity Map to see if you already have it in memory.
+*   **Problem**: How to ensure that each object is loaded from the [[databases|database]] only once per transaction, preventing inconsistencies from multiple in-memory copies of the same data?
+*   **Synopsis**: An **Identity Map** is a map-like object that keeps track of all objects that have been read from the [[databases|database]] in a single session or transaction. Whenever you need an object, you first check the Identity Map to see if you already have it in memory.
 
     ```mermaid
     sequenceDiagram
@@ -223,12 +223,12 @@ These patterns deal with how the application communicates with the database.
         end
     ```
     
-    The sequence diagram illustrates how the Identity Map prevents redundant database calls. When an object is requested, the map is checked first. If the object is not in the map, it is loaded from the database via the Data Mapper and then stored in the map for future requests.
+    The sequence diagram illustrates how the Identity Map prevents redundant [[databases|database]] calls. When an object is requested, the map is checked first. If the object is not in the map, it is loaded from the [[databases|database]] via the Data Mapper and then stored in the map for future requests.
     
     *   **Key Characteristics**:    *   **Caching**: Acts as a session-level cache.
-    *   **Identity Management**: Guarantees a one-to-one correspondence between a database row and an in-memory object within a transaction.
-    *   **Performance**: Avoids redundant database queries.
-*   **Applicability**: Used within frameworks that manage database sessions, such as ORMs.
+    *   **Identity Management**: Guarantees a one-to-one correspondence between a [[databases|database]] row and an in-memory object within a transaction.
+    *   **Performance**: Avoids redundant [[databases|database]] queries.
+*   **Applicability**: Used within frameworks that manage [[databases|database]] sessions, such as ORMs.
 *   **Limitations and Challenges**: The scope and lifetime of the map (per transaction, per session) must be carefully managed to avoid memory leaks or stale data.
 
 *   **Related Patterns**:
@@ -346,8 +346,8 @@ graph TD
 
 ### **Object-Relational Mapper (ORM)**
 
-*   **Problem**: How to automate the tedious and error-prone task of writing data mapping code between an object-oriented domain model and a relational database?
-*   **Synopsis**: An **ORM** is a tool or framework that automates the transfer of data between an object model and a relational database. It acts as a generic **[[#data-mapper|Data Mapper]]**, handling object creation, updates, and queries, and translating them into SQL.
+*   **Problem**: How to automate the tedious and error-prone task of writing data mapping code between an object-oriented domain model and a relational [[rdbms|database]]?
+*   **Synopsis**: An **ORM** is a tool or framework that automates the transfer of data between an object model and a relational [[rdbms|database]]. It acts as a generic **[[#data-mapper|Data Mapper]]**, handling object creation, updates, and queries, and translating them into SQL.
 
     ```mermaid
     graph TD
@@ -366,13 +366,13 @@ graph TD
         MappingEngine <--> DB
     ```
 
-    The diagram illustrates the role of an ORM as a layer between the application's domain objects and the relational database, automating data mapping.
+    The diagram illustrates the role of an ORM as a layer between the application's domain objects and the relational [[rdbms|database]], automating data mapping.
 
 *   **Key Characteristics**:
     *   **Automation**: Automates CRUD (Create, Read, Update, Delete) operations.
     *   **Abstraction**: Hides SQL from the developer for most common operations.
     *   **Implements Patterns**: An ORM typically implements the [[#repository|Repository]], [[#data-mapper|Data Mapper]], and [[#identity-map|Identity Map]] patterns for you.
-*   **Applicability**: Most enterprise applications that use a relational database.
+*   **Applicability**: Most enterprise applications that use a relational [[rdbms|database]].
 *   **Limitations and Challenges**: Can generate inefficient SQL for complex queries. The abstraction can "leak," forcing developers to understand the underlying SQL anyway.
 
 *   **Related Patterns**:

@@ -16,7 +16,7 @@ date: 2025-09-25
     * **Framework Independence:** The system does not depend on external libraries or frameworks. They can be replaced or modified without impacting the core **business rules** of the application.
     * **Testability:** Business rules can be tested without the UI, database, web server, or any other external element.
     * **UI Independence:** The user interface can be changed easily without affecting the rest of the system.
-    * **Database Independence:** You can change the database (e.g., from **PostgreSQL** to **MySQL** or **NoSQL**) without modifying the business logic.
+    * **Database Independence:** You can change the [[software-architecture/databases/|database]] (e.g., from **PostgreSQL** to **MySQL** or **[[nosql|NoSQL]] **) without modifying the business logic.
     * **External Services Independence:** External services (e.g., **REST APIs**) are implementation details and do not pollute the core of the application.
 
 ---
@@ -50,7 +50,7 @@ graph TD
 
 1.  **[[poeaa#Entity|Entity]]** (Enterprise Business Rules):** The innermost circle. It contains the most general and stable business rules. An **Entity** can be an object with methods that encapsulate the application's fundamental rules, independent of any other layer. These are the core domain classes.
 2.  **Use Cases (Application Business Rules):** This circle contains the business logic specific to the application. It orchestrates the flow of data to and from the **Entities**. **Use Cases** are invoked by **controllers** to perform specific tasks (e.g., create a new user, validate an order).
-3.  **Interface Adapters (Gateways, Controllers, Presenters):** This layer's primary role is to **adapt** data from the format most convenient for external agencies (like a database or the web) to the format most convenient for the core business logic (Use Cases and Entities). It is a set of adapters that convert data and includes components like **controllers**, **presenters**, and **gateways**.
+3.  **Interface Adapters (Gateways, Controllers, Presenters):** This layer's primary role is to **adapt** data from the format most convenient for external agencies (like a [[software-architecture/databases/|database]] or the web) to the format most convenient for the core business logic (Use Cases and Entities). It is a set of adapters that convert data and includes components like **controllers**, **presenters**, and **gateways**.
 4.  **Frameworks & Drivers (Web, DB, Devices):** The outermost circle, it contains implementation details. Web frameworks, databases, **ORMs**, the UI, etc. These are the least important elements for the business logic.
 
 **The Dependency Rule:** Dependencies must only point inward. No inner layer should have knowledge of an outer layer. For example, a **Use Case** should not know that its data is stored in a **SQL** database via a specific **ORM**. This is managed by the **[[solid|Dependency Inversion Principle]]**.

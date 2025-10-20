@@ -53,7 +53,7 @@ graph TD
     * **Single Instance**: Guarantees only one instance of the class can be created.
     * **Global Access**: Provides a single, global access point to that instance.
     * **Lazy Initialization**: The instance is often created only when it is first needed.
-* **Applicability**: Logger objects, configuration managers, or a single database connection pool.
+* **Applicability**: Logger objects, configuration managers, or a single [[software-architecture/databases/|database]] connection pool.
 * **Limitations and Challenges**: It can violate the **[[solid|Single Responsibility Principle]]** (SRP) and make testing difficult due to its global state. It's often considered an anti-pattern in modern development due to tight [[cohesion-coupling|coupling]].
 
 ### **Factory Method**
@@ -634,7 +634,7 @@ graph TD
     * **Grammar Representation**: Each rule in the grammar is represented by a class.
     * **Interpretation Engine**: The pattern provides a way to interpret sentences of the language.
     * **Composite Structure**: The syntax tree is often a composite structure.
-* **Applicability**: When there is a language to interpret and you can represent sentences in the language as abstract syntax trees. Good for simple grammars, such as SQL parsing or communication protocols.
+* **Applicability**: When there is a language to interpret and you can represent sentences in the language as abstract syntax trees. Good for simple grammars, such as [[rdbms|SQL]] parsing or communication protocols.
 * **Limitations and Challenges**: Can be complex to implement. For complex grammars, the class hierarchy can become large and unmanageable. Other tools like parser generators (e.g., ANTLR) are often a better choice.
 
 #### **Iterator**

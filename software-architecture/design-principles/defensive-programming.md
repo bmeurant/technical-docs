@@ -20,7 +20,7 @@ The guiding philosophy is to be skeptical of all inputs and assumptions. Code sh
 The mindset of a defensive programmer is "trust nothing." This means assuming that:
 
 -   **Inputs are potentially invalid:** Data coming from users, configuration files, or other parts of the system could be `null`, `undefined`, of the wrong type, or in an incorrect format.
--   **External systems are unreliable:** Network requests can fail, APIs can change their contract, and databases can be unavailable.
+-   **External systems are unreliable:** Network requests can fail, APIs can change their contract, and [[software-architecture/databases/|databases]] can be unavailable.
 -   **Code will be misused:** Other developers (or your future self) might use your functions or classes in ways you didn't originally intend.
 
 This contrasts with a pure "Offensive Programming" (or [[fail-fast|Fail-Fast]]) approach. However, the relationship is nuanced. It's better to see Fail-Fast as one of the tools available to a defensive programmer. The choice depends on the context:

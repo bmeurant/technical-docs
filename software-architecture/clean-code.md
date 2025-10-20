@@ -155,7 +155,7 @@ class UserRegistrationService {
     }
 }
 ```
-This `registerUser` method is doing too much: validation, password hashing, database saving, and sending emails. This makes it hard to test and maintain.
+This `registerUser` method is doing too much: validation, password hashing, [[software-architecture/databases/|database]] saving, and sending emails. This makes it hard to test and maintain.
 
 ```java
 // Good: Responsibilities are split into small, focused classes and files.
@@ -213,7 +213,7 @@ In the "Good" example:
 **Explanation:** A pure function is a fundamental concept from **[[functional-programming|Functional Programming]]** that treats functions like mathematical operations. For a function to be considered "pure," it must adhere to two strict rules:
 
 1.  **Deterministic:** It must always produce the same output for the same set of inputs. Its return value depends *only* on the arguments it receives.
-2.  **No Side Effects:** It must not cause any observable change outside of its own scope. This means it cannot modify global variables, change the state of its input arguments, write to a database, log to the console, or interact with any external system.
+2.  **No Side Effects:** It must not cause any observable change outside of its own scope. This means it cannot modify global variables, change the state of its input arguments, write to a [[software-architecture/databases/|database]], log to the console, or interact with any external system.
 
 Because pure functions are self-contained and predictable, they offer significant advantages:
 
@@ -360,7 +360,7 @@ public void createAndEmailInvoice(Order order) {
 ```
 
 ## Keep Framework Code Distant
-**Explanation:** Your core business logic—the rules and processes that are unique to your application—should remain independent of any specific framework (e.g., web, database, messaging). This principle is a cornerstone of architectures like **[[clean|Clean Architecture]]**, **[[hexagonal|Hexagonal Architecture]]**, and **[[onion|Onion Architecture]]**, which aim to protect the application's core from external dependencies.
+**Explanation:** Your core business logic—the rules and processes that are unique to your application—should remain independent of any specific framework (e.g., web, [[software-architecture/databases/|database]], messaging). This principle is a cornerstone of architectures like **[[clean|Clean Architecture]]**, **[[hexagonal|Hexagonal Architecture]]**, and **[[onion|Onion Architecture]]**, which aim to protect the application's core from external dependencies.
 
 By keeping the framework "at a distance," you gain several advantages:
 -   **Maintainability:** You can upgrade the framework or its libraries with a lower risk of breaking your business rules.
@@ -426,8 +426,8 @@ public boolean canAccess(String userRole) {
 
 *   **Fast (F):** Slow tests are a major obstacle to productivity. If running the test suite takes too long, developers will run it less frequently, which defeats its purpose as a rapid feedback mechanism.
     *   **Why it matters:** Fast tests provide an immediate feedback loop, allowing developers to quickly validate their changes. This is essential for practices like [[tdd|Test-Driven Development (TDD)]] and for maintaining a state of continuous integration where tests are run on every commit.
-    *   **What makes tests slow:** The primary culprits are I/O operations—interacting with databases, making network calls, or accessing the file system. These operations are orders of magnitude slower than in-memory computations.
-    *   **How to achieve it:** Favor **unit tests** that run entirely in memory. Use **Test Doubles** (Mocks, Stubs, Fakes) to replace slow external dependencies like databases or network services.
+    *   **What makes tests slow:** The primary culprits are I/O operations—interacting with [[software-architecture/databases/|databases]], making network calls, or accessing the file system. These operations are orders of magnitude slower than in-memory computations.
+    *   **How to achieve it:** Favor **unit tests** that run entirely in memory. Use **Test Doubles** (Mocks, Stubs, Fakes) to replace slow external dependencies like [[software-architecture/databases/|databases]]or network services.
 
 *   **Independent (I):** Tests must be independent of one another. The outcome of one test should never affect the outcome of another. This allows you to run tests in any order, or even in parallel.
     *   **How to achieve it:** Each test must set up its own preconditions and tear them down afterward. Frameworks provide hooks like `@BeforeEach` and `@AfterEach` (JUnit) or `beforeEach` and `afterEach` (Jest) for this purpose. Avoid shared mutable state between tests.
@@ -536,7 +536,7 @@ public class Employee {
     }
 }
 ```
-The `Employee` class is now coupled to three different actors: Accounting, HR, and the database administrators (who define the schema). A better approach is to separate the code into distinct use-case classes, leaving the core `Employee` object as a simple data structure.
+The `Employee` class is now coupled to three different actors: Accounting, HR, and the [[software-architecture/databases/|database]] administrators (who define the schema). A better approach is to separate the code into distinct use-case classes, leaving the core `Employee` object as a simple data structure.
 
 ```java
 // Good: The core Employee is just data. Behavior is separated by actor.

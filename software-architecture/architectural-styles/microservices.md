@@ -11,7 +11,7 @@ The **Microservices** architecture is an [[software-architecture/architectural-s
 * **Core Principles:**
     * **Team Autonomy & Organizational Alignment:** The architecture is designed to enable small, autonomous teams to own and operate their services independently. This aligns the architecture with the organization's structure (**Conway's Law**), accelerating delivery.
     * **Functional Decomposition:** The application is divided into services based on specific **business domains** (e.g., an order service, a payments service, an inventory service).
-    * **Decentralization & "Database per Service":** Each service is self-contained and manages its own data, typically with its own database. This ensures loose coupling and independent evolution.
+    * **Decentralization & "[[software-architecture/databases/|Database]] per Service":** Each service is self-contained and manages its own data, typically with its own database. This ensures loose coupling and independent evolution.
     * **Automated Infrastructure:** The complexity of the architecture requires strong automation of deployment and management via **DevOps** tools (e.g., **CI/CD**, **containerization** with **Docker**, orchestration with **Kubernetes**).
 
 ---
@@ -102,7 +102,7 @@ A mature microservices architecture often uses a combination of both styles: syn
 * **Challenges:**
     * **The Distributed Monolith Anti-Pattern:** The most common failure mode is creating a "distributed monolith," where services are tightly coupled through synchronous calls (chaining) or shared databases. This leads to a system with the complexity of a distributed system but none of the benefits of a monolith, as a failure in one service can still cascade and bring down others.
     * **Operational Complexity:** Managing a large number of distributed services is complex and requires **DevOps** expertise and a robust infrastructure.
-    * **Data Consistency:** Maintaining data consistency across isolated databases is a major challenge. This often requires advanced patterns like **Saga** to manage distributed transactions, which adds significant complexity.
+    * **Data Consistency:** Maintaining data consistency across isolated [[software-architecture/databases/|databases]] is a major challenge. This often requires advanced patterns like **Saga** to manage distributed transactions, which adds significant complexity.
     * **Network Latency and Reliability:** All inter-service communication is a network call, which is inherently slower and less reliable than in-process calls. This must be accounted for in the design.
     * **Debugging and Monitoring:** Debugging a request flow across multiple services is much harder than in a monolith. **Distributed tracing** tools (like Jaeger or OpenTelemetry) are essential.
 

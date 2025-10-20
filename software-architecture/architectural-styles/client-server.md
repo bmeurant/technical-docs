@@ -70,7 +70,7 @@ graph TD
 The **Client-Server** architecture is the basis for many more sophisticated models, including:
 
 * **2-Tier Architecture:** This is the basic model, with a client communicating directly with a server. Example: a desktop application connected to a database.
-* **[[layered|3-Tier Architecture]]:** An intermediate level, the **Application Server**, is added between the client and the **Database Server**. This layer handles the business logic and communication, making the system more flexible and scalable. This is the most common model for enterprise applications.
+* **[[layered|3-Tier Architecture]]:** An intermediate level, the **Application Server**, is added between the client and the **[[software-architecture/databases/|Database]] Server**. This layer handles the business logic and communication, making the system more flexible and scalable. This is the most common model for enterprise applications.
 * **[[layered|N-Tier Architecture]]:** An extension of the 3-Tier model, with multiple server layers to distribute the load and responsibilities.
 * **[[microservices|Microservices]]:** A distributed architecture where each service is a mini **Client-Server**. Each microservice exposes an API (via **REST** or **gRPC**) and acts as a server for other services (its clients).
 

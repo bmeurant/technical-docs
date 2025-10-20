@@ -44,7 +44,7 @@ By defining clear boundaries, architects and developers can:
 2.  **Improve Testability:** Each component can be tested in isolation by mocking or stubbing its dependencies at the boundary line.
 3.  **Increase Maintainability:** Changes made within one component are less likely to break other parts of the system, as long as the boundary contract is respected.
 4.  **Enable Parallel Development:** Different teams can work on different components simultaneously, as the boundary interface serves as a clear contract between them.
-5.  **Defer Decisions:** Boundaries allow you to defer decisions about implementation details. For example, you can define a repository boundary (an interface) without having to immediately decide which database technology will implement it.
+5.  **Defer Decisions:** Boundaries allow you to defer decisions about implementation details. For example, you can define a repository boundary (an interface) without having to immediately decide which [[software-architecture/databases/|database]] technology will implement it.
 
 ---
 
@@ -75,7 +75,7 @@ These exist between physically separate, independently deployable components. Co
 The concept of boundaries is central to many other architectural principles:
 
 -   **[[hexagonal|Hexagonal Architecture (Ports & Adapters)]]:** This pattern is explicitly about defining a clear boundary around the application core. The "ports" are the interfaces that define this boundary.
--   **[[policies-details|Policies vs. Details]]:** Boundaries are what separate high-level policies from low-level details. The boundary crossing is where data is transformed from a format convenient for the details (e.g., a database row) to a format convenient for the policy (e.g., a domain entity).
+-   **[[policies-details|Policies vs. Details]]:** Boundaries are what separate high-level policies from low-level details. The boundary crossing is where data is transformed from a format convenient for the details (e.g., a [[software-architecture/databases/|database]] row) to a format convenient for the policy (e.g., a domain entity).
 -   **[[cohesion-coupling|Low Coupling]]:** The primary goal of a boundary is to achieve low coupling.
 -   **[[design-by-contract|Design by Contract]]:** A contract formally defines the obligations and guarantees for any interaction that crosses a boundary.
 -   **[[service-mesh|Service Mesh]]:** In a microservices architecture, a service mesh is a dedicated infrastructure layer for managing communication and enforcing rules across physical service boundaries.

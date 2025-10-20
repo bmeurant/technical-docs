@@ -23,7 +23,7 @@ While the 3-Tier model is the most famous example, N-Tier architecture can be im
 This is the classic [[client-server]] model. The logic is split into two tiers:
 
 1.  **Client Tier:** A "thick client" (often a desktop application) that contains both the presentation logic and the business logic.
-2.  **Data Tier:** A database server that the client connects to directly.
+2.  **Data Tier:** A [[software-architecture/databases/|database]] server that the client connects to directly.
 
 -   **Use Case:** Simple departmental applications or legacy systems.
 -   **Limitation:** Tightly couples the business logic to the client, making updates difficult.
@@ -34,7 +34,7 @@ This is the most common implementation for web applications. It introduces an Ap
 
 1.  **Presentation Tier (Web Tier):** The user-facing UI, typically running on web servers.
 2.  **Application Tier (Business Tier):** The core business logic, running on separate application servers.
-3.  **Data Tier:** The database servers.
+3.  **Data Tier:** The [[software-architecture/databases/|database]] servers.
 
 ```mermaid
 graph TD
@@ -63,7 +63,7 @@ A common 4-tier model further separates the business logic from the data access 
 - **Tier 1:** Presentation (Web Servers)
 - **Tier 2:** Business (Application Servers)
 - **Tier 3:** Data Access (e.g., a dedicated service layer for persistence)
-- **Tier 4:** Data Store (Database Servers)
+- **Tier 4:** Data Store ([[software-architecture/databases/|Database]] Servers)
 
 #### Example: 5-Tier Architecture
 A high-performance system might introduce tiers for caching and asynchronous messaging.

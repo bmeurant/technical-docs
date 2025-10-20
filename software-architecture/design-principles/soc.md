@@ -37,7 +37,7 @@ The goal is to be able to modify one section of the code without affecting other
 
 SoC is not an abstract idea; it is the foundation for many widely used architectural and design patterns.
 
-- **[[layered|Layered Architecture]]:** This is one of the most direct applications of SoC. It separates the code into horizontal layers (e.g., Presentation, Business, and Data Access), where each layer has a distinct responsibility. The presentation layer's concern is the UI, while the data access layer's concern is database communication.
+- **[[layered|Layered Architecture]]:** This is one of the most direct applications of SoC. It separates the code into horizontal layers (e.g., Presentation, Business, and Data Access), where each layer has a distinct responsibility. The presentation layer's concern is the UI, while the data access layer's concern is [[software-architecture/databases/|database]] communication.
 
 - **[[modular-monolith|Modular Monolith]]:** This pattern applies SoC within a single monolithic application. It structures the application as a collection of independent modules, each responsible for a specific business capability (e.g., "Billing," "Inventory"). Each module is a mini-application with its own internal logic, but they all run in the same process. This separates the concerns of different business domains.
 
@@ -55,7 +55,7 @@ Let's illustrate with a practical example using JavaScript in a Node.js/Express 
 
 ### Violation of SoC: The "Do-It-All" Route Handler
 
-Imagine a single function in an Express application that handles a user registration request. This function mixes at least four distinct concerns: HTTP request/response handling, user input validation (business logic), database interaction (data access), and error formatting.
+Imagine a single function in an Express application that handles a user registration request. This function mixes at least four distinct concerns: HTTP request/response handling, user input validation (business logic), [[software-architecture/databases/|database]] interaction (data access), and error formatting.
 
 ```javascript
 // In your main app.js or routes.js
@@ -94,7 +94,7 @@ app.post('/register', (req, res) => {
 **Why is this a problem?**
 
 -   **Fragile and Hard to Maintain:** A change in any single concern forces a modification of the entire block. If you decide to switch from `sqlite3` to PostgreSQL, you have to edit this route handler. If you want to change the password policy, you also edit this same function. This increases the risk of introducing bugs.
--   **Difficult to Test:** How would you unit-test the validation logic? You can't. You would need to create a mock HTTP request and response object, and potentially mock the entire database module. You are forced into integration testing for what should be a simple logic check.
+-   **Difficult to Test:** How would you unit-test the validation logic? You can't. You would need to create a mock HTTP request and response object, and potentially mock the entire [[software-architecture/databases/|database]] module. You are forced into integration testing for what should be a simple logic check.
 -   **Not Reusable:** What if you want to register a user from a different part of the application, like an admin panel or a command-line script, without an HTTP request? You can't. The business logic is inextricably tied to the HTTP context.
 
 ### Application of SoC: Refactoring into Layers
@@ -102,7 +102,7 @@ app.post('/register', (req, res) => {
 Now, let's refactor this by separating each concern into its own dedicated module. This aligns with a layered architecture.
 
 #### 1. Data Access Layer (Repository)
-This module's only concern is communication with the database. It abstracts the "how" of data persistence. The rest of the application doesn't need to know if we're using SQL, a NoSQL database, or even a simple file.
+This module's only concern is communication with the database. It abstracts the "how" of data persistence. The rest of the application doesn't need to know if we're using SQL, a [[nosql|NoSQL database]] , or even a simple file.
 
 ```javascript
 // userRepository.js

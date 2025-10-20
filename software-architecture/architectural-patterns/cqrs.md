@@ -15,7 +15,7 @@ date: 2025-09-27
     * **[[soc|Separation of Concerns]]:** The core idea is to have two distinct models:
         * The **Write Model** (or Command Model) is optimized for validation, business logic execution, and consistency. It processes commands and produces events or state changes.
         * The **Read Model** (or Query Model) is a denormalized and optimized representation of the data, designed specifically for efficient querying and display.
-    * **Asymmetrical Models:** The write model can be a fully normalized, transactional database, while the read model could be a NoSQL database, a full-text search index, or simply materialized views.
+    * **Asymmetrical Models:** The write model can be a fully normalized, transactional [[rdbms|database]], while the read model could be a [[nosql|NoSQL database]], a full-text search index, or simply materialized views.
     * **Data Synchronization:** The read model is updated based on changes occurring in the write model. This synchronization is often asynchronous, leading to eventual consistency.
 
 ---
@@ -54,9 +54,9 @@ sequenceDiagram
 
 1.  **Command:** An object representing an intent to change the state of the system (e.g., `UpdateUserAddress`). It is [[imperative-programming|imperative]] and should not return data.
 2.  **Write Model:** Handles the command, executes business rules, and persists the state change. In an [[event-sourcing|Event Sourcing]] context, this would be an **Aggregate** that produces events.
-3.  **Write Database:** The data store for the write model. It is optimized for writes (e.g., a normalized SQL database or an Event Store).
+3.  **Write Database:** The data store for the write model. It is optimized for writes (e.g., a normalized [[rdbms|SQL database]] or an Event Store).
 4.  **Data Synchronization Mechanism:** A process that updates the read model. This is often done by publishing events from the write model (e.g., via a message bus) that the read side subscribes to.
-5.  **Read Model:** A denormalized data store optimized for queries. It can be a NoSQL database, a search index, or any other suitable storage. It is essentially a materialized view of the data.
+5.  **Read Model:** A denormalized data store optimized for queries. It can be a [[nosql|NoSQL database]], a search index, or any other suitable storage. It is essentially a materialized view of the data.
 6.  **[[poeaa#Commands-and-Queries|Query]]:** A request for data that does not change the state of the system. It returns a [[poeaa#Data-Transfer-Object-DTO|Data Transfer Object (DTO)]].
 
 ---
@@ -84,7 +84,7 @@ CQRS is often used with other patterns to build robust and scalable systems.
 *   **[[event-sourcing|Event Sourcing]]:** CQRS and Event Sourcing are a natural fit. In this combination, the write model is an [[event-sourcing|Event Sourced]] system that persists a log of events. The read model is built by subscribing to these events and creating projections.
 *   **[[microservices|Microservices]]:** In a microservices architecture, a single service might own the write model for a specific domain, while multiple other services could own different read models of that same data, tailored for their specific needs.
 *   **Materialized View:** The read model in CQRS is essentially a materialized view of the write model's data.
-*   **Transactional Outbox:** A pattern to ensure that events are reliably published to the message bus after the state has been successfully persisted in the write database.
+*   **Transactional Outbox:** A pattern to ensure that events are reliably published to the message bus after the state has been successfully persisted in the write [[databases|database]].
 
 ## **Resources & links**
 
@@ -102,8 +102,8 @@ CQRS is often used with other patterns to build robust and scalable systems.
 
 1. **[Lesson 12 - CQRS and Microservices](http://www.youtube.com/watch?v=pUGvXUBfvEE)** (Software Architecture Monday)
 
-    Explains **CQRS** to solve performance trade-offs by using **separate data models and databases** for **Reads (Queries)** and **Writes (Commands)**. Enables independent scaling, crucial for **Microservices**.
+    Explains **CQRS** to solve performance trade-offs by using **separate data models and [[databases|databases]]** for **Reads (Queries)** and **Writes (Commands)**. Enables independent scaling, crucial for **Microservices**.
 
 2. **[CQRS System Design Pattern](http://www.youtube.com/watch?v=vNplj9LwQSw)** (Piyush Garg)
 
-    Detailed guide on separating **Commands and Queries** to eliminate database bottlenecks. Discusses using different DB types (SQL/NoSQL) for each side and integrating **Event Sourcing** via a message broker (Kafka) for **eventual consistency** in large-scale systems.
+    Detailed guide on separating **Commands and Queries** to eliminate [[databases|database]] bottlenecks. Discusses using different DB types ([[rdbms|SQL]]/[[nosql|NoSQL]]) for each side and integrating **Event Sourcing** via a message broker (Kafka) for **eventual consistency** in large-scale systems.

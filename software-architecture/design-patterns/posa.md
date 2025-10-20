@@ -668,7 +668,7 @@ In a typical scenario, a Bulkhead might be used to create separate thread pools 
 * **Applicability**:
     * **Unreliable Network Communications**: When calling services over a network that may experience intermittent connectivity issues.
     * **Throttled Services**: When a service may temporarily reject requests due to rate limiting.
-    * **Database Connections**: When there are transient issues with database connections or deadlocks.
+    * **Database Connections**: When there are transient issues with [[software-architecture/databases/|database]] connections or deadlocks.
 * **Limitations and Challenges**:
     * **Non-transient failures**: The pattern is not suitable for non-transient (permanent) failures. Retrying a permanent failure will only waste resources.
     * **Retry Storms**: If not implemented carefully with a backoff strategy, multiple clients retrying at the same time can create a "retry storm" that overwhelms the service.
@@ -707,7 +707,7 @@ In a typical scenario, a Bulkhead might be used to create separate thread pools 
     * **Improved User Experience**: Provides quicker feedback to the user when a service is unresponsive.
 * **Applicability**:
     * **Remote Service Calls**: Any interaction with an external service over a network.
-    * **Database Queries**: To prevent long-running queries from blocking the application.
+    * **[[software-architecture/databases/|Database]] Queries**: To prevent long-running queries from blocking the application.
     * **Resource-intensive operations**: Any operation that has the potential to hang.
 * **Limitations and Challenges**:
     * **Choosing the right timeout value**: Too short, and it might fail operations that are just slow. Too long, and it defeats the purpose of the pattern. The value often needs to be configurable and sometimes dynamically adjusted.

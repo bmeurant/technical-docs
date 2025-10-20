@@ -107,7 +107,7 @@ Since background jobs are asynchronous ("fire and forget"), the calling process 
 
 ### 1. Polling
 
-The client application periodically polls a status endpoint or a database value to check if the job is complete.
+The client application periodically polls a status endpoint or a [[software-architecture/databases/|database]] value to check if the job is complete.
 
 ```mermaid
 sequenceDiagram

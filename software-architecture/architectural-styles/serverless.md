@@ -46,9 +46,9 @@ graph TD
     E -- "Writes to" --> H
 ```
 
-1.  **Event Sources:** The sources that trigger code execution. This can be an HTTP request for an API, a file added to a cloud storage bucket like **Amazon S3** or **Google Cloud Storage (GCS)**, a database modification, or a message published to a queue like **Amazon SQS** or **Google Cloud Pub/Sub**.
+1.  **Event Sources:** The sources that trigger code execution. This can be an HTTP request for an API, a file added to a cloud storage bucket like **Amazon S3** or **Google Cloud Storage (GCS)**, a [[software-architecture/databases/|database]] modification, or a message published to a queue like **Amazon SQS** or **Google Cloud Pub/Sub**.
 2.  **Serverless Function (FaaS - Function as a Service):** The function or piece of code that runs in response to an event. This is the core of a **serverless** architecture. Examples include **AWS Lambda**, **GCP Cloud Functions**, and **Azure Functions**.
-3.  **Backend as a Service (BaaS):** Managed third-party services from the cloud provider, such as **NoSQL** databases (**Amazon DynamoDB**, **Google Cloud Firestore**) or authentication services (**Auth0**, **Firebase Authentication**), which complement the architecture and reduce the amount of code you need to write.
+3.  **Backend as a Service (BaaS):** Managed third-party services from the cloud provider, such as [[nosql|**NoSQL** databases]] (**Amazon DynamoDB**, **Google Cloud Firestore**) or authentication services (**Auth0**, **Firebase Authentication**), which complement the architecture and reduce the amount of code you need to write.
 
 ---
 
@@ -58,7 +58,7 @@ The data flow in a **Serverless** architecture is fundamentally different from t
 
 1.  **Event Triggered**: An event occurs. For example, a user sends an HTTP request to an API endpoint.
 2.  **Function Invocation**: The **cloud provider** detects this event and, in response, invokes the associated **Serverless** function. If the function isn't "warm" (already in memory), a "cold start" occurs, which can introduce initial latency to initialize the execution environment.
-3.  **Code Execution**: The function runs, processing the business logic. It may interact with other cloud services (databases like **DynamoDB**, [[message-queue|message queues]], or other APIs) to complete its task.
+3.  **Code Execution**: The function runs, processing the business logic. It may interact with other cloud services ([[software-architecture/databases/|databases]] like **DynamoDB**, [[message-queue|message queues]], or other APIs) to complete its task.
 4.  **Result Handling**: Once execution is complete, the function returns a response (e.g., an HTTP status code and a JSON response body) or writes data to another service. The function then stops, and the execution environment is released.
 5.  **No Persistent Connection**: There is no long-lasting connection maintained. Each invocation is a distinct, isolated execution.
 

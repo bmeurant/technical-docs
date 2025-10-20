@@ -48,14 +48,14 @@ The most common model is the four-layer architecture, but there can be more or f
 
 1.  **Presentation Layer:** This is the highest layer. It handles the user interface and presentation logic. It's responsible for converting data into a displayable format for the user and managing user interactions (mouse clicks, form submissions, etc.). Examples: a web interface (HTML/CSS/JavaScript), a mobile app, or even a **REST** API for an external client.
 2.  **Business Logic / Service Layer:** This layer contains the core of the application and the business rules. It orchestrates the various operations and processes requests from the presentation layer. This is where the application's intelligence resides. Examples: **Java Spring** services, **Node.js** controllers, or any logic that transforms data or manages transactions.
-3.  **Data Access Layer (DAL) / Persistence Layer:** This layer is responsible for communication with databases or any other data source. It manages data persistence and retrieval. Objects in this layer are often called **[[poeaa#Repository|Repositories]]** or **Data Access Objects (DAOs)**. Examples: **Spring Data**, **Hibernate**, **JPA** for Java, or ORMs like **Sequelize** for Node.js.
+3.  **Data Access Layer (DAL) / Persistence Layer:** This layer is responsible for communication with [[software-architecture/databases/|databases]] or any other data source. It manages data persistence and retrieval. Objects in this layer are often called **[[poeaa#Repository|Repositories]]** or **Data Access Objects (DAOs)**. Examples: **Spring Data**, **Hibernate**, **JPA** for Java, or ORMs like **Sequelize** for Node.js.
 4.  **Database Layer:** The lowest layer. It is the physical implementation of the database. It has no knowledge of the higher layers. Examples: **PostgreSQL**, **MySQL**, **MongoDB**, **Redis**.
 
 **Typical Data Flow:** 
 
 - A user request starts at the **Presentation Layer**
 - It is processed by the **Business Logic Layer** (which may interact with third-party services or other layers)
-- Which in turn uses the **Data Access Layer** to interact with the **Database Layer**. The response follows the reverse path.
+- Which in turn uses the **Data Access Layer** to interact with the **[[software-architecture/databases/|Database]] Layer**. The response follows the reverse path.
 
 ---
 
@@ -74,7 +74,7 @@ A key architectural decision is whether to make the layers "closed" or "open":
 * **Advantages (Benefits):**
     * **Clear and Familiar Design:** It is a very common and easy-to-understand model for most developers, which accelerates onboarding.
     * **High Testability:** Each layer can be tested in isolation by mocking the dependencies of the lower layer. For example, you can test the **Service Layer** without having to connect to a real database.
-    * **Ease of Maintenance:** Changes in one layer (for example, a database change in the **Data Access Layer**) have a minimal impact on other layers, as long as the layer's interface remains stable.
+    * **Ease of Maintenance:** Changes in one layer (for example, a [[software-architecture/databases/|database]] change in the **Data Access Layer**) have a minimal impact on other layers, as long as the layer's interface remains stable.
     * **Reusability:** Components in a layer can often be reused by different clients or other parts of the application.
 
 * **Challenges:**

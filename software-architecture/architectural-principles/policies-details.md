@@ -59,7 +59,7 @@ Policy decisions are typically made by architects and senior designers and set t
     - **Low-Level:** They are concerned with the "how," not the "what."
 
 - **Examples:**
-    - The choice of a specific database (e.g., PostgreSQL vs. MongoDB).
+    - The choice of a specific [[software-architecture/databases/|database]] (e.g., [[rdbms|PostgreSQL]] vs. MongoDB).
     - The UI framework used (e.g., React vs. Angular).
     - The specific algorithms or data structures used within a component.
     - The communication protocol for a network call (e.g., REST vs. gRPC).
@@ -73,8 +73,8 @@ Details are often implemented by developers and are responsible for the concrete
 
 Separating policy from detail is crucial for building robust systems:
 
-1.  **Stability:** The most important parts of your system (the policies) are shielded from the volatility of the details. You can change the database or the UI framework without touching the core business logic.
-2.  **Deferring Decisions:** It allows architects to defer decisions about details until later in the project. You can build and test the core business logic without needing a database or a UI.
+1.  **Stability:** The most important parts of your system (the policies) are shielded from the volatility of the details. You can change the [[software-architecture/databases/|database]] or the UI framework without touching the core business logic.
+2.  **Deferring Decisions:** It allows architects to defer decisions about details until later in the project. You can build and test the core business logic without needing a [[software-architecture/databases/|database]] or a UI.
 3.  **Testability:** Policies can be tested in isolation without needing to spin up the entire application infrastructure (databases, web servers, etc.).
 4.  **Flexibility and Maintainability:** It makes the system easier to maintain and extend. New features can be added by creating new detail implementations without breaking existing policies.
 

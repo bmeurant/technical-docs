@@ -46,7 +46,7 @@ Cohesion is a qualitative measure of a module's focus. The more a module has one
     * **Example**: An `OrderProcessor` module that executes `checkInventory()`, `processPayment()`, and `sendConfirmationEmail()` in that specific order.
 
 5.  **Temporal Cohesion**: Elements are grouped because they are executed at the same time (e.g., at system startup or shutdown), without any functional or data relationship.
-    * **Example**: An `initializeApplication` method that opens a database connection, loads configuration settings, and initializes a logger.
+    * **Example**: An `initializeApplication` method that opens a [[software-architecture/databases/|database]] connection, loads configuration settings, and initializes a logger.
 
 6.  **Logical Cohesion**: Elements perform similar tasks, but the specific task to be executed is selected by a parameter.
     * **Example**: A `processData(dataType)` function where `dataType` can be 'XML' or 'JSON' to select the action to perform.
@@ -72,7 +72,7 @@ Coupling measures the degree of interdependence between modules. Low coupling is
     * **Example**: A `processFile(file, mode)` method where `mode` determines if the file should be read in `read-only` or `read-write` mode.
 
 4.  **External Coupling**: Modules depend on a common external factor (e.g., a file format, a communication protocol, a shared database).
-    * **Example**: Two [[microservices|microservices]] that both depend on the same version of a database schema.
+    * **Example**: Two [[microservices|microservices]] that both depend on the same version of a [[software-architecture/databases/|database]] schema.
 
 5.  **Common Coupling**: Modules share a global state, like a global variable. This is extremely dangerous because any module can modify this data, making the system unpredictable.
     * **Example**: Two modules that both read and write to a global `application_state` variable.

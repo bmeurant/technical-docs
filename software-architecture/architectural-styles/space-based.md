@@ -8,7 +8,7 @@ date: 2025-09-16
 
 The **Space-Based Architecture** (SBA) is a high-performance [[software-architecture/architectural-styles/|architectural style]] designed for extreme scalability and elasticity. The name comes from the concept of a **"tuple space,"** a shared memory space where multiple processes can read and write data [[transversal-programming-models#1-concurrent-programming|concurrently]]. In SBA, this concept is realized as a grid of self-sufficient **processing units**, each hosting a copy of the application logic and a portion of the in-memory data.
 
-This style, also known as **Shared-Nothing Architecture**, avoids the bottleneck of a central database by processing data in memory and replicating it across the grid.
+This style, also known as **Shared-Nothing Architecture**, avoids the bottleneck of a central [[databases|database]] by processing data in memory and replicating it across the grid.
 
 * **Core Principles:**
     * **Shared-Nothing Processing:** Each Processing Unit (PU) is independent and does not share resources (CPU, memory) with others for request processing. While the data grid is replicated and "shared" across the network, the PUs themselves are autonomous.
@@ -53,7 +53,7 @@ graph TD
     *   **Gateway:** Routes requests to the correct processing unit, typically based on a partition key in the request.
     *   **Messaging Grid:** Manages input request processing.
     *   **Data Grid:** The core of the pattern. It's the distributed in-memory data store that handles data replication and synchronization between processing units.
-3.  **Backing Database:** A permanent data store (e.g., SQL or NoSQL) that is used for initial data loading and for long-term persistence via an asynchronous "write-behind" mechanism.
+3.  **Backing [[databases|Database]]:** A permanent data store (e.g., [[rdbms|SQL]] or [[nosql|NoSQL]] ) that is used for initial data loading and for long-term persistence via an asynchronous "write-behind" mechanism.
 
 **Typical Data Flow:**
 * A request is sent by the client.
@@ -115,7 +115,7 @@ This architectural style is a highly specialized solution for specific **scalabi
 
 1.  **[Space Based Architecture - Lesson 166](https://www.youtube.com/watch?v=0nXKFwTEQHY)**
     
-    This video is an excellent overview of SBA, explaining how this architecture uses "tuple spaces" to avoid database bottlenecks and achieve high elasticity and performance. The speaker, Mark Richards, presents the key principles and scenarios where this architecture is most appropriate, highlighting its pros and cons.
+    This video is an excellent overview of SBA, explaining how this architecture uses "tuple spaces" to avoid [[software-architecture/databases/|database]] bottlenecks and achieve high elasticity and performance. The speaker, Mark Richards, presents the key principles and scenarios where this architecture is most appropriate, highlighting its pros and cons.
 
 2.  **[Space-Based Architecture Styles](https://www.youtube.com/watch?v=b33qSmRwhgw&t)**
     

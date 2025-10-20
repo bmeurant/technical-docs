@@ -10,7 +10,7 @@ date: 2025-09-23
 
 # **Hexagonal Architecture (Ports-and-Adapters)**
 
-**Hexagonal Architecture**, also known as **Ports-and-Adapters**, is a software [[software-architecture/architectural-patterns/|architectural pattern]] created by Alistair Cockburn. Its primary goal is to create a strong [[cohesion-coupling|separation]] between the core application logic (the **domain**) and external infrastructure elements (such as databases, user interfaces, or web services). The idea is to isolate the application's core so that it does not depend on the technologies used to interface with the outside world.
+**Hexagonal Architecture**, also known as **Ports-and-Adapters**, is a software [[software-architecture/architectural-patterns/|architectural pattern]] created by Alistair Cockburn. Its primary goal is to create a strong [[cohesion-coupling|separation]] between the core application logic (the **domain**) and external infrastructure elements (such as [[software-architecture/databases/|databases]], user interfaces, or web services). The idea is to isolate the application's core so that it does not depend on the technologies used to interface with the outside world.
 
 * **Core Principles:**
     * **Isolation of the Business Core:** The business logic and rules of the application are at the center of the architecture and are independent of any infrastructure technology. The application's core contains only pure business code.
@@ -65,8 +65,8 @@ flowchart TD
 **Typical Data Flow:**
 * The process begins when an external actor (like a user via a web browser) sends a request to a **Driving Adapter**.
 * The **Driving Adapter** translates this request into a method call on a **Driving Port** (an interface within the Application Core).
-* An **Application Service** within the core executes the business logic. If it needs to interact with a database or another external service, it calls a **Driven Port**.
-* A **Driven Adapter** implementing that port handles the technical interaction (e.g., a database query) and returns the data to the Application Service.
+* An **Application Service** within the core executes the business logic. If it needs to interact with a [[software-architecture/databases/|database]] or another external service, it calls a **Driven Port**.
+* A **Driven Adapter** implementing that port handles the technical interaction (e.g., a [[software-architecture/databases/|database]] query) and returns the data to the Application Service.
 * The Application Service completes its work and returns the result to the **Driving Adapter**, which then formats it and sends the response back to the external actor.
 
 ---
@@ -74,12 +74,12 @@ flowchart TD
 ## **Advantages and Technical Challenges**
 
 * **Advantages (Benefits):**
-    * **Increased Testability:** The application's core is independent of databases or APIs. You can test the business logic in isolation by mocking the Adapters, which is simpler, faster, and more reliable.
-    * **Flexibility and Interoperability:** It's easy to change infrastructure technologies. Switching from a SQL database to a NoSQL database only requires writing a new adapter. The application's core is not affected.
+    * **Increased Testability:** The application's core is independent of [[software-architecture/databases/|databases]] or APIs. You can test the business logic in isolation by mocking the Adapters, which is simpler, faster, and more reliable.
+    * **Flexibility and Interoperability:** It's easy to change infrastructure technologies. Switching from a [[rdbms|SQL database]] to a [[nosql|NoSQL database]]  only requires writing a new adapter. The application's core is not affected.
     * **Clarity of Design:** The architecture forces the separation of business code from infrastructure, making the code more readable and easier to maintain. The focus is on the **domain model**, which aligns with the principles of **[[ddd|Domain-Driven Design (DDD)]]**.
 * **Challenges:**
     * **Initial Complexity:** The pattern can be excessive for simple applications. Setting up interfaces and multiple layers might seem "over-engineered" for a small project.
-    * **Risk of Leaky Abstractions:** It is critical to ensure that no infrastructure-specific details (like database annotations or framework-specific classes) "leak" into the application core. The ports must use plain, technology-agnostic data structures.
+    * **Risk of Leaky Abstractions:** It is critical to ensure that no infrastructure-specific details (like [[software-architecture/databases/|database]] annotations or framework-specific classes) "leak" into the application core. The ports must use plain, technology-agnostic data structures.
     * **Concept of Ports and Adapters:** Understanding the concepts of **[[solid|Dependency Inversion]]** and interfaces is crucial. A poor implementation can turn the adapters into simple "glue code" without real benefits.
 
 ---
@@ -100,7 +100,7 @@ Hexagonal Architecture is an initial investment that pays off in the long run, e
 
 1.  **[Hexagonal Architecture, There Are Always Two Sides to Every Story](https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c)**
 
-    This article by Pablo Martinez discusses **Hexagonal Architecture**, also known as Ports and Adapters, as an alternative to the traditional [[layered|Layered Architecture]]. It explains how this design isolates the application's core business logic from external actors and technologies (like the user interface or databases) using **Ports** (technology-agnostic interfaces) and **Adapters** (technology-specific implementations). The article highlights how this approach improves testability, prevents technology lock-in, and aligns with **[[ddd|Domain-Driven Design]]**.
+    This article by Pablo Martinez discusses **Hexagonal Architecture**, also known as Ports and Adapters, as an alternative to the traditional [[layered|Layered Architecture]]. It explains how this design isolates the application's core business logic from external actors and technologies (like the user interface or [[software-architecture/databases/|databases]]) using **Ports** (technology-agnostic interfaces) and **Adapters** (technology-specific implementations). The article highlights how this approach improves testability, prevents technology lock-in, and aligns with **[[ddd|Domain-Driven Design]]**.
 
 2.  **[Everything You Need to Know About Hexagonal Architecture: Kernel, Ports, Adapters](https://scalastic.io/en/hexagonal-architecture/)**
 
@@ -116,4 +116,4 @@ Hexagonal Architecture is an initial investment that pays off in the long run, e
 
 2.  **[Hexagonal Architecture: What You Need To Know - Simple Explanation](https://www.youtube.com/watch?v=bDWApqAUjEI)**
 
-    This video by **Alex Hyett** offers a simple explanation of **Hexagonal Architecture**, also known as the Ports and Adapters pattern. It covers what the architecture is, how it works, and when to use it, emphasizing its ability to **decouple** application logic from external technologies (like databases and APIs) to improve **testability** and **maintainability**. The video also discusses the pros and cons of implementing this architectural style.
+    This video by **Alex Hyett** offers a simple explanation of **Hexagonal Architecture**, also known as the Ports and Adapters pattern. It covers what the architecture is, how it works, and when to use it, emphasizing its ability to **decouple** application logic from external technologies (like [[software-architecture/databases/|databases]] and APIs) to improve **testability** and **maintainability**. The video also discusses the pros and cons of implementing this architectural style.

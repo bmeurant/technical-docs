@@ -129,7 +129,7 @@ By providing a single, stable entry point (a single IP address or domain name), 
 - **Remove servers** for maintenance or during low-traffic periods.
 - **Deploy new code** using rolling updates, by gradually adding new servers to the pool and removing old ones.
 
-To achieve this, backend servers must be designed to be **[[twelve-factor-app|stateless]]**. This means they should not store any user-specific data (like session information) on their local disk or in memory. Any state must be externalized to a shared data store, such as a database (SQL/NoSQL) or a distributed cache (Redis, Memcached).
+To achieve this, backend servers must be designed to be **[[twelve-factor-app|stateless]]**. This means they should not store any user-specific data (like session information) on their local disk or in memory. Any state must be externalized to a shared data store, such as a [[software-architecture/databases/|database]] (SQL/[[nosql|NoSQL]] ) or a distributed cache (Redis, Memcached).
 
 ---
 

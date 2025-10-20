@@ -16,7 +16,7 @@ The **Onion Architecture**, proposed by Jeffrey Palermo in 2008, is a software [
     * **[[solid|Dependency Inversion Principle]]:** Dependencies always point inward, from the outer layers to the core of the onion. Outer layers can only depend on inner layers.
     * **Core Domain as the Center:** The **[[poeaa#Domain-Model|domain model]]** and **business rules** are at the very center of the application and are completely independent of the infrastructure (databases, frameworks, UI).
     * **Interface Segregation:** Interfaces define the contracts for services. The core defines interfaces, and the outer layers implement them.
-    * **Testability:** The core of the application can be tested in isolation, without the need for a database or other external services.
+    * **Testability:** The core of the application can be tested in isolation, without the need for a [[software-architecture/databases/|database]] or other external services.
 
 ---
 
@@ -55,7 +55,7 @@ graph TD
 **Typical Data Flow:**
 * The user interface (e.g., a **REST** controller) calls an **application service**.
 * The **application service** uses the **domain services** and the **repository** interfaces to execute the **use case**.
-* The **repository** implementations in the infrastructure layer (e.g., a **JPA** class) handle data persistence. Crucially, these implementations conform to the repository *interfaces* defined in the Core Domain. This inverts the control flow, ensuring the core remains independent of the database technology.
+* The **repository** implementations in the infrastructure layer (e.g., a **JPA** class) handle data persistence. Crucially, these implementations conform to the repository *interfaces* defined in the Core Domain. This inverts the control flow, ensuring the core remains independent of the [[software-architecture/databases/|database]] technology.
 * Dependencies are inverted: the application layer depends on the domain layer, but the domain layer depends on nothing else.
 
 ---
@@ -98,7 +98,7 @@ In summary, these architectures are different ways to implement the same princip
 
 1.  **[The Onion Architecture: part 1](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)**
 
-    The original article by **Jeffrey Palermo** introduces the **Onion Architecture** as a modern alternative to traditional layered architectures. It emphasizes placing the **Domain Model** at the core and ensuring that all dependencies point inward toward the center. This approach, which relies on the **[[solid|Dependency Inversion principle]]**, aims to reduce coupling and make the application's core business logic independent of external concerns like databases or user interfaces, thereby improving maintainability.
+    The original article by **Jeffrey Palermo** introduces the **Onion Architecture** as a modern alternative to traditional layered architectures. It emphasizes placing the **Domain Model** at the core and ensuring that all dependencies point inward toward the center. This approach, which relies on the **[[solid|Dependency Inversion principle]]**, aims to reduce coupling and make the application's core business logic independent of external concerns like [[software-architecture/databases/|databases]] or user interfaces, thereby improving maintainability.
 
 2.  **[Onion Architecture: Let's slice it like a Pro](https://medium.com/expedia-group-tech/onion-architecture-deed8a554423)**
 
@@ -110,7 +110,7 @@ In summary, these architectures are different ways to implement the same princip
 
 1.  **[Onion Architecture - Software Design Patterns Explained](https://www.youtube.com/watch?v=oC2Ty8H9jck)**
 
-    This video from the **Professional Programming** channel explains the concepts of **Onion Architecture**, **[[clean|Clean Architecture]]**, and **[[hexagonal|Hexagonal Architecture]]**. It uses diagrams to illustrate how these patterns solve the problem of tight coupling in traditional software design by putting the business logic at the center and abstracting external concerns like databases and user interfaces. The video provides a clear and visual introduction to the core principles of these architectural styles.
+    This video from the **Professional Programming** channel explains the concepts of **Onion Architecture**, **[[clean|Clean Architecture]]**, and **[[hexagonal|Hexagonal Architecture]]**. It uses diagrams to illustrate how these patterns solve the problem of tight coupling in traditional software design by putting the business logic at the center and abstracting external concerns like [[software-architecture/databases/|databases]] and user interfaces. The video provides a clear and visual introduction to the core principles of these architectural styles.
 
 2.  **[Onion Architecture vs Clean Architecture Comparison](https://www.youtube.com/watch?v=KqWNtCpjUi8)**
 

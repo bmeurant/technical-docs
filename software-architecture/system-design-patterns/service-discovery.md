@@ -18,7 +18,7 @@ It acts as a dynamic, automated "phonebook" for your services.
 
 ## Core Components
 
-1.  **Service Registry:** This is the heart of the pattern—a database containing the network locations of all available service instances. It's a central source of truth for service addresses.
+1.  **Service Registry:** This is the heart of the pattern—a [[software-architecture/databases/|database]] containing the network locations of all available service instances. It's a central source of truth for service addresses.
 2.  **Service Provider:** An instance of a service that registers its location in the Service Registry upon startup.
 3.  **Service Consumer:** A client application or another service that needs to communicate with a provider. It queries the registry to find the provider's location.
 

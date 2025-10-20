@@ -61,7 +61,7 @@ sequenceDiagram
 *   **Pros:** Simplifies application development as data is always predictable and correct.
 *   **Cons:** High write latency (due to synchronous replication) and lower availability (writes can fail if a replica is down, forcing a CP trade-off).
 *   **Examples:**
-    *   **Technologies:** Relational databases (PostgreSQL, MySQL) in default configurations; CP-oriented distributed databases like Google Spanner, CockroachDB.
+    *   **Technologies:** Relational databases (PostgreSQL, MySQL) in default configurations; CP-oriented distributed [[software-architecture/databases/|databases]] like Google Spanner, CockroachDB.
     *   **Use Cases:** Financial transaction systems, e-commerce inventory management, and any system where data accuracy is paramount.
 
 ---
@@ -112,7 +112,7 @@ sequenceDiagram
 *   **Pros:** High availability and very low write latency.
 *   **Cons:** More complex for developers, who must account for reading stale data. Can lead to a confusing user experience if not handled carefully.
 *   **Examples:**
-    *   **Technologies:** NoSQL databases like Cassandra, Riak, and Amazon DynamoDB are built on this principle. [[dns|DNS]] (Domain Name System) is a classic example.
+    *   **Technologies:** [[nosql|NoSQL databases]]  like Cassandra, Riak, and Amazon DynamoDB are built on this principle. [[dns|DNS]] (Domain Name System) is a classic example.
     *   **Architectures:** [[event-driven|Event-Driven Architectures]] and systems using asynchronous replication.
     *   **Use Cases:** Social media feeds (likes, comments), [[cdn|content delivery networks (CDNs)]], and other systems where high availability is more critical than immediate, perfect consistency.
 

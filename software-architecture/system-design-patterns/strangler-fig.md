@@ -81,7 +81,7 @@ sequenceDiagram
 
 * **Challenges:**
     * **Façade Complexity:** The strangler façade can become a complex piece of software, especially if it needs to handle complex routing rules or data transformation.
-    * **Data Synchronization:** Managing data consistency between the new services and the legacy database is often the biggest challenge. Patterns like the **Anti-Corruption Layer** may be needed to translate between the old and new data models.
+    * **Data Synchronization:** Managing data consistency between the new services and the legacy [[software-architecture/databases/|database]] is often the biggest challenge. Patterns like the **Anti-Corruption Layer** may be needed to translate between the old and new data models.
     * **Long-Term Maintenance:** For a long period, two systems must be maintained, monitored, and operated in parallel, which can increase operational overhead.
     * **Integration Hell:** As more services are added, managing dependencies and communication between the new services and the legacy system can become complicated.
 

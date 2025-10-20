@@ -18,7 +18,7 @@ The **[[layered|Layered Architecture]]** is the most common and traditional arch
 
 Dependencies flow **downwards**: the Presentation Layer depends on the Business Logic Layer, which depends on the Data Access Layer.
 
-**The fundamental problem:** Business logic, the core of your application, is tightly coupled to the persistence technology. This makes the architecture **rigid** and **difficult to test** in isolation. To unit test your business logic, you often need a real database or a complex mocking setup. This violates the **[[solid|Dependency Inversion Principle (DIP)]]**, where high-level modules (business logic) should not depend on low-level modules (data access).
+**The fundamental problem:** Business logic, the core of your application, is tightly coupled to the persistence technology. This makes the architecture **rigid** and **difficult to test** in isolation. To unit test your business logic, you often need a real [[software-architecture/databases/|database]] or a complex mocking setup. This violates the **[[solid|Dependency Inversion Principle (DIP)]]**, where high-level modules (business logic) should not depend on low-level modules (data access).
 
 ## **2. The Evolution: Inverting Dependencies**
 
@@ -68,7 +68,7 @@ While sharing the same core principle, these three architectures differ in their
 
 1.  **[Understanding Hexagonal, Clean, Onion, and Traditional Layered Architectures: A Deep Dive](https://romanglushach.medium.com/understanding-hexagonal-clean-onion-and-traditional-layered-architectures-a-deep-dive-c0f93b8a1b96)**
 
-    This article by **Roman Glushach** compares several architectural styles. It explains that **[[hexagonal|Hexagonal]]**, **Clean**, and **[[onion|Onion]]** architectures aim to solve the coupling issues of traditional layered architectures by placing the **business logic** at the core of the system. The article details how these approaches use the **[[solid|Dependency Inversion Principle]]** to ensure the application's core remains independent of external components like databases and user interfaces, thereby improving maintainability and testability.
+    This article by **Roman Glushach** compares several architectural styles. It explains that **[[hexagonal|Hexagonal]]**, **Clean**, and **[[onion|Onion]]** architectures aim to solve the coupling issues of traditional layered architectures by placing the **business logic** at the core of the system. The article details how these approaches use the **[[solid|Dependency Inversion Principle]]** to ensure the application's core remains independent of external components like [[software-architecture/databases/|databases]] and user interfaces, thereby improving maintainability and testability.
 
 2.  **[N-Tier vs Hexagonal vs Onion vs Clean Architecture in Very Simple Terms](https://medium.com/@dorinbaba/n-tier-vs-hexagonal-vs-onion-vs-clean-architecture-in-very-simple-terms-68f66c4dba22)**
 

@@ -100,7 +100,7 @@ export class InMemoryUserRepository implements IUserRepository {
 }
 ```
 
-A client component depends only on the `IUserRepository` interface, not a concrete class. This allows us to easily swap the real database for a mock one during testing, or change the database technology later.
+A client component depends only on the `IUserRepository` interface, not a concrete class. This allows us to easily swap the real [[software-architecture/databases/|database]] for a mock one during testing, or change the [[software-architecture/databases/|database]] technology later.
 
 ```typescript
 // Client depends only on the interface
@@ -143,7 +143,7 @@ function Button({ onClick, children, variant = 'primary' }) {
 ```
 
 ### 6. Testability
-Each component should be testable in isolation. High cohesion and low coupling are prerequisites for testability. By depending on interfaces (abstractions) rather than concrete implementations, we can easily replace real dependencies with "mocks" or "stubs" in our tests. This allows us to test a component's logic without needing to run its real dependencies (like a database or a network service).
+Each component should be testable in isolation. High cohesion and low coupling are prerequisites for testability. By depending on interfaces (abstractions) rather than concrete implementations, we can easily replace real dependencies with "mocks" or "stubs" in our tests. This allows us to test a component's logic without needing to run its real dependencies (like a [[software-architecture/databases/|database]] or a network service).
 
 **Code Example (Testing `UserService` with Jest):**
 

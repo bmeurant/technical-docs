@@ -97,7 +97,7 @@ Explicit dependency declaration, including locked versions, simplifies the setup
 
 **Store config in the environment.**
 
-Configuration is anything that varies between deploys (e.g., development, staging, production). This includes database credentials, API keys for external services, and other environment-specific settings.
+Configuration is anything that varies between deploys (e.g., development, staging, production). This includes [[software-architecture/databases/|database]] credentials, API keys for external services, and other environment-specific settings.
 
 A twelve-factor app stores this configuration in environment variables. This provides a clean separation between the code and the configuration.
 
@@ -108,7 +108,7 @@ Separating config from code has several key benefits:
 3.  **Flexibility**: Configuration can be updated easily without needing to rebuild or redeploy the application.
 
 ### Examples
-Instead of hardcoding a database connection string, the application retrieves it from an environment variable:
+Instead of hardcoding a [[software-architecture/databases/|database]] connection string, the application retrieves it from an environment variable:
 ```python
 # Python example
 import os
@@ -129,7 +129,7 @@ The recommended approach combines two strategies:
 
 1.  **Config files for defaults**: A configuration file (`application.yml`, `appsettings.json`) is included in the build. It contains non-sensitive default values that do not change between environments (e.g., thread pool settings, default routes).
 
-2.  **Overrides via the environment**: Any configuration that varies between environments (database credentials, API keys) or is sensitive (secrets) must be supplied via the environment, thereby overriding the default values. Modern frameworks like Spring Boot or ASP.NET Core handle this priority natively.
+2.  **Overrides via the environment**: Any configuration that varies between environments ([[software-architecture/databases/|database]] credentials, API keys) or is sensitive (secrets) must be supplied via the environment, thereby overriding the default values. Modern frameworks like Spring Boot or ASP.NET Core handle this priority natively.
 
 This approach is made possible and secure by ecosystem tools that externalize configuration and secret management:
 
@@ -147,7 +147,7 @@ By using these tools, the build artifact remains environment-agnostic, and secre
 
 **Treat backing services as attached resources.**
 
-A backing service is any service the app consumes over the network as part of its normal operation. This includes databases (e.g., PostgreSQL, MongoDB), [[message-queue|message queues]] (e.g., RabbitMQ), caching systems (e.g., Redis), or even external SaaS products (e.g., Stripe, Datadog).
+A backing service is any service the app consumes over the network as part of its normal operation. This includes [[software-architecture/databases/|databases]] (e.g., PostgreSQL, MongoDB), [[message-queue|message queues]] (e.g., RabbitMQ), caching systems (e.g., Redis), or even external SaaS products (e.g., Stripe, Datadog).
 
 The twelve-factor app treats these services as attached resources, making no distinction between local and third-party services. To the app, they are all accessed via a URL or other locator/credentials stored in the [[#III. Config|config]].
 
@@ -176,12 +176,12 @@ The diagram shows the application process consuming a variety of backing service
 This principle promotes [[cohesion-coupling|loose coupling]] and architectural flexibility. By treating all backing services as interchangeable resources, the application becomes decoupled from their specific implementations.
 
 This has powerful implications:
-*   **Interchangeability**: A local PostgreSQL database used in development can be swapped with a managed cloud database in production simply by changing a single environment variable.
-*   **Architectural Evolution**: The architecture can evolve over time without code changes. For example, if a part of the application requires a dedicated, high-performance database, a new database can be provisioned, and the relevant application processes can be pointed to it just by changing their configuration.
+*   **Interchangeability**: A local [[rdbms|PostgreSQL database]] used in development can be swapped with a managed cloud [[software-architecture/databases/|database]] in production simply by changing a single environment variable.
+*   **Architectural Evolution**: The architecture can evolve over time without code changes. For example, if a part of the application requires a dedicated, high-performance database, a new [[software-architecture/databases/|database]] can be provisioned, and the relevant application processes can be pointed to it just by changing their configuration.
 *   **Resilience**: If a backing service fails, the application can be reconfigured to use a replica or a different service.
 
 ### Examples
-*   Swapping a local MySQL database for Amazon RDS.
+*   Swapping a local [[rdbms|SQL database]]  for Amazon RDS.
 *   Replacing a local SMTP server with a third-party service like SendGrid.
 *   Switching from a local Redis cache to a managed ElastiCache instance.
 
@@ -229,7 +229,7 @@ This strict separation ensures that releases are consistent, reproducible, and a
 
 **Execute the app as one or more stateless, share-nothing processes.**
 
-The app is executed as one or more stateless and share-nothing processes. This means that any data that needs to persist must be stored in a stateful backing service (like a database or a distributed cache). Processes should not share memory or disk space, as this would make them stateful and difficult to scale.
+The app is executed as one or more stateless and share-nothing processes. This means that any data that needs to persist must be stored in a stateful backing service (like a [[software-architecture/databases/|database]] or a distributed cache). Processes should not share memory or disk space, as this would make them stateful and difficult to scale.
 
 ```mermaid
 graph TD
@@ -451,13 +451,13 @@ graph TD
 *This diagram shows how containerization helps achieve parity by using the exact same stack in both development and production.*
 
 ### Rationale
-Historically, the gaps between development and production were large, leading to painful and risky deployments. Even small differences in the stack—like a minor version mismatch in a database or a dependency—can cause subtle bugs that only appear in production. The goal of dev/prod parity is to make the deployment process predictable, reliable, and continuous.
+Historically, the gaps between development and production were large, leading to painful and risky deployments. Even small differences in the stack—like a minor version mismatch in a [[software-architecture/databases/|database]] or a dependency—can cause subtle bugs that only appear in production. The goal of dev/prod parity is to make the deployment process predictable, reliable, and continuous.
 
 Modern tools like Docker have made achieving parity much easier. By packaging the application and its dependencies into a container, developers can run an environment locally that is identical to the one in production.
 
 ### Examples
 *   Using containerization (like Docker) to create local development environments that closely mirror the production environment.
-*   Using the same backing services (e.g., PostgreSQL in all environments, not SQLite in dev).
+*   Using the same backing services (e.g., [[rdbms|PostgreSQL]] in all environments, not SQLite in dev).
 *   Ensuring developers have access to production logs and monitoring tools to understand how their code behaves in the real world.
 
 ## XI. Logs
@@ -507,7 +507,7 @@ This approach decouples the application from the log management infrastructure. 
 
 **Run admin/management tasks as one-off processes.**
 
-Administrative tasks (e.g., database migrations, running a console/REPL, executing one-off scripts) should be run as one-off processes. These processes must execute in an identical environment to the regular application processes, using the same codebase, config, and dependency isolation.
+Administrative tasks (e.g., [[software-architecture/databases/|database]] migrations, running a console/REPL, executing one-off scripts) should be run as one-off processes. These processes must execute in an identical environment to the regular application processes, using the same codebase, config, and dependency isolation.
 
 ```mermaid
 graph TD
@@ -539,9 +539,9 @@ This diagram shows that a single, identical release is the source for all proces
 This ensures that administrative tasks are executed against the correct version of the code and configuration, preventing synchronization issues. Running a migration from a developer's local machine, which might have slightly different code or dependencies, can lead to subtle and hard-to-diagnose data corruption. By treating admin tasks as first-class citizens launched from the application's releases, you guarantee consistency and reliability.
 
 ### Examples
-*   **Java**: Executing database migrations using a build tool plugin like `mvn flyway:migrate`.
-*   **JavaScript/Node.js**: Running database migrations with a library like `knex`: `npx knex migrate:latest`.
-*   **Python/Django**: Running database migrations using `python manage.py migrate` or opening a shell with `python manage.py shell`.
+*   **Java**: Executing [[software-architecture/databases/|database]] migrations using a build tool plugin like `mvn flyway:migrate`.
+*   **JavaScript/Node.js**: Running [[software-architecture/databases/|database]] migrations with a library like `knex`: `npx knex migrate:latest`.
+*   **Python/Django**: Running [[software-architecture/databases/|database]] migrations using `python manage.py migrate` or opening a shell with `python manage.py shell`.
 
 ---
 

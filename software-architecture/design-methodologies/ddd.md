@@ -233,7 +233,7 @@ These two patterns handle the lifecycle of domain objects, separating the core m
 
 A **[[poeaa#Repository|Repository]]** is a crucial pattern for decoupling the domain model from the persistence layer (e.g., the database). Its main role is to provide the illusion of an in-memory collection of all aggregates of a certain type.
 
-*   **Collection-like Interface:** The repository exposes a simple, intention-revealing interface for accessing aggregates. Common methods include `findById`, `save`, and `findAll`. The client code that uses the repository is not concerned with how the data is stored (e.g., in a SQL database, a NoSQL document, or in memory).
+*   **Collection-like Interface:** The repository exposes a simple, intention-revealing interface for accessing aggregates. Common methods include `findById`, `save`, and `findAll`. The client code that uses the repository is not concerned with how the data is stored (e.g., in a [[rdbms|SQL databases]] , a [[nosql|NoSQL]]  document, or in memory).
 *   **Works with Aggregates:** Repositories are designed to work with Aggregates. You should have one repository per aggregate type. For example, you would have an `OrderRepository` but not an `OrderLineRepository`. You retrieve and save the entire aggregate through its root.
 *   **Dependency Inversion:** The repository *interface* is defined in the domain layer, alongside the aggregate it serves. The concrete *implementation* (e.g., `PostgresOrderRepository`) resides in the infrastructure layer. This is a key application of the [[solid|Dependency Inversion Principle]], ensuring the domain model has no knowledge of the database.
 

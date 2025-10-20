@@ -13,6 +13,7 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [Architectural Patterns](./architectural-patterns/)
 * [Architectural Principles](./architectural-principles/)
 * [Architectural Styles](./architectural-styles/)
+* [Databases](./databases/)
 * [Design Patterns](./design-patterns/)
 * [Design Methodologies](./design-methodologies/)
 * [Design Principles](./design-principles/)
