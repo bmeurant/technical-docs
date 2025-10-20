@@ -8,6 +8,7 @@ see [index](./index.md)
 * [[broker|Broker]]
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
+* [[service-discovery|Service Discovery]]
 
 ## Scalability & Resilience
 

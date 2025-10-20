@@ -20,5 +20,6 @@ This section covers a collection of reusable patterns for solving common problem
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
 * [[saga|Saga]]
+* [[service-discovery|Service Discovery]]
 * [[service-mesh|Service Mesh]]
 * [[strangler-fig|Strangler Fig]]
