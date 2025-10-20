@@ -25,7 +25,7 @@ There are two primary models for asynchronous messaging, each serving a differen
 
 ### High-Level Comparison
 
-| Characteristic | **[[point-to-point-messaging|Point-to-Point (Queue)]]** | **[[publish-subscribe|Publish-Subscribe (Topic / Stream)]]** |
+| Characteristic | **Point-to-Point (Queue)** | **Publish-Subscribe (Topic / Stream)** |
 | :--- | :--- | :--- |
 | **Communication Model** | **One-to-One**. A single message is processed by exactly one consumer. | **One-to-Many**. A single message is broadcast to all interested consumers. |
 | **Consumption Logic** | **Destructive Read**. When a consumer processes a message, it is removed from the queue. | **Non-Destructive Read**. Consumers read from the channel without removing the message. |
