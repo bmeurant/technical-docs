@@ -44,10 +44,49 @@ graph TD
     style NS fill:#ffcccc
 ```
 
-A system is scalable if its performance increases proportionally to the resources added. This can be achieved through two primary methods:
+---
 
-1.  **Vertical Scaling (Scaling Up):** Increasing the resources of a single server (e.g., adding more CPU, RAM, or a faster disk). This is simple but has physical limits and can become very expensive.
-2.  **Horizontal Scaling (Scaling Out):** Adding more servers to the system and distributing the load among them. This is the foundation of modern, large-scale architectures and is virtually limitless.
+## Scalability
+
+A system is scalable if its performance and capacity can be increased to handle a growing load. This is achieved by adding more resources, which can be done in two primary ways:
+
+```mermaid
+graph TD
+    subgraph "Vertical Scaling (Scaling Up)"
+        direction TB
+        Server1[Server<br>8 CPU, 16GB RAM] --> Server2[Server<br>16 CPU, 32GB RAM]
+    end
+
+    subgraph "Horizontal Scaling (Scaling Out)"
+        direction LR
+        Cluster1[Server 1] --> Cluster2[Server 1, Server 2, Server 3]
+    end
+```
+*Description: Vertical scaling makes a single server more powerful. Horizontal scaling adds more servers to a pool.*
+
+### 1. Vertical Scaling (Scaling Up)
+
+This method involves increasing the resources of a single server, such as adding more CPU cores, RAM, or faster storage (SSD).
+
+-   **Analogy:** Swapping the engine in your car for a more powerful one.
+-   **Pros:**
+    -   **Simplicity:** It's often the easiest way to improve performance, as it doesn't require changes to the application code.
+-   **Cons:**
+    -   **Hard Limits:** There is a physical limit to how much you can upgrade a single machine.
+    -   **High Cost:** High-end hardware is exponentially more expensive.
+    -   **Single Point of Failure:** The entire system still relies on a single machine, offering no improved availability.
+
+### 2. Horizontal Scaling (Scaling Out)
+
+This method involves adding more servers to a resource pool and distributing the load among them, typically using a **[[load-balancing|load balancer]]**.
+
+-   **Analogy:** Adding more cars to a delivery fleet instead of trying to build one giant truck.
+-   **Pros:**
+    -   **Virtually Limitless:** You can keep adding more machines to handle increased load.
+    -   **Cost-Effective:** It's often cheaper to provision many standard machines than one high-end machine.
+    -   **High Availability:** If one server fails, the load balancer can redirect traffic to the remaining healthy servers, making the system resilient.
+-   **Cons:**
+    -   **Architectural Complexity:** The application must be designed to be scalable, often requiring it to be stateless. It also necessitates additional components like load balancers.
 
 ---
 
