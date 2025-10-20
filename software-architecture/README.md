@@ -18,6 +18,8 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [Design Principles](./design-principles/)
 * [Programming Paradigms](./programming-paradigms/)
 * [Clean code](./clean-code/)
+* [System-Design Fundamentals](./system-design-fundamentals/)
+* [System-Design Patterns](./system-design-patterns/)
 
 ---
 

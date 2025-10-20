@@ -16,5 +16,6 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [[software-architecture/architectural-styles/|Architectural Styles]]
 * [[clean-code|Clean Code]]
 * [[software-architecture/design-patterns/|Design Patterns]]
+* [[software-architecture/system-design-patterns/|System Design Patterns]]
 * [[software-architecture/design-principles/|Design Principles]]
 * [[software-architecture/programming-paradigms/|Programming Paradigms]]
