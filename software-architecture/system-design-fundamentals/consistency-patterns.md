@@ -114,7 +114,7 @@ sequenceDiagram
 *   **Examples:**
     *   **Technologies:** NoSQL databases like Cassandra, Riak, and Amazon DynamoDB are built on this principle. [[dns|DNS]] (Domain Name System) is a classic example.
     *   **Architectures:** [[event-driven|Event-Driven Architectures]] and systems using asynchronous replication.
-    *   **Use Cases:** Social media feeds (likes, comments), content delivery networks (CDNs), and other systems where high availability is more critical than immediate, perfect consistency.
+    *   **Use Cases:** Social media feeds (likes, comments), [[cdn|content delivery networks (CDNs)]], and other systems where high availability is more critical than immediate, perfect consistency.
 
 ---
 
