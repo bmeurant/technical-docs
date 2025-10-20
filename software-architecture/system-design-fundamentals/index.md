@@ -108,7 +108,5 @@ The trade-off becomes critical during a **network partition**—a situation wher
 
 ## Other Topics
 
-* [[availability-patterns|Availability Patterns]]
 * [[cap|CAP Theorem]]
-* [[consistency-patterns|Consistency Patterns]]
 * [[dns|Domain Name System (DNS)]]
