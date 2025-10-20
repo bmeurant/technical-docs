@@ -98,4 +98,4 @@ This architectural style, while old, remains the foundation for the majority of 
 
 2.  **[Client-Server Architecture: The Backbone of Modern Software](https://www.youtube.com/watch?v=YPlU0vt5KYw)**
     
-    This video is an excellent deep dive that doesn't just stick to the basics but covers aspects like **DNS lookup**, the **TCP handshake**, and how modern architectures like [[microservices|Microservices]] are derived from it. It's ideal for an experienced audience.
+    This video is an excellent deep dive that doesn't just stick to the basics but covers aspects like **[[dns|DNS]] lookup**, the **TCP handshake**, and how modern architectures like [[microservices|Microservices]] are derived from it. It's ideal for an experienced audience.

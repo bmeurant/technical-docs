@@ -112,7 +112,7 @@ sequenceDiagram
 *   **Pros:** High availability and very low write latency.
 *   **Cons:** More complex for developers, who must account for reading stale data. Can lead to a confusing user experience if not handled carefully.
 *   **Examples:**
-    *   **Technologies:** NoSQL databases like Cassandra, Riak, and Amazon DynamoDB are built on this principle. DNS (Domain Name System) is a classic example.
+    *   **Technologies:** NoSQL databases like Cassandra, Riak, and Amazon DynamoDB are built on this principle. [[dns|DNS]] (Domain Name System) is a classic example.
     *   **Architectures:** [[event-driven|Event-Driven Architectures]] and systems using asynchronous replication.
     *   **Use Cases:** Social media feeds (likes, comments), content delivery networks (CDNs), and other systems where high availability is more critical than immediate, perfect consistency.
 
