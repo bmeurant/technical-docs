@@ -2,4 +2,5 @@
 
 see [index](./index.md)
 
-* **[rpc](./rpc.md)**
+* **[RPC](./rpc.md)**
+* **[REST](./rest.md)**

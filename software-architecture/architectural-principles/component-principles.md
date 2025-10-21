@@ -69,7 +69,7 @@ export interface IUserRepository {
 }
 ```
 
-Now, we can create multiple implementations for this interface. One might use a SQL database, another might be for testing.
+Now, we can create multiple implementations for this interface. One might use a [[rdbms|SQL]] database, another might be for testing.
 
 ```typescript
 // Implementation 1: PostgreSQL
