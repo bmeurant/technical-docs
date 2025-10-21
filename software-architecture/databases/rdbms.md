@@ -13,7 +13,7 @@ date: 2025-10-20
 
 Relational Database Management Systems (RDBMS) are the traditional workhorses of the [[software-architecture/databases/|database]] world. Based on the relational model, they store data in structured tables composed of rows and columns and use Structured Query Language (SQL) for data manipulation and retrieval.
 
-While they are known for their robustness, scaling a single RDBMS to handle massive traffic presents significant challenges. This page covers their core concepts and the primary patterns used to improve their performance, scalability, and availability.
+While they are known for their robustness, scaling a single RDBMS to handle massive traffic presents significant challenges. These challenges led to the development of alternative models, collectively known as [[nosql|NoSQL Databases]]. This page covers the core concepts of RDBMS and the primary patterns used to improve their performance, scalability, and availability.
 
 ---
 
