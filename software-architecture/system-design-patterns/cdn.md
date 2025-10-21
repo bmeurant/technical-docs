@@ -11,7 +11,7 @@ date: 2025-10-20
 
 # Content Delivery Network (CDN)
 
-A **Content Delivery Network (CDN)** is a pattern that uses a globally distributed network of proxy servers to cache and serve content from locations that are physically closer to the end-user. By reducing the physical distance between the user and the content, CDNs dramatically decrease [[system-design-fundamentals|latency]] and improve application performance.
+A **Content Delivery Network (CDN)** is a pattern that uses a globally distributed network of proxy servers to [[caching|cache]] and serve content from locations that are physically closer to the end-user. By reducing the physical distance between the user and the content, CDNs dramatically decrease [[system-design-fundamentals|latency]] and improve application performance.
 
 Typically, CDNs are used for serving static assets that don't change often, such as images, videos, CSS stylesheets, and JavaScript libraries. However, modern CDNs can also cache dynamic content and even run code at the edge.
 
@@ -35,7 +35,7 @@ graph TD
 
 1.  **Reduced Latency:** The primary benefit. By caching content in multiple Points of Presence (PoPs) around the world, a CDN ensures that a user's request travels a much shorter physical distance, significantly reducing the round-trip time (RTT).
 
-2.  **Reduced Origin Server Load:** By serving cached content from the edge, a CDN absorbs a significant portion of traffic that would otherwise hit the origin server. This frees up the origin server's resources (CPU, memory, bandwidth) to focus on its core tasks, like processing dynamic requests and business logic.
+2.  **Reduced Origin Server Load:** By serving [[caching|cached]] content from the edge, a CDN absorbs a significant portion of traffic that would otherwise hit the origin server. This frees up the origin server's resources (CPU, memory, bandwidth) to focus on its core tasks, like processing dynamic requests and business logic.
 
 3.  **Increased Availability:** The distributed nature of a CDN provides inherent redundancy. If one edge server is down, traffic can be automatically rerouted to another nearby server. Some CDNs can even serve stale content from the cache if the origin server is unavailable, keeping the site online.
 
@@ -81,6 +81,7 @@ sequenceDiagram
 -   **Pros:** Easy to set up, and storage on the CDN is minimized as only requested content is cached.
 -   **Cons:** The first request for any new asset is slower. Can result in redundant traffic if content expires and is re-pulled before it has actually changed.
 -   **Best for:** Sites with a large volume of assets and high traffic, where it's impractical to push all content to the CDN proactively.
+This strategy is conceptually similar to the [[caching#1-cache-aside-lazy-loading|Cache-Aside (Lazy Loading)]] pattern used in application-level caching.
 
 ### 2. Push CDN
 

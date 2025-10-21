@@ -176,14 +176,14 @@ The diagram shows the application process consuming a variety of backing service
 This principle promotes [[cohesion-coupling|loose coupling]] and architectural flexibility. By treating all backing services as interchangeable resources, the application becomes decoupled from their specific implementations.
 
 This has powerful implications:
-*   **Interchangeability**: A local [[rdbms|PostgreSQL database]] used in development can be swapped with a managed cloud [[software-architecture/databases/|database]] in production simply by changing a single environment variable.
+*   **Interchangeability**: A local [[rdbms|SQL database]] used in development can be swapped with a managed cloud [[software-architecture/databases/|database]] in production simply by changing a single environment variable.
 *   **Architectural Evolution**: The architecture can evolve over time without code changes. For example, if a part of the application requires a dedicated, high-performance database, a new [[software-architecture/databases/|database]] can be provisioned, and the relevant application processes can be pointed to it just by changing their configuration.
 *   **Resilience**: If a backing service fails, the application can be reconfigured to use a replica or a different service.
 
 ### Examples
-*   Swapping a local [[rdbms|SQL database]]  for Amazon RDS.
+*   Swapping a local [[rdbms|MySQL database]] for Amazon RDS.
 *   Replacing a local SMTP server with a third-party service like SendGrid.
-*   Switching from a local Redis cache to a managed ElastiCache instance.
+*   Switching from a local Redis [[caching|cache]] to a managed ElastiCache instance.
 
 ## V. Build, Release, Run
 
@@ -229,7 +229,7 @@ This strict separation ensures that releases are consistent, reproducible, and a
 
 **Execute the app as one or more stateless, share-nothing processes.**
 
-The app is executed as one or more stateless and share-nothing processes. This means that any data that needs to persist must be stored in a stateful backing service (like a [[software-architecture/databases/|database]] or a distributed cache). Processes should not share memory or disk space, as this would make them stateful and difficult to scale.
+The app is executed as one or more stateless and share-nothing processes. This means that any data that needs to persist must be stored in a stateful backing service (like a [[software-architecture/databases/|database]] or a distributed [[caching|cache]]). Processes should not share memory or disk space, as this would make them stateful and difficult to scale.
 
 ```mermaid
 graph TD

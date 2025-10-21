@@ -66,7 +66,7 @@ A common 4-tier model further separates the business logic from the data access 
 - **Tier 4:** Data Store ([[software-architecture/databases/|Database]] Servers)
 
 #### Example: 5-Tier Architecture
-A high-performance system might introduce tiers for caching and asynchronous messaging.
+A high-performance system might introduce tiers for [[caching]] and asynchronous messaging.
 
 ```mermaid
 graph TD

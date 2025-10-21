@@ -225,7 +225,8 @@ These patterns deal with how the application communicates with the [[databases|d
     
     The sequence diagram illustrates how the Identity Map prevents redundant [[databases|database]] calls. When an object is requested, the map is checked first. If the object is not in the map, it is loaded from the [[databases|database]] via the Data Mapper and then stored in the map for future requests.
     
-    *   **Key Characteristics**:    *   **Caching**: Acts as a session-level cache.
+*   **Key Characteristics**:    
+    *   **Caching**: Acts as a session-level [[caching|cache]].
     *   **Identity Management**: Guarantees a one-to-one correspondence between a [[databases|database]] row and an in-memory object within a transaction.
     *   **Performance**: Avoids redundant [[databases|database]] queries.
 *   **Applicability**: Used within frameworks that manage [[databases|database]] sessions, such as ORMs.
@@ -346,8 +347,8 @@ graph TD
 
 ### **Object-Relational Mapper (ORM)**
 
-*   **Problem**: How to automate the tedious and error-prone task of writing data mapping code between an object-oriented domain model and a relational [[rdbms|database]]?
-*   **Synopsis**: An **ORM** is a tool or framework that automates the transfer of data between an object model and a relational [[rdbms|database]]. It acts as a generic **[[#data-mapper|Data Mapper]]**, handling object creation, updates, and queries, and translating them into SQL.
+*   **Problem**: How to automate the tedious and error-prone task of writing data mapping code between an object-oriented domain model and a [[rdbms|relational database]]?
+*   **Synopsis**: An **ORM** is a tool or framework that automates the transfer of data between an object model and a [[rdbms|relational database]]. It acts as a generic **[[#data-mapper|Data Mapper]]**, handling object creation, updates, and queries, and translating them into SQL.
 
     ```mermaid
     graph TD
