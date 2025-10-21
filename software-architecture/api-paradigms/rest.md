@@ -123,8 +123,19 @@ For example, instead of an endpoint like `/users/{id}/send-password-reset`, a RE
 
 ### Articles
 
-1.  **[Roy Fielding's Dissertation: Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)**
+1.  **[RESTful API Principles](https://restfulapi.net/)**
+    A comprehensive resource that covers the principles, constraints, and best practices of building RESTful APIs.
+
+2.  **[Roy Fielding's Dissertation: Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)**
     The original source where REST was defined. A must-read for a deep understanding of the principles.
 
-2.  **[What is REST - Codecademy](https://www.codecademy.com/article/what-is-rest)**
+3.  **[What is REST - Codecademy](https://www.codecademy.com/article/what-is-rest)**
     A beginner-friendly introduction to the concepts of REST.
+
+### Videos
+
+1.  **[What is a REST API?](https://www.youtube.com/watch?v=-mN3VyJuCjM)**
+    A video explaining the fundamentals of REST APIs, how they work, and why they are so widely used for web services.
+
+2.  **[REST API Crash Course](https://www.youtube.com/watch?v=lsMQRaeKNDk)**
+    A crash course for beginners on what REST APIs are and how to use them.
