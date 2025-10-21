@@ -71,6 +71,7 @@ type Post {
   author: User
 }
 ```
+*Description: This SDL defines the structure of our simple API. It has a `Query` type for fetching data and a `Mutation` type for writing data. The `User` and `Post` types define the shape of the resources.*
 
 ## Queries and Mutations
 
@@ -89,6 +90,7 @@ query {
   }
 }
 ```
+*Description: The client asks for a specific user (with id "123") and, within that user, requests only the `name` and the `title` of their posts. The structure of the query directly maps to the structure of the JSON response.*
 
 **Example Response (JSON):**
 ```json
@@ -118,6 +120,7 @@ mutation {
   }
 }
 ```
+*Description: The client uses the `mutation` keyword to call the `createPost` mutation, passing the required arguments. It also specifies which fields of the newly created post (`id` and `title`) it wants to receive back in the response.*
 
 ## Advantages of GraphQL
 
