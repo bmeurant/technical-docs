@@ -42,6 +42,16 @@ The power of REST lies in its uniform interface, which dictates how clients inte
 
 -   **Hypermedia as the Engine of Application State (HATEOAS)**: This is the most mature, yet often overlooked, aspect of REST. It means that a client should be able to navigate the API by following links provided in the server's responses. The server's response contains not just the data, but also the possible next actions (as links), decoupling the client from hardcoded URIs.
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    Client->>Server: GET /users/123
+    Server-->>Client: 200 OK { "id": 123, "name": "John Doe", "_links": { "self": { "href": "/users/123" },    "orders": { "href": "/users/123/orders" }}}
+    Note over Client, Server: Client can now discover the user's orders via the _links section.
+```
+*Description: A client requests a user resource. The server responds with the user's data and HATEOAS links, allowing the client to discover related resources dynamically.*
+
 ### Anatomy of a RESTful Request
 
 A key part of the uniform interface is the consistent structure of messages. A standard HTTP request, as used by REST, is composed of four main parts:
@@ -82,16 +92,6 @@ Query parameters are used to filter, sort, and paginate collections of resources
 -   **Sorting**: `GET /users?sort=-created_at` (descending order)
 -   **Pagination**: `GET /users?page=2&limit=50`
 -   **Searching**: `GET /users?q=john`
-
-```mermaid
-sequenceDiagram
-    participant Client
-    participant Server
-    Client->>Server: GET /users/123
-    Server-->>Client: 200 OK { "id": 123, "name": "John Doe", "_links": { "self": { "href": "/users/123" },    "orders": { "href": "/users/123/orders" }}}
-    Note over Client, Server: Client can now discover the user's orders via the _links section.
-```
-*Description: A client requests a user resource. The server responds with the user's data and HATEOAS links, allowing the client to discover related resources dynamically.*
 
 ## The Challenge of Resource-Oriented Design
 
