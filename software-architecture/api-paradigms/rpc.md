@@ -51,6 +51,7 @@ gRPC is a modern, high-performance, open-source RPC framework developed by Googl
 - **High Performance**: Achieved through binary serialization with Protobuf and multiplexing over HTTP/2, making it significantly faster than text-based protocols like JSON.
 - **Streaming**: Natively supports unary, client-streaming, server-streaming, and bi-directional streaming, enabling more complex and efficient communication patterns.
 - **Strong Typing**: Service contracts defined in `.proto` files generate strongly-typed client and server code, reducing runtime errors and improving developer productivity.
+- **Service Discovery Friendly**: While gRPC itself doesn't provide service discovery, its strong typing and contract-first approach (via `.proto` files) make it highly compatible with external service discovery mechanisms (e.g., Consul, etcd, Kubernetes). This facilitates dynamic lookup and connection to services in a distributed environment.
 - **Language Agnostic**: A wide range of officially supported and community-supported languages.
 
 ### Disadvantages
@@ -63,7 +64,7 @@ gRPC is a modern, high-performance, open-source RPC framework developed by Googl
 At the core of gRPC is the `.proto` file, which defines the services and message types. This file acts as a contract between the client and server.
 
 **Example `user_service.proto`:**
-'''protobuf
+```protobuf
 syntax = "proto3";
 
 service UserService {
@@ -85,7 +86,7 @@ message UserResponse {
 }
 
 message Empty {}
-'''
+```
 From this file, gRPC tools can generate strongly-typed client and server code in various languages.
 
 ### Key Features & Communication Types
