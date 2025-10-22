@@ -85,7 +85,7 @@ graph TD
 
 2.  **[Message Queues: The Backbone of Scalable Systems (Medium)](https://medium.com/@amoljadhav_48655/message-queues-the-backbone-of-scalable-systems-2d015d9fa645)**
 
-    This article emphasizes MQs as the backbone for **scalable** and **reliable** microservices architectures. It explains the core concepts (**Producer**, **Consumer**, **Message**, **Queue**) and the main advantages, particularly **Decoupling** services to allow independent scaling. The text presents common MQ patterns (**Point-to-Point**, **Publish-Subscribe**, **Request-Reply**) and lists popular implementations like **RabbitMQ**, **Apache Kafka**, and **Amazon SQS**, alongside best practices such as ensuring message **Idempotency** and managing **DLQs**.
+    This article emphasizes MQs as the backbone for **scalable** and **reliable** microservices architectures. It explains the core concepts (**Producer**, **Consumer**, **Message**, **Queue**) and the main advantages, particularly **Decoupling** services to allow independent scaling. The text presents common MQ patterns (**Point-to-Point**, **Publish-Subscribe**, **Request-Reply**) and lists popular implementations like **RabbitMQ**, **Apache Kafka**, and **Amazon SQS**, alongside best practices such as ensuring message [[idempotent-operations|Idempotency]] and managing **DLQs**.
 
 ---
 

@@ -663,7 +663,7 @@ In a typical scenario, a Bulkhead might be used to create separate thread pools 
 * **Key Characteristics**:
     * **Transient Fault Handling**: Specifically designed to handle temporary issues like network glitches or short-lived service outages.
     * **Backoff Strategy**: To avoid overwhelming a struggling service, a backoff strategy (e.g., exponential backoff) is used to introduce a delay between retries.
-    * **Idempotency**: The pattern should only be applied to operations that are idempotent, meaning they can be repeated multiple times without changing the outcome.
+    * [[idempotent-operations|Idempotency]]: The pattern should only be applied to operations that are [[idempotent-operations|idempotent]], meaning they can be repeated multiple times without changing the outcome.
     * **Configurable**: The number of retry attempts and the backoff strategy should be configurable.
 * **Applicability**:
     * **Unreliable Network Communications**: When calling services over a network that may experience intermittent connectivity issues.

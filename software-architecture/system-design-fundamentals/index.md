@@ -150,3 +150,4 @@ The trade-off becomes critical during a **network partition**—a situation wher
 * [[cap|CAP Theorem]]
 * [[dns|Domain Name System (DNS)]]
 * [[communication-protocols|Communication Protocols]]
+* [[idempotent-operations|Idempotent Operations]]
