@@ -101,6 +101,19 @@ graph TD
 
 ---
 
+### Message Queues vs. Task Queues
+
+While a [[message-queue]] is a general-purpose tool for asynchronous communication, a **Task Queue** is a specialization focused specifically on running background jobs. Task queue frameworks are often built on top of message [[broker|brokers]] but provide higher-level features tailored for task management.
+
+-   **Message Queue**: A general broker (like RabbitMQ or SQS) that delivers messages. The consumer is responsible for interpreting the message and executing the corresponding function.
+-   **Task Queue**: A framework (like **Celery**) that manages the entire lifecycle of a task. It uses a message broker to handle transport but adds significant features:
+    -   **Scheduling**: Built-in support for periodic and scheduled tasks (e.g., cron jobs).
+    -   **Job Serialization**: Automatically serializes tasks and their arguments.
+    -   **Monitoring & Retries**: Provides tools to inspect task status and configure automatic retries.
+    -   **Language Integration**: Celery, for example, is popular in the Python ecosystem and integrates deeply with its programming model.
+
+In short, you can build a background job system with a simple message queue, but a task queue framework provides a more structured and feature-rich solution out of the box.
+
 ## Returning Results
 
 Since background jobs are asynchronous ("fire and forget"), the calling process does not wait for completion. However, it often needs to know the status or result of the job. Several patterns can be used to handle this.

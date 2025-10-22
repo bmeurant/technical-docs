@@ -4,25 +4,26 @@ see [index](./index.md)
 
 ## Communication & Integration
 
-* [[asynchronous-messaging|Asynchronous Messaging]]
-* [[broker|Broker]]
-* [[message-queue|Message Queue]]
-* [[publish-subscribe|Publish-Subscribe]]
-* [[service-discovery|Service Discovery]]
+* [Asynchronous Messaging](./asynchronous-messaging.md)
+* [Broker](./broker.md)
+* [Message Queue](./message-queue.md)
+* [Publish-Subscribe](./publish-subscribe.md)
+* [Service Discovery](./service-discovery.md)
 
 ## Scalability & Resilience
 
-* [[availability-patterns|Availability Patterns]]
-* [[cdn|Content Delivery Network (CDN)]]
-* [[consistency-patterns|Consistency Patterns]]
-* [[load-balancing|Load Balancing]]
-* [[service-mesh|Service Mesh]]
+* [Availability Patterns](./availability-patterns.md)
+* [Back Pressure](./back-pressure.md)
+* [Content Delivery Network (CDN)](./cdn.md)
+* [Consistency Patterns](./consistency-patterns.md)
+* [Load Balancing](./load-balancing.md)
+* [Service Mesh](./service-mesh.md)
 
 ## Process & Workflow
 
-* [[background-jobs|Background Jobs]]
-* [[saga|Saga]]
+* [Background Jobs](./background-jobs.md)
+* [Saga](./saga.md)
 
 ## Migration
 
-* [[strangler-fig|Strangler Fig]]
+* [Strangler Fig](./strangler-fig.md)

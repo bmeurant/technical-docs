@@ -9,7 +9,7 @@ date: 2025-09-20
 ---
 # Asynchronous Messaging Models: Queues vs. Topics & Streams
 
-Asynchronous messaging is the foundational communication method that enables modern, decoupled distributed systems. It relies on a central **[[broker]]** that acts as an intermediary between message **Producers** and **Consumers**.
+Building upon the general principles of [[asynchronism]], asynchronous messaging is the foundational communication method that enables modern, decoupled distributed systems. It relies on a central **[[broker]]** that acts as an intermediary between message **Producers** and **Consumers**.
 
 This document compares the two fundamental low-level models of asynchronous communication. These models serve as the technical backbone for higher-level architectural styles like **[[message-driven|Message-Driven Architecture]]** and **[[event-driven|Event-Driven Architecture]]**.
 

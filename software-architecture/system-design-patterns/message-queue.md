@@ -67,6 +67,15 @@ graph TD
 
 ---
 
+## Implementations and Characteristics
+
+Different message brokers offer varying guarantees and are suited for different use cases.
+
+*   **Redis**: While primarily an in-memory data store, Redis can be used as a simple, lightweight message broker. However, because it is not designed for durability, messages can be lost if a server fails. It is best suited for transient, low-priority messaging.
+*   **RabbitMQ**: A mature, popular, and feature-rich message broker that implements the AMQP protocol. It offers flexible routing, durability, and reliability but requires managing your own nodes and understanding its protocol.
+*   **Amazon SQS (Simple Queue Service)**: A fully managed, highly scalable service. It can have variable latency and guarantees **at-least-once delivery**, meaning a message might be delivered more than once. This requires consumers to be designed with [[idempotent-operations|idempotency]] in mind.
+*   **Apache Kafka**: More than just a message queue, Kafka is a distributed event store and stream-processing platform. It is designed for high-throughput, persistent, and ordered message streams, making it ideal for log aggregation, real-time analytics, and event sourcing.
+
 ## Related Patterns, Concepts and Variations
 
 *   **[[publish-subscribe|Publish-Subscribe]]:** The other fundamental messaging model, which uses a one-to-many broadcast approach instead of one-to-one.

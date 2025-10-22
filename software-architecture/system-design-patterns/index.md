@@ -12,6 +12,7 @@ This section covers a collection of reusable patterns for solving common problem
 
 * [[asynchronous-messaging|Asynchronous Messaging]]
 * [[availability-patterns|Availability Patterns]]
+* [[back-pressure|Back Pressure]]
 * [[background-jobs|Background Jobs]]
 * [[broker|Broker]]
 * [[cdn|Content Delivery Network (CDN)]]
