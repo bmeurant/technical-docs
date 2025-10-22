@@ -41,7 +41,7 @@ sequenceDiagram
 ### Use Cases
 
 TCP is ideal for applications where data integrity is critical and latency is a secondary concern.
-- **Web Browsing**: [[#HyperText Transfer Protocol (HTTP)|HTTP]] runs on top of TCP to ensure web pages load completely.
+- **Web Browsing**: Historically, and for HTTP/1.x and HTTP/2, [[#HyperText Transfer Protocol (HTTP)|HTTP]] runs on top of TCP to ensure web pages load completely. With HTTP/3, the underlying transport shifts to QUIC/UDP.
 - **Email**: SMTP, POP3, and IMAP use TCP for reliable message delivery.
 - **File Transfer**: FTP and SSH rely on TCP to ensure files are transferred without corruption.
 - **[[software-architecture/databases/|Database Connections]]**: Ensuring that queries and results are transmitted without error.
@@ -110,10 +110,9 @@ _*An operation is **idempotent** if making the same request multiple times produ
 _**A **safe** method is one that does not alter the state of the server._
 
 ### Evolution: HTTP/2 and HTTP/3
-- **HTTP/1.1**: Suffers from head-of-line blocking, where a slow request can block all subsequent requests on the same [[#Transmission Control Protocol (TCP)|TCP]] connection.
-- **HTTP/2**: Introduces multiplexing, allowing multiple requests and responses to be sent concurrently over a single [[#Transmission Control Protocol (TCP)|TCP]] connection. It also adds header compression (HPACK) to reduce overhead.
-- **HTTP/3**: Uses QUIC (Quick UDP Internet Connections), a new transport protocol that runs on top of [[#User Datagram Protocol (UDP)|UDP]]. While UDP itself is unreliable, QUIC re-implements the reliability features of TCP (like acknowledgements and retransmissions) at the application layer. This approach provides the reliability of TCP while avoiding transport-layer head-of-line blocking, as a lost packet only affects the specific stream it belongs to, not the entire connection.
-
+- **HTTP/1.1**: This version, like HTTP/2, relies on [[#Transmission Control Protocol (TCP)|TCP]] for its transport layer. It suffers from head-of-line blocking, where a slow request can block all subsequent requests on the same TCP connection.
+- **HTTP/2**: Also built on [[#Transmission Control Protocol (TCP)|TCP]], HTTP/2 introduces multiplexing, allowing multiple requests and responses to be sent concurrently over a single TCP connection. It also adds header compression (HPACK) to reduce overhead, addressing some of HTTP/1.1's performance limitations while retaining TCP's reliability.
+- **HTTP/3**: This is a significant evolution as it fundamentally changes the transport layer. HTTP/3 uses QUIC (Quick UDP Internet Connections), a new transport protocol that runs on top of [[#User Datagram Protocol (UDP)|UDP]]. While UDP itself is unreliable, QUIC re-implements the reliability features of TCP (like acknowledgements and retransmissions) at the application layer. This approach provides the reliability of TCP while avoiding transport-layer head-of-line blocking, as a lost packet only affects the specific stream it belongs to, not the entire connection, leading to improved performance and reduced latency, especially on unreliable networks.
 ## Resources & Links
 
 The following resources provide more detailed information on the communication protocols discussed in this document.
