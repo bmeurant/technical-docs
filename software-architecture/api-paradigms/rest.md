@@ -20,7 +20,7 @@ For an architecture to be truly RESTful, it must adhere to six fundamental const
 
 2.  **Statelessness**: Every request from a client to the server must be self-contained. The server must not store any client context or session state between requests. All necessary information to process the request (like authentication tokens or versioning information) must be provided by the client. This constraint is a key enabler for scalability, as any server instance can handle any client request.
 
-3.  **Cacheability**: To improve performance and reduce network traffic, responses must explicitly define themselves as cacheable or non-cacheable. This allows clients and intermediaries (like CDNs or proxies) to store and reuse responses, avoiding redundant requests to the server. This is typically managed via [[communication-protocols#HTTP Message Structure|HTTP headers]] like `Cache-Control`. See [[caching]] for more details.
+3.  **[[caching|Cacheability]]**: To improve performance and reduce network traffic, responses must explicitly define themselves as cacheable or non-cacheable. This allows clients and intermediaries (like CDNs or proxies) to store and reuse responses, avoiding redundant requests to the server. This is typically managed via [[communication-protocols#HTTP Message Structure|HTTP headers]] like `Cache-Control`.
 
 4.  **Layered System**: The architecture can be composed of multiple layers of servers (e.g., proxies, gateways, [[load-balancing|load balancers]]). A client, however, connects to a single endpoint and has no visibility into the underlying layers. This allows for architectural flexibility, such as offloading security or applying load balancing, without affecting the client.
 
@@ -106,11 +106,11 @@ For example, instead of an endpoint like `/users/{id}/send-password-reset`, a RE
 
 ## Advantages of REST
 
-- **Decoupling**: The separation of client and server and the uniform interface allow them to evolve independently.
+- **[[cohesion-coupling|Decoupling]]**: The separation of client and server and the uniform interface allow them to evolve independently.
 - **Scalability**: Statelessness simplifies server design and makes horizontal scaling straightforward.
 - **[[kiss|Simplicity]] & Visibility**: A uniform interface makes the system easier to understand and its interactions visible and transparent.
 - **Leverages Web Standards**: It uses the proven and ubiquitous infrastructure of the web ([[communication-protocols#HyperText Transfer Protocol (HTTP)|HTTP]], URIs, caching).
-- **Cacheability**: Leverages the native caching capabilities of HTTP, allowing responses to be cached by clients and intermediaries, which significantly improves performance and scalability.
+- **[[caching|Cacheability]]**: Leverages the native caching capabilities of HTTP, allowing responses to be cached by clients and intermediaries, which significantly improves performance and scalability.
 
 ## Disadvantages of REST
 
