@@ -57,7 +57,7 @@ sequenceDiagram
 
 ### DNS Caching
 
-To improve performance and reduce load on the DNS hierarchy, query results are cached at various levels (browser, operating system, resolver). The duration for which a record is cached is determined by its **Time-To-Live (TTL)** value, which is set in the DNS record itself.
+To improve performance and reduce load on the DNS hierarchy, query results are [[caching|cached]] at various levels (browser, operating system, resolver). The duration for which a record is cached is determined by its **Time-To-Live (TTL)** value, which is set in the DNS record itself.
 
 ---
 
@@ -123,7 +123,7 @@ DNS-based load balancing has critical limitations that dedicated [[load-balancin
 | **Primary Use** | Global traffic distribution | Balancing load across servers in a cluster |
 
 1.  **No Health Awareness:** A standard DNS server doesn't know if a server at an IP address is healthy. If it returns the IP of a dead server, the user gets an error. A dedicated load balancer constantly runs health checks and instantly removes failed servers from its routing pool.
-2.  **Caching and Slow Propagation:** DNS responses are heavily cached. If you need to take a server out of rotation, the change can take minutes or hours to propagate due to TTL. A dedicated load balancer can react instantly.
+2.  **Caching and Slow Propagation:** DNS responses are heavily [[caching|cached]]. If you need to take a server out of rotation, the change can take minutes or hours to propagate due to TTL. A dedicated load balancer can react instantly.
 3.  **Coarse-Grained Control:** DNS is best for coarse, global routing (e.g., sending European users to the EU datacenter). It is not suited for finely balancing traffic between dozens of servers within that datacenter—that is the job of a dedicated load balancer.
 4.  **No Application-Layer Awareness:** DNS knows nothing about application load, HTTP sessions, or request content. A Layer 7 load balancer can make intelligent routing decisions based on cookies, headers, or URL paths.
 

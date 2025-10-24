@@ -45,7 +45,7 @@ Popular RPC frameworks include **[[#gRPC]]**, **Apache Thrift**, and **Apache Av
 
 ## gRPC
 
-gRPC is a modern, high-performance, open-source RPC framework developed by Google. It uses **Protocol Buffers (Protobuf)** as its interface definition language (IDL) and data serialization format, and it is built on top of [[communication-protocols#Evolution: HTTP/2 and HTTP/3|HTTP/2]].
+gRPC is a modern, high-performance, open-source RPC framework developed by Google. It uses **Protocol Buffers (Protobuf)** as its interface definition language (IDL) and data serialization format, and it is built on top of [[communication-protocols#Evolution: HTTP/2 and HTTP/3|HTTP2]].
 
 ### Advantages
 - **High Performance**: Achieved through binary serialization with Protobuf and multiplexing over HTTP/2, making it significantly faster than text-based protocols like JSON.
@@ -91,7 +91,7 @@ From this file, gRPC tools can generate strongly-typed client and server code in
 
 ### Key Features & Communication Types
 
-gRPC leverages [[communication-protocols#Evolution: HTTP/2 and HTTP/3|HTTP/2]] to support four types of communication:
+gRPC leverages [[communication-protocols#Evolution: HTTP/2 and HTTP/3|HTTP2]] to support four types of communication:
 
 1.  **Unary RPC**: The client sends a single request and gets a single response, just like a traditional RPC call.
 2.  **Server Streaming RPC**: The client sends a single request and gets a stream of messages back from the server.
