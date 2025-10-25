@@ -670,9 +670,9 @@ In a typical scenario, a Bulkhead might be used to create separate thread pools 
     * **Throttled Services**: When a service may temporarily reject requests due to rate limiting.
     * **Database Connections**: When there are transient issues with [[software-architecture/databases/|database]] connections or deadlocks.
 * **Limitations and Challenges**:
-    * **Non-transient failures**: The pattern is not suitable for non-transient (permanent) failures. Retrying a permanent failure will only waste resources.
-    * **Retry Storms**: If not implemented carefully with a backoff strategy, multiple clients retrying at the same time can create a "retry storm" that overwhelms the service.
-    * **Latency**: Retrying an operation adds latency to the overall response time.
+    *   **Non-transient failures**: The pattern is not suitable for non-transient (permanent) failures. Retrying a permanent failure will only waste resources.
+    *   **Retry Storms**: If not implemented carefully with a backoff strategy, multiple clients retrying at the same time can create a "[[performance-antipatterns#Retry Storm|retry storm]]" that overwhelms the service.
+    *   **Latency**: Retrying an operation adds latency to the overall response time.
 
 **Relationship with other patterns**:
 *   **[[#circuit-breaker|Circuit Breaker]]**: The Retry pattern is often used in conjunction with the [[#Circuit Breaker|Circuit Breaker]] pattern. After a certain number of retries, the circuit breaker can trip to prevent further calls to a failing service.

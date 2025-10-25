@@ -9,7 +9,7 @@ date: 2025-10-25
 
 # Performance Antipatterns
 
-Performance antipatterns are common but ineffective solutions to recurring problems that degrade a system's speed, scalability, and efficiency. While they may seem like a straightforward approach initially, they create significant bottlenecks, increase latency, and lead to poor resource utilization. Understanding these antipatterns is crucial for building robust and [[system-design-fundamentals#Performance vs. Scalability|performant]] systems.
+Performance antipatterns are common but ineffective solutions to recurring problems that degrade a system's speed, scalability, and efficiency. While they may seem like a straightforward approach initially, they create significant bottlenecks, increase latency, and lead to poor resource utilization. Understanding these antipatterns is crucial for building robust and [[software-architecture/system-design-fundamentals/index#Performance vs. Scalability|performant]] systems.
 
 These antipatterns often emerge from a misunderstanding of underlying system behaviors, especially in distributed environments. Addressing them typically involves a trade-off, such as increasing code complexity or infrastructure costs to achieve better performance and reliability.
 
@@ -109,7 +109,7 @@ for (Post post : posts) {
 - **Eager Loading:** Use framework features (e.g., `JOIN FETCH` in JPQL, `JOIN` in SQL) to retrieve all required data in a single, efficient query. This directly solves the N+1 problem.
 - **Careful Use of Lazy Loading:** Lazy loading defers fetching related data until it's accessed. While it can be the *cause* of the N+1 problem (as shown in the antipattern example), it is also a powerful tool to *prevent* extraneous fetching of large, rarely-needed data collections. The key is to use it deliberately and not access lazy properties inside a loop. For instance, marking a `user.getLoginHistory()` collection as lazy is efficient if you only need that history 1% of the time.
 - **Projections:** Select only the specific columns or fields you need, rather than entire entities (e.g., `SELECT id, name` instead of `SELECT *`).
-- **DTOs (Data Transfer Objects):** Create specialized objects that only contain the data required for a specific view or API response.
+- **[[poeaa#Data Transfer Object (DTO)|Data Transfer Objects (DTOs)]]:** Create specialized objects that only contain the data required for a specific view or API response.
 
 ```java
 // Solution: Eager Loading with a JOIN FETCH (using JPA/Hibernate)
@@ -183,11 +183,11 @@ While Loom is the future for most, two other patterns exist:
 **Problem:** The database becomes the central bottleneck for the entire system, constantly operating near its resource limits (CPU, I/O, memory). This can be caused by inefficient queries, missing indexes, lock contention, or simply an overwhelming volume of requests.
 
 **Solution:**
-- **Query Optimization:** Analyze and tune slow queries. Use database profiling tools.
-- **Indexing:** Ensure proper indexes are in place for common query patterns.
-- **Read Replicas:** Offload read traffic to one or more read-only copies of the database.
+- **Query Optimization:** Analyze and tune slow queries using tools like `EXPLAIN` to inspect the query plan, as described in [[rdbms#SQL-Tuning]].
+- **Indexing:** Ensure proper [[rdbms#SQL-Tuning|indexes are in place]] for common query patterns.
+- **Read Replicas:** Offload read traffic to one or more read-only copies of the database, a technique known as [[rdbms#1-replication|Replication]].
 - **Connection Pooling:** Reuse database connections to avoid the overhead of establishing them for each request.
-- **Sharding:** Horizontally partition the data across multiple database servers. This is a more complex scaling strategy discussed in [[rdbms]].
+- **Sharding:** For extreme scalability, horizontally partition the data across multiple database servers. This is a more complex scaling strategy also known as [[rdbms#2-partitioning|Horizontal Partitioning]].
 
 ### 7. Monolithic Persistence
 
@@ -234,7 +234,7 @@ sequenceDiagram
 ```
 
 **Solution:**
-- **Exponential Backoff with Jitter:** This is a strategy built upon the fundamental [[posa#Retry|Retry pattern]]. Instead of retrying immediately, clients should wait for an exponentially increasing interval between retries (e.g., 1s, 2s, 4s, 8s). Simply using backoff is not enough, as it can lead to synchronized waves of retries. To prevent this, **jitter** is added. Jitter is a small, random amount of time added to each backoff delay, which "smears" the retry attempts over time and prevents overwhelming the recovering service.
+- **Exponential Backoff with Jitter:** This is a strategy built upon the fundamental [[posa#Retry|Retry pattern]]. Instead of retrying immediately, clients should wait for an exponentially increasing interval between retries (e.g., 1s, 2s, 4s, 8s). Simply using backoff is not enough, as it can lead to synchronized waves of retries. This is prevented by adding a **jitter**: a small, random amount of time to each backoff delay. This "smears" the retry attempts over time and prevents overwhelming the recovering service.
 - **Circuit Breaker:** Implement the [[posa#Circuit Breaker|Circuit Breaker]] pattern. After a certain number of failures, the circuit "opens," and the client fails fast without even attempting to contact the failing service for a period of time, giving it space to recover.
 
 ### 9. Noisy Neighbor
@@ -256,3 +256,15 @@ sequenceDiagram
 - **Server-Side Rendering (SSR) or Static Site Generation (SSG):** For content-heavy sites, render the initial HTML on the server to provide a fast first-paint, instead of sending an empty page that requires extensive client-side rendering.
 - **Pagination/Virtualization:** When displaying large lists, only render the items currently visible in the viewport.
 - **Use a [[cdn|CDN]]:** Serve static assets from a Content Delivery Network to reduce latency.
+
+---
+
+## Resources & links
+
+### Articles
+
+1.  **[What are Performance Anti-Patterns in System Design - GeeksforGeeks](https://www.geeksforgeeks.org/system-design/what-are-performance-anti-patterns-in-system-design/)**
+    An overview of several key performance antipatterns and strategies for identifying and avoiding them during the system design process.
+
+2.  **[Performance antipatterns for cloud applications - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/antipatterns/)**
+    A catalog of common antipatterns encountered in cloud applications, provided by Microsoft's Azure Architecture Center. This was a primary source for this document.

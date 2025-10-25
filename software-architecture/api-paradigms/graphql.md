@@ -131,7 +131,7 @@ mutation {
 
 ## Disadvantages of GraphQL
 
--   **API Complexity**: While simpler for the client, GraphQL shifts a lot of complexity to the server. Implementing a performant GraphQL server with features like batching (e.g., via DataLoader) to solve the N+1 problem requires careful design.
+-   **API Complexity**: While simpler for the client, GraphQL shifts a lot of complexity to the server. Implementing a performant GraphQL server with features like batching (e.g., via DataLoader) to solve the [[performance-antipatterns#Extraneous Fetching|N+1 problem]] requires careful design.
 -   **[[caching|Caching]] Complexity**: Unlike [[rest|REST]], which can leverage standard HTTP caching for different resource URIs, GraphQL typically uses a single endpoint (e.g., `/graphql`). This makes caching on the HTTP layer more difficult, requiring more sophisticated client-side or server-side caching strategies.
 -   **Steeper Learning Curve**: For teams accustomed to the simplicity of REST, adopting GraphQL requires learning a new query language, understanding schemas and resolvers, and a new way of thinking about API design.
 -   **File Uploads**: GraphQL does not have a native specification for file uploads, requiring the use of extensions or multi-part form requests, which can add complexity.
