@@ -24,3 +24,11 @@ This section covers a collection of reusable patterns for solving common problem
 * [[service-discovery|Service Discovery]]
 * [[service-mesh|Service Mesh]]
 * [[strangler-fig|Strangler Fig]]
+
+---
+
+## Antipatterns
+
+While patterns are reusable solutions, antipatterns are common but ineffective responses to problems. Understanding them is key to avoiding pitfalls.
+
+* [[performance-antipatterns|Performance Antipatterns]]

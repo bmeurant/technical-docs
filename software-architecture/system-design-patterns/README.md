@@ -27,3 +27,7 @@ see [index](./index.md)
 ## Migration
 
 * [Strangler Fig](./strangler-fig.md)
+
+## Antipatterns
+
+* [Performance Antipatterns](./performance-antipatterns.md)
