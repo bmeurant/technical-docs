@@ -55,7 +55,7 @@ Even without a CDN, caching plays a vital role via the client's browser. To prev
 
 ### 2. Content Delivery Network (CDN)
 
-Cloud object storage is highly scalable but typically located in a single geographic region. To provide low-latency access to a global user base, the Static Content Hosting pattern is almost always paired with a **`[[cdn]]`**.
+Cloud object storage is highly scalable but typically located in a single geographic region. To provide low-latency access to a global user base, the Static Content Hosting pattern is almost always paired with a **[[cdn|CDN]]**.
 
 In this setup, the object storage acts as the **origin**, and the CDN pulls the content from it, distributing and caching it in dozens or hundreds of edge locations around the world. The user is transparently served by the nearest edge location, dramatically reducing [[software-architecture/system-design-fundamentals/index#Latency vs. Throughput|latency]].
 
