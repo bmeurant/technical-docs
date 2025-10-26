@@ -13,6 +13,28 @@ Performance antipatterns are common but ineffective solutions to recurring probl
 
 These antipatterns often emerge from a misunderstanding of underlying system behaviors, especially in distributed environments. Addressing them typically involves a trade-off, such as increasing code complexity or infrastructure costs to achieve better performance and reliability.
 
+```mermaid
+graph TD
+    A[Performance Antipatterns] --> B(Application & Resource);
+    A --> C(Data & Persistence);
+    A --> D(Communication & I/O);
+
+    B --> B1(Improper Instantiation);
+    B --> B2(Noisy Neighbor);
+    B --> B3(Busy Frontend);
+
+    C --> C1(Monolithic Persistence);
+    C --> C2(Extraneous Fetching);
+    C --> C3(No Caching);
+    C --> C4(Busy Database);
+
+    D --> D1(Chatty I/O);
+    D --> D2(Synchronous I/O);
+    D --> D3(Retry Storm);
+```
+
+## List of Performance Antipatterns
+
 ## List of Performance Antipatterns
 
 ### 1. Improper Instantiation

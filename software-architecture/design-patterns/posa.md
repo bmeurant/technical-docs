@@ -617,7 +617,7 @@ graph TD
     * **Isolation**: Failures are contained within a "bulkhead," preventing them from spreading.
     * **Resource Partitioning**: System resources are divided into pools dedicated to specific components.
     * **Resilience**: The system can withstand partial failures and continue to operate with reduced functionality.
-    * **Predictable Performance**: By limiting the resources a single component can consume, the pattern prevents "noisy neighbors" from degrading the performance of the entire system.
+    * **Predictable Performance**: By limiting the resources a single component can consume, the pattern prevents "[[performance-antipatterns#Noisy Neighbor|noisy neighbors]]" from degrading the performance of the entire system.
 * **Applicability**:
     * **Microservices Architectures**: To isolate individual services and prevent cascading failures.
     * **Multi-tenant Systems**: To ensure that the load from one tenant does not affect others.
