@@ -132,41 +132,11 @@ Historically, instrumentation was often done using vendor-specific agents or lib
 
 The promise of OpenTelemetry is three-fold:
 
-1.  **Vendor-Neutral Instrumentation**: Instrument your code once using the OTel API and SDK. This single instrumentation effort allows you to send telemetry data to *any* OTel-compatible backend, whether it's an open-source tool like Prometheus or Jaeger, or a commercial platform like Datadog or New Relic. You can switch backends without ever changing your application's code.
+1.  **Vendor-Neutral Instrumentation**: Instrument your code once and send telemetry data to *any* OTel-compatible backend (open-source or commercial).
+2.  **Unified Telemetry**: OTel provides a single standard for metrics, traces, and logs, allowing for powerful correlation between them.
+3.  **Automatic Instrumentation**: For many popular frameworks, OTel offers auto-instrumentation libraries that generate valuable telemetry with no manual code changes.
 
-2.  **Unified Telemetry (Metrics, Traces, and Logs)**: OTel aims to be the single standard for generating and collecting the three pillars of observability. This breaks down data silos and allows for powerful correlation between different types of telemetry, for example, jumping from a metric that shows a spike in errors directly to the traces and logs that correspond to those errors.
-
-3.  **Automatic Instrumentation**: For many popular libraries and frameworks (like Express.js, Spring, or ASP.NET Core), the OpenTelemetry community provides auto-instrumentation libraries. These can be enabled with minimal configuration and automatically generate valuable telemetry (like HTTP request latency and error rates) with no manual code changes, offering a huge productivity boost.
-
-**Example: Basic Instrumentation with the OTel API**
-
-The following snippet shows the core developer interaction with the OTel API to create and record a custom metric. It focuses on the instrumentation logic itself, assuming the SDK has been initialized elsewhere in the application.
-
-```javascript
-// Assumes the OTel SDK has been initialized elsewhere in the application.
-import { metrics } from '@opentelemetry/api';
-
-// 1. Get a "Meter" instance for a specific component (e.g., a microservice).
-const meter = metrics.getMeter('my-ecommerce-app');
-
-// 2. Create a counter instrument to track a value that increases over time.
-const checkoutCounter = meter.createCounter('checkouts_total', {
-  description: 'Counts the total number of completed checkouts',
-});
-
-// 3. In the application logic, record a measurement.
-function processCheckout(cart) {
-  // ... business logic ...
-
-  // Increment the counter by 1 and add attributes (dimensions)
-  // to allow for filtering and grouping in the backend.
-  checkoutCounter.add(1, {
-    'payment_method': 'credit_card',
-    'currency': 'USD'
-  });
-}
-```
-This standardized approach ensures that telemetry data is portable and can be consumed by any OTel-compatible backend.
+For a detailed explanation of the standard, its components, and its data models, see the main **[[opentelemetry]]** page.
 
 ### Visualization and Alerts
 
