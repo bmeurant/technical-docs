@@ -124,10 +124,50 @@ spec:
 
 ---
 
+## The Ambassador Pattern: A Specialization
+
+The **Ambassador** pattern is a specialized variant of the Sidecar pattern. While a general-purpose Sidecar can handle many tasks (logging, metrics, etc.), an Ambassador focuses specifically on acting as a proxy for **outbound network requests** from the main application to a remote service.
+
+The application simply communicates with the Ambassador running on `localhost`, and the Ambassador handles the complexities of service discovery, routing, and resilient communication over the network.
+
+```mermaid
+sequenceDiagram
+    participant App as Main Application
+    participant Am as Ambassador Sidecar
+    participant Remote as Remote Service
+
+    App->>Am: Request (e.g., localhost:9000/users)
+    activate Am
+    Note over Am: Handles discovery, retries, mTLS...
+    Am->>Remote: Forward request to actual endpoint
+    activate Remote
+    Remote-->>Am: Response
+    deactivate Remote
+    Am-->>App: Forward response
+    deactivate Am
+```
+*A sequence diagram showing how the Ambassador intercepts a local call from the application and manages the complexity of communicating with a remote service.*
+
+This pattern is particularly useful for legacy applications that are difficult to modify, as it allows their networking capabilities to be extended and modernized without changing their code.
+
+### Common Use Cases
+- **Resilient Communication**: Automatically implement resilience patterns like [[posa#Retry|retries]] and [[posa#Circuit Breaker|circuit breakers]] for all outgoing calls, without polluting the application code.
+- **Service Discovery & Routing**: The Ambassador can find a healthy instance of a remote service and route the request accordingly, shielding the main application from the complexity of a dynamic microservices environment.
+- **Security**: It can secure outgoing traffic by transparently establishing a mutual TLS (mTLS) connection with the remote service.
+- **Monitoring**: It can capture detailed metrics (latency, error rates, throughput) for all outgoing requests, providing crucial observability into external dependencies.
+
+### Benefits & Trade-offs
+
+-   **Benefit: Simplified Application Code**: Moves complex and repetitive network-related code out of the business logic and into a reusable, language-agnostic component.
+-   **Benefit: Language Agnostic**: The resiliency and discovery logic is implemented once in the Ambassador and can be used by any application, regardless of its programming language.
+-   **Trade-off: Latency**: Adds a single, very low-latency network hop (over `localhost`) compared to a direct library call.
+-   **Trade-off: Deployment Complexity**: As with any sidecar, it increases the number of components to deploy and manage for each application instance.
+
+---
+
 ## Related Patterns
 
 -   **[[service-mesh]]**: The Sidecar pattern is the core implementation detail of a Service Mesh. The mesh's data plane is composed of sidecar proxies deployed next to each service.
--   **[[posa#Ambassador|Ambassador]]**: The Ambassador pattern is a specialized type of Sidecar. While a general Sidecar can augment an application in many ways, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
 -   **[[posa#Proxy|Proxy]]**: The sidecar itself is often implemented as a Proxy, as it intercepts and manages communication on behalf of the main application.
 
 ---
@@ -141,6 +181,9 @@ spec:
 
 2.  **[Sidecar Design Pattern for Microservices - GeeksforGeeks](https://www.geeksforgeeks.org/system-design/sidecar-design-pattern-for-microservices/)**
     A clear article explaining how the Sidecar pattern is used in microservice architectures to handle auxiliary tasks like logging, monitoring, and security.
+
+3.  **[Ambassador pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/ambassador)**
+    The official documentation for the Ambassador pattern, explaining its role as an out-of-process proxy for client connectivity tasks.
 
 ### Videos
 
