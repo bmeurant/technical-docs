@@ -12,56 +12,11 @@ date: 2025-10-19
 
 # Availability Patterns
 
-Availability is a measure of a system's uptime and its ability to respond to requests. In distributed systems, achieving high availability means designing a system that is resilient to failures, such as server crashes, network partitions, or software bugs.
+Availability is a measure of a system's uptime and its ability to respond to requests. For a deeper dive into how availability is measured and calculated, see the fundamental concept of [[availability]].
+
+In distributed systems, achieving high availability means designing a system that is resilient to failures, such as server crashes, network partitions, or software bugs.
 
 The core strategy for high availability is **redundancy**—eliminating single points of failure by having more than one of everything. Availability patterns are practical techniques for implementing redundancy for both services and data. These patterns are the building blocks for creating AP (Available & Partition-Tolerant) systems, as described in the [[cap|CAP Theorem]].
-
----
-
-## Availability in Numbers (The Nines)
-
-Availability is commonly expressed as a percentage of uptime over a period (usually a year), often referred to as "the nines."
-
-| Availability % | "The Nines" | Allowed Downtime per Year | per Month   | per Week   | per Day   |
-| :------------- | :---------- | :------------------------ | :---------- | :--------- | :-------- |
-| 99%            | 2 nines     | 3 days 15h 39m 30s        | 7h 18m 17s  | 1h 40m 48s | 14m 24s   |
-| 99.9%          | 3 nines     | 8h 45m 57s                | 43m 50s     | 10m 4.8s   | 1m 26s    |
-| 99.99%         | 4 nines     | 52m 36s                   | 4m 23s      | 1m 0.48s   | 8.6s      |
-| 99.999%        | 5 nines     | 5m 16s                    | 26s         | 6s         | 0.86s     |
-
-### Calculating System Availability
-
-Understanding how component availability affects the total system availability is crucial.
-
-*   **In Sequence:** If components are chained sequentially (A calls B), the total availability is the product of their individual availabilities. The system is only up if *all* components are up.
-    *   `A_total = A_component1 * A_component2 * ...`
-
-*   **In Parallel:** If components are redundant and in parallel (e.g., multiple servers behind a [[load-balancing|load balancer]]), the total availability is calculated based on the probability of all components failing simultaneously.
-    *   `A_total = 1 - (1 - A_component1) * (1 - A_component2) * ...`
-
-```mermaid
-graph LR
-    subgraph "Sequential System (Lower Availability)"
-        direction LR
-        A(Request) --> S1(Service A - 99.9%);
-        S1 --> S2(Service B - 99.9%);
-        S2 --> R(Response);
-        subgraph "Total Availability = 99.9% * 99.9% = 99.8%"
-        end
-    end
-
-    subgraph "Parallel System (Higher Availability)"
-        direction LR
-        LB_IN(Request) --> LB(Load Balancer);
-        LB --> S3(Server 1 - 99.9%);
-        LB --> S4(Server 2 - 99.9%);
-        S3 --> LB_OUT(Response);
-        S4 --> LB_OUT(Response);
-         subgraph "Total Availability = 1 - (0.1% * 0.1%) = 99.9999%"
-        end
-    end
-```
-*Description: A sequential system's availability is limited by its weakest link. A parallel system increases availability because it can tolerate the failure of one or more components.*
 
 ---
 
@@ -120,7 +75,7 @@ Fail-over is the mechanism of switching to a redundant standby system when the p
 
 This pattern is the classic high-availability pairing. An active node handles traffic while a passive (standby) node is kept in sync but does not serve traffic. This synchronization is typically achieved using **[[#Master-Slave Replication|Master-Slave Replication]]**, where the active node is the master and the passive node is the slave.
 
-A monitoring component (like a [[load-balancing|load balancer]] or cluster manager) detects when the active node fails and automatically redirects traffic to the passive node, promoting it to become the new master.
+A [[monitoring]] component (like a [[load-balancing|load balancer]] or cluster manager) detects when the active node fails and automatically redirects traffic to the passive node, promoting it to become the new master.
 
 ```mermaid
 sequenceDiagram

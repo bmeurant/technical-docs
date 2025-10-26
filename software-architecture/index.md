@@ -19,4 +19,5 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 * [[software-architecture/design-patterns/|Design Patterns]]
 * [[software-architecture/system-design-patterns/|System Design Patterns]]
 * [[software-architecture/design-principles/|Design Principles]]
+* [[observability/|Observability]]
 * [[software-architecture/programming-paradigms/|Programming Paradigms]]

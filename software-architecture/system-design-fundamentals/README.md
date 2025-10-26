@@ -3,6 +3,7 @@
 
 see [index](./index.md)
 
+* **[Availability](./availability.md)**
 * **[Caching](./caching.md)**
 * **[Communication Protocols](./communication-protocols.md)**
 * **[The CAP Theorem](./cap.md)**

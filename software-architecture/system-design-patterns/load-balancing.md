@@ -45,7 +45,7 @@ graph TD
 
 ## Core Benefits
 
-- **High Availability:** By performing [[availability-patterns|health checks]], a load balancer can automatically detect if a server is unhealthy and stop sending traffic to it, preventing failures.
+- **High Availability:** By performing [[monitoring#Health Monitoring|health checks]], a load balancer can automatically detect if a server is unhealthy and stop sending traffic to it, preventing failures.
 - **Scalability:** A load balancer is the key enabler of [[system-design-fundamentals#Scalability|horizontal scaling]], allowing you to add or remove servers from the pool transparently.
 - **Performance:** By distributing the load, it ensures that users are always directed to a responsive server, improving overall application performance.
 - **Eliminates Single Points of Failure:** A single web server is a [[availability-patterns|single point of failure]]. A load balancer, used in front of a server pool, removes this risk (though the LB itself can become one if not made redundant).

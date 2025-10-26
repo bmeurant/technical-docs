@@ -149,6 +149,7 @@ The trade-off becomes critical during a **network partition**—a situation wher
 
 ## Other Topics
 
+* [[availability|Availability]]
 * [[cap|CAP Theorem]]
 * [[dns|Domain Name System (DNS)]]
 * [[communication-protocols|Communication Protocols]]
