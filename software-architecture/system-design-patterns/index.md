@@ -21,6 +21,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[publish-subscribe|Publish-Subscribe]]
 * [[service-discovery|Service Discovery]]
 * [[sidecar|Sidecar]]
+* [[static-content-hosting|Static Content Hosting]]
 
 ---
 

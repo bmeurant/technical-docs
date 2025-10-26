@@ -11,7 +11,9 @@ date: 2025-10-20
 
 # Content Delivery Network (CDN)
 
-A **Content Delivery Network (CDN)** is a pattern that uses a globally distributed network of proxy servers to [[caching|cache]] and serve content from locations that are physically closer to the end-user. By reducing the physical distance between the user and the content, CDNs dramatically decrease [[system-design-fundamentals|latency]] and improve application performance.
+A **Content Delivery Network (CDN)** is a pattern that uses a globally distributed network of proxy servers to [[caching|cache]] and serve content from locations that are physically closer to the end-user. A CDN pulls content from an **origin server**, which is often an implementation of the [[static-content-hosting|Static Content Hosting]] pattern.
+
+By reducing the physical distance between the user and the content, CDNs dramatically decrease [[system-design-fundamentals|latency]] and improve application performance.
 
 Typically, CDNs are used for serving static assets that don't change often, such as images, videos, CSS stylesheets, and JavaScript libraries. However, modern CDNs can also cache dynamic content and even run code at the edge.
 

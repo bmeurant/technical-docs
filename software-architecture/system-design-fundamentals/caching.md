@@ -150,7 +150,7 @@ Caching can be implemented at various layers of a system architecture. Each laye
 
 ### 1. Client Caching
 This involves storing data on the client-side, such as in a web browser. It is the closest possible cache to the user.
-- **Examples:** Browser caching of static assets (images, CSS, JS) as dictated by [[http|HTTP]] headers (`Cache-Control`, `Expires`).
+- **Examples:** Browser caching of static assets (images, CSS, JS) as dictated by [[http|HTTP]] headers (`Cache-Control`, `Expires`). This is a key principle applied in the [[static-content-hosting|Static Content Hosting]] pattern.
 - **Benefits:** Extremely fast, reduces server load, and saves network bandwidth.
 - **Drawbacks:** Data is scoped to a single user, and cache invalidation can be difficult.
 
