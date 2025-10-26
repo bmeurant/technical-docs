@@ -787,52 +787,8 @@ graph TD
 
 #### Sidecar
 
-* **Problem**: How to add additional functionality (like logging, monitoring, or security) to an existing application component without modifying its code? This is especially challenging when dealing with legacy applications or components written in different languages.
-* **Synopsis**: The **Sidecar** pattern (also known as the **Sidekick** pattern) attaches a separate, helper container or process (the "sidecar") to a main application container or process. They are deployed together as a single unit. The sidecar shares the same lifecycle and network namespace as the main application, allowing it to augment the main application's behavior. It provides supporting features for the application and abstracts away common infrastructure-related concerns.
-
-    ```mermaid
-    graph TD
-        subgraph "Deployment Unit (e.g., Kubernetes Pod)"
-            direction LR
-            MainApp[Main Application]
-            SidecarContainer[Sidecar Container]
-            
-            MainApp <--> SidecarContainer
-        end
-
-        subgraph "Shared Resources"
-            Network
-            FileSystem
-        end
-
-        SidecarContainer -- "Accesses" --> Network
-        SidecarContainer -- "Monitors/Logs" --> FileSystem
-        MainApp -- "Uses" --> Network
-        MainApp -- "Writes to" --> FileSystem
-
-        style SidecarContainer fill:#ccf,stroke:#333,stroke-width:2px
-    ```
-
-* **Key Characteristics**:
-    * **Co-located Deployment**: The sidecar is always deployed alongside the main application. They share the same lifecycle (start, stop, and scale together).
-    * **Shared Resources**: They share resources like the network interface (localhost), and often storage volumes, allowing for efficient communication.
-    * **Encapsulation of Concerns**: The sidecar encapsulates cross-cutting concerns (e.g., observability, security, routing), keeping the main application's code clean and focused on its core business logic.
-    * **Language Agnostic**: The sidecar can be written in a different programming language than the main application, allowing teams to use the best tool for each job.
-* **Applicability**:
-    * **Service Mesh**: Sidecars are the fundamental building block of a **[[service-mesh|Service Mesh]]**. A sidecar proxy (like Envoy or Linkerd) is deployed alongside each service instance to handle inter-service communication, routing, and security.
-    * **Logging and Monitoring**: A sidecar can collect logs and metrics from the main application and forward them to a centralized logging/monitoring system.
-    * **Security**: A sidecar can handle tasks like TLS termination, authentication, and authorization, offloading these concerns from the application.
-    * **Configuration Management**: A sidecar can fetch configuration data from a central store and provide it to the main application, often through a shared file.
-* **Limitations and Challenges**:
-    * **Increased Resource Consumption**: Deploying a sidecar for every application instance consumes extra CPU and memory resources.
-    * **Deployment Complexity**: The deployment process becomes more complex as it involves managing two containers/processes per application instance.
-    * **Latency**: Communication between the application and the sidecar (even over localhost) can introduce a small amount of latency compared to in-process communication.
-    * **Testing**: End-to-end testing can be more complex as it requires running the application with its sidecar.
-* **Relationship with other patterns**:
-    * **[[service-mesh|Service Mesh]]**: The Sidecar pattern is the core implementation detail of a **Service Mesh**. The mesh's data plane is composed of sidecar proxies deployed next to each service.
-    * **[[#ambassador|Ambassador]]**: The [[#Ambassador|Ambassador]] pattern is a specialized type of Sidecar. While a general Sidecar augments an application, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
-    * **[[gof#proxy|Proxy]]**: The sidecar itself is often implemented as a **[[gof#proxy|Proxy]]**. It intercepts network traffic to and from the main application to add its functionality.
-    * **[[layered|Layers]]** & **[[cohesion-coupling|Decoupling]]**: The Sidecar pattern provides a way to add a "layer" of functionality at the infrastructure level rather than in the application code, promoting better **decoupling** and **[[soc|separation of concerns]]**.
+* **Problem**: How to add additional functionality (like logging, monitoring, or security) to an existing application component without modifying its code?
+* **Synopsis**: The **Sidecar** pattern attaches a separate, helper process or container to a main application to provide supporting features and abstract away infrastructure concerns. For a detailed explanation of its use cases, implementation in Kubernetes, and trade-offs, see the main page on the **[[sidecar]]** pattern.
 
 
 #### Ambassador

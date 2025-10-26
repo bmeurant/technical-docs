@@ -12,7 +12,7 @@ date: 2025-10-26
 
 # Sidecar Pattern
 
-The Sidecar pattern is a decomposition pattern where an application's components are deployed into a separate process or container for isolation and encapsulation. This pattern allows applications to be composed of heterogeneous components and technologies.
+The Sidecar pattern (also known as the **Sidekick pattern**) is a decomposition pattern where an application's components are deployed into a separate process or container for isolation and encapsulation. This pattern allows applications to be composed of heterogeneous components and technologies.
 
 It is named **Sidecar** because it resembles a sidecar attached to a motorcycle. In the pattern, the sidecar is attached to a parent application and provides supporting features. The sidecar shares the same lifecycle as its parent—it is created, started, and stopped alongside it.
 
@@ -121,6 +121,14 @@ spec:
 -   **Resource Overhead**: Each sidecar consumes its own CPU and memory. Deploying a sidecar for every application instance can significantly increase overall resource consumption.
 -   **Latency**: While communication over `localhost` is very fast, it still introduces a small amount of latency compared to in-process function calls.
 -   **Deployment Complexity**: The number of deployed components doubles, which can add complexity to your CI/CD pipelines and orchestration.
+
+---
+
+## Related Patterns
+
+-   **[[service-mesh]]**: The Sidecar pattern is the core implementation detail of a Service Mesh. The mesh's data plane is composed of sidecar proxies deployed next to each service.
+-   **[[posa#Ambassador|Ambassador]]**: The Ambassador pattern is a specialized type of Sidecar. While a general Sidecar can augment an application in many ways, an Ambassador specifically handles outbound network communication, acting as a proxy to the outside world.
+-   **[[posa#Proxy|Proxy]]**: The sidecar itself is often implemented as a Proxy, as it intercepts and manages communication on behalf of the main application.
 
 ---
 
