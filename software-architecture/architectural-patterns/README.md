@@ -13,7 +13,10 @@ see [index](./index.md)
 
 * **[Blackboard Pattern](./blackboard.md)**
 
+## Communication
 
+* **[Broker](./broker.md)**
+* **[Service Mesh](./service-mesh.md)**
 
 ## Structure
 
@@ -31,6 +34,11 @@ see [index](./index.md)
 
 * **[CQRS (Command Query Responsibility Segregation)](./cqrs.md)**
 * **[Event Sourcing](./event-sourcing.md)**
+* **[Saga](./saga.md)**
+
+## Migration & Refactoring
+
+* **[Strangler Fig](./strangler-fig.md)**
 
 
 

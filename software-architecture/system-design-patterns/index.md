@@ -14,16 +14,13 @@ This section covers a collection of reusable patterns for solving common problem
 * [[availability-patterns|Availability Patterns]]
 * [[back-pressure|Back Pressure]]
 * [[background-jobs|Background Jobs]]
-* [[broker|Broker]]
 * [[cdn|Content Delivery Network (CDN)]]
 * [[consistency-patterns|Consistency Patterns]]
 * [[load-balancing|Load Balancing]]
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
-* [[saga|Saga]]
 * [[service-discovery|Service Discovery]]
-* [[service-mesh|Service Mesh]]
-* [[strangler-fig|Strangler Fig]]
+* [[sidecar|Sidecar]]
 
 ---
 

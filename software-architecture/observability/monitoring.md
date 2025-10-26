@@ -125,7 +125,7 @@ Usage monitoring tracks how users interact with an application. Unlike performan
 
 ### Instrumentation
 
-Instrumentation is the **how** of monitoring. It is the process of integrating code into an application to generate the telemetry data (metrics, logs, and traces) that monitoring systems consume. Meaningful monitoring is impossible without effective instrumentation.
+Instrumentation is the **how** of monitoring. It is the process of integrating code into an application to generate the telemetry data (metrics, logs, and traces) that monitoring systems consume. Meaningful monitoring is impossible without effective instrumentation. In cloud-native environments, this is often handled by deploying collection agents using the [[sidecar]] pattern.
 
 #### The Rise of OpenTelemetry
 Historically, instrumentation was often done using vendor-specific agents or libraries, leading to vendor lock-in. **[[opentelemetry|OpenTelemetry]] (OTel)** emerged as a CNCF standard to solve this problem by providing a unified framework for all telemetry data.

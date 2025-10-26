@@ -12,6 +12,7 @@ An **architectural pattern** is a reusable, concrete solution to a recurring des
 ## Application Architecture Patterns
 
 *   [[blackboard|Blackboard Pattern]]
+*   [[broker|Broker]]
 *   [[clean|Clean Architecture]]
 *   [[cqrs|CQRS (Command Query Responsibility Segregation)]]
 *   [[event-sourcing|Event Sourcing]]
@@ -24,6 +25,9 @@ An **architectural pattern** is a reusable, concrete solution to a recurring des
 *   [[mvw|Model-View-Whatever (MVW)]]
 *   [[onion|Onion Architecture]]
 *   [[pipe-filters|Pipe and Filters Pattern]]
+*   [[saga|Saga]]
+*   [[service-mesh|Service Mesh]]
+*   [[strangler-fig|Strangler Fig]]
 
 ## Links and Resources
 

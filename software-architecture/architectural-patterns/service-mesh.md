@@ -12,7 +12,7 @@ date: 2025-09-27
 
 A **Service Mesh** is a dedicated, configurable infrastructure layer that handles inter-service communication in a microservices architecture. It provides a transparent and language-agnostic way to manage, secure, and observe services. Its primary goal is to move the logic governing communication out of individual services and into the platform itself.
 
-It works by deploying a network of lightweight proxies alongside each service instance. These proxies, called **[[posa|Sidecars]]**, intercept all traffic between services, allowing the mesh to control how services interact without requiring any changes to the application code.
+A service mesh is implemented by extending the **[[sidecar]]** pattern. It works by deploying a network of lightweight proxy sidecars alongside each service instance. These proxies intercept all traffic between services, allowing the mesh to control how services interact without requiring any changes to the application code.
 
 * **Core Principles:**
     * **Transparency:** The service mesh is largely invisible to the application code. Services are unaware that their communication is being intercepted and managed.
@@ -66,7 +66,7 @@ graph TD
     style Data Plane fill:#fdf,stroke:#333,stroke-width:2px
 ```
 
-1.  **Data Plane:** Composed of a fleet of **[[posa|Sidecar]]** proxies (e.g., Envoy, Linkerd) deployed alongside each service instance. The data plane is responsible for actually handling the traffic: intercepting calls, encrypting/decrypting data, applying routing rules, and collecting telemetry.
+1.  **Data Plane:** Composed of a fleet of **[[sidecar]]** proxies (e.g., Envoy, Linkerd) deployed alongside each service instance. The data plane is responsible for actually handling the traffic: intercepting calls, encrypting/decrypting data, applying routing rules, and collecting telemetry.
 2.  **Control Plane:** The brain of the service mesh (e.g., Istio, Consul). It does not touch any request traffic. Its job is to manage and configure all the sidecar proxies in the data plane. It provides a central API for operators to define policies for routing, security, and observability.
 
 **Typical Communication Flow:**
@@ -99,7 +99,7 @@ graph TD
 
 A Service Mesh is not a standalone concept; it integrates and implements several other patterns.
 
-*   **[[posa|Sidecar]]:** The Service Mesh pattern is implemented *using* the Sidecar pattern. The data plane of a service mesh is a network of sidecar proxies.
+*   **[[sidecar]]:** The Service Mesh pattern is implemented *using* the Sidecar pattern. The data plane of a service mesh is a network of sidecar proxies.
 *   **[[posa|Ambassador]]:** A service mesh can be seen as a sophisticated evolution of the Ambassador pattern, applied systematically to *all* services in a system for both inbound and outbound traffic, and managed by a central control plane.
 *   **[[posa|Proxy]]:** The sidecar proxies that form the data plane are all instances of the Proxy pattern, as they intercept and manage network communication on behalf of the application.
 *   **[[posa|Circuit Breaker]], [[posa|Retry]], [[posa|Timeout]]:** A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.

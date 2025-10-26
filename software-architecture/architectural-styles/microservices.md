@@ -101,7 +101,7 @@ A mature microservices architecture often uses a combination of both styles: syn
 
 * **Challenges:**
     * **The Distributed Monolith Anti-Pattern:** The most common failure mode is creating a "distributed monolith," where services are tightly coupled through synchronous calls (chaining) or shared databases. This leads to a system with the complexity of a distributed system but none of the benefits of a monolith, as a failure in one service can still cascade and bring down others.
-    * **Operational Complexity:** Managing a large number of distributed services is complex and requires **DevOps** expertise and a robust infrastructure.
+    * **Operational Complexity:** Managing a large number of distributed services is complex and requires **DevOps** expertise and a robust infrastructure. A common way to manage this complexity is to offload cross-cutting concerns (like networking, security, and observability) to a **[[sidecar]]** process.
     * **Data Consistency:** Maintaining data consistency across isolated [[software-architecture/databases/|databases]] is a major challenge. This often requires advanced patterns like **Saga** to manage distributed transactions, which adds significant complexity.
     * **Network Latency and Reliability:** All inter-service communication is a network call, which is inherently slower and less reliable than in-process calls. This must be accounted for in the design.
     * **Debugging and Monitoring:** Debugging a request flow across multiple services is much harder than in a monolith. **Distributed tracing** tools (like Jaeger or OpenTelemetry) are essential.
