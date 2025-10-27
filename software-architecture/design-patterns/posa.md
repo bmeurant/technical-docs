@@ -306,7 +306,7 @@ graph TD
 * **Relationship with Other Patterns**:
     * This pattern is a specific implementation of the **[[broker|Broker]]** pattern, where the `Dispatcher` acts as the central message broker.
     * It is conceptually similar to the **Service Locator** pattern.
-    * In modern **[[microservices]]** architectures, the `Dispatcher` role is often fulfilled by an **API Gateway** or a combination of a **Service Registry** and **Service Discovery** mechanism.
+    * In modern **[[microservices]]** architectures, the `Dispatcher` role is often fulfilled by an **[[api-gateway|API Gateway]]** or a combination of a **Service Registry** and **Service Discovery** mechanism.
 
 #### Publisher-Subscriber
 

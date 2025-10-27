@@ -301,7 +301,7 @@ The diagram shows that the application process is completely self-contained, bin
 ### Rationale
 This makes the application self-contained and independent of the execution environment. The app knows nothing about the public-facing network; it only binds to a port. This separation of concerns is key.
 
-In production, a routing layer (like a [[load-balancing|load balancer]] or API gateway) handles **port forwarding** from the public port (e.g., 80) to the container/process-internal port. This allows multiple applications to run on the same host, each on its own internal port, without conflicting. It also simplifies development, as the app can be run locally with a simple command.
+In production, a routing layer (like a [[load-balancing|load balancer]] or [[api-gateway|API gateway]]) handles **port forwarding** from the public port (e.g., 80) to the container/process-internal port. This allows multiple applications to run on the same host, each on its own internal port, without conflicting. It also simplifies development, as the app can be run locally with a simple command.
 
 ### Examples
 *   A Python web application using Gunicorn to listen on a port specified by the `$PORT` environment variable.

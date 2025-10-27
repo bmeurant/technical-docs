@@ -28,6 +28,7 @@ An **architectural pattern** is a reusable, concrete solution to a recurring des
 *   [[saga|Saga]]
 *   [[service-mesh|Service Mesh]]
 *   [[strangler-fig|Strangler Fig]]
+*   [[api-gateway|API Gateway]]
 
 ## Links and Resources
 

@@ -17,6 +17,7 @@ see [index](./index.md)
 
 * **[Broker](./broker.md)**
 * **[Service Mesh](./service-mesh.md)**
+* **[API Gateway](./api-gateway.md)**
 
 ## Structure
 
