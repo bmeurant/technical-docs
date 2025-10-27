@@ -126,7 +126,7 @@ spec:
 
 ## The Ambassador Pattern: A Specialization
 
-The **Ambassador** pattern is a specialized variant of the Sidecar pattern. While a general-purpose Sidecar can handle many tasks (logging, metrics, etc.), an Ambassador focuses specifically on acting as a proxy for **outbound network requests** from the main application to a remote service.
+The **Ambassador** pattern describes a specific **role or function** within a Sidecar implementation. It is not a separate component but a specialization of the Sidecar pattern. While a general-purpose Sidecar can handle many tasks (logging, metrics, etc.), the Ambassador role focuses specifically on acting as a proxy for **outbound network requests** from the main application to a remote service. Sidecar is the **deployment method**, while Ambassador is the specific **outbound network responsibility**. Think of the Sidecar as the helper container, and the Ambassador as the **outbound network specialist** among the helpers.
 
 The application simply communicates with the Ambassador running on `localhost`, and the Ambassador handles the complexities of service discovery, routing, and resilient communication over the network.
 
@@ -162,6 +162,16 @@ This pattern is particularly useful for legacy applications that are difficult t
 -   **Benefit: Language Agnostic**: The resiliency and discovery logic is implemented once in the Ambassador and can be used by any application, regardless of its programming language.
 -   **Trade-off: Latency**: Adds a single, very low-latency network hop (over `localhost`) compared to a direct library call.
 -   **Trade-off: Deployment Complexity**: As with any sidecar, it increases the number of components to deploy and manage for each application instance.
+
+### Sidecar vs. Ambassador: Clarifying Roles and Components
+
+| Characteristic | Sidecar (General Pattern) | Ambassador (Specific Role) |
+| :--- | :--- | :--- |
+| **Nature** | **Deployment Pattern** (How we deploy a helper) | **Design Role** (What the helper does) |
+| **Focus** | Cross-cutting concerns (Logging, Metrics, Security, Configuration) | **Outbound Client Connectivity** (Discovery, Resilience, Security) |
+| **Implementation** | One or more containers in the Pod | The **part** of the Sidecar container managing outbound calls |
+
+> "In modern cloud-native architectures, especially those using a **Service Mesh** (e.g., Istio, Linkerd), the same **single Sidecar container** (the **component**) often performs *all* these functions. This single component acts as a general Sidecar for logging/metrics, handles inbound traffic, **AND** performs the Ambassador role for all outbound traffic. Therefore, Sidecar is the **how** (the method), and Ambassador is the **what** (the function) for outgoing calls."
 
 ---
 
