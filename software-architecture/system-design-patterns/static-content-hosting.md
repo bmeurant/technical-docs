@@ -59,6 +59,12 @@ Cloud object storage is highly scalable but typically located in a single geogra
 
 In this setup, the object storage acts as the **origin**, and the CDN pulls the content from it, distributing and caching it in dozens or hundreds of edge locations around the world. The user is transparently served by the nearest edge location, dramatically reducing [[software-architecture/system-design-fundamentals/index#Latency vs. Throughput|latency]].
 
+### 3. Secure Access
+
+While this pattern is perfect for public assets, many applications need to serve private or user-specific content (e.g., invoices, profile pictures, or submitted documents). In these cases, making the storage bucket public is not an option.
+
+The solution is to use the **[[valet-key|Valet Key]]** pattern. The application first authenticates the user and then generates a short-lived, single-use URL that grants temporary access to the specific resource. This provides a mechanism for secure, direct access while still offloading the data transfer from the application server.
+
 ```mermaid
 sequenceDiagram
     participant C as Browser (Client)

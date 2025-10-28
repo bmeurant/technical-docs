@@ -270,7 +270,7 @@ Stateless processes are fundamental to achieving horizontal scalability and faul
 
 ### Examples
 *   Storing user session data in a shared, external datastore like Redis, rather than in the application's local memory.
-*   Any file uploads should be stored in a distributed file system like Amazon S3, not on the local filesystem of a process.
+*   Any file uploads should be stored in a distributed file system like Amazon S3, not on the local filesystem of a process. This is often implemented using the [[valet-key]] pattern, which allows the client to upload the file directly and securely.
 *   The use of "sticky sessions" in a [[load-balancing|load balancer]] is a clear violation of this principle, as it attempts to route a user to the same stateful process for every request.
 
 ## VII. Port Binding
