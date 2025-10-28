@@ -17,13 +17,14 @@ This section covers a collection of reusable patterns for solving common problem
 * [[background-jobs|Background Jobs]]
 * [[cdn|Content Delivery Network (CDN)]]
 * [[consistency-patterns|Consistency Patterns]]
+* [[data-management-patterns|Data Management Patterns]]
+* [[gateway-patterns|Gateway Patterns]]
 * [[load-balancing|Load Balancing]]
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
 * [[service-discovery|Service Discovery]]
 * [[sidecar|Sidecar]]
 * [[static-content-hosting|Static Content Hosting]]
-* [[gateway-patterns|Gateway Patterns]]
 
 ---
 

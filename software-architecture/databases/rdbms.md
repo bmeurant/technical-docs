@@ -95,17 +95,7 @@ Partitioning is the act of splitting a large database into smaller, faster, and 
 
 -   **Federation (Vertical Partitioning):** The database is split by **function**. For example, instead of a single monolithic database, you could have separate databases for `Users`, `Products`, and `Forums`. This reduces the traffic to each individual database and allows for more targeted caching and optimization. The main drawback is that database-level JOINs between different functions are no longer possible.
 
--   **Sharding (Horizontal Partitioning):** The database is split by **rows**. A single large table (e.g., `users`) is broken into smaller tables with the same schema, and these are distributed across multiple database servers. A **shard key** (e.g., `user_id` or `country`) is used to determine which server holds a particular piece of data. Sharding dramatically improves write throughput, as writes can happen in parallel across different shards. However, it is extremely complex to implement, especially if re-sharding is needed later.
-
-```mermaid
-graph TD
-    subgraph "Sharding by User ID"
-        U(Users Table) --> S1("Shard 1 (Users 1-1M)")
-        U --> S2("Shard 2 (Users 1M-2M)")
-        U --> S3("Shard 3 (Users 2M-3M)")
-    end
-```
-*Description: A users table is horizontally partitioned (sharded) across multiple database servers based on ranges of user IDs.*
+-   **Sharding (Horizontal Partitioning):** This strategy involves splitting a single large table by its **rows** and distributing them across multiple database servers. This is a powerful but complex pattern for achieving massive write scalability. For a detailed explanation of sharding strategies and their trade-offs, see the main page on [[data-management-patterns#Sharding|Data Management Patterns]].
 
 ### 3. Denormalization
 

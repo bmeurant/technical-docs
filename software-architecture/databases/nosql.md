@@ -26,7 +26,9 @@ The most defining characteristic of NoSQL databases is their flexible data model
 
 ### 2. Horizontal Scalability (Scaling Out)
 
-NoSQL databases are designed from the ground up to [[system-design-fundamentals#Scalability|scale horizontally]]. This means they can handle increased load by adding more commodity servers to a cluster, a process known as sharding. This architecture is what allows NoSQL databases to handle massive volumes of data and high traffic loads, a feat that is often complex and expensive to achieve with traditional RDBMS.
+NoSQL databases are designed from the ground up to [[system-design-fundamentals#Scalability|scale horizontally]]. This means they can handle increased load by adding more commodity servers to a cluster. This is most commonly achieved through **sharding**, a powerful pattern for partitioning data. This architecture is what allows NoSQL databases to handle massive volumes of data and high traffic loads.
+
+For a detailed explanation of sharding strategies and their trade-offs, see [[data-management-patterns#Sharding|Data Management Patterns]].
 
 ### 3. High Performance and Availability
 

@@ -17,3 +17,4 @@ see [index](./index.md)**
 * **[Static Content Hosting](./static-content-hosting.md)**
 * **[Gateway Patterns](./gateway-patterns.md)**
 * **[Anti-Corruption Layer](./anti-corruption-layer.md)**
+* **[Database Management Patterns](./database-management-patterns.md)**
