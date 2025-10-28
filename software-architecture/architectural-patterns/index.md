@@ -29,6 +29,7 @@ An **architectural pattern** is a reusable, concrete solution to a recurring des
 *   [[service-mesh|Service Mesh]]
 *   [[strangler-fig|Strangler Fig]]
 *   [[api-gateway|API Gateway]]
+*   [[backends-for-frontend|Backends for Frontend (BFF)]]
 
 ## Links and Resources
 
