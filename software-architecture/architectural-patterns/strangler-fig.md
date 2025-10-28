@@ -81,7 +81,7 @@ sequenceDiagram
 
 * **Challenges:**
     * **Façade Complexity:** The strangler façade can become a complex piece of software, especially if it needs to handle complex routing rules or data transformation.
-    * **Data Synchronization:** Managing data consistency between the new services and the legacy [[software-architecture/databases/|database]] is often the biggest challenge. Patterns like the **Anti-Corruption Layer** may be needed to translate between the old and new data models.
+    * **Data Synchronization:** Managing data consistency between the new services and the legacy [[software-architecture/databases/|database]] is often the biggest challenge. Patterns like the [[anti-corruption-layer|Anti-Corruption Layer]] may be needed to translate between the old and new data models.
     * **Long-Term Maintenance:** For a long period, two systems must be maintained, monitored, and operated in parallel, which can increase operational overhead.
     * **Integration Hell:** As more services are added, managing dependencies and communication between the new services and the legacy system can become complicated.
 
@@ -91,7 +91,7 @@ sequenceDiagram
 
 *   **[[microservices|Microservices]]:** The Strangler Fig pattern is one of the most common and recommended strategies for migrating a monolith to a microservices architecture.
 *   **[[modular-monolith|Modular Monolith]]:** A modular monolith can be an excellent starting point for a strangler fig migration. Once the modules are well-defined, they are easier to "strangle" and extract into independent services.
-*   **Anti-Corruption Layer (ACL):** Often used in conjunction with the Strangler Fig pattern. The ACL is a translation layer that isolates the new system from the legacy system's data model, preventing "leaky" or outdated concepts from polluting the new domain model.
+*   **[[anti-corruption-layer|Anti-Corruption Layer (ACL)]]:** Often used in conjunction with the Strangler Fig pattern. The ACL is a translation layer that isolates the new system from the legacy system's data model, preventing "leaky" or outdated concepts from polluting the new domain model.
 *   **[[posa#proxy|Proxy]] and [[gof#facade|Façade]] Patterns:** The Strangler Façade is a specific application of these classic design patterns.
 
 ---

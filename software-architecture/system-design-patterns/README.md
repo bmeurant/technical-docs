@@ -16,3 +16,4 @@ see [index](./index.md)**
 * **[Sidecar](./sidecar.md)**
 * **[Static Content Hosting](./static-content-hosting.md)**
 * **[Gateway Patterns](./gateway-patterns.md)**
+* **[Anti-Corruption Layer](./anti-corruption-layer.md)**

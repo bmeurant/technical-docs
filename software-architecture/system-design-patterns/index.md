@@ -11,6 +11,7 @@ date: 2025-10-20
 This section covers a collection of reusable patterns for solving common problems encountered in the design of distributed systems.
 
 * [[asynchronous-messaging|Asynchronous Messaging]]
+* [[anti-corruption-layer|Anti-Corruption Layer (ACL)]]
 * [[availability-patterns|Availability Patterns]]
 * [[back-pressure|Back Pressure]]
 * [[background-jobs|Background Jobs]]
