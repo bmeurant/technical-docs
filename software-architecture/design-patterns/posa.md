@@ -624,7 +624,7 @@ graph TD
     * **Resource-Intensive Applications**: To manage and partition resources like thread pools and connection pools.
 * **Limitations and Challenges**:
     * **Increased Complexity**: Partitioning the system into isolated components can make the overall design more complex.
-    * **Resource Utilization**: Segregated resource pools can sometimes lead to underutilization if one pool is idle while another is overwhelmed.
+    * **[[workload-management#Compute Resource Consolidation|Resource Utilization]]**: Segregated resource pools can sometimes lead to underutilization if one pool is idle while another is overwhelmed.
     * **Configuration**: The size of each bulkhead (e.g., the number of threads in a pool) needs to be carefully configured.
 
 **Relationship with Circuit Breaker**:

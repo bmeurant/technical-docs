@@ -94,7 +94,7 @@ See also: [[availability-patterns]].
 
 ### Performance Monitoring
 
-Performance monitoring focuses on the efficiency, responsiveness, and resource utilization of a system under load. It helps identify bottlenecks, degradation, and inefficiencies before they lead to outages. Key metrics often align with the **Four Golden Signals**:
+Performance monitoring focuses on the efficiency, responsiveness, and [[workload-management#Compute Resource Consolidation|resource utilization]] of a system under load. It helps identify bottlenecks, degradation, and inefficiencies before they lead to outages. Key metrics often align with the **Four Golden Signals**:
 
 1.  **[[software-architecture/system-design-fundamentals/index#Latency vs. Throughput|Latency]]**: The time it takes to service a request.
 2.  **Traffic**: The demand on the system (e.g., requests per second).

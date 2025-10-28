@@ -13,14 +13,14 @@ date: 2025-10-22
 
 Asynchronism is a fundamental paradigm in modern system design, particularly crucial for distributed systems and high-performance applications. It refers to the ability of a system to perform multiple operations concurrently without waiting for each operation to complete before starting the next. Instead of blocking the execution flow, an asynchronous operation initiates a task and immediately returns control to the caller, allowing it to continue processing other work. The caller is then notified (e.g., via a callback, a promise, or a message) when the asynchronous task has finished.
 
-This approach contrasts sharply with synchronous execution, where each operation must complete sequentially. Asynchronism is vital for improving system responsiveness, throughput, and resource utilization, especially when dealing with I/O-bound operations (like network requests, database queries, or file system access) that involve waiting for external resources.
+This approach contrasts sharply with synchronous execution, where each operation must complete sequentially. Asynchronism is vital for improving system responsiveness, throughput, and [[workload-management#Compute Resource Consolidation|resource utilization]], especially when dealing with I/O-bound operations (like network requests, database queries, or file system access) that involve waiting for external resources.
 
 ## Key Characteristics and Benefits
 
 -   **Non-Blocking Operations**: The primary characteristic is that operations do not block the main execution thread. This prevents the system from becoming unresponsive while waiting for slow operations.
 -   **Improved Responsiveness**: By offloading long-running tasks, the system can remain responsive to user interactions or other incoming requests.
 -   **Enhanced Throughput**: A single thread or process can manage multiple concurrent operations, leading to a higher number of tasks processed per unit of time.
--   **Better Resource Utilization**: Resources (CPU, memory) are not idled waiting for I/O operations to complete; instead, they can be used to process other tasks.
+-   **Better [[workload-management#Compute Resource Consolidation|Resource Utilization]]**: Resources (CPU, memory) are not idled waiting for I/O operations to complete; instead, they can be used to process other tasks.
 -   **Scalability**: Facilitates the design of scalable systems by allowing components to operate independently and process workloads more efficiently.
 -   **Resilience**: Enables systems to handle transient failures more gracefully, as operations can be retried or managed in the background without impacting the main flow.
 

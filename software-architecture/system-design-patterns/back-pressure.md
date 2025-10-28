@@ -18,7 +18,7 @@ The problem often arises in pipelines or chains of processing where different co
 
 -   **System Stability**: Prevents resource exhaustion (memory, CPU) in downstream components, avoiding crashes and ensuring continuous operation.
 -   **Predictable Performance**: Helps maintain consistent latency and throughput by preventing overload.
--   **Resource Management**: Optimizes resource utilization by ensuring that work is not queued unnecessarily, which can lead to wasted processing if tasks are eventually dropped or timed out.
+-   **Resource Management**: Optimizes [[workload-management#Compute Resource Consolidation|resource utilization]] by ensuring that work is not queued unnecessarily, which can lead to wasted processing if tasks are eventually dropped or timed out.
 -   **Fault Isolation**: Contains issues to specific parts of the system, preventing a slow component from bringing down the entire pipeline.
 
 ## How Back Pressure Works

@@ -9,3 +9,4 @@ see [index](./index.md)
 * **[The CAP Theorem](./cap.md)**
 * **[Domain Name System (DNS)](./dns.md)**
 * **[Asynchronism](./asynchronism.md)**
+* **[Workload Management](./workload-management.md)**
