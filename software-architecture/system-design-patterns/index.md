@@ -23,6 +23,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
 * [[queue-based-load-leveling|Queue-Based Load Leveling]]
+* [[sequential-convoy|Sequential Convoy]]
 * [[service-discovery|Service Discovery]]
 * [[sidecar|Sidecar]]
 * [[static-content-hosting|Static Content Hosting]]
