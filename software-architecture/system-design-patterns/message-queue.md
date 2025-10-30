@@ -76,11 +76,69 @@ Different message brokers offer varying guarantees and are suited for different 
 *   **Amazon SQS (Simple Queue Service)**: A fully managed, highly scalable service. It can have variable latency and guarantees **at-least-once delivery**, meaning a message might be delivered more than once. This requires consumers to be designed with [[idempotent-operations|idempotency]] in mind.
 *   **Apache Kafka**: More than just a message queue, Kafka is a distributed event store and stream-processing platform. It is designed for high-throughput, persistent, and ordered message streams, making it ideal for log aggregation, real-time analytics, and event sourcing.
 
-## Related Patterns, Concepts and Variations
+---
+
+## Advanced Concepts and Variations
+
+### Priority Queue
+
+The **Priority Queue** pattern is a variation of the standard message queue that reorders messages based on a priority assigned to them. Instead of processing messages in a strict First-In, First-Out (FIFO) order, a priority queue ensures that messages with a higher priority are processed before messages with a lower priority. This is essential for applications that need to handle certain requests faster than others, often to meet Service Level Agreements (SLAs) or to handle urgent system tasks.
+
+#### How It Works
+
+1.  **Priority Assignment**: The message producer assigns a priority level (usually a number) to each message before sending it to the queue.
+2.  **Broker Reordering**: The message broker is responsible for managing the messages in a way that prioritizes delivery. When a consumer requests a message, the broker provides the highest-priority message that is available.
+3.  **FIFO within Priorities**: Within the same priority level, messages are typically still processed in FIFO order.
+
+```mermaid
+graph TD
+    subgraph Producers
+        P1(Producer A)
+        P2(Producer B)
+    end
+
+    subgraph Broker
+        direction LR
+        Q(Priority Queue)
+    end
+
+    subgraph Consumer
+        C(Consumer)
+    end
+
+    P1 -- "Message 1 (Priority: Low)" --> Q
+    P2 -- "Message 2 (Priority: High)" --> Q
+    
+    Q -- "Delivers Message 2 first" --> C
+
+    style Q fill:#f9f,stroke:#333,stroke-width:2px
+```
+*Description: Even if the low-priority message arrives first, the Priority Queue ensures the high-priority message is delivered to the consumer as soon as it is available.*
+
+#### Use Cases
+
+-   **SLA Adherence**: In a multi-tenant system, requests from "Premium" customers (high priority) can be processed before requests from "Free" or "Standard" tier customers (low priority).
+-   **Urgent System Tasks**: Prioritizing critical administrative tasks, security alerts, or system health notifications over routine, background processing.
+-   **Interactive vs. Batch Operations**: Ensuring that a user-initiated action (e.g., a password reset request) is handled before a long-running, low-impact batch job (e.g., generating a weekly report).
+
+#### Challenges and Considerations
+
+-   **Message Starvation**: The biggest risk of this pattern is **starvation**, where a continuous stream of high-priority messages prevents low-priority messages from ever being processed.
+    -   **Solution**: A common mitigation is **priority aging**, where the priority of a message is gradually increased the longer it remains in the queue.
+-   **Broker Support**: Native support for priority queues varies among message brokers.
+    -   **RabbitMQ**: Provides excellent support for priority queues out of the box.
+    -   **Amazon SQS**: Does not support priority queues directly. The common pattern is to use multiple SQS queues (e.g., `high-priority-queue`, `low-priority-queue`) and have the consumer pool poll the high-priority queue more frequently or with more dedicated workers.
+    -   **Apache Kafka**: Does not have a native priority queue concept, as it is a log stream. Implementing it requires custom logic, often involving multiple topics and sophisticated consumer logic, which adds significant complexity.
+-   **Defining Priorities**: Establishing a clear and consistent priority scheme across all producers is a critical design decision. Too many priority levels can add unnecessary complexity.
+
+### Dead-Letter Queue (DLQ)
+
+A critical complementary pattern where messages that repeatedly fail processing are moved to a separate queue for manual inspection, preventing them from blocking the main queue.
+
+### Other Related Patterns
 
 *   **[[publish-subscribe|Publish-Subscribe]]:** The other fundamental messaging model, which uses a one-to-many broadcast approach instead of one-to-one.
 *   **[[message-driven|Message-Driven Architecture]]:** The Message Queue pattern is a key enabler for command-driven architectures, a flavor of MDA.
-*   **Dead-Letter Queue (DLQ):** A critical complementary pattern where messages that repeatedly fail processing are moved to a separate queue for manual inspection, preventing them from blocking the main queue.
 
 ---
 
