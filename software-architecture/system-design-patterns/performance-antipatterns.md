@@ -9,7 +9,7 @@ date: 2025-10-25
 
 # Performance Antipatterns
 
-Performance antipatterns are common but ineffective solutions to recurring problems that degrade a system's speed, scalability, and efficiency. While they may seem like a straightforward approach initially, they create significant bottlenecks, increase latency, and lead to poor [[workload-management#Compute Resource Consolidation|resource utilization]]. Understanding these antipatterns—and detecting them through robust [[monitoring]]—is crucial for building robust and [[software-architecture/system-design-fundamentals/index#Performance vs. Scalability|performant]] systems.
+Performance antipatterns are common but ineffective solutions to recurring problems that degrade a system's speed, scalability, and efficiency. While they may seem like a straightforward approach initially, they create significant bottlenecks, increase latency, and lead to poor [[workload-management|workload management]] and resource utilization. Understanding these antipatterns—and detecting them through robust [[monitoring]]—is crucial for building robust and [[software-architecture/system-design-fundamentals/index#Performance vs. Scalability|performant]] systems.
 
 These antipatterns often emerge from a misunderstanding of underlying system behaviors, especially in distributed environments. Addressing them typically involves a trade-off, such as increasing code complexity or infrastructure costs to achieve better performance and reliability.
 

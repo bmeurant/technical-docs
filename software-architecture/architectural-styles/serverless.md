@@ -75,7 +75,7 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
     * **Simplified Operations:** There are fewer **DevOps** tasks, such as managing servers, OS updates, or infrastructure monitoring.
 
 * **Challenges:**
-    * **Unpredictable Cost at Scale:** While the model is economical for low and variable workloads, it can become very expensive for high-volume applications or unforeseen traffic spikes, where the cost of each invocation adds up.
+    * **Unpredictable Cost at Scale:** While the model is economical for low and variable workloads (a key aspect of [[workload-management|Workload Management]]), it can become very expensive for high-volume applications or unforeseen traffic spikes, where the cost of each invocation adds up.
     * **Cold Starts:** If a function hasn't been used in a while, it may need to "cold start," which can introduce latency.
     * **Vendor Lock-in:** **Serverless** architectures are inherently tied to a specific cloud provider's services (AWS, GCP, Azure), which can make migration difficult.
     * **Complex Debugging and Monitoring:** Debugging a distributed application composed of ephemeral functions can be complex. Traditional monitoring tools aren't always suitable.

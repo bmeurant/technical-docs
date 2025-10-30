@@ -58,7 +58,7 @@ graph TD
     * **Reliable Task Offloading:** Perfect for background jobs like sending emails, generating reports, or processing images.
     * **Scalability:** You can easily increase processing throughput by adding more consumer instances to the pool.
     * **Resilience:** If a consumer fails while processing a message, the message can be safely re-processed by another consumer.
-    * **Flow Control:** The queue acts as a buffer, smoothing out load spikes and preventing the system from being overwhelmed.
+    * **Flow Control:** The queue acts as a buffer, smoothing out load spikes and preventing the system from being overwhelmed. This is the core principle behind the [[workload-management#Queue-Based Load Leveling|Queue-Based Load Leveling]] pattern.
 
 * **Use Cases:**
     * **Background Job Processing:** A web application can place a "GenerateThumbnail" job in a queue, and a pool of worker services can process these jobs asynchronously.

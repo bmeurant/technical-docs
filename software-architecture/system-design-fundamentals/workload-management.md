@@ -79,12 +79,24 @@ Modern tools are designed to mitigate the trade-offs while maximizing the benefi
 
 ---
 
-## Resources & links
+### Resources & links
 
-### Articles
+#### Articles
 
 1.  **[Compute Resource Consolidation Pattern - GeeksforGeeks](https://www.geeksforgeeks.org/system-design/compute-resource-consolidation-pattern-system-design/)**
     An article explaining the Compute Resource Consolidation pattern, its benefits, and how it helps in optimizing resource utilization in system design.
 
 2.  **[Compute Resource Consolidation pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/compute-resource-consolidation)**
     Microsoft Azure's official documentation on the Compute Resource Consolidation pattern, detailing its application in cloud-hosted applications to reduce costs and management overhead.
+
+---
+
+## Related Workload Management Patterns
+
+While "Compute Resource Consolidation" is a fundamental principle, several specific design patterns are used to manage system workload.
+
+### Queue-Based Load Leveling
+
+This pattern uses a queue to buffer and smooth out intermittent or heavy workloads, preventing a service from being overwhelmed. It decouples producers and consumers, allowing the system to process work at a steady, manageable pace.
+
+For more details, see the dedicated **[[queue-based-load-leveling]]** pattern page.
