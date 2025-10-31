@@ -15,6 +15,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[availability-patterns|Availability Patterns]]
 * [[back-pressure|Back Pressure]]
 * [[background-jobs|Background Jobs]]
+* [[bulkhead|Bulkhead]]
 * [[cdn|Content Delivery Network (CDN)]]
 * [[data-management-patterns|Data Management Patterns]]
 * [[deployment-stamps|Deployment Stamp]]

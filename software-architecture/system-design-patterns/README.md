@@ -3,6 +3,7 @@
 see [index](./index.md)**
 
 * **[Asynchronous Messaging](./asynchronous-messaging.md)**
+* **[Bulkhead](./bulkhead.md)**
 * **[Message Queue](./message-queue.md)**
 * **[Publish-Subscribe](./publish-subscribe.md)**
 * **[Service Discovery](./service-discovery.md)**
