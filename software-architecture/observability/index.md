@@ -67,5 +67,6 @@ This hierarchy is crucial: you can't have a meaningful SLA without a clear SLO, 
 
 ## Concepts in Observability
 
-*   [[monitoring]]
-*   [[opentelemetry]]
+* [[health-endpoint-monitoring|Health Endpoint Monitoring]]
+* [[monitoring|Monitoring]]
+* [[opentelemetry|OpenTelemetry]]

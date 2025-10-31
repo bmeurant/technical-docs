@@ -66,23 +66,9 @@ A comprehensive monitoring strategy involves several distinct, yet interconnecte
 
 Health monitoring provides an immediate, real-time snapshot of a system's operational status. Its primary goal is to answer the question: "Is the system running and able to process requests right now?"
 
-This is typically implemented via **health check endpoints** (e.g., `/health`, `/status`, `/ping`) that services expose. These endpoints are consumed by other systems, such as a [[load-balancing|load balancer]] or a [[service-discovery]] registry, to make automated decisions.
+This is achieved by implementing the **[[health-endpoint-monitoring|Health Endpoint Monitoring]]** pattern, where services expose endpoints (e.g., `/health`, `/status`) that external tools can poll. These checks are fundamental to building self-healing systems, as they allow components like load balancers and container orchestrators to make automated decisions about traffic routing and service lifecycle.
 
-For example, a load balancer will stop routing traffic to an instance that reports an "unhealthy" status, preventing user-facing errors.
-
-**Example: Simple Health Check in Node.js/Express**
-```javascript
-app.get('/health', (req, res) => {
-  // Check critical dependencies, like a database connection
-  const isDbConnected = checkDatabaseConnection();
-
-  if (isDbConnected) {
-    res.status(200).json({ status: 'UP' });
-  } else {
-    res.status(503).json({ status: 'DOWN', reason: 'Database unavailable' });
-  }
-});
-```
+For a detailed explanation of how to implement this pattern, including the critical distinction between liveness and readiness probes, see the main **[[health-endpoint-monitoring|Health Endpoint Monitoring]]** page.
 
 ### Availability Monitoring
 
