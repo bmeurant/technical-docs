@@ -787,13 +787,13 @@ graph TD
 
 #### Sidecar
 
-* **Problem**: How to add additional functionality (like logging, monitoring, or security) to an existing application component without modifying its code?
+* **Problem**: How to add additional functionality (like logging, [[monitoring]], or security) to an existing application component without modifying its code?
 * **Synopsis**: The **Sidecar** pattern attaches a separate, helper process or container to a main application to provide supporting features and abstract away infrastructure concerns. For a detailed explanation of its use cases, implementation in Kubernetes, and trade-offs, see the main page on the **[[sidecar]]** pattern.
 
 
 #### Ambassador
 
-* **Problem**: How can an application offload and standardize the way it communicates with external services, especially when dealing with concerns like resiliency, routing, and monitoring?
+* **Problem**: How can an application offload and standardize the way it communicates with external services, especially when dealing with concerns like resiliency, routing, and [[monitoring]]?
 * **Synopsis**: The **Ambassador** pattern is a specialized variant of the [[sidecar]] pattern that specifically handles outbound network requests on behalf of an application. It acts as a co-located proxy that abstracts the complexities of remote communication. For a detailed explanation, see the section on the **[[sidecar#The Ambassador Pattern: A Specialization|Ambassador Pattern]]**.
 
 ---

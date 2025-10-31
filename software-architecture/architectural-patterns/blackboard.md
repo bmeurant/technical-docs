@@ -71,7 +71,7 @@ The interaction between the components is [[event-driven|event-driven]] and indi
     * **Synchronization and [[transversal-programming-models#1-concurrent-programming|Concurrency]]:** Managing [[transversal-programming-models#1-concurrent-programming|concurrent]] access to the Blackboard can be complex, especially in a distributed environment. Mechanisms like locks, semaphores, or transactional systems are often required.
     * **Single Point of Failure (SPOF):** The Blackboard itself can become a **bottleneck** if not properly managed, as all communication must flow through it. If it fails, the entire system fails.
     * **Debugging and Testing:** The non-deterministic nature and the absence of a clear control flow make debugging and tracing the system's behavior very difficult. It can be hard to know which Knowledge Source made a particular modification.
-    * **Overhead:** The constant monitoring and a complex Controller can introduce significant overhead, making it less efficient for simpler problems.
+    * **Overhead:** The constant [[monitoring]] and a complex Controller can introduce significant overhead, making it less efficient for simpler problems.
 
 ---
 ## Related Patterns, Concepts and Variations

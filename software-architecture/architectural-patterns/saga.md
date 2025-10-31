@@ -20,11 +20,11 @@ The **Saga** pattern is an [[software-architecture/architectural-patterns/|archi
 
 ## Key Components and Communication Flow
 
-There are two main ways to coordinate a saga: **Choreography** and **Orchestration**.
+A saga's sequence of local transactions can be coordinated using two main topologies found in an [[event-driven|Event-Driven Architecture]]: **[[event-driven#Broker Topology (Choreography)|Choreography]]** and **[[event-driven#Mediator Topology (Orchestration)|Orchestration]]**. The choice between them trades simplicity and decentralization for explicit control and visibility.
 
 ### 1. Choreography-Based Saga
 
-In this approach, there is no central coordinator. Each service participating in the saga subscribes to events from other services and acts accordingly.
+In this approach, there is no central coordinator. Each service participating in the saga subscribes to events from other services and acts accordingly. This follows the **[[event-driven#Broker Topology (Choreography)|Choreography]]** model.
 
 ```mermaid
 sequenceDiagram
@@ -52,7 +52,7 @@ sequenceDiagram
 
 ### 2. Orchestration-Based Saga
 
-In this approach, a central **orchestrator** (or coordinator) is responsible for telling the saga participants what to do. The orchestrator manages the sequence of transactions and compensating transactions.
+In this approach, a central **orchestrator** (or coordinator) is responsible for telling the saga participants what to do. The orchestrator manages the sequence of transactions and compensating transactions. This follows the **[[event-driven#Mediator Topology (Orchestration)|Orchestration]]** model.
 
 ```mermaid
 sequenceDiagram
@@ -108,13 +108,13 @@ The need to persist the state of a saga depends on the implementation approach:
 
 #### 1. Choreography-Based Saga
 
--   **Persistence Not Required (Generally):** In this approach, there is no central coordinator. Services communicate via events. Each service knows what to do when it receives an event from a previous service, including sending a compensating event in case of a local failure.
+-   **Persistence Not Required (Generally):** In the [[event-driven#Broker Topology (Choreography)|choreography model]], there is no central coordinator. Services communicate via events. Each service knows what to do when it receives an event from a previous service, including sending a compensating event in case of a local failure.
 -   **Distributed State:** The state of the execution is implicit and distributed across the states of each participating service and the messages (events) they have produced and consumed.
 -   **Minimal Persistence:** Each service must persist its own transactional state change before emitting the next event (often with the **Transactional Outbox** pattern or **Transaction Log Tailing**), but the "saga" as a single object is not persisted.
 
 #### 2. Orchestration-Based Saga
 
--   **Persistence Required (Very Often):** Here, a dedicated service, the **Orchestrator** (or Saga Manager), manages the logic of the sequence of steps and compensations.
+-   **Persistence Required (Very Often):** In the [[event-driven#Mediator Topology (Orchestration)|orchestration model]], a dedicated service, the **Orchestrator** (or Saga Manager), manages the logic of the sequence of steps and compensations.
 -   **Centralized State:** The Orchestrator must maintain the current state of the execution (what is the next step? which step failed? which steps need to be compensated?).
 -   **Reasons for Persistence:**
     -   **Resilience:** If the orchestrator fails or restarts, it must be able to resume the saga exactly where it left off to avoid blocking the transaction or creating inconsistencies.

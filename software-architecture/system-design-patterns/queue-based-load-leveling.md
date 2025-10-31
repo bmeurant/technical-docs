@@ -66,7 +66,7 @@ sequenceDiagram
 
 -   **Queue Management**: The queue itself can become a bottleneck or a single point of failure if not managed correctly. It's important to use a robust, scalable queuing service (e.g., RabbitMQ, Kafka, AWS SQS, Azure Service Bus).
 -   **Data Latency**: This pattern introduces latency by design. It is not suitable for workflows that require an immediate, synchronous response.
--   **Handling Poison Messages**: A message that repeatedly causes a consumer to fail (a "poison message") must be handled. This usually involves implementing a dead-letter queue (DLQ) where such messages are moved after a certain number of failed processing attempts.
+-   **Handling Poison Messages**: A message that repeatedly causes a consumer to fail (a "poison message") must be handled. This usually involves implementing a [[message-queue#Dead-Letter Queue (DLQ)|dead-letter queue (DLQ)]] where such messages are moved after a certain number of failed processing attempts.
 -   **Message Order**: Not all queues guarantee First-In, First-Out (FIFO) ordering, especially at scale. If the order of processing is critical, a FIFO queue or a more advanced streaming platform like Apache Kafka might be necessary.
 
 ## Common Use Cases

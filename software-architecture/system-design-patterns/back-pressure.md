@@ -40,7 +40,7 @@ Back pressure mechanisms typically involve a signal from the consumer to the pro
     *   **Example**: A [[message-queue|message queue]] with a maximum size. If the queue is full, new messages are rejected or the producer is blocked.
 
 4.  **Dropping (Implicit Back Pressure)**:
-    *   If the consumer cannot keep up and the buffer is full, new incoming data is simply dropped. This is acceptable in scenarios where data loss is tolerable (e.g., monitoring metrics, real-time video streams).
+    *   If the consumer cannot keep up and the buffer is full, new incoming data is simply dropped. This is acceptable in scenarios where data loss is tolerable (e.g., [[monitoring]] metrics, real-time video streams).
     *   **Example**: A UDP-based streaming service might drop packets if the receiver's buffer is full.
 
 5.  **Exponential Backoff**:

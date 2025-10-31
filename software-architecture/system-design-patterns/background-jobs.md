@@ -216,7 +216,7 @@ sequenceDiagram
 ## Key Considerations
 
 - **Idempotency:** A background job should be designed to be idempotent, meaning it can be executed multiple times with the same input but produce the same result. This is critical because in a distributed system, a job might be delivered more than once.
-- **Error Handling & Retries:** Failures are inevitable. Implement robust error handling and a [[posa|Retry]] strategy (e.g., exponential backoff) for transient failures. For permanent failures, use a **Dead-Letter Queue (DLQ)** to store failed messages for later inspection.
+- **Error Handling & Retries:** Failures are inevitable. Implement robust error handling and a [[posa|Retry]] strategy (e.g., exponential backoff) for transient failures. For permanent failures, use a **[[message-queue#Dead-Letter Queue (DLQ)|Dead-Letter Queue (DLQ)]]** to store failed messages for later inspection.
 - **Scalability:** The worker pool can be scaled independently of the main application, allowing you to handle a high volume of jobs. This is a key benefit of the pattern.
 
 ---

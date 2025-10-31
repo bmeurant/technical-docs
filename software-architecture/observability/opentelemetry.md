@@ -12,9 +12,9 @@ date: 2025-10-26
 
 # OpenTelemetry
 
-OpenTelemetry (OTel) is a collection of tools, APIs, and SDKs used to instrument, generate, collect, and export [[monitoring|telemetry data]] (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior. It is a vendor-neutral, open-source project managed by the Cloud Native Computing Foundation (CNCF).
+OpenTelemetry (OTel) is a collection of tools, APIs, and SDKs used to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior. It is a vendor-neutral, open-source project managed by the Cloud Native Computing Foundation (CNCF).
 
-The fundamental goal of OpenTelemetry is to standardize the way we collect and transmit telemetry data, freeing developers from being locked into a specific monitoring vendor. The core promise is: **instrument your application once, and send the data to any backend.**
+The fundamental goal of OpenTelemetry is to standardize the way we collect and transmit telemetry data, freeing developers from being locked into a specific [[monitoring]] vendor. The core promise is: **instrument your application once, and send the data to any backend.**
 
 ---
 
@@ -22,7 +22,7 @@ The fundamental goal of OpenTelemetry is to standardize the way we collect and t
 
 Before OpenTelemetry, instrumenting an application was a fragmented and proprietary process:
 
--   **Vendor Lock-In**: If you wanted to use a monitoring tool from Vendor A, you had to use their specific agent and SDK. If you later decided to switch to Vendor B, you had to rip out all the old instrumentation and re-instrument your entire application with Vendor B's tools.
+-   **Vendor Lock-In**: If you wanted to use a [[monitoring]] tool from Vendor A, you had to use their specific agent and SDK. If you later decided to switch to Vendor B, you had to rip out all the old instrumentation and re-instrument your entire application with Vendor B's tools.
 -   **Data Silos**: Different tools were used for different signals. You might use Prometheus for metrics, Jaeger for traces, and an ELK stack for logs. Correlating data between these systems (e.g., finding the exact traces that correspond to a spike in metric errors) was extremely difficult, if not impossible.
 -   **Inconsistent Data**: Each vendor had its own data format and conventions, making it hard to build a unified view of system health.
 

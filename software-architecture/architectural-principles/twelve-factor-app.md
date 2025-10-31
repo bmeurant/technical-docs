@@ -404,7 +404,7 @@ Disposability is a prerequisite for a robust and elastic system. Fast startup ti
 
 This principle advocates for minimizing the gaps between development and production environments. The three key gaps to minimize are:
 1.  **The Time Gap**: Code should be deployed to production quickly after being written.
-2.  **The Personnel Gap**: Developers should be involved in the deployment and monitoring of their applications (a core DevOps principle).
+2.  **The Personnel Gap**: Developers should be involved in the deployment and [[monitoring]] of their applications (a core DevOps principle).
 3.  **The Tools Gap**: Development and production environments should use the same technology stack.
 
 ```mermaid
@@ -458,7 +458,7 @@ Modern tools like Docker have made achieving parity much easier. By packaging th
 ### Examples
 *   Using containerization (like Docker) to create local development environments that closely mirror the production environment.
 *   Using the same backing services (e.g., [[rdbms|PostgreSQL]] in all environments, not SQLite in dev).
-*   Ensuring developers have access to production logs and monitoring tools to understand how their code behaves in the real world.
+*   Ensuring developers have access to production logs and [[monitoring]] tools to understand how their code behaves in the real world.
 
 ## XI. Logs
 

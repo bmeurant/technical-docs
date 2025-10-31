@@ -6,7 +6,7 @@ date: 2025-09-17
 ---
 # Service-Oriented Architecture (SOA)
 
-**Service-Oriented Architecture (SOA)** is an [[software-architecture/architectural-styles/|architectural style]] where business capabilities are exposed and consumed as reusable, enterprise-level **services**. Unlike other styles, classic SOA is defined by its use of a central communication backbone, the **Enterprise Service Bus (ESB)**, which handles all routing, transformation, and orchestration logic.
+**Service-Oriented Architecture (SOA)** is an [[software-architecture/architectural-styles/|architectural style]] where business capabilities are exposed and consumed as reusable, enterprise-level **services**. Unlike other styles, classic SOA is defined by its use of a central communication backbone, the **Enterprise Service Bus (ESB)**, which handles all routing, transformation, and [[event-driven#Mediator Topology (Orchestration)|orchestration]] logic.
 
 This leads to a philosophy of **"smart pipes and dumb endpoints."** The ESB is the "smart pipe" containing the integration logic, while the services themselves are "dumb endpoints" that simply provide a business function.
 
@@ -58,7 +58,7 @@ graph TD
 3.  **Enterprise Service Bus (ESB):** The central communication hub. It is responsible for:
     *   **Routing:** Directing requests to the correct service.
     *   **Transformation:** Converting data between different formats (e.g., XML to JSON).
-    *   **Orchestration:** Coordinating calls to multiple services to fulfill a single business process.
+    *   **[[event-driven#Mediator Topology (Orchestration)|Orchestration]]:** Coordinating calls to multiple services to fulfill a single business process.
     *   **Protocol Translation:** Bridging different communication protocols (e.g., HTTP and FTP).
 
 **Typical Data Flow:**
@@ -93,7 +93,7 @@ While microservices evolved from SOA, they represent a fundamentally different p
 | Characteristic | Service-Oriented Architecture (SOA) | Microservices Architecture |
 | :--- | :--- | :--- |
 | **Scope** | **Enterprise-wide**. Services are coarse-grained and shared across the organization. | **Application-specific**. Services are fine-grained and scoped to a single application's context. |
-| **Communication** | **"Smart Pipes, Dumb Endpoints."** Relies on a central ESB for routing, transformation, and orchestration. | **"Dumb Pipes, Smart Endpoints."** Services communicate over simple protocols (like HTTP or gRPC) and contain their own logic. |
+| **Communication** | **"Smart Pipes, Dumb Endpoints."** Relies on a central ESB for routing, transformation, and [[event-driven#Mediator Topology (Orchestration)|orchestration]]. | **"Dumb Pipes, Smart Endpoints."** Services communicate over simple protocols (like HTTP or gRPC) and contain their own logic. |
 | **Data Storage** | Services often share a common, enterprise-level database. | Each microservice **owns its own database** to ensure full decoupling. |
 | **Deployment** | Services are often deployed in larger, coordinated releases. | Each service is **independently deployable**. |
 | **Goal** | **Integration** and reuse of existing enterprise assets. | **Agility** and speed of delivery for a single application. |

@@ -58,7 +58,7 @@ sequenceDiagram
 ## Key Benefits
 
 -   **Enhanced Resiliency**: The system can automatically recover from partial failures, improving the overall reliability of distributed operations.
--   **Centralized Coordination**: The Scheduler provides a single point of orchestration for complex workflows, making them easier to understand and manage.
+-   **Centralized Coordination**: The Scheduler provides a single point of [[event-driven#Mediator Topology (Orchestration)|orchestration]] for complex workflows, making them easier to understand and manage.
 -   **Improved Observability**: The Supervisor provides a centralized view of the health and status of the distributed tasks, which is invaluable for monitoring and debugging.
 
 ## Challenges and Considerations

@@ -72,13 +72,13 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
     * **Reduced Cost:** The **pay-per-use** model eliminates costs for idle servers.
     * **Accelerated Time-to-market:** Developers focus on business logic without worrying about infrastructure, which speeds up development and deployment.
     * **Elastic Scalability:** The platform automatically and transparently manages scaling, allowing you to handle massive traffic spikes without manual intervention.
-    * **Simplified Operations:** There are fewer **DevOps** tasks, such as managing servers, OS updates, or infrastructure monitoring.
+    * **Simplified Operations:** There are fewer **DevOps** tasks, such as managing servers, OS updates, or infrastructure [[monitoring]].
 
 * **Challenges:**
     * **Unpredictable Cost at Scale:** While the model is economical for low and variable workloads (a key aspect of [[workload-management|Workload Management]]), it can become very expensive for high-volume applications or unforeseen traffic spikes, where the cost of each invocation adds up.
     * **Cold Starts:** If a function hasn't been used in a while, it may need to "cold start," which can introduce latency.
     * **Vendor Lock-in:** **Serverless** architectures are inherently tied to a specific cloud provider's services (AWS, GCP, Azure), which can make migration difficult.
-    * **Complex Debugging and Monitoring:** Debugging a distributed application composed of ephemeral functions can be complex. Traditional monitoring tools aren't always suitable.
+    * **Complex Debugging and Monitoring:** Debugging a distributed application composed of ephemeral functions can be complex. Traditional [[monitoring]] tools aren't always suitable.
     * **Potential Latency:** The distributed and network-dependent nature can introduce latency, especially between functions and backend services.
     * **Execution Limits:** **Serverless** platforms often impose limits on function execution time, memory, or package size.
 
