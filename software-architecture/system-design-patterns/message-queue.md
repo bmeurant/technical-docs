@@ -41,11 +41,11 @@ graph TD
 1.  **Producer:** The component that creates a message (often a **command**) and sends it to the queue.
 2.  **Queue:** A durable channel that stores messages in a first-in, first-out (FIFO) order until a consumer is ready to process them.
 3.  **Consumer:** A component that connects to the queue, retrieves a message, and processes it.
-4.  **Broker:** The underlying messaging system that manages the queue and guarantees message delivery.
+4.  **[[broker|Broker]]:** The underlying messaging system that manages the queue and guarantees message delivery.
 
 **Typical Data Flow:**
 1.  The **Producer** sends a message (a command or task) to the **Queue**.
-2.  The **Broker** delivers the message to one of the available consumers in the pool (e.g., `Consumer 1`). The message is now "locked" and invisible to other consumers to prevent duplicate processing.
+2.  The **[[broker|Broker]]** delivers the message to one of the available consumers in the pool (e.g., `Consumer 1`). The message is now "locked" and invisible to other consumers to prevent duplicate processing.
 3.  `Consumer 1` processes the message.
 4.  Upon successful completion, `Consumer 1` sends an **acknowledgment (Ack)** back to the queue.
 5.  The queue receives the `Ack` and permanently deletes the message. If the consumer fails and does not send an `Ack` (or sends a Nack), the message lock will time out, and it will be redelivered to another available consumer.
@@ -69,7 +69,7 @@ graph TD
 
 ## Implementations and Characteristics
 
-Different message brokers offer varying guarantees and are suited for different use cases.
+Different [[broker|message brokers]] offer varying guarantees and are suited for different use cases.
 
 *   **Redis**: While primarily an in-memory data store, Redis can be used as a simple, lightweight message broker. However, because it is not designed for durability, messages can be lost if a server fails. It is best suited for transient, low-priority messaging.
 *   **RabbitMQ**: A mature, popular, and feature-rich message broker that implements the AMQP protocol. It offers flexible routing, durability, and reliability but requires managing your own nodes and understanding its protocol.
@@ -87,7 +87,7 @@ The **Priority Queue** pattern is a variation of the standard message queue that
 #### How It Works
 
 1.  **Priority Assignment**: The message producer assigns a priority level (usually a number) to each message before sending it to the queue.
-2.  **Broker Reordering**: The message broker is responsible for managing the messages in a way that prioritizes delivery. When a consumer requests a message, the broker provides the highest-priority message that is available.
+2.  **Broker Reordering**: The [[broker|message broker]] is responsible for managing the messages in a way that prioritizes delivery. When a consumer requests a message, the broker provides the highest-priority message that is available.
 3.  **FIFO within Priorities**: Within the same priority level, messages are typically still processed in FIFO order.
 
 ```mermaid
@@ -125,7 +125,7 @@ graph TD
 
 -   **Message Starvation**: The biggest risk of this pattern is **starvation**, where a continuous stream of high-priority messages prevents low-priority messages from ever being processed.
     -   **Solution**: A common mitigation is **priority aging**, where the priority of a message is gradually increased the longer it remains in the queue.
--   **Broker Support**: Native support for priority queues varies among message brokers.
+-   **Broker Support**: Native support for priority queues varies among [[broker|message brokers]].
     -   **RabbitMQ**: Provides excellent support for priority queues out of the box.
     -   **Amazon SQS**: Does not support priority queues directly. The common pattern is to use multiple SQS queues (e.g., `high-priority-queue`, `low-priority-queue`) and have the consumer pool poll the high-priority queue more frequently or with more dedicated workers.
     -   **Apache Kafka**: Does not have a native priority queue concept, as it is a log stream. Implementing it requires custom logic, often involving multiple topics and sophisticated consumer logic, which adds significant complexity.
@@ -133,7 +133,50 @@ graph TD
 
 ### Dead-Letter Queue (DLQ)
 
-A critical complementary pattern where messages that repeatedly fail processing are moved to a separate queue for manual inspection, preventing them from blocking the main queue.
+A Dead-Letter Queue (DLQ) is a critical complementary pattern for building robust, fault-tolerant messaging systems. Its primary purpose is to isolate and store messages that cannot be processed successfully by a consumer. This prevents problematic messages, often called "poison pills," from being endlessly redelivered and blocking the processing of valid messages in the main queue.
+
+#### How It Works
+
+The process of moving a message to a DLQ is managed by the [[broker|message broker]] and is triggered by a redelivery policy.
+
+1.  **Processing Failure**: A consumer fetches a message from the main queue but fails to process it due to errors (e.g., invalid data, a bug in the processing logic, a downstream service being unavailable).
+2.  **Retry Mechanism**: The consumer (or broker) allows the message to be redelivered for a configured number of attempts (`maxReceiveCount`). This handles transient failures.
+3.  **Move to DLQ**: If the message continues to fail processing after the maximum number of retries, the message broker automatically moves the message from the source queue to the designated DLQ.
+
+This isolates the poison message, allowing consumers to continue processing the rest of the messages in the main queue without interruption.
+
+```mermaid
+sequenceDiagram
+    participant C as Consumer
+    participant MQ as Main Queue
+    participant DLQ as Dead-Letter Queue
+
+    MQ->>C: Deliver Message
+    C-->>MQ: Fail to Process (NACK)
+
+    Note over MQ: Redelivery attempt 1...N
+    MQ->>C: Re-deliver Message
+    C-->>MQ: Fail to Process (NACK)
+
+    Note over MQ: Max retries exceeded
+    MQ->>DLQ: Move Poison Message
+
+    MQ->>C: Deliver next valid message
+```
+*Description: A consumer repeatedly fails to process a message. After exceeding the maximum retry count, the broker moves the "poison" message to the DLQ, unblocking the main queue.*
+
+#### Key Benefits
+
+-   **System Stability**: Prevents poison messages from repeatedly crashing consumers or blocking the entire queue, which is a major cause of system-wide outages.
+-   **Isolation of Failures**: Bad messages are safely stored and isolated without being lost, allowing the main system to continue functioning normally.
+-   **Asynchronous Debugging**: Developers and operators can inspect the contents of the DLQ asynchronously to diagnose the root cause of the failure without the pressure of a live incident.
+
+#### Implementation Considerations
+
+-   **Broker Configuration**: Most message brokers require explicit configuration to enable the DLQ functionality. This typically involves setting a `dead-letter-exchange` (in RabbitMQ) or a `redrivePolicy` (in Amazon SQS) on the source queue, which specifies the target DLQ and the `maxReceiveCount`.
+-   **Monitoring and Alerting**: A DLQ should never have messages in it during normal operation. It is critical to set up monitoring and alerts to notify the team immediately when a message enters the DLQ, as this indicates a real problem.
+-   **DLQ Message Analysis**: The messages in the DLQ should contain enough context (e.g., headers with error information, original enqueue time) to make debugging possible.
+-   **Redrive / Reprocessing Strategy**: Once the underlying bug is fixed, you need a mechanism to "redrive" the messages from the DLQ back into the main queue for reprocessing. Many cloud providers offer this functionality in their UI or via an API.
 
 ### Competing Consumers
 
@@ -146,14 +189,14 @@ The introduction of this page already mentions this pattern as a core implementa
 -   **Improved Throughput**: Work is processed in parallel by multiple consumers, dramatically increasing the rate of message processing.
 -   **Enhanced Scalability**: To handle an increase in message volume, you can simply add more consumer instances to the pool. This allows for easy horizontal scaling.
 -   **High Availability and Fault Tolerance**: If one consumer instance fails or becomes unavailable, the other consumers in the pool can continue processing messages, preventing a single point of failure.
--   **Automatic Load Balancing**: The message broker automatically distributes the load of messages across the available consumers, ensuring that work is spread evenly.
+-   **Automatic Load Balancing**: The [[broker|message broker]] automatically distributes the load of messages across the available consumers, ensuring that work is spread evenly.
 
 #### Challenges and Considerations
 
 -   **Loss of Message Order**: This is the most critical trade-off. While a queue may be FIFO, distributing messages to multiple parallel consumers means there is **no guarantee** that messages will be processed in the order they were sent. For example, Message B might be processed by a fast consumer before Message A is finished by a slower consumer.
     -   **Solution**: If strict ordering is required, you must use a different pattern, such as a [[#Sequential Convoy|Sequential Convoy]], or ensure that all messages for a specific logical entity are processed by the same consumer (a technique often used in Apache Kafka with partitioned topics).
 -   **Requirement for Idempotency**: Since a consumer could fail after processing a message but before acknowledging it, the same message might be delivered to another consumer for reprocessing. Therefore, the message handling logic must be [[idempotent-operations|idempotent]] to prevent duplicate processing from causing errors or data inconsistencies.
--   **Poison Message Handling**: A single malformed message (a "poison pill") that causes consumers to crash can be repeatedly redelivered, blocking all consumers in the pool one by one. This makes having a robust **Dead-Letter Queue (DLQ)** strategy essential.
+-   **Poison Message Handling**: A single malformed message (a "poison pill") that causes consumers to crash can be repeatedly redelivered, blocking all consumers in the pool one by one. This makes having a robust [[#Dead-Letter Queue (DLQ)|Dead-Letter Queue (DLQ)]] strategy essential.
 
 ### Sequential Convoy
 
@@ -232,6 +275,9 @@ stateDiagram-v2
 
 5.  **[Priority Queue pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/priority-queue)**
     The official Azure documentation for the Priority Queue pattern, explaining how to prioritize messages to handle urgent requests first.
+
+6.  **[What is a Dead-Letter Queue (DLQ)? - AWS](https://aws.amazon.com/what-is/dead-letter-queue/)**
+    A clear explanation from Amazon Web Services on the role of DLQs in handling message failures, particularly within the context of Amazon SQS.
 
 ---
 

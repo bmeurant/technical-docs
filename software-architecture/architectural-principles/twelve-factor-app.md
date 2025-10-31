@@ -364,7 +364,7 @@ Disposability is a prerequisite for a robust and elastic system. Fast startup ti
 
 ### Examples
 *   A web process, upon receiving `SIGTERM`, stops accepting new connections but continues to process existing requests before exiting.
-*   A worker process, when signaled to shut down, returns its current job to the message queue to be reprocessed by another worker.
+*   A worker process, when signaled to shut down, returns its current job to the [[message-queue|message queue]] to be reprocessed by another worker.
 *   A Java example using a `Runtime` shutdown hook:
     ```java
     import java.util.concurrent.ExecutorService;

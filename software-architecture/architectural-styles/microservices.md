@@ -82,7 +82,7 @@ A key architectural decision is how services communicate.
     *   **Pros:** Simple to understand and implement. The request-response model is familiar.
     *   **Cons:** Creates **temporal coupling**. If the called service is slow or unavailable, the calling service is blocked. Chaining synchronous calls can lead to a **distributed monolith** and cascading failures.
 
-*   **Asynchronous Communication (e.g., Message Queues, Events):**
+*   **Asynchronous Communication (e.g., [[message-queue|Message Queues]], Events):**
     *   **How it works:** The sender publishes a message or event to a broker and does not wait for a response. Other services subscribe to these messages and react to them.
     *   **Pros:** Promotes **loose coupling** and resilience. The sender doesn't need to know about the consumers, and a failure in a consumer service does not impact the sender.
     *   **Cons:** More complex to implement and debug. The eventual consistency model and the lack of a single, linear request flow can be challenging to manage.

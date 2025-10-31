@@ -78,7 +78,7 @@ The interaction between the components is [[event-driven|event-driven]] and indi
 
 * **Hierarchical Blackboard:** The Blackboard is organized into multiple levels of abstraction, with Knowledge Sources specialized to operate at specific levels. This is common in complex AI systems.
 * **Open Blackboard:** This variation loosens the strict control of the Controller. Knowledge Sources can write directly to the Blackboard without a centralized scheduler, relying on event-based triggers. This is less common due to the increased complexity of managing concurrency.
-* **Integration with other patterns:** The Blackboard pattern is often combined with other patterns. For example, Knowledge Sources can be implemented as **[[microservices]]** communicating via a message queue, which serves as a sort of "Blackboard" in a distributed system.
+* **Integration with other patterns:** The Blackboard pattern is often combined with other patterns. For example, Knowledge Sources can be implemented as **[[microservices]]** communicating via a [[message-queue|message queue]], which serves as a sort of "Blackboard" in a distributed system.
 * **Modern Collaborative Tools:** Conceptually, modern real-time collaborative tools (like Google Docs or Figma) share similarities with the Blackboard pattern. The document or canvas acts as the "blackboard," and multiple users (the "knowledge sources") contribute [[transversal-programming-models#1-concurrent-programming|concurrently]] to build a final product.
 
 This pattern, though less common in standard enterprise applications, remains a powerful tool for specific, highly complex domains. Its strength lies in its ability to manage complexity through a collaborative, incremental approach.

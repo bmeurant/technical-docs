@@ -36,7 +36,7 @@ graph TD
     *   **Transformer:** Modifies the input data (e.g., converting format, encrypting).
     *   **Tester:** Checks data against one or more criteria and may discard it or route it differently.
     *   **Aggregator:** Collects and combines multiple data points into one.
-3.  **Pipe**: The connector that links the filters. It is a unidirectional channel that moves data from one filter to the next. In distributed systems, a pipe is often implemented with a **[[asynchronous-messaging|Message Queue]]** to provide buffering and asynchronicity.
+3.  **Pipe**: The connector that links the filters. It is a unidirectional channel that moves data from one filter to the next. In distributed systems, a pipe is often implemented with a **[[message-queue|Message Queue]]** to provide buffering and asynchronicity.
 4.  **Sink**: The final destination for the data after it has passed through the entire filter chain. Examples: a database, a file, a user interface.
 
 **Typical Data Flow:**
