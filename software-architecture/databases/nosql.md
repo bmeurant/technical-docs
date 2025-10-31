@@ -44,6 +44,15 @@ This approach is a direct trade-off, as explained in the [[cap|CAP Theorem]], pr
 
 Most NoSQL databases are designed to be used by developers via simple, API-driven calls. The data formats they use, such as JSON in document databases, map directly to the objects and data structures used in modern programming languages. This eliminates the "object-relational impedance mismatch"—the complex mapping layer (ORM) often required to translate between the object-oriented world of an application and the relational world of a SQL database.
 
+### 5. Replication
+Replication is a cornerstone of NoSQL database architecture, enabling both high availability and read scalability. Most NoSQL databases have built-in support for automatic replication, where data written to one node (the primary or master) is copied to other nodes (replicas or secondaries).
+
+This is fundamental to their design for two reasons:
+-   **Availability**: If a node fails, a replica can be automatically promoted to take its place, ensuring the system remains operational.
+-   **Read Scalability**: Read requests can be distributed across multiple replicas, increasing the system's overall read throughput.
+
+The specific replication models and consistency guarantees vary widely between different NoSQL databases. For a detailed explanation of the common models (Master-Slave, Multi-Master), see the main page on [[availability-patterns#Replication-Patterns|Replication Patterns]].
+
 ---
 
 ## Common NoSQL Database Models

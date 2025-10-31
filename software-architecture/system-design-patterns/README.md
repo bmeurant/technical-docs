@@ -20,3 +20,4 @@ see [index](./index.md)**
 * **[Queue-Based Load Levelling](./queue-based-load-leveling.md)**
 * **[Scheduler Agent Supervisor](./scheduler-agent-supervisor.md)**
 * **[Deployment Stamps](./deployment-stamps.md)**
+* **[Geode](./geode.md)**

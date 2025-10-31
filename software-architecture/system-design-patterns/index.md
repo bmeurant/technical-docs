@@ -10,14 +10,16 @@ date: 2025-10-20
 
 This section covers a collection of reusable patterns for solving common problems encountered in the design of distributed systems.
 
-* [[asynchronous-messaging|Asynchronous Messaging]]
 * [[anti-corruption-layer|Anti-Corruption Layer (ACL)]]
+* [[asynchronous-messaging|Asynchronous Messaging]]
 * [[availability-patterns|Availability Patterns]]
 * [[back-pressure|Back Pressure]]
 * [[background-jobs|Background Jobs]]
 * [[cdn|Content Delivery Network (CDN)]]
 * [[data-management-patterns|Data Management Patterns]]
+* [[deployment-stamps|Deployment Stamp]]
 * [[gateway-patterns|Gateway Patterns]]
+* [[geode|Geode]]
 * [[load-balancing|Load Balancing]]
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]

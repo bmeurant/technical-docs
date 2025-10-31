@@ -133,6 +133,14 @@ graph TD
 
 ---
 
+## Geographic Redundancy Patterns
+
+While the patterns above can be deployed across multiple availability zones within a region, some systems require resilience against the failure of an entire geographic region.
+
+*   **[[geode|Geode Pattern]]**: This pattern takes the [[deployment-stamps|Deployment Stamp]] concept to a global scale. The application is deployed in multiple, active, and geographically distributed regions (geodes). A global load balancer directs traffic to the nearest healthy geode, providing extreme availability and low latency for a global user base.
+
+---
+
 ## Resources & Links
 
 ### Articles

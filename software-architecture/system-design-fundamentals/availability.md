@@ -12,7 +12,7 @@ date: 2025-10-26
 
 Availability is a fundamental concept in system design that measures a system's uptime and its ability to respond to requests. The practice of tracking these measures is handled by [[monitoring]]. It is a key indicator of a system's reliability and is often a cornerstone of Service Level Agreements (SLAs).
 
-High availability is achieved by building resilient systems that can withstand failures of individual components. The primary strategy for this is **redundancy**, which is implemented through various [[availability-patterns]].
+High availability is achieved by building resilient systems that can withstand failures of individual components. The primary strategy for this is **redundancy**, which is implemented through various [[availability-patterns]]. For globally distributed systems, advanced patterns like the [[geode|Geode pattern]] provide extreme availability by serving traffic from multiple active regions simultaneously.
 
 ---
 
