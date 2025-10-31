@@ -31,7 +31,7 @@ Back pressure mechanisms typically involve a signal from the consumer to the pro
     *   The simplest form, where the producer is directly blocked when the consumer's buffer is full. This is common in synchronous systems or within a single process (e.g., a bounded queue).
     *   **Example**: A thread writing to a `BlockingQueue` will pause if the queue is full until space becomes available.
 
-2.  **Throttling (Rate Limiting)**:
+2.  **[[throttling|Throttling]] (Rate Limiting)**:
     *   The producer limits its output rate based on a predefined threshold or a signal from the consumer. This can be implemented by introducing delays or by dynamically adjusting the production rate.
     *   **Example**: A message broker might limit the rate at which it delivers messages to a consumer if the consumer's acknowledgment rate drops.
 
@@ -44,7 +44,7 @@ Back pressure mechanisms typically involve a signal from the consumer to the pro
     *   **Example**: A UDP-based streaming service might drop packets if the receiver's buffer is full.
 
 5.  **Exponential Backoff**:
-    *   When a consumer (or client) encounters an overloaded producer (or server), it retries the operation after an increasing delay. This is a common strategy for clients interacting with APIs that implement rate limiting or return "server busy" errors.
+    *   When a consumer (or client) encounters an overloaded producer (or server), it retries the operation after an increasing delay. This is a common strategy for clients interacting with APIs that implement [[rate-limiting|rate limiting]] or return "server busy" errors.
     *   **Example**: A client retrying a failed API request will wait 1 second, then 2 seconds, then 4 seconds, etc., before subsequent retries.
 
 ```mermaid
@@ -67,6 +67,20 @@ sequenceDiagram
     Note over Producer, Consumer: System stabilizes
 ```
 *Description: This diagram illustrates the concept of back pressure. A fast Producer sends data to a Queue, which is consumed at a slower rate. As the Queue fills up, the Consumer (or the Queue itself) signals back pressure to the Producer, causing it to reduce its data production rate and stabilize the system.*
+
+---
+
+## Back Pressure vs. Throttling
+
+While closely related and often used together, Back Pressure and [[throttling|Throttling]] are distinct concepts:
+
+- **Back Pressure is a feedback-based system.** It is a *cooperative* mechanism where the consumer communicates its state to the producer, allowing the producer to adapt its rate. The goal is to create a self-regulating system where the flow is controlled by the consumer's capacity.
+
+- **Throttling is a state-limiting system.** It is a *unilateral* mechanism where the consumer (or a proxy) enforces a hard limit on the incoming rate, typically by rejecting requests. It protects the consumer but does not necessarily signal the producer to slow down; it simply sheds the excess load.
+
+In short, back pressure is about *flow control* through communication, while throttling is about *rate enforcement* through rejection. A system might use throttling as a blunt instrument when true back pressure cannot be applied.
+
+---
 
 ## Related Concepts and Patterns
 

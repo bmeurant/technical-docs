@@ -98,7 +98,7 @@ Gateway Offloading moves common cross-cutting concerns and shared functionalitie
 
 ### The Problem it Solves
 
-Functionalities like [[authentication]], [[ssl-tls|TLS termination]], detailed logging, and rate limiting are required by almost every service. Implementing and maintaining this logic in every single service is inefficient, error-prone, and leads to inconsistencies. 
+Functionalities like [[authentication]], [[ssl-tls|TLS termination]], detailed logging, and [[rate-limiting|rate limiting]] are required by almost every service. Implementing and maintaining this logic in every single service is inefficient, error-prone, and leads to inconsistencies. 
 
 ### How it Works
 

@@ -28,6 +28,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[service-discovery|Service Discovery]]
 * [[sidecar|Sidecar]]
 * [[static-content-hosting|Static Content Hosting]]
+* [[throttling|Throttling]]
 
 ---
 

@@ -667,7 +667,7 @@ In a typical scenario, a Bulkhead might be used to create separate thread pools 
     * **Configurable**: The number of retry attempts and the backoff strategy should be configurable.
 * **Applicability**:
     * **Unreliable Network Communications**: When calling services over a network that may experience intermittent connectivity issues.
-    * **Throttled Services**: When a service may temporarily reject requests due to rate limiting.
+    * **Throttled Services**: When a service may temporarily reject requests due to [[rate-limiting|rate limiting]].
     * **Database Connections**: When there are transient issues with [[software-architecture/databases/|database]] connections or deadlocks.
 * **Limitations and Challenges**:
     *   **Non-transient failures**: The pattern is not suitable for non-transient (permanent) failures. Retrying a permanent failure will only waste resources.

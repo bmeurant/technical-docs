@@ -52,7 +52,7 @@ graph TD
 ```
 
 1.  **Client:** The starting point of the request (for example, a web browser or a mobile app). It only interacts with the API Gateway, without knowing about the individual services.
-2.  **[[api-gateway|API Gateway]]:** A single entry point that handles client requests, authentication, and routing to the appropriate microservices. It can also manage **rate limiting**.
+2.  **[[api-gateway|API Gateway]]:** A single entry point that handles client requests, authentication, and routing to the appropriate microservices. It can also manage **[[rate-limiting|rate limiting]]**.
 3.  [[load-balancing|Load Balancer]]: Distributes the incoming traffic load among different instances of the same service. This is an essential component for the **horizontal scalability** of services.
 4.  **[[service-discovery|Service Discovery]]:** A mechanism that allows microservices to find and communicate with each other dynamically, without needing to hard-code their network addresses. Services register with a **Service Registry** and can query it.
 5.  **Microservices:** The services themselves, containing the business logic. They can be developed with different technologies and languages. Their communication can be synchronous (via an API) or asynchronous (via a message broker).
