@@ -135,6 +135,76 @@ graph TD
 
 A critical complementary pattern where messages that repeatedly fail processing are moved to a separate queue for manual inspection, preventing them from blocking the main queue.
 
+### Competing Consumers
+
+The **Competing Consumers** pattern is a fundamental model for scaling message processing. It enables multiple concurrent consumers to process messages received on the same messaging channel. By having multiple consumers "compete" for messages from a single queue, a system can process messages in parallel, which significantly improves throughput, scalability, and availability.
+
+The introduction of this page already mentions this pattern as a core implementation detail, and the diagram in the "Key Components" section illustrates it perfectly. This section provides a more detailed focus on its specific trade-offs.
+
+#### Key Benefits
+
+-   **Improved Throughput**: Work is processed in parallel by multiple consumers, dramatically increasing the rate of message processing.
+-   **Enhanced Scalability**: To handle an increase in message volume, you can simply add more consumer instances to the pool. This allows for easy horizontal scaling.
+-   **High Availability and Fault Tolerance**: If one consumer instance fails or becomes unavailable, the other consumers in the pool can continue processing messages, preventing a single point of failure.
+-   **Automatic Load Balancing**: The message broker automatically distributes the load of messages across the available consumers, ensuring that work is spread evenly.
+
+#### Challenges and Considerations
+
+-   **Loss of Message Order**: This is the most critical trade-off. While a queue may be FIFO, distributing messages to multiple parallel consumers means there is **no guarantee** that messages will be processed in the order they were sent. For example, Message B might be processed by a fast consumer before Message A is finished by a slower consumer.
+    -   **Solution**: If strict ordering is required, you must use a different pattern, such as a [[#Sequential Convoy|Sequential Convoy]], or ensure that all messages for a specific logical entity are processed by the same consumer (a technique often used in Apache Kafka with partitioned topics).
+-   **Requirement for Idempotency**: Since a consumer could fail after processing a message but before acknowledging it, the same message might be delivered to another consumer for reprocessing. Therefore, the message handling logic must be [[idempotent-operations|idempotent]] to prevent duplicate processing from causing errors or data inconsistencies.
+-   **Poison Message Handling**: A single malformed message (a "poison pill") that causes consumers to crash can be repeatedly redelivered, blocking all consumers in the pool one by one. This makes having a robust **Dead-Letter Queue (DLQ)** strategy essential.
+
+### Sequential Convoy
+
+The **Sequential Convoy** is a messaging pattern that ensures a group of related messages are processed in a specific, sequential order by a single consumer instance. It is the direct solution to the ordering problem introduced by the [[#Competing Consumers|Competing Consumers]] pattern. It solves the problem of handling ordered, stateful operations in a distributed system where messages might otherwise be processed in parallel or out of order.
+
+This pattern is crucial for implementing complex, long-running business processes that depend on a sequence of steps. It acts as a state machine where each message in the "convoy" triggers a state transition, and the system ensures that only the correct message can be processed at each state.
+
+#### How It Works
+
+The core of the pattern relies on three key components: correlation, ordered delivery, and stateful processing.
+
+1.  **Correlation Identifier**: All messages belonging to the same convoy share a unique identifier (e.g., `OrderId`, `TransactionId`). This allows the system to group them together.
+2.  **Stateful Consumer**: The consumer that processes the messages is stateful. It keeps track of the current step in the sequence for each convoy.
+3.  **Ordered Processing Logic**: The consumer contains logic that defines the required order of messages. It will only process a message if it matches the expected next step in the sequence for that specific convoy.
+
+When a message arrives, the consumer inspects its correlation ID and checks its internal state. If the message is the one it expects for that convoy, it processes it and updates its state to await the next message in the sequence. If an unexpected message arrives, it is either rejected, re-queued for later, or put aside in a separate queue.
+
+#### State Machine Diagram
+
+A sequential convoy is best modeled as a state machine. Consider an e-commerce order process:
+
+```mermaid
+stateDiagram-v2
+    direction LR
+
+    [*] --> AwaitingPayment: OrderPlaced
+
+    AwaitingPayment --> AwaitingShipment: PaymentConfirmed
+    AwaitingPayment --> Canceled: PaymentFailed
+    AwaitingPayment --> Canceled: OrderCanceled
+
+    AwaitingShipment --> Shipped: ItemsShipped
+    AwaitingShipment --> Canceled: OrderCanceled
+
+    Shipped --> [*]: OrderCompleted
+```
+*Description: This state diagram shows a sequential convoy for an order. The process can only move from `AwaitingPayment` to `AwaitingShipment` after a `PaymentConfirmed` message arrives. Any other message for this order would be ignored or deferred until the correct one is received.*
+
+#### Key Benefits
+
+-   **Guaranteed Order of Operations**: Ensures that dependent steps in a business process are executed in the correct sequence.
+-   **Stateful Workflows**: Enables the implementation of complex, long-running, and stateful processes across distributed services.
+-   **Reliability and Consistency**: By processing messages for a single business transaction sequentially, it simplifies error handling and helps maintain data consistency throughout the process.
+
+#### Challenges and Considerations
+
+-   **Consumer Bottleneck**: Since all messages for a given convoy must be processed by a single consumer instance, that instance can become a bottleneck. This is a classic challenge of stateful services, often requiring "sticky sessions" or routing based on the correlation ID to ensure a message always lands on the correct, state-holding instance.
+-   **State Management**: The consumer must reliably store its state. If the consumer crashes, it must be able to recover its state and resume processing where it left off. This often requires an external persistence mechanism (e.g., a database or a distributed cache like Redis).
+-   **Handling Out-of-Order Messages**: The system needs a clear strategy for messages that arrive too early. Common approaches include using a temporary holding queue or simply rejecting them and letting the sender retry.
+-   **Timeout and Escalation**: The process may get stuck if a message in the sequence is lost or never arrives. The system must have a timeout mechanism to detect stalled convoys and trigger a compensating action or an alert.
+
 ### Other Related Patterns
 
 *   **[[publish-subscribe|Publish-Subscribe]]:** The other fundamental messaging model, which uses a one-to-many broadcast approach instead of one-to-one.
@@ -153,6 +223,15 @@ A critical complementary pattern where messages that repeatedly fail processing 
 2.  **[Message Queues: The Backbone of Scalable Systems (Medium)](https://medium.com/@amoljadhav_48655/message-queues-the-backbone-of-scalable-systems-2d015d9fa645)**
 
     This article emphasizes MQs as the backbone for **scalable** and **reliable** microservices architectures. It explains the core concepts (**Producer**, **Consumer**, **Message**, **Queue**) and the main advantages, particularly **Decoupling** services to allow independent scaling. The text presents common MQ patterns (**Point-to-Point**, **Publish-Subscribe**, **Request-Reply**) and lists popular implementations like **RabbitMQ**, **Apache Kafka**, and **Amazon SQS**, alongside best practices such as ensuring message [[idempotent-operations|Idempotency]] and managing **DLQs**.
+
+3.  **[Sequential Convoy Pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy)**
+    The official Azure Architecture Center documentation on the pattern, providing a clear overview and use cases.
+
+4.  **[Competing Consumers pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/competing-consumers)**
+    The official Azure documentation for the Competing Consumers pattern, detailing how it enables scalability and availability.
+
+5.  **[Priority Queue pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/priority-queue)**
+    The official Azure documentation for the Priority Queue pattern, explaining how to prioritize messages to handle urgent requests first.
 
 ---
 

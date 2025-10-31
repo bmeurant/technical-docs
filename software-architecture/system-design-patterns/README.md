@@ -19,5 +19,4 @@ see [index](./index.md)**
 * **[Anti-Corruption Layer](./anti-corruption-layer.md)**
 * **[Database Management Patterns](./database-management-patterns.md)**
 * **[Queue-Based Load Levelling](./queue-based-load-leveling.md)**
-* **[Sequential Convoy](./sequential-convoy.md)**
 * **[Scheduler Agent Supervisor](./scheduler-agent-supervisor.md)**
