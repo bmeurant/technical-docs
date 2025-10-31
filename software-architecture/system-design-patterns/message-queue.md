@@ -248,6 +248,60 @@ stateDiagram-v2
 -   **Handling Out-of-Order Messages**: The system needs a clear strategy for messages that arrive too early. Common approaches include using a temporary holding queue or simply rejecting them and letting the sender retry.
 -   **Timeout and Escalation**: The process may get stuck if a message in the sequence is lost or never arrives. The system must have a timeout mechanism to detect stalled convoys and trigger a compensating action or an alert.
 
+### Claim Check
+
+The **Claim Check** pattern is a technique used to handle large messages that would otherwise exceed the size limits of a [[message-queue|message queue]] or overwhelm the [[broker|message broker]]. The core idea is to split a large message into two parts: the payload (the large data) and the claim check (a small reference to the payload). The payload is stored in an external data store, and the lightweight claim check is sent through the message queue.
+
+This approach keeps the messages within the messaging system small and uniform, which improves performance and reduces costs, as blob storage is typically cheaper than the resource units of a messaging platform.
+
+#### How It Works
+
+The flow involves separating the message's journey from the payload's storage.
+
+1.  **Store Payload**: The **Producer** takes a large message, extracts its payload, and stores it in an external data store (e.g., Amazon S3, Azure Blob Storage, or a database).
+2.  **Get Claim Check**: The external store returns a unique ID or reference for the stored payload. This ID is the "claim check."
+3.  **Send Claim Check**: The Producer sends a small message to the queue containing only the claim check and any other necessary metadata.
+4.  **Receive Claim Check**: A **Consumer** receives the claim check message from the queue.
+5.  **Retrieve Payload**: The Consumer uses the ID from the claim check to fetch the full payload directly from the external data store.
+6.  **Process Payload**: The Consumer processes the payload as required.
+
+```mermaid
+sequenceDiagram
+    participant P as Producer
+    participant DS as External Data Store
+    participant MQ as Message Queue
+    participant C as Consumer
+
+    P->>DS: 1. Store large payload
+    DS-->>P: 2. Return reference (Claim Check)
+
+    P->>MQ: 3. Send message with Claim Check
+
+    MQ->>C: 4. Deliver Claim Check message
+    C->>DS: 5. Retrieve payload using Claim Check
+    DS-->>C: 6. Return full payload
+
+    C->>C: 7. Process payload
+```
+*Description: The producer stores the large payload in an external service to get a "claim check," then sends this small check to the message queue. The consumer receives the check and uses it to retrieve the full payload from the external store for processing.*
+
+#### Use Cases
+
+-   **Handling Large Payloads**: The most common use case is for processing messages that exceed the size limits of the chosen message broker (e.g., 256 KB in Amazon SQS, or configurable limits in RabbitMQ). This includes images, videos, large JSON/XML documents, or binary files.
+-   **Cost Optimization**: Storing large amounts of data in a message broker can be expensive. Object storage services are significantly cheaper for storing large binary data, making this pattern highly cost-effective.
+-   **Reducing Broker Load**: Sending large messages consumes more bandwidth and memory on the broker. By keeping messages small, the broker can operate more efficiently and handle a higher throughput of messages.
+-   **Securing Sensitive Data**: If the payload contains sensitive data, it can be stored in a more secure, audited data store with fine-grained access control. The message in the queue only contains a reference, reducing the risk of data exposure within the messaging infrastructure. The [[valet-key|Valet Key]] pattern is often used here to grant the consumer temporary, scoped access to the specific resource.
+
+#### Challenges and Considerations
+
+-   **Payload Lifecycle Management**: This is the most significant challenge. When should the payload be deleted from the external store?
+    -   **Consumer Deletes**: The consumer can delete the payload after successful processing. **Risk**: If the consumer fails right after processing but before deleting, the payload becomes an orphan, leading to storage costs.
+    -   **Garbage Collection**: A separate background process can periodically scan the data store and delete payloads that are no longer referenced or have expired. This is more robust but adds complexity.
+    -   **Time-to-Live (TTL)**: Some data stores allow setting a TTL on objects. The TTL should be set to a value that allows enough time for the message to be processed and re-processed in case of failures.
+-   **Increased Latency and Complexity**: The pattern introduces extra steps (writing to and reading from an external store), which adds network latency to the overall processing time. It also increases the architectural complexity of both the producer and consumer.
+-   **Data Store Availability**: The system now has a hard dependency on the availability of the external data store. If the data store is down, consumers cannot retrieve the payload, and the entire process halts, even if the message queue is operational.
+-   **Idempotency**: Just like with other messaging patterns, the consumer logic should be [[idempotent-operations|idempotent]]. It's possible for a consumer to process a payload but fail before acknowledging the message. A redelivery would cause the consumer to re-process the same data, so the logic must handle this gracefully.
+
 ### Other Related Patterns
 
 *   **[[publish-subscribe|Publish-Subscribe]]:** The other fundamental messaging model, which uses a one-to-many broadcast approach instead of one-to-one.
@@ -278,6 +332,9 @@ stateDiagram-v2
 
 6.  **[What is a Dead-Letter Queue (DLQ)? - AWS](https://aws.amazon.com/what-is/dead-letter-queue/)**
     A clear explanation from Amazon Web Services on the role of DLQs in handling message failures, particularly within the context of Amazon SQS.
+
+7.  **[Claim-Check pattern - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/patterns/claim-check)**
+    This article from the Azure Architecture Center explains the Claim-Check pattern, a technique for handling large messages in messaging systems by separating the payload from the message itself. It details how the payload is stored externally, and a small "claim check" token is sent via the message queue, which is then used by the receiver to retrieve the actual data.
 
 ---
 
