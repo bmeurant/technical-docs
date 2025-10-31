@@ -9,7 +9,6 @@ see [index](./index.md)**
 * **[Availability Patterns](./availability-patterns.md)**
 * **[Back Pressure](./back-pressure.md)**
 * **[Content Delivery Network (CDN)**](./cdn.md)**
-* **[Consistency Patterns](./consistency-patterns.md)**
 * **[Load Balancing](./load-balancing.md)**
 * **[Background Jobs](./background-jobs.md)**
 * **[Performance Antipatterns](./performance-antipatterns.md)**
@@ -20,3 +19,4 @@ see [index](./index.md)**
 * **[Database Management Patterns](./database-management-patterns.md)**
 * **[Queue-Based Load Levelling](./queue-based-load-leveling.md)**
 * **[Scheduler Agent Supervisor](./scheduler-agent-supervisor.md)**
+* **[Deployment Stamps](./deployment-stamps.md)**

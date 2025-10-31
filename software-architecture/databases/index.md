@@ -50,7 +50,7 @@ graph TD
 
 -   **Data Model:** Highly flexible, including Key-Value, Document, Column-family, and Graph models.
 -   **Schema:** Dynamic or schema-less. You can add new fields without redefining the entire database structure.
--   **Key Strength:** Designed for **[[system-design-fundamentals#Scalability|horizontal scaling]]** (scaling out by adding more servers). They often prioritize performance and [[system-design-patterns/availability-patterns|availability]] over [[system-design-patterns/consistency-patterns#Strong-Consistency|strong consistency]], aligning with the **BASE** model (Basically Available, Soft state, [[system-design-patterns/consistency-patterns#Eventual-Consistency|Eventually consistent]]).
+-   **Key Strength:** Designed for **[[system-design-fundamentals#Scalability|horizontal scaling]]** (scaling out by adding more servers). They often prioritize performance and [[system-design-patterns/availability-patterns|availability]] over [[consistency#Strong-Consistency|strong consistency]], aligning with the **BASE** model (Basically Available, Soft state, [[consistency#Eventual-Consistency|Eventually consistent]]).
 -   **Querying:** Query languages vary by database and are often less powerful than SQL for complex joins.
 -   **Trade-offs:** The flexibility and scalability often come at the cost of weaker consistency guarantees, as explained in the [[cap|CAP Theorem]].
 -   **Examples:** MongoDB (Document), Redis (Key-Value), Cassandra (Wide-column), Neo4j (Graph).

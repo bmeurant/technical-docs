@@ -36,7 +36,7 @@ By simplifying their data models and often relaxing the strict consistency guara
 
 -   **B**asically **A**vailable: The system guarantees [[system-design-patterns/availability-patterns|availability]].
 -   **S**oft State: The state of the system may change over time, even without input.
--   **E**ventually Consistent: The system will become [[system-design-patterns/consistency-patterns#Eventual-Consistency|eventually consistent]].
+-   **E**ventually Consistent: The system will become [[consistency#Eventual-Consistency|eventually consistent]].
 
 This approach is a direct trade-off, as explained in the [[cap|CAP Theorem]], prioritizing availability over strong consistency.
 

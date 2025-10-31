@@ -80,7 +80,7 @@ This method involves increasing the resources of a single server, such as adding
 
 ### 2. Horizontal Scaling (Scaling Out)
 
-This method involves adding more servers to a resource pool and distributing the load among them, typically using a **[[load-balancing|load balancer]]**.
+This method involves adding more servers to a resource pool and distributing the load among them, typically using a **[[load-balancing|load balancer]]**. It is a core principle of modern cloud architecture and is the strategy behind patterns like the [[deployment-stamps|Deployment Stamp pattern]].
 
 -   **Analogy:** Adding more cars to a delivery fleet instead of trying to build one giant truck.
 -   **Pros:**
@@ -151,6 +151,7 @@ The trade-off becomes critical during a **network partition**—a situation wher
 
 * [[availability|Availability]]
 * [[cap|CAP Theorem]]
+* [[consistency|Consistency]]
 * [[dns|Domain Name System (DNS)]]
 * [[communication-protocols|Communication Protocols]]
 * [[idempotent-operations|Idempotent Operations]]

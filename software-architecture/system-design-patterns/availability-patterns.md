@@ -44,7 +44,7 @@ graph TD
 *Description: All writes go to a single master, which then propagates the changes to read-only slaves.*
 
 *   **Pros:** Simple write logic (no conflicts), good for read-heavy workloads.
-*   **Cons:** The master is a single point of failure for writes. There can be a replication lag, leading to stale reads from slaves ([[consistency-patterns|eventual consistency]]).
+*   **Cons:** The master is a single point of failure for writes. There can be a replication lag, leading to stale reads from slaves ([[consistency|eventual consistency]]).
 
 ### Master-Master (Multi-Master) Replication
 

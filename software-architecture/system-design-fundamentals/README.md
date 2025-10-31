@@ -7,6 +7,7 @@ see [index](./index.md)
 * **[Caching](./caching.md)**
 * **[Communication Protocols](./communication-protocols.md)**
 * **[The CAP Theorem](./cap.md)**
+* **[Consistency](./consistency.md)**
 * **[Domain Name System (DNS)](./dns.md)**
 * **[Asynchronism](./asynchronism.md)**
 * **[Workload Management](./workload-management.md)**
