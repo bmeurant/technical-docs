@@ -68,8 +68,6 @@ sequenceDiagram
 ```
 *Description: This diagram illustrates the concept of back pressure. A fast Producer sends data to a Queue, which is consumed at a slower rate. As the Queue fills up, the Consumer (or the Queue itself) signals back pressure to the Producer, causing it to reduce its data production rate and stabilize the system.*
 
----
-
 ## Back Pressure vs. Throttling
 
 While closely related and often used together, Back Pressure and [[throttling|Throttling]] are distinct concepts:
@@ -80,8 +78,6 @@ While closely related and often used together, Back Pressure and [[throttling|Th
 
 In short, back pressure is about *flow control* through communication, while throttling is about *rate enforcement* through rejection. A system might use throttling as a blunt instrument when true back pressure cannot be applied.
 
----
-
 ## Related Concepts and Patterns
 
 -   **[[asynchronism|Asynchronism]]**: Back pressure is a critical control mechanism in any asynchronous system to manage data flow.
@@ -89,6 +85,8 @@ In short, back pressure is about *flow control* through communication, while thr
 -   **[[load-balancing|Load Balancing]]**: Can work in conjunction with back pressure by distributing load more evenly, but back pressure is still needed to manage individual consumer capacity.
 -   **[[retry|Retry Pattern]]**: Often used by clients in response to back pressure signals (e.g., HTTP 429 Too Many Requests or 503 Service Unavailable).
 -   **[[fail-fast|Fail-Fast]]**: In some scenarios, dropping data (a form of implicit back pressure) can be a fail-fast strategy.
+
+---
 
 ## Resources & links
 

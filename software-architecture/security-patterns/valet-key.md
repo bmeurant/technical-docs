@@ -61,7 +61,7 @@ The Valet Key pattern acts as an **enabler**, unlocking the core benefits of pat
 
 ## Considerations and Trade-offs
 
--   **Token Management**: The application must have a secure and robust mechanism for generating, issuing, and managing tokens.
+-   **Token Management**: The application must have a secure and robust mechanism for generating, issuing, and managing tokens, often involving [[hashing-algorithms|hashing algorithms]] for integrity and security.
 -   **Security Policy**: The permissions granted by the key must be as restrictive as possible (Principle of Least Privilege). A read-only key should be issued if the client only needs to download a file.
 -   **Validation**: The application may need to perform post-operation validation. For example, after a file upload, the application might run a virus scan or check metadata. This often requires a notification mechanism from the storage service (e.g., webhooks, queue messages).
 -   **Clock Skew**: The expiration of tokens is time-sensitive. Clock differences between the token-issuing service and the resource provider can lead to premature or delayed invalidation.
