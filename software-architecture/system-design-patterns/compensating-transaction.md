@@ -10,7 +10,7 @@ date: 2025-11-01
 ---
 # Compensating Transaction Pattern
 
-The **Compensating Transaction** pattern is a design approach used in distributed systems to undo the effects of a series of previously completed operations if a subsequent operation in the sequence fails. Unlike a traditional database rollback, which discards uncommitted changes, a compensating transaction applies business logic to reverse the work of a committed transaction. It's a crucial mechanism for maintaining data consistency in environments where traditional ACID (Atomicity, Consistency, Isolation, Durability) transactions spanning multiple services or data stores are not feasible.
+The **Compensating Transaction** pattern is a design approach used in distributed systems to undo the effects of a series of previously completed operations if a subsequent operation in the sequence fails. Unlike a traditional database rollback, which discards uncommitted changes, a compensating transaction applies business logic to reverse the work of a committed transaction. It's a crucial mechanism for maintaining data consistency in environments where traditional [[acid|ACID]] (Atomicity, Consistency, Isolation, Durability) transactions spanning multiple services or data stores are not feasible.
 
 ## How it Works
 
@@ -57,12 +57,12 @@ sequenceDiagram
 
 *   **Long-Running Business Processes:** Essential for workflows that span multiple services, involve human interaction, or take a significant amount of time, where holding locks for the entire duration is impractical.
 *   **Distributed Transactions (Sagas):** It is a core component of the [[saga|Saga Pattern]], enabling data consistency across multiple microservices, each with its own database.
-*   **Integration with External Systems:** When interacting with third-party services, legacy systems, or non-transactional data stores that do not support global ACID transactions.
+*   **Integration with External Systems:** When interacting with third-party services, legacy systems, or non-transactional data stores that do not support global [[acid|ACID]] transactions.
 *   **Cloud-Native Applications:** Widely used in cloud environments where distributed architectures and eventual consistency are common.
 
 ## Advantages
 
-*   **Enables Consistency in Distributed Systems:** Provides a mechanism to achieve data consistency across disparate services without relying on costly and often impractical distributed ACID transactions.
+*   **Enables Consistency in Distributed Systems:** Provides a mechanism to achieve data consistency across disparate services without relying on costly and often impractical distributed [[acid|ACID]] transactions.
 *   **Improved Resilience:** Allows long-running processes to complete even if intermediate steps fail, by providing a clear path to revert to a consistent state.
 *   **Reduced Resource Locking:** Avoids holding database locks for extended periods, improving system throughput and scalability.
 *   **Auditability:** Both the original and compensating transactions are recorded, providing a complete history of operations.

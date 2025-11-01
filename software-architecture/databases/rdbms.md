@@ -53,24 +53,17 @@ classDiagram
 -   **2NF (Second Normal Form):** Requires the table to be in 1NF and all non-key attributes to be fully dependent on the entire primary key.
 -   **3NF (Third Normal Form):** Requires the table to be in 2NF and all attributes to depend only on the primary key, not on other non-key attributes (eliminating transitive dependencies).
 
-
-
 -   **Benefit:** High data integrity and no redundant data.
 -   **Trade-off:** A highly normalized schema often results in a large number of tables. Retrieving data may require complex and potentially slow JOIN operations across these tables.
 
 ### ACID Transactions: The Guarantee of Reliability
 
-The defining feature of most RDBMSs is their support for **ACID transactions**, which guarantees that database operations are processed reliably.
-
--   **Atomicity:** Ensures that all operations within a transaction are completed successfully as a single, indivisible unit. If any part of the transaction fails, the entire transaction is rolled back. It's all or nothing.
--   **Consistency:** Guarantees that a transaction brings the database from one valid state to another. All data integrity rules (like constraints and foreign keys) must be satisfied.
--   **Isolation:** Ensures that concurrent transactions do not interfere with each other. The result of concurrent transactions is the same as if they were executed sequentially.
--   **Durability:** Guarantees that once a transaction has been committed, it will remain committed, even in the event of a system failure like a power outage or crash.
+The defining feature of most RDBMSs is their strong support for **[[acid|ACID transactions]]**, which provides a powerful guarantee that database operations are processed reliably. See the main page on [[acid]] for a detailed explanation of Atomicity, Consistency, Isolation, and Durability.
 
 ### Strengths and Weaknesses
 
 -   **Strengths:**
-    -   **Reliability and Integrity:** ACID compliance makes RDBMS the default choice for financial, e-commerce, and other mission-critical systems.
+    -   **Reliability and Integrity:** [[acid|ACID]] compliance makes RDBMS the default choice for financial, e-commerce, and other mission-critical systems.
     -   **Powerful Querying:** SQL is a mature, declarative language that allows for extremely powerful and complex data querying and aggregation.
     -   **Mature Ecosystem:** A vast ecosystem of tools, libraries, and expertise has been built around relational databases.
 -   **Weaknesses:**

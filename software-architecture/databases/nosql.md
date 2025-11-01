@@ -32,7 +32,7 @@ For a detailed explanation of sharding strategies and their trade-offs, see [[da
 
 ### 3. High Performance and Availability
 
-By simplifying their data models and often relaxing the strict consistency guarantees of ACID, NoSQL databases can achieve extremely high performance for specific workloads, especially large-volume reads and writes. They are typically optimized for availability, meaning the system remains operational for both reads and writes even if some nodes in the cluster fail. This aligns with the **BASE** model:
+By simplifying their data models and often relaxing the strict consistency guarantees of [[acid|ACID]], NoSQL databases can achieve extremely high performance for specific workloads, especially large-volume reads and writes. They are typically optimized for availability, meaning the system remains operational for both reads and writes even if some nodes in the cluster fail. This aligns with the **BASE** model:
 
 -   **B**asically **A**vailable: The system guarantees [[system-design-patterns/availability-patterns|availability]].
 -   **S**oft State: The state of the system may change over time, even without input.

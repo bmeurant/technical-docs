@@ -85,7 +85,7 @@ sequenceDiagram
 
 ## Compensating Transactions
 
-Compensating transactions are a fundamental aspect of the Saga pattern. They are operations designed to semantically undo the effects of previously completed steps in a distributed transaction if a later step fails. This ensures that the system can revert to a consistent state without relying on traditional distributed ACID transactions.
+Compensating transactions are a fundamental aspect of the Saga pattern. They are operations designed to semantically undo the effects of previously completed steps in a distributed transaction if a later step fails. This ensures that the system can revert to a consistent state without relying on traditional distributed [[acid|ACID transactions]].
 
 For a detailed explanation, refer to the dedicated page: [[compensating-transaction|Compensating Transaction Pattern]].
 

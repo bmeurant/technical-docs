@@ -54,7 +54,7 @@ The choice between Consistency and Availability is a critical architectural deci
 * **Ticket Reservation Systems:** It is impossible to sell the same concert seat to two different people. The system must guarantee that once a seat is sold, it is marked as unavailable to all other potential buyers, even if there's a network issue. The integrity of the data is more important than ensuring every single person can attempt a purchase at all times.
 
 **Typical Databases:**
-* **Relational Databases (SQL):** Most traditional [[rdbms|relational databases]] like PostgreSQL and MySQL are designed with a strong emphasis on **ACID** (Atomicity, Consistency, Isolation, Durability) properties, making them CP-oriented by nature.
+* **Relational Databases (SQL):** Most traditional [[rdbms|relational databases]] like PostgreSQL and MySQL are designed with a strong emphasis on **[[acid|ACID]]** (Atomicity, Consistency, Isolation, Durability) properties, making them CP-oriented by nature.
 * **MongoDB:** While it's a flexible [[nosql|NoSQL database]] , its default replication architecture with a primary node often leads it to prioritize consistency. It can be configured for eventual consistency, but its standard setup leans towards CP.
 
 ---

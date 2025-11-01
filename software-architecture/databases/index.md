@@ -38,7 +38,7 @@ graph TD
 
 -   **Data Model:** Structured and tabular.
 -   **Schema:** Fixed and defined before data is inserted. Enforces data integrity.
--   **Key Strength:** Guarantees **ACID** transactions (Atomicity, Consistency, Isolation, Durability), making them extremely reliable for financial and mission-critical data.
+-   **Key Strength:** Guarantees **[[acid|ACID]]** transactions (Atomicity, Consistency, Isolation, Durability), making them extremely reliable for financial and mission-critical data.
 -   **Querying:** [[rdbms|SQL]] is an extremely powerful language for performing complex queries, aggregations, and JOINs across multiple tables.
 -   **Scalability:** Traditionally scale **[[system-design-fundamentals#Scalability|vertically]]** (by increasing the power of a single server). While modern RDBMS have better horizontal scaling, it is generally more complex than in [[nosql|NoSQL]]  systems.
 -   **Examples:** MySQL, PostgreSQL, Microsoft SQL Server, Oracle.
@@ -65,7 +65,7 @@ graph TD
 | **Data Model** | Structured (Tables with rows/columns) | Flexible (Documents, Key-Value, etc.) |
 | **Schema** | Rigid, predefined | Dynamic |
 | **Scalability** | Vertical (Scale-up) | Horizontal (Scale-out) |
-| **Consistency** | Strong (ACID) | Varies (Often BASE / Eventual) |
+| **Consistency** | Strong ([[acid|ACID]]) | Varies (Often BASE / Eventual) |
 | **Querying** | Powerful SQL with complex JOINs | Varies; often simpler, no complex JOINs |
 | **Best for...** | Financial systems, e-commerce, applications requiring high data integrity. | Big Data, social media, IoT, real-time web apps. |
 
@@ -87,4 +87,4 @@ graph TD
     A video from IBM explaining the top five differences between SQL and NoSQL to help in making an informed decision.
 
 2.  **[SQL vs. NoSQL Explained (in 4 Minutes)](https://www.youtube.com/watch?v=_Ss42Vb1SU4)**
-    A concise video that clarifies the distinctions between SQL and NoSQL, covering concepts like structured data, ACID compliance, and horizontal scaling.
+    A concise video that clarifies the distinctions between SQL and NoSQL, covering concepts like structured data, [[acid|ACID]] compliance, and horizontal scaling.
