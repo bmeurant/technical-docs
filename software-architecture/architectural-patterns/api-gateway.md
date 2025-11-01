@@ -62,7 +62,7 @@ An API Gateway centralizes these concerns and provides a simplified, unified int
 
 ## Core Functionalities & Implemented Patterns
 
-An API Gateway is more than a simple reverse proxy. It implements several design patterns to manage and secure traffic. These are often described as **[[gateway-patterns|Gateway Patterns]]**.
+An API Gateway is more than a simple reverse proxy. It implements several design patterns to manage and secure traffic. These are often described as **[[gateway-patterns|Gateway Patterns]]**. When security is a primary driver, the API Gateway serves as a direct implementation of the **[[gatekeeper]]** pattern, protecting backend services by centralizing security enforcement.
 
 -   **[[gateway-patterns#Gateway Routing|Gateway Routing]]**: It acts as a Layer 7 router, forwarding client requests to the appropriate backend service based on URL paths, headers, or other request metadata.
 -   **[[gateway-patterns#Gateway Aggregation|Gateway Aggregation]]**: It can consolidate multiple backend service calls into a single client request, reducing chattiness and simplifying the client's interaction model. This is a key pattern for implementing a [[backend-for-frontend|Backend-for-Frontend]].
@@ -111,6 +111,7 @@ In short, you can use a standalone API Gateway without a full management platfor
 ## Related Patterns
 
 -   **[[microservices]]**: The API Gateway pattern is a foundational component of most microservice architectures.
+-   **[[gatekeeper]]**: An API Gateway is a common way to implement the Gatekeeper pattern, focusing on centralized security and request validation.
 -   **[[gateway-patterns]]**: Describes the specific tactical patterns implemented by a gateway.
 -   **[[service-mesh|Service Mesh]]**: While a gateway typically manages "North-South" traffic (client-to-service), a service mesh manages "East-West" traffic (service-to-service). They are complementary, and an ingress gateway is often a component of a service mesh.
 -   **[[Backend-for-Frontend]]**: A pattern where a dedicated gateway is created for a specific client type, often using Gateway Aggregation.

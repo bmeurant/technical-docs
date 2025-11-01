@@ -8,7 +8,7 @@ date: 2025-11-01
 ---
 # Gatekeeper Pattern
 
-The **Gatekeeper** pattern describes the use of a dedicated, hardened host or component that acts as a single entry point to protect a backend application or service. This component, the Gatekeeper, intercepts all incoming requests, performs validation and sanitization, and then forwards valid requests to the protected service. It functions as a security broker, providing an additional layer of defense and reducing the system's attack surface.
+The **Gatekeeper** pattern is a specialized implementation of the [[posa#Proxy|Proxy]] pattern where a dedicated, hardened component acts as a single entry point to protect a backend application or service. This component, the Gatekeeper, intercepts all incoming requests, performs validation and sanitization, and then forwards valid requests to the protected service. It functions as a security broker, providing an additional layer of defense and reducing the system's attack surface.
 
 The primary goal is to isolate sensitive services from direct client access. By channeling all traffic through the Gatekeeper, security policies can be enforced consistently, and potentially malicious requests can be filtered out before they reach the core application.
 
@@ -53,6 +53,7 @@ While these patterns have overlapping functionalities, their primary intent diff
 | :--- | :--- |
 | **Gatekeeper** | **Security**. Its main purpose is to protect the backend service by validating and sanitizing requests. |
 | API Gateway | **Management & Routing**. Its focus is on routing, composition, and managing APIs (e.g., versioning, monetization). It often includes security features, but protection is a secondary concern to management. |
+| **Proxy** | **Intermediation & Control**. Its goal is to provide a surrogate or placeholder for another object to control access to it, add functionality, or simplify its use. |
 | Facade | **Simplification**. Its goal is to provide a simplified, high-level interface over a complex subsystem, without a primary focus on security. |
 
 A Gatekeeper is a specialized role. An API Gateway can *act* as a Gatekeeper if it is configured with a strong security focus.
