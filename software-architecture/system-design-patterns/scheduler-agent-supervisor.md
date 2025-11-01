@@ -63,7 +63,7 @@ sequenceDiagram
 
 ## Challenges and Considerations
 
--   **Supervisor High Availability**: The Supervisor itself is a critical component and a potential single point of failure. To mitigate this, the Supervisor must be designed for high availability, often by running multiple instances and using a [[posa#Leader Election|Leader Election]] pattern to ensure only one is active at any time.
+-   **Supervisor High Availability**: The Supervisor itself is a critical component and a potential single point of failure. To mitigate this, the Supervisor must be designed for high availability, often by running multiple instances and using a [[leader-election|Leader Election]] pattern to ensure only one is active at any time.
 -   **State Management**: The Scheduler and Supervisor must maintain persistent state about the workflow's progress. If they crash, they must be able to resume from where they left off.
 -   **Agent Idempotency**: Agents must often be designed as [[idempotent-operations|idempotent]]. The Supervisor might request an Agent to retry a task that failed, and the Agent must be able to handle this repeated request without causing data corruption or inconsistencies.
 -   **Complexity**: This is a complex pattern to implement from scratch. It requires careful design of the communication protocols, state management, and failure recovery logic.
@@ -76,7 +76,7 @@ sequenceDiagram
 
 ## Related Patterns and Concepts
 
--   **[[posa#Leader Election|Leader Election]]**: Often used to ensure the Supervisor is highly available.
+-   **[[leader-election|Leader Election]]**: Often used to ensure the Supervisor is highly available.
 -   **[[monitoring#Health Monitoring|Health Endpoint Monitoring]]**: A common mechanism for the Supervisor to check the status of Agents.
 -   **[[saga|Saga Pattern]]**: The recovery process, especially if it involves undoing previous steps, is an implementation of a saga with [[compensating-transaction|compensating transactions]].
 -   **[[posa#Retry|Retry Pattern]]**: The most common recovery action for transient failures.

@@ -23,6 +23,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[deployment-stamps|Deployment Stamp]]
 * [[gateway-patterns|Gateway Patterns]]
 * [[geode|Geode]]
+* [[leader-election|Leader Election]]
 * [[load-balancing|Load Balancing]]
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]

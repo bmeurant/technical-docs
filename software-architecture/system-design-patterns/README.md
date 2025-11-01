@@ -15,6 +15,7 @@ see [index](./index.md)**
 * **[Deployment Stamps](./deployment-stamps.md)**
 * **[Gateway Patterns](./gateway-patterns.md)**
 * **[Geode](./geode.md)**
+* **[Leader Election](./leader-election.md)**
 * **[Load Balancing](./load-balancing.md)**
 * **[Message Queue](./message-queue.md)**
 * **[Performance Antipatterns](./performance-antipatterns.md)**
