@@ -84,7 +84,7 @@ graph TD
 ## Use Cases
 
 - **Globally Distributed Applications**: For applications with a large, global user base where low latency is a key requirement (e.g., social media, e-commerce, media streaming).
-- **Mission-Critical Systems**: For systems that require the highest possible level of [[availability]] and must be resilient to entire regional failures.
+- **Mission-Critical Systems**: For systems that require the highest possible level of [[reliability-engineering|availability]] and must be resilient to entire regional failures.
 - **Disaster Recovery**: The pattern provides an inherent and automatic disaster recovery capability. If a region goes down, traffic is seamlessly routed to other regions.
 
 ## Benefits

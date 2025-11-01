@@ -57,7 +57,7 @@ sequenceDiagram
 
 ## Key Benefits
 
--   **Enhanced [[availability|Availability]]**: The service is less likely to fail due to sudden traffic spikes. If the service is temporarily unavailable, tasks can still be queued and will be processed once the service recovers.
+-   **Enhanced [[reliability-engineering#1. Availability|Availability]]**: The service is less likely to fail due to sudden traffic spikes. If the service is temporarily unavailable, tasks can still be queued and will be processed once the service recovers.
 -   **Improved Responsiveness**: The task submitting the work gets a quick response as soon as the message is enqueued, rather than waiting for the work to be completed. This improves the user experience in interactive applications.
 -   **Increased Reliability**: If a consumer fails while processing a message, the message can often be retained in the queue and retried by another consumer, preventing data loss. This is a key part of building resilient, [[asynchronous-messaging|asynchronous systems]].
 -   **Cost Optimization**: Consumers can be scaled based on the queue length. If the queue is consistently long, more consumers can be added. If it's empty, consumers can be scaled down to zero, saving costs.

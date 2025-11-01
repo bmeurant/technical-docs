@@ -149,10 +149,13 @@ The trade-off becomes critical during a **network partition**—a situation wher
 
 ## Other Topics
 
-* [[availability|Availability]]
+* [[cloud-native-principles|Cloud-Native Principles]]
+* [[reliability-engineering|Reliability Engineering]]
 * [[cap|CAP Theorem]]
 * [[consistency|Consistency]]
 * [[dns|Domain Name System (DNS)]]
 * [[communication-protocols|Communication Protocols]]
 * [[idempotent-operations|Idempotent Operations]]
 * [[workload-management|Workload Management]]
+* [[messaging|Messaging]]
+* [[security|Security Fundamentals]]

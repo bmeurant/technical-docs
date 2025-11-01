@@ -56,7 +56,7 @@ graph TD
     *   **Example:** The percentage of successful HTTP requests, or the fraction of requests served in under 300ms.
 
 *   **SLO (Service Level Objective):** A target value or range for an SLI that a team aims to meet over a specific period. It is the *goal* you set internally.
-    *   **Example:** "99.9% of requests will be successful over a 30-day period." The [[availability#Availability in Numbers (The Nines)|'Nines' table]] is a classic way to define availability SLOs.
+    *   **Example:** "99.9% of requests will be successful over a 30-day period." The [[reliability-engineering#Availability in Numbers (The Nines)|'Nines' table]] is a classic way to define availability SLOs.
 
 *   **SLA (Service Level Agreement):** A formal contract with a customer that defines the SLOs and the consequences (e.g., financial penalties, service credits) for failing to meet them. It is the *promise* you make externally.
     *   **Example:** "If monthly uptime is below 99.9%, the customer will receive a 10% credit on their bill."

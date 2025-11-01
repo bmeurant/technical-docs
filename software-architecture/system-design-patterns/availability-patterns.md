@@ -7,12 +7,13 @@ tags:
   - failover
   - replication
   - high-availability
+  - reliability
 date: 2025-10-19
 ---
 
 # Availability Patterns
 
-Availability is a measure of a system's uptime and its ability to respond to requests. For a deeper dive into how availability is measured and calculated, see the fundamental concept of [[availability]].
+Availability is a measure of a system's uptime and its ability to respond to requests. For a deeper dive into how availability is measured and calculated, see the fundamental concept of [[reliability-engineering]].
 
 In distributed systems, achieving high availability means designing a system that is resilient to failures, such as server crashes, network partitions, or software bugs.
 

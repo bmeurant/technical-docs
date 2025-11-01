@@ -64,7 +64,7 @@ graph TD
 
 **Trade-offs & Challenges:**
 -   **Resource Contention (Noisy Neighbor)**: If one service suddenly consumes a large amount of CPU or memory, it can starve the other consolidated services on the same machine, degrading their performance. This is a classic "[[performance-antipatterns#Noisy Neighbor|noisy neighbor]]" problem.
--   **Risk of Failure**: If the underlying shared hardware or host OS fails, all consolidated services on that unit fail simultaneously. This reduces [[availability|availability]] if not managed properly.
+-   **Risk of Failure**: If the underlying shared hardware or host OS fails, all consolidated services on that unit fail simultaneously. This reduces [[reliability-engineering#1. Availability|availability]] if not managed properly.
 -   **Security & Isolation**: Services sharing the same host must be properly isolated to prevent a security breach in one service from affecting the others.
 
 ### Modern Implementations

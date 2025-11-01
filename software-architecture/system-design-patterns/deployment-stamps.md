@@ -90,7 +90,7 @@ graph TD
 -   **Strong Tenant Isolation**: For applications requiring strict data or performance isolation between tenants, such as in healthcare (HIPAA) or finance (PCI compliance). An issue in one stamp (e.g., a [[performance-antipatterns#Noisy-Neighbor|noisy neighbor]]) does not affect tenants in other stamps.
 -   **Geographic Distribution (Geo-fencing)**: To deploy instances in specific regions to reduce latency for users in that region or to comply with data residency laws (e.g., GDPR). For extreme availability and active-active global distribution, this approach can be evolved into the [[geode|Geode pattern]].
 -   **Controlled, Ring-Based Rollouts**: New versions of the application can be deployed to a single stamp (a "ring") serving a small group of early adopters or internal users before being rolled out to all stamps, minimizing the blast radius of a bad deployment.
--   **Disaster Recovery**: Stamps can be deployed across different availability zones or regions, providing a high degree of [[availability|fault tolerance]].
+-   **Disaster Recovery**: Stamps can be deployed across different availability zones or regions, providing a high degree of [[reliability-engineering#1. Availability|fault tolerance]].
 
 ## Implementation on Cloud Platforms
 
@@ -117,7 +117,7 @@ While the pattern is platform-agnostic, its implementation varies slightly acros
 -   **Cost**: The pattern can be more expensive at a small scale because it duplicates infrastructure that might otherwise be shared. However, it offers more predictable, linear cost scaling as the user base grows.
 -   **Cross-Stamp Operations**: Performing operations that span all tenants, such as global analytics or reporting, is complex. This often requires a separate system to aggregate data from all stamps into a centralized data warehouse.
 -   **Tenant Migration**: Moving a tenant from one stamp to another (e.g., for rebalancing) is a complex operation that requires careful planning and custom tooling to migrate data and update routing rules without downtime.
--   **Global Component Management**: The global router is a critical component and a potential single point of failure. It must be designed for high [[availability|availability]] and resilience.
+-   **Global Component Management**: The global router is a critical component and a potential single point of failure. It must be designed for high [[reliability-engineering#1. Availability|availability]] and resilience.
 
 ---
 

@@ -93,7 +93,7 @@ sequenceDiagram
 
 -   **Cost-Effectiveness**: You pay only for the storage and bandwidth you use, which is significantly cheaper than running idle compute instances.
 -   **[[software-architecture/system-design-fundamentals/index#Scalability|High Scalability]]**: Object storage services are built to handle virtually limitless traffic and data volume with no manual intervention.
--   **[[availability|High Availability]] & Durability**: These services are inherently redundant and provide extremely high durability guarantees for your files.
+-   **[[reliability-engineering#1. Availability|High Availability]] & Durability**: These services are inherently redundant and provide extremely high durability guarantees for your files.
 -   **Reduced Operational Overhead**: There are no servers to manage, patch, or scale, freeing up development teams to focus on the application itself.
 
 ---

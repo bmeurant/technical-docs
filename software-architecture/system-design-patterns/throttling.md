@@ -10,7 +10,7 @@ date: 2025-10-31
 ---
 # Throttling Pattern
 
-The **Throttling** pattern is a design strategy used to control the consumption of resources by an application or service. It works by limiting the rate at which requests are processed. When the defined limit is exceeded, new requests are temporarily rejected, allowing the system to continue functioning under heavy load without being overwhelmed. This is a critical pattern for maintaining system [[availability]] and meeting Service Level Agreements (SLAs).
+The **Throttling** pattern is a design strategy used to control the consumption of resources by an application or service. It works by limiting the rate at which requests are processed. When the defined limit is exceeded, new requests are temporarily rejected, allowing the system to continue functioning under heavy load without being overwhelmed. This is a critical pattern for maintaining system [[reliability-engineering#1. Availability|availability]] and meeting Service Level Agreements (SLAs).
 
 Throttling is essential for preventing a single user, tenant, or a sudden spike in traffic from exhausting system resources (like CPU, memory, or bandwidth) and causing a widespread outage.
 

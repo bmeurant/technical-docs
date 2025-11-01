@@ -74,7 +74,7 @@ For a detailed explanation of how to implement this pattern, including the criti
 
 While health monitoring is instantaneous, **availability monitoring** tracks a system's operational uptime over a period. It answers the question: "Has the system been running reliably over the last day, week, or month?"
 
-Availability is a core component of [[software-architecture/observability/index#SLIs, SLOs, and SLAs: The Business Impact of Observability|Service Level Agreements (SLAs)]] and is measured as a percentage of uptime (e.g., 99.9%, or "three nines"). For more details on how this is measured, see the fundamentals of [[availability]]. This involves tracking not just complete outages but also periods of degradation where the system is technically "healthy" but unusable. This data is crucial for capacity planning and ensuring reliability promises to customers are met.
+Availability is a core component of [[software-architecture/observability/index#SLIs, SLOs, and SLAs: The Business Impact of Observability|Service Level Agreements (SLAs)]] and is measured as a percentage of uptime (e.g., 99.9%, or "three nines"). For more details on how this is measured, see the fundamentals of [[reliability-engineering#1. Availability|availability]]. This involves tracking not just complete outages but also periods of degradation where the system is technically "healthy" but unusable. This data is crucial for capacity planning and ensuring reliability promises to customers are met.
 
 See also: [[availability-patterns]].
 

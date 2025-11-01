@@ -6,6 +6,8 @@ tags:
   - database
   - scalability
   - performance
+  - availability
+  - consistency
 date: 2025-10-28
 ---
 
@@ -17,7 +19,65 @@ This page covers a collection of patterns designed to solve common problems in d
 
 ---
 
-## Sharding
+## 1. Data Storage
+
+Choosing the right data storage solution is fundamental to system design, impacting scalability, performance, and cost.
+
+*   **[[rdbms|Relational Databases (SQL)]]**: Traditional databases emphasizing ACID properties, structured schemas, and powerful querying with SQL. Ideal for complex transactions and data integrity.
+*   **[[nosql|NoSQL Databases]]**: A diverse category of databases offering flexible schemas, horizontal scalability, and high performance for specific workloads. Includes:
+    *   **Document Stores**: For semi-structured data (e.g., MongoDB).
+    *   **Key-Value Stores**: For simple, high-speed data retrieval (e.g., Redis).
+    *   **Graph Databases**: For highly interconnected data (e.g., Neo4j).
+    *   **Column-Family Stores**: For large-scale analytical workloads (e.g., Cassandra).
+*   **Object Storage**: Highly scalable and durable storage for unstructured data like images, videos, and backups (e.g., Amazon S3, Azure Blob Storage). Often used in conjunction with [[static-content-hosting|Static Content Hosting]].
+
+---
+
+## 2. Data Access
+
+Efficient data access is crucial for application performance and responsiveness.
+
+*   **[[caching|Caching]]**: Storing copies of frequently accessed data closer to the consumer to reduce latency and load on primary data sources.
+*   **[[cdn|Content Delivery Network (CDN)]]**: Distributing static and dynamic content globally to reduce latency for end-users.
+*   **Data Lakes**: Centralized repositories that store vast amounts of raw data in its native format, suitable for big data analytics.
+*   **Data Warehouses**: Optimized for analytical queries and reporting, typically storing structured and transformed data from various sources.
+
+---
+
+## 3. Data Consistency
+
+Ensuring data consistency across distributed systems is a fundamental challenge, often involving trade-offs with availability and latency.
+
+*   **[[consistency|Consistency Models]]**: Different models define the guarantees about when data updates become visible to readers:
+    *   **Strong Consistency**: Guarantees that every read returns the most recent write.
+    *   **Eventual Consistency**: Guarantees that all replicas will eventually converge to the same value if no new updates are made.
+*   **[[cap|CAP Theorem]]**: A fundamental principle stating that a distributed system can only guarantee two out of three properties: Consistency, Availability, and Partition Tolerance.
+
+---
+
+## 4. Data Partitioning
+
+Dividing data into smaller, more manageable pieces to improve scalability and performance.
+
+*   **[[sharding|Sharding]]**: Horizontally partitioning a large dataset across multiple independent data stores (shards).
+*   **Partitioning**: General term for dividing a database into smaller, independent sections, often by function (vertical partitioning) or rows (horizontal partitioning/sharding).
+
+---
+
+## 5. Data Replication
+
+Creating and maintaining multiple copies of data to ensure high availability and read scalability.
+
+*   **[[availability-patterns#Master-Slave Replication|Master-Slave Replication]]**: One node handles all writes, and data is replicated to read-only slave nodes.
+*   **[[availability-patterns#Master-Master (Multi-Master) Replication|Multi-Master Replication]]**: Multiple nodes can accept both read and write operations, with writes replicated between them.
+
+---
+
+## 6. Specific Data Management Patterns
+
+These patterns address particular data-related challenges.
+
+### Sharding
 
 The Sharding pattern is a technique for horizontally partitioning a large dataset across multiple independent data stores (shards). It is a primary strategy for achieving massive scalability and performance when a single database server is no longer sufficient to handle the load.
 
@@ -46,7 +106,7 @@ flowchart TD
     Router -- "Query for User 1.5M" --> S2
     Router -- "Query for User 2.1M" --> S3
 ```
-*Diagram: A query router inspects the query and directs it to the appropriate shard based on the shard key (e.g., User ID).*
+*Diagram: A query router inspects the query and directs it to the appropriate shard based on the shard key (e.g., User ID).* 
 
 ### Sharding Strategies
 
@@ -71,7 +131,7 @@ flowchart TD
 
 ---
 
-## Materialized View
+### Materialized View
 
 The Materialized View pattern improves query performance by pre-calculating and storing the results of expensive queries. Instead of computing the results on-the-fly every time, applications query the stored, "materialized" data.
 
@@ -115,7 +175,7 @@ flowchart TD
 
 ---
 
-## Index Table
+### Index Table
 
 The Index Table pattern improves query performance by creating a separate table that acts as a secondary index over a primary data store.
 
