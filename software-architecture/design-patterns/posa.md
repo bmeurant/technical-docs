@@ -537,35 +537,8 @@ graph TD
 
 #### Circuit Breaker
 
-* **Problem**: How to prevent a network or service failure from cascading to other parts of the system? When a remote service is failing, repeated calls can exhaust resources and cause the entire application to become unresponsive.
-* **Synopsis**: The **Circuit Breaker** pattern is a stateful pattern that wraps a protected function call (typically a network call) in a circuit breaker object, which monitors for failures. It acts as a proxy for operations that might fail. The circuit breaker has three states: `Closed`, `Open`, and `Half-Open`.
-    *   **Closed**: In the normal state, the circuit breaker allows requests to pass through. It counts the number of failures, and if the count exceeds a threshold, it "trips" and moves to the `Open` state.
-    *   **Open**: The circuit breaker immediately rejects all requests with an error, without attempting to call the remote service. After a timeout, it moves to the `Half-Open` state.
-    *   **Half-Open**: The circuit breaker allows a single request to pass through to check if the service has recovered. If the request succeeds, the circuit breaker moves to the `Closed` state. If it fails, it returns to the `Open` state.
-
-    ```mermaid
-    graph TD
-        subgraph Circuit Breaker States
-            Closed -- Failure Threshold Exceeded --> Open;
-            Open -- Timeout --> HalfOpen[Half-Open];
-            HalfOpen -- Success --> Closed;
-            HalfOpen -- Failure --> Open;
-        end
-    ```
-
-* **Key Characteristics**:
-    * **Stateful**: The pattern is inherently stateful, tracking the state of the external service.
-    * **[[fail-fast|Fail-Fast]]**: It provides a fast-failing response when the service is known to be down, preventing the application from waiting for long timeouts.
-    * **Automatic Recovery**: The `Half-Open` state allows the circuit breaker to automatically detect when the service has recovered.
-    * **Resilience**: It improves the resilience of the system by isolating failures and preventing them from cascading.
-* **Applicability**:
-    * **Microservices Architectures**: Essential for managing communication between services where failures are expected.
-    * **Remote Service Calls**: When interacting with any external system or API that might be unreliable.
-    * **High Availability Systems**: For systems that require high uptime, the pattern helps manage service failures and allows the system to self-heal.
-* **Limitations and Challenges**:
-    * **Configuration**: The thresholds for failure counts and timeouts need to be carefully configured.
-    * **Complexity**: The pattern adds complexity to the system, especially when dealing with distributed systems.
-    * **Fallback Logic**: A fallback mechanism should be provided for when the circuit is open.
+* **Problem**: How to prevent a network or service failure from cascading to other parts of the system?
+* **Synopsis**: The **Circuit Breaker** pattern is a stateful pattern that wraps a protected function call (typically a network call) in a circuit breaker object, which monitors for failures. It acts as a proxy for operations that might fail. For a detailed explanation of its implementation, states, and relationship with other resiliency patterns, see the main page on the **[[circuit-breaker|Circuit Breaker Pattern]]**.
 
 #### Bulkhead
 

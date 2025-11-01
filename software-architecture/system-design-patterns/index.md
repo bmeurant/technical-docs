@@ -17,6 +17,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[background-jobs|Background Jobs]]
 * [[bulkhead|Bulkhead]]
 * [[cdn|Content Delivery Network (CDN)]]
+* [[circuit-breaker|Circuit Breaker]]
 * [[data-management-patterns|Data Management Patterns]]
 * [[deployment-stamps|Deployment Stamp]]
 * [[gateway-patterns|Gateway Patterns]]
