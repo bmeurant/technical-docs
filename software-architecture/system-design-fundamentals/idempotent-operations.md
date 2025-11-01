@@ -128,7 +128,7 @@ Implementing idempotency, while crucial for reliability in distributed systems, 
 *   **Performance Overhead:** Each idempotent operation typically requires an additional lookup (e.g., a database query or a cache read) to check if the request has already been processed. This can introduce a small amount of latency and increase the load on the data store.
 *   **Storage Requirements:** Storing idempotency keys and their associated results (especially for a period long enough to cover potential retries) consumes storage resources. This needs to be managed, potentially with expiration policies.
 *   **Granularity of Idempotency:** Deciding the appropriate scope for idempotency is important. Should it be per request, per user, per transaction? This depends on the business logic and the acceptable level of risk.
-*   **Error Handling:** While idempotency simplifies retry logic, careful consideration is still needed for handling errors that occur *during* the idempotent check or the storage of the result. For example, what if the system crashes after processing but before caching the result?
+*   **Error Handling:** While idempotency simplifies [[retry]] logic, careful consideration is still needed for handling errors that occur *during* the idempotent check or the storage of the result. For example, what if the system crashes after processing but before caching the result?
 
 Despite these considerations, the benefits of idempotency in terms of system reliability, data consistency, and simplified error recovery in distributed environments often outweigh the costs.
 

@@ -79,7 +79,7 @@ sequenceDiagram
 -   **[[leader-election|Leader Election]]**: Often used to ensure the Supervisor is highly available.
 -   **[[monitoring#Health Monitoring|Health Endpoint Monitoring]]**: A common mechanism for the Supervisor to check the status of Agents.
 -   **[[saga|Saga Pattern]]**: The recovery process, especially if it involves undoing previous steps, is an implementation of a saga with [[compensating-transaction|compensating transactions]].
--   **[[posa#Retry|Retry Pattern]]**: The most common recovery action for transient failures.
+-   **[[retry|Retry Pattern]]**: The most common recovery action for transient failures.
 -   **[[posa#Circuit Breaker|Circuit Breaker]]**: Can be used by the Scheduler or Supervisor to prevent repeatedly sending tasks to an Agent that is known to be unhealthy.
 
 ---

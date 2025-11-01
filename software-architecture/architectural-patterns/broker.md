@@ -74,7 +74,7 @@ graph TD
 
 * **Advantages (Benefits):**
     * **High Scalability:** It is easy to add new clients or servers without affecting existing components. The architecture is highly flexible.
-    * **Robustness:** A failure in a client or server does not directly affect others, as long as the broker remains operational. The broker can also handle retry functionalities.
+    * **Robustness:** A failure in a client or server does not directly affect others, as long as the broker remains operational. The broker can also handle [[retry]] functionalities.
     * **Interoperability:** Due to decoupling, clients and servers can be developed using different languages, technologies, or platforms.
     * **Reduced Client Complexity:** Clients do not have to manage the logic for connection, service discovery, or error handling related to servers.
 

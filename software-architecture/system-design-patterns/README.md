@@ -20,6 +20,7 @@ see [index](./index.md)**
 * **[Message Queue](./message-queue.md)**
 * **[Performance Antipatterns](./performance-antipatterns.md)**
 * **[Publish-Subscribe](./publish-subscribe.md)**
+* **[Retry](./retry.md)**
 * **[Service Discovery](./service-discovery.md)**
 * **[Sidecar](./sidecar.md)**
 * **[Static Content Hosting](./static-content-hosting.md)**

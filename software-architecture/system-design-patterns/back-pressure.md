@@ -87,7 +87,7 @@ In short, back pressure is about *flow control* through communication, while thr
 -   **[[asynchronism|Asynchronism]]**: Back pressure is a critical control mechanism in any asynchronous system to manage data flow.
 -   **[[message-queue|Message Queues]]**: Often implement back pressure mechanisms to prevent producers from overwhelming consumers.
 -   **[[load-balancing|Load Balancing]]**: Can work in conjunction with back pressure by distributing load more evenly, but back pressure is still needed to manage individual consumer capacity.
--   **[[software-architecture/design-patterns/posa#retry|Retry Pattern]]**: Often used by clients in response to back pressure signals (e.g., HTTP 429 Too Many Requests or 503 Service Unavailable).
+-   **[[retry|Retry Pattern]]**: Often used by clients in response to back pressure signals (e.g., HTTP 429 Too Many Requests or 503 Service Unavailable).
 -   **[[fail-fast|Fail-Fast]]**: In some scenarios, dropping data (a form of implicit back pressure) can be a fail-fast strategy.
 
 ## Resources & links

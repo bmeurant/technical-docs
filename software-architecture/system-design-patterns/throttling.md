@@ -89,7 +89,7 @@ It is also a best practice to include a `Retry-After` header in the response. Th
 ## Challenges
 
 - **Setting the Right Thresholds:** Determining the correct throttling limits is difficult. If limits are too low, you block legitimate traffic and harm the user experience. If they are too high, the system is not adequately protected. Limits often need to be dynamic and adjusted based on monitoring.
-- **Client-Side Handling:** The effectiveness of throttling relies on clients respecting the 429 responses and implementing a retry/backoff strategy. Poorly behaved clients may continue to hammer the API, exacerbating the problem.
+- **Client-Side Handling:** The effectiveness of throttling relies on clients respecting the 429 responses and implementing a [[retry]]/backoff strategy. Poorly behaved clients may continue to hammer the API, exacerbating the problem.
 - **Distributed Systems Complexity:** In a large distributed system, implementing a global throttling limit that is shared across all nodes can be technically challenging. It often requires a centralized, high-performance data store (like Redis) to track counts.
 
 ---

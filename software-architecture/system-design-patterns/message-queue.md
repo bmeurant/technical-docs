@@ -140,7 +140,7 @@ A Dead-Letter Queue (DLQ) is a critical complementary pattern for building robus
 The process of moving a message to a DLQ is managed by the [[broker|message broker]] and is triggered by a redelivery policy.
 
 1.  **Processing Failure**: A consumer fetches a message from the main queue but fails to process it due to errors (e.g., invalid data,a bug in the processing logic, or a downstream service being unavailable). When calling a downstream service, this failure is often triggered by a **[[circuit-breaker|Circuit Breaker]]** that has opened, causing the consumer to "fail fast."
-2.  **Retry Mechanism**: The consumer (or broker) allows the message to be redelivered for a configured number of attempts (`maxReceiveCount`). This handles transient failures.
+2.  **[[retry|Retry]] Mechanism**: The consumer (or broker) allows the message to be redelivered for a configured number of attempts (`maxReceiveCount`). This handles transient failures.
 3.  **Move to DLQ**: If the message continues to fail processing after the maximum number of retries, the message broker automatically moves the message from the source queue to the designated DLQ.
 
 This isolates the poison message, allowing consumers to continue processing the rest of the messages in the main queue without interruption.
@@ -245,7 +245,7 @@ stateDiagram-v2
 
 -   **Consumer Bottleneck**: Since all messages for a given convoy must be processed by a single consumer instance, that instance can become a bottleneck. This is a classic challenge of stateful services, often requiring "sticky sessions" or routing based on the correlation ID to ensure a message always lands on the correct, state-holding instance.
 -   **State Management**: The consumer must reliably store its state. If the consumer crashes, it must be able to recover its state and resume processing where it left off. This often requires an external persistence mechanism (e.g., a database or a distributed cache like Redis).
--   **Handling Out-of-Order Messages**: The system needs a clear strategy for messages that arrive too early. Common approaches include using a temporary holding queue or simply rejecting them and letting the sender retry.
+-   **Handling Out-of-Order Messages**: The system needs a clear strategy for messages that arrive too early. Common approaches include using a temporary holding queue or simply rejecting them and letting the sender [[retry]].
 -   **Timeout and Escalation**: The process may get stuck if a message in the sequence is lost or never arrives. The system must have a [[posa#Timeout|timeout]] mechanism to detect stalled convoys and trigger a compensating action or an alert.
 
 ### Claim Check

@@ -62,7 +62,7 @@ The Sidecar pattern addresses these issues by co-locating these concerns in a se
 The Sidecar pattern is extremely versatile and is a foundational element of many modern cloud-native practices.
 
 1.  **Proxying and Networking (Service Mesh)**
-    This is the most prominent use case. A sidecar proxy is deployed alongside each service instance to manage all inbound and outbound network traffic. It handles concerns like [[service-discovery]], [[load-balancing]], traffic encryption (mTLS), [[posa#Retry|retries]], and [[circuit-breaker|circuit breaking]]. This is the fundamental building block of a [[service-mesh]].
+    This is the most prominent use case. A sidecar proxy is deployed alongside each service instance to manage all inbound and outbound network traffic. It handles concerns like [[service-discovery]], [[load-balancing]], traffic encryption (mTLS), [[retry|retries]], and [[circuit-breaker|circuit breaking]]. This is the fundamental building block of a [[service-mesh]].
     -   **Technology**: Envoy, Linkerd.
 
 2.  **[[software-architecture/observability/|Observability]] & [[monitoring|Monitoring]]**
@@ -151,7 +151,7 @@ sequenceDiagram
 This pattern is particularly useful for legacy applications that are difficult to modify, as it allows their networking capabilities to be extended and modernized without changing their code.
 
 ### Common Use Cases
-- **Resilient Communication**: Automatically implement resilience patterns like [[posa#Retry|retries]] and [[circuit-breaker|circuit breakers]] for all outgoing calls, without polluting the application code.
+- **Resilient Communication**: Automatically implement resilience patterns like [[retry|retries]] and [[circuit-breaker|circuit breakers]] for all outgoing calls, without polluting the application code.
 - **Service Discovery & Routing**: The Ambassador can find a healthy instance of a remote service and route the request accordingly, shielding the main application from the complexity of a dynamic microservices environment.
 - **Security**: It can secure outgoing traffic by transparently establishing a mutual TLS (mTLS) connection with the remote service.
 - **Monitoring**: It can capture detailed metrics (latency, error rates, throughput) for all outgoing requests, providing crucial observability into external dependencies.

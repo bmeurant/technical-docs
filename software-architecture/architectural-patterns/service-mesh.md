@@ -102,7 +102,7 @@ A Service Mesh is not a standalone concept; it integrates and implements several
 *   **[[sidecar]]:** The Service Mesh pattern is implemented *using* the Sidecar pattern. The data plane of a service mesh is a network of sidecar proxies.
 *   **[[posa|Ambassador]]:** A service mesh can be seen as a sophisticated evolution of the Ambassador pattern, applied systematically to *all* services in a system for both inbound and outbound traffic, and managed by a central control plane.
 *   **[[posa|Proxy]]:** The sidecar proxies that form the data plane are all instances of the Proxy pattern, as they intercept and manage network communication on behalf of the application.
-*   **[[posa|Circuit Breaker]], [[posa|Retry]], [[posa|Timeout]]:** A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.
+*   **[[posa|Circuit Breaker]], [[retry|Retry]], [[posa|Timeout]]:** A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.
 
 ### Architectural Context
 
