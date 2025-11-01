@@ -51,6 +51,7 @@ Transversal models are paradigms or concerns that can be combined with or applie
 [[transversal-programming-models|Learn more about Transversal Programming Models]]
 
 - **Concurrent Programming:** Manages the simultaneous execution of multiple instruction sequences.
+- **[[actor-model|Actor Model]]:** A model of concurrent computation that treats "actors" as the universal primitives of concurrent computation.
 - **Reactive Programming:** Focuses on data flows and the propagation of change.
 - **Aspect-Oriented Programming:** Separates cross-cutting concerns (like logging or security) from the core business logic.
 - **Functional Reactive Programming:** A combination of functional and reactive programming to handle asynchronous data flows in a declarative way.

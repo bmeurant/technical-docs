@@ -119,6 +119,7 @@ EDA is often implemented using other patterns that define how events are structu
 
 ### Related Architectural Patterns
 
+*   **[[actor-model|Actor Model]]:** A concurrency model where independent "actors" communicate asynchronously through messages. This model is a natural fit for implementing event-driven systems, where actors can be the producers and consumers of events.
 *   **[[event-sourcing|Event Sourcing]]:** A pattern where all changes to an application's state are stored as a sequence of immutable events. Instead of storing the current state of a domain object, you store the history of events that led to that state. This provides a full audit log and allows for powerful temporal queries.
 *   **[[cqrs|CQRS (Command and Query Responsibility Segregation)]]:** EDA is a natural fit for [[cqrs|CQRS]]. After a **Command** modifies data, an event is published. The **Query** side of the system can then subscribe to these events to update its own read-optimized data store.
 

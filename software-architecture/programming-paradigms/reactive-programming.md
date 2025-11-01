@@ -117,6 +117,17 @@ flowchart TD
 
 ---
 
+## Relationship to the Actor Model
+
+Reactive Programming and the [[actor-model|Actor Model]] are two powerful paradigms for building concurrent and distributed systems, and they are closely related.
+
+-   **Similarities:** Both models are inherently asynchronous and message-driven. An actor processing messages from its mailbox is very similar to an observer reacting to values from an observable stream.
+-   **Differences:** The Actor Model is more prescriptive about the "who." It provides a concrete abstraction for the entity that manages state and behavior—the **actor**. Reactive programming, on the other hand, is more focused on the "what"—the flow of data and the composition of streams.
+
+In many ways, you can use an actor system to implement a reactive pipeline. An actor can be an observer, and messages can be the data in a stream. Frameworks like Akka provide libraries (e.g., Akka Streams) that are built on top of actors and provide a higher-level, reactive API.
+
+---
+
 ## **Resources & links**
 
 ### Articles
