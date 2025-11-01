@@ -162,7 +162,7 @@ graph TD
 
 * **Key Characteristics**:
     * **Shared interface**: The `Proxy` implements the same interface as the real `Subject`, making it transparent to the client.
-    * **Access control**: The `Proxy` can authorize or deny access to the `Subject`'s methods, acting as a gatekeeper.
+    * **Access control**: The `Proxy` can authorize or deny access to the `Subject`'s methods, acting as a [[gatekeeper|Gatekeeper]].
     * **Lazy initialization**: The `Proxy` can defer the creation of the `RealSubject` until it is actually needed, improving startup performance.
 * **Applicability**: This pattern is widely used in [[poeaa#Object-Relational-Mapper-ORM|object-relational mapping (ORM)]] frameworks for lazy loading, in remote procedure call (RPC) mechanisms, and for implementing security and caching.
 * **Limitations and Challenges**: Can introduce an overhead due to the extra layer of indirection. Overuse of this pattern can make the architecture unnecessarily complex.
