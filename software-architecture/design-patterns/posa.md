@@ -724,9 +724,13 @@ These patterns belong to other categories (architectural, etc.) but are also fun
 
 ### Idioms
 
-* `Handle-Body`
-* `Counted Body`
-* ...
+**Idioms** are low-level patterns, often specific to a programming language (like C++ or Java), that describe how to solve fundamental implementation problems. Unlike design patterns, which focus on object structure and collaboration, idioms are closer to the code itself.
+
+*   **Handle-Body**: Separates an object's interface (the `Handle`) from its implementation (the `Body`). Clients only interact with the `Handle`, which helps to hide implementation details, reduce compilation dependencies, and simplify memory management. It is a form of the "Pimpl" (Pointer to Implementation) idiom.
+
+*   **Counted Body** (or Counted Pointer): A memory management idiom where multiple `Handle` objects share the same `Body`. The `Body` maintains a reference count. When a `Handle` is destroyed, the count is decremented. The `Body` is only destroyed when the count reaches zero. This is the basic principle behind smart pointers like `std::shared_ptr` in C++.
+
+*   ...
 
 ---
 

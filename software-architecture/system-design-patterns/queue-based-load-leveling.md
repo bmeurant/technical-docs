@@ -13,7 +13,7 @@ date: 2025-10-30
 
 The **Queue-Based Load Leveling** pattern uses a [[message-queue|queue]] as a buffer between a service and the tasks that call it. This smooths out intermittent or heavy workloads, preventing the service from being overwhelmed by peaks in demand. By decoupling the task producers from the service consumers, the system gains stability and resilience.
 
-This pattern is essential in any architecture where a service with limited or variable capacity is called by a process with unpredictable demand. It prevents failures, timeouts, and ensures that the service can process work at a steady, manageable pace.
+This pattern is essential in any architecture where a service with limited or variable capacity is called by a process with unpredictable demand. It prevents failures, [[posa#Timeout|timeouts]], and ensures that the service can process work at a steady, manageable pace.
 
 ## How It Works
 

@@ -100,3 +100,21 @@ While "Compute Resource Consolidation" is a fundamental principle, several speci
 This pattern uses a queue to buffer and smooth out intermittent or heavy workloads, preventing a service from being overwhelmed. It decouples producers and consumers, allowing the system to process work at a steady, manageable pace.
 
 For more details, see the dedicated **[[queue-based-load-leveling]]** pattern page.
+
+### Throttling
+
+This pattern controls the consumption of resources by limiting the rate at which requests are processed. When a defined limit is exceeded, new requests are temporarily rejected, protecting the system from being overwhelmed.
+
+For more details, see the dedicated **[[throttling]]** pattern page.
+
+### Rate Limiting
+
+A specific type of throttling that limits how many requests a user or client can make in a given time window. It is often used for API security, fair usage, and to enforce commercial agreements.
+
+For more details, see the dedicated **[[rate-limiting]]** pattern page.
+
+### Back Pressure
+
+This pattern allows a downstream service to signal to an upstream service that it is overloaded. Instead of dropping requests, the system as a whole slows down, pushing the "pressure" back to the original caller to prevent overload.
+
+For more details, see the dedicated **[[back-pressure]]** pattern page.

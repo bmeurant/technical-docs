@@ -12,7 +12,7 @@ date: 2025-10-22
 
 Idempotent operations are a cornerstone of robust and reliable distributed systems and software architecture. An operation is considered idempotent if applying it multiple times produces the same result as applying it once. This means that after the first successful execution, subsequent identical executions will not cause any further side effects or changes to the system state. The state of the system remains consistent regardless of how many times the operation is performed.
 
-This characteristic is crucial in environments where operations might be retried due to network failures, timeouts, or other transient issues. Without idempotency, retrying a non-idempotent operation could lead to unintended consequences, such as duplicate data entries, incorrect financial transactions, or inconsistent system states.
+This characteristic is crucial in environments where operations might be retried due to network failures, [[posa#Timeout|timeouts]], or other transient issues. Without idempotency, retrying a non-idempotent operation could lead to unintended consequences, such as duplicate data entries, incorrect financial transactions, or inconsistent system states.
 
 ## Characteristics of Idempotency
 

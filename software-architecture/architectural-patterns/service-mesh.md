@@ -70,10 +70,10 @@ graph TD
 2.  **Control Plane:** The brain of the service mesh (e.g., Istio, Consul). It does not touch any request traffic. Its job is to manage and configure all the sidecar proxies in the data plane. It provides a central API for operators to define policies for routing, security, and observability.
 
 **Typical Communication Flow:**
-1.  An operator defines a policy in the **Control Plane** (e.g., "all traffic to Service B must have a 1-second timeout").
+1.  An operator defines a policy in the **Control Plane** (e.g., "all traffic to Service B must have a 1-second [[posa#Timeout|timeout]]").
 2.  The Control Plane translates this policy into a specific configuration and pushes it to all relevant sidecar proxies.
 3.  When Service A wants to call Service B, its outbound call is transparently intercepted by its local sidecar proxy (Proxy A).
-4.  Proxy A, using the configuration from the Control Plane, discovers an instance of Service B, applies the timeout policy, encrypts the traffic using mTLS, and forwards the request to the sidecar proxy of Service B (Proxy B).
+4.  Proxy A, using the configuration from the Control Plane, discovers an instance of Service B, applies the [[posa#Timeout|timeout]] policy, encrypts the traffic using mTLS, and forwards the request to the sidecar proxy of Service B (Proxy B).
 5.  Proxy B receives the request, decrypts it, and forwards it to the local Service B instance.
 6.  Throughout this process, both proxies collect detailed metrics and logs and send them back to the Control Plane for centralized observability.
 

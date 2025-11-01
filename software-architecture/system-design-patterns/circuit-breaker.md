@@ -10,7 +10,7 @@ date: 2025-10-31
 ---
 # Circuit Breaker Pattern
 
-The **Circuit Breaker** pattern is a stateful resiliency pattern used to prevent an application from repeatedly trying to execute an operation that is likely to fail. When a remote service is failing or latent, repeated calls can exhaust critical resources (like threads, CPU, and memory) and lead to cascading failures across the system.
+The **Circuit Breaker** pattern is a stateful resiliency pattern used to prevent an application from repeatedly trying to execute an operation that is likely to fail. When a remote service is failing or latent, repeated calls can exhaust critical resources (like threads, CPU, and memory) and lead to cascading failures across the system. It is one of the key resiliency patterns from the **[[posa|Pattern-Oriented Software Architecture (POSA)]]** series, designed to improve system stability and fault tolerance.
 
 The circuit breaker acts as a proxy or state machine for operations that might fail. It monitors for failures and, if they reach a certain threshold, it "trips" or "opens the circuit," causing subsequent calls to fail immediately without ever attempting to contact the remote service. This gives the failing service time to recover.
 
@@ -20,11 +20,11 @@ The pattern has three distinct states:
 
 1.  **Closed**: This is the normal, operational state. Requests are passed through to the remote service. The circuit breaker counts the number of recent failures. If the failure count exceeds a configured threshold within a time period, the breaker trips and moves to the `Open` state.
 
-2.  **Open**: In this state, the circuit breaker immediately rejects all incoming requests with an error, without attempting to execute the underlying operation. This is a "fail-fast" mechanism. After a configured timeout, the breaker moves to the `Half-Open` state.
+2.  **Open**: In this state, the circuit breaker immediately rejects all incoming requests with an error, without attempting to execute the underlying operation. This is a "fail-fast" mechanism. After a configured [[posa#Timeout|timeout]], the breaker moves to the `Half-Open` state.
 
 3.  **Half-Open**: The breaker allows a limited number of trial requests to pass through to the remote service.
     *   If these trial requests succeed, the breaker assumes the service has recovered and transitions back to the `Closed` state, resetting its failure counts.
-    *   If any trial request fails, the breaker trips again and returns to the `Open` state, restarting the recovery timeout.
+    *   If any trial request fails, the breaker trips again and returns to the `Open` state, restarting the recovery [[posa#Timeout|timeout]].
 
 ```mermaid
 graph TD
@@ -97,13 +97,15 @@ String result = decoratedSupplier.get();
 
 - **[[retry|Retry]]:** The Retry pattern can be used *inside* a circuit breaker's logic. For example, you might configure the circuit breaker to consider an operation a "failure" only after 3 retry attempts have failed. However, you should not retry when the circuit is open; the point of the open state is to fail fast.
 
-- **[[timeout|Timeout]]:** A timeout is a critical signal for a circuit breaker. A call that times out is typically counted as a failure. The circuit breaker's failure threshold is often based on a combination of exceptions and timeouts.
+- **[[posa#Timeout|Timeout]]:** A timeout is a critical signal for a circuit breaker. A call that times out is typically counted as a failure. The circuit breaker's failure threshold is often based on a combination of exceptions and timeouts.
+
+- **[[message-queue#Dead-Letter Queue (DLQ)|Dead-Letter Queues]]:** In message-driven systems, a consumer might use a circuit breaker when processing a message that requires calling an external service. If the circuit is open, the message processing will fail. After several failed attempts, the message broker can move the "poison message" to a Dead-Letter Queue (DLQ), preventing it from blocking the queue and allowing the system to analyze the failure later. This combination makes the consumer more resilient.
 
 ---
 
 ## Challenges
 
-- **Configuration**: The thresholds for failure rates and recovery timeouts need to be carefully tuned. If too sensitive, the breaker may trip unnecessarily. If not sensitive enough, it may not prevent cascading failures effectively.
+- **Configuration**: The thresholds for failure rates and recovery [[posa#Timeout|timeout]]s need to be carefully tuned. If too sensitive, the breaker may trip unnecessarily. If not sensitive enough, it may not prevent cascading failures effectively.
 - **Distributed State**: In a distributed system with multiple instances of a service, you might need a distributed circuit breaker that shares its state across all instances, which adds complexity.
 - **Fallback Logic**: Implementing meaningful fallback logic can be difficult. For some operations, there may be no reasonable fallback other than returning an error.
 

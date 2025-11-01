@@ -23,7 +23,7 @@ The pattern consists of three main components:
 
 2.  **Agent**: An Agent is a remote service or process responsible for executing a single, specific sub-task. The system will typically have multiple Agents, often specialized for different types of tasks, running on different nodes in the distributed system.
 
-3.  **Supervisor**: The Supervisor is the reliability component. It monitors the health and status of the Agents as they execute their tasks. If an Agent fails to complete a task (due to a crash, timeout, or error), the Supervisor is responsible for initiating a recovery process. This could involve retrying the task, moving it to another Agent, or triggering a compensating action.
+3.  **Supervisor**: The Supervisor is the reliability component. It monitors the health and status of the Agents as they execute their tasks. If an Agent fails to complete a task (due to a crash, [[posa#Timeout|timeout]], or error), the Supervisor is responsible for initiating a recovery process. This could involve retrying the task, moving it to another Agent, or triggering a compensating action.
 
 ### Interaction Diagram
 

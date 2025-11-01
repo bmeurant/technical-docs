@@ -10,7 +10,7 @@ date: 2025-10-31
 ---
 # Bulkhead Pattern
 
-The **Bulkhead** pattern is a design strategy for building fault-tolerant applications. It isolates elements of an application into separate pools so that if one fails, the others can continue to function. The name comes from the sectioned partitions (bulkheads) in a ship's hull; if the hull is compromised, only the damaged section fills with water, preventing the ship from sinking.
+The **Bulkhead** pattern is a design strategy for building fault-tolerant applications. It isolates elements of an application into separate pools so that if one fails, the others can continue to function. The name comes from the sectioned partitions (bulkheads) in a ship's hull; if the hull is compromised, only the damaged section fills with water, preventing the ship from sinking. It is one of the resiliency patterns catalogued in the **[[posa|Pattern-Oriented Software Architecture (POSA)]]** series of books.
 
 In software, a failure in one component (e.g., a slow downstream service) can exhaust critical resources like threads or connections. This resource exhaustion can cascade, bringing down the entire system. The Bulkhead pattern prevents this by partitioning resources and allocating them to specific components.
 
@@ -122,7 +122,7 @@ The Bulkhead pattern is a core component of a resilient architecture and is ofte
 
 - **[[retry|Retry]]:** Retries should be done with caution. A retry for a failing service can put more pressure on an already exhausted bulkhead pool. It's often better to let the circuit breaker open and fail fast.
 
-- **[[timeout|Timeout]]:** Every call made within a bulkhead should have a timeout. This ensures that a thread in the pool is not blocked indefinitely and can eventually be released, even if the circuit breaker fails to open.
+- **[[posa#Timeout|Timeout]]:** Every call made within a bulkhead should have a timeout. This ensures that a thread in the pool is not blocked indefinitely and can eventually be released, even if the circuit breaker fails to open.
 
 ---
 

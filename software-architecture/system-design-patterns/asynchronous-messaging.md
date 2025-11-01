@@ -98,7 +98,7 @@ sequenceDiagram
 
 ### Challenges and Considerations
 
--   **Client-Side Complexity**: The client is more complex than in a simple synchronous interaction. It must be designed to poll for the status, handle different states (`Pending`, `Failed`), and implement a timeout strategy to avoid polling indefinitely.
+-   **Client-Side Complexity**: The client is more complex than in a simple synchronous interaction. It must be designed to poll for the status, handle different states (`Pending`, `Failed`), and implement a [[posa#Timeout|timeout]] strategy to avoid polling indefinitely.
 -   **State Management**: The backend must reliably track the state of every asynchronous job. This typically requires a database or a distributed cache to store the status, progress, and final result.
 -   **Result Delivery Alternatives**: While polling is common, it can be inefficient. For more advanced use cases, consider push-based notifications to inform the client when the result is ready:
     -   **WebSockets**: For rich, bidirectional communication.

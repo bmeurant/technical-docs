@@ -106,7 +106,7 @@ app.get('/readyz', async (req, res) => {
 - **Separate Liveness and Readiness:** Do not use the same logic for both. A failing readiness check should not cause the service to restart.
 - **Keep Liveness Checks Simple:** Avoid checking external dependencies in liveness probes to prevent cascading failures.
 - **Protect Health Endpoints:** While they expose internal state, they should not expose sensitive information. They should also be lightweight and not consume significant resources.
-- **Consider Timeouts and Deadlines:** The health check itself should have a timeout to prevent it from blocking the monitoring tool.
+- **Consider Timeouts and Deadlines:** The health check itself should have a [[posa#Timeout|timeout]] to prevent it from blocking the monitoring tool.
 
 ## Related Patterns
 
