@@ -68,7 +68,7 @@ An API Gateway is more than a simple reverse proxy. It implements several design
 -   **[[gateway-patterns#Gateway Aggregation|Gateway Aggregation]]**: It can consolidate multiple backend service calls into a single client request, reducing chattiness and simplifying the client's interaction model. This is a key pattern for implementing a [[backend-for-frontend|Backend-for-Frontend]].
 -   **[[gateway-patterns#Gateway Offloading|Gateway Offloading]]**: It offloads cross-cutting concerns from individual services. Common examples include:
     -   **SSL/TLS Termination**: The gateway handles HTTPS and forwards unencrypted traffic internally.
-    -   **[[authentication|Authentication]] & Authorization**: It can validate credentials or tokens before forwarding a request.
+    -   **Authentication & Authorization**: It can validate credentials or tokens before forwarding a request, often by implementing the [[federated-identity|Federated Identity]] pattern.
     -   **Rate Limiting & [[throttling|Throttling]]**: Protects backend services from being overwhelmed.
     -   **[[caching|Caching]]**: Caches responses to reduce calls to backend services.
     -   **Logging & [[monitoring|Monitoring]]**: Centralizes request/response logging and metrics collection.

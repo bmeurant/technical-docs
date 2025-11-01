@@ -73,7 +73,7 @@ The Sidecar pattern is extremely versatile and is a foundational element of many
 3.  **Security**
     A sidecar can offload security-related tasks from the application.
     -   **TLS Termination**: The sidecar handles incoming TLS/SSL connections, decrypts the traffic, and forwards unencrypted requests to the main application over `localhost`.
-    -   **Authentication/Authorization**: The sidecar can intercept incoming requests, validate authentication tokens, and enforce authorization policies before forwarding valid requests to the application.
+    -   **Authentication/Authorization**: The sidecar can intercept incoming requests, validate authentication tokens (often managed via [[federated-identity|Federated Identity]]), and enforce authorization policies before forwarding valid requests to the application.
 
 4.  **Configuration Management**
     A sidecar can be responsible for fetching configuration data from a central store (like `etcd` or HashiCorp Consul) and keeping it up-to-date. It can then notify the main application of changes or provide the configuration via a shared file.

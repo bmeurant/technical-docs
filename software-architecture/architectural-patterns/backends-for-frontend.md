@@ -84,7 +84,7 @@ graph TD
 
 BFFs can enhance security by acting as a dedicated enforcement point for client-specific security policies:
 
--   **Client-Specific [[authentication|Authentication]]/[[authorization|Authorization]]**: A BFF can implement authentication and authorization logic tailored to the frontend's needs, potentially simplifying client-side security concerns.
+-   **Client-Specific Authentication/Authorization**: A BFF can implement authentication and authorization logic tailored to the frontend's needs, potentially simplifying client-side security concerns. This is often achieved using patterns like [[federated-identity|Federated Identity]].
 -   **Hiding Internal Service Details**: By acting as a [[gof#Facade|facade]], the BFF prevents the frontend from directly interacting with downstream microservices, thereby hiding the internal architecture and reducing the attack surface.
 -   **Token Management**: It can manage and refresh access tokens for downstream services, abstracting this complexity from the client.
 

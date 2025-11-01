@@ -48,7 +48,7 @@ graph TD
 
 1.  **Event Sources:** The sources that trigger code execution. This can be an HTTP request for an API, a file added to a cloud storage bucket like **Amazon S3** or **Google Cloud Storage (GCS)**, a [[software-architecture/databases/|database]] modification, or a message published to a queue like **Amazon SQS** or **Google Cloud Pub/Sub**. The upload of the file itself is often handled securely using the [[valet-key|Valet Key]] pattern.
 2.  **Serverless Function (FaaS - Function as a Service):** The function or piece of code that runs in response to an event. This is the core of a **serverless** architecture. Examples include **AWS Lambda**, **GCP Cloud Functions**, and **Azure Functions**.
-3.  **Backend as a Service (BaaS):** Managed third-party services from the cloud provider, such as [[nosql|**NoSQL** databases]] (**Amazon DynamoDB**, **Google Cloud Firestore**) or authentication services (**Auth0**, **Firebase Authentication**), which complement the architecture and reduce the amount of code you need to write.
+3.  **Backend as a Service (BaaS):** Managed third-party services from the cloud provider, such as [[nosql|**NoSQL** databases]] (**Amazon DynamoDB**, **Google Cloud Firestore**) or authentication services (**Auth0**, **Firebase Authentication**) that often rely on the [[federated-identity|Federated Identity]] pattern. These services complement the architecture and reduce the amount of code you need to write.
 
 ---
 
