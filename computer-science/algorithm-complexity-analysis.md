@@ -44,6 +44,20 @@ Asymptotic notations are the language we use to describe an algorithm's complexi
 | **Best Case** | **Ω(f(n)) - Big-Omega** | **Lower Bound:** The fastest the algorithm can possibly run. |
 | **Average Case** | **Θ(f(n)) - Big-Theta** | **Tight Bound:** The expected performance for a typical input. |
 
+### Little-o Notation (o)
+
+-   **Purpose:** Describes an **upper bound that is not asymptotically tight**.
+-   **Meaning:** `f(n) = o(g(n))` means that `f(n)` becomes *insignificantly small* compared to `g(n)` as `n` approaches infinity. In simpler terms, `f(n)` grows strictly slower than `g(n)`.
+-   **Analogy:** If `g(n)` is your maximum speed, `o(g(n))` means you're driving at a speed that is always getting further and further below your maximum.
+-   **Example:** `2n = o(n^2)` because `2n` grows strictly slower than `n^2`. However, `2n` is *not* `o(n)` because `2n` does not grow strictly slower than `n` (they grow at the same rate).
+
+### Little-omega Notation (ω)
+
+-   **Purpose:** Describes a **lower bound that is not asymptotically tight**.
+-   **Meaning:** `f(n) = ω(g(n))` means that `f(n)` becomes *arbitrarily large* compared to `g(n)` as `n` approaches infinity. In simpler terms, `f(n)` grows strictly faster than `g(n)`.
+-   **Analogy:** If `g(n)` is your minimum required speed, `ω(g(n))` means you're driving at a speed that is always getting further and further above your minimum.
+-   **Example:** `n^2 = ω(n)` because `n^2` grows strictly faster than `n`. However, `n^2` is *not* `ω(n^2)` because `n^2` does not grow strictly faster than `n^2` (they grow at the same rate).
+
 **Example: Searching an Array**
 Consider searching for an item in an array of size `n`:
 - **Best Case (Ω(1)):** The item is the very first one you check.
