@@ -18,6 +18,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[bulkhead|Bulkhead]]
 * [[cdn|Content Delivery Network (CDN)]]
 * [[circuit-breaker|Circuit Breaker]]
+* [[compensating-transaction|Compensating Transaction]]
 * [[data-management-patterns|Data Management Patterns]]
 * [[deployment-stamps|Deployment Stamp]]
 * [[gateway-patterns|Gateway Patterns]]

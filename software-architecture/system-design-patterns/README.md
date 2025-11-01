@@ -9,6 +9,7 @@ see [index](./index.md)**
 * **[Background Jobs](./background-jobs.md)**
 * **[Bulkhead](./bulkhead.md)**
 * **[Circuit Breaker](./circuit-breaker.md)**
+* **[Compensating Transactions](./compensating-transaction.md)**
 * **[Content Delivery Network (CDN)**](./cdn.md)**
 * **[Database Management Patterns](./database-management-patterns.md)**
 * **[Deployment Stamps](./deployment-stamps.md)**
