@@ -35,7 +35,7 @@ The power of REST lies in its uniform interface, which dictates how clients inte
 -   **Identification of Resources**: Every resource must be uniquely and consistently identified by a stable identifier. In web-based REST systems, this is the Uniform Resource Identifier (URI).
     -   **Example**: `/users/123` is the URI that uniquely identifies a specific user.
 
--   **Manipulation of Resources Through Representations**: The client interacts with a resource through its representation. While XML and other formats are possible, JSON is the most common choice for modern APIs.
+-   **Manipulation of Resources Through Representations**: The client interacts with a resource through its representation. While XML and other formats are possible, JSON is the most common choice for modern APIs. To avoid ambiguity and endless debates over structuring these JSON payloads, specifications like [[json-api|JSON:API]] provide a standardized convention.
     -   **Example**: To update a user's name, a client would `PUT` a modified JSON representation of that user to the `/users/123` URI.
 
 -   **Self-Descriptive Messages**: Each message contains enough information for the receiver to understand and process it. This is achieved through the structure of the request and response, including verbs, status codes, and headers.

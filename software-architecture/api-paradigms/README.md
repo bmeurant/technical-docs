@@ -2,6 +2,10 @@
 
 see [index](./index.md)
 
-* **[RPC](./rpc.md)**
-* **[REST](./rest.md)**
 * **[GraphQL](./graphql.md)**
+* **[gRPC](./grpc.md)**
+* **[JSON API](./json-api.md)**
+* **[OpenAPI](./openapi.md)**
+* **[REST](./rest.md)**
+* **[RPC](./rpc.md)**
+* **[SOAP](./soap.md)**

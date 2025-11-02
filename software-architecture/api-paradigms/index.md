@@ -12,22 +12,26 @@ Choosing the right API paradigm is a critical architectural decision that impact
 
 ## Paradigms
 
-- [[rpc|Remote Procedure Call (RPC)]]
-- [[rest|REST (Representational State Transfer)]]
 - [[graphql|GraphQL]]
+- [[grpc|gRPC]]
+- [[json-api|JSON:API Specification]]
+- [[openapi|OpenAPI Specification]]
+- [[rest|REST (Representational State Transfer)]]
+- [[rpc|Remote Procedure Call (RPC)]]
+- [[soap|SOAP]]
 
 ## Paradigm Comparison
 
 Choosing the right API paradigm is a critical architectural decision. Here is a high-level comparison between the main paradigms discussed in this section.
 
-| Feature         | REST                                       | RPC                                           | GraphQL                                   |
-|-----------------|--------------------------------------------|-----------------------------------------------|-------------------------------------------|
-| **Style**       | Resource-oriented (nouns)                  | Action-oriented (verbs)                       | Query-based (declarative data fetching)   |
-| **Interface**   | Uniform (GET, POST, PUT on URIs)           | Specific (e.g., `getUser()`, `createOrder()`) | Single endpoint with a flexible query language |
-| **Data Fetching**| Fixed data structure per resource         | Defined by the procedure's return value       | Client specifies the exact data it needs  |
-| **Coupling**    | Loosely coupled                            | Tightly coupled                               | Loosely coupled (schema-based)            |
-| **Discovery**   | HATEOAS                                    | Requires documentation or IDL                 | Introspective schema                      |
-| **Use Case**    | Public APIs, CRUD operations               | Internal microservices, command-based actions | Mobile apps, complex frontends, aggregating services |
+| Feature         | REST                                       | gRPC                                          | GraphQL                                   | SOAP
+|-----------------|--------------------------------------------|-----------------------------------------------|-------------------------------------------|------------------------------------------------|
+| **Style**       | Resource-oriented (nouns)                  | Action-oriented (verbs)                       | Query-based (declarative data fetching)   | Action-oriented (verbs), similar to RPC        |
+| **Interface**   | Uniform (GET, POST, PUT on URIs)           | Specific (e.g., `GetUser()`, `CreateOrder()`) | Single endpoint with a flexible query language | Formalized in a WSDL contract                  |
+| **Data Fetching**| Fixed data structure per resource         | Defined by the procedure's return value       | Client specifies the exact data it needs  | Defined by the procedure's return value        |
+| **Coupling**    | Loosely coupled                            | Tightly coupled (via .proto contract)         | Loosely coupled (schema-based)            | Tightly coupled (WSDL contract)                |
+| **Discovery**   | HATEOAS                                    | Requires .proto file                          | Introspective schema                      | WSDL file serves as discoverable documentation |
+| **Use Case**    | Public APIs, CRUD operations               | Internal microservices, high-performance      | Mobile apps, complex frontends, aggregating services | Enterprise applications, financial services    |
 
 ## Resources & links
 
