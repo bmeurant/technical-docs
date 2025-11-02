@@ -136,6 +136,16 @@ mutation {
 -   **Steeper Learning Curve**: For teams accustomed to the simplicity of REST, adopting GraphQL requires learning a new query language, understanding schemas and resolvers, and a new way of thinking about API design.
 -   **File Uploads**: GraphQL does not have a native specification for file uploads, requiring the use of extensions or multi-part form requests, which can add complexity.
 
+## Security Considerations
+
+GraphQL is unopinionated about [[authentication]] and authorization, leaving these critical aspects to the developer. The common approach is to handle security at the HTTP layer, before the GraphQL engine takes over.
+
+-   **Authentication**: Since GraphQL is typically served over HTTP, standard authentication methods apply. The most common pattern is to use a token-based approach. A client first authenticates with a separate endpoint (or a RESTful one) to obtain a [[jwt|JSON Web Token (JWT)]]. This token is then sent in the `Authorization` header with every GraphQL request. The server can then validate the token and attach the user's context to the request, making it available to the resolvers.
+
+-   **Authorization**: Authorization logic is typically implemented within the business logic layer or directly in the resolvers. After authenticating the user, the resolver can check the user's context (e.g., their role or permissions) to determine if they are allowed to access the requested field or perform the requested mutation.
+
+-   **Query Complexity and Depth Limiting**: Malicious actors can submit excessively complex or deeply nested queries to overload the server, leading to a Denial of Service (DoS) attack. To mitigate this, it is crucial to implement query validation, depth limiting (restricting how many levels a query can nest), and complexity analysis (assigning a cost to fields and limiting the total cost of a query).
+
 ## Resources & Links
 
 ### Articles

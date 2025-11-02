@@ -38,7 +38,7 @@ sequenceDiagram
 *   **Principal (User)**: The user attempting to access the application.
 *   **Relying Party (RP)**: The application or service that requires authentication. It trusts the IdP to verify the user's identity.
 *   **Identity Provider (IdP)**: The service responsible for managing user identities, authenticating users, and issuing security tokens. Examples include Azure Active Directory, Google Identity, Okta, or Auth0.
-*   **Security Token**: A piece of data, typically signed and/or encrypted, that asserts the user's identity and may contain additional attributes (claims). Common token formats are SAML assertions and JSON Web Tokens (JWT).
+*   **Security Token**: A piece of data, typically signed and/or encrypted, that asserts the user's identity and may contain additional attributes (claims). Common token formats are SAML assertions and [[jwt|JSON Web Tokens (JWT)]].
 *   **Trust Relationship**: A pre-configured agreement between the RP and the IdP. The RP trusts tokens issued by the IdP, and the IdP is configured to issue tokens for that specific RP.
 
 ## Common Protocols

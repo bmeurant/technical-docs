@@ -81,6 +81,16 @@ sequenceDiagram
 - **Less Human-Readable**: The use of the binary Protobuf format makes it difficult to debug and inspect messages using standard text-based tools like `curl` or browser developer tools. Specialized tools (like `grpcurl`) are required.
 - **Steeper Learning Curve**: For teams accustomed to REST and JSON, adopting gRPC, Protocol Buffers, and the associated tooling can require a significant initial learning investment.
 
+## Security
+
+gRPC has robust, built-in support for [[authentication]], which is integrated directly into its channel-based communication. Security can be handled at two main levels:
+
+-   **Transport Security (Encryption)**: gRPC promotes the use of TLS (Transport Layer Security) to encrypt all traffic between the client and server. This is the most common and recommended approach for securing gRPC communication, preventing eavesdropping and man-in-the-middle attacks. This relies on the principles of [[pki|Public Key Infrastructure (PKI)]] to validate the server's identity.
+
+-   **Channel Authentication (Credentials)**: gRPC provides a flexible mechanism for passing credentials with each call. This is managed by attaching credentials to a channel. Common authentication patterns include:
+    -   **SSL/TLS with Certificates**: The client can present a certificate to the server to prove its identity (mutual TLS).
+    -   **Token-Based Authentication**: A client can attach a token (e.g., an OAuth 2.0 token or a [[jwt|JWT]]) to the metadata (headers) of each RPC call. The server can then inspect this token to authenticate and authorize the client. This is a common pattern for securing [[microservices]].
+
 ## Resources & Links
 
 ### Articles

@@ -16,7 +16,7 @@ An OpenAPI definition file (typically written in YAML or JSON) describes the ent
 -   Available endpoints (`/users/{id}`)
 -   Operations on each endpoint (GET, POST, PUT, DELETE)
 -   Parameters for each operation
--   Authentication methods
+-   Authentication methods (via `securitySchemes`)
 -   Schemas for request and response bodies
 
 Originally known as the Swagger Specification, it was donated to the OpenAPI Initiative in 2015 and has since become the industry standard for defining RESTful APIs.
@@ -48,7 +48,7 @@ graph TD
 
 ## Key Benefits of OpenAPI
 
--   **Formal Contract**: The OpenAPI file acts as a formal, unambiguous contract. It programmatically defines the API's surface, including data schemas, which eliminates guesswork and ensures that clients and servers agree on how to communicate.
+-   **Formal Contract**: The OpenAPI file acts as a formal, unambiguous contract. It programmatically defines the API's surface, including data schemas and [[authentication]] methods, which eliminates guesswork and ensures that clients and servers agree on how to communicate.
 
 -   **Discoverability and Automatic Documentation**: The greatest strength of OpenAPI is its ecosystem of tools that generate human-readable documentation. Tools like **Swagger UI** (a separate tool that consumes the OpenAPI Specification) and **Redoc** create an interactive web interface from the OpenAPI file. This interface allows developers to:
     -   **Discover** all available endpoints and operations without reading any code.
@@ -61,7 +61,7 @@ graph TD
 
 ## Example OpenAPI 3.0 Definition
 
-Here is a minimal example of an OpenAPI 3.0 definition in YAML for a simple User API.
+Here is a minimal example of an OpenAPI 3.0 definition in YAML for a simple User API. It includes a `securitySchemes` definition for [[jwt|JWT]] Bearer authentication and applies it to an endpoint.
 
 ```yaml
 openapi: 3.0.0
@@ -79,6 +79,8 @@ paths:
           required: true
           schema:
             type: integer
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: A single user.
@@ -98,6 +100,11 @@ components:
           type: string
         email:
           type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 ```
 
 ## OpenAPI and JSON:API

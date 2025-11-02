@@ -54,6 +54,16 @@ A key part of the uniform interface is the consistent structure of messages. A s
 3.  **Headers**: Key-value pairs that provide metadata about the request, such as the format of the body (`Content-Type`), the acceptable response formats (`Accept`), or authentication credentials (`Authorization`).
 4.  **Body (or Payload)**: The data for the resource, typically included in `POST`, `PUT`, and `PATCH` requests. It is almost always formatted in JSON for modern APIs, though XML is also seen in legacy systems.
 
+### Securing REST APIs
+
+REST does not prescribe a specific security mechanism, but its stateless nature makes it highly compatible with token-based [[authentication]] strategies. Because each request must be self-contained, sending a security token in the `Authorization` header is the most common approach.
+
+-   **Bearer Tokens**: The most popular method involves the client obtaining a bearer token (such as a [[jwt|JWT]]) from an authentication server. The client then sends this token in the `Authorization` header with every request (e.g., `Authorization: Bearer <token>`).
+-   **API Keys**: For simpler service-to-service communication, a static API key can be used.
+-   **OAuth 2.0**: This framework is often used to allow third-party applications to access an API on behalf of a user. It provides different flows for obtaining access tokens.
+
+The specific security mechanisms for a REST API can be formally defined using the `securitySchemes` object in an [[openapi|OpenAPI]] specification.
+
 ### Common Practices
 
 #### Using HTTP Status Codes

@@ -107,7 +107,7 @@ The [[api-gateway]] acts as the first point of contact for all traffic and handl
 Common offloaded functionalities include:
 
 -   **SSL/TLS Termination**: The gateway decrypts HTTPS traffic and forwards unencrypted requests to internal services.
--   **Authentication/Authorization**: Validates JWTs or API keys, often as part of a [[federated-identity|Federated Identity]] flow.
+-   **Authentication/Authorization**: Validates [[jwt|JWTs]] or API keys, often as part of a [[federated-identity|Federated Identity]] flow.
 -   **[[rate-limiting|Rate Limiting]]**: Protects services from being overwhelmed.
 -   **[[caching|Caching]]**: Stores responses for common requests.
 -   **[[monitoring|Logging & Tracing]]**: Creates a centralized point for observing traffic.

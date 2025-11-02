@@ -19,8 +19,8 @@ The core principle is to define a complete, self-contained application stack and
 
 1.  **Define the Stamp**: A single stamp's architecture is defined using [[iac|Infrastructure as Code (IaC)]]. This includes all necessary resources: web servers, application services, [[databases|databases]], [[message-queue|message queues]], etc.
 2.  **Provision Stamps**: Multiple instances of this stamp are provisioned. Each stamp is identical in its composition but is configured for its specific context (e.g., which tenants it serves).
-3.  **Route Traffic**: A global routing component sits in front of all the stamps. It inspects incoming requests and uses metadata (like a tenant ID from a JWT, a subdomain, or a geographic header) to direct the user to their assigned stamp. This router is often a combination of [[dns|DNS]]-based routing and a Layer 7 [[load-balancing|load balancer]].
-4.  **Manage and Monitor**: A centralized management plane is used to orchestrate deployments, updates, and [[observability/monitoring|monitoring]] across all stamps, ensuring consistency and operational visibility.
+3.  **Route Traffic**: A global routing component sits in front of all the stamps. It inspects incoming requests and uses metadata (like a tenant ID from a [[jwt|JWT]], a subdomain, or a geographic header) to direct the user to their assigned stamp. This router is often a combination of [[dns|DNS]]-based routing and a Layer 7 [[load-balancing|load balancer]].
+4.  **Manage and Monitor**: A centralized management plane is used to orchestrate deployments, updates, and [[monitoring|monitoring]] across all stamps, ensuring consistency and operational visibility.
 
 ## The Critical Role of Infrastructure as Code
 
