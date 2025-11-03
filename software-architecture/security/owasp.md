@@ -71,6 +71,7 @@ By actively engaging with OWASP's vast knowledge base and tools, development tea
 *   **Web Security**: Many OWASP projects are specifically tailored for web applications.
 *   **Risk Management**: The OWASP Top 10 is a prime example of risk identification and prioritization.
 *   **[[authentication|Authentication]]**: Directly addressed by categories like "Identification and Authentication Failures."
+*   [[csp|Content Security Policy (CSP)]]: A key browser-level technology for mitigating XSS and other injection attacks identified by OWASP.
 
 ---
 

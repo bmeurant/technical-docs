@@ -1,4 +1,4 @@
----
+--- 
 title: Security
 tags:
   - security
@@ -39,13 +39,38 @@ graph TD
 ```
 *Description: This diagram illustrates the core principles of security (Confidentiality, Integrity, Availability) and fundamental mechanisms like Authentication and Authorization. It also shows examples of technologies and concepts that support these principles, such as Encryption for confidentiality, Hashing for integrity, and PKI for authentication.*
 
-## Core Security Topics
+## Identity and Access Management (IAM)
 
-*   [[hashing-algorithms|Hashing Algorithms]]: Understand how these mathematical functions create unique, fixed-size representations of data, crucial for data integrity verification and secure password storage.
-*   [[pki|Public Key Infrastructure (PKI)]]: Explore the framework that enables secure electronic communication and identity verification through digital certificates and public-key cryptography.
-*   [[owasp|OWASP (Open Web Application Security Project)]]: Discover this vital community-driven resource for web application security, including its renowned Top 10 list of critical risks.
-*   [[authentication|Authentication]]: Learn about the processes and strategies used to verify the identity of users and systems, a critical first step in controlling access to resources.
+This area focuses on verifying the identity of users and systems and controlling what they are allowed to do.
+
+*   [[authentication|Authentication]]: Learn about the processes and strategies used to verify identity.
+*   [[jwt|JSON Web Token (JWT)]]: A compact, URL-safe means of representing claims to be transferred between two parties.
+
+## Cryptography and Data Integrity
+
+These topics cover the techniques used to protect data both in transit and at rest.
+
+*   [[hashing-algorithms|Hashing Algorithms]]: Understand how these mathematical functions create unique, fixed-size representations of data.
+*   [[pki|Public Key Infrastructure (PKI)]]: Explore the framework that enables secure electronic communication through digital certificates.
+*   [[ssl-tls|SSL/TLS]]: Learn how this protocol uses PKI to secure network communications (e.g., HTTPS).
+
+## Application and Web Security
+
+This section covers security from the perspective of a web application or service.
+
+*   [[owasp|OWASP (Open Web Application Security Project)]]: Discover the most critical security risks to web applications.
+*   [[cors|Cross-Origin Resource Sharing (CORS)]]: A browser security feature that restricts cross-origin HTTP requests.
+
+*   [[csp|Content Security Policy (CSP)]]: A browser feature to prevent XSS and other injection attacks.
+
+## Server and Network Security
+
+Server security involves a wide range of practices to protect server infrastructure from threats. This includes managing access, hardening systems, and filtering traffic to ensure the confidentiality, integrity, and availability of data and services.
+
+*   [[firewalls|Firewalls]]: Network security devices that monitor and control network traffic.
+*   [[gatekeeper|Gatekeeper Pattern]]: A pattern for protecting services by using a single, hardened entry point.
 
 ## Related Security Patterns
 
-For specific, proven solutions to recurring security design problems within software architecture, refer to the dedicated [[software-architecture/security-patterns/|Security Patterns]] section. These patterns offer reusable approaches to address common security challenges effectively.
+For specific, proven solutions to recurring security design problems, refer to the dedicated [[software-architecture/security-patterns/|Security Patterns]] section. These patterns offer reusable approaches to address common security challenges effectively.
+

@@ -62,7 +62,7 @@ REST does not prescribe a specific security mechanism, but its stateless nature 
 -   **API Keys**: For simpler service-to-service communication, a static API key can be used.
 -   **OAuth 2.0**: This framework is often used to allow third-party applications to access an API on behalf of a user. It provides different flows for obtaining access tokens.
 
-The specific security mechanisms for a REST API can be formally defined using the `securitySchemes` object in an [[openapi|OpenAPI]] specification.
+The specific security mechanisms for a REST API can be formally defined using the `securitySchemes` object in an [[openapi|OpenAPI]] specification. When consumed by browser-based clients from a different origin, REST APIs must also have a proper [[cors|CORS]] policy.
 
 ### Common Practices
 

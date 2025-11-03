@@ -77,7 +77,7 @@ UDP is suitable for applications where speed is more important than reliability,
 
 ## HyperText Transfer Protocol (HTTP)
 
-HTTP is an application-layer protocol for transmitting hypermedia documents, such as HTML. It is designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP is the foundation of data communication for the World Wide Web.
+HTTP is an application-layer protocol for transmitting hypermedia documents, such as HTML. It is designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP is the foundation of data communication for the World Wide Web. When secured, it is known as HTTPS, which is simply HTTP layered on top of [[ssl-tls|SSL/TLS]].
 
 ### HTTP Message Structure
 An HTTP message is a textual, formatted block of data. As shown below, both requests and responses share a similar structure, composed of four main parts:

@@ -146,6 +146,8 @@ GraphQL is unopinionated about [[authentication]] and authorization, leaving the
 
 -   **Query Complexity and Depth Limiting**: Malicious actors can submit excessively complex or deeply nested queries to overload the server, leading to a Denial of Service (DoS) attack. To mitigate this, it is crucial to implement query validation, depth limiting (restricting how many levels a query can nest), and complexity analysis (assigning a cost to fields and limiting the total cost of a query).
 
+-   **CORS**: When a GraphQL API is consumed by a browser-based client from a different domain, it must be configured with a proper [[cors|Cross-Origin Resource Sharing (CORS)]] policy to allow the browser to make requests.
+
 ## Resources & Links
 
 ### Articles
