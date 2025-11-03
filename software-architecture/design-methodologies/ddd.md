@@ -1,5 +1,5 @@
 ---
-title: Domain-Driven Design (DDD)
+title: Domain-Driven Design
 tags:
   - design-methodology
   - ddd

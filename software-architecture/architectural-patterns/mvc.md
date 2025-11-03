@@ -1,5 +1,5 @@
 ---
-title: Model-View-Controller (MVC)
+title: MVC
 tags:
   - architectural-pattern
   - mvc

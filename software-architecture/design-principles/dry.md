@@ -1,5 +1,5 @@
 ---
-title: Don't Repeat Yourself (DRY)
+title: DRY
 tags:
   - design-principle
   - dry

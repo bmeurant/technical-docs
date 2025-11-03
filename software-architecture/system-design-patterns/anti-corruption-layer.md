@@ -1,5 +1,5 @@
 ---
-title: Anti-Corruption Layer (ACL)
+title: Anti-Corruption Layer
 tags:
   - system-design-pattern
   - domain-driven-design

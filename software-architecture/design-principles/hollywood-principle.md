@@ -1,5 +1,5 @@
 --- 
-title: The Hollywood Principle (IoC)
+title: IoC
 tags:
   - design-principle
   - inversion-of-control

@@ -1,5 +1,5 @@
 ---
-title: You Aren't Gonna Need It (YAGNI)
+title: YAGNI
 tags:
   - design-principle
   - yagni

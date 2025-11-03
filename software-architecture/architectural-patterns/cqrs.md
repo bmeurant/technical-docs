@@ -1,5 +1,5 @@
 ---
-title: CQRS (Command Query Responsibility Segregation)
+title: CQRS
 tags:
   - architectural-pattern
   - cqrs

@@ -1,5 +1,5 @@
 ---
-title: Model-View-ViewModel (MVVM)
+title: MVVM
 tags:
   - architectural-pattern
   - mvvm

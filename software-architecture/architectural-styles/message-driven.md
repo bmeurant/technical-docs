@@ -1,5 +1,5 @@
 ---
-title: Message-Driven Architecture (MDA)
+title: Message-Driven Architecture
 tags:
   - communication
   - messaging

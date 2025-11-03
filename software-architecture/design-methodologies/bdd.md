@@ -1,5 +1,5 @@
 ---
-title: Behavior-Driven Development (BDD)
+title: Behavior-Driven Development
 tags:
   - design-methodology
   - bdd

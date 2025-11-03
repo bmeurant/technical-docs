@@ -1,5 +1,5 @@
 ---
-title: Model-View-Whatever (MVW)
+title: Model-View-Whatever
 tags:
   - architectural-pattern
   - mvw

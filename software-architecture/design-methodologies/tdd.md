@@ -1,5 +1,5 @@
 ---
-title: Test-Driven Development (TDD)
+title: Test-Driven Development
 tags:
   - design-methodology
   - tdd

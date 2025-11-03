@@ -1,5 +1,5 @@
 ---
-title: Functional Programming (FP)
+title: Functional Programming
 tags:
   - programming-paradigm
   - declarative-programming

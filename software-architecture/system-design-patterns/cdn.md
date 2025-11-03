@@ -1,5 +1,5 @@
 ---
-title: Content Delivery Network (CDN)
+title: CDN
 tags:
   - system-design
   - pattern

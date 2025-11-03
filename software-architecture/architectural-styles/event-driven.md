@@ -1,5 +1,5 @@
 ---
-title: Event-Driven Architecture (EDA)
+title: Event-Driven Architecture
 tags:
   - architectural-style
   - event-driven

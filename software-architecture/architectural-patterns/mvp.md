@@ -1,5 +1,5 @@
 ---
-title: Model-View-Presenter (MVP)
+title: MVP
 tags:
   - architectural-pattern
   - mvp

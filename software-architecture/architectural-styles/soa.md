@@ -1,5 +1,5 @@
 ---
-title: Service-Oriented Architecture (SOA)
+title: SOA
 tags:
   - distributed
 date: 2025-09-17

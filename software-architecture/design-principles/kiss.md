@@ -1,5 +1,5 @@
 ---
-title: Keep It Simple, Stupid (KISS)
+title: KISS
 tags:
   - design-principle
   - kiss

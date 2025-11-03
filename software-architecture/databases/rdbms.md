@@ -1,5 +1,5 @@
 ---
-title: Relational Databases (RDBMS)
+title: Relational Databases
 tags:
   - system-design
   - databases

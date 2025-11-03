@@ -1,5 +1,5 @@
 ---
-title: Asynchronous Messaging Models
+title: Asynchronous Messaging
 tags:
   - asynchronous-messaging
   - message-queue

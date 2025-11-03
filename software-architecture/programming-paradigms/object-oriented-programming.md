@@ -1,5 +1,5 @@
 ---
-title: Object-Oriented Programming (OOP)
+title: Object-Oriented Programming
 tags:
   - programming-paradigm
   - imperative-programming

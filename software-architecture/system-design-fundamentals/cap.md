@@ -1,5 +1,5 @@
 ---
-title: The CAP Theorem
+title: CAP Theorem
 tags:
   - resiliency
   - distributed

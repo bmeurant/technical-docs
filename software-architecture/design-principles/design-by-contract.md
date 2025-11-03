@@ -1,5 +1,5 @@
 ---
-title: Design by Contract (DbC)
+title: Design by Contract
 tags:
   - design-principle
   - design-by-contract

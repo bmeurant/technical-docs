@@ -1,5 +1,5 @@
 ---
-title: Rate Limiting Pattern
+title: Rate Limiting
 tags:
   - system-design-pattern
   - security

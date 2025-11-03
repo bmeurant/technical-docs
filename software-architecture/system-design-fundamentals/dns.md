@@ -1,5 +1,5 @@
 ---
-title: Domain Name System (DNS)
+title: DNS
 tags:
   - system-design
   - networking

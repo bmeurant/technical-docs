@@ -1,5 +1,5 @@
 ---
-title: The Law of Demeter (LoD)
+title: The Law of Demeter
 tags:
   - design-principle
   - coupling
