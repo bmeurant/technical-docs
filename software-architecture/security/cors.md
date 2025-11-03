@@ -1,5 +1,5 @@
 ---
-title: Cross-Origin Resource Sharing (CORS)
+title: CORS
 tags:
   - security
   - web-security

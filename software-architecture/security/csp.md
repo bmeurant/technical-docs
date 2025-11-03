@@ -1,5 +1,5 @@
 ---
-title: Content Security Policy (CSP)
+title: CSP
 tags:
   - security
   - web-security

@@ -1,5 +1,5 @@
 ---
-title: Remote Procedure Call (RPC)
+title: RPC
 tags:
   - api-paradigm
   - rpc

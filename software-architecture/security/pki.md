@@ -1,5 +1,5 @@
 ---
-title: Public Key Infrastructure (PKI)
+title: PKI
 tags:
   - security
   - cryptography

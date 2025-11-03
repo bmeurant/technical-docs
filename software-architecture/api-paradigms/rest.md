@@ -1,5 +1,5 @@
 ---
-title: REST (Representational State Transfer)
+title: REST
 tags:
   - api-paradigm
   - rest

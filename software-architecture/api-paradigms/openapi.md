@@ -1,5 +1,5 @@
 ---
-title: OpenAPI Specification
+title: OpenAPI
 tags:
   - api
   - design-principles

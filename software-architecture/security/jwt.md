@@ -1,5 +1,5 @@
 ---
-title: JSON Web Token (JWT)
+title: JWT
 tags:
   - security
   - authentication
@@ -85,7 +85,7 @@ sequenceDiagram
 
     Note over ClientApp, Server: For subsequent requests:
 
-    ClientApp->>Server: 7. Sends JWT in Authorization header<br>(e.g., `Authorization: Bearer <token>`)
+    ClientApp->>Server: 7. Sends JWT in Authorization header<br>(e.g., `Authorization: Bearer __token__`)
     Server->>Server: 8. Verifies JWT signature and claims (e.g., expiration)
     alt Token is valid
         Server-->>ClientApp: 9. Grants access to the requested resource

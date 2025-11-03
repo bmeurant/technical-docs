@@ -1,5 +1,5 @@
 --- 
-title: JSON:API Specification
+title: JSON:API
 tags:
   - api-paradigm
   - json-api
