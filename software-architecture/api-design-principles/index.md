@@ -10,3 +10,4 @@ date: 2025-10-31
 This section covers fundamental principles and patterns for designing robust, usable, and secure APIs.
 
 * [[rate-limiting|Rate Limiting]]
+* [[api-security-best-practices|API Security Best Practices]]
