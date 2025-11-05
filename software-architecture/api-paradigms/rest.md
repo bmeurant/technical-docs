@@ -16,7 +16,7 @@ Defined by Roy Fielding in his 2000 doctoral dissertation, REST has become the d
 
 For an architecture to be truly RESTful, it must adhere to six fundamental constraints. These are not rules to be followed blindly, but principles that lead to a well-designed, scalable, and [[cohesion-coupling|decoupled]] system.
 
-1.  **[[client-server|Client-Server Architecture]]**: This enforces a strict separation of concerns. The client (the consumer of the data) is decoupled from the server (the manager of the resources). The client handles the user interface and experience, while the server manages the data and business logic. They evolve independently, as long as the interface contract is maintained.
+1.  **[[client-server|Client-Server Architecture]]**: This enforces a strict separation of concerns. The client (the consumer of the data) is decoupled from the server (the manager of the resources). The client handles the user interface and experience, while the server manages the data and business logic. They evolve independently, as long as the interface contract is maintained, often through a clear [[api-versioning|API Versioning]] strategy.
 
 2.  **Statelessness**: Every request from a client to the server must be self-contained. The server must not store any client context or session state between requests. All necessary information to process the request (like authentication tokens or versioning information) must be provided by the client. This constraint is a key enabler for scalability, as any server instance can handle any client request.
 

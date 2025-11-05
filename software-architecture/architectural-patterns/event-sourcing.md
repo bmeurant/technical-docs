@@ -61,7 +61,7 @@ sequenceDiagram
 
 * **Challenges:**
     * **Querying Complexity:** The event log is optimized for writing, not for reading. Answering a simple question like "What are all the active users?" may require replaying thousands of events. This problem is almost always solved by using the **[[cqrs|CQRS]]** pattern.
-    * **Event Schema Evolution (Versioning):** The schema of events evolves over time. Managing different versions of the same event (e.g., a `userName` field becomes `fullName`) is a major technical challenge that requires migration or on-the-fly transformation strategies ("upcasting").
+    * **Event Schema Evolution (Versioning):** The schema of events evolves over time. Managing different versions of the same event (e.g., a `userName` field becomes `fullName`) is a major technical challenge that requires migration or on-the-fly transformation strategies ("upcasting"), a concept similar to [[api-versioning|API Versioning]].
     * **Eventual Consistency:** In an architecture with **[[cqrs|CQRS]]**, the read models (projections) are updated asynchronously. The system thus becomes "eventually consistent," a paradigm shift from traditional transactional systems.
     * **Reconstruction Optimization (Snapshotting):** For long-lived aggregates (with thousands of events), state reconstruction can become slow. **Snapshots** are used in this case—captures of the aggregate's state at a specific version (e.g., every 100 versions) to speed up the replay process.
 
