@@ -2,7 +2,6 @@
 title: Design Methodologies
 tags:
   - design-methodology
-  - index
 date: 2025-10-18
 ---
 

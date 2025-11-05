@@ -1,11 +1,12 @@
 ---
-title: API Design Principles
+title: API Fundamentals
 tags:
   - api
-  - design-principles
+  - api-fundamentals
+  - best-practices
 date: 2025-10-31
 ---
-# API Design Principles
+# API Fundamentals
 
 This section covers fundamental principles and patterns for designing robust, usable, and secure APIs.
 

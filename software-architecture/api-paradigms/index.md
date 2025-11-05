@@ -2,7 +2,6 @@
 title: API Paradigms
 tags:
   - api-paradigm
-  - index
 date: 2025-10-21
 ---
 
