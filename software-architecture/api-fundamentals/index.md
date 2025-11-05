@@ -12,3 +12,4 @@ This section covers fundamental principles and patterns for designing robust, us
 
 * [[rate-limiting|Rate Limiting]]
 * [[api-security-best-practices|API Security Best Practices]]
+* [[api-testing|API Testing]]
