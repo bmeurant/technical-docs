@@ -128,7 +128,7 @@ spec:
 
 The **Ambassador** pattern describes a specific **role or function** within a Sidecar implementation. It is not a separate component but a specialization of the Sidecar pattern. While a general-purpose Sidecar can handle many tasks (logging, metrics, etc.), the Ambassador role focuses specifically on acting as a proxy for **outbound network requests** from the main application to a remote service. Sidecar is the **deployment method**, while Ambassador is the specific **outbound network responsibility**. Think of the Sidecar as the helper container, and the Ambassador as the **outbound network specialist** among the helpers.
 
-The application simply communicates with the Ambassador running on `localhost`, and the Ambassador handles the complexities of service discovery, routing, and resilient communication over the network.
+The application simply communicates with the Ambassador running on `localhost`, and the Ambassador handles the complexities of [[service-discovery|service discovery], routing, and resilient communication over the network.
 
 ```mermaid
 sequenceDiagram
@@ -152,7 +152,7 @@ This pattern is particularly useful for legacy applications that are difficult t
 
 ### Common Use Cases
 - **Resilient Communication**: Automatically implement resilience patterns like [[retry|retries]] and [[circuit-breaker|circuit breakers]] for all outgoing calls, without polluting the application code.
-- **Service Discovery & Routing**: The Ambassador can find a healthy instance of a remote service and route the request accordingly, shielding the main application from the complexity of a dynamic microservices environment.
+- **[[service-discovery|Service Discovery] & Routing**: The Ambassador can find a healthy instance of a remote service and route the request accordingly, shielding the main application from the complexity of a dynamic microservices environment.
 - **Security**: It can secure outgoing traffic by transparently establishing a mutual TLS (mTLS) connection with the remote service.
 - **Monitoring**: It can capture detailed metrics (latency, error rates, throughput) for all outgoing requests, providing crucial observability into external dependencies.
 

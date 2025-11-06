@@ -298,7 +298,7 @@ graph TD
     This component diagram shows the `Client-Dispatcher-Server` pattern. It illustrates how the `Client` sends a request to a central `Dispatcher` component. The `Dispatcher` is then responsible for locating the correct `Server` and forwarding the request. This centralized approach hides the service location from the client.
 
 * **Key Characteristics**:
-    * **Centralization**: A single point of coordination (`Dispatcher`) simplifies service discovery and routing.
+    * **Centralization**: A single point of coordination (`Dispatcher`) simplifies [[service-discovery|service discovery] and routing.
     * **Flexibility**: It allows for adding, removing, or moving `servers` without affecting client code.
     * **[[cohesion-coupling|Decoupling]]**: `Clients` do not need to know the location of the `Servers`, only the address of the `Dispatcher`.
 * **Applicability**: This pattern is well-suited for dynamic distributed systems, service registries, and [[microservices]] architectures where services may be added or removed frequently.
@@ -306,7 +306,7 @@ graph TD
 * **Relationship with Other Patterns**:
     * This pattern is a specific implementation of the **[[broker|Broker]]** pattern, where the `Dispatcher` acts as the central message broker.
     * It is conceptually similar to the **Service Locator** pattern.
-    * In modern **[[microservices]]** architectures, the `Dispatcher` role is often fulfilled by an **[[api-gateway|API Gateway]]** or a combination of a **Service Registry** and **Service Discovery** mechanism.
+    * In modern **[[microservices]]** architectures, the `Dispatcher` role is often fulfilled by an **[[api-gateway|API Gateway]]** or a combination of a **Service Registry** and **[[service-discovery|Service Discovery]** mechanism.
 
 #### Publisher-Subscriber
 

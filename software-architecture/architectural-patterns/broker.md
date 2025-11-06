@@ -18,7 +18,7 @@ The Broker can facilitate two main styles of communication:
 
 * **Core Principles:**
     * **Decoupling:** This is the central principle. Producers and consumers of services are completely decoupled and only need to know how to communicate with the Broker.
-    * **Intermediation:** The Broker handles all communication, including message routing, transformation, and service discovery.
+    * **Intermediation:** The Broker handles all communication, including message routing, transformation, and [[service-discovery|service discovery].
     * **Location Transparency:** Clients and servers do not need to know the network location of other components.
 
 ---
@@ -76,7 +76,7 @@ graph TD
     * **High Scalability:** It is easy to add new clients or servers without affecting existing components. The architecture is highly flexible.
     * **Robustness:** A failure in a client or server does not directly affect others, as long as the broker remains operational. The broker can also handle [[retry]] functionalities.
     * **Interoperability:** Due to decoupling, clients and servers can be developed using different languages, technologies, or platforms.
-    * **Reduced Client Complexity:** Clients do not have to manage the logic for connection, service discovery, or [[api-error-handling|error handling]] related to servers.
+    * **Reduced Client Complexity:** Clients do not have to manage the logic for connection, [[service-discovery|service discovery], or [[api-error-handling|error handling]] related to servers.
 
 * **Challenges:**
     * **Broker as a Single Point of Failure (SPOF):** The broker is a critical component. If it fails, the entire system's communication is paralyzed. A production-grade broker must be designed for high availability and fault tolerance (e.g., through clustering and replication), which requires significant engineering effort.
@@ -92,7 +92,7 @@ The **Broker** style is a foundation for many modern, often specialized or exten
 
 * **[[message-queue|Message Brokers]]:** Technologies like **Apache Kafka**, **RabbitMQ**, or **ActiveMQ** are direct implementations of this model. They manage message queues or [[publish-subscribe|publish-subscribe (Pub/Sub)]] systems. For a detailed discussion of specific message queue implementations and their characteristics, refer to the [[message-queue#Implementations and Characteristics|Message Queue Implementations]] section.
 * **[[soa|Service-Oriented Architecture (SOA)]]:** The broker is often implemented as an **Enterprise Service Bus (ESB)** that manages communication and [[event-driven#Mediator Topology (Orchestration)|orchestration]] between different enterprise services.
-* **[[microservices|Microservices]]:** While microservices can use direct communication (**REST**), it is very common to pair them with an **API Gateway** or a **[[service-mesh|Service Mesh]]** that acts as a broker for service discovery, traffic management, and security.
+* **[[microservices|Microservices]]:** While microservices can use direct communication (**REST**), it is very common to pair them with an **API Gateway** or a **[[service-mesh|Service Mesh]]** that acts as a broker for [[service-discovery|service discovery], traffic management, and security.
 
 ---
 
