@@ -14,3 +14,5 @@ This section covers fundamental principles and patterns for designing robust, us
 * [[api-security-best-practices|API Security Best Practices]]
 * [[api-testing|API Testing]]
 * [[api-versioning|API Versioning]]
+* [[api-pagination|API Pagination]]
+* [[api-error-handling|API Error Handling]]

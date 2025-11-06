@@ -17,7 +17,7 @@ SOAP defines a strict contract between the client and server. This contract is d
 
 A SOAP-based architecture is built on several key components that ensure its robustness and interoperability.
 
--   **SOAP Message Format**: Every SOAP message is an XML document consisting of an **Envelope**, which is the root element. The envelope contains an optional **Header** (for metadata like security or transaction information) and a mandatory **Body** (containing the actual message or remote procedure call). Errors are reported in a standardized **Fault** element within the body.
+-   **SOAP Message Format**: Every SOAP message is an XML document consisting of an **Envelope**, which is the root element. The envelope contains an optional **Header** (for metadata like security or transaction information) and a mandatory **Body** (containing the actual message or remote procedure call). Errors are reported in a standardized **Fault** element within the body. This is SOAP's built-in mechanism for error reporting, in contrast to [[rest|REST]] APIs which rely on HTTP status codes and a standardized response body as described in [[api-error-handling|API Error Handling]].
 
     **Example SOAP Request Envelope:**
     ```xml

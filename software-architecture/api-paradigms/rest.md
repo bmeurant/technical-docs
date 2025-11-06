@@ -90,7 +90,7 @@ Query parameters are used to filter, sort, and paginate collections of resources
 
 -   **Filtering**: `GET /users?status=active`
 -   **Sorting**: `GET /users?sort=-created_at` (descending order)
--   **Pagination**: `GET /users?page=2&limit=50`
+-   **[[api-pagination|Pagination]]**: `GET /users?page=2&limit=50`
 -   **Searching**: `GET /users?q=john`
 
 ```mermaid

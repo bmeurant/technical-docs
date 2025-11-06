@@ -9,7 +9,7 @@ date: 2025-11-02
 ---
 # JSON:API Specification
 
-JSON:API is a specification that defines a standard structure for building **RESTful** APIs in JSON. Its primary goal is to reduce the number of decisions that need to be made when designing an API, allowing developers to focus on business logic instead of the structure of JSON payloads. It provides conventions for common [[rest|RESTful]] API patterns like pagination, filtering, sorting, and handling relationships.
+JSON:API is a specification that defines a standard structure for building **RESTful** APIs in JSON. Its primary goal is to reduce the number of decisions that need to be made when designing an API, allowing developers to focus on business logic instead of the structure of JSON payloads. It provides conventions for common [[rest|RESTful]] API patterns like [[api-pagination|pagination]], filtering, sorting, and handling relationships.
 
 It is important to distinguish JSON:API from the generic term "JSON API," which simply refers to any API that communicates using JSON. JSON:API is a formal, opinionated standard.
 
@@ -115,7 +115,7 @@ These tools typically automate the generation of the entire JSON:API structure, 
 
 -   **Convention over Configuration**: Eliminates bikeshedding over JSON structure, leading to faster development.
 -   **Efficient Data Loading**: The `included` mechanism allows related resources to be sent in a single request, preventing the "N+1 query problem" common in other API styles.
--   **Standardized Operations**: Provides clear conventions for complex operations like sparse fieldsets (requesting only specific fields), sorting, pagination, and filtering.
+-   **Standardized Operations**: Provides clear conventions for complex operations like sparse fieldsets (requesting only specific fields), sorting, [[api-pagination|pagination]], and filtering.
 -   **Rich Ecosystem**: A growing number of server and client libraries support the specification, simplifying its adoption.
 
 ## Disadvantages of JSON:API

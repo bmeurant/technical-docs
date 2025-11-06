@@ -160,7 +160,7 @@ These resources provide more depth and practical examples of defensive programmi
 ### Articles
 
 1.  **[Defensive Coding Approach](https://medium.com/@sophiadizon/defensive-coding-approach-43bf3f3c007d)**
-    This article provides a list of 15 best practices for implementing a defensive coding approach, including input validation, error handling, and the use of immutable data structures.
+    This article provides a list of 15 best practices for implementing a defensive coding approach, including input validation, [[api-error-handling|error handling]], and the use of immutable data structures.
 
 2.  **[Top 20 Defensive programming principles (with examples)](https://umbracare.net/blog/top-defensive-programming-principles-with-examples/)**
     A comprehensive guide that outlines 20 principles with .NET examples, covering topics like failing fast, handling exceptions strategically, and encapsulating data to build robust applications.

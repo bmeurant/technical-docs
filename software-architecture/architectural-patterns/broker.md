@@ -76,7 +76,7 @@ graph TD
     * **High Scalability:** It is easy to add new clients or servers without affecting existing components. The architecture is highly flexible.
     * **Robustness:** A failure in a client or server does not directly affect others, as long as the broker remains operational. The broker can also handle [[retry]] functionalities.
     * **Interoperability:** Due to decoupling, clients and servers can be developed using different languages, technologies, or platforms.
-    * **Reduced Client Complexity:** Clients do not have to manage the logic for connection, service discovery, or error handling related to servers.
+    * **Reduced Client Complexity:** Clients do not have to manage the logic for connection, service discovery, or [[api-error-handling|error handling]] related to servers.
 
 * **Challenges:**
     * **Broker as a Single Point of Failure (SPOF):** The broker is a critical component. If it fails, the entire system's communication is paralyzed. A production-grade broker must be designed for high availability and fault tolerance (e.g., through clustering and replication), which requires significant engineering effort.

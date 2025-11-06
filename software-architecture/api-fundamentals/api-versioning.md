@@ -73,7 +73,7 @@ The version is specified as a query parameter at the end of the URI.
     - **Doesn't clutter the URI path:** The core URI remains clean.
 - **Cons:**
     - **Less Explicit:** Can be overlooked more easily than URI path versioning.
-    - **Can lead to messy URLs** if combined with other query parameters for filtering or pagination.
+    - **Can lead to messy URLs** if combined with other query parameters for filtering or [[api-pagination|pagination]].
 - **Impact on Caching:** This method can be problematic for caching. Many caching proxies are not configured to cache responses based on query parameters, which can lead to them serving the wrong version of a resource or not caching at all.
 
 ### 3. Custom Header Versioning

@@ -21,7 +21,7 @@ The core idea behind idempotency is that the *effect* of the operation is the sa
 Key characteristics include:
 -   **Predictable State:** The system's state after one execution is identical to its state after N executions.
 -   **Fault Tolerance:** Operations can be safely retried without adverse effects, which is vital for fault-tolerant systems.
--   **Simplicity in Error Handling:** Simplifies error recovery logic, as there's no need to track whether an operation has already been successfully applied.
+-   **Simplicity in [[api-error-handling|Error Handling]]:** Simplifies error recovery logic, as there's no need to track whether an operation has already been successfully applied.
 
 ## Why Idempotency Matters in Distributed Systems
 

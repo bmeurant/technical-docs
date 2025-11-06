@@ -105,7 +105,9 @@ sequenceDiagram
     -   **Server-Sent Events (SSE)**: For simple, unidirectional server-to-client updates.
     -   **Webhooks**: The client can provide a callback URL that the backend calls when the job is done.
 -   **HTTP Status Codes**: Proper use of HTTP status codes is critical. `202 Accepted` for acknowledgment, `200 OK` for status updates, and `302`/`303` for redirection to the final result.
--   **Error Handling**: The backend worker must be able to report a `Failed` state to the status store. The status endpoint should then return an appropriate error response to the client (e.g., `HTTP 200 OK` with a "Failed" status, or a `4xx`/`5xx` status code if the job resource itself has an error).
+-   **Error Handling**: The backend worker must be able to report a `Failed` state to the status store. When the client polls the status endpoint, there are two types of errors to consider:
+    -   **The Asynchronous Job Fails:** The backend worker fails to complete the task (e.g., due to invalid data). In this case, the status endpoint itself should still return `HTTP 200 OK`, because the request *for the status* was successful. The response body will contain the terminal state of the job, e.g., `{ "status": "Failed", "reason": "Input data could not be processed." }`.
+    -   **The Status Request Fails:** The request to the status endpoint itself fails (e.g., the `jobId` does not exist). In this case, the server should return a standard [[api-error-handling|HTTP error code]] like `404 Not Found`.
 
 ---
 
