@@ -64,6 +64,7 @@ The choice of authentication strategy is pivotal and depends on various factors,
 A simple authentication scheme built into the HTTP protocol.
 *   **Mechanism:** The client sends a username and password in the `Authorization` header with each request. The credentials are combined as `username:password` and then Base64-encoded.
 *   **Considerations:** It is not secure over plain HTTP as the credentials can be easily decoded. It should only ever be used over a secure ([[ssl-tls|HTTPS]]) connection. It is stateless but requires sending credentials with every request.
+*   **Learn more:** [Basic Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/basic-authentication)
 
 #### Example
 1.  The client combines the username and password with a colon: `myuser:mypassword123`
@@ -80,6 +81,7 @@ Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQxMjM=
 A stateful authentication method traditionally used by web browsers.
 *   **Mechanism:** After a user logs in, the server creates a session, stores the session ID in a database, and sends the session ID back to the client in a cookie. The browser automatically includes this cookie in all subsequent requests to the same domain. The server then validates the session ID against its session store.
 *   **Considerations:** Stateful by nature, which can be a challenge for horizontal scaling. It is vulnerable to Cross-Site Request Forgery ([[cors|CSRF]]) attacks, requiring mitigation strategies (e.g., anti-CSRF tokens).
+*   **Learn more:** [Session-based Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/session-based-authentication)
 
 #### Example Flow
 1.  **Login Response:** After successful login, the server sends a `Set-Cookie` header. The `HttpOnly` flag prevents JavaScript access, mitigating XSS, and `Secure` ensures it is only sent over HTTPS.
@@ -106,11 +108,18 @@ The most traditional method, where users provide a username and a secret passwor
 
 ### Token-Based Authentication
 
-A modern, stateless, and scalable approach suited for distributed systems and APIs.
-*   **Mechanism:** After initial authentication, the server issues a cryptographic token (e.g., a [[jwt|JSON Web Token - JWT]]) to the client. The client includes this token with subsequent requests to prove its identity without re-sending credentials.
-*   **Examples:** [[jwt|JSON Web Tokens (JWT)]].
+A modern, stateless, and scalable approach suited for distributed systems and APIs. The core idea is that after an initial login, the server issues a cryptographic token to the client, which then includes this token with subsequent requests to prove its identity.
+*   **Learn more:** [Token Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/token-authentication)
 
-#### Example
+#### JSON Web Tokens (JWT)
+
+The most popular implementation of token-based authentication is [[jwt|JSON Web Tokens (JWT)]]. A JWT is a compact, URL-safe means of representing claims to be transferred between two parties.
+
+*   **Mechanism**: The token is a self-contained JSON object that is digitally signed. It can be verified by the server without needing to look up token information in a database, making the process stateless and highly scalable.
+*   **Learn more:** [JWT Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/jwt-authentication)
+
+**Example (Bearer Token)**
+
 The most common method uses the `Authorization` header with the `Bearer` scheme. The client stores the token and sends it with each request to a protected endpoint.
 ```http
 GET /api/orders/123 HTTP/1.1
@@ -142,9 +151,9 @@ Host: api.example.com
 
 ### OAuth (Open Authorization) and OpenID Connect (OIDC)
 
-These are often used together but serve distinct purposes.
-*   **OAuth:** An open standard for **authorization** (access delegation). It allows a user to grant a third-party application limited access to their resources on another service without sharing credentials.
-*   **OpenID Connect (OIDC):** An identity layer built on top of the OAuth 2.0 protocol. OIDC enables clients to verify the identity of the end-user based on the authentication performed by an Authorization Server. It is primarily for **authentication**.
+These are open standards that work together to provide secure delegated access.
+*   **[[oauth|OAuth 2.0]]**: A framework for delegating **authorization**. It allows an application to obtain limited access to a user's account without exposing their credentials. For a detailed explanation, see the `[[oauth]]` page.
+*   **OpenID Connect (OIDC)**: An identity layer built on top of OAuth 2.0. It focuses on **authentication**, allowing a client to verify a user's identity based on the authentication performed by an Authorization Server.
 
 ### Certificate-Based Authentication
 
