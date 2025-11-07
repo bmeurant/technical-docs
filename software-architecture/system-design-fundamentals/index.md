@@ -155,6 +155,7 @@ The trade-off becomes critical during a **network partition**—a situation wher
 * [[consistency|Consistency]]
 * [[dns|Domain Name System (DNS)]]
 * [[communication-protocols|Communication Protocols]]
+* [[http]]
 * [[idempotent-operations|Idempotent Operations]]
 * [[workload-management|Workload Management]]
 * [[messaging|Messaging]]

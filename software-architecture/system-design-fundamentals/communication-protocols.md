@@ -41,7 +41,7 @@ sequenceDiagram
 ### Use Cases
 
 TCP is ideal for applications where data integrity is critical and latency is a secondary concern.
-- **Web Browsing**: Historically, and for HTTP/1.x and HTTP/2, [[#HyperText Transfer Protocol (HTTP)|HTTP]] runs on top of TCP to ensure web pages load completely. With HTTP/3, the underlying transport shifts to QUIC/UDP.
+- **Web Browsing**: Historically, and for HTTP/1.x and HTTP/2, [[http|HTTP]] runs on top of TCP to ensure web pages load completely. With HTTP/3, the underlying transport shifts to QUIC/UDP.
 - **Email**: SMTP, POP3, and IMAP use TCP for reliable message delivery.
 - **File Transfer**: FTP and SSH rely on TCP to ensure files are transferred without corruption.
 - **[[software-architecture/databases/|Database Connections]]**: Ensuring that queries and results are transmitted without error.
@@ -77,42 +77,9 @@ UDP is suitable for applications where speed is more important than reliability,
 
 ## HyperText Transfer Protocol (HTTP)
 
-HTTP is an application-layer protocol for transmitting hypermedia documents, such as HTML. It is designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP is the foundation of data communication for the World Wide Web. When secured, it is known as HTTPS, which is simply HTTP layered on top of [[ssl-tls|SSL/TLS]].
+HTTP is the application-layer protocol that forms the foundation of the World Wide Web. It follows a stateless, request-response model and is used for transmitting hypermedia documents and as the primary communication protocol for [[rest|RESTful APIs]].
 
-### HTTP Message Structure
-An HTTP message is a textual, formatted block of data. As shown below, both requests and responses share a similar structure, composed of four main parts:
-
-![Anatomy of an HTTP Message](/static/images/http-message.png)
-*Image credit: [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages)*
-
--   **Start Line**: The first line. For a request, it contains the HTTP method, the target resource path, and the HTTP version. For a response, it contains the HTTP version, a status code, and a status message.
--   **Headers**: A series of key-value pairs that provide metadata about the message, such as the content type, length, or caching policy.
--   **Empty Line**: A single blank line (CRLF) that serves as a mandatory separator between the headers and the body.
--   **Body**: An optional block of data that contains the message payload. It is used in requests like `POST` to send data to the server, and in responses to transmit the requested resource (e.g., an HTML page or JSON data).
-
-### Key Characteristics
-
-- **Request-Response Model**: Communication follows a strict request-response pattern. The client sends a request, and the server sends a response.
-- **Stateless**: Each request from a client to a server is treated as an independent transaction. The server does not store any state about the client between requests. (State can be managed using cookies or sessions).
-- **Extensible**: Custom headers can be added to requests and responses to extend its functionality.
-
-### Common HTTP Methods
-
-| Verb   | Description                   | Idempotent* | Safe** | Cacheable                               |
-|--------|-------------------------------|-------------|--------|-----------------------------------------|
-| GET    | Reads a resource              | Yes         | Yes    | Yes                                     |
-| POST   | Creates a resource or triggers an action | No          | No     | Yes if response contains freshness info |
-| PUT    | Creates or replaces a resource | Yes         | No     | No                                      |
-| PATCH  | Partially updates a resource  | No          | No     | Yes if response contains freshness info |
-| DELETE | Deletes a resource            | Yes         | No     | No                                      |
-
-_*An operation is **idempotent** if making the same request multiple times produces the same result as making it once._
-_**A **safe** method is one that does not alter the state of the server._
-
-### Evolution: HTTP/2 and HTTP/3
-- **HTTP/1.1**: This version, like HTTP/2, relies on [[#Transmission Control Protocol (TCP)|TCP]] for its transport layer. It suffers from head-of-line blocking, where a slow request can block all subsequent requests on the same TCP connection.
-- **HTTP/2**: Also built on [[#Transmission Control Protocol (TCP)|TCP]], HTTP/2 introduces multiplexing, allowing multiple requests and responses to be sent concurrently over a single TCP connection. It also adds header compression (HPACK) to reduce overhead, addressing some of HTTP/1.1's performance limitations while retaining TCP's reliability.
-- **HTTP/3**: This is a significant evolution as it fundamentally changes the transport layer. HTTP/3 uses QUIC (Quick UDP Internet Connections), a new transport protocol that runs on top of [[#User Datagram Protocol (UDP)|UDP]]. While UDP itself is unreliable, QUIC re-implements the reliability features of TCP (like acknowledgements and retransmissions) at the application layer. This approach provides the reliability of TCP while avoiding transport-layer head-of-line blocking, as a lost packet only affects the specific stream it belongs to, not the entire connection, leading to improved performance and reduced latency, especially on unreliable networks.
+For a detailed explanation of its versions (HTTP/1.1, HTTP/2, HTTP/3), message structure, methods, status codes, and more, see the dedicated [[http]] page.
 ## Resources & Links
 
 The following resources provide more detailed information on the communication protocols discussed in this document.

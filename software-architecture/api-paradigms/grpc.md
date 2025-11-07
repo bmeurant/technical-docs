@@ -9,7 +9,7 @@ date: 2025-11-02
 ---
 # gRPC
 
-gRPC (gRPC Remote Procedure Call) is a modern, high-performance, open-source RPC framework developed by Google. It is a powerful evolution of the traditional [[rpc|RPC]] pattern, addressing many of its original drawbacks by providing streaming, strong typing, and high efficiency. It uses **Protocol Buffers (Protobuf)** as its interface definition language (IDL) and data serialization format, and it is built on top of [[communication-protocols#Evolution: HTTP/2 and HTTP/3|HTTP2]].
+gRPC (gRPC Remote Procedure Call) is a modern, high-performance, open-source RPC framework developed by Google. It is a powerful evolution of the traditional [[rpc|RPC]] pattern, addressing many of its original drawbacks by providing streaming, strong typing, and high efficiency. It uses **Protocol Buffers (Protobuf)** as its interface definition language (IDL) and data serialization format, and it is built on top of [[http#HTTP Versions|HTTP2]].
 
 gRPC is commonly used for high-performance communication between internal [[microservices]].
 
@@ -46,7 +46,7 @@ From this file, gRPC tools can generate strongly-typed client and server code in
 
 ### Communication Types
 
-gRPC leverages [[communication-protocols#Evolution: HTTP/2 and HTTP/3|HTTP2]] to support four types of communication:
+gRPC leverages [[http#HTTP Versions|HTTP2]] to support four types of communication:
 
 1.  **Unary RPC**: The client sends a single request and gets a single response, just like a traditional RPC call.
 2.  **Server Streaming RPC**: The client sends a single request and gets a stream of messages back from the server.

@@ -10,6 +10,7 @@ see [index](./index.md)
 * **[Communication Protocols](./communication-protocols.md)**
 * **[Consistency](./consistency.md)**
 * **[Domain Name System (DNS)](./dns.md)**
+* **[HTTP](./http.md)**
 * **[Idempotent Operations](./idempotent-operations.md)**
 * **[Messaging](./messaging.md)**
 * **[Reliability Engineering](./reliability-engineering.md)**

@@ -10,7 +10,7 @@ date: 2025-10-21
 
 REST, or **RE**presentational **S**tate **T**ransfer, is an architectural style for designing networked applications. It is not a formal protocol or standard, but rather a set of architectural principles and constraints for building scalable, stateless, and reliable distributed systems. When a system conforms to these constraints, it is considered "RESTful."
 
-Defined by Roy Fielding in his 2000 doctoral dissertation, REST has become the de facto standard for building web services and APIs, leveraging the existing and proven infrastructure of the web, most notably the [[communication-protocols#HyperText Transfer Protocol (HTTP)|HTTP]] protocol. While technically format-agnostic, the vast majority of modern REST APIs use JSON (JavaScript Object Notation) as the data format for representations.
+Defined by Roy Fielding in his 2000 doctoral dissertation, REST has become the de facto standard for building web services and APIs, leveraging the existing and proven infrastructure of the web, most notably the [[http|HTTP]] protocol. While technically format-agnostic, the vast majority of modern REST APIs use JSON (JavaScript Object Notation) as the data format for representations.
 
 ## The Six Guiding Constraints of REST
 
@@ -20,7 +20,7 @@ For an architecture to be truly RESTful, it must adhere to six fundamental const
 
 2.  **Statelessness**: Every request from a client to the server must be self-contained. The server must not store any client context or session state between requests. All necessary information to process the request (like authentication tokens or versioning information) must be provided by the client. This constraint is a key enabler for scalability, as any server instance can handle any client request.
 
-3.  **[[caching|Cacheability]]**: To improve performance and reduce network traffic, responses must explicitly define themselves as cacheable or non-cacheable. This allows clients and intermediaries (like CDNs or proxies) to store and reuse responses, avoiding redundant requests to the server. This is typically managed via [[communication-protocols#HTTP Message Structure|HTTP headers]] like `Cache-Control`.
+3.  **[[caching|Cacheability]]**: To improve performance and reduce network traffic, responses must explicitly define themselves as cacheable or non-cacheable. This allows clients and intermediaries (like CDNs or proxies) to store and reuse responses, avoiding redundant requests to the server. This is typically managed via [[http#HTTP Headers|HTTP headers]] like `Cache-Control`.
 
 4.  **Layered System**: The architecture can be composed of multiple layers of servers (e.g., proxies, gateways, [[load-balancing|load balancers]]). A client, however, connects to a single endpoint and has no visibility into the underlying layers. This allows for architectural flexibility, such as offloading security or applying load balancing, without affecting the client.
 
@@ -49,7 +49,7 @@ A key part of the uniform interface is the consistent structure of messages. A s
 ![Anatomy of an HTTP Message](/static/images/http-message.png)
 *Image credit: [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages)*
 
-1.  **Method (or Verb)**: The action to be performed on the resource. The most common [[communication-protocols#Common HTTP Methods|HTTP Verbs]] are `GET` (read), `POST` (create), `PUT` (update/replace), `DELETE` (remove), and `PATCH` (partially update).
+1.  **Method (or Verb)**: The action to be performed on the resource. The most common [[http#HTTP Methods|HTTP Verbs]] are `GET` (read), `POST` (create), `PUT` (update/replace), `DELETE` (remove), and `PATCH` (partially update).
 2.  **Path**: The URI that uniquely identifies the resource the action is being performed on (e.g., `/users/123`).
 3.  **Headers**: Key-value pairs that provide metadata about the request, such as the format of the body (`Content-Type`), the acceptable response formats (`Accept`), or authentication credentials (`Authorization`).
 4.  **Body (or Payload)**: The data for the resource, typically included in `POST`, `PUT`, and `PATCH` requests. It is almost always formatted in JSON for modern APIs, though XML is also seen in legacy systems.
@@ -68,7 +68,7 @@ The specific security mechanisms for a REST API can be formally defined using th
 
 #### Using HTTP Status Codes
 
-Using standard [[communication-protocols#HyperText Transfer Protocol (HTTP)|HTTP Status Codes]] is a core part of a self-descriptive message. They immediately convey the outcome of a request.
+Using standard [[http#HTTP Status Codes|HTTP Status Codes]] is a core part of a self-descriptive message. They immediately convey the outcome of a request.
 
 -   **2xx (Success)**: The request was successful.
     -   `200 OK`: Standard success response.
@@ -119,14 +119,14 @@ For example, instead of an endpoint like `/users/{id}/send-password-reset`, a RE
 - **[[cohesion-coupling|Decoupling]]**: The separation of client and server and the uniform interface allow them to evolve independently.
 - **Scalability**: Statelessness simplifies server design and makes horizontal scaling straightforward.
 - **[[kiss|Simplicity]] & Visibility**: A uniform interface makes the system easier to understand and its interactions visible and transparent.
-- **Leverages Web Standards**: It uses the proven and ubiquitous infrastructure of the web ([[communication-protocols#HyperText Transfer Protocol (HTTP)|HTTP]], URIs, caching).
+- **Leverages Web Standards**: It uses the proven and ubiquitous infrastructure of the web ([[http|HTTP]], URIs, caching).
 - **[[caching|Cacheability]]**: Leverages the native caching capabilities of HTTP, allowing responses to be cached by clients and intermediaries, which significantly improves performance and scalability.
 
 ## Disadvantages of REST
 
 - **Over-fetching and Under-fetching**: A client may receive more data than it needs (over-fetching) or may have to make multiple requests to get all the data it needs (under-fetching). This is a primary problem that [[graphql|GraphQL]] aims to solve.
 - **Chattiness**: The need for multiple requests to retrieve related resources can lead to increased network traffic.
-- **Performance**: For complex queries or high-performance scenarios between internal services, the overhead of [[communication-protocols#HyperText Transfer Protocol (HTTP)|HTTP]] and text-based formats like JSON can be a bottleneck compared to binary protocols used in frameworks like [[rpc#gRPC|gRPC]].
+- **Performance**: For complex queries or high-performance scenarios between internal services, the overhead of [[http|HTTP]] and text-based formats like JSON can be a bottleneck compared to binary protocols used in frameworks like [[rpc#gRPC|gRPC]].
 - **Rigid Hierarchy**: Resources are often structured in a rigid hierarchy, which may not be ideal for all data models.
 
 ## Resources & Links
