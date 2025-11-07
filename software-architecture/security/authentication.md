@@ -59,73 +59,11 @@ sequenceDiagram
 
 The choice of authentication strategy is pivotal and depends on various factors, including the application's security requirements, user experience goals, scalability needs, and the type of system being secured.
 
-### Basic HTTP Authentication
-
-A simple authentication scheme built into the HTTP protocol.
-*   **Mechanism:** The client sends a username and password in the `Authorization` header with each request. The credentials are combined as `username:password` and then Base64-encoded.
-*   **Considerations:** It is not secure over plain HTTP as the credentials can be easily decoded. It should only ever be used over a secure ([[ssl-tls|HTTPS]]) connection. It is stateless but requires sending credentials with every request.
-*   **Learn more:** [Basic Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/basic-authentication)
-
-#### Example
-1.  The client combines the username and password with a colon: `myuser:mypassword123`
-2.  The resulting string is Base64-encoded: `bXl1c2VyOm15cGFzc3dvcmQxMjM=`
-3.  The client sends the encoded string in the `Authorization` header:
-```http
-GET /resource HTTP/1.1
-Host: api.example.com
-Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQxMjM=
-```
-
-### Cookie-Based Authentication (Session-Based)
-
-A stateful authentication method traditionally used by web browsers.
-*   **Mechanism:** After a user logs in, the server creates a session, stores the session ID in a database, and sends the session ID back to the client in a cookie. The browser automatically includes this cookie in all subsequent requests to the same domain. The server then validates the session ID against its session store.
-*   **Considerations:** Stateful by nature, which can be a challenge for horizontal scaling. It is vulnerable to Cross-Site Request Forgery ([[cors|CSRF]]) attacks, requiring mitigation strategies (e.g., anti-CSRF tokens).
-*   **Learn more:** [Session-based Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/session-based-authentication)
-
-#### Example Flow
-1.  **Login Response:** After successful login, the server sends a `Set-Cookie` header. The `HttpOnly` flag prevents JavaScript access, mitigating XSS, and `Secure` ensures it is only sent over HTTPS.
-```http
-HTTP/1.1 200 OK
-Set-Cookie: session_id=a3fWa; Expires=Wed, 21 Oct 2025 07:28:00 GMT; Secure; HttpOnly; Path=/
-Content-Type: application/json
-
-{ "status": "success", "message": "Logged in successfully" }
-```
-
-2.  **Subsequent Request:** The browser automatically attaches the cookie to future requests.
-```http
-GET /profile HTTP/1.1
-Host: api.example.com
-Cookie: session_id=a3fWa
-```
-
 ### Password-Based Authentication
 
 The most traditional method, where users provide a username and a secret password.
 *   **Mechanism:** The system compares the provided password (after [[hashing-algorithms|hashing]] and salting) with a securely stored hash of the user's actual password.
 *   **Considerations:** Requires robust password policies (complexity, length), secure storage (never plain text), and protection against common attacks like brute-force and credential stuffing. [[hashing-algorithms|Password hashing functions]] like Bcrypt, Scrypt, or Argon2 are crucial here.
-
-### Token-Based Authentication
-
-A modern, stateless, and scalable approach suited for distributed systems and APIs. The core idea is that after an initial login, the server issues a cryptographic token to the client, which then includes this token with subsequent requests to prove its identity.
-*   **Learn more:** [Token Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/token-authentication)
-
-#### JSON Web Tokens (JWT)
-
-The most popular implementation of token-based authentication is [[jwt|JSON Web Tokens (JWT)]]. A JWT is a compact, URL-safe means of representing claims to be transferred between two parties.
-
-*   **Mechanism**: The token is a self-contained JSON object that is digitally signed. It can be verified by the server without needing to look up token information in a database, making the process stateless and highly scalable.
-*   **Learn more:** [JWT Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/jwt-authentication)
-
-**Example (Bearer Token)**
-
-The most common method uses the `Authorization` header with the `Bearer` scheme. The client stores the token and sends it with each request to a protected endpoint.
-```http
-GET /api/orders/123 HTTP/1.1
-Host: api.example.com
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-```
 
 ### API Key Authentication
 
@@ -148,6 +86,136 @@ X-API-Key: abc-123-def-456
 GET /v1/data?api_key=abc-123-def-456 HTTP/1.1
 Host: api.example.com
 ```
+
+### Basic HTTP Authentication
+
+A simple authentication scheme built into the HTTP protocol.
+*   **Mechanism:** The client sends a username and password in the `Authorization` header with each request. The credentials are combined as `username:password` and then Base64-encoded.
+*   **Considerations:** It is not secure over plain HTTP as the credentials can be easily decoded. It should only ever be used over a secure ([[ssl-tls|HTTPS]]) connection. It is stateless but requires sending credentials with every request.
+*   **Learn more:** [Basic Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/basic-authentication)
+
+#### How it Works
+
+The flow is managed by the browser based on the server's responses.
+
+```mermaid
+sequenceDiagram
+    participant Client as Browser
+    participant Server
+
+    Client->>Server: 1. GET /protected-resource
+    Server-->>Client: 2. 401 Unauthorized<br>WWW-Authenticate: Basic realm="My Protected Area"
+    Note over Client: Browser displays login prompt for "My Protected Area"
+    User->>Client: 3. Enters username & password
+    Client->>Server: 4. GET /protected-resource<br>Authorization: Basic dXNlcjpwYXNzd29yZA==
+    Server-->>Client: 5. 200 OK<br>Returns protected resource
+```
+*Description: The server challenges the client for credentials using a `401` status and a `WWW-Authenticate` header. The browser then prompts the user, encodes the credentials, and resends the request with an `Authorization` header.*
+
+#### Example
+1.  The client combines the username and password with a colon: `myuser:mypassword123`
+2.  The resulting string is Base64-encoded: `bXl1c2VyOm15cGFzc3dvcmQxMjM=`
+3.  The client sends the encoded string in the `Authorization` header:
+```http
+GET /resource HTTP/1.1
+Host: api.example.com
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQxMjM=
+```
+
+### Cookie-Based Authentication (Session-Based)
+
+This is a traditional, stateful authentication method used to persist user identity across multiple requests in the otherwise stateless world of HTTP. The server is responsible for creating and maintaining a session for the user after a successful login.
+*   **Learn more:** [Session-based Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/session-based-authentication)
+
+#### How it Works
+
+After a user logs in, the server creates a session, stores it, and gives the client a unique session ID, which is sent back to the client inside a cookie. The browser then automatically includes this cookie on all subsequent requests to the same domain, allowing the server to "remember" the user.
+
+```mermaid
+sequenceDiagram
+    participant Client as Browser
+    participant Server
+    participant SessionStore as Session Store (DB/Cache)
+
+    Client->>Server: 1. POST /login (username, password)
+    Server->>SessionStore: 2. Create session, store user info
+    SessionStore-->>Server: 3. Returns session_id
+    Server-->>Client: 4. 200 OK<br>Set-Cookie: session_id=abcde123
+
+    Client->>Server: 5. GET /profile<br>Cookie: session_id=abcde123
+    Server->>SessionStore: 6. Validate session_id
+    SessionStore-->>Server: 7. Returns user info for session
+    Server-->>Client: 8. 200 OK<br>Returns profile page
+```
+*Description: The server creates a session upon login and provides a `session_id` cookie. The browser sends this cookie on future requests, which the server validates against its session store to identify the user.*
+
+#### Server-Side Implementation Example
+
+On the server-side, libraries like `express-session` for Node.js are used to manage sessions. A middleware is configured to handle the creation, storage, and validation of sessions.
+
+**Conceptual Express.js Configuration:**
+```javascript
+const session = require('express-session');
+
+app.use(session({
+  // A secret used to sign the session ID cookie.
+  secret: 'your-super-secret-key',
+
+  // If true, forces the session to be saved back to the session store,
+  // even if the session was never modified.
+  resave: false,
+
+  // If true, forces a session that is "uninitialized" to be saved to the store.
+  saveUninitialized: true,
+
+  // Configures the session cookie.
+  cookie: {
+    secure: true,   // Ensures the browser only sends the cookie over HTTPS.
+    httpOnly: true, // Prevents client-side JavaScript from reading the cookie.
+    maxAge: 1000 * 60 * 60 * 24 // e.g., 24 hours
+  }
+}));
+
+// Example of a protected route
+app.get('/profile', (req, res) => {
+  // The session middleware automatically loads the session data onto the request object.
+  if (req.session.user) {
+    res.json({ user: req.session.user });
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+```
+
+#### Example HTTP Headers
+1.  **Login Response:** After successful login, the server sends a `Set-Cookie` header. The `HttpOnly` flag prevents JavaScript access, and `Secure` ensures it's only sent over HTTPS.
+```http
+HTTP/1.1 200 OK
+Set-Cookie: session_id=a3fWa; Expires=Wed, 21 Oct 2025 07:28:00 GMT; Secure; HttpOnly; Path=/
+Content-Type: application/json
+
+{ "status": "success", "message": "Logged in successfully" }
+```
+
+2.  **Subsequent Request:** The browser automatically attaches the cookie to all future requests to the same domain.
+```http
+GET /profile HTTP/1.1
+Host: api.example.com
+Cookie: session_id=a3fWa
+```
+
+### Token-Based Authentication
+
+A modern, stateless approach suited for APIs and SPAs. After an initial login, the server issues a token that the client sends with future requests.
+*   **Learn more:** [Token Authentication Guide (roadmap.sh)](https://roadmap.sh/guides/token-authentication)
+
+#### Opaque vs. Self-Contained Tokens
+
+A key architectural choice in token-based authentication is the type of token:
+*   **Opaque Tokens**: These are random strings that act as a reference to user information stored on the server-side. The server must perform a lookup (e.g., in a database) to validate the token and retrieve user data. They are simple and secure, as no sensitive data is exposed to the client.
+*   **Self-Contained Tokens**: These tokens contain the user's identity and other claims directly within them. The token is digitally signed, so the server can verify its authenticity without needing a database lookup, making them highly scalable.
+
+The most popular format for self-contained tokens is the [[jwt|JSON Web Token (JWT)]]. For a detailed explanation of its structure, claims, and security considerations, see the dedicated `[[jwt]]` page.
 
 ### OAuth (Open Authorization) and OpenID Connect (OIDC)
 

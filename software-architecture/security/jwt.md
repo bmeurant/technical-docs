@@ -1,5 +1,5 @@
 ---
-title: JWT
+title: JWT (JSON Web Token)
 tags:
   - security
   - authentication
@@ -9,22 +9,20 @@ date: 2025-11-02
 ---
 # JSON Web Token (JWT)
 
-A JSON Web Token (JWT) is a compact, URL-safe standard (RFC 7519) for creating access tokens that assert a number of claims. It is a self-contained token, meaning all the necessary information about the user is contained within the token itself, allowing for stateless, scalable authentication systems.
-
-JWTs are widely used in modern web applications and APIs, especially in [[authentication#Token-Based Authentication|token-based authentication schemes]], to securely transmit identity and authorization information between parties.
+A JSON Web Token (JWT) is a compact, URL-safe standard (RFC 7519) for creating self-contained access tokens that assert a number of claims. Because all necessary information is in the token itself, JWTs allow for stateless, scalable authentication systems, making them a cornerstone of modern [[authentication#Token-Based Authentication|token-based authentication]].
 
 ## Structure of a JWT
 
-A JWT consists of three parts separated by dots (`.`):
+A JWT consists of three parts separated by dots (`.`): a Header, a Payload, and a Signature.
 
-1.  **Header**: Metadata about the token, including the token type (`typ`) and the signing algorithm (`alg`).
-2.  **Payload**: Contains the claims, which are statements about an entity (typically, the user) and additional data.
-3.  **Signature**: Used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+`xxxxx.yyyyy.zzzzz`
 
-`xxxxx.yyyyy.zzzzz` (Header.Payload.Signature)
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
 
 ### 1. Header
-The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA.
+The header is a JSON object that declares the token type (`typ`) and the signing algorithm (`alg`) used, such as `HS256` (HMAC using SHA-256) or `RS256` (RSA). This JSON is then **Base64Url encoded** to form the first part of the JWT.
 
 **Example Header (JSON):**
 ```json
@@ -33,14 +31,14 @@ The header typically consists of two parts: the type of the token, which is JWT,
   "typ": "JWT"
 }
 ```
-This JSON is then Base64Url encoded to form the first part of the JWT.
 
 ### 2. Payload
-The payload contains the claims. There are three types of claims:
+The payload is a JSON object containing the **claims**, which are statements about an entity (typically the user) and additional metadata. Like the header, the payload is **Base64Url encoded** to form the second part of the JWT.
 
--   **Registered Claims**: A set of predefined claims which are not mandatory but recommended, such as `iss` (issuer), `exp` (expiration time), `sub` (subject), and `aud` (audience).
--   **Public Claims**: These can be defined at will by those using JWTs. To avoid collisions, they should be defined in the IANA JSON Web Token Registry or be defined as a URI that contains a collision-resistant namespace.
--   **Private Claims**: These are the custom claims created to share information between parties that agree on using them.
+**Types of Claims:**
+*   **Registered Claims**: A standard set of predefined claims, such as `iss` (issuer), `exp` (expiration time), `sub` (subject/user ID), and `iat` (issued at). These are recommended but not mandatory.
+*   **Public Claims**: Custom claims defined by the application. To avoid collisions, they should be defined in the IANA JSON Web Token Registry or as a URI.
+*   **Private Claims**: Custom claims created to share information between parties that agree on their meaning (e.g., an internal user ID).
 
 **Example Payload (JSON):**
 ```json
@@ -51,20 +49,18 @@ The payload contains the claims. There are three types of claims:
   "exp": 1516239022
 }
 ```
-Like the header, the payload is also Base64Url encoded to form the second part of the JWT.
 
 ### 3. Signature
-To create the signature part, you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
-
-For example, if you are using the HMAC SHA256 algorithm, the signature will be created in the following way:
+The signature is used to verify the token's authenticity. It is created by taking the encoded header, the encoded payload, a secret key (if using HMAC) or a private key (if using RSA/ECDSA), and signing them with the algorithm specified in the header.
 
 ```
 HMACSHA256(
   base64UrlEncode(header) + "." +
   base64UrlEncode(payload),
-  secret)
+  secret
+)
 ```
-The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is.
+This signature ensures that the token has not been tampered with. The server verifies it using the same secret or the corresponding public key.
 
 ## How JWT Authentication Works
 
@@ -78,14 +74,14 @@ sequenceDiagram
     ClientApp->>Server: 2. Sends credentials for authentication
     Server->>Server: 3. Verifies credentials
     alt Credentials are valid
-        Server->>Server: 4. Creates a JWT
+        Server->>Server: 4. Creates and signs a JWT
         Server-->>ClientApp: 5. Returns the JWT
-        ClientApp->>ClientApp: 6. Stores the JWT (e.g., in memory or local storage)
+        ClientApp->>ClientApp: 6. Stores the JWT securely (e.g., in memory)
     end
 
     Note over ClientApp, Server: For subsequent requests:
 
-    ClientApp->>Server: 7. Sends JWT in Authorization header<br>(e.g., `Authorization: Bearer __token__`)
+    ClientApp->>Server: 7. Sends JWT in Authorization header<br>(Authorization: Bearer __token__)
     Server->>Server: 8. Verifies JWT signature and claims (e.g., expiration)
     alt Token is valid
         Server-->>ClientApp: 9. Grants access to the requested resource
@@ -96,15 +92,15 @@ sequenceDiagram
 
 ## Security Considerations
 
--   **Stateless but Irrevocable**: The main advantage of JWTs is their stateless nature. However, this is also a drawback. Once a JWT is issued, it is valid until it expires. It cannot be easily revoked. This means if a token is compromised, it can be used until its expiration. Common mitigation strategies include using very short expiration times and maintaining a token blocklist.
--   **Payload is Visible**: The payload of a JWT is only Base64Url encoded, **not encrypted**. Anyone who intercepts the token can read its contents. Therefore, you should never store sensitive information in the payload of a JWT.
--   **Signature is Critical**: The security of a JWT relies entirely on its signature. The server must always verify the signature to ensure the token is authentic and has not been tampered with. Some older libraries had a vulnerability where a token could specify `"alg": "none"`, which would cause the library to skip signature verification. Modern libraries protect against this, but it highlights the importance of correct implementation.
+-   **Stateless but Irrevocable**: Once a JWT is issued, it is valid until it expires. It cannot be easily revoked without implementing a more complex, stateful blocklist on the server. This is a critical trade-off for the scalability of statelessness.
+-   **Payload is Visible**: The payload is only encoded, **not encrypted**. Anyone can decode it and see its contents. Never store sensitive information (like passwords or personal secrets) in the payload.
+-   **Signature is Critical**: The security of a JWT relies on its signature. The server **must** always verify the signature. A past vulnerability involved tokens specifying `"alg": "none"`, which could trick libraries into skipping verification. Always use up-to-date, well-maintained libraries.
 
 ## Related Concepts
 
--   [[authentication|Authentication]]
--   [[authentication#OAuth (Open Authorization) and OpenID Connect (OIDC)|OAuth]] (JWTs are often used as bearer tokens in OAuth 2.0 flows)
--   [[hashing-algorithms|Hashing Algorithms]] (used to create the signature)
+-   [[authentication|Authentication]]: JWT is a common technology for implementing token-based authentication.
+-   [[oauth|OAuth 2.0]]: JWTs are often used as bearer tokens in OAuth 2.0 flows.
+-   [[hashing-algorithms|Hashing Algorithms]]: Used to create the JWT signature.
 
 ---
 
@@ -112,10 +108,13 @@ sequenceDiagram
 
 ### Articles
 
-1.  **[How JSON Web Tokens Work - JWT.io Official Docs](https://www.jwt.io/introduction#how-json-web-tokens-work)**
+1.  **[JWT Authentication Guide - roadmap.sh](https://roadmap.sh/guides/jwt-authentication)**
+    A visual and straightforward guide that explains the purpose of JWTs, their structure, and how they fit into an authentication workflow.
+
+2.  **[Introduction to JSON Web Tokens - JWT.io](https://jwt.io/introduction)**
     The official introduction from JWT.io. It explains the fundamental workflow of JWTs, from user login to the server creating a signed token, and how the client sends it back for subsequent requests. It's the canonical source for understanding the basic mechanism.
 
-2.  **[What Is a JWT? - Postman Blog](https://blog.postman.com/what-is-jwt/)**
+3.  **[What Is a JWT? - Postman Blog](https://blog.postman.com/what-is-jwt/)**
     A practical guide from the Postman blog that breaks down what a JWT is and why it's used. It covers the three parts of a JWT (Header, Payload, Signature) and provides a clear explanation of how stateless authentication with tokens works in modern APIs.
 
 ### Videos
