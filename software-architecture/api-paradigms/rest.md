@@ -103,17 +103,112 @@ sequenceDiagram
 ```
 *Description: A client requests a user resource. The server responds with the user's data and HATEOAS links, allowing the client to discover related resources dynamically.*
 
-## The Challenge of Resource-Oriented Design
+## Resource-Oriented Design: URI Naming and Structure
 
-One of the biggest conceptual hurdles in REST is the strict focus on resources (nouns) over actions (verbs). Coming from an [[rpc|RPC]] background, developers are often tempted to design endpoints that expose actions.
+A core principle of REST is designing the API around resources (the "nouns" of your system) rather than actions (the "verbs"). This resource-oriented approach is one of the biggest conceptual shifts for developers accustomed to [[rpc|RPC]]-style systems. The Uniform Resource Identifier (URI) is the cornerstone of this principle, providing a unique and intuitive address for every resource.
 
 -   **RPC-style (Action-oriented)**: `POST /createUser`, `POST /updateUser`, `POST /getUser`
 -   **REST-style (Resource-oriented)**: `POST /users`, `PUT /users/{id}`, `GET /users/{id}`
 
-Thinking in terms of resources and how they are manipulated via standard HTTP methods is fundamental to a clean REST API design. The key is to identify the "nouns" in your system. If you find yourself adding verbs to your URIs, it is often a sign that you are leaning towards an RPC style.
+If you find yourself adding verbs to your URIs (e.g., `getUsers`, `updateOrder`), it is a strong indicator that you are deviating from a RESTful design.
 
-For example, instead of an endpoint like `/users/{id}/send-password-reset`, a RESTful approach would be to create a new resource: `POST /password-resets`. This request would create a new "password reset" resource.
+### URI Naming Conventions
 
+Well-designed URIs are intuitive and easy to understand. They act as a form of documentation for the API.
+
+1.  **Use Nouns, Not Verbs**: URIs should identify resources, and resources are nouns. The action is conveyed by the [[http#HTTP Methods|HTTP method]].
+    -   **Good**: `/users`, `/orders/{orderId}`
+    -   **Bad**: `/getUsers`, `/updateOrder/{orderId}`
+
+2.  **Use Plural Nouns for Collections**: To maintain consistency, use plural nouns for all collection-level resources.
+    -   **Good**: `/users` (a collection of users), `/users/123` (a specific user within the collection)
+    -   **Acceptable but less consistent**: `/user` (collection), `/user/123` (specific user)
+
+3.  **Use Hierarchy to Show Relationships**: A URI's path hierarchy should reflect the relationships between resources.
+    -   `GET /customers/123/orders`: Retrieves all orders for customer `123`.
+    -   `GET /customers/123/orders/456`: Retrieves order `456` belonging to customer `123`.
+
+4.  **Use Hyphens for Readability**: To make URIs with multiple words easy to scan, use hyphens (`-`) to separate words. Avoid underscores (`_`) or camelCase.
+    -   **Good**: `/service-requests/{requestId}/error-logs`
+    -   **Bad**: `/service_requests/{requestId}/error_logs`
+
+```mermaid
+graph TD
+    subgraph URI Structure & Description
+        V[/api/v1\] -- Version --> C[/users\]
+        C -- Collection --> R[/123\]
+        R -- Specific Resource --> RL[/orders\]
+    end
+
+    style V fill:#ff99ff,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#9999ff,stroke:#333,stroke-width:2px,color:#000
+    style R fill:#ff6666,stroke:#333,stroke-width:2px,color:#000
+    style RL fill:#66cc66,stroke:#333,stroke-width:2px,color:#000
+
+    V("**/api/v1**<br/>(Version)")
+    C("**/users**<br/>(Collection)")
+    R("**/123**<br/>(Specific Resource: user 123)")
+    RL("**/orders**<br/>(Related Collection: orders)")
+```
+*Description: A well-structured URI clearly shows the API version, the primary resource collection, a specific item in that collection, and any related resources.*
+
+### Handling Non-Resource Actions
+
+Sometimes, an action doesn't naturally map to a standard CRUD operation on a resource. For example, "sending a password reset email." Instead of creating an action-based URI like `/users/123/send-password-reset`, the RESTful approach is to model the action itself as a resource.
+
+-   **Action as a resource**: `POST /password-resets`
+-   **Request Body**: `{ "email": "user@example.com" }`
+
+In this model, the `POST` request creates a new `password-reset` resource. The server handles the side effect (sending the email) as part of the resource creation process.
+
+## Mapping CRUD Operations to HTTP Methods
+
+REST leverages standard [[http#HTTP Methods|HTTP methods]] to perform CRUD (Create, Read, Update, Delete) operations on resources. This provides a uniform and predictable way to interact with the API.
+
+| CRUD Operation | HTTP Method                                     | URI Example              | Description                                                                                                                                                           |
+| -------------- | ----------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Create**     | `POST`                                          | `/users`                 | Creates a new resource in a collection. The server typically assigns the new resource ID. Not [[idempotent-operations|idempotent]].                                     |
+| **Read**       | `GET`                                           | `/users`, `/users/123`   | Retrieves a representation of one or more resources. [[idempotent-operations|Idempotent]] and safe (no side effects).                                                    |
+| **Update**     | `PUT` / `PATCH`                                 | `/users/123`             | `PUT` replaces the entire resource with the provided representation. `PATCH` applies a partial update. `PUT` is [[idempotent-operations|idempotent]], `PATCH` may not be. |
+| **Delete**     | `DELETE`                                        | `/users/123`             | Removes a resource. [[idempotent-operations|Idempotent]].                                                                                                              |
+
+### Examples
+
+#### Create (POST)
+
+Creates a new user. The server generates the ID.
+
+-   **Request**: `POST /users`
+-   **Body**: `{ "name": "John Doe", "email": "john.doe@example.com" }`
+-   **Response**: `201 Created` with a `Location` header pointing to the new resource (e.g., `Location: /users/124`).
+
+#### Read (GET)
+
+Reads a list of users or a single user.
+
+-   **Request (List)**: `GET /users`
+-   **Response**: `200 OK` with a JSON array of user objects.
+-   **Request (Single)**: `GET /users/124`
+-   **Response**: `200 OK` with the JSON object for user `124`.
+
+#### Update (PUT vs. PATCH)
+
+-   **PUT (Full Update)**: Replaces the entire user resource. If you omit a field (e.g., `email`), it may be set to null or a default value.
+    -   **Request**: `PUT /users/124`
+    -   **Body**: `{ "name": "Johnathan Doe", "email": "jon.doe@example.com" }`
+    -   **Response**: `200 OK`
+
+-   **PATCH (Partial Update)**: Updates only the specified fields.
+    -   **Request**: `PATCH /users/124`
+    -   **Body**: `{ "name": "John Doe" }` (email remains unchanged)
+    -   **Response**: `200 OK`
+
+#### Delete (DELETE)
+
+Removes a user.
+
+-   **Request**: `DELETE /users/124`
+-   **Response**: `204 No Content` (Success, but no body is returned).
 ## Advantages of REST
 
 - **[[cohesion-coupling|Decoupling]]**: The separation of client and server and the uniform interface allow them to evolve independently.
