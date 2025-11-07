@@ -51,7 +51,7 @@ A key part of the uniform interface is the consistent structure of messages. A s
 
 1.  **Method (or Verb)**: The action to be performed on the resource. The most common [[http#HTTP Methods|HTTP Verbs]] are `GET` (read), `POST` (create), `PUT` (update/replace), `DELETE` (remove), and `PATCH` (partially update).
 2.  **Path**: The URI that uniquely identifies the resource the action is being performed on (e.g., `/users/123`).
-3.  **Headers**: Key-value pairs that provide metadata about the request, such as the format of the body (`Content-Type`), the acceptable response formats (`Accept`), or authentication credentials (`Authorization`).
+3.  **Headers**: Key-value pairs that provide metadata about the request. This includes headers for [[http#Content Negotiation|Content Negotiation]] like `Content-Type` and `Accept`, as well as others for authentication (`Authorization`) or caching.
 4.  **Body (or Payload)**: The data for the resource, typically included in `POST`, `PUT`, and `PATCH` requests. It is almost always formatted in JSON for modern APIs, though XML is also seen in legacy systems.
 
 ### Securing REST APIs
@@ -86,7 +86,7 @@ Using standard [[http#HTTP Status Codes|HTTP Status Codes]] is a core part of a 
 
 #### Using Query Parameters
 
-Query parameters are used to filter, sort, and paginate collections of resources without altering the resource's URI.
+Query parameters are used to filter, sort, and paginate collections of resources. This is a core HTTP feature that REST leverages extensively. For a detailed explanation of how query parameters work, see the main documentation on [[http#Resource Addressing in HTTP|Resource Addressing in HTTP]].
 
 -   **Filtering**: `GET /users?status=active`
 -   **Sorting**: `GET /users?sort=-created_at` (descending order)
@@ -105,7 +105,9 @@ sequenceDiagram
 
 ## Resource-Oriented Design: URI Naming and Structure
 
-A core principle of REST is designing the API around resources (the "nouns" of your system) rather than actions (the "verbs"). This resource-oriented approach is one of the biggest conceptual shifts for developers accustomed to [[rpc|RPC]]-style systems. The Uniform Resource Identifier (URI) is the cornerstone of this principle, providing a unique and intuitive address for every resource.
+A core principle of REST is designing the API around resources (the "nouns" of your system). This is achieved by giving each resource a unique address using a Uniform Resource Identifier (URI). While the mechanics of URIs (including path and query parameters) are a general feature of [[http#Resource Addressing in HTTP|HTTP]], REST applies a specific philosophy to their design.
+
+This resource-oriented approach is one of the biggest conceptual shifts for developers accustomed to [[rpc|RPC]]-style systems.
 
 -   **RPC-style (Action-oriented)**: `POST /createUser`, `POST /updateUser`, `POST /getUser`
 -   **REST-style (Resource-oriented)**: `POST /users`, `PUT /users/{id}`, `GET /users/{id}`

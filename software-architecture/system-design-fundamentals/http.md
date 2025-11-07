@@ -137,6 +137,31 @@ Location: /api/users/123
 }
 ```
 
+## Resource Addressing in HTTP
+
+The Uniform Resource Identifier (URI) is the foundation of resource location on the web. In the context of HTTP, we typically use URLs (Uniform Resource Locators), which specify the method for accessing a resource.
+
+`https://api.example.com/v1/users/123?fields=name,email#profile`
+
+-   **Path**: `/v1/users/123`. This hierarchical component identifies the specific resource. Variable parts, known as **Path Parameters** (e.g., `123`), act as placeholders to pinpoint a unique resource.
+-   **Query String**: `?fields=name,email`. This optional part, following the `?`, contains a series of key-value pairs known as **Query Parameters**. They are used to filter, sort, or paginate the resource collection rather than identifying it.
+-   **Fragment**: `#profile`. This optional part points to a specific section within the resource, and it is typically handled only by the client (e.g., the browser).
+
+While the path identifies *what* resource to fetch, query parameters specify *how* to represent that resource, making them crucial for designing flexible and efficient APIs.
+
+## Content Negotiation
+
+Content negotiation is the standard HTTP mechanism that allows a single resource URI to serve different representations of that resource. This enables the client and server to agree on the best format to exchange, based on the client's capabilities and preferences.
+
+This process is primarily handled through specific HTTP headers:
+
+-   **`Accept` (Client Request Header)**: The client informs the server which media types (e.g., `application/json`, `application/xml`) it can understand. It can also include quality values (q-factors) to indicate a preference (e.g., `Accept: application/json; q=0.9, application/xml; q=0.8`).
+-   **`Content-Type` (Server Response Header)**: After selecting the best representation, the server uses this header in its response to inform the client about the media type of the data in the message body.
+
+For example, a client can request a user resource in JSON format. If the server supports it, it will respond with a `Content-Type: application/json` header and a JSON body. If the client had requested XML and the server also supported it, the same URI could have returned an XML document.
+
+This mechanism is fundamental for building flexible APIs that can evolve over time or serve a wide variety of clients (e.g., web browsers, mobile apps, other services).
+
 ## HTTP Methods
 
 HTTP methods, often referred to as HTTP verbs, are fundamental to API design, dictating the intended action a client wishes to perform on a server resource. These methods establish the interaction framework between clients and servers, making their proper understanding crucial for building robust and effective APIs. Common methods like GET, POST, PUT, DELETE, and PATCH each signify distinct request types, enabling diverse and functional interactions with API endpoints.
