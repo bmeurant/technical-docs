@@ -17,7 +17,7 @@ The core problem OAuth 2.0 solves is **delegated authorization**. It allows an a
 ### A Note on Versions
 *   **OAuth 1.0**: The original version, now considered deprecated. It used complex cryptography that was difficult to implement.
 *   **OAuth 2.0**: The current, active standard. It simplified the flows and is not backward-compatible with 1.0.
-*   **OAuth 2.1**: An in-progress draft that aims to consolidate best practices from 2.0 by formally deprecating insecure flows and requiring technologies like PKCE.
+*   **OAuth 2.1**: An in-progress draft that aims to consolidate best practices from 2.0 by formally deprecating insecure flows and requiring technologies like [[#PKCE: Proof Key for Code Exchange|PKCE]].
 
 ## Core Roles & Terminology
 
@@ -43,12 +43,12 @@ graph LR
         ClientApp[Client Application]
     end
 
-    ResourceOwner -- 1. Interacts with --> ClientApp
-    ClientApp -- 2. Requests Authorization from --> ResourceOwner
-    ResourceOwner -- 3. Grants Authorization via --> AuthServer
-    AuthServer -- 4. Issues Access Token to --> ClientApp
-    ClientApp -- 5. Uses Access Token to request --> ResourceServer
-    ResourceServer -- 6. Returns Protected Resource to --> ClientApp
+    ResourceOwner -- "1 - Interacts with" --> ClientApp
+    ClientApp -- "2 - Requests Authorization from" --> ResourceOwner
+    ResourceOwner -- "3 - Grants Authorization via" --> AuthServer
+    AuthServer -- "4 - Issues Access Token to" --> ClientApp
+    ClientApp -- "5 - Uses Access Token to request" --> ResourceServer
+    ResourceServer -- "6 - Returns Protected Resource to" --> ClientApp
 ```
 *Description: This diagram shows the interaction between the four roles in the OAuth 2.0 framework.*
 
@@ -62,7 +62,7 @@ OAuth 2.0 provides several "grant types" for different use cases. The most commo
 
 ### Authorization Code Grant
 
-This is the most secure and commonly used flow, ideal for traditional web applications and, with the PKCE extension, for mobile and single-page apps (SPAs).
+This is the most secure and commonly used flow, ideal for traditional web applications and, with the [[#PKCE: Proof Key for Code Exchange|PKCE]] extension, for mobile and single-page apps (SPAs).
 
 #### The Authorization Request
 
@@ -102,7 +102,48 @@ sequenceDiagram
 
 ### PKCE: Proof Key for Code Exchange
 
-PKCE (pronounced "pixy") is a critical security extension for public clients (like mobile apps and SPAs) that use the Authorization Code flow. It prevents authorization code interception attacks by requiring the client to prove it was the same one that initiated the flow.
+PKCE (pronounced "pixy") is a critical security extension (RFC 7636) that enhances the Authorization Code flow. While originally designed for public clients like mobile and single-page apps (SPAs), it is now recommended for all OAuth clients.
+
+#### The Problem: Authorization Code Interception
+
+The standard Authorization Code flow relies on a `client_secret` to securely exchange the authorization code for an access token. However, **public clients** (like SPAs running in a browser or native mobile apps) cannot securely store a `client_secret`.
+
+This creates a vulnerability: if a malicious application on a user's device manages to intercept the one-time authorization code as it is sent back to the legitimate app, the malicious app could send it to the token endpoint. Without a client secret to validate the request, the authorization server would have no way to know the request was not from the legitimate client, and it would hand over an access token.
+
+#### The Solution: The PKCE Flow
+
+PKCE mitigates this by adding a dynamic, request-specific secret that the client proves possession of.
+
+1.  **Create Verifier and Challenge**: The client application creates a cryptographically random string called the `code_verifier`. It then hashes this string (e.g., using SHA256) to create a `code_challenge`.
+2.  **Request Authorization**: The client sends the `code_challenge` and the hashing method (`code_challenge_method`) to the authorization server in the initial authorization request.
+3.  **Receive Code**: The authorization server stores the `code_challenge` and sends back the `authorization_code` as usual.
+4.  **Exchange Code for Token**: The client sends the `authorization_code` to the token endpoint, but this time it **also includes the original, un-hashed `code_verifier`**.
+5.  **Server-Side Verification**: The authorization server hashes the `code_verifier` it just received and compares it to the `code_challenge` it stored earlier. If they match, it proves the client is the same one that initiated the request, and only then does it issue the access token.
+
+A malicious app that intercepts the authorization code (Step 3) will not have the original `code_verifier` (from Step 1) and therefore cannot complete the exchange.
+
+PKCE protects you because the `code_verifier` is never transmitted on the less secure front-channel (the browser). It is only used once, on the secure back-channel, proving that the application exchanging the `authorization_code` is the exact same one that created the `code_challenge` at the very beginning.
+
+```mermaid
+sequenceDiagram
+    participant Client as Client App
+    participant AuthServer as Authorization Server
+
+    Client->>Client: 1. Create code_verifier
+    Client->>Client: 2. Generate code_challenge from verifier
+
+    Client->>AuthServer: 3. GET /authorize (..., code_challenge, code_challenge_method)
+    AuthServer-->>Client: 4. Returns authorization_code
+
+    Client->>AuthServer: 5. POST /token (..., authorization_code, code_verifier)
+    AuthServer->>AuthServer: 6. Verifies code_verifier against stored code_challenge
+    alt Verification Successful
+        AuthServer-->>Client: 7. Returns access_token
+    else Verification Fails
+        AuthServer-->>Client: 8. Returns error
+    end
+```
+*Description: The PKCE flow adds a dynamic proof of possession, where the client sends a hashed `code_challenge` and later provides the original `code_verifier` to prove it was the legitimate initiator of the flow.*
 
 ## Tokens and Scopes
 
@@ -123,7 +164,7 @@ In short: an application uses **OIDC** to log a user in and find out who they ar
 
 While a powerful framework, OAuth 2.0 must be implemented correctly to be secure.
 
-*   **Use the Correct Flow**: Always use the Authorization Code grant with PKCE for public clients (SPAs, mobile apps). Avoid legacy flows like Implicit and Password Credentials.
+*   **Use the Correct Flow**: Always use the Authorization Code grant with [[#PKCE: Proof Key for Code Exchange|PKCE]] for public clients (SPAs, mobile apps). Avoid legacy flows like Implicit and Password Credentials.
 *   **Validate Redirect URIs**: The Authorization Server must strictly validate redirect URIs to prevent authorization codes or tokens from being sent to malicious actors.
 *   **Protect Secrets**: Client secrets and refresh tokens must be stored securely on the client's backend. They should never be exposed in a frontend application.
 *   **Use the `state` Parameter**: The `state` parameter should be used in authorization requests to mitigate Cross-Site Request Forgery (CSRF) attacks by correlating requests and responses.
