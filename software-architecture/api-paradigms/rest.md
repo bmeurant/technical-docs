@@ -135,7 +135,7 @@ Well-designed URIs are intuitive and easy to understand. They act as a form of d
     -   **Bad**: `/service_requests/{requestId}/error_logs`
 
 ```mermaid
-graph TD
+graph LR
     subgraph URI Structure & Description
         V[/api/v1\] -- Version --> C[/users\]
         C -- Collection --> R[/123\]

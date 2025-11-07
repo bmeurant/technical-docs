@@ -11,7 +11,7 @@ date: 2025-11-01
 
 # Authentication: Verifying Digital Identities
 
-Authentication is the fundamental process of verifying the identity of a user, system, or entity. It confirms that someone or something is, in fact, who or what it claims to be. This critical security measure acts as the first line of defense, ensuring that only legitimate and verified entities can proceed to access resources or perform actions within a system. It is distinct from authorization, which determines *what* an authenticated entity is permitted to do.
+Authentication is the fundamental process of verifying the identity of a user, system, or entity. It confirms that someone or something is, in fact, who or what it claims to be. This critical security measure acts as the first line of defense, ensuring that only legitimate and verified entities can proceed to access resources or perform actions within a system. It is distinct from [[authorization]], which determines *what* an authenticated entity is permitted to do.
 
 ## Key Concepts in Authentication
 
@@ -63,43 +63,94 @@ The choice of authentication strategy is pivotal and depends on various factors,
 
 A simple authentication scheme built into the HTTP protocol.
 *   **Mechanism:** The client sends a username and password in the `Authorization` header with each request. The credentials are combined as `username:password` and then Base64-encoded.
-*   **Considerations:** It is not secure over plain HTTP as the credentials can be easily decoded. It should only ever be used over a secure (HTTPS) connection. It is stateless but requires sending credentials with every request.
+*   **Considerations:** It is not secure over plain HTTP as the credentials can be easily decoded. It should only ever be used over a secure ([[ssl-tls|HTTPS]]) connection. It is stateless but requires sending credentials with every request.
+
+#### Example
+1.  The client combines the username and password with a colon: `myuser:mypassword123`
+2.  The resulting string is Base64-encoded: `bXl1c2VyOm15cGFzc3dvcmQxMjM=`
+3.  The client sends the encoded string in the `Authorization` header:
+```http
+GET /resource HTTP/1.1
+Host: api.example.com
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQxMjM=
+```
 
 ### Cookie-Based Authentication (Session-Based)
 
 A stateful authentication method traditionally used by web browsers.
 *   **Mechanism:** After a user logs in, the server creates a session, stores the session ID in a database, and sends the session ID back to the client in a cookie. The browser automatically includes this cookie in all subsequent requests to the same domain. The server then validates the session ID against its session store.
-*   **Considerations:** Stateful by nature, which can be a challenge for horizontal scaling. It is vulnerable to Cross-Site Request Forgery (CSRF) attacks, requiring mitigation strategies (e.g., anti-CSRF tokens).
+*   **Considerations:** Stateful by nature, which can be a challenge for horizontal scaling. It is vulnerable to Cross-Site Request Forgery ([[cors|CSRF]]) attacks, requiring mitigation strategies (e.g., anti-CSRF tokens).
+
+#### Example Flow
+1.  **Login Response:** After successful login, the server sends a `Set-Cookie` header. The `HttpOnly` flag prevents JavaScript access, mitigating XSS, and `Secure` ensures it is only sent over HTTPS.
+```http
+HTTP/1.1 200 OK
+Set-Cookie: session_id=a3fWa; Expires=Wed, 21 Oct 2025 07:28:00 GMT; Secure; HttpOnly; Path=/
+Content-Type: application/json
+
+{ "status": "success", "message": "Logged in successfully" }
+```
+
+2.  **Subsequent Request:** The browser automatically attaches the cookie to future requests.
+```http
+GET /profile HTTP/1.1
+Host: api.example.com
+Cookie: session_id=a3fWa
+```
 
 ### Password-Based Authentication
 
-The most traditional and widely adopted method, where users provide a username and a secret password.
+The most traditional method, where users provide a username and a secret password.
 *   **Mechanism:** The system compares the provided password (after [[hashing-algorithms|hashing]] and salting) with a securely stored hash of the user's actual password.
 *   **Considerations:** Requires robust password policies (complexity, length), secure storage (never plain text), and protection against common attacks like brute-force and credential stuffing. [[hashing-algorithms|Password hashing functions]] like Bcrypt, Scrypt, or Argon2 are crucial here.
 
 ### Token-Based Authentication
 
-A modern and scalable approach, particularly suited for distributed systems and APIs.
-*   **Mechanism:** After initial authentication (e.g., with a username/password), the server issues a cryptographic token (e.g., a [[jwt|JSON Web Token - JWT]]) to the client. The client then includes this token with subsequent requests to prove its identity without re-sending credentials. Tokens are often stateless on the server side, improving scalability.
-*   **Examples:** [[jwt|JSON Web Tokens (JWT)]], session tokens.
+A modern, stateless, and scalable approach suited for distributed systems and APIs.
+*   **Mechanism:** After initial authentication, the server issues a cryptographic token (e.g., a [[jwt|JSON Web Token - JWT]]) to the client. The client includes this token with subsequent requests to prove its identity without re-sending credentials.
+*   **Examples:** [[jwt|JSON Web Tokens (JWT)]].
+
+#### Example
+The most common method uses the `Authorization` header with the `Bearer` scheme. The client stores the token and sends it with each request to a protected endpoint.
+```http
+GET /api/orders/123 HTTP/1.1
+Host: api.example.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
 
 ### API Key Authentication
 
 A simpler form of authentication, typically used for identifying calling applications rather than end-users.
 *   **Mechanism:** A unique, secret key is provided with each request to identify the client application.
-*   **Considerations:** Less secure for user authentication due to lack of user-specific context and often static nature. More suitable for service-to-service communication, rate limiting, or identifying public API consumers.
+*   **Considerations:** Less secure for user authentication due to lack of user-specific context. Best for service-to-service communication, [[rate-limiting|rate limiting]], or identifying public API consumers.
+
+#### Example
+API keys can be sent in various ways, but a custom HTTP header is common and clean.
+
+**Using a custom header (recommended):**
+```http
+GET /v1/data HTTP/1.1
+Host: api.example.com
+X-API-Key: abc-123-def-456
+```
+
+**Using a query parameter (less secure, can be logged):**
+```http
+GET /v1/data?api_key=abc-123-def-456 HTTP/1.1
+Host: api.example.com
+```
 
 ### OAuth (Open Authorization) and OpenID Connect (OIDC)
 
 These are often used together but serve distinct purposes.
-*   **OAuth:** An open standard for **authorization** (access delegation). It allows a user to grant a third-party application limited access to their resources on another service (e.g., allowing an app to access your Google Photos without giving it your Google password).
-*   **OpenID Connect (OIDC):** An identity layer built on top of the OAuth 2.0 protocol. OIDC enables clients to verify the identity of the end-user based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the end-user. It is primarily for **authentication**.
+*   **OAuth:** An open standard for **authorization** (access delegation). It allows a user to grant a third-party application limited access to their resources on another service without sharing credentials.
+*   **OpenID Connect (OIDC):** An identity layer built on top of the OAuth 2.0 protocol. OIDC enables clients to verify the identity of the end-user based on the authentication performed by an Authorization Server. It is primarily for **authentication**.
 
 ### Certificate-Based Authentication
 
 Leverages [[pki|Public Key Infrastructure]] for strong, mutual authentication.
-*   **Mechanism:** Both the client and server present digital certificates to each other, issued by a trusted Certificate Authority (CA). These certificates contain public keys and identity information, allowing cryptographic verification of each party's identity.
-*   **Use Cases:** Often used in enterprise environments, machine-to-machine communication, VPNs, and for securing web servers (TLS/SSL).
+*   **Mechanism:** Both the client and server present digital certificates to each other, issued by a trusted Certificate Authority (CA). These certificates contain public keys and identity information, allowing cryptographic verification.
+*   **Use Cases:** Common in enterprise environments, machine-to-machine communication (mTLS), and for securing web servers ([[ssl-tls|TLS/SSL]]).
 
 ### Biometric Authentication
 
