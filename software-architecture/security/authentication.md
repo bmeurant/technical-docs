@@ -82,12 +82,12 @@ Content-Type: application/json
 
 ### API Key Authentication
 
-A simpler form of authentication, typically used for identifying calling applications rather than end-users.
-*   **Mechanism:** A unique, secret key is provided with each request to identify the client application.
-*   **Considerations:** Less secure for user authentication due to lack of user-specific context. Best for service-to-service communication, [[rate-limiting|rate limiting]], or identifying public API consumers.
+This is a simple authentication method where the client provides a unique secret key with each request to identify itself. It is typically used to identify a calling application rather than a specific end-user. While simple, it is less secure than token-based methods for user authentication.
+
+For a detailed guide on use cases and critical security best practices like generation, storage, and rotation, see the **[[api-keys-and-management|API Keys and Management]]** page.
 
 #### Example
-API keys can be sent in various ways, but a custom HTTP header is common and clean.
+API keys are best sent in a custom HTTP header.
 
 **Using a custom header (recommended):**
 ```http

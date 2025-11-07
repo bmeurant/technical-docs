@@ -102,7 +102,7 @@ While the terms are often used interchangeably, it's crucial to distinguish betw
 
 *   An **API Gateway** is a runtime component, a proxy that processes live traffic. Its primary job is to route, secure, and mediate API calls as they happen. Think of it as the *enforcement point*.
 
-*   An **API Management** solution is a comprehensive platform that covers the entire lifecycle of an API. It includes a developer portal for documentation, analytics dashboards, monetization features, and policy definition tools. The API Gateway is the core *enforcement component* within a broader API Management platform.
+*   An **API Management** solution is a comprehensive platform that covers the entire lifecycle of an API. It includes a developer portal for documentation, analytics dashboards, monetization features, and policy definition tools. The API Gateway is the core *enforcement component* within a broader API Management platform. For a detailed breakdown of this lifecycle, see the **[[api-keys-and-management|API Keys and Management]]** page.
 
 In short, you can use a standalone API Gateway without a full management platform, but you cannot have an API Management platform without a gateway to enforce the policies it defines.
 
@@ -111,7 +111,7 @@ In short, you can use a standalone API Gateway without a full management platfor
 ## Related Patterns
 
 -   **[[microservices]]**: The API Gateway pattern is a foundational component of most microservice architectures.
--   **[[gatekeeper]]**: An API Gateway is a common way to implement the Gatekeeper pattern, focusing on centralized security and request validation.
+-   **[[gatekeeper]]**: An API Gateway is a common way to implement the Gatekeeper pattern,, focusing on centralized security and request validation.
 -   **[[gateway-patterns]]**: Describes the specific tactical patterns implemented by a gateway.
 -   **[[service-mesh|Service Mesh]]**: While a gateway typically manages "North-South" traffic (client-to-service), a service mesh manages "East-West" traffic (service-to-service). They are complementary, and an ingress gateway is often a component of a service mesh.
 -   **[[Backend-for-Frontend]]**: A pattern where a dedicated gateway is created for a specific client type, often using Gateway Aggregation.

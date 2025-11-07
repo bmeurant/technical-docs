@@ -10,12 +10,13 @@ date: 2025-10-31
 
 This section covers fundamental principles and patterns for designing robust, usable, and secure APIs.
 
-* [[rate-limiting|Rate Limiting]]
+* [[api-error-handling|API Error Handling]]
+* [[api-keys-and-management|API Keys and Management]]
+* [[api-pagination|API Pagination]]
 * [[api-security-best-practices|API Security Best Practices]]
 * [[api-testing|API Testing]]
 * [[api-versioning|API Versioning]]
-* [[api-pagination|API Pagination]]
-* [[api-error-handling|API Error Handling]]
+* [[rate-limiting|Rate Limiting]]
 
 ## Core HTTP Concepts for API Design
 
