@@ -1,5 +1,5 @@
 ---
-title: "HTTP (HyperText Transfer Protocol)"
+title: "HTTP"
 tags:
   - system-design
   - networking
@@ -7,6 +7,8 @@ tags:
   - web
 date: 2025-11-06
 ---
+
+# HTTP (HyperText Transfer Protocol)
 
 HTTP (Hypertext Transfer Protocol) is the application-layer protocol that serves as the foundation of data communication for the World Wide Web. It is a client-server protocol where requests are initiated by the recipient, usually a web browser or an API client. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
 

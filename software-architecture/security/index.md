@@ -41,10 +41,13 @@ graph TD
 
 ## Identity and Access Management (IAM)
 
-This area focuses on verifying the identity of users and systems and controlling what they are allowed to do.
+This area focuses on verifying the identity of users and systems and controlling what they are allowed to do. It is the foundation of secure access to resources.
 
-*   [[authentication|Authentication]]: Learn about the processes and strategies used to verify identity.
-*   [[jwt|JSON Web Token (JWT)]]: A compact, URL-safe means of representing claims to be transferred between two parties.
+*   [[authentication|Authentication]]: The process of verifying *who* a user or system is.
+*   [[authorization|Authorization]]: The process of determining *what* an authenticated user or system is allowed to do.
+*   [[oauth|OAuth 2.0]]: A framework for delegating authorization, allowing a third-party app to access resources on a user's behalf.
+*   [[openid-connect|OpenID Connect (OIDC)]]: An identity layer built on top of OAuth 2.0 to handle authentication and enable Single Sign-On (SSO).
+*   [[jwt|JSON Web Token (JWT)]]: A compact, URL-safe standard for creating access tokens and ID tokens that assert claims.
 
 ## Cryptography and Data Integrity
 

@@ -151,14 +151,15 @@ sequenceDiagram
 *   **Refresh Token**: An optional, long-lived token used to obtain a new access token without re-prompting the user when the current access token expires.
 *   **Scopes**: These define the specific permissions the client is requesting (e.g., `read_profile`, `write_calendar_events`). The user consents to these specific scopes, limiting the client's access.
 
-## OAuth vs. OpenID Connect (OIDC)
+## The Relationship with OpenID Connect (OIDC)
 
-It is crucial to understand the distinction between OAuth 2.0 and OIDC:
+It is crucial not to confuse OAuth 2.0 with **[[openid-connect]]**. While they are often used together, they solve different problems.
 
-*   **OAuth 2.0 is for Authorization**: Its primary purpose is to grant an application access to resources. The tokens it issues, called Access Tokens, are meant for the Resource Server. They represent permission, not necessarily identity.
-*   **OIDC is for Authentication**: It is a thin layer built on top of OAuth 2.0. It introduces the concept of an **ID Token**, which is a specifically formatted [[jwt|JWT]] that provides information about the authentication event (who the user is, when they logged in, etc.).
+*   **OAuth 2.0 is for Authorization**: Its primary purpose is to grant an application access to resources on behalf of a user. The tokens it issues, called Access Tokens, are meant for a Resource Server. They represent **permission**, not identity. An Access Token is like a keycard for a hotel room: it proves you have permission to enter, but it doesn't say who you are.
 
-In short: an application uses **OIDC** to log a user in and find out who they are, and then uses **OAuth 2.0** to access APIs on that user's behalf.
+*   **[[openid-connect]] is for Authentication**: It is a thin identity layer built on top of OAuth 2.0. It introduces the concept of an **ID Token** (a [[jwt|JWT]]) which allows a client application to verify the **identity** of the user. It answers the question, "Who is this user?".
+
+In short, a modern application uses **[[openid-connect]]** to log a user in and confirm their identity, and then uses the **Access Token from the OAuth 2.0 flow** to access APIs on that user's behalf. Most "social login" systems (like "Sign in with Google") are OIDC implementations.
 
 ## Security Best Practices & Vulnerabilities
 
