@@ -1,4 +1,4 @@
----
+--- 
 title: JWT (JSON Web Token)
 tags:
   - security
@@ -22,7 +22,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 ```
 
 ### 1. Header
-The header is a JSON object that declares the token type (`typ`) and the signing algorithm (`alg`) used, such as `HS256` (HMAC using SHA-256) or `RS256` (RSA). This JSON is then **Base64Url encoded** to form the first part of the JWT.
+The header is a JSON object that declares the token type (`typ`) and the signing algorithm (`alg`) used, such as `[[hashing-algorithms|HS256]]` (HMAC using SHA-256) or `RS256` (RSA). This JSON is then **Base64Url encoded** to form the first part of the JWT.
 
 **Example Header (JSON):**
 ```json
@@ -37,10 +37,13 @@ The payload is a JSON object containing the **claims**, which are statements abo
 
 **Types of Claims:**
 *   **Registered Claims**: A standard set of predefined claims, such as `iss` (issuer), `exp` (expiration time), `sub` (subject/user ID), and `iat` (issued at). These are recommended but not mandatory.
-*   **Public Claims**: Custom claims defined by the application. To avoid collisions, they should be defined in the IANA JSON Web Token Registry or as a URI.
+*   **Public Claims**: Custom claims defined by the application. To avoid collisions, they should be defined in the [IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml#claims) or as a URI.
 *   **Private Claims**: Custom claims created to share information between parties that agree on their meaning (e.g., an internal user ID).
 
 **Example Payload (JSON):**
+
+This example payload contains a mix of registered and private claims.
+
 ```json
 {
   "sub": "1234567890",
@@ -49,6 +52,13 @@ The payload is a JSON object containing the **claims**, which are statements abo
   "exp": 1516239022
 }
 ```
+*   **Registered Claims**:
+    *   `sub`: The subject of the token (the user's ID).
+    *   `exp`: The expiration time of the token.
+*   **Public Claim**:
+    *   `name`: While not registered, `name` is a common claim defined by the OIDC standard, often used for the user's full name.
+*   **Private Claim**:
+    *   `admin`: A custom claim whose meaning is specific to the application (e.g., a boolean flag indicating administrative privileges).
 
 ### 3. Signature
 The signature is used to verify the token's authenticity. It is created by taking the encoded header, the encoded payload, a secret key (if using HMAC) or a private key (if using RSA/ECDSA), and signing them with the algorithm specified in the header.
