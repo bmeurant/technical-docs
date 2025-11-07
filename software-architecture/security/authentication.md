@@ -65,6 +65,21 @@ The most traditional method, where users provide a username and a secret passwor
 *   **Mechanism:** The system compares the provided password (after [[hashing-algorithms|hashing]] and salting) with a securely stored hash of the user's actual password.
 *   **Considerations:** Requires robust password policies (complexity, length), secure storage (never plain text), and protection against common attacks like brute-force and credential stuffing. [[hashing-algorithms|Password hashing functions]] like Bcrypt, Scrypt, or Argon2 are crucial here.
 
+#### Example Request
+This is the foundational step for most modern authentication flows. The client sends the user's credentials to a dedicated endpoint (e.g., `/login`, `/token`) to initiate the process. **Crucially, this entire exchange MUST happen over an encrypted connection (e.g., [[ssl-tls|HTTPS]]) to be secure.**
+
+```http
+POST /api/auth/login HTTP/1.1
+Host: api.example.com
+Content-Type: application/json
+
+{
+  "username": "myuser",
+  "password": "my-secure-password123"
+}
+```
+*Description: The client sends the credentials in the body of a POST request. If successful, the server will respond by starting a session (e.g., with a cookie) or issuing an access token.*
+
 ### API Key Authentication
 
 A simpler form of authentication, typically used for identifying calling applications rather than end-users.
@@ -149,44 +164,6 @@ sequenceDiagram
 ```
 *Description: The server creates a session upon login and provides a `session_id` cookie. The browser sends this cookie on future requests, which the server validates against its session store to identify the user.*
 
-#### Server-Side Implementation Example
-
-On the server-side, libraries like `express-session` for Node.js are used to manage sessions. A middleware is configured to handle the creation, storage, and validation of sessions.
-
-**Conceptual Express.js Configuration:**
-```javascript
-const session = require('express-session');
-
-app.use(session({
-  // A secret used to sign the session ID cookie.
-  secret: 'your-super-secret-key',
-
-  // If true, forces the session to be saved back to the session store,
-  // even if the session was never modified.
-  resave: false,
-
-  // If true, forces a session that is "uninitialized" to be saved to the store.
-  saveUninitialized: true,
-
-  // Configures the session cookie.
-  cookie: {
-    secure: true,   // Ensures the browser only sends the cookie over HTTPS.
-    httpOnly: true, // Prevents client-side JavaScript from reading the cookie.
-    maxAge: 1000 * 60 * 60 * 24 // e.g., 24 hours
-  }
-}));
-
-// Example of a protected route
-app.get('/profile', (req, res) => {
-  // The session middleware automatically loads the session data onto the request object.
-  if (req.session.user) {
-    res.json({ user: req.session.user });
-  } else {
-    res.status(401).send('Unauthorized');
-  }
-});
-```
-
 #### Example HTTP Headers
 1.  **Login Response:** After successful login, the server sends a `Set-Cookie` header. The `HttpOnly` flag prevents JavaScript access, and `Secure` ensures it's only sent over HTTPS.
 ```http
@@ -215,12 +192,12 @@ A key architectural choice in token-based authentication is the type of token:
 *   **Opaque Tokens**: These are random strings that act as a reference to user information stored on the server-side. The server must perform a lookup (e.g., in a database) to validate the token and retrieve user data. They are simple and secure, as no sensitive data is exposed to the client.
 *   **Self-Contained Tokens**: These tokens contain the user's identity and other claims directly within them. The token is digitally signed, so the server can verify its authenticity without needing a database lookup, making them highly scalable.
 
-The most popular format for self-contained tokens is the [[jwt|JSON Web Token (JWT)]]. For a detailed explanation of its structure, claims, and security considerations, see the dedicated `[[jwt]]` page.
+The most popular format for self-contained tokens is the [[jwt|JSON Web Token (JWT)]]. For a detailed explanation of its structure, claims, and security considerations, see the dedicated [[jwt]] page.
 
 ### OAuth (Open Authorization) and OpenID Connect (OIDC)
 
 These are open standards that work together to provide secure delegated access.
-*   **[[oauth|OAuth 2.0]]**: A framework for delegating **authorization**. It allows an application to obtain limited access to a user's account without exposing their credentials. For a detailed explanation, see the `[[oauth]]` page.
+*   **[[oauth|OAuth 2.0]]**: A framework for delegating **authorization**. It allows an application to obtain limited access to a user's account without exposing their credentials. For a detailed explanation, see the [[oauth]] page.
 *   **OpenID Connect (OIDC)**: An identity layer built on top of OAuth 2.0. It focuses on **authentication**, allowing a client to verify a user's identity based on the authentication performed by an Authorization Server.
 
 ### Certificate-Based Authentication
