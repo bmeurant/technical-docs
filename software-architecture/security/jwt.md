@@ -1,5 +1,5 @@
 --- 
-title: JWT (JSON Web Token)
+title: JWT
 tags:
   - security
   - authentication

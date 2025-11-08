@@ -98,7 +98,7 @@ In short, **OAuth 2.0 carries the authorization proof**, while **the access cont
 
 *   [[authentication]]: The prerequisite for authorization.
 *   [[oauth|OAuth 2.0]]: A framework for delegating authorization.
-*   [[api-security-best-practices]]: Broader security considerations for APIs.
+*   [[api-security|API Security]]: Broader security considerations for APIs.
 *   [[owasp|OWASP]]: Provides guidelines on preventing authorization failures, such as Insecure Direct Object References (IDOR).
 
 ---

@@ -176,7 +176,7 @@ While a powerful framework, OAuth 2.0 must be implemented correctly to be secure
 *   [[authentication]]: The process of verifying the Resource Owner's identity, which is handled by the Authorization Server at the start of the OAuth flow.
 *   [[authorization]]: OAuth 2.0 is a framework specifically designed for delegating authorization, which is the core concept it manages.
 *   [[jwt|JWT (JSON Web Tokens)]]: A common, but not mandatory, format for OAuth 2.0 Access Tokens and OIDC ID Tokens due to their ability to carry verifiable data.
-*   [[api-security-best-practices]]: Correctly implementing OAuth 2.0 is a cornerstone of modern API security, protecting endpoints from unauthorized access.
+*   [[api-security|API Security]]: Correctly implementing OAuth 2.0 is a cornerstone of modern API security, protecting endpoints from unauthorized access.
 
 ---
 

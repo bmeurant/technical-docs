@@ -19,7 +19,7 @@ Through its hundreds of local chapters, thousands of members, and leading educat
 
 OWASP champions several pivotal initiatives that have become industry standards for application security:
 
-*   **OWASP Top 10:** Perhaps its most recognized project, the OWASP Top 10 is a standard awareness document for developers and security professionals alike. It identifies and prioritizes the ten most critical security risks to web applications, offering a broad consensus on the most prevalent and impactful vulnerabilities. Regularly updated, the Top 10 serves as a crucial guide for prioritizing security efforts. The categories often include, but are not limited to:
+*   **[OWASP Top 10](https://owasp.org/Top10/):** Perhaps its most recognized project, the OWASP Top 10 is a standard awareness document for developers and security professionals alike. It identifies and prioritizes the ten most critical security risks to web applications, offering a broad consensus on the most prevalent and impactful vulnerabilities. Regularly updated, the Top 10 serves as a crucial guide for prioritizing security efforts. The categories often include, but are not limited to:
     *   **Broken Access Control:** Ineffectively enforced restrictions on what authenticated users are allowed to do.
     *   **Cryptographic Failures:** Sensitive data exposed due to inadequate protection.
     *   **Injection:** Untrusted data sent to an interpreter as part of a command or query.
@@ -47,6 +47,10 @@ graph LR
     A --> K("A10: Server-Side Request Forgery (SSRF)")
 ```
 *Description: This diagram visually lists the ten most critical web application security risks as identified by the OWASP Top 10 (2021), providing a quick reference for common vulnerabilities to address.*
+
+*   **[OWASP API Security Top 10](https://owasp.org/API-Security/):** Recognizing that APIs present a unique attack surface, OWASP maintains a separate Top 10 list specifically for API security. It highlights risks that are often more prevalent or severe in APIs compared to traditional web applications.
+    *   **Key Risks Include**: Broken Object Level Authorization (BOLA), Broken Authentication, Broken Property Level Authorization, and Lack of Resources & Rate Limiting.
+    *   For a detailed breakdown of these vulnerabilities and their mitigation strategies, see the **[[api-security|API Security]]** page.
 
 *   **OWASP Web Security Testing Guide (WSTG):** A comprehensive guide that provides a framework for testing the security of web applications and web services. It covers a wide range of tests, from information gathering to vulnerability analysis.
 *   **OWASP Application Security Verification Standard (ASVS):** A list of application security requirements that can be used to establish a level of confidence in web applications. It helps organizations define and implement measurable security controls.
