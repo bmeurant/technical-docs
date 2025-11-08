@@ -14,5 +14,4 @@ see [index](./index.md)
 * **[Idempotent Operations](./idempotent-operations.md)**
 * **[Messaging](./messaging.md)**
 * **[Reliability Engineering](./reliability-engineering.md)**
-* **[Security](./security.md)**
 * **[Workload Management](./workload-management.md)**

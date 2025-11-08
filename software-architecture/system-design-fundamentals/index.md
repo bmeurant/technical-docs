@@ -159,4 +159,4 @@ The trade-off becomes critical during a **network partition**—a situation wher
 * [[idempotent-operations|Idempotent Operations]]
 * [[workload-management|Workload Management]]
 * [[messaging|Messaging]]
-* [[security|Security Fundamentals]]
+* [[security-fundamentals|Security Fundamentals]]
