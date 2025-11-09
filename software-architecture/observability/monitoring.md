@@ -80,14 +80,25 @@ See also: [[availability-patterns]].
 
 ### Performance Monitoring
 
-Performance monitoring focuses on the efficiency, responsiveness, and [[workload-management#Compute Resource Consolidation|resource utilization]] of a system under load. It helps identify bottlenecks, degradation, and inefficiencies before they lead to outages. Key metrics often align with the **Four Golden Signals**:
+Performance monitoring focuses on the efficiency, responsiveness, and [[workload-management#Compute Resource Consolidation|resource utilization]] of a system under load. It helps identify bottlenecks, degradation, and inefficiencies before they lead to outages. A best practice is to focus on the **Four Golden Signals** (popularized by Google's SRE book), which provide a comprehensive view of a service's health.
 
-1.  **[[software-architecture/system-design-fundamentals/index#Latency vs. Throughput|Latency]]**: The time it takes to service a request.
-2.  **Traffic**: The demand on the system (e.g., requests per second).
-3.  **Errors**: The rate of requests that fail.
-4.  **Saturation**: How "full" the service is (e.g., CPU utilization, memory usage).
+1.  **Latency**: The time it takes to service a request. It's crucial to distinguish between the latency of successful requests and the latency of failed requests, as the latter can be artificially low.
+    *   **Why it's important**: Latency directly impacts user experience. Slow responses can lead to user frustration and abandonment.
+    *   **Metrics to track**: Average, median, and 99th percentile (p99) response times. Tracking percentiles is vital as it reveals the experience of the worst-affected users, which is often hidden by simple averages.
 
-By monitoring these metrics, teams can detect when a [[performance-antipatterns|performance antipattern]] is emerging and take corrective action, such as [[software-architecture/system-design-fundamentals/index#Scalability|scaling resources]], [[rdbms#SQL Tuning|optimizing queries]], or leveraging a [[caching]] or [[cdn|CDN]] strategy.
+2.  **Traffic**: A measure of the demand on the system. This is often measured in requests per second (RPS) for services, or I/O operations per second for databases.
+    *   **Why it's important**: Changes in traffic can indicate the root cause of other issues. A drop in traffic might signal a client-side problem, while a spike might explain an increase in latency or errors.
+    *   **Metrics to track**: HTTP requests per second, database transactions per second, bytes in/out per second.
+
+3.  **Errors**: The rate of requests that fail. The definition of "failure" can vary, from explicit HTTP `5xx` errors to softer failures like a `200 OK` response with an empty or incorrect payload.
+    *   **Why it's important**: This is a direct measure of system correctness and reliability. A rising error rate is a clear signal that something is wrong.
+    *   **Metrics to track**: Rate of HTTP 5xx errors, rate of gRPC error codes, number of exceptions thrown. It's important to track this as a rate (errors / total requests) rather than a raw count.
+
+4.  **Saturation**: How "full" or constrained a service is. This measures the utilization of the most constrained resources in the system (e.g., CPU, memory, disk I/O).
+    *   **Why it's important**: Saturation is a leading indicator of future problems. A system may have acceptable latency and error rates but be running at 95% CPU. This indicates it is close to a performance cliff and cannot handle any additional traffic.
+    *   **Metrics to track**: CPU utilization, memory usage, disk I/O operations, network bandwidth. For systems with bounded resources like thread pools or connection pools, the utilization of these pools is also a critical saturation metric.
+
+By monitoring these four signals, teams can detect when a [[performance-antipatterns|performance antipattern]] is emerging and take corrective action, such as [[software-architecture/system-design-fundamentals/index#Scalability|scaling resources]], [[rdbms#SQL Tuning|optimizing queries]], or leveraging a [[caching]] or [[cdn|CDN]] strategy.
 
 ### Security Monitoring
 

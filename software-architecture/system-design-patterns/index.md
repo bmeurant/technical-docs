@@ -28,6 +28,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
 * [[queue-based-load-leveling|Queue-Based Load Leveling]]
+* [[rate-limiting|Rate Limiting]]
 * [[retry|Retry]]
 * [[scheduler-agent-supervisor|Scheduler Agent Supervisor]]
 * [[service-discovery|Service Discovery]]
