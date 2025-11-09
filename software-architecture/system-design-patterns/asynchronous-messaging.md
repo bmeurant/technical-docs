@@ -103,7 +103,7 @@ sequenceDiagram
 -   **Result Delivery Alternatives**: While polling is common, it can be inefficient. For more advanced use cases, consider push-based notifications to inform the client when the result is ready. The following patterns are detailed in the [[real-time-communication]] document:
     -   **[[real-time-communication#WebSockets|WebSockets]]**: For rich, bidirectional communication.
     -   **[[real-time-communication#Server-Sent Events (SSE)|Server-Sent Events (SSE)]]**: For simple, unidirectional server-to-client updates.
-    -   **Webhooks**: The client can provide a callback URL that the backend calls when the job is done.
+    -   **[[webhooks|Webhooks]]**: The client can provide a callback URL that the backend calls when the job is done.
 -   **HTTP Status Codes**: Proper use of HTTP status codes is critical. `202 Accepted` for acknowledgment, `200 OK` for status updates, and `302`/`303` for redirection to the final result.
 -   **Error Handling**: The backend worker must be able to report a `Failed` state to the status store. When the client polls the status endpoint, there are two types of errors to consider:
     -   **The Asynchronous Job Fails:** The backend worker fails to complete the task (e.g., due to invalid data). In this case, the status endpoint itself should still return `HTTP 200 OK`, because the request *for the status* was successful. The response body will contain the terminal state of the job, e.g., `{ "status": "Failed", "reason": "Input data could not be processed." }`.

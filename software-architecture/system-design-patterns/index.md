@@ -29,6 +29,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[publish-subscribe|Publish-Subscribe]]
 * [[queue-based-load-leveling|Queue-Based Load Leveling]]
 * [[real-time-communication|Real-Time Communication]]
+* [[webhooks|Webhooks]]
 * [[rate-limiting|Rate Limiting]]
 * [[retry|Retry]]
 * [[scheduler-agent-supervisor|Scheduler Agent Supervisor]]

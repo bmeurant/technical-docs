@@ -27,3 +27,11 @@ While the principles above are specific to API design, a solid understanding of 
 *   **[[http#Content Negotiation|Content Negotiation]]**: How clients and servers agree on a data format.
 *   **[[http#HTTP Methods|HTTP Methods]]**: The verbs (GET, POST, PUT, etc.) that define the action to be performed.
 *   **[[http#HTTP Status Codes|HTTP Status Codes]]**: How the server communicates the outcome of a request.
+
+## API Paradigms & Patterns
+
+While the principles above apply broadly, their implementation often depends on the specific API paradigm or pattern in use. For patterns beyond traditional request-response, see:
+
+*   [[real-time-communication|Real-Time Communication Patterns]] (WebSockets, SSE)
+*   [[graphql|GraphQL]]
+*   [[grpc|gRPC]]
