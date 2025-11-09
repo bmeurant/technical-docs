@@ -1,41 +1,74 @@
 ---
-title: Performance Antipatterns
+title: System Performance
 tags:
   - system-design
   - performance
+  - best-practices
   - antipatterns
-date: 2025-10-25
+date: 2025-11-09
 ---
 
-# Performance Antipatterns
+# System Performance
 
-Performance antipatterns are common but ineffective solutions to recurring problems that degrade a system's speed, scalability, and efficiency. While they may seem like a straightforward approach initially, they create significant bottlenecks, increase latency, and lead to poor [[workload-management|workload management]] and resource utilization. Understanding these antipatterns—and detecting them through robust [[monitoring]]—is crucial for building robust and [[software-architecture/system-design-fundamentals/index#Performance vs. Scalability|performant]] systems.
+System performance is a critical measure of how efficiently a system uses its resources to provide a fast and reliable experience to users. It is not a single feature but a core architectural concern that spans the entire technology stack, from frontend clients to backend databases.
 
-These antipatterns often emerge from a misunderstanding of underlying system behaviors, especially in distributed environments. Addressing them typically involves a trade-off, such as increasing code complexity or infrastructure costs to achieve better performance and reliability.
+This document provides a holistic view of system performance, covering both essential **Best Practices** to implement and common **Antipatterns** to avoid.
 
-```mermaid
-graph TD
-    A[Performance Antipatterns] --> B(Application & Resource);
-    A --> C(Data & Persistence);
-    A --> D(Communication & I/O);
+---
 
-    B --> B1(Improper Instantiation);
-    B --> B2(Noisy Neighbor);
-    B --> B3(Busy Frontend);
+## Performance Best Practices
 
-    C --> C1(Monolithic Persistence);
-    C --> C2(Extraneous Fetching);
-    C --> C3(No Caching);
-    C --> C4(Busy Database);
+This section outlines key strategies and best practices for building high-performance backend systems. The following recommendations are inspired by the content available at [roadmap.sh](https://roadmap.sh/best-practices/backend-performance).
 
-    D --> D1(Chatty I/O);
-    D --> D2(Synchronous I/O);
-    D --> D3(Retry Storm);
-```
+### Caching
+Effective [[caching]] is one of the most powerful techniques for improving performance. By storing frequently accessed data closer to the consumer, it reduces latency and offloads work from backend databases.
+- **Utilize Multi-Level Caching**: Implement caching at various layers, including HTTP caching (via headers like `Cache-Control`), [[cdn|CDN]] for edge caching, and server-side caches (in-memory or distributed like Redis).
+- **Choose the Right Caching Pattern**: Use patterns like Cache-Aside (Lazy Loading), Write-Through, or Read-Through based on your application's data access patterns and consistency requirements.
+- **Cache Invalidation**: Implement a proper cache invalidation strategy to ensure data consistency and prevent users from seeing stale content.
 
-## List of Performance Antipatterns
+### Database Optimization
+The database is often a primary bottleneck in backend systems. Optimizing its performance is crucial for overall system responsiveness.
+- **Connection Pooling**: Use and fine-tune a connection pool to reduce the high overhead of opening and closing database connections for every request.
+- **Efficient Indexing**: Create efficient [[rdbms#SQL-Tuning|database indexes]] on columns used in `WHERE` clauses and `JOIN` operations to speed up query execution.
+- **Query Optimization**:
+    - Avoid `SELECT *` queries; fetch only the columns you need.
+    - Use tools like `EXPLAIN` to analyze and optimize slow queries.
+    - Be mindful of ORM-generated queries, which can be inefficient. Utilize features like lazy/eager loading and batch processing to optimize data retrieval.
+- **Denormalization**: For read-heavy workloads, consider denormalizing your database schema to reduce the need for expensive `JOIN` operations.
+- **Replication & Sharding**: For high-traffic systems, use [[rdbms#1-replication|read replicas]] to offload read queries. For extreme scale, consider [[rdbms#2-partitioning|sharding]] to distribute data across multiple databases.
 
-## List of Performance Antipatterns
+### Code & Application Logic
+The efficiency of the application code itself is a major factor in system performance.
+- **Asynchronism**: Offload long-running or I/O-bound tasks to [[background-jobs]] using a [[message-queue]]. This prevents blocking the main request thread and improves responsiveness. See [[asynchronous-messaging]].
+- **Optimize Algorithms & Data Structures**: Profile your code to identify performance bottlenecks. Ensure you are using efficient algorithms and appropriate data structures for the task.
+- **Use Compiled Languages for Critical Paths**: For performance-critical parts of your backend, consider using compiled languages like Go or Rust, which often offer better performance than interpreted languages.
+- **Batch Operations**: When processing multiple similar items, batch them together into a single operation to reduce overhead and network round trips.
+
+### API & Network
+Optimizing how data is sent over the network is key to perceived performance. While this section covers general best practices, see the main [[api-performance]] page for a more detailed guide focused specifically on the API layer.
+- **Payload Size**: Enforce reasonable payload size limits. Use efficient [[api-pagination|pagination]] for large datasets.
+- **Compression**: Enable Gzip or Brotli compression for HTTP responses to reduce data transfer size.
+- **Minimize Round Trips**: Design APIs to avoid "chatty" interactions where a client must make many sequential requests to perform a single operation.
+- **Use Keep-Alive**: Utilize HTTP Keep-Alive to reuse TCP connections for multiple requests, reducing connection overhead.
+- **Choose the Right Protocol**: While [[rest|REST]] over HTTP/1.1 is common, consider modern alternatives like [[grpc|gRPC]] (which uses HTTP/2) for efficient, multiplexed communication between services.
+
+### Scalability & Resilience
+A performant system must also be scalable and resilient to handle load and recover from failures.
+- **Load Balancing**: Use a [[load-balancing|load balancer]] to distribute traffic evenly across multiple servers.
+- **Horizontal & Vertical Scaling**: Scale horizontally (adding more machines) for stateless applications and vertically (adding more resources to existing machines) where appropriate.
+- **Timeouts & Retries**: Implement appropriate connection timeouts and a smart [[retry]] mechanism (with exponential backoff and jitter) to handle transient network issues gracefully.
+
+### Monitoring & Testing
+You cannot improve what you do not measure. A robust monitoring and testing strategy is essential for maintaining performance.
+- **Comprehensive Monitoring**: Implement comprehensive [[monitoring]] to track key performance metrics (the Four Golden Signals: Latency, Traffic, Errors, Saturation). Use tools like Prometheus, Grafana, and the ELK stack.
+- **Performance Testing**: Conduct regular [[api-testing|performance testing]] (load, stress, soak tests) and benchmarking to identify regressions and validate optimization efforts.
+- **Profiling**: Use profiling tools to identify code-level bottlenecks in CPU and memory usage.
+
+---
+
+## Performance Antipatterns
+
+While best practices describe what to do, antipatterns are common but ineffective solutions to avoid. Understanding them is key to preventing performance degradation.
 
 ### 1. Improper Instantiation
 
@@ -285,8 +318,11 @@ sequenceDiagram
 
 ### Articles
 
-1.  **[What are Performance Anti-Patterns in System Design - GeeksforGeeks](https://www.geeksforgeeks.org/system-design/what-are-performance-anti-patterns-in-system-design/)**
+1.  **[Backend Performance Best Practices - roadmap.sh](https://roadmap.sh/best-practices/backend-performance)**
+    A curated list of best practices for backend performance, which served as a key inspiration for the content in this document.
+
+2.  **[What are Performance Anti-Patterns in System Design - GeeksforGeeks](https://www.geeksforgeeks.org/system-design/what-are-performance-anti-patterns-in-system-design/)**
     An overview of several key performance antipatterns and strategies for identifying and avoiding them during the system design process.
 
-2.  **[Performance antipatterns for cloud applications - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/antipatterns/)**
+3.  **[Performance antipatterns for cloud applications - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/antipatterns/)**
     A catalog of common antipatterns encountered in cloud applications, provided by Microsoft's Azure Architecture Center. This was a primary source for this document.

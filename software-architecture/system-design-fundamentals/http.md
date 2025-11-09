@@ -256,6 +256,12 @@ Key attributes for secure and effective API cookie usage include:
 
 ---
 
+## Beyond Request-Response: Real-Time Communication
+
+While HTTP is fundamentally a request-response protocol, it also serves as the foundational handshake for establishing more persistent, real-time communication channels. Technologies like WebSockets and Server-Sent Events (SSE) are initiated via an HTTP request before upgrading the connection to a different mode of interaction.
+
+This allows applications to transcend the limitations of polling for use cases requiring instant data push from the server. For a detailed exploration of these patterns, see the main document on [[real-time-communication]].
+
 ## Resources & Links
 
 ### Articles

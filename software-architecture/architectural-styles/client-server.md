@@ -15,7 +15,7 @@ The **Client-Server** architecture is a fundamental distributed [[software-archi
     * **[[soc|Separation of Concerns]]:** The client handles the user interface and presentation logic, while the server is responsible for the business logic, data storage, and security. This separation simplifies the independent development, maintenance, and evolution of each part.
     * **Request/Response:** This is the standard communication pattern. The client sends a synchronous or asynchronous request, and the server provides a response.
     * **Stateless vs. Stateful:**
-        * **Stateless:** Each request from the client to the server contains all the information needed for the server to process it. The server does not store any information about the client's session state between requests. This is the **HTTP** model, which is ideal for scalability.
+        * **Stateless:** Each request from the client to the server contains all the information needed for the server to process it. The server does not store any information about the client's session state between requests. This is the **[[http|HTTP]]** model, which is ideal for scalability.
         * **Stateful:** The server retains the client's session state. This can simplify client-side logic but makes the server more complex and less scalable.
 
 ---
@@ -37,7 +37,7 @@ graph TD
 1.  **Client:** The entity that initiates requests. Clients can be categorized as:
     *   **Thin Client:** A client with minimal processing logic (e.g., a web browser rendering HTML). Most of the business logic resides on the server.
     *   **Thick Client:** A client that handles a significant amount of processing logic itself (e.g., a desktop application like a video game or a complex mobile app).
-2.  **Network:** The communication channel that connects clients and servers. Typical protocols include **HTTP/HTTPS** for web traffic, **gRPC** for efficient inter-service communication, or **WebSockets** for real-time, bidirectional communication.
+2.  **Network:** The communication channel that connects clients and servers. Typical protocols include **[[http|HTTP/HTTPS]]** for web traffic, **[[grpc|gRPC]]** for efficient inter-service communication, or [[real-time-communication#WebSockets|WebSockets]] for real-time, bidirectional communication.
 3.  **Server:** The powerful, centralized entity that listens for requests and provides services. It is responsible for the core business logic, data persistence, and security.
 
 **Typical Data Flow:**

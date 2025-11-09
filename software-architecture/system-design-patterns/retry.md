@@ -56,7 +56,7 @@ Retrying indefinitely is dangerous. A maximum number of attempts must be configu
 ## Challenges and Considerations
 
 *   **Non-Transient Failures**: The pattern is only suitable for transient faults. Retrying an operation that is failing due to a permanent issue (e.g., a bug in the service, invalid credentials) will only waste resources and add latency. The system should be able to distinguish between transient and non-transient errors.
-*   **[[performance-antipatterns#8. Retry Storm|Retry Storms]]**: If many clients start retrying a service at the same time, it can create a "retry storm" that overwhelms the service and prevents it from recovering. Exponential backoff with jitter is the primary mitigation for this.
+*   **[[system-performance#8. Retry Storm|Retry Storms]]**: If many clients start retrying a service at the same time, it can create a "retry storm" that overwhelms the service and prevents it from recovering. Exponential backoff with jitter is the primary mitigation for this.
 *   **Latency**: Retrying an operation inherently adds latency to the overall response time. The maximum number of retries and the backoff delays must be chosen carefully to avoid unacceptably long response times.
 *   **Configuration**: The retry logic (number of attempts, backoff strategy) should be configurable and ideally tunable at runtime to adapt to different service characteristics and network conditions.
 

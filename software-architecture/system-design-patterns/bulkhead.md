@@ -61,7 +61,7 @@ graph TD
 
 - **Fault Isolation:** Contains failures within a single "bulkhead," preventing them from spreading and causing a system-wide outage.
 - **Resilience:** Allows the system to withstand partial failures and continue to operate, albeit with potentially reduced functionality.
-- **Predictable Performance:** By limiting the resources a single component can consume, the pattern prevents a "[[performance-antipatterns#Noisy Neighbor|noisy neighbor]]" from degrading the performance of the entire system.
+- **Predictable Performance:** By limiting the resources a single component can consume, the pattern prevents a "[[system-performance#9. Noisy Neighbor|noisy neighbor]]" from degrading the performance of the entire system.
 
 ---
 

@@ -117,6 +117,7 @@ Pub/Sub is often considered the distributed, asynchronous version of the classic
 *   **[[microservices|Microservices]]:** This pattern is a primary enabler of asynchronous communication between microservices, promoting loose coupling and resilience. Services can communicate without direct knowledge of each other's location or status.
 *   **[[pipe-filters|Pipe and Filters]]:** In distributed data processing pipelines, Pub/Sub topics or streams often act as the "pipes," broadcasting data from one processing stage (a "filter") to one or more subsequent stages.
 *   **[[cqrs|CQRS (Command and Query Responsibility Segregation)]]:** Pub/Sub is commonly used to keep the read and write sides of a [[cqrs|CQRS]] system synchronized. After a **Command** modifies data on the write side, an event is published. The **Query** side subscribes to this event to update its own read-optimized data store.
+*   **[[real-time-communication|Real-Time Communication]]:** The Pub/Sub model is the architectural backbone for many real-time systems. A central broker can ingest a high volume of events and use [[real-time-communication]] patterns like WebSockets or SSE to push those events to thousands of connected clients.
 
 ---
 

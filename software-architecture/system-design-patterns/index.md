@@ -28,6 +28,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[message-queue|Message Queue]]
 * [[publish-subscribe|Publish-Subscribe]]
 * [[queue-based-load-leveling|Queue-Based Load Leveling]]
+* [[real-time-communication|Real-Time Communication]]
 * [[rate-limiting|Rate Limiting]]
 * [[retry|Retry]]
 * [[scheduler-agent-supervisor|Scheduler Agent Supervisor]]
@@ -42,4 +43,4 @@ This section covers a collection of reusable patterns for solving common problem
 
 While patterns are reusable solutions, antipatterns are common but ineffective responses to problems. Understanding them is key to avoiding pitfalls.
 
-* [[performance-antipatterns|Performance Antipatterns]]
+* [[system-performance#Performance Antipatterns|Performance Antipatterns]]

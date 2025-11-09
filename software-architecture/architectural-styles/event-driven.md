@@ -17,7 +17,7 @@ An event is a [[declarative-programming|declarative]] notification that a signif
 
 *   **Asynchronous Communication:** Components communicate without waiting for an immediate response. This non-blocking nature is fundamental to EDA.
 *   **Loose Coupling:** Event producers are completely unaware of the consumers, and vice-versa. They only share knowledge of the event itself.
-*   **Real-time Responsiveness:** Services can react to events as they happen, enabling dynamic and responsive applications.
+*   **Real-time Responsiveness:** Services can react to events as they happen, enabling dynamic and responsive applications. This is often implemented using [[real-time-communication]] patterns to push updates to clients.
 
 ---
 

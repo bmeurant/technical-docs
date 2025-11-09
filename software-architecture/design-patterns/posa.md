@@ -580,7 +580,7 @@ graph TD
     * **Database Connections**: When there are transient issues with [[software-architecture/databases/|database]] connections or deadlocks.
 * **Limitations and Challenges**:
     *   **Non-transient failures**: The pattern is not suitable for non-transient (permanent) failures. Retrying a permanent failure will only waste resources.
-    *   **Retry Storms**: If not implemented carefully with a backoff strategy, multiple clients retrying at the same time can create a "[[performance-antipatterns#Retry Storm|retry storm]]" that overwhelms the service.
+    *   **Retry Storms**: If not implemented carefully with a backoff strategy, multiple clients retrying at the same time can create a "[[system-performance#Retry Storm|retry storm]]" that overwhelms the service.
     *   **Latency**: Retrying an operation adds latency to the overall response time.
 
 **Relationship with other patterns**:

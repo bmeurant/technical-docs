@@ -87,7 +87,7 @@ graph TD
 ## Use Cases
 
 -   **High Scalability for SaaS**: When a multi-tenant application needs to scale to a very large number of customers with predictable performance and cost per tenant.
--   **Strong Tenant Isolation**: For applications requiring strict data or performance isolation between tenants, such as in healthcare (HIPAA) or finance (PCI compliance). An issue in one stamp (e.g., a [[performance-antipatterns#Noisy-Neighbor|noisy neighbor]]) does not affect tenants in other stamps.
+-   **Strong Tenant Isolation**: For applications requiring strict data or performance isolation between tenants, such as in healthcare (HIPAA) or finance (PCI compliance). An issue in one stamp (e.g., a [[system-performance#9. Noisy Neighbor|noisy neighbor]]) does not affect tenants in other stamps.
 -   **Geographic Distribution (Geo-fencing)**: To deploy instances in specific regions to reduce latency for users in that region or to comply with data residency laws (e.g., GDPR). For extreme availability and active-active global distribution, this approach can be evolved into the [[geode|Geode pattern]].
 -   **Controlled, Ring-Based Rollouts**: New versions of the application can be deployed to a single stamp (a "ring") serving a small group of early adopters or internal users before being rolled out to all stamps, minimizing the blast radius of a bad deployment.
 -   **Disaster Recovery**: Stamps can be deployed across different availability zones or regions, providing a high degree of [[reliability-engineering#1. Availability|fault tolerance]].

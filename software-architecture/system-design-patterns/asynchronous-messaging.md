@@ -100,9 +100,9 @@ sequenceDiagram
 
 -   **Client-Side Complexity**: The client is more complex than in a simple synchronous interaction. It must be designed to poll for the status, handle different states (`Pending`, `Failed`), and implement a [[posa#Timeout|timeout]] strategy to avoid polling indefinitely.
 -   **State Management**: The backend must reliably track the state of every asynchronous job. This typically requires a database or a distributed cache to store the status, progress, and final result.
--   **Result Delivery Alternatives**: While polling is common, it can be inefficient. For more advanced use cases, consider push-based notifications to inform the client when the result is ready:
-    -   **WebSockets**: For rich, bidirectional communication.
-    -   **Server-Sent Events (SSE)**: For simple, unidirectional server-to-client updates.
+-   **Result Delivery Alternatives**: While polling is common, it can be inefficient. For more advanced use cases, consider push-based notifications to inform the client when the result is ready. The following patterns are detailed in the [[real-time-communication]] document:
+    -   **[[real-time-communication#WebSockets|WebSockets]]**: For rich, bidirectional communication.
+    -   **[[real-time-communication#Server-Sent Events (SSE)|Server-Sent Events (SSE)]]**: For simple, unidirectional server-to-client updates.
     -   **Webhooks**: The client can provide a callback URL that the backend calls when the job is done.
 -   **HTTP Status Codes**: Proper use of HTTP status codes is critical. `202 Accepted` for acknowledgment, `200 OK` for status updates, and `302`/`303` for redirection to the final result.
 -   **Error Handling**: The backend worker must be able to report a `Failed` state to the status store. When the client polls the status endpoint, there are two types of errors to consider:

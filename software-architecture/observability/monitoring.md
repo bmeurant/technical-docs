@@ -98,7 +98,7 @@ Performance monitoring focuses on the efficiency, responsiveness, and [[workload
     *   **Why it's important**: Saturation is a leading indicator of future problems. A system may have acceptable latency and error rates but be running at 95% CPU. This indicates it is close to a performance cliff and cannot handle any additional traffic.
     *   **Metrics to track**: CPU utilization, memory usage, disk I/O operations, network bandwidth. For systems with bounded resources like thread pools or connection pools, the utilization of these pools is also a critical saturation metric.
 
-By monitoring these four signals, teams can detect when a [[performance-antipatterns|performance antipattern]] is emerging and take corrective action, such as [[software-architecture/system-design-fundamentals/index#Scalability|scaling resources]], [[rdbms#SQL Tuning|optimizing queries]], or leveraging a [[caching]] or [[cdn|CDN]] strategy.
+By monitoring these four signals, teams can detect when a [[system-performance#Performance Antipatterns|performance antipattern]] is emerging and take corrective action, such as [[software-architecture/system-design-fundamentals/index#Scalability|scaling resources]], [[rdbms#SQL Tuning|optimizing queries]], or leveraging a [[caching]] or [[cdn|CDN]] strategy.
 
 ### Security Monitoring
 

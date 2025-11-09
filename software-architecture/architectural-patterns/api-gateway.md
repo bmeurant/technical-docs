@@ -52,7 +52,7 @@ graph TD
 In a distributed architecture like [[microservices]], client applications would need to know the locations of many different services. This leads to several problems:
 
 -   **High Client Complexity**: Clients must manage multiple endpoints, handle different API versions, and deal with the complexity of [[service-discovery]].
--   **[[performance-antipatterns|Chatty Communication]]**: A single client operation might require multiple calls to different backend services, resulting in high network latency and inefficient communication.
+-   **[[system-performance#2. Chatty I/O|Chatty Communication]]**: A single client operation might require multiple calls to different backend services, resulting in high network latency and inefficient communication.
 -   **[[cohesion-coupling|Coupling]]**: The client is tightly coupled to the internal service decomposition. Refactoring services becomes difficult without breaking client applications.
 -   **Cross-Cutting Concerns**: Common functionalities like [[authentication]], [[ssl-tls|TLS encryption]], [[rate-limiting|rate limiting]], and [[monitoring]] would need to be implemented in every single service, leading to code duplication and inconsistency.
 

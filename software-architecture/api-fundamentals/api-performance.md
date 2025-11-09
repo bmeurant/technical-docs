@@ -11,6 +11,8 @@ API performance is a critical, multi-faceted aspect of system design that direct
 
 A performant API is fast, reliable, and scalable. This document serves as a high-level guide to the key architectural concepts, or "pillars," that collectively determine API performance. Each pillar is a deep topic on its own, and this page links to the main documents for further detail.
 
+It is important to note that API performance is one facet of overall system health. While this page focuses on the API layer (payloads, network efficiency, caching), many of the underlying factors depend on the efficiency of the entire backend. For a comprehensive guide on broader topics like database optimization, code-level logic, and general best practices, see the main **[[system-performance]]** document.
+
 ```mermaid
 graph TD
     subgraph Core Concepts
