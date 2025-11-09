@@ -114,7 +114,7 @@ public User getUser(int id) throws SQLException {
 
 **Problem:** This antipattern involves making a large number of small, frequent I/O requests (e.g., over the network) instead of bundling them into fewer, larger requests. Each network call has inherent latency and overhead. When an operation requires multiple round-trips to complete, the cumulative latency can severely degrade performance.
 
-It's important to recognize the inherent trade-off between this antipattern and [[#3-extraneous-fetching|Extraneous Fetching]]. Solving Chatty I/O at the API level by creating a single, larger "batch" endpoint can inadvertently create an Extraneous Fetching problem at the database level. If the new endpoint is not carefully implemented, it might fetch too much data in an inefficient way. The key is to ensure that batching at the API layer is supported by an equally efficient data access strategy at the persistence layer, bundling only data that is **systematically used together** for a given context.
+It's important to recognize the inherent trade-off between this antipattern and [[#3-extraneous-fetching|Extraneous Fetching]]. Solving Chatty I/O by implementing a **Batch API pattern** can inadvertently create an Extraneous Fetching problem at the database level if not designed carefully.
 
 **Example:** A client application making separate API calls to get a user's profile, their orders, and their reviews, instead of one call that retrieves all the required information.
 
@@ -131,16 +131,21 @@ sequenceDiagram
         S-->>C: OrderList
         C->>S: GetUserReviews(123)
         S-->>C: ReviewList
-    else Solution: Batch Request
+    else Solution: Composite Request
         C->>S: GetUserDashboard(123)
         S-->>C: {UserProfile, OrderList, ReviewList}
     end
 ```
 
 **Solution:**
-- **Batching:** Combine multiple individual operations into a single request based on common usage patterns.
-- **Fuller Payloads:** Design APIs to return all necessary data for a specific context in a single response.
-- **GraphQL:** Use technologies like [[graphql]] that allow clients to specify exactly what data they need in a single query, which can be an effective way to manage this trade-off.
+- **Implement a Batch API Pattern**: Instead of just creating composite endpoints, a more generic solution is to create a dedicated batch endpoint (e.g., `POST /batch`) that accepts an array of individual operations. This allows clients to bundle arbitrary reads and writes into a single HTTP request.
+    - **Benefits**: Dramatically reduces network round-trips and connection overhead.
+    - **Challenges**: This pattern introduces significant complexity. Key considerations include:
+        - **Transactional Integrity**: Should the entire batch fail if one operation fails? Or should partial success be allowed?
+        - **[[api-error-handling|Error Handling]]**: The response must be able to report the status and result of each individual operation within the batch.
+        - **[[api-security|Security]]**: The batch endpoint must carefully authorize each sub-operation to ensure a user cannot perform actions they aren't permitted to.
+- **Create Composite Endpoints**: For very common use cases (like the "User Dashboard" example), create a specific, coarser-grained endpoint that retrieves and returns all necessary data in a single response.
+- **Use GraphQL**: Technologies like [[graphql]] are designed to solve this problem, allowing clients to specify exactly what data they need in a single query.
 
 ### 3. Extraneous Fetching
 
