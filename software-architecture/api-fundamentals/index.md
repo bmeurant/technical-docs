@@ -14,6 +14,7 @@ This section covers fundamental principles and patterns for designing robust, us
 * [[api-keys-and-management|API Keys and Management]]
 * [[api-pagination|API Pagination]]
 * [[api-security|API Security]]
+* [[api-compliance|API Compliance]]
 * [[api-testing|API Testing]]
 * [[api-versioning|API Versioning]]
 * [[rate-limiting|Rate Limiting]]
