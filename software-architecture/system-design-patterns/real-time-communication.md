@@ -36,7 +36,7 @@ graph LR
 
 ## WebSockets
 
-WebSockets provide a **full-duplex, bidirectional** communication channel. This channel operates over a single, long-lived [[communication-protocols#Transmission Control Protocol (TCP)|TCP]] connection. The process begins with an initial HTTP-based handshake where the client requests to "upgrade" the connection. If the server agrees, the underlying TCP connection is then repurposed for WebSocket traffic. This allows both the client and server to send messages to each other independently at any time, making WebSockets extremely powerful and efficient for applications requiring true two-way interaction.
+WebSockets provide a **full-duplex, bidirectional** communication channel. This channel operates over a single, long-lived [[communication-protocols#Transmission Control Protocol (TCP)|TCP]] connection. The process begins with an initial [[http|HTTP-based]] handshake where the client requests to "upgrade" the connection. If the server agrees, the underlying TCP connection is then repurposed for WebSocket traffic. This allows both the client and server to send messages to each other independently at any time, making WebSockets extremely powerful and efficient for applications requiring true two-way interaction.
 
 ### How it Works
 The process begins with a standard HTTP request from the client, which includes an `Upgrade: websocket` header. If the server supports WebSockets, it responds with a `101 Switching Protocols` status, and the underlying TCP connection is repurposed for WebSocket traffic.
@@ -85,26 +85,20 @@ SSE is often simpler to implement than WebSockets and is a perfect fit for use c
 ### How it Works
 The client initiates a connection by creating an `EventSource` object in JavaScript. The server responds with a `Content-Type: text/event-stream` header and keeps the connection open, sending specially formatted text strings whenever new data is available. The browser API handles connection management, including automatic reconnection if the connection is dropped.
 
-**Client-Side JavaScript Example:**
-```javascript
-// Create a connection to the SSE endpoint
-const eventSource = new EventSource('/updates');
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
 
-// Handle incoming messages
-eventSource.onmessage = function(event) {
-  console.log('New update:', event.data);
-};
+    Client->>Server: GET /events (HTTP/1.1)
+    Server-->>Client: HTTP/1.1 200 OK (Content-Type: text/event-stream)
+    Note over Server: Connection remains open
 
-// Handle named events
-eventSource.addEventListener('news', function(event) {
-  const article = JSON.parse(event.data);
-  console.log('Newsflash:', article.title);
-});
-
-// Handle errors
-eventSource.onerror = function(err) {
-  console.error("EventSource failed:", err);
-};
+    loop Event Stream
+        Server->>Client: Event 1 (data: "New update!")
+        Server->>Client: Event 2 (data: "Another update!")
+        Server->>Client: Event 3 (event: "news", data: "{...}")
+    end
 ```
 
 ### Pros & Cons
@@ -150,8 +144,10 @@ sequenceDiagram
 
 ### Pros & Cons
 -   **Pros**:
-    -   **Simpler than WebSockets**: Can be implemented with standard HTTP libraries.
-    -   **More Efficient than Short Polling**: Avoids the overhead of frequent requests that return no data.
+    -   **Universal Compatibility**: Works in any environment that supports standard HTTP, without requiring special protocols or client APIs (like `EventSource` for SSE) or firewall configurations that WebSockets might need.
+    -   **Simpler than WebSockets**: The client- and server-side logic is generally less complex to implement than a full WebSocket solution.
+    -   **More Flexible for Client-Initiated Data**: Unlike SSE, which is strictly unidirectional (server-to-client), Long Polling inherently allows the client to send data (the initial request) and receive a response, making it suitable for scenarios where client-initiated communication is also part of the "real-time" interaction.
+    -   **More Efficient than Short Polling**: Avoids the overhead of frequent, empty requests.
 -   **Cons**:
     -   **Latency**: There is still a delay between receiving data and re-establishing the connection.
     -   **Server Resources**: Holding many open connections can be resource-intensive on the server.
@@ -175,21 +171,33 @@ sequenceDiagram
 
 ---
 
-## Related Concepts
+## Relationship with APIs
 
--   **[[publish-subscribe|Publish-Subscribe (Pub/Sub)]]**: This is a common backend architectural pattern that powers real-time communication. A message broker (like Redis, RabbitMQ, or Kafka) can receive events from publishers and distribute them to backend services. These services then use WebSockets or SSE to forward the events to the appropriate clients.
--   **Webhooks**: While also used for real-time updates, Webhooks are for **server-to-server** communication. A service registers a URL with another service, which then sends an HTTP POST request to that URL when an event occurs. This contrasts with the patterns above, which are primarily for server-to-client communication.
+While real-time patterns differ from the traditional request-response model, they are still APIs and share many of the same fundamental concerns. However, these concerns are often addressed differently.
+
+-   **[[api-security|API Security]]**: Securing real-time APIs is critical. For WebSockets, authentication must be handled during the initial HTTP handshake (e.g., via cookies or a token in a query parameter) and the connection must be protected against malicious payloads.
+-   **[[api-performance|API Performance]]**: The choice between WebSockets, SSE, and Long Polling is fundamentally a performance decision, trading complexity for lower latency. Managing a large number of persistent connections also has significant performance implications for the server.
+-   **[[api-error-handling|API Error Handling]]**: Since WebSockets and SSE do not follow the standard HTTP status code model for each message, errors must be handled within the message protocol itself (e.g., sending a JSON payload with an `error` field).
+-   **[[api-versioning|API Versioning]]**: Versioning real-time APIs can be complex. For WebSockets, the version might be included in the connection URL (e.g., `/v2/chat`) or negotiated as part of a sub-protocol.
 
 ---
 
-## Resources & links
+## Related Concepts
+
+-   **[[publish-subscribe|Publish-Subscribe]] (Pub/Sub)**: This is a common backend architectural pattern that powers real-time communication. A message broker (like Redis, RabbitMQ, or Kafka) can receive events from publishers and distribute them to backend services. These services then use WebSockets or SSE to forward the events to the appropriate clients.
+-   **[[webhooks|Webhooks]]**: While also used for real-time updates, Webhooks are for **server-to-server** communication. A service registers a URL with another service, which then sends an HTTP POST request to that URL when an event occurs. This contrasts with the patterns above, which are primarily for server-to-client communication.
+
+---
+
+## Resources & Links
 
 ### Articles
 
--   **[What is a Realtime API? - Ably](https://ably.com/topic/what-is-a-realtime-api)**
+1.  **[What is a Realtime API? - Ably](https://ably.com/topic/what-is-a-realtime-api)**
     This article provides a comprehensive overview of Realtime APIs, explaining their importance, underlying technologies, and various use cases in modern applications.
--   **[Realtime APIs: A Guide to Technologies & Design Patterns - PubNub](https://www.pubnub.com/guides/realtime-api/)**
+2.  **[Realtime APIs: A Guide to Technologies & Design Patterns - PubNub](https://www.pubnub.com/guides/realtime-api/)**
     A detailed guide exploring the different technologies and design patterns used to build Realtime APIs, including WebSockets, SSE, and long polling.
--   **[WebSockets API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)**
+3.  **[WebSockets API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)**
     The official Mozilla Developer Network documentation for the WebSockets API, covering its usage, features, and browser compatibility.
--   **[Using server-sent events - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)**
+4.  **[Using server-sent events - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)**
+    The official MDN guide to Server-Sent Events, explaining how to use the `EventSource` interface to receive event streams from a server over a standard HTTP connection.

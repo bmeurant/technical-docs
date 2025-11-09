@@ -120,6 +120,23 @@ Hypermedia as the Engine of Application State (HATEOAS) is a core REST constrain
 
 ---
 
+## Versioning Real-Time APIs
+
+Versioning [[real-time-communication|real-time APIs]], especially those using WebSockets, presents different challenges compared to REST APIs because there are no standard headers for every message.
+
+Several strategies can be used:
+
+*   **URI Path Versioning**: Similar to REST, the version can be included in the connection URI. This is a common and straightforward approach.
+    *   **Example**: `wss://api.example.com/v2/chat`
+
+*   **Sub-Protocol Negotiation**: The WebSocket protocol allows clients to request a specific sub-protocol in the `Sec-WebSocket-Protocol` header during the initial handshake. The server can then select one of the requested protocols, which can include a version number.
+    *   **Example Header**: `Sec-WebSocket-Protocol: chat-v2`
+
+*   **Message-Level Versioning**: The client and server can include a `version` field in every message they exchange. This offers the most flexibility but requires more application-level logic to handle.
+    *   **Example Message**: `{ "version": "2.1", "payload": { ... } }`
+
+---
+
 ## Best Practices
 
 - **Default to URI Versioning:** For most use cases, especially for public APIs, URI path versioning (`/v1/`, `/v2/`) is the clearest and most widely understood approach.

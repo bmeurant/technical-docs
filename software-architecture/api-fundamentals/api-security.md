@@ -10,7 +10,7 @@ date: 2025-11-07
 ---
 # API Security
 
-Securing APIs is a critical aspect of modern application development. This document provides a comprehensive overview of API security, covering both common vulnerabilities that expose systems to risk and the essential best practices required to mitigate them. The content is heavily inspired by the **[[owasp|OWASP API Security Top 10]]**, which specializes in the unique vulnerabilities of APIs.
+Securing APIs is a critical aspect of modern application development. This document provides a comprehensive overview of API security, covering both common vulnerabilities that expose systems to risk and the essential best practices required to mitigate them. The content is heavily inspired by the **[[owasp|OWASP API Security Top 10]]**, which specializes in the unique vulnerabilities of APIs, from traditional [[rest|REST]] endpoints to [[real-time-communication|real-time systems]] like WebSockets.
 
 ---
 
@@ -47,7 +47,7 @@ This vulnerability has two sides:
 If an API does not impose limits on the number or frequency of requests, it can be overwhelmed by Denial-of-Service (DoS) attacks or simple programming errors, leading to performance degradation or a complete outage.
 
 *   **Example**: A malicious script calls a computationally expensive API endpoint in an infinite loop, consuming all available server CPU and memory.
-*   **Mitigation**: Implement robust [[rate-limiting]] and throttling on all API endpoints based on client IP, user ID, or API key.
+*   **Mitigation**: Implement robust [[rate-limiting]] and [[throttling]] on all API endpoints based on client IP, user ID, or API key.
 
 ### 5. Broken Function Level Authorization
 
@@ -115,3 +115,14 @@ You can't protect against what you can't see.
 -   **Do Not Log Sensitive Data**: Ensure that passwords, API keys, tokens, and other sensitive information are never written to logs.
 -   **Monitor for Suspicious Activity**: Use alerts to monitor for high error rates, failed logins, or unusual request patterns.
     > See [[observability/monitoring]] for more on monitoring strategies.
+
+---
+
+## Security in Real-Time APIs
+
+While the principles in this document apply broadly, [[real-time-communication|real-time communication patterns]] like WebSockets and Server-Sent Events introduce unique security considerations:
+
+*   **Authentication**: Since WebSockets are not a standard HTTP request-response protocol, authentication cannot be performed on every message using a typical `Authorization` header. Instead, authentication must be handled during the initial HTTP "Upgrade" request (e.g., via cookies, a signed token in the query parameters) and the resulting session must be securely managed on the server.
+*   **Authorization**: Authorization checks must still be performed on the server for every incoming message or action to prevent a malicious client from performing unauthorized operations over an established connection.
+*   **Data Validation**: The continuous nature of the connection creates a larger attack surface. All messages received from a client over a WebSocket must be rigorously validated to prevent injection attacks or other malicious payloads.
+*   **Cross-Site WebSocket Hijacking (CSWH)**: This is an attack similar to CSRF, where a malicious site can open a WebSocket connection to your server on behalf of a user. Using origin checking on the server during the handshake is a critical mitigation.

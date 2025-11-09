@@ -95,7 +95,7 @@ graph LR
     API Management platforms provide a central point to enforce security policies. This is a broad domain that includes:
     *   **[[authentication|Authentication]]**: Verifying the identity of clients using mechanisms like API Keys, [[oauth|OAuth 2.0]], or [[jwt|JWTs]].
     *   **[[authorization|Authorization]]**: Ensuring authenticated clients have the correct permissions to access a resource.
-    *   **Traffic Management**: Protecting backend services through [[rate-limiting]] and throttling policies.
+    *   **Traffic Management**: Protecting backend services through [[rate-limiting]] and [[throttling]] policies.
     *   **[[api-gateway|API Gateway]]**: Acting as the single entry point to enforce all these security policies before requests reach the backend services.
 
 4.  **Documentation & Developer Portal**

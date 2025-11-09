@@ -186,6 +186,27 @@ Imagine a query asks for a user's name and their latest post, but the post servi
 
 ---
 
+## Error Handling in Real-Time APIs
+
+Error handling in [[real-time-communication|real-time communication patterns]] like WebSockets and SSE cannot rely on HTTP status codes for each message, as the connection is already established. Instead, errors must be communicated through the message protocol itself.
+
+*   **Connection-Level Errors**: If an error occurs during the initial HTTP handshake (e.g., authentication failure), the server can and should respond with a standard `4xx` or `5xx` HTTP status code.
+*   **Message-Level Errors**: Once the connection is established, errors must be sent as part of the data stream. A common pattern is to define a standard message format that includes an `error` field.
+
+    **Example WebSocket Error Message:**
+    ```json
+    {
+      "type": "error",
+      "payload": {
+        "code": 4001,
+        "message": "Invalid message format"
+      }
+    }
+    ```
+*   **Closing the Connection**: For severe errors, the server can close the connection programmatically, sending a close code and reason. WebSocket close codes (e.g., `4000-4999` for application use) can be used to provide machine-readable information about why the connection was terminated.
+
+---
+
 ## Resources & links
 
 ### Articles

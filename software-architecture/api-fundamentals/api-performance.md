@@ -7,7 +7,7 @@ tags:
 date: 2025-11-09
 ---
 
-API performance is a critical, multi-faceted aspect of system design that directly impacts user experience, system stability, and operational cost. It is not a single feature but an outcome resulting from careful architectural choices across the entire request lifecycle.
+API performance is a critical, multi-faceted aspect of system design that directly impacts user experience, system stability, and operational cost. It is not a single feature but an outcome resulting from careful architectural choices across the entire request lifecycle. This includes not only optimizing traditional request-response interactions but also choosing the right [[real-time-communication|real-time communication patterns]] when immediate data delivery is required.
 
 A performant API is fast, reliable, and scalable. This document serves as a high-level guide to the key architectural concepts, or "pillars," that collectively determine API performance. Each pillar is a deep topic on its own, and this page links to the main documents for further detail.
 
@@ -86,6 +86,16 @@ Perceived performance is not just about speed; it's also about reliability. A fa
 -   **Error Handling**: A well-defined [[api-error-handling|error handling]] strategy ensures that when things go wrong, the API fails gracefully and provides meaningful feedback to the client.
 -   **Retry Mechanisms**: For transient failures, implementing a [[retry]] pattern (often with exponential backoff) on the client-side or in an [[api-gateway]] can increase the success rate of requests.
 -   **Circuit Breaker**: The [[circuit-breaker]] pattern prevents an application from repeatedly trying to execute an operation that is likely to fail, allowing it to "heal" and preventing cascading failures.
+
+---
+
+## Performance in Real-Time Systems
+
+The performance of [[real-time-communication|real-time communication patterns]] is measured differently from traditional request-response APIs. The focus shifts from individual request latency to connection management and message delivery latency.
+
+*   **Connection Scalability**: A key challenge is managing a large number of persistent connections (WebSockets or SSE). This consumes significant server memory and can become a bottleneck. Architectures often rely on specialized gateways or servers (e.g., built with Node.js, Go, or Erlang) designed for high concurrency.
+*   **Message Latency**: For applications like online gaming or financial trading, the time it takes for a message to travel from server to client (and vice-versa for WebSockets) is the most critical metric.
+*   **Resource Usage**: Unlike stateless HTTP requests, stateful connections require careful resource management. A poorly managed connection lifecycle can lead to memory leaks and degraded performance over time.
 
 ---
 
