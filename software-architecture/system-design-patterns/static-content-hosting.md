@@ -32,7 +32,7 @@ sequenceDiagram
 
 ## The Problem it Solves
 
-Traditionally, web servers running on compute instances (like VMs or EC2) were responsible for serving all content, both dynamic and static. Using a compute instance just to serve static files is highly inefficient:
+Traditionally, a [[web-server|web server]] running on a compute instance (like a VM or EC2) was responsible for serving all content, both dynamic and static. Using a compute instance just to serve static files is highly inefficient:
 
 -   **High Cost**: You pay for a server to be running 24/7, even when there is no traffic.
 -   **Wasted Resources**: The server's CPU and memory are largely idle, waiting to perform simple I/O operations.

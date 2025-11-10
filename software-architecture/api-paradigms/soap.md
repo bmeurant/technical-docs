@@ -36,7 +36,7 @@ A SOAP-based architecture is built on several key components that ensure its rob
 -   **WSDL (Web Services Description Language)**: The WSDL file is the heart of a SOAP service. It is an XML-based contract that describes everything about the service:
     -   What operations are available.
     -   The data types used for messages.
-    -   How messages are bound to a specific network protocol (e.g., [[communication-protocol#HyperText Transfer Protocol (HTTP)|HTTP]]).
+    -   How messages are bound to a specific network protocol (e.g., [[http|HTTP]]).
     -   The endpoint (address) of the service.
 
     **Example WSDL Snippet (Service Definition):**
@@ -64,7 +64,7 @@ A SOAP-based architecture is built on several key components that ensure its rob
     </wsdl:definitions>
     ```
     *Description: A simplified WSDL snippet defining the `GetUserDetails` operation, its input (`UserId`) and output (`UserName`) messages.*
--   **Transport Protocol**: While SOAP is technically transport-agnostic, it is almost universally transmitted using **[[communication-protocol#HyperText Transfer Protocol (HTTP)|HTTP]] POST** (or HTTPS). This reliance on POST has significant implications, notably for caching mechanisms, as POST requests are generally not cacheable by default.
+-   **Transport Protocol**: While SOAP is technically transport-agnostic, it is almost universally transmitted using **[[http|HTTP]] POST** (or HTTPS). This reliance on POST has significant implications, notably for caching mechanisms, as POST requests are generally not cacheable by default.
 
 ```mermaid
 sequenceDiagram
@@ -97,7 +97,7 @@ SOAP and [[rest|REST]] represent two different philosophies for API design.
 -   **Standardization and Strong Typing**: The WSDL provides a rigid, strongly-typed contract that leaves little room for ambiguity. This is beneficial for enterprise-level applications where formal contracts are critical.
 -   **Built-in Features**: The SOAP standard includes extensions for features like **WS-Security** (for enterprise-grade security), **WS-AtomicTransaction** (for [[acid|ACID]] transactions), and **WS-ReliableMessaging**.
 -   **IDE & Tooling Support**: The strict, contract-based nature of WSDL allows for powerful tooling and IDE support, including automatic generation of client-side stubs.
--   **Transport Agnostic**: Can be used over various protocols, not just [[communication-protocol#HyperText Transfer Protocol (HTTP)|HTTP]].
+-   **Transport Agnostic**: Can be used over various protocols, not just [[http|HTTP]].
 
 ## Disadvantages of SOAP
 
