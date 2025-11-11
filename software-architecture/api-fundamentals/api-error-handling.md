@@ -10,7 +10,7 @@ date: 2025-11-06
 ---
 # API Error Handling
 
-Consistent and informative error handling is a critical component of a well-designed API. A good strategy improves the developer experience, enabling consumers to understand and resolve issues efficiently. While the core principles are universal, the implementation details differ significantly between [[REST]] and [[graphql|GraphQL]] APIs.
+Consistent and informative error handling is a critical component of a well-designed API. A good strategy improves the developer experience, enabling consumers to understand and resolve issues efficiently. While the core principles are universal, the implementation details differ significantly between [[REST]], [[graphql|GraphQL]], and [[json-rpc|JSON-RPC]] APIs.
 
 ---
 
@@ -183,6 +183,36 @@ Imagine a query asks for a user's name and their latest post, but the post servi
 }
 ```
 *Description: The API successfully returned the user's name but failed to retrieve the latest post. The `200 OK` response contains both the partial data and a detailed error object explaining the server-side failure.*
+
+---
+
+## Error Handling in JSON-RPC
+
+Like GraphQL, the [[json-rpc|JSON-RPC]] paradigm also handles application-level errors in the response body while typically returning an `HTTP 200 OK` status. However, its approach is simpler and more rigid than GraphQL's.
+
+### The JSON-RPC Error Object
+
+If a request fails, the response object will contain an `error` member instead of a `result` member. The structure of this error object is strictly defined by the specification.
+
+- `code`: An integer representing the error type (e.g., `-32602` for "Invalid Params").
+- `message`: A string summary of the error.
+- `data` (Optional): For application-specific error details.
+
+This strict standardization ensures that clients can reliably parse errors. Unlike GraphQL, a JSON-RPC request typically fails as a whole; there is no concept of returning partial data.
+
+**Example JSON-RPC Error Response:**
+```json
+{
+  "jsonrpc": "2.0",
+  "error": {
+    "code": -32602,
+    "message": "Invalid params",
+    "data": "The 'age' parameter cannot be negative."
+  },
+  "id": 1
+}
+```
+*Description: The server returns a `200 OK` status, but the response body clearly indicates a client-side error with the parameters, following the strict JSON-RPC error format. For more details, see the main [[json-rpc]] page.*
 
 ---
 

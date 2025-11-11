@@ -14,6 +14,7 @@ Choosing the right API paradigm is a critical architectural decision that impact
 - [[graphql|GraphQL]]
 - [[grpc|gRPC]]
 - [[json-api|JSON:API Specification]]
+- [[json-rpc|JSON-RPC]]
 - [[openapi|OpenAPI Specification]]
 - [[rest|REST (Representational State Transfer)]]
 - [[rpc|Remote Procedure Call (RPC)]]
