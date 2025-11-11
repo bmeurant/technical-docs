@@ -71,10 +71,6 @@ graph TD
 
 ---
 
-## Database Concepts
-
-*   [[database-migration|Database Migrations]]
-
 ## Resources & links
 
 ### Articles
