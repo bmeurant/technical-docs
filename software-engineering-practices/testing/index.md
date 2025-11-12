@@ -40,6 +40,7 @@ The principles of testing are central to several modern development methodologie
 -   **[[tdd|Test-Driven Development (TDD)]]**: A practice where developers write [[unit-testing|unit tests]] *before* writing the production code required to make them pass.
 -   **[[bdd|Behavior-Driven Development (BDD)]]**: An extension of TDD that focuses on defining the system's behavior from the user's perspective, often using a natural language format that can be understood by non-technical stakeholders.
 -   **[[api-testing|API Testing]]**: A specific form of [[integration-testing|integration testing]] that focuses on validating the correctness, performance, and security of Application Programming Interfaces.
+-   **[[test-doubles|Test Doubles]]**: Stand-in components like Mocks, Stubs, and Fakes that are used to isolate the code under test from its dependencies.
 
 ---
 

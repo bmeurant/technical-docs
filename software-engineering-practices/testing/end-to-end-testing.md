@@ -100,13 +100,13 @@ A successful E2E testing strategy involves several distinct activities:
 
 While many tools can be used for E2E testing, some of the most prominent in modern web development include:
 
-- **Selenium**: The long-standing standard for browser automation. It supports a vast array of browsers and has bindings for numerous programming languages (Java, C#, Python, etc.). It is highly flexible but can be complex to set up.
+- **[Selenium](https://www.selenium.dev)**: The long-standing standard for browser automation. It supports a vast array of browsers and has bindings for numerous programming languages (Java, C#, Python, etc.). It is highly flexible but can be complex to set up.
 
-- **Cypress**: A modern, all-in-one testing framework that runs directly in the browser. It is known for its developer-friendly experience, fast feedback loop, and excellent debugging capabilities. It is JavaScript-based and primarily targets web applications.
+- **[Cypress](https://www.cypress.io)**: A modern, all-in-one testing framework that runs directly in the browser. It is known for its developer-friendly experience, fast feedback loop, and excellent debugging capabilities. It is JavaScript-based and primarily targets web applications.
 
-- **Playwright**: A newer framework from Microsoft that has quickly gained popularity. It provides a single API to automate Chromium, Firefox, and WebKit. It is known for its speed, reliability, and powerful features like network interception and multi-page emulation.
+- **[Playwright](https://playwright.dev)**: A newer framework from Microsoft that has quickly gained popularity. It provides a single API to automate Chromium, Firefox, and WebKit. It is known for its speed, reliability, and powerful features like network interception and multi-page emulation.
 
-- **Appium**: The de-facto standard for mobile E2E testing. It allows you to write tests against iOS and Android apps using the same WebDriver API as Selenium.
+- **[Appium](https://appium.io)**: The de-facto standard for mobile E2E testing. It allows you to write tests against iOS and Android apps using the same WebDriver API as Selenium.
 
 ---
 

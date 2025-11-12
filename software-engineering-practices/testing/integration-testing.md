@@ -33,28 +33,15 @@ graph TD
 
     ExternalAPI[External API]
 
-    ServiceA -- "1. API Call" --> ServiceB
-    ServiceB -- "2. Writes to" --> DB
-    ServiceA -- "3. Reads from" --> DB
-    ServiceA -- "4. Calls" --> ExternalAPI
+    ServiceA -- "Test 1 - API Call" --> ServiceB
+    ServiceB -- "Test 2 - Writes to" --> DB
+    ServiceA -- "Test 3 - Reads from" --> DB
+    ServiceA -- "Test 4 - Calls" --> ExternalAPI
 
     linkStyle 0 stroke:#ff6347,stroke-width:2px,color:#ff6347
     linkStyle 1 stroke:#4682b4,stroke-width:2px,color:#4682b4
     linkStyle 2 stroke:#3cb371,stroke-width:2px,color:#3cb371
     linkStyle 3 stroke:#9370db,stroke-width:2px,color:#9370db
-
-    subgraph "Integration Tests (Examples)"
-        direction LR
-        Test1("Test 1: A → B")
-        Test2("Test 2: B → DB")
-        Test3("Test 3: A → DB")
-        Test4("Test 4: A → API")
-    end
-
-    style Test1 fill:#fff,stroke:#ff6347,stroke-width:2px
-    style Test2 fill:#fff,stroke:#4682b4,stroke-width:2px
-    style Test3 fill:#fff,stroke:#3cb371,stroke-width:2px
-    style Test4 fill:#fff,stroke:#9370db,stroke-width:2px
 ```
 *Description: An integration test verifies the communication paths between different components. In this diagram, each numbered and colored link corresponds to a specific integration test that validates that particular interaction.*
 
@@ -70,9 +57,10 @@ In this approach, all or most of the modules are coupled together and tested at 
 - **Cons**: Extremely difficult to debug. If a test fails, it's hard to pinpoint which interface is causing the issue. It's generally considered an anti-pattern for complex systems.
 
 ### 2. Incremental Approach
-Modules are integrated and tested one by one in a planned sequence. This makes it much easier to locate defects.
-- **Top-Down**: Testing proceeds from the highest-level modules down to the lower-level ones. Lower-level modules are often simulated by **stubs**.
-- **Bottom-Up**: Testing starts with the lowest-level modules and moves upwards. Higher-level modules that are not yet developed are simulated by **drivers**.
+Modules are integrated and tested one by one in a planned sequence. This makes it much easier to locate defects. The different strategies use [[test-doubles|Test Doubles]] like **Stubs** and **Drivers** to simulate missing modules.
+
+- **Top-Down**: Testing proceeds from the highest-level modules down to the lower-level ones. Lower-level modules are often simulated by **[[test-doubles|Stubs]]**.
+- **Bottom-Up**: Testing starts with the lowest-level modules and moves upwards. Higher-level modules that are not yet developed are simulated by **[[test-doubles|Drivers]]**.
 - **Sandwich (Hybrid)**: A combination of top-down and bottom-up approaches, testing the middle layer first and then proceeding in both directions.
 
 ### Types of Integration: CIT vs. SIT
@@ -84,10 +72,9 @@ Integration testing can be broadly categorized based on its scope:
 
 ### Using Test Doubles
 
-While the incremental approach uses **stubs** (to simulate lower-level modules) and **drivers** (to simulate higher-level modules), modern integration tests often rely on more advanced test doubles to handle external dependencies:
+In modern testing, a variety of [[test-doubles|Test Doubles]] are used to isolate components and manage dependencies. While the incremental approach traditionally relies on Stubs and Drivers, other doubles like **Mocks**, **Fakes**, and **Spies** are essential for handling external dependencies, such as third-party APIs or databases.
 
--   **Mocks**: For third-party APIs (e.g., a payment gateway), a mock server (like WireMock) can be used to simulate the API's behavior, allowing you to test success, failure, and edge cases without making real network calls.
--   **Fakes**: For some dependencies, a lightweight, in-memory fake can be used. A common example is using an in-memory database (like H2 or SQLite) instead of a full production database to run tests quickly.
+For a complete definition of each type, see the [[test-doubles|Test Doubles]] page.
 
 ---
 

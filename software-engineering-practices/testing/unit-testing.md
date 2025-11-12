@@ -17,13 +17,10 @@ Unit tests form the foundation of the [[software-engineering-practices/testing/|
 
 ## The Principle of Isolation
 
-The key principle of unit testing is **isolation**. To achieve this, any external dependencies that a unit interacts with are replaced by **test doubles**, such as mocks, stubs, or fakes.
+The key principle of unit testing is **isolation**. To achieve this, any external dependencies that a unit interacts with are replaced by **[[test-doubles|Test Doubles]]**, such as mocks, stubs, or fakes.
 
 - **Why Isolate?** Isolation ensures that a test fails only if there is a bug in the unit being tested, not because of a problem in a dependency. This makes debugging straightforward and the test results reliable.
-- **Test Doubles**:
-  - **Mocks**: Objects that are pre-programmed with expectations and can verify that the unit under test calls them correctly.
-  - **Stubs**: Objects that provide canned answers to calls made during the test.
-  - **Fakes**: Objects that have working implementations but are not suitable for production (e.g., an in-memory database).
+- **Test Doubles**: The most common types of test doubles used in unit testing are **Mocks**, **Stubs**, **Fakes**, and **Spies**. For a complete definition of each type, see the [[test-doubles|Test Doubles]] page.
 
 ```mermaid
 graph TD
