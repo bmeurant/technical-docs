@@ -70,7 +70,7 @@ The **Peer-to-Peer** architecture is the basis for many more sophisticated model
 
 * **Pure P2P :** `Peers` are strictly equal, with no centralized infrastructure. Ex: Gnutella.
 * **Hybrid P2P :** Uses a central [[client-server|server]] for certain functions, such as `peer discovery` or authentication. Once the connection is established, communication happens directly in a P2P manner. Ex: BitTorrent (which uses central `trackers` to initiate the connection).
-* **Decentralized Ledger Technologies (DLT) :** Ex: **Blockchain** (Bitcoin, Ethereum). These systems are applications of the P2P model where a shared, immutable ledger is replicated across all peers. Transactions are validated by a consensus algorithm, ensuring data integrity without a central authority.
+* **Decentralized Ledger Technologies (DLT) :** Ex: **Blockchain** (Bitcoin, Ethereum). These systems are applications of the P2P model where a shared, immutable ledger is replicated across all peers. Transactions are validated by a consensus algorithm, ensuring [[data-integrity|data integrity]] without a central authority.
 * **Distributed File Systems :** Ex: IPFS (InterPlanetary File System). Files are stored and retrieved on a network of `peers`, optimizing content distribution and resilience.
 
 ---

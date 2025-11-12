@@ -19,7 +19,7 @@ While [[unit-testing|unit tests]] ensure that each component works correctly in 
 
 Integration tests focus on the "seams" between components. Common areas for testing include:
 - **API Calls**: Ensuring one [[microservices|microservice]] can correctly call another, send the right data, and handle the response. This is a core part of [[api-testing|API testing]].
-- **Database Interactions**: Verifying that the application can correctly read from and write to a database, and that the data integrity is maintained.
+- **Database Interactions**: Verifying that the application can correctly read from and write to a database, and that the [[data-integrity|data integrity]] is maintained.
 - **Third-Party Services**: Checking the interaction with external services, like payment gateways or authentication providers.
 - **Message Queues**: Ensuring that services can correctly publish and subscribe to messages on a [[message-queue|message queue]].
 

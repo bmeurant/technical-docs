@@ -107,7 +107,7 @@ class BankAccount {
 An invariant is a condition for a class that must be true **whenever the object is publicly accessible**. This means it must be true after the constructor has run and before and after every public method call. Invariants ensure the object remains in a consistent, valid state.
 
 -   **Responsibility:** The **Supplier** (the class as a whole).
--   **Purpose:** Defines the fundamental consistency and integrity of an object.
+-   **Purpose:** Defines the fundamental consistency and [[data-integrity|integrity]] of an object.
 
 **Example (checking an invariant):**
 

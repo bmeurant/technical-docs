@@ -10,7 +10,7 @@ date: 2025-10-20
 
 # Databases in System Design
 
-Choosing the right database is one of the most critical decisions in system design. The choice impacts [[system-design-fundamentals#Performance-vs-Scalability|performance]], [[system-design-fundamentals#Scalability|scalability]], data integrity, and the overall complexity of the system. A database model that excels for one use case can be a poor fit for another.
+Choosing the right database is one of the most critical decisions in system design. The choice impacts [[system-design-fundamentals#Performance-vs-Scalability|performance]], [[system-design-fundamentals#Scalability|scalability]], [[data-integrity|data integrity]], and the overall complexity of the system. A database model that excels for one use case can be a poor fit for another.
 
 This section introduces the two major families of databases—[[rdbms|SQL]] and [[nosql|NoSQL]] —and explores the fundamental trade-offs between them.
 
@@ -37,7 +37,7 @@ graph TD
 [[rdbms|Relational databases]] , which use Structured Query Language (SQL), have been the standard for decades. They organize data into tables with rows and columns, and enforce a predefined schema.
 
 -   **Data Model:** Structured and tabular.
--   **Schema:** Fixed and defined before data is inserted. Enforces data integrity.
+-   **Schema:** Fixed and defined before data is inserted. Enforces [[data-integrity|data integrity]].
 -   **Key Strength:** Guarantees **[[acid|ACID]]** transactions (Atomicity, Consistency, Isolation, Durability), making them extremely reliable for financial and mission-critical data.
 -   **Querying:** [[rdbms|SQL]] is an extremely powerful language for performing complex queries, aggregations, and JOINs across multiple tables.
 -   **Scalability:** Traditionally scale **[[system-design-fundamentals#Scalability|vertically]]** (by increasing the power of a single server). While modern RDBMS have better horizontal scaling, it is generally more complex than in [[nosql|NoSQL]]  systems.
@@ -67,7 +67,7 @@ graph TD
 | **Scalability** | Vertical (Scale-up) | Horizontal (Scale-out) |
 | **Consistency** | Strong ([[acid|ACID]]) | Varies (Often BASE / Eventual) |
 | **Querying** | Powerful SQL with complex JOINs | Varies; often simpler, no complex JOINs |
-| **Best for...** | Financial systems, e-commerce, applications requiring high data integrity. | Big Data, social media, IoT, real-time web apps. |
+| **Best for...** | Financial systems, e-commerce, applications requiring high [[data-integrity|data integrity]]. | Big Data, social media, IoT, real-time web apps. |
 
 ---
 

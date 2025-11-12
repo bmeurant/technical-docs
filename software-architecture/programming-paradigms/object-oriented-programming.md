@@ -38,7 +38,7 @@ These four principles are the foundation of any robust object-oriented design.
 ### 1. Encapsulation
 
 - **What it is:** The bundling of data (attributes) and the methods that operate on that data into a single object. Encapsulation also involves restricting direct access to an object's internal state; this is known as **information hiding**. This is a key technique for applying the [[encapsulate-what-varies|Encapsulate What Varies]] principle.
-- **Why it's important:** It protects an object's data from accidental or unauthorized modification from the outside (data integrity). It also reduces system complexity by hiding implementation details, leading to higher [[cohesion-coupling|cohesion]].
+- **Why it's important:** It protects an object's data from accidental or unauthorized modification from the outside ([[data-integrity|data integrity]]). It also reduces system complexity by hiding implementation details, leading to higher [[cohesion-coupling|cohesion]].
 - **Analogy:** The engine of a car. You don't need to know how the pistons, valves, and spark plugs work internally. You interact with it through a simple, public interface: the ignition key.
 
 **Pseudo-code Example:**
@@ -185,7 +185,7 @@ These are the building blocks that languages provide to enable object-oriented d
 - **Abstract Class:** A class that cannot be instantiated on its own and is meant to be inherited by other classes. It can contain a mix of implemented methods and `abstract` methods (methods without an implementation), which must be implemented by its subclasses.
 
 ### Interfaces
-An interface is a contract that defines a set of method signatures without providing any implementation. A class that `implements` an interface must provide a concrete implementation for all the methods defined in that interface. Unlike inheritance (which creates an "is-a" relationship), interfaces define a "can-do" relationship. They are a powerful tool for achieving [[cohesion-coupling|decoupling]] and are central to the [[solid#5-dependency-inversion-principle-dip|Dependency Inversion Principle]] and the [[solid#4-interface-segregation-principle-isp|Interface Segregation Principle]].
+An interface is a contract that defines a set of method signatures without providing any implementation. A class that `implements` an interface must provide a concrete implementation for all the methods defined in that interface. Unlike inheritance (which creates an "is-a" relationship), interfaces define a "can-do" relationship. They are a powerful tool for achieving [[cohesion-coupling|decoupling]] and are central to the [[solid#5-dependency-inversion-princ-dip|Dependency Inversion Principle]] and the [[solid#4-interface-segregation-principle-isp|Interface Segregation Principle]].
 
 ### Interface vs. Abstract Class
 
@@ -225,7 +225,7 @@ Visibility modifiers (like `public`, `private`, and `protected`) are keywords th
 
 ### **Videos**
 
-1. **[Fundamental Concepts of Object Oriented Programming](http://www.youtube.com/watch?v=m_MQYyJpIjg)**
+1. **[Fundamental Concepts of Object Oriented Programming](http.youtube.com/watch?v=m_MQYyJpIjg)**
 
     A presentation defining the four pillars of **OOP**: **Abstraction** (simplifying reality to focus on relevant **data** and **processes**), **Encapsulation** (hiding **inner workings** and binding **data** with **functions**), **Inheritance** (deriving **methods** and **properties** through a **class** hierarchy), and **Polymorphism** (**overriding** inherited methods).
 

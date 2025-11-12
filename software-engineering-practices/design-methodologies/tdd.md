@@ -71,7 +71,7 @@ TDD has strong relationships with other key design methodologies.
 TDD and [[ddd|Domain-Driven Design (DDD)]] are highly synergistic. While DDD provides the tools to model a complex business domain (the **what**), TDD provides the discipline to implement that model correctly (the **how**).
 
 *   **Implementing Aggregates:** TDD is the ideal way to build a DDD Aggregate. You can write tests that codify the Aggregate's **invariants** (business rules) before writing the implementation. This ensures the Aggregate protects its own consistency, which is a core tenet of DDD.
-*   **Validating the Domain Model:** The TDD cycle ensures that every Entity, Value Object, and Domain Service is built to specification and behaves as expected, reinforcing the integrity of the domain model.
+*   **Validating the Domain Model:** The TDD cycle ensures that every Entity, Value Object, and Domain Service is built to specification and behaves as expected, reinforcing the [[data-integrity|integrity]] of the domain model.
 
 ---
 

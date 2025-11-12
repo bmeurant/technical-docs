@@ -143,7 +143,7 @@ In distributed systems, availability and consistency represent a fundamental tra
 
 The trade-off becomes critical during a **network partition**—a situation where nodes in a distributed system cannot communicate with each other. At that point, the system must choose:
 
-1.  **Prioritize Consistency (CP - Consistent & Partition-Tolerant):** To guarantee that data remains consistent, the system may have to refuse some requests (e.g., writes) until the partition is resolved. This sacrifices availability to ensure data integrity. This is often the choice for financial systems or critical inventory management.
+1.  **Prioritize Consistency (CP - Consistent & Partition-Tolerant):** To guarantee that data remains consistent, the system may have to refuse some requests (e.g., writes) until the partition is resolved. This sacrifices availability to ensure [[data-integrity|data integrity]]. This is often the choice for financial systems or critical inventory management.
 
 2.  **Prioritize Availability (AP - Available & Partition-Tolerant):** To ensure the system always responds, it may serve data that is stale or allow writes that cannot be immediately propagated to other nodes. This sacrifices strong consistency for uptime, settling for **eventual consistency**. This is a common choice for social media feeds or other non-critical systems where being always online is more important than every user seeing the exact same data instantly.
 
@@ -153,6 +153,7 @@ The trade-off becomes critical during a **network partition**—a situation wher
 * [[reliability-engineering|Reliability Engineering]]
 * [[cap|CAP Theorem]]
 * [[consistency|Consistency]]
+* [[data-integrity|Data Integrity]]
 * [[dns|Domain Name System (DNS)]]
 * [[communication-protocols|Communication Protocols]]
 * [[http]]

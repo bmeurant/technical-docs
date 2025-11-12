@@ -12,7 +12,7 @@ date: 2025-10-19
 
 In a distributed system, consistency refers to the guarantee that all clients see the same data at the same time, regardless of which node they connect to. Maintaining consistency is a critical challenge because data is replicated across multiple nodes that are separated by a network.
 
-A consistency model is a contract between a datastore and the applications that use it. It defines the rules for how and when updates become visible to readers. The choice of a consistency model is a fundamental trade-off, often balancing data integrity against performance, latency, and [[availability-patterns|availability]], as famously described in the [[cap|CAP Theorem]].
+A consistency model is a contract between a datastore and the applications that use it. It defines the rules for how and when updates become visible to readers. The choice of a consistency model is a fundamental trade-off, often balancing [[data-integrity|data integrity]] against performance, latency, and [[availability-patterns|availability]], as famously described in the [[cap|CAP Theorem]].
 
 Consistency is not a binary choice but a spectrum, with the most common models being Strong, Eventual, and Weak consistency.
 

@@ -54,7 +54,7 @@ The best error is one that never occurs. A robust client application should prac
 Client-side validation is a **UX enhancement and an optimization, not a security measure.** The server **must always** re-validate all incoming data. A malicious actor can easily bypass any client-side checks and send raw, malicious data directly to the API endpoint. 
 
 - **Client-Side Validation:** For user experience.
-- **Server-Side Validation:** For security and data integrity.
+- **Server-Side Validation:** For security and [[data-integrity|data integrity]].
 
 ---
 

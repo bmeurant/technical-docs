@@ -38,7 +38,7 @@ graph TD
 
 *   **Confidentiality**: Ensures that information is accessible only to those authorized to have access. This prevents sensitive data from being disclosed to unauthorized individuals or systems.
     *   *Examples*: Encryption, access controls, data masking.
-*   **Integrity**: Ensures that information is accurate, complete, and has not been tampered with. It protects data from unauthorized modification or destruction.
+*   **[[data-integrity|Integrity]]**: Ensures that information is accurate, complete, and has not been tampered with. It protects data from unauthorized modification or destruction.
     *   *Examples*: Hashing, digital signatures, version control, access controls.
 *   **[[reliability-engineering#1. Availability|Availability]]**: Ensures that authorized users can access information and systems when needed. This protects against disruptions to service.
     *   *Examples*: Redundancy, backup and recovery, load balancing, disaster recovery plans.
@@ -66,7 +66,7 @@ graph TD
     J --> N(Multi-Factor Authentication)
     K --> O(Least Privilege)
 ```
-*Description: This diagram illustrates the core principles of security (Confidentiality, Integrity, Availability) and fundamental mechanisms like Authentication and Authorization. It also shows examples of technologies and concepts that support these principles, such as Encryption for confidentiality, Hashing for integrity, and PKI for authentication.*
+*Description: This diagram illustrates the core principles of security (Confidentiality, Integrity, Availability) and fundamental mechanisms like Authentication and Authorization. It also shows examples of technologies and concepts that support these principles, such as Encryption for confidentiality, Hashing for [[data-integrity|integrity]], and PKI for authentication.*
 
 ---
 

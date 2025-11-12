@@ -85,7 +85,7 @@ class Customer {
 A **Bounded Context** is a central pattern in Strategic DDD. It defines a clear boundary within which a specific domain model is defined and applicable. Inside a Bounded Context, every term from the Ubiquitous Language has a single, unambiguous meaning.
 
 *   **Autonomy and Focus:** Bounded Contexts allow teams to work autonomously on different parts of the system without needing to understand the entire domain. Each team can focus on its specific context and develop a model that is perfectly suited for that purpose.
-*   **Model Integrity:** It protects the integrity of the domain model by preventing concepts from different domains from leaking into each other and creating a "big ball of mud."
+*   **Model Integrity:** It protects the [[data-integrity|integrity]] of the domain model by preventing concepts from different domains from leaking into each other and creating a "big ball of mud."
 *   **Relationship to Team Organization:** Bounded Contexts often align with team structures (Conway's Law). A single team should ideally own a single Bounded Context, giving them full ownership of their part of the domain.
 
 **Example (Class Variants):**

@@ -19,7 +19,7 @@ GraphQL is built on a few central concepts that work together to provide its pow
 
 -   **Schema Definition Language (SDL)**: The heart of any GraphQL API is its schema. The schema is a strongly typed contract that defines all the capabilities of the API, including the types of data that can be queried and the relationships between them.
 -   **Queries**: Queries are used to fetch data. They mirror the shape of the final JSON response, making them intuitive to write and understand.
--   **Mutations**: For any create, update, or delete operations, GraphQL uses mutations. While queries are executed in parallel by the GraphQL engine, mutations are executed sequentially to ensure data integrity.
+-   **Mutations**: For any create, update, or delete operations, GraphQL uses mutations. While queries are executed in parallel by the GraphQL engine, mutations are executed sequentially to ensure [[data-integrity|data integrity]].
 -   **Subscriptions**: For real-time communication, GraphQL supports subscriptions, which allow a client to listen for changes on the server and receive updates as they happen, typically over WebSockets.
 -   **Resolvers**: A resolver is a function on the server that is responsible for fetching the data for a single field in the schema. The GraphQL engine calls the necessary resolvers to construct the final response to a query.
 

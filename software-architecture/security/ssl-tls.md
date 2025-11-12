@@ -58,7 +58,7 @@ A cipher suite is a named combination of cryptographic algorithms used during th
 1.  **Key Exchange Algorithm**: How the shared secret key will be established (e.g., ECDHE).
 2.  **Authentication Algorithm**: How the server's identity is verified (e.g., RSA, ECDSA).
 3.  **Bulk Encryption Algorithm**: The symmetric algorithm used to encrypt the data (e.g., AES-256-GCM).
-4.  **Message Authentication Code (MAC) Algorithm**: The hashing algorithm used to ensure data integrity (e.g., SHA256).
+4.  **Message Authentication Code (MAC) Algorithm**: The hashing algorithm used to ensure [[data-integrity|data integrity]] (e.g., SHA256).
 
 Example: `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 
@@ -73,7 +73,7 @@ Although the term "SSL" is still widely used colloquially, modern secure connect
 
 -   [[pki|Public Key Infrastructure (PKI)]]: The entire framework of trust that allows TLS to authenticate the identity of servers.
 -   [[communication-protocols|Communication Protocols]]: TLS is a security layer that operates on top of transport protocols like TCP.
--   [[hashing-algorithms|Hashing Algorithms]]: Used within TLS for data integrity checks and message authentication codes.
+-   [[hashing-algorithms|Hashing Algorithms]]: Used within TLS for [[data-integrity|data integrity]] checks and message authentication codes.
 
 ---
 
@@ -82,7 +82,7 @@ Although the term "SSL" is still widely used colloquially, modern secure connect
 ### Articles
 
 1.  **[What is SSL/TLS? An In-Depth Guide - SSL.com](https://www.ssl.com/article/what-is-ssl-tls-an-in-depth-guide/)**
-    A comprehensive guide from SSL.com that covers the history and evolution from SSL to TLS. It explains the core functions of the protocol, including encryption, authentication, and integrity, and details the components of an SSL/TLS certificate.
+    A comprehensive guide from SSL.com that covers the history and evolution from SSL to TLS. It explains the core functions of the protocol, including encryption, authentication, and [[data-integrity|integrity]], and details the components of an SSL/TLS certificate.
 
 2.  **[What happens in a TLS handshake? - Cloudflare](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/)**
     A detailed, step-by-step explanation of the TLS handshake process from Cloudflare's learning center. It clearly breaks down the "Client Hello," "Server Hello," and key exchange steps, making it an excellent resource for understanding how a secure session is established.

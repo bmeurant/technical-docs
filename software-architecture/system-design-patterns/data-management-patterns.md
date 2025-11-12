@@ -23,7 +23,7 @@ This page covers a collection of patterns designed to solve common problems in d
 
 Choosing the right data storage solution is fundamental to system design, impacting scalability, performance, and cost.
 
-*   **[[rdbms|Relational Databases (SQL)]]**: Traditional databases emphasizing [[acid|ACID]] properties, structured schemas, and powerful querying with SQL. Ideal for complex transactions and data integrity.
+*   **[[rdbms|Relational Databases (SQL)]]**: Traditional databases emphasizing [[acid|ACID]] properties, structured schemas, and powerful querying with SQL. Ideal for complex transactions and [[data-integrity|data integrity]].
 *   **[[nosql|NoSQL Databases]]**: A diverse category of databases offering flexible schemas, horizontal scalability, and high performance for specific workloads. Includes:
     *   **Document Stores**: For semi-structured data (e.g., MongoDB).
     *   **Key-Value Stores**: For simple, high-speed data retrieval (e.g., Redis).

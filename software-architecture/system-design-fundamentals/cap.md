@@ -45,13 +45,13 @@ The choice between Consistency and Availability is a critical architectural deci
 
 ### 1. CP-Oriented Systems (Consistency & Partition Tolerance)
 
-**Goal:** To ensure data integrity and accuracy above all else.
+**Goal:** To ensure [[data-integrity|data integrity]] and accuracy above all else.
 
 **Behavior:** When a network partition occurs, these systems prioritize consistency. If a client attempts to write data, and the system cannot guarantee that all replicas will be updated and synchronized, it will block the operation and return an error. The system becomes temporarily unavailable for that transaction, but it prevents any data inconsistencies.
 
 **Application Examples:**
 * **Banking Systems:** Financial transactions require absolute accuracy. A bank cannot risk allowing a client to withdraw money if the system cannot verify the current, consistent balance across all nodes. In this scenario, it is better for the system to be temporarily unavailable than to make a financial error.
-* **Ticket Reservation Systems:** It is impossible to sell the same concert seat to two different people. The system must guarantee that once a seat is sold, it is marked as unavailable to all other potential buyers, even if there's a network issue. The integrity of the data is more important than ensuring every single person can attempt a purchase at all times.
+* **Ticket Reservation Systems:** It is impossible to sell the same concert seat to two different people. The system must guarantee that once a seat is sold, it is marked as unavailable to all other potential buyers, even if there's a network issue. The [[data-integrity|integrity]] of the data is more important than ensuring every single person can attempt a purchase at all times.
 
 **Typical Databases:**
 * **Relational Databases (SQL):** Most traditional [[rdbms|relational databases]] like PostgreSQL and MySQL are designed with a strong emphasis on **[[acid|ACID]]** (Atomicity, Consistency, Isolation, Durability) properties, making them CP-oriented by nature.

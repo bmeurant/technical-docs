@@ -27,7 +27,7 @@ OWASP champions several pivotal initiatives that have become industry standards 
     *   **Security Misconfiguration:** Improperly implemented security controls or insecure default configurations.
     *   **Vulnerable and Outdated Components:** Using libraries, frameworks, or other software components with known security vulnerabilities.
     *   **Identification and Authentication Failures:** Ineffective implementation of identity-related functions (e.g., [[authentication|authentication]], session management).
-    *   **Software and Data Integrity Failures:** Integrations that do not verify the integrity of critical data, CI/CD pipelines, or software updates.
+    *   **Software and [[data-integrity|Data Integrity]] Failures:** Integrations that do not verify the integrity of critical data, CI/CD pipelines, or software updates.
     *   **Security Logging and Monitoring Failures:** Insufficient logging and monitoring, leading to delayed detection of breaches.
     *   **Server-Side Request Forgery (SSRF):** Web application fetches a remote resource without validating the user-supplied URL.
 
