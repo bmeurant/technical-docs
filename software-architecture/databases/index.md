@@ -1,5 +1,5 @@
 ---
-title: Databases in System Design
+title: Databases
 tags:
   - system-design
   - databases

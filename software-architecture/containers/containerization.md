@@ -55,11 +55,58 @@ graph TD
 *   **VMs** each have a full-blown guest OS, leading to significant overhead in size (gigabytes) and startup time (minutes).
 *   **Containers** share the host kernel and package only the application and its dependencies, resulting in a smaller footprint (megabytes) and near-instantaneous startup.
 
+---
+
+### System Containers vs. Application Containers
+
+A critical distinction in the container world is the philosophy behind what a container represents.
+
+```mermaid
+graph TD
+    subgraph "System Container (e.g., LXC)"
+        direction TB
+        LXC_Init["init process (e.g., systemd)"]
+        LXC_Init --> LXC_SSH("sshd")
+        LXC_Init --> LXC_Cron("cron")
+        LXC_Init --> LXC_App("My Application")
+    end
+
+    subgraph "Application Container (e.g., Docker)"
+        direction TB
+        Docker_App["My Application (PID 1)"]
+    end
+
+    style LXC_Init fill:#cde4ff
+    style Docker_App fill:#ccffcc
+```
+*   **System Containers (e.g., [[lxc|LXC]])**: Aim to virtualize a full operating system. They boot an `init` process, allowing them to run multiple services and behave like a traditional, lightweight virtual machine. You can SSH into them, install packages, and manage them as persistent servers.
+
+*   **Application Containers (e.g., [[docker|Docker]])**: Designed to package and run a single application process. The container's lifecycle is tied to this one process. This model is optimized for immutable infrastructure and deploying [[microservices]].
+
+---
+
+### Technology Comparison: LXC vs. Docker
+
+| Feature | LXC (Linux Containers) | Docker |
+| :--- | :--- | :--- |
+| **Philosophy** | **System Container**: Emulates a full OS. | **Application Container**: Runs a single process. |
+| **Process Management** | Runs a full `init` system, can manage multiple processes. | Designed to run a single foreground process (PID 1). |
+| **Image/Filesystem** | Typically uses a root filesystem based on a distribution template (e.g., Ubuntu, CentOS). | Uses a layered image format (Docker Image) for portability and versioning. |
+| **Networking** | Provides advanced, flexible networking options (bridges, veth pairs). | Provides simpler, more abstracted networking models (bridge, host, overlay). |
+| **Use Case** | Lightweight VMs, development environments, infrastructure virtualization. | [[microservices]], CI/CD, application packaging and distribution. |
+
+---
+
 ### Core Concepts
 
-- **Container Image**: A static, immutable file that acts as a blueprint for a container. It's a snapshot containing everything needed to run an application: code, runtime, libraries, and environment variables. Images are often built in layers, which optimizes storage and transfer speeds.
+- **Container Image & Union Filesystems**: A static, immutable file that acts as a blueprint for a container. It's a snapshot containing everything needed to run an application: code, runtime, libraries, and environment variables. Modern container images are built using a **layered filesystem**. Each instruction in a `Dockerfile` (or similar build script) creates a new layer on top of the previous one. This design is made possible by **union file systems** (like OverlayFS), which can merge several layers into a single, coherent filesystem view. This layering is highly efficient, as it allows different images to share common layers (like a base OS), significantly reducing disk space usage and speeding up image distribution.
 - **Container Engine**: The runtime software that manages containers. It is responsible for creating, starting, stopping, and destroying containers based on the specified images. While [[docker|Docker]] popularized application containers, other important engines exist. Lower-level runtimes like `containerd` and `CRI-O` are foundational in the Kubernetes ecosystem. Another key technology is [[lxc|LXC (Linux Containers)]], which focuses more on "system containers" that behave like lightweight virtual machines, offering a different approach to virtualization.
 - **Container Orchestration**: As the number of containers grows, managing them manually becomes impractical. Orchestration platforms automate the deployment, management, [[software-architecture/system-design-fundamentals/index#Scalability|scaling]], and networking of containers. [[kubernetes|Kubernetes]] has become the de-facto standard for container orchestration, though other tools like Docker Swarm and Apache Mesos exist.
+
+### Open Container Initiative (OCI)
+The OCI is a governance body established under the Linux Foundation to create open industry standards around container formats and runtimes. Its goal is to ensure that the container ecosystem remains interoperable, preventing vendor lock-in. The OCI maintains two key specifications:
+- **The Runtime Specification (runtime-spec)**: Defines how to run a "filesystem bundle" as a container. Runtimes like `runc` (used by Docker) are implementations of this spec.
+- **The Image Specification (image-spec)**: Defines the format for container images, ensuring that an image built with one tool (like Docker) can be run by any other OCI-compliant runtime.
 
 ### Benefits of Containerization
 

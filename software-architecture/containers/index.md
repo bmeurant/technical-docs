@@ -13,7 +13,7 @@ It also includes specific technologies and orchestration platforms that form the
 
 - [[containerization]]
 
-### Technologies (Planned)
+### Technologies
 
 - [[docker]]
 - [[lxc]]
