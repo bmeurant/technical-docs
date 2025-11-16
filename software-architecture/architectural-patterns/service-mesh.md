@@ -121,7 +121,7 @@ A Service Mesh is not a standalone concept; it integrates and implements several
 
 2.  **[Understanding Sidecar and Service Mesh (Medium)](https://medium.com/@dinesharney/understanding-sidecar-and-service-mesh-a-beginners-guide-to-kubernetes-patterns-787c6d90a96e)**
 
-    This beginner's guide introduces the **Sidecar Pattern** as a single helper container running alongside the main application container within a Kubernetes Pod, handling tasks like logging or proxying. It then defines a **Service Mesh** as a network of coordinated sidecars that form a powerful traffic control system across multiple microservices. The mesh's architecture is broken down into the **Control Plane** (the brain for configuration and policies, e.g., Istio's components) and the **Data Plane** (the collection of sidecar proxies, e.g., Envoy). The core benefit is separating business logic from communication logic, leading to improved **modularity**, **observability**, and **security**.
+    This beginner's guide introduces the **Sidecar Pattern** as a single helper [[containerization|container]] running alongside the main application container within a Kubernetes Pod, handling tasks like logging or proxying. It then defines a **Service Mesh** as a network of coordinated sidecars that form a powerful traffic control system across multiple microservices. The mesh's architecture is broken down into the **Control Plane** (the brain for configuration and policies, e.g., Istio's components) and the **Data Plane** (the collection of sidecar proxies, e.g., Envoy). The core benefit is separating business logic from communication logic, leading to improved **modularity**, **observability**, and **security**.
 
 ---
 

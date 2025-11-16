@@ -110,7 +110,7 @@ Similar to thread pools, you can maintain separate connection pools for differen
 
 ### 3. Process/Container Bulkhead
 
-In a [[microservices]] architecture, each service runs in its own process or container. This is a form of bulkhead at the process level. Container orchestration platforms like Kubernetes take this further by allowing you to set resource limits (CPU, memory) for each container. This ensures that a memory leak or a CPU-intensive bug in one service cannot starve other services running on the same host machine.
+In a [[microservices]] architecture, each service runs in its own process or container. This is a form of bulkhead at the process level. [[containerization|Container]] orchestration platforms like Kubernetes take this further by allowing you to set resource limits (CPU, memory) for each container. This ensures that a memory leak or a CPU-intensive bug in one service cannot starve other services running on the same host machine.
 
 ---
 

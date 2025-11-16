@@ -129,7 +129,7 @@ How do service instances get into the registry?
 
 1.  **Self-Registration:** The service instance is responsible for registering itself with the registry on startup and de-registering on shutdown. It must also send periodic **[[monitoring#Health Monitoring|heartbeats]]** to the registry to signal that it is still healthy.
 
-2.  **Third-Party Registration:** An external tool, known as a **Registrar**, handles the registration process. In modern containerized environments, the container orchestrator (e.g., Kubernetes) often plays this role, automatically registering and de-registering services as they are deployed or terminated.
+2.  **Third-Party Registration:** An external tool, known as a **Registrar**, handles the registration process. In modern containerized environments, the [[containerization|container]] orchestrator (e.g., Kubernetes) often plays this role, automatically registering and de-registering services as they are deployed or terminated.
 
 ---
 

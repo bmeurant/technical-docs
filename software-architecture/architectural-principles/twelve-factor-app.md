@@ -133,7 +133,7 @@ The recommended approach combines two strategies:
 
 This approach is made possible and secure by ecosystem tools that externalize configuration and secret management:
 
-*   **Container Orchestrators**:
+*   **[[containerization|Container]] Orchestrators**:
     *   **Kubernetes ConfigMaps**: To inject non-sensitive configuration files or environment variables.
     *   **Kubernetes Secrets**: To securely manage and mount sensitive data like passwords or API tokens.
 *   **Centralized Secret Managers**:
@@ -456,7 +456,7 @@ Historically, the gaps between development and production were large, leading to
 Modern tools like Docker have made achieving parity much easier. By packaging the application and its dependencies into a container, developers can run an environment locally that is identical to the one in production.
 
 ### Examples
-*   Using containerization (like Docker) to create local development environments that closely mirror the production environment.
+*   Using [[containerization|containerization]] (like Docker) to create local development environments that closely mirror the production environment.
 *   Using the same backing services (e.g., [[rdbms|PostgreSQL]] in all environments, not SQLite in dev).
 *   Ensuring developers have access to production logs and [[monitoring]] tools to understand how their code behaves in the real world.
 
@@ -500,7 +500,7 @@ This approach decouples the application from the log management infrastructure. 
 
 ### Examples
 *   An application writing a JSON object to `stdout` for each event.
-*   A container orchestrator like Kubernetes capturing the `stdout` stream from all containers.
+*   A [[containerization|container]] orchestrator like Kubernetes capturing the `stdout` stream from all containers.
 *   A log router like **Fluentd** or **Logstash** collecting these streams, parsing them, and forwarding them to multiple outputs like **Elasticsearch** for searching and **Amazon S3** for long-term archival.
 
 ## XII. Admin Processes

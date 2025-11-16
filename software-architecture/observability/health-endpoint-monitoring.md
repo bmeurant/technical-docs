@@ -12,13 +12,13 @@ date: 2025-10-31
 
 The **Health Endpoint Monitoring** pattern (also known as the **Health Check** pattern) is a fundamental technique for reporting the health of an application or service. It involves exposing a dedicated HTTP endpoint that external tools can poll at regular intervals to determine if the service is running correctly and is ready to handle requests.
 
-This pattern is critical for building self-healing and highly available systems, as it provides a simple, automated way for other parts of the infrastructure (like [[load-balancing|load balancers]], container orchestrators, or [[service-discovery]] registries) to make decisions about the service's state.
+This pattern is critical for building self-healing and highly available systems, as it provides a simple, automated way for other parts of the infrastructure (like [[load-balancing|load balancers]], [[containerization|container]] orchestrators, or [[service-discovery]] registries) to make decisions about the service's state.
 
 ---
 
 ## Levels of Health Checks
 
-A simple "200 OK" response is often not enough. A robust health monitoring strategy typically involves multiple types of checks, each answering a different question. The most common are Liveness, Readiness, and Startup probes, concepts popularized by container orchestrators like Kubernetes.
+A simple "200 OK" response is often not enough. A robust health monitoring strategy typically involves multiple types of checks, each answering a different question. The most common are Liveness, Readiness, and Startup probes, concepts popularized by [[containerization|container]] orchestrators like Kubernetes.
 
 ```mermaid
 graph TD
@@ -95,8 +95,8 @@ app.get('/readyz', async (req, res) => {
 ### 3. Startup Probe
 
 - **Question:** "Has the application finished its initial startup?"
-- **Purpose:** To handle applications that have a slow startup time. A startup probe allows the container a generous amount of time to start before the liveness probe takes over.
-- **Action on Failure:** If the startup probe fails after its configured period, the container is restarted, just like a failed liveness probe.
+- **Purpose:** To handle applications that have a slow startup time. A startup probe allows the [[containerization|container]] a generous amount of time to start before the liveness probe takes over.
+- **Action on Failure:** If the startup probe fails after its configured period, the [[containerization|container]] is restarted, just like a failed liveness probe.
 - **Implementation:** The check itself can be identical to the liveness probe, but it is configured with a longer initial delay and failure threshold to accommodate slow-starting services.
 
 ---

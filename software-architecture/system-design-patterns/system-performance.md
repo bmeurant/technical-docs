@@ -304,7 +304,7 @@ sequenceDiagram
 **Solution:**
 - **[[posa#Bulkhead|Bulkhead Pattern]]:** This pattern isolates system resources into separate pools, dedicating a pool to each tenant or workload. For example, instead of one large thread pool for all incoming requests, you can create a separate, smaller thread pool for each tenant. If a "noisy" tenant's requests are slow or numerous, they will only exhaust the threads in their own dedicated pool. This leaves the thread pools for other tenants untouched and free to process requests, effectively containing the failure and preserving resources for well-behaved tenants. The same principle applies to database connection pools or any other finite resource.
 - **Resource Quotas:** Enforce limits on how much of a resource any single tenant can consume.
-- **Containerization/Virtualization:** Run tenants in separate containers (e.g., Docker) or VMs to enforce hard resource limits at the OS level.
+- **Containerization/Virtualization:** Run tenants in separate [[containerization|containers]] (e.g., Docker) or VMs to enforce hard resource limits at the OS level.
 
 ### 10. Busy Frontend
 

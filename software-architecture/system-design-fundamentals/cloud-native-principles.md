@@ -20,7 +20,7 @@ Cloud-native applications are designed and built to take full advantage of cloud
 Cloud-native applications adhere to a set of principles that guide their design and development:
 
 *   **[[microservices|Microservices]] Architecture**: Applications are decomposed into small, independent, and loosely coupled services. Each service is built around a specific business capability and can be developed, deployed, and scaled independently. This promotes agility and fault isolation.
-*   **Containerization**: Services are packaged into lightweight, portable, and self-sufficient containers (e.g., Docker). Containers encapsulate an application and its dependencies, ensuring consistent behavior across different environments.
+*   **Containerization**: Services are packaged into lightweight, portable, and self-sufficient [[containerization|containers]] (e.g., Docker). Containers encapsulate an application and its dependencies, ensuring consistent behavior across different environments.
 *   **Orchestration**: Containerized services are managed and automated by orchestrators (e.g., Kubernetes). Orchestration platforms handle deployment, scaling, load balancing, and self-healing of microservices.
 *   **[[twelve-factor-app|The Twelve-Factor App]] Methodology**: Cloud-native applications often follow the Twelve-Factor App principles, which provide guidelines for building robust, portable, and scalable applications, especially in distributed environments.
 *   **[[devops|DevOps]] and Continuous Delivery**: Cloud-native development embraces DevOps practices, emphasizing automation, continuous integration (CI), and continuous delivery (CD). This enables rapid iteration, frequent deployments, and faster time-to-market.
@@ -109,12 +109,12 @@ graph TD
 *   **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Services can be scaled independently and horizontally, allowing the application to handle fluctuating loads efficiently.
 *   **[[reliability-engineering|Resilience]]**: Fault isolation ensures that a failure in one service does not bring down the entire application. Orchestration platforms provide self-healing capabilities.
 *   **Flexibility and Innovation**: Teams can choose the best technology stack for each service, fostering innovation and avoiding technology lock-in.
-*   **Cost Optimization**: Efficient resource utilization through containerization and orchestration, often combined with pay-as-you-go cloud models.
+*   **Cost Optimization**: Efficient resource utilization through [[containerization|containerization]] and orchestration, often combined with pay-as-you-go cloud models.
 
 ### Challenges
 
 *   **Increased Complexity**: Distributed systems are inherently more complex to design, develop, test, and operate than monolithic applications.
-*   **Operational Overhead**: Requires mature DevOps practices, robust automation, and specialized skills for managing container orchestrators, service meshes, and distributed tracing.
+*   **Operational Overhead**: Requires mature DevOps practices, robust automation, and specialized skills for managing [[containerization|container]] orchestrators, service meshes, and distributed tracing.
 *   **Data [[consistency|Consistency]]**: Maintaining data consistency across multiple, independent databases in a microservices architecture is challenging and often leads to [[consistency#Eventual Consistency|eventual consistency]] models.
 *   **Debugging and Troubleshooting**: Tracing requests across multiple services and identifying root causes of issues can be difficult without proper [[observability|observability]] tools.
 *   **Network Latency**: Inter-service communication over the network introduces latency and potential reliability issues that must be carefully managed.

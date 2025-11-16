@@ -651,7 +651,7 @@ graph TD
 #### Sidecar
 
 * **Problem**: How to add additional functionality (like logging, [[monitoring]], or security) to an existing application component without modifying its code?
-* **Synopsis**: The **Sidecar** pattern attaches a separate, helper process or container to a main application to provide supporting features and abstract away infrastructure concerns. For a detailed explanation of its use cases, implementation in Kubernetes, and trade-offs, see the main page on the **[[sidecar]]** pattern.
+* **Synopsis**: The **Sidecar** pattern attaches a separate, helper process or [[containerization|container]] to a main application to provide supporting features and abstract away infrastructure concerns. For a detailed explanation of its use cases, implementation in Kubernetes, and trade-offs, see the main page on the **[[sidecar]]** pattern.
 
 
 #### Ambassador

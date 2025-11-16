@@ -110,7 +110,7 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
     This article by Martin Fowler is a great starting point for an in-depth understanding. It covers the fundamental concepts, benefits, pitfalls, and reference architectures, which is highly relevant for an architect role.
 
 2.  **[What is Serverless?](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)**
-    Red Hat offers a very clear article that puts **serverless** in context with other cloud technologies like containers and [[microservices|microservices]]. It is ideal for placing this model within the broader landscape of **cloud computing**.
+    Red Hat offers a very clear article that puts **serverless** in context with other cloud technologies like [[containerization|containers]] and [[microservices|microservices]]. It is ideal for placing this model within the broader landscape of **cloud computing**.
 
 ### **Videos**
 

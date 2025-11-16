@@ -66,7 +66,7 @@ A comprehensive monitoring strategy involves several distinct, yet interconnecte
 
 Health monitoring provides an immediate, real-time snapshot of a system's operational status. Its primary goal is to answer the question: "Is the system running and able to process requests right now?"
 
-This is achieved by implementing the **[[health-endpoint-monitoring|Health Endpoint Monitoring]]** pattern, where services expose endpoints (e.g., `/health`, `/status`) that external tools can poll. These checks are fundamental to building self-healing systems, as they allow components like load balancers and container orchestrators to make automated decisions about traffic routing and service lifecycle.
+This is achieved by implementing the **[[health-endpoint-monitoring|Health Endpoint Monitoring]]** pattern, where services expose endpoints (e.g., `/health`, `/status`) that external tools can poll. These checks are fundamental to building self-healing systems, as they allow components like load balancers and [[containerization|container]] orchestrators to make automated decisions about traffic routing and service lifecycle.
 
 For a detailed explanation of how to implement this pattern, including the critical distinction between liveness and readiness probes, see the main **[[health-endpoint-monitoring|Health Endpoint Monitoring]]** page.
 

@@ -26,7 +26,7 @@ There are two primary strategies for applying this principle:
 
 1.  **Consolidating Tasks within a Process (Micro-consolidation)**: This involves grouping multiple small operations into a single, larger unit of work. A classic example is **batch processing**, where instead of processing one item at a time, the system collects multiple items and processes them together. This reduces the overhead of starting and stopping operations, making the overall process more efficient.
 
-2.  **Consolidating Processes on an Infrastructure (Macro-consolidation)**: This involves placing multiple independent services or applications onto shared infrastructure. This is the most common interpretation in modern cloud architecture. Instead of one server per service, services are packed onto a shared cluster of nodes. This is the core concept behind container orchestration.
+2.  **Consolidating Processes on an Infrastructure (Macro-consolidation)**: This involves placing multiple independent services or applications onto shared infrastructure. This is the most common interpretation in modern cloud architecture. Instead of one server per service, services are packed onto a shared cluster of nodes. This is the core concept behind [[containerization|container]] orchestration.
 
 ```mermaid
 graph TD
@@ -72,7 +72,7 @@ graph TD
 Modern tools are designed to mitigate the trade-offs while maximizing the benefits of consolidation:
 
 -   **Containerization & Orchestration**: This is the most successful implementation of the principle.
-    -   **[[docker|Docker]]** provides process isolation, while **[[kubernetes|Kubernetes]]** automates the complex task of packing containers onto nodes efficiently (a process known as **bin packing**). 
+    -   **[[docker|Docker]]** provides process isolation, while **[[kubernetes|Kubernetes]]** automates the complex task of packing [[containerization|containers]] onto nodes efficiently (a process known as **bin packing**). 
     -   Orchestrators manage resource contention through **resource limits and requests**, ensuring that a "noisy neighbor" cannot consume more than its allocated share of CPU and memory.
 -   **[[serverless|Serverless]] Functions**: While it may seem counter-intuitive, deploying multiple related API endpoints within a single serverless function (e.g., an AWS Lambda with multiple routes) is a form of consolidation that helps reduce cold starts and management overhead compared to having one function per endpoint.
 -   **[[background-jobs|Background Job]] Processors**: A single worker process can pull different types of jobs from a [[message-queue]], effectively consolidating the execution of various asynchronous tasks into one computational unit.

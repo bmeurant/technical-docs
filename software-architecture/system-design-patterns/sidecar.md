@@ -12,7 +12,7 @@ date: 2025-10-26
 
 # Sidecar Pattern
 
-The Sidecar pattern (also known as the **Sidekick pattern**) is a decomposition pattern where an application's components are deployed into a separate process or container for isolation and encapsulation. This pattern allows applications to be composed of heterogeneous components and technologies.
+The Sidecar pattern (also known as the **Sidekick pattern**) is a decomposition pattern where an application's components are deployed into a separate process or [[containerization|container]] for isolation and encapsulation. This pattern allows applications to be composed of heterogeneous components and technologies.
 
 It is named **Sidecar** because it resembles a sidecar attached to a motorcycle. In the pattern, the sidecar is attached to a parent application and provides supporting features. The sidecar shares the same lifecycle as its parent—it is created, started, and stopped alongside it.
 
@@ -82,7 +82,7 @@ The Sidecar pattern is extremely versatile and is a foundational element of many
 
 ## Implementation in Kubernetes
 
-[[kubernetes|Kubernetes]] makes the Sidecar pattern a natural fit through its **Pod** abstraction. A Pod is the smallest deployable unit in Kubernetes and can contain one or more containers that are co-located on the same host machine. Containers within the same Pod share:
+[[kubernetes|Kubernetes]] makes the Sidecar pattern a natural fit through its **Pod** abstraction. A Pod is the smallest deployable unit in Kubernetes and can contain one or more [[containerization|containers]] that are co-located on the same host machine. [[containerization|Containers]] within the same Pod share:
 
 -   A network namespace (they can communicate via `localhost`).
 -   Storage volumes.
@@ -90,7 +90,7 @@ The Sidecar pattern is extremely versatile and is a foundational element of many
 
 **Example: NGINX with a Fluentd Logging Sidecar**
 
-The following YAML defines a Pod with two containers. The main container runs NGINX, and the sidecar container runs Fluentd to collect and forward NGINX's access logs.
+The following YAML defines a Pod with two containers. The main [[containerization|container]] runs NGINX, and the sidecar container runs Fluentd to collect and forward NGINX's access logs.
 
 ```yaml
 apiVersion: v1
