@@ -119,7 +119,7 @@ This is a "silent killer" where the database is technically operational but has 
 
 ---
 
-## 5Distributed System Issues
+## Distributed System Issues
 
 When a database is distributed across multiple nodes, a new class of failures emerges, primarily related to networking and consistency.
 
