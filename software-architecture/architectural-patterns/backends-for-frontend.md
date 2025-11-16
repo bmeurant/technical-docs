@@ -99,7 +99,7 @@ BFFs can enhance security by acting as a dedicated enforcement point for client-
 
 -   **Team Autonomy**: Frontend teams can own and iterate on their own BFF, allowing them to move faster without being blocked by a central backend team.
 -   **Technology Independence**: A BFF for a mobile app could be written in a stack optimized for low latency, while a BFF for a web app could use a different stack.
--   **Granular Scalability**: Each BFF can be scaled independently based on the specific load of its corresponding frontend, allowing for more efficient resource utilization compared to scaling a monolithic backend. The underlying microservices also retain their independent scalability.
+-   **Granular [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Each BFF can be scaled independently based on the specific load of its corresponding frontend, allowing for more efficient resource utilization compared to scaling a monolithic backend. The underlying microservices also retain their independent [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
 ### Trade-offs
 

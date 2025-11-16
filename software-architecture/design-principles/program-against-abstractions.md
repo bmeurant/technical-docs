@@ -138,7 +138,7 @@ These resources offer further insights into the "Program to an Interface" princi
     A detailed blog post by Dmitri Pavlutin that uses clear code examples to demonstrate the drawbacks of programming to an implementation and the benefits of using interfaces to create flexible, decoupled code.
 
 2.  **[Program to interface NOT implementation](https://medium.com/@essaadani.yo/program-to-interface-not-implementation-29154de5c5b4)**
-    This article provides a concise explanation of the principle, focusing on how it improves maintainability and scalability by reducing dependencies between components.
+    This article provides a concise explanation of the principle, focusing on how it improves maintainability and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] by reducing dependencies between components.
 
 ### Videos
 

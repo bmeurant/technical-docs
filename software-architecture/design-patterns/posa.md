@@ -326,7 +326,7 @@ graph TD
 * **Key Characteristics**:
     * **[[cohesion-coupling|Loose coupling]]**: `Publishers` and `Subscribers` are not aware of each other, communicating through a shared channel.
     * **Asynchronous**: Communication is non-blocking, allowing `Publishers` to continue processing without waiting for `Subscribers` to receive the message.
-    * **Scalability**: The pattern is highly scalable, as new `Publishers` or `Subscribers` can be added without modifying existing components.
+    * **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: The pattern is highly scalable, as new `Publishers` or `Subscribers` can be added without modifying existing components.
 * **Applicability**: This pattern is fundamental to real-time data streams, notification systems, and [[microservices]] that communicate via events.
 * **Limitations and Challenges**: The reliability of message delivery can be a challenge. The system's complexity increases if message ordering or guaranteed delivery is required.
 * **Relationship with Other Patterns**:

@@ -18,7 +18,7 @@ For an architecture to be truly RESTful, it must adhere to six fundamental const
 
 1.  **[[client-server|Client-Server Architecture]]**: This enforces a strict separation of concerns. The client (the consumer of the data) is decoupled from the server (the manager of the resources). The client handles the user interface and experience, while the server manages the data and business logic. They evolve independently, as long as the interface contract is maintained, often through a clear [[api-versioning|API Versioning]] strategy.
 
-2.  **Statelessness**: Every request from a client to the server must be self-contained. The server must not store any client context or session state between requests. All necessary information to process the request (like authentication tokens or versioning information) must be provided by the client. This constraint is a key enabler for scalability, as any server instance can handle any client request.
+2.  **Statelessness**: Every request from a client to the server must be self-contained. The server must not store any client context or session state between requests. All necessary information to process the request (like authentication tokens or versioning information) must be provided by the client. This constraint is a key enabler for [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], as any server instance can handle any client request.
 
 3.  **[[caching|Cacheability]]**: To improve performance and reduce network traffic, responses must explicitly define themselves as cacheable or non-cacheable. This allows clients and intermediaries (like CDNs or proxies) to store and reuse responses, avoiding redundant requests to the server. This is typically managed via [[http#HTTP Headers|HTTP headers]] like `Cache-Control`.
 
@@ -214,10 +214,10 @@ Removes a user.
 ## Advantages of REST
 
 - **[[cohesion-coupling|Decoupling]]**: The separation of client and server and the uniform interface allow them to evolve independently.
-- **Scalability**: Statelessness simplifies server design and makes horizontal scaling straightforward.
+- **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Statelessness simplifies server design and makes horizontal scaling straightforward.
 - **[[kiss|Simplicity]] & Visibility**: A uniform interface makes the system easier to understand and its interactions visible and transparent.
 - **Leverages Web Standards**: It uses the proven and ubiquitous infrastructure of the web ([[http|HTTP]], URIs, caching).
-- **[[caching|Cacheability]]**: Leverages the native caching capabilities of HTTP, allowing responses to be cached by clients and intermediaries, which significantly improves performance and scalability.
+- **[[caching|Cacheability]]**: Leverages the native caching capabilities of HTTP, allowing responses to be cached by clients and intermediaries, which significantly improves performance and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
 ## Disadvantages of REST
 

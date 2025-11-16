@@ -64,7 +64,7 @@ sequenceDiagram
 ## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
-    * **Scalability:** The read and write workloads can be scaled independently. You can add more nodes to your read cluster to handle high query volumes without impacting the write side.
+    * **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The read and write workloads can be scaled independently. You can add more nodes to your read cluster to handle high query volumes without impacting the write side.
     * **Performance:** Each model can be aotomized with the best data store for its task. The read model can be denormalized to avoid complex joins, leading to very fast queries.
     * **Flexibility & Simplicity:** The write model can focus solely on business logic and transactional consistency without being polluted by read concerns. The read model is simple and doesn't contain complex business logic.
     * **Security:** It's easier to enforce security rules by restricting access to the command side.

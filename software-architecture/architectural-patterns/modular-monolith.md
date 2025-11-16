@@ -76,7 +76,7 @@ graph TD
 * **Advantages (Benefits):**
     * **Simplicity of Deployment:** Like a [[monolithic|monolith]], there is only one application to deploy, which simplifies CI/CD pipelines.
     * **Performance:** Communication between modules happens in memory, which is much faster than network calls between [[microservices]].
-    * **Maintainability and Internal Scalability:** The modularity makes maintenance and modifications easier. While the entire application is deployed together, it is easier to identify and resolve internal bottlenecks.
+    * **Maintainability and Internal [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The modularity makes maintenance and modifications easier. While the entire application is deployed together, it is easier to identify and resolve internal bottlenecks.
 
 --- 
 

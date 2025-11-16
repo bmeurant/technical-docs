@@ -15,7 +15,7 @@ The **Client-Server** architecture is a fundamental distributed [[software-archi
     * **[[soc|Separation of Concerns]]:** The client handles the user interface and presentation logic, while the server is responsible for the business logic, data storage, and security. This separation simplifies the independent development, maintenance, and evolution of each part.
     * **Request/Response:** This is the standard communication pattern. The client sends a synchronous or asynchronous request, and the server provides a response.
     * **Stateless vs. Stateful:**
-        * **Stateless:** Each request from the client to the server contains all the information needed for the server to process it. The server does not store any information about the client's session state between requests. This is the **[[http|HTTP]]** model, which is ideal for scalability.
+        * **Stateless:** Each request from the client to the server contains all the information needed for the server to process it. The server does not store any information about the client's session state between requests. This is the **[[http|HTTP]]** model, which is ideal for [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
         * **Stateful:** The server retains the client's session state. This can simplify client-side logic but makes the server more complex and less scalable.
 
 ---
@@ -53,7 +53,7 @@ graph TD
 
 * **Advantages (Benefits):**
     * **Centralized management:** The management of security, updates, and **data storage** is centralized on the server, which simplifies administration.
-    * **Scalability:** The server can be scaled vertically (more power on a single machine) or horizontally (adding new machines) to handle a larger load. The use of **[[load-balancing|load balancers]]** and **server clusters** is common.
+    * **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The server can be scaled vertically (more power on a single machine) or horizontally (adding new machines) to handle a larger load. The use of **[[load-balancing|load balancers]]** and **server clusters** is common.
     * **Resource efficiency:** Clients can be lighter machines (**thin clients**), because most of the processing load is on the server.
     * **Flexibility:** Clients and servers can be developed with different technologies and platforms, as long as they adhere to a common communication protocol.
 

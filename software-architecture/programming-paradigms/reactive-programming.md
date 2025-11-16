@@ -138,7 +138,7 @@ In many ways, you can use an actor system to implement a reactive pipeline. An a
 
 2. **[What Is Reactive Programming? | Baeldung](https://www.baeldung.com/cs/reactive-programming)**
 
-    A comprehensive guide to **Reactive Programming** as a **declarative** paradigm based on **asynchronous data streams** and **event processing**. It details the **Observer Pattern**, **Reactive Streams** with **operators** (like map, filter, zip), and the crucial role of **back pressure**. It highlights the pros (resilience, scalability) and cons (steep learning curve, debugging difficulty).
+    A comprehensive guide to **Reactive Programming** as a **declarative** paradigm based on **asynchronous data streams** and **event processing**. It details the **Observer Pattern**, **Reactive Streams** with **operators** (like map, filter, zip), and the crucial role of **back pressure**. It highlights the pros (resilience, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]) and cons (steep learning curve, debugging difficulty).
 
 
 ### Videos

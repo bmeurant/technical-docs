@@ -11,7 +11,7 @@ date: 2025-11-01
 
 # Cloud-Native Principles
 
-Cloud-native applications are designed and built to take full advantage of cloud computing environments. This approach emphasizes speed, agility, scalability, and resilience, enabling organizations to deliver new features rapidly and operate systems reliably at scale. Cloud-native architectures are not just about *where* applications are deployed, but *how* they are designed and built.
+Cloud-native applications are designed and built to take full advantage of cloud computing environments. This approach emphasizes speed, agility, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and resilience, enabling organizations to deliver new features rapidly and operate systems reliably at scale. Cloud-native architectures are not just about *where* applications are deployed, but *how* they are designed and built.
 
 ---
 
@@ -106,7 +106,7 @@ graph TD
 ### Advantages (Benefits)
 
 *   **Agility and Speed**: Rapid development and deployment cycles due to independent services, automated processes, and small, focused teams.
-*   **Scalability**: Services can be scaled independently and horizontally, allowing the application to handle fluctuating loads efficiently.
+*   **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Services can be scaled independently and horizontally, allowing the application to handle fluctuating loads efficiently.
 *   **[[reliability-engineering|Resilience]]**: Fault isolation ensures that a failure in one service does not bring down the entire application. Orchestration platforms provide self-healing capabilities.
 *   **Flexibility and Innovation**: Teams can choose the best technology stack for each service, fostering innovation and avoiding technology lock-in.
 *   **Cost Optimization**: Efficient resource utilization through containerization and orchestration, often combined with pay-as-you-go cloud models.
@@ -145,7 +145,7 @@ Cloud-native applications are built upon and heavily leverage numerous architect
     This article defines cloud-native architecture and technologies, emphasizing their role in building scalable applications that leverage cloud computing models. It covers key pillars like modern design, microservices, containers, backing services, and automation.
 
 2.  **[Cloud Native Architecture: Principles, Pros, and Cons - Tigera](https://www.tigera.io/learn/guides/cloud-native-security/cloud-native-architecture/)**
-    This guide explores cloud-native architecture, detailing its benefits like scalability and resilience, challenges such as security and dependencies, and core principles including microservices, containerization, and automation. It also touches upon security with Calico.
+    This guide explores cloud-native architecture, detailing its benefits like [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and resilience, challenges such as security and dependencies, and core principles including microservices, containerization, and automation. It also touches upon security with Calico.
 
 ### Videos
 

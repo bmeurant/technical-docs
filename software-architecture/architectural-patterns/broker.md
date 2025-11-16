@@ -73,7 +73,7 @@ graph TD
 ## **Advantages and Technical Challenges**
 
 * **Advantages (Benefits):**
-    * **High Scalability:** It is easy to add new clients or servers without affecting existing components. The architecture is highly flexible.
+    * **High [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** It is easy to add new clients or servers without affecting existing components. The architecture is highly flexible.
     * **Robustness:** A failure in a client or server does not directly affect others, as long as the broker remains operational. The broker can also handle [[retry]] functionalities.
     * **Interoperability:** Due to decoupling, clients and servers can be developed using different languages, technologies, or platforms.
     * **Reduced Client Complexity:** Clients do not have to manage the logic for connection, [[service-discovery|service discovery], or [[api-error-handling|error handling]] related to servers.
@@ -120,4 +120,4 @@ The **Broker** style is a foundation for many modern, often specialized or exten
 
 2.  **[What Is a Message Broker?](https://www.youtube.com/watch?v=385Jtvxne4A)**
 
-    This **IBM Technology** video provides a clear explanation of what a **message broker** is and its role as an intermediary for asynchronous communication in distributed applications. It covers different messaging patterns and the benefits of **decoupling** and **scalability**.
+    This **IBM Technology** video provides a clear explanation of what a **message broker** is and its role as an intermediary for asynchronous communication in distributed applications. It covers different messaging patterns and the benefits of **decoupling** and **[[software-architecture/system-design-fundamentals/index#Scalability|scalability]]**.

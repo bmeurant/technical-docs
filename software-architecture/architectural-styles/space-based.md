@@ -6,14 +6,14 @@ date: 2025-09-16
 ---
 # Space-Based Architecture (SBA)
 
-The **Space-Based Architecture** (SBA) is a high-performance [[software-architecture/architectural-styles/|architectural style]] designed for extreme scalability and elasticity. The name comes from the concept of a **"tuple space,"** a shared memory space where multiple processes can read and write data [[transversal-programming-models#1-concurrent-programming|concurrently]]. In SBA, this concept is realized as a grid of self-sufficient **processing units**, each hosting a copy of the application logic and a portion of the in-memory data.
+The **Space-Based Architecture** (SBA) is a high-performance [[software-architecture/architectural-styles/|architectural style]] designed for extreme [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and elasticity. The name comes from the concept of a **"tuple space,"** a shared memory space where multiple processes can read and write data [[transversal-programming-models#1-concurrent-programming|concurrently]]. In SBA, this concept is realized as a grid of self-sufficient **processing units**, each hosting a copy of the application logic and a portion of the in-memory data.
 
 This style, also known as **Shared-Nothing Architecture**, avoids the bottleneck of a central [[databases|database]] by processing data in memory and replicating it across the grid.
 
 * **Core Principles:**
     * **Shared-Nothing Processing:** Each Processing Unit (PU) is independent and does not share resources (CPU, memory) with others for request processing. While the data grid is replicated and "shared" across the network, the PUs themselves are autonomous.
     * **In-Memory Data Grid (IMDG):** The heart of SBA is the distributed in-memory data grid. Data is stored and processed directly in RAM for maximum performance.
-    * **Elastic Scalability:** The architecture can scale out elastically by adding new processing units to handle increased load.
+    * **Elastic [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The architecture can scale out elastically by adding new processing units to handle increased load.
     * **Self-Healing:** In case of a node failure, the virtual middleware automatically fails over to a replica node without service interruption.
 
 ---
@@ -65,7 +65,7 @@ graph TD
 
 ### A Note on Data Partitioning
 
-The scalability of SBA relies on effective data partitioning. The data grid is typically divided into partitions using a **routing key** (e.g., a customer ID, a product ID). The gateway uses this key to route a request directly to the Processing Unit that holds the relevant data partition. This ensures that each PU only manages a subset of the data, allowing the system to scale horizontally as more data and traffic are added.
+The [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] of SBA relies on effective data partitioning. The data grid is typically divided into partitions using a **routing key** (e.g., a customer ID, a product ID). The gateway uses this key to route a request directly to the Processing Unit that holds the relevant data partition. This ensures that each PU only manages a subset of the data, allowing the system to scale horizontally as more data and traffic are added.
 
 ---
 
@@ -95,7 +95,7 @@ SBA is often implemented with technologies like **Apache Ignite**, **Hazelcast**
     * **Gaming:** Backends for multiplayer online games.
     * **E-commerce:** Recommendation engines and shopping cart management that require ultra-fast responses.
 
-This architectural style is a highly specialized solution for specific **scalability** and **performance** problems. It is not a substitute for more traditional architectures like the [[layered|3-tier]] or [[microservices|microservices]], but rather a complementary option for the most critical parts of an application.
+This architectural style is a highly specialized solution for specific **[[software-architecture/system-design-fundamentals/index#Scalability|scalability]]** and **performance** problems. It is not a substitute for more traditional architectures like the [[layered|3-tier]] or [[microservices|microservices]], but rather a complementary option for the most critical parts of an application.
 
 ## **Resources & Links**
 
@@ -119,4 +119,4 @@ This architectural style is a highly specialized solution for specific **scalabi
 
 2.  **[Space-Based Architecture Styles](https://www.youtube.com/watch?v=b33qSmRwhgw&t)**
     
-    This video is a detailed explanation of SBA, addressing the challenges of traditional architectures and how SBA solves problems of scalability and concurrency. It breaks down the architecture into its main components (Processing Unit, Data Grid, Messaging Grid) and explains their roles for a comprehensive understanding of the design style.
+    This video is a detailed explanation of SBA, addressing the challenges of traditional architectures and how SBA solves problems of [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and concurrency. It breaks down the architecture into its main components (Processing Unit, Data Grid, Messaging Grid) and explains their roles for a comprehensive understanding of the design style.

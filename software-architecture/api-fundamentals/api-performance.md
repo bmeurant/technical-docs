@@ -57,11 +57,11 @@ Reducing the distance data must travel is one of the most effective ways to impr
 -   **Caching**: Storing frequently accessed data in a temporary, high-speed layer significantly reduces latency and load on backend services. For a deep dive into different strategies (in-memory, distributed, etc.), see the main [[caching]] document.
 -   **Content Delivery Network (CDN)**: A [[cdn|CDN]] is a geographically distributed network of proxy servers that caches content close to end-users, drastically reducing latency for static assets and cachable API responses.
 
-## Scalability & Concurrency
+## [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]] & Concurrency
 
 A performant API must be able to handle a growing number of requests without degradation.
 
--   **Load Balancing**: Distributing incoming traffic across multiple servers is fundamental to achieving high availability and scalability. For more details, see the [[load-balancing]] page.
+-   **Load Balancing**: Distributing incoming traffic across multiple servers is fundamental to achieving high availability and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. For more details, see the [[load-balancing]] page.
 -   **Asynchronous Processing**: For long-running tasks, using [[asynchronous-messaging]] patterns with a [[message-queue]] prevents blocking the main request thread and improves perceived performance. The client can receive an immediate acknowledgment while the work is handled in the background.
 
 ## Resource Management
@@ -93,7 +93,7 @@ Perceived performance is not just about speed; it's also about reliability. A fa
 
 The performance of [[real-time-communication|real-time communication patterns]] is measured differently from traditional request-response APIs. The focus shifts from individual request latency to connection management and message delivery latency.
 
-*   **Connection Scalability**: A key challenge is managing a large number of persistent connections (WebSockets or SSE). This consumes significant server memory and can become a bottleneck. Architectures often rely on specialized gateways or servers (e.g., built with Node.js, Go, or Erlang) designed for high concurrency.
+*   **Connection [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: A key challenge is managing a large number of persistent connections (WebSockets or SSE). This consumes significant server memory and can become a bottleneck. Architectures often rely on specialized gateways or servers (e.g., built with Node.js, Go, or Erlang) designed for high concurrency.
 *   **Message Latency**: For applications like online gaming or financial trading, the time it takes for a message to travel from server to client (and vice-versa for WebSockets) is the most critical metric.
 *   **Resource Usage**: Unlike stateless HTTP requests, stateful connections require careful resource management. A poorly managed connection lifecycle can lead to memory leaks and degraded performance over time.
 

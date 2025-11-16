@@ -64,7 +64,7 @@ sequenceDiagram
 
 *   **Enables Consistency in Distributed Systems:** Provides a mechanism to achieve data consistency across disparate services without relying on costly and often impractical distributed [[acid|ACID]] transactions.
 *   **Improved Resilience:** Allows long-running processes to complete even if intermediate steps fail, by providing a clear path to revert to a consistent state.
-*   **Reduced Resource Locking:** Avoids holding database locks for extended periods, improving system throughput and scalability.
+*   **Reduced Resource Locking:** Avoids holding database locks for extended periods, improving system throughput and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 *   **Auditability:** Both the original and compensating transactions are recorded, providing a complete history of operations.
 
 ## Disadvantages and Challenges

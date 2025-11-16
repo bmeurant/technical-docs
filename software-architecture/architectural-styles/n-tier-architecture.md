@@ -56,7 +56,7 @@ graph TD
 
 ### More than 3 Tiers (N-Tier)
 
-For complex, large-scale systems, additional tiers can be introduced to handle specific concerns, further improving separation and scalability. There is no rigid definition, as tiers are added to solve specific problems.
+For complex, large-scale systems, additional tiers can be introduced to handle specific concerns, further improving separation and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. There is no rigid definition, as tiers are added to solve specific problems.
 
 #### Example: 4-Tier Architecture
 A common 4-tier model further separates the business logic from the data access logic.

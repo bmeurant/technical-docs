@@ -56,7 +56,7 @@ graph TD
 
 * **Advantages:**
     * **Reliable Task Offloading:** Perfect for background jobs like sending emails, generating reports, or processing images.
-    * **Scalability:** You can easily increase processing throughput by adding more consumer instances to the pool.
+    * **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** You can easily increase processing throughput by adding more consumer instances to the pool.
     * **Resilience:** If a consumer fails while processing a message, the message can be safely re-processed by another consumer.
     * **Flow Control:** The queue acts as a buffer, smoothing out load spikes and preventing the system from being overwhelmed. This is the core principle behind the [[workload-management#Queue-Based Load Leveling|Queue-Based Load Leveling]] pattern.
 
@@ -180,14 +180,14 @@ sequenceDiagram
 
 ### Competing Consumers
 
-The **Competing Consumers** pattern is a fundamental model for scaling message processing. It enables multiple concurrent consumers to process messages received on the same messaging channel. By having multiple consumers "compete" for messages from a single queue, a system can process messages in parallel, which significantly improves throughput, scalability, and availability.
+The **Competing Consumers** pattern is a fundamental model for scaling message processing. It enables multiple concurrent consumers to process messages received on the same messaging channel. By having multiple consumers "compete" for messages from a single queue, a system can process messages in parallel, which significantly improves throughput, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and availability.
 
 The introduction of this page already mentions this pattern as a core implementation detail, and the diagram in the "Key Components" section illustrates it perfectly. This section provides a more detailed focus on its specific trade-offs.
 
 #### Key Benefits
 
 -   **Improved Throughput**: Work is processed in parallel by multiple consumers, dramatically increasing the rate of message processing.
--   **Enhanced Scalability**: To handle an increase in message volume, you can simply add more consumer instances to the pool. This allows for easy horizontal scaling.
+-   **Enhanced [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: To handle an increase in message volume, you can simply add more consumer instances to the pool. This allows for easy horizontal scaling.
 -   **High Availability and Fault Tolerance**: If one consumer instance fails or becomes unavailable, the other consumers in the pool can continue processing messages, preventing a single point of failure.
 -   **Automatic Load Balancing**: The [[broker|message broker]] automatically distributes the load of messages across the available consumers, ensuring that work is spread evenly.
 
@@ -315,7 +315,7 @@ sequenceDiagram
 
 1.  **[Message Queues - System Design (GeeksforGeeks)](https://www.geeksforgeeks.org/system-design/message-queues-system-design/)**
 
-    This article details how **Message Queues (MQs)** are crucial for distributed systems, providing a buffer for **asynchronous communication**. It outlines the core components (**Producer**, **Queue**, **Consumer**, and optional **Broker**) and highlights key benefits like **scalability**, **fault tolerance**, and **[[load-balancing|load balancing]]**. It also differentiates between two main types: **Point-to-Point** and **Publish-Subscribe** message queues, and touches upon advanced features like **Dead Letter Queues (DLQs)** and **Message Prioritization**.
+    This article details how **Message Queues (MQs)** are crucial for distributed systems, providing a buffer for **asynchronous communication**. It outlines the core components (**Producer**, **Queue**, **Consumer**, and optional **Broker**) and highlights key benefits like **[[software-architecture/system-design-fundamentals/index#Scalability|scalability]]**, **fault tolerance**, and **[[load-balancing|load balancing]]**. It also differentiates between two main types: **Point-to-Point** and **Publish-Subscribe** message queues, and touches upon advanced features like **Dead Letter Queues (DLQs)** and **Message Prioritization**.
 
 2.  **[Message Queues: The Backbone of Scalable Systems (Medium)](https://medium.com/@amoljadhav_48655/message-queues-the-backbone-of-scalable-systems-2d015d9fa645)**
 
@@ -325,7 +325,7 @@ sequenceDiagram
     The official Azure Architecture Center documentation on the pattern, providing a clear overview and use cases.
 
 4.  **[Competing Consumers pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/competing-consumers)**
-    The official Azure documentation for the Competing Consumers pattern, detailing how it enables scalability and availability.
+    The official Azure documentation for the Competing Consumers pattern, detailing how it enables [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and availability.
 
 5.  **[Priority Queue pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/priority-queue)**
     The official Azure documentation for the Priority Queue pattern, explaining how to prioritize messages to handle urgent requests first.
@@ -342,8 +342,8 @@ sequenceDiagram
 
 1.  **[Message Queues in System Design](https://www.youtube.com/watch?v=DYFocSiPOl8)**
 
-    This video from **Hayk Simonyan** explains **Message Queues** in system design using an online store example. It covers how message queues, as durable components, support asynchronous communication, decouple services, and provide scalability and reliability by buffering requests for later processing.
+    This video from **Hayk Simonyan** explains **Message Queues** in system design using an online store example. It covers how message queues, as durable components, support asynchronous communication, decouple services, and provide [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and reliability by buffering requests for later processing.
 
 2.  **[What is a Message Queue?](https://www.youtube.com/watch?v=xErwDaOc-Gs)**
 
-    **Jamil Spain** from **IBM Technology** explains what a **Message Queue** is, defining it as an architectural technique for asynchronous communication in distributed applications. The video breaks down the concepts of messages and queues, provides examples like email, and discusses different messaging patterns (point-to-point, [[publish-subscribe|pub/sub]], request-reply) and the benefits of decoupling and scalability.
+    **Jamil Spain** from **IBM Technology** explains what a **Message Queue** is, defining it as an architectural technique for asynchronous communication in distributed applications. The video breaks down the concepts of messages and queues, provides examples like email, and discusses different messaging patterns (point-to-point, [[publish-subscribe|pub/sub]], request-reply) and the benefits of decoupling and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].

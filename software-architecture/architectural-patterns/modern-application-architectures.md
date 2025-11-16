@@ -76,7 +76,7 @@ While sharing the same core principle, these three architectures differ in their
 
 3.  **[Hexagonal vs Clean vs Onion Architectures](https://programmingpulse.vercel.app/blog/hexagonal-vs-clean-vs-onion-architectures)**
 
-    This article focuses on the similarities and differences between **[[hexagonal|Hexagonal]]**, **Clean**, and **[[onion|Onion]]** architectures. It emphasizes that these three models share common goals, such as **[[soc|separation of concerns]]**, **testability**, and **modularity**. The article concludes that there is no one-size-fits-all solution, and the choice of architecture depends on the specific project needs, team skills, and the requirement for scalability and maintainability.
+    This article focuses on the similarities and differences between **[[hexagonal|Hexagonal]]**, **Clean**, and **[[onion|Onion]]** architectures. It emphasizes that these three models share common goals, such as **[[soc|separation of concerns]]**, **testability**, and **modularity**. The article concludes that there is no one-size-fits-all solution, and the choice of architecture depends on the specific project needs, team skills, and the requirement for [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and maintainability.
 
 ---
 

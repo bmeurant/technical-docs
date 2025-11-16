@@ -102,7 +102,7 @@ sequenceDiagram
 
 ## Security Considerations
 
--   **Stateless but Irrevocable**: Once a JWT is issued, it is valid until it expires. It cannot be easily revoked without implementing a more complex, stateful blocklist on the server. This is a critical trade-off for the scalability of statelessness.
+-   **Stateless but Irrevocable**: Once a JWT is issued, it is valid until it expires. It cannot be easily revoked without implementing a more complex, stateful blocklist on the server. This is a critical trade-off for the [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] of statelessness.
 -   **Payload is Visible**: The payload is only encoded, **not encrypted**. Anyone can decode it and see its contents. Never store sensitive information (like passwords or personal secrets) in the payload.
 -   **Signature is Critical**: The security of a JWT relies on its signature. The server **must** always verify the signature. A past vulnerability involved tokens specifying `"alg": "none"`, which could trick libraries into skipping verification. Always use up-to-date, well-maintained libraries.
 

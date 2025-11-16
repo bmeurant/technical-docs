@@ -68,7 +68,7 @@ The defining feature of most RDBMSs is their strong support for **[[acid|ACID tr
     -   **Mature Ecosystem:** A vast ecosystem of tools, libraries, and expertise has been built around relational databases.
 -   **Weaknesses:**
     -   **Schema Rigidity:** Changing the schema of a large table can be a slow and complex process, making it difficult to adapt to rapidly changing application requirements.
-    -   **Scalability Challenges:** RDBMSs are traditionally designed to scale vertically (on a single server). Horizontal scaling is possible but often complex to implement (see patterns below). This focus on strong [[acid|ACID]] guarantees often comes at the expense of horizontal scalability, leading to the emergence of the [[software-architecture/databases/acid#Trade-offs and the BASE Alternative|BASE]] model in distributed systems.
+    -   **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]] Challenges:** RDBMSs are traditionally designed to scale vertically (on a single server). Horizontal scaling is possible but often complex to implement (see patterns below). This focus on strong [[acid|ACID]] guarantees often comes at the expense of horizontal [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], leading to the emergence of the [[software-architecture/databases/acid#Trade-offs and the BASE Alternative|BASE]] model in distributed systems.
 
 ---
 
@@ -88,7 +88,7 @@ Partitioning is the act of splitting a large database into smaller, faster, and 
 
 -   **Federation (Vertical Partitioning):** The database is split by **function**. For example, instead of a single monolithic database, you could have separate databases for `Users`, `Products`, and `Forums`. This reduces the traffic to each individual database and allows for more targeted caching and optimization. The main drawback is that database-level JOINs between different functions are no longer possible.
 
--   **Sharding (Horizontal Partitioning):** This strategy involves splitting a single large table by its **rows** and distributing them across multiple database servers. This is a powerful but complex pattern for achieving massive write scalability. For a detailed explanation of sharding strategies and their trade-offs, see the main page on [[data-management-patterns#Sharding|Data Management Patterns]].
+-   **Sharding (Horizontal Partitioning):** This strategy involves splitting a single large table by its **rows** and distributing them across multiple database servers. This is a powerful but complex pattern for achieving massive write [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. For a detailed explanation of sharding strategies and their trade-offs, see the main page on [[data-management-patterns#Sharding|Data Management Patterns]].
 
 ### 3. Denormalization
 

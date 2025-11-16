@@ -70,7 +70,7 @@ The communication is typically **one-to-many**, using the **[[publish-subscribe|
 
 ## General Advantages of MDA
 
-* **High Scalability:** The system can handle load spikes by adding more consumers without impacting producers. The broker acts as a buffer.
+* **High [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The system can handle load spikes by adding more consumers without impacting producers. The broker acts as a buffer.
 * **Improved Resilience:** If a consumer fails, the message is not lost and can be re-processed. The overall system continues to function.
 * **Greater Flexibility:** Producers and consumers can be developed, deployed, and updated independently.
 

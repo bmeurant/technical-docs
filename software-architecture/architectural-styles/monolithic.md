@@ -20,7 +20,7 @@ The defining characteristic is **deployment**, not size or complexity. All featu
 
 ## Overview and Communication Flow
 
-A well-designed monolith is not an unstructured "big ball of mud." It is often a **[[modular-monolith|Modular Monolith]]** with a clear internal structure, such as a **[[layered]]** architecture, to enforce [[soc|separation of concerns]]. For scalability and availability, it is deployed as multiple identical instances behind a load balancer.
+A well-designed monolith is not an unstructured "big ball of mud." It is often a **[[modular-monolith|Modular Monolith]]** with a clear internal structure, such as a **[[layered]]** architecture, to enforce [[soc|separation of concerns]]. For [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and availability, it is deployed as multiple identical instances behind a load balancer.
 
 ```mermaid
 graph TD
@@ -62,7 +62,7 @@ graph TD
     * **Simplified Debugging and Testing:** End-to-end testing and debugging are simpler because the entire application state is in one place. You can trace a request through the entire stack within a single process.
 
 * **Challenges (and how to mitigate them):**
-    * **Scalability:** The entire application must be scaled as a single unit. You cannot scale individual features independently. This is known as **coarse-grained scaling**.
+    * **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The entire application must be scaled as a single unit. You cannot scale individual features independently. This is known as **coarse-grained scaling**.
     * **Maintenance and Comprehension:** Without strong internal boundaries, the codebase can degrade into a "Big Ball of Mud," making it difficult and risky to change.
     * **Technology Lock-in:** It is difficult to adopt new technologies for parts of the application, as the entire system is built on a single, unified tech stack.
     * **Deployment Risk:** A change in any part of the application requires redeploying the entire monolith. This can make deployments large, slow, and risky.
@@ -74,7 +74,7 @@ Many of these challenges can be effectively addressed by adopting a **[[modular-
 ### **Articles**
 
 1.  **[Monolithic vs. Microservices Architecture](https://www.atlassian.com/microservices/microservices-architecture/microservices-vs-monolith)**
-    This article from Atlassian provides an overview of monolithic architecture, then compares it to [[microservices|microservices]]. It details the pros and cons of each approach, covering aspects such as development complexity, deployment, and scalability.
+    This article from Atlassian provides an overview of monolithic architecture, then compares it to [[microservices|microservices]]. It details the pros and cons of each approach, covering aspects such as development complexity, deployment, and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
 2.  **[Monolithic architecture](https://www.techtarget.com/whatis/definition/monolithic-architecture)**
     This article from TechTarget offers a concise and clear definition of monolithic architecture. It explains its basic components, characteristics, and the reasons why this model is often chosen, especially for small to medium-sized projects.

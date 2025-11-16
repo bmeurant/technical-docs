@@ -86,7 +86,7 @@ graph TD
 
 ## Use Cases
 
--   **High Scalability for SaaS**: When a multi-tenant application needs to scale to a very large number of customers with predictable performance and cost per tenant.
+-   **High [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]] for SaaS**: When a multi-tenant application needs to scale to a very large number of customers with predictable performance and cost per tenant.
 -   **Strong Tenant Isolation**: For applications requiring strict data or performance isolation between tenants, such as in healthcare (HIPAA) or finance (PCI compliance). An issue in one stamp (e.g., a [[system-performance#9. Noisy Neighbor|noisy neighbor]]) does not affect tenants in other stamps.
 -   **Geographic Distribution (Geo-fencing)**: To deploy instances in specific regions to reduce latency for users in that region or to comply with data residency laws (e.g., GDPR). For extreme availability and active-active global distribution, this approach can be evolved into the [[geode|Geode pattern]].
 -   **Controlled, Ring-Based Rollouts**: New versions of the application can be deployed to a single stamp (a "ring") serving a small group of early adopters or internal users before being rolled out to all stamps, minimizing the blast radius of a bad deployment.
@@ -131,4 +131,4 @@ While the pattern is platform-agnostic, its implementation varies slightly acros
 
 2.  **[Deployment Stamps 101 (Medium)](https://blog.devgenius.io/deployment-stamps-101-7c04a6f704a2)**
 
-    A practical article that explains the concept with clear diagrams and discusses the "why" behind the pattern, focusing on scalability, resilience, and cost-effectiveness.
+    A practical article that explains the concept with clear diagrams and discusses the "why" behind the pattern, focusing on [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], resilience, and cost-effectiveness.

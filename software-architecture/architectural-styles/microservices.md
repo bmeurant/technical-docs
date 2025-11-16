@@ -53,7 +53,7 @@ graph TD
 
 1.  **Client:** The starting point of the request (for example, a web browser or a mobile app). It only interacts with the API Gateway, without knowing about the individual services.
 2.  **[[api-gateway|API Gateway]]:** A single entry point that handles client requests, authentication, and routing to the appropriate microservices. It can also manage **[[rate-limiting|rate limiting]]**.
-3.  [[load-balancing|Load Balancer]]: Distributes the incoming traffic load among different instances of the same service. This is an essential component for the **horizontal scalability** of services.
+3.  [[load-balancing|Load Balancer]]: Distributes the incoming traffic load among different instances of the same service. This is an essential component for the **horizontal [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]** of services.
 4.  **[[service-discovery|Service Discovery]]:** A mechanism that allows microservices to find and communicate with each other dynamically, without needing to hard-code their network addresses. Services register with a **Service Registry** and can query it.
 5.  **Microservices:** The services themselves, containing the business logic. They can be developed with different technologies and languages. Their communication can be synchronous (via an API) or asynchronous (via a message broker).
 6.  **Message Broker / Event Bus:** An asynchronous communication system that allows services to exchange messages or events. This model promotes **loose coupling**, as the sender does not need to know the recipients of the message.
@@ -94,7 +94,7 @@ A mature microservices architecture often uses a combination of both styles: syn
 ## Advantages and Technical Challenges
 
 * **Advantages (Benefits):**
-    * **Independent Scalability:** Each service can be scaled vertically or horizontally based on its specific needs, without affecting the others.
+    * **Independent [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** Each service can be scaled vertically or horizontally based on its specific needs, without affecting the others.
     * **Resilience:** If one service fails, the rest of the system can continue to operate, unlike in a [[monolithic|monolithic architecture]] where a single failure can bring down the whole system.
     * **Technological Flexibility:** Teams can choose the most appropriate technologies for each service.
     * **Independent Deployments:** Teams can deploy new versions of their services autonomously, which accelerates **time-to-market** and reduces risk.

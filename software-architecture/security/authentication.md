@@ -57,7 +57,7 @@ sequenceDiagram
 
 ## Common Authentication Strategies
 
-The choice of authentication strategy is pivotal and depends on various factors, including the application's security requirements, user experience goals, scalability needs, and the type of system being secured.
+The choice of authentication strategy is pivotal and depends on various factors, including the application's security requirements, user experience goals, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] needs, and the type of system being secured.
 
 ### Password-Based Authentication
 

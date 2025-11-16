@@ -52,7 +52,7 @@ Optimizing how data is sent over the network is key to perceived performance. Wh
 - **Use Keep-Alive**: Utilize HTTP Keep-Alive to reuse TCP connections for multiple requests, reducing connection overhead.
 - **Choose the Right Protocol**: While [[rest|REST]] over HTTP/1.1 is common, consider modern alternatives like [[grpc|gRPC]] (which uses HTTP/2) for efficient, multiplexed communication between services.
 
-### Scalability & Resilience
+### [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]] & Resilience
 A performant system must also be scalable and resilient to handle load and recover from failures.
 - **Load Balancing**: Use a [[load-balancing|load balancer]] to distribute traffic evenly across multiple servers.
 - **Horizontal & Vertical Scaling**: Scale horizontally (adding more machines) for stateless applications and vertically (adding more resources to existing machines) where appropriate.
@@ -181,7 +181,7 @@ List<Post> posts = entityManager.createQuery(
 
 ### 4. Synchronous I/O
 
-**Problem:** Blocking a thread of execution while waiting for an I/O operation (e.g., a database query, an HTTP request, or a file read) to complete. In a server environment, a blocked thread cannot do any other work, severely limiting the application's ability to handle concurrent requests. This leads to poor vertical scalability and thread pool exhaustion.
+**Problem:** Blocking a thread of execution while waiting for an I/O operation (e.g., a database query, an HTTP request, or a file read) to complete. In a server environment, a blocked thread cannot do any other work, severely limiting the application's ability to handle concurrent requests. This leads to poor vertical [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and thread pool exhaustion.
 
 **Diagram:** Synchronous vs. Asynchronous Flow
 ```mermaid
@@ -217,7 +217,7 @@ Achieving non-blocking database access in Java is a common challenge, as the tra
 As of Java 21, Project Loom is the simplest and most powerful solution for the vast majority of applications. It allows developers to write clear, synchronous-style code that behaves in a non-blocking way.
 
 -   **How it works:** By running on a "virtual thread," a blocking I/O call (like JDBC's `executeQuery()`) no longer monopolizes an expensive OS thread. The JVM transparently handles the wait, freeing the underlying OS thread for other tasks.
--   **Spring Boot Integration:** Spring Boot 3.2+ makes this effortless. By simply setting `spring.threads.virtual.enabled=true` in your properties, Spring runs each incoming web request on a virtual thread. Your standard, blocking `JpaRepository` and `JdbcTemplate` code automatically gains the scalability of an asynchronous application with zero code changes.
+-   **Spring Boot Integration:** Spring Boot 3.2+ makes this effortless. By simply setting `spring.threads.virtual.enabled=true` in your properties, Spring runs each incoming web request on a virtual thread. Your standard, blocking `JpaRepository` and `JdbcTemplate` code automatically gains the [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] of an asynchronous application with zero code changes.
 -   **Benefit:** This approach avoids the "function coloring" problem, where `CompletableFuture` or other reactive types must be returned up the entire call stack, dramatically simplifying the codebase.
 
 **2. Alternative Approaches (For Specific Use Cases)**
@@ -247,7 +247,7 @@ While Loom is the future for most, two other patterns exist:
 - **Indexing:** Ensure proper [[rdbms#SQL-Tuning|indexes are in place]] for common query patterns.
 - **Read Replicas:** Offload read traffic to one or more read-only copies of the database, a technique known as [[rdbms#1-replication|Replication]].
 - **Connection Pooling:** Reuse database connections to avoid the overhead of establishing them for each request.
-- **Sharding:** For extreme scalability, horizontally partition the data across multiple database servers. This is a more complex scaling strategy also known as [[rdbms#2-partitioning|Horizontal Partitioning]].
+- **Sharding:** For extreme [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], horizontally partition the data across multiple database servers. This is a more complex scaling strategy also known as [[rdbms#2-partitioning|Horizontal Partitioning]].
 
 ### 7. Monolithic Persistence
 

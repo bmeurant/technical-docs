@@ -266,7 +266,7 @@ graph TD
 This diagram shows that any incoming request can be handled by any application process. The processes themselves do not store any state; instead, they read and write state to a shared, external backing service.
 
 ### Rationale
-Stateless processes are fundamental to achieving horizontal scalability and fault tolerance. Because any process can handle any request, new processes can be added to handle increased load. If a process crashes, its workload can be seamlessly redistributed to the remaining processes withoutany loss of session data. This contrasts with stateful applications where a user's session is tied to a specific server, making scaling and recovery complex.
+Stateless processes are fundamental to achieving horizontal [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and fault tolerance. Because any process can handle any request, new processes can be added to handle increased load. If a process crashes, its workload can be seamlessly redistributed to the remaining processes withoutany loss of session data. This contrasts with stateful applications where a user's session is tied to a specific server, making scaling and recovery complex.
 
 ### Examples
 *   Storing user session data in a shared, external datastore like Redis, rather than in the application's local memory.

@@ -94,7 +94,7 @@ This mechanism decouples user actions (like button clicks) from the code that ha
 * **Advantages (Benefits):**
     * **Strict Separation:** The separation between the **View** and the rest of the logic allows designers and developers to work in parallel.
     * **Superb Testability:** This is a key advantage. Since the **ViewModel** has no reference to any concrete View or UI elements, its logic can be fully tested with fast, simple unit tests. You can verify every property and command without ever needing to interact with a UI framework.
-    * **Maintainability and Scalability:** Components are **[[cohesion-coupling|loosely coupled]]**, making the code easier to maintain and evolve.
+    * **Maintainability and [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** Components are **[[cohesion-coupling|loosely coupled]]**, making the code easier to maintain and evolve.
     * **Reusability:** The **ViewModel** and the **Model** can be reused with different **Views**.
 
 * **Challenges:**

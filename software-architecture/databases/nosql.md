@@ -24,7 +24,7 @@ NoSQL databases are defined by a different set of priorities compared to their r
 
 The most defining characteristic of NoSQL databases is their flexible data model. Unlike the strict, predefined schemas of SQL, NoSQL databases allow you to store data without a fixed structure. This is often called "schema-on-read"—the data has a structure, but the database doesn't enforce it. This allows you to store varied data types in the same collection and add new fields on the fly, providing immense flexibility for rapidly evolving applications.
 
-### 2. Horizontal Scalability (Scaling Out)
+### 2. Horizontal [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]] (Scaling Out)
 
 NoSQL databases are designed from the ground up to [[system-design-fundamentals#Scalability|scale horizontally]]. This means they can handle increased load by adding more commodity servers to a cluster. This is most commonly achieved through **sharding**, a powerful pattern for partitioning data. This architecture is what allows NoSQL databases to handle massive volumes of data and high traffic loads.
 
@@ -45,11 +45,11 @@ This approach is a direct trade-off, as explained in the [[cap|CAP Theorem]], pr
 Most NoSQL databases are designed to be used by developers via simple, API-driven calls. The data formats they use, such as JSON in document databases, map directly to the objects and data structures used in modern programming languages. This eliminates the "object-relational impedance mismatch"—the complex mapping layer (ORM) often required to translate between the object-oriented world of an application and the relational world of a SQL database.
 
 ### 5. Replication
-Replication is a cornerstone of NoSQL database architecture, enabling both high availability and read scalability. Most NoSQL databases have built-in support for automatic replication, where data written to one node (the primary or master) is copied to other nodes (replicas or secondaries).
+Replication is a cornerstone of NoSQL database architecture, enabling both high availability and read [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. Most NoSQL databases have built-in support for automatic replication, where data written to one node (the primary or master) is copied to other nodes (replicas or secondaries).
 
 This is fundamental to their design for two reasons:
 -   **Availability**: If a node fails, a replica can be automatically promoted to take its place, ensuring the system remains operational.
--   **Read Scalability**: Read requests can be distributed across multiple replicas, increasing the system's overall read throughput.
+-   **Read [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Read requests can be distributed across multiple replicas, increasing the system's overall read throughput.
 
 The specific replication models and consistency guarantees vary widely between different NoSQL databases. For a detailed explanation of the common models (Master-Slave, Multi-Master), see the main page on [[availability-patterns#Replication-Patterns|Replication Patterns]].
 

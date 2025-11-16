@@ -52,7 +52,7 @@ graph TD
 ## Advantages and Technical Challenges
 
 * **Advantages (Benefits) :**
-    * **Scalability** : Adding new `peers` increases the total capacity of the system, in terms of bandwidth and storage. This is called **`organic scalability`**.
+    * **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]** : Adding new `peers` increases the total capacity of the system, in terms of bandwidth and storage. This is called **`organic scalability`**.
     * **Cost-Effectiveness** : Eliminates the need for expensive centralized [[client-server|server]] infrastructure, as resources are provided by the users themselves.
     * **Censorship Resistance** : The absence of a central control point makes the system resistant to censorship and targeted denial-of-service attacks.
     * **Resilience** : The network is highly resilient to individual node failures. If a `peer` goes down, the rest of the network continues to function.

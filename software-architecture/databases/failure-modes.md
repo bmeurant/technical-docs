@@ -115,7 +115,7 @@ This is a "silent killer" where the database is technically operational but has 
 -   **[[rdbms#SQL Tuning|Query Analysis]]**: Use tools like `EXPLAIN` to analyze query execution plans and identify bottlenecks.
 -   **Indexing Strategy**: Add indexes strategically to support common query patterns.
 -   **[[caching|Caching]]**: Reduce read load on the database by caching frequently accessed data.
--   **[[sharding|Sharding]]**: Distribute data and load across multiple servers to improve scalability.
+-   **[[sharding|Sharding]]**: Distribute data and load across multiple servers to improve [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
 ---
 

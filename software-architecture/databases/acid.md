@@ -50,7 +50,7 @@ Isolation is not an absolute property; it is implemented in different levels, wh
 
 ## Trade-offs and the BASE Alternative
 
-The strong guarantees of ACID compliance come at a cost, primarily in terms of performance and scalability. Enforcing these properties, especially across a distributed system, can create significant overhead and latency.
+The strong guarantees of ACID compliance come at a cost, primarily in terms of performance and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. Enforcing these properties, especially across a distributed system, can create significant overhead and latency.
 
 This led to the development of an alternative model, particularly popular in the [[nosql|NoSQL]] world: **BASE**.
 
@@ -58,7 +58,7 @@ This led to the development of an alternative model, particularly popular in the
 -   **S**oft state: The state of the system may change over time, even without input.
 -   **E**ventually consistent: The system will become consistent over time, given that the system doesn't receive further input.
 
-The BASE model prioritizes availability and scalability over the strict consistency of ACID, making it a better fit for use cases like social media feeds or analytics, where some temporary inconsistency is acceptable.
+The BASE model prioritizes availability and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] over the strict consistency of ACID, making it a better fit for use cases like social media feeds or analytics, where some temporary inconsistency is acceptable.
 
 ---
 

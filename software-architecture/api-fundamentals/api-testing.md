@@ -71,7 +71,7 @@ graph TD
     4. Assert that the final status of the order in the database is `CONFIRMED`.
 
 ### Load & Performance Testing
-Load testing assesses the API's performance, reliability, and scalability under specific loads. It helps identify the system's limits and potential bottlenecks before they affect users in production.
+Load testing assesses the API's performance, reliability, and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] under specific loads. It helps identify the system's limits and potential bottlenecks before they affect users in production.
 
 - **What to Test:**
     - **Response Time:** How long the API takes to respond under various levels of traffic.

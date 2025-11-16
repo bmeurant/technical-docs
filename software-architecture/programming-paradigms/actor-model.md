@@ -32,7 +32,7 @@ An actor is the fundamental unit of computation. It is a lightweight process tha
 Each actor has a "mailbox," which is a queue where incoming messages are stored. The actor processes messages from its mailbox one at a time, in the order they were received. This sequential processing of messages is what ensures that the actor's internal state is handled in a thread-safe manner without requiring locks.
 
 ### 3. Messages
-Actors communicate by sending asynchronous, immutable messages to each other. "Asynchronous" means the sender does not wait for the message to be delivered or processed; it can continue its own work immediately after sending the message. This "fire-and-forget" nature is key to the model's scalability.
+Actors communicate by sending asynchronous, immutable messages to each other. "Asynchronous" means the sender does not wait for the message to be delivered or processed; it can continue its own work immediately after sending the message. This "fire-and-forget" nature is key to the model's [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
 ### 4. State
 An actor's state is its private data, which it encapsulates and protects from the outside world. No other actor can access this state directly. The state can only be modified by the actor itself in response to a message.
@@ -74,7 +74,7 @@ graph TD
 ## Benefits of the Actor Model
 
 -   **Simplified Concurrency:** The model eliminates the need for manual thread management, locks, semaphores, and other complex synchronization primitives. By design, there are no race conditions on an actor's state because it is only ever modified by the actor itself in a single-threaded manner.
--   **High Scalability:** The lightweight nature of actors and the asynchronous, non-blocking communication allow systems to scale to millions of concurrent actors on a single machine or be distributed across a cluster of machines.
+-   **High [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The lightweight nature of actors and the asynchronous, non-blocking communication allow systems to scale to millions of concurrent actors on a single machine or be distributed across a cluster of machines.
 -   **[[reliability-engineering|Fault Tolerance and Resilience]]:** The model promotes a "let it crash" philosophy. Actors are often organized in a hierarchy where a "supervisor" actor manages child actors. If a child actor crashes, the supervisor is notified and can decide whether to restart it, stop it, or escalate the failure. This allows for self-healing systems.
 -   **Location Transparency:** Because actors communicate only through messages, it doesn't matter whether the recipient actor is in the same process, on the same machine, or on a different machine across the network. This makes it easy to build distributed systems.
 

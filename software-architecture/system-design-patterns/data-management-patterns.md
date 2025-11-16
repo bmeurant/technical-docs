@@ -13,7 +13,7 @@ date: 2025-10-28
 
 # Data Management Patterns
 
-Data management is a critical element of cloud applications and influences most quality attributes. The patterns on this page cover common strategies to solve challenges of performance, scalability, and availability found when working with both traditional [[rdbms|Relational Databases]] and modern [[nosql|NoSQL Databases]]. Data is often hosted in different locations and across multiple servers, which requires specific patterns to maintain consistency and efficiency.
+Data management is a critical element of cloud applications and influences most quality attributes. The patterns on this page cover common strategies to solve challenges of performance, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and availability found when working with both traditional [[rdbms|Relational Databases]] and modern [[nosql|NoSQL Databases]]. Data is often hosted in different locations and across multiple servers, which requires specific patterns to maintain consistency and efficiency.
 
 This page covers a collection of patterns designed to solve common problems in data management.
 
@@ -21,10 +21,10 @@ This page covers a collection of patterns designed to solve common problems in d
 
 ## 1. Data Storage
 
-Choosing the right data storage solution is fundamental to system design, impacting scalability, performance, and cost.
+Choosing the right data storage solution is fundamental to system design, impacting [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], performance, and cost.
 
 *   **[[rdbms|Relational Databases (SQL)]]**: Traditional databases emphasizing [[acid|ACID]] properties, structured schemas, and powerful querying with SQL. Ideal for complex transactions and [[data-integrity|data integrity]].
-*   **[[nosql|NoSQL Databases]]**: A diverse category of databases offering flexible schemas, horizontal scalability, and high performance for specific workloads. Includes:
+*   **[[nosql|NoSQL Databases]]**: A diverse category of databases offering flexible schemas, horizontal [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and high performance for specific workloads. Includes:
     *   **Document Stores**: For semi-structured data (e.g., MongoDB).
     *   **Key-Value Stores**: For simple, high-speed data retrieval (e.g., Redis).
     *   **Graph Databases**: For highly interconnected data (e.g., Neo4j).
@@ -57,7 +57,7 @@ Ensuring data consistency across distributed systems is a fundamental challenge,
 
 ## 4. Data Partitioning
 
-Dividing data into smaller, more manageable pieces to improve scalability and performance.
+Dividing data into smaller, more manageable pieces to improve [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and performance.
 
 *   **[[sharding|Sharding]]**: Horizontally partitioning a large dataset across multiple independent data stores (shards).
 *   **Partitioning**: General term for dividing a database into smaller, independent sections, often by function (vertical partitioning) or rows (horizontal partitioning/sharding).
@@ -66,7 +66,7 @@ Dividing data into smaller, more manageable pieces to improve scalability and pe
 
 ## 5. Data Replication
 
-Creating and maintaining multiple copies of data to ensure high availability and read scalability.
+Creating and maintaining multiple copies of data to ensure high availability and read [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
 *   **[[availability-patterns#Master-Slave Replication|Master-Slave Replication]]**: One node handles all writes, and data is replicated to read-only slave nodes.
 *   **[[availability-patterns#Master-Master (Multi-Master) Replication|Multi-Master Replication]]**: Multiple nodes can accept both read and write operations, with writes replicated between them.
@@ -79,7 +79,7 @@ These patterns address particular data-related challenges.
 
 ### Sharding
 
-The Sharding pattern is a technique for horizontally partitioning a large dataset across multiple independent data stores (shards). It is a primary strategy for achieving massive scalability and performance when a single database server is no longer sufficient to handle the load.
+The Sharding pattern is a technique for horizontally partitioning a large dataset across multiple independent data stores (shards). It is a primary strategy for achieving massive [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and performance when a single database server is no longer sufficient to handle the load.
 
 ### Problem
 
@@ -124,7 +124,7 @@ flowchart TD
 ### Resources & Links
 
 1.  **[Sharding pattern - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/patterns/sharding)**
-    The official Microsoft documentation for the pattern, explaining how it can improve scalability, performance, and availability.
+    The official Microsoft documentation for the pattern, explaining how it can improve [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], performance, and availability.
 
 2.  **[Database Sharding: Examples, Strategies, Tools & More | DataCamp](https://www.datacamp.com/blog/database-sharding)**
     A comprehensive article covering the different strategies for sharding, its benefits, and how it compares to other techniques like partitioning and replication.

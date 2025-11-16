@@ -8,7 +8,7 @@ tags:
 date: 2025-10-28
 ---
 
-The **Valet Key** pattern involves providing a client with a temporary, restricted-access token (a "key") that grants direct access to a specific resource. This approach allows the application to offload data transfer operations to the underlying storage or messaging service, enhancing performance, scalability, and cost-efficiency.
+The **Valet Key** pattern involves providing a client with a temporary, restricted-access token (a "key") that grants direct access to a specific resource. This approach allows the application to offload data transfer operations to the underlying storage or messaging service, enhancing performance, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and cost-efficiency.
 
 The application acts as the "valet," authenticating the client and issuing a key with fine-grained permissions (e.g., read-only, write-only), a specific scope (e.g., a single file), and a limited lifetime.
 
@@ -55,7 +55,7 @@ This pattern is highly effective in scenarios involving:
 
 The Valet Key pattern acts as an **enabler**, unlocking the core benefits of patterns like [[static-content-hosting]] for private or user-specific data. Without it, an application would be forced to proxy data, negating those advantages.
 
--   **Enables Performance & Scalability**: By removing the application server from the data transfer path, the pattern offloads all CPU, memory, and I/O load associated with the transfer to the storage service. This frees the application to handle more business-critical requests and allows the data transfer portion to scale massively using the cloud provider's infrastructure.
+-   **Enables Performance & [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: By removing the application server from the data transfer path, the pattern offloads all CPU, memory, and I/O load associated with the transfer to the storage service. This frees the application to handle more business-critical requests and allows the data transfer portion to scale massively using the cloud provider's infrastructure.
 -   **Unlocks Cost-Effectiveness**: It directly reduces operational costs by eliminating the need to pay for data transfer bandwidth and compute time on the application server (which would be required for proxying). The cost shifts to the cloud storage provider's bandwidth, which is typically more economical.
 -   **Enhanced Security**: While enabling direct access, the pattern maintains strong security. The application retains full control over authentication and authorization, issuing keys that are narrowly scoped (e.g., a specific file) and short-lived (e.g., valid for 5 minutes), which minimizes the risk of a compromised key.
 

@@ -18,7 +18,7 @@ This section introduces the two major families of databases—[[rdbms|SQL]] and 
 
 ## The Fundamental Trade-Off: SQL vs. NoSQL
 
-The primary difference between [[rdbms|SQL]] and [[nosql|NoSQL]]  lies in how they model, store, and retrieve data, which in turn dictates their strengths in consistency, scalability, and flexibility.
+The primary difference between [[rdbms|SQL]] and [[nosql|NoSQL]]  lies in how they model, store, and retrieve data, which in turn dictates their strengths in consistency, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and flexibility.
 
 ```mermaid
 graph TD
@@ -52,7 +52,7 @@ graph TD
 -   **Schema:** Dynamic or schema-less. You can add new fields without redefining the entire database structure.
 -   **Key Strength:** Designed for **[[system-design-fundamentals#Scalability|horizontal scaling]]** (scaling out by adding more servers). They often prioritize performance and [[system-design-patterns/availability-patterns|availability]] over [[consistency#Strong-Consistency|strong consistency]], aligning with the **BASE** model (Basically Available, Soft state, [[consistency#Eventual-Consistency|Eventually consistent]]).
 -   **Querying:** Query languages vary by database and are often less powerful than SQL for complex joins.
--   **Trade-offs:** The flexibility and scalability often come at the cost of weaker consistency guarantees, as explained in the [[cap|CAP Theorem]].
+-   **Trade-offs:** The flexibility and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] often come at the cost of weaker consistency guarantees, as explained in the [[cap|CAP Theorem]].
 -   **Examples:** MongoDB (Document), Redis (Key-Value), Cassandra (Wide-column), Neo4j (Graph).
 -   **Learn more:** [[nosql|NoSQL Databases]]
 
@@ -84,7 +84,7 @@ graph TD
 ### Articles
 
 1.  **[SQL vs. NoSQL: What’s the difference? - IBM](https://www.ibm.com/blog/sql-vs-nosql/)**
-    An article from IBM that provides a high-level overview of the key differences in data structure, scalability, and use cases for SQL and [[nosql|NoSQL databases]] .
+    An article from IBM that provides a high-level overview of the key differences in data structure, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and use cases for SQL and [[nosql|NoSQL databases]] .
 
 2.  **[SQL vs NoSQL: 5 Critical Differences | Integrate.io](https://www.integrate.io/blog/the-sql-vs-nosql-difference/)**
     This article details five critical differences between SQL and NoSQL, focusing on architecture, schemas, and scaling to help choose the right database.

@@ -41,7 +41,7 @@ For a detailed explanation of each pattern, please refer to their dedicated docu
 
 * **[[cohesion-coupling|Decoupling]]**: Services have no direct dependency on one another, which simplifies system development, maintenance, and evolution.
 * **Resilience**: If a consumer fails, messages are not lost; they remain in the **[[broker]]** until a service resumes processing.
-* **Scalability**: The **[[broker]]** handles traffic spikes by acting as a buffer. It is easy to add more consumers to increase processing capacity without impacting the rest of the system.
+* **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: The **[[broker]]** handles traffic spikes by acting as a buffer. It is easy to add more consumers to increase processing capacity without impacting the rest of the system.
 * **Flexibility**: Different services can be developed using distinct technologies as long as they adhere to the common communication protocol with the **[[broker]]**.
 
 ## Asynchronous Request-Reply Pattern

@@ -20,7 +20,7 @@ Communication is organized by **topics** (sometimes called channels). Publishers
 * **[[cohesion-coupling|Decoupling]]:** This is the key principle. Publishers and subscribers are completely independent of each other. A publisher does not know who (or how many) subscribers are listening to its messages, and vice versa. This temporal and spatial decoupling facilitates the independent development and evolution of services.
 * **Asynchrony:** Communication is non-blocking. A publisher sends a message and does not expect an immediate response. The message is stored by the [[broker]] and delivered to the subscribers when they are available.
 * **Topic-Based Messaging:** Messages are categorized by topics. Subscribers subscribe to one or more topics to receive the messages that interest them. This model allows for selective and efficient information broadcast.
-* **Scalability:** It is very easy to add new publishers or subscribers without modifying existing components. The load can be distributed by adding new consumer instances.
+* **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** It is very easy to add new publishers or subscribers without modifying existing components. The load can be distributed by adding new consumer instances.
 
 ---
 
@@ -127,7 +127,7 @@ Pub/Sub is often considered the distributed, asynchronous version of the classic
 
 1.  **[What is Pub/Sub?](https://www.geeksforgeeks.org/system-design/what-is-pub-sub/)**
 
-    This **GeeksforGeeks** article provides an introduction to the **Publish-Subscribe (Pub/Sub)** messaging pattern. It explains how this asynchronous messaging pattern works by decoupling senders (publishers) from receivers (subscribers) through a [[broker|message broker]], enhancing scalability and reliability in system design.
+    This **GeeksforGeeks** article provides an introduction to the **Publish-Subscribe (Pub/Sub)** messaging pattern. It explains how this asynchronous messaging pattern works by decoupling senders (publishers) from receivers (subscribers) through a [[broker|message broker]], enhancing [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] and reliability in system design.
 
 2.  **[What is the Publish Subscribe Pattern?](https://www.contentful.com/blog/publish-subscribe-pattern/)**
 

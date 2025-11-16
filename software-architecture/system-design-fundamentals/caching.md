@@ -10,7 +10,7 @@ date: 2025-10-21
 
 # Caching
 
-Caching is a fundamental and ubiquitous technique in modern system design, crucial for enhancing both performance and scalability. At its essence, caching involves storing copies of frequently accessed data in a temporary, high-speed storage layer – the cache – located closer to the consumer of that data. The primary objective is to drastically reduce the latency associated with retrieving data from its original, often slower, source (such as a [[rdbms|database]], a remote API, or a complex computation).
+Caching is a fundamental and ubiquitous technique in modern system design, crucial for enhancing both performance and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. At its essence, caching involves storing copies of frequently accessed data in a temporary, high-speed storage layer – the cache – located closer to the consumer of that data. The primary objective is to drastically reduce the latency associated with retrieving data from its original, often slower, source (such as a [[rdbms|database]], a remote API, or a complex computation).
 
 By intercepting and serving repeated data requests from the cache, systems can achieve several critical benefits:
 - **Reduced Latency:** Data retrieval becomes significantly faster, leading to a more responsive user experience.

@@ -56,7 +56,7 @@ graph TD
 
 * **Advantages (Benefits):**
     * **Reusability:** Components can be reused in different applications, which reduces development costs and time-to-market.
-    * **Maintainability & Scalability:** Components can be updated or replaced in isolation without affecting the rest of the system.
+    * **Maintainability & [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** Components can be updated or replaced in isolation without affecting the rest of the system.
     * **Parallel Development:** Different teams can work on separate components simultaneously.
     * **Robustness:** Encapsulation and decoupling increase the system's resilience to failures.
 

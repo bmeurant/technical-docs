@@ -28,7 +28,7 @@ The goal is to be able to modify one section of the code without affecting other
 - **Reduced Complexity:** By breaking down a complex problem into smaller, manageable parts, the overall complexity of the system is reduced.
 - **Improved Maintainability:** Changes to one part of the system are less likely to have unintended consequences in other parts. This makes the code easier to debug and maintain.
 - **Increased Reusability:** Well-defined, separate modules can be reused in other parts of the system or in different projects.
-- **Enhanced Scalability:** It is easier to scale or replace individual components when they are not tightly coupled with the rest of the system.
+- **Enhanced [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** It is easier to scale or replace individual components when they are not tightly coupled with the rest of the system.
 - **Parallel Development:** Different teams can work on different concerns simultaneously, which can speed up the development process.
 
 ---

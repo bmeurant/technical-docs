@@ -19,10 +19,10 @@ This page covers the fundamental concepts and trade-offs that form the foundatio
 
 ## Performance vs. Scalability
 
-While often used interchangeably, performance and scalability are distinct concepts that address different challenges.
+While often used interchangeably, performance and [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] are distinct concepts that address different challenges.
 
 *   **Performance** is a measure of a system's efficiency for a single user or operation. It answers the question: "How fast is the system?" A system with a performance problem feels slow even with only one user.
-*   **Scalability** is the system's ability to handle a growing amount of load, for instance, by adding more resources. It answers the question: "How well does the system handle more users or more data?" A system with a scalability problem is fast for a single user but becomes slow under heavy load.
+*   **Scalability** is the system's ability to handle a growing amount of load, for instance, by adding more resources. It answers the question: "How well does the system handle more users or more data?" A system with a [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] problem is fast for a single user but becomes slow under heavy load.
 
 Common mistakes that degrade system speed are known as [[system-performance#Performance Antipatterns|performance antipatterns]].
 

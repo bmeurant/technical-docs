@@ -92,7 +92,7 @@ The **Pipe and Filters** pattern is a foundation for many data processing system
 
 2.  **[Pipe and Filter Architecture - System Design (GeeksforGeeks)](https://www.geeksforgeeks.org/system-design/pipe-and-filter-architecture-system-design/)**
     
-    This article provides a comprehensive overview of the pattern, its core concepts, benefits (modularity, scalability), and real-world examples like Unix command-line tools.
+    This article provides a comprehensive overview of the pattern, its core concepts, benefits (modularity, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]), and real-world examples like Unix command-line tools.
 
 ### **Videos**
 

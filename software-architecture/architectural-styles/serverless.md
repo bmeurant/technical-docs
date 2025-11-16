@@ -62,7 +62,7 @@ The data flow in a **Serverless** architecture is fundamentally different from t
 4.  **Result Handling**: Once execution is complete, the function returns a response (e.g., an HTTP status code and a JSON response body) or writes data to another service. The function then stops, and the execution environment is released.
 5.  **No Persistent Connection**: There is no long-lasting connection maintained. Each invocation is a distinct, isolated execution.
 
-This **stateless**, [[event-driven|event-driven]] model is what enables the massive **scalability** and reduced costs associated with a **Serverless** architecture.
+This **stateless**, [[event-driven|event-driven]] model is what enables the massive **[[software-architecture/system-design-fundamentals/index#Scalability|scalability]]** and reduced costs associated with a **Serverless** architecture.
 
 ---
 
@@ -71,7 +71,7 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
 * **Benefits:**
     * **Reduced Cost:** The **pay-per-use** model eliminates costs for idle servers.
     * **Accelerated Time-to-market:** Developers focus on business logic without worrying about infrastructure, which speeds up development and deployment.
-    * **Elastic Scalability:** The platform automatically and transparently manages scaling, allowing you to handle massive traffic spikes without manual intervention.
+    * **Elastic [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]:** The platform automatically and transparently manages scaling, allowing you to handle massive traffic spikes without manual intervention.
     * **Simplified Operations:** There are fewer **DevOps** tasks, such as managing servers, OS updates, or infrastructure [[monitoring]].
 
 * **Challenges:**

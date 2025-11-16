@@ -20,7 +20,7 @@ In any secure system, from a simple blog to a complex enterprise application, au
 
 ## Core Authorization Models
 
-Several models exist for managing permissions. The choice of model depends on the system's complexity, scalability requirements, and the granularity of control needed.
+Several models exist for managing permissions. The choice of model depends on the system's complexity, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]] requirements, and the granularity of control needed.
 
 ### Role-Based Access Control (RBAC)
 

@@ -21,7 +21,7 @@ This approach contrasts sharply with synchronous execution, where each operation
 -   **Improved Responsiveness**: By offloading long-running tasks, the system can remain responsive to user interactions or other incoming requests.
 -   **Enhanced Throughput**: A single thread or process can manage multiple concurrent operations, leading to a higher number of tasks processed per unit of time.
 -   **Better Resource Utilization**: Resources (CPU, memory) are not idled waiting for I/O operations to complete; instead, they can be used to process other tasks. This is a key principle of [[workload-management|Workload Management]].
--   **Scalability**: Facilitates the design of scalable systems by allowing components to operate independently and process workloads more efficiently.
+-   **[[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Facilitates the design of scalable systems by allowing components to operate independently and process workloads more efficiently.
 -   **Resilience**: Enables systems to handle transient failures more gracefully, as operations can be retried or managed in the background without impacting the main flow.
 
 ## Asynchronous Workflows
