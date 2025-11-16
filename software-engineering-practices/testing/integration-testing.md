@@ -84,7 +84,7 @@ For a complete definition of each type, see the [[test-doubles|Test Doubles]] pa
 
 One of the biggest challenges of integration testing is setting up and managing the required dependencies. Modern tools have made this significantly easier.
 
-**Testcontainers** is a popular library (available for Java, .NET, Go, and others) that allows you to programmatically define and launch Docker containers for your tests. This means you can spin up a real database (like PostgreSQL), a message broker (like RabbitMQ), or any other dependency, run your tests against it, and then tear it down automatically. This provides a high-fidelity test environment that is fully automated and ephemeral.
+**Testcontainers** is a popular library (available for Java, .NET, Go, and others) that allows you to programmatically define and launch Docker [[containerization|containers]] for your tests. This means you can spin up a real database (like PostgreSQL), a message broker (like RabbitMQ), or any other dependency, run your tests against it, and then tear it down automatically. This provides a high-fidelity test environment that is fully automated and ephemeral.
 
 ### Contract Testing
 
