@@ -58,6 +58,14 @@ graph TD
 
 ---
 
+## Further Reading
+
+* [[failure-modes|Database Failure Modes]]
+* [[poeaa#Object-Relational-Mapper-(ORM)|Object-Relational Mapper (ORM)]]
+* [[monitoring#Performance-Monitoring|Performance Monitoring]]
+
+---
+
 ## At a Glance: SQL vs. NoSQL
 
 | Feature | SQL (RDBMS) | NoSQL |
