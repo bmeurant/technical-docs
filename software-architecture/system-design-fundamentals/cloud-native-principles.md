@@ -127,7 +127,7 @@ Cloud-native applications are built upon and heavily leverage numerous architect
 
 *   **[[microservices|Microservices Architecture]]**: The foundational architectural style for most cloud-native applications.
 *   **[[twelve-factor-app|The Twelve-Factor App]]**: A set of principles for building SaaS applications that thrive in cloud environments.
-*   **[[containerization|Containerization]] (Docker, Kubernetes)**: Essential technologies for packaging and orchestrating cloud-native services.
+*   **[[containerization|Containerization]] ([[docker|Docker]], [[kubernetes|Kubernetes]])**: Essential technologies for packaging and orchestrating cloud-native services.
 *   **[[serverless|Serverless Architecture]]**: An evolution of cloud-native where the cloud provider manages server infrastructure entirely.
 *   **[[service-mesh|Service Mesh]]**: Provides a dedicated infrastructure layer for managing inter-service communication, security, and observability in microservices.
 *   **[[api-gateway|API Gateway]]**: Acts as a single entry point for clients, abstracting backend service complexity.

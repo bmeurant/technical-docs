@@ -12,7 +12,7 @@ The **Microservices** architecture is an [[software-architecture/architectural-s
     * **Team Autonomy & Organizational Alignment:** The architecture is designed to enable small, autonomous teams to own and operate their services independently. This aligns the architecture with the organization's structure (**Conway's Law**), accelerating delivery.
     * **Functional Decomposition:** The application is divided into services based on specific **business domains** (e.g., an order service, a payments service, an inventory service).
     * **Decentralization & "[[software-architecture/databases/|Database]] per Service":** Each service is self-contained and manages its own data, typically with its own database. This ensures loose coupling and independent evolution.
-    * **Automated Infrastructure:** The complexity of the architecture requires strong automation of deployment and management via **DevOps** tools (e.g., **CI/CD**, **containerization** with **Docker**, orchestration with **Kubernetes**).
+    * **Automated Infrastructure:** The complexity of the architecture requires strong automation of deployment and management via **DevOps** tools (e.g., **CI/CD**, **[[containerization]]** with **[[docker|Docker]]**, orchestration with **[[kubernetes|Kubernetes]]**).
 
 ---
 
