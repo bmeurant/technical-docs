@@ -5,3 +5,4 @@ This section covers fundamental practices and methodologies that bridge the gap 
 ## Topics
 
 * **[CI/CD](./ci-cd.md)**
+* **[DevOps](./devops.md)**
