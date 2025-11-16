@@ -10,15 +10,20 @@ To this end, this section draws on the excellent roadmap.sh tool, which can be u
 
 ## Topics
 
+* [API Fundamentals](./api-fundamentals/)
+* [API Paradigms](./api-paradigms/)
 * [Architectural Patterns](./architectural-patterns/)
 * [Architectural Principles](./architectural-principles/)
 * [Architectural Styles](./architectural-styles/)
+* [Containers](./containers/)
 * [Databases](./databases/)
 * [Design Patterns](./design-patterns/)
-* [Design Methodologies](./design-methodologies/)
 * [Design Principles](./design-principles/)
+* [Observability](./observability/)
 * [Programming Paradigms](./programming-paradigms/)
-* [Clean code](./clean-code/)
+* [Security](./security/)
+* [Security Patterns](./security-patterns/)
+* [System Design Components](./system-design-components/)
 * [System-Design Fundamentals](./system-design-fundamentals/)
 * [System-Design Patterns](./system-design-patterns/)
 
