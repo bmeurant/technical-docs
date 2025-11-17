@@ -74,7 +74,13 @@ graph TD
 
 -   **Operations:** Simple `get`, `set`, and `delete` operations.
 -   **Use Cases:** Caching, session management, real-time leaderboards.
--   **Examples:** Redis, Amazon DynamoDB.
+-   **Examples:**
+    *   **Redis**: An in-memory data structure store, used as a database, cache, and message broker. It's renowned for its extremely high performance.
+        > [Official Website](https://redis.io/)
+    *   **Amazon DynamoDB**: A fully managed, serverless key-value and document database that delivers single-digit millisecond performance at any scale.
+        > [Official Website](https://aws.amazon.com/dynamodb/)
+    *   **Google Cloud Memorystore**: A fully managed in-memory data store service for Redis and Memcached, used for caching and high-speed data storage.
+        > [Official Website](https://cloud.google.com/memorystore)
 
 ### 2. Document Store
 
@@ -95,7 +101,13 @@ graph TD
 
 -   **Operations:** Rich query language to filter documents based on their internal fields.
 -   **Use Cases:** Content management systems, e-commerce product catalogs, user profiles.
--   **Examples:** MongoDB, Couchbase.
+-   **Examples:**
+    *   **MongoDB**: A source-available, document-oriented database program that is one of the most popular NoSQL databases for general-purpose application development.
+        > [Official Website](https://www.mongodb.com/)
+    *   **CouchDB**: An open-source database that uses JSON for documents and JavaScript for MapReduce queries. It has a strong focus on high availability and eventual consistency.
+        > [Official Website](https://couchdb.apache.org/)
+    *   **Google Cloud Firestore**: A flexible, scalable NoSQL document database that provides live synchronization and offline support for mobile, web, and server development.
+        > [Official Website](https://cloud.google.com/firestore)
 
 ### 3. Wide-Column Store
 
@@ -111,9 +123,16 @@ graph TD
 *Description: Rows are not required to have the same columns. This is ideal for storing data with varied attributes.*
 
 -   **Operations:** Optimized for high-speed reads and writes on specific columns for a given row key.
-
 -   **Use Cases:** Big Data analytics, IoT time-series data, logging systems.
--   **Examples:** Apache Cassandra, Google Bigtable, HBase.
+-   **Examples:**
+    *   **Apache Cassandra**: A distributed, wide-column store database designed to handle large amounts of data across many commodity servers, providing high availability with no single point of failure.
+        > [Official Website](https://cassandra.apache.org/)
+    *   **Google Cloud Bigtable**: A fully managed, scalable NoSQL wide-column database service. It's the same database that powers many core Google services, including Search, Analytics, and Maps.
+        > [Official Website](https://cloud.google.com/bigtable)
+    *   **ClickHouse**: An open-source, column-oriented DBMS for online analytical processing (OLAP) that is exceptionally fast for analytical queries.
+        > [Official Website](https://clickhouse.com/)
+    *   **ScyllaDB**: A high-performance big data database that is API-compatible with Apache Cassandra and Amazon DynamoDB, rewritten in C++ for maximum performance.
+        > [Official Website](https://www.scylladb.com/)
 
 ### 4. Graph Database
 
@@ -130,7 +149,58 @@ graph TD
 
 -   **Operations:** Specialized query languages (e.g., Cypher for Neo4j) designed to traverse complex relationships efficiently.
 -   **Use Cases:** Social networks, fraud detection, recommendation engines.
--   **Examples:** Neo4j, Amazon Neptune.
+-   **Examples:**
+    *   **Neo4j**: A native graph database platform optimized to store and traverse graphs, using the Cypher query language.
+        > [Official Website](https://neo4j.com/)
+    *   **Amazon Neptune**: A fully-managed graph database service from AWS that supports both Property Graph (Gremlin) and RDF (SPARQL) models.
+        > [Official Website](https://aws.amazon.com/neptune/)
+    *   **Dgraph**: An open-source, distributed graph database built for scalability, providing a GraphQL-like query language.
+        > [Official Website](https://dgraph.io/)
+
+### 5. Time Series Database
+
+This is a specialized type of database optimized for storing and querying time-stamped data, or "time series." Data points are always associated with a timestamp.
+
+```mermaid
+graph TD
+    subgraph "Time Series Database"
+        T1("Time: 12:00:01") --> V1("Value: {temp: 23.5, cpu: 45%}")
+        T2("Time: 12:00:02") --> V2("Value: {temp: 23.6, cpu: 46%}")
+    end
+```
+*Description: Each data point is indexed by a timestamp, allowing for highly efficient time-based queries.*
+
+-   **Operations:** Optimized for fast ingestion of high-volume data and complex queries over time ranges (e.g., aggregations, downsampling).
+-   **Use Cases:** IoT sensor data, financial trading data, application performance [[monitoring]].
+-   **Examples:**
+    *   **InfluxDB**: An open-source time series database optimized for fast, high-availability storage and retrieval of time series data.
+        > [Official Website](https://www.influxdata.com/)
+    *   **TimescaleDB**: An open-source time-series database engineered on top of PostgreSQL, combining the performance of a time-series DB with the reliability of PostgreSQL.
+        > [Official Website](https://www.timescale.com/)
+
+### 6. Realtime Database
+
+A realtime database is a type of NoSQL database that is designed to push data updates to connected clients in realtime. Instead of a client polling for changes, the database notifies clients as soon as data is modified.
+
+```mermaid
+graph TD
+    subgraph "Realtime Database"
+        DB[(Database)] -- "Data Change" --> Push(Push Notification)
+        Push --> C1(Client 1)
+        Push --> C2(Client 2)
+    end
+```
+*Description: The database automatically pushes data changes to all subscribed clients.*
+
+-   **Operations:** Typically provides SDKs that manage a persistent connection (e.g., via WebSockets) and expose subscription APIs.
+-   **Use Cases:** Collaborative applications (e.g., online whiteboards, document editors), live chat, multiplayer games.
+-   **Examples:**
+    *   **Firebase Realtime Database**: A cloud-hosted NoSQL database that lets you store and sync data between your users in realtime.
+        > [Official Website](https://firebase.google.com/docs/database)
+    *   **Google Cloud Firestore**: As a document database with realtime listeners, Firestore is also a powerful realtime database solution, automatically pushing data updates to connected clients.
+        > [Official Website](https://cloud.google.com/firestore)
+    *   **RethinkDB**: An open-source, distributed database that pushes JSON data to applications in realtime.
+        > [Official Website](https://rethinkdb.com/)
 
 ---
 
