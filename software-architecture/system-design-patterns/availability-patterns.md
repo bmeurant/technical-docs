@@ -134,6 +134,64 @@ graph TD
 
 ---
 
+## Load Management & Degradation Patterns
+
+While the patterns above focus on handling node failures, another aspect of availability is managing extreme load. When a system is overwhelmed, it's better for it to become slower or partially functional than to fail completely.
+
+### Graceful Degradation
+
+Graceful degradation is a strategy where a system intentionally disables non-critical functionalities under high load to preserve resources for its essential, core functions. This ensures that the main purpose of the application remains available, albeit with a reduced feature set.
+
+```mermaid
+graph LR
+    subgraph "High Load"
+        direction LR
+        UserRequest2(User Request) --> LoadShedder{Load Shedder}
+        LoadShedder -- "High Load Detected" --> System2{System}
+        System2 --> Core2(Core Functionality)
+        System2 -.-> Disabled(X Non-Critical Feature);
+        style Disabled fill:#ffcccc,stroke:#333
+        Core2 --> Response2(Partial but Functional Response)
+    end
+    subgraph "Normal Load"
+        direction LR
+        UserRequest1(User Request) --> System1{System}
+        System1 --> Core(Core Functionality)
+        System1 --> NonCritical(Non-Critical Feature)
+        Core --> Response1(Full Response)
+        NonCritical --> Response1
+    end
+```
+*Description: Under high load, a load-shedding mechanism disables non-critical features to ensure core functionality remains available.*
+
+*   **Example**: During a flash sale, an e-commerce site might disable personalized recommendations (non-critical) to ensure that the search, add-to-cart, and checkout functions (critical) remain fast and available.
+*   **Implementation**: This is often implemented using **feature flags** that can be toggled dynamically based on real-time system metrics like latency, error rates, or CPU saturation.
+
+### Loadshifting
+
+Loadshifting is a pattern for improving system stability and user experience by deferring non-urgent, resource-intensive tasks to off-peak hours. Instead of processing a heavy workload immediately, the system queues the task and processes it later when there are more available resources.
+
+This is a form of [[asynchronism|asynchronous processing]] and is often implemented using [[background-jobs]] and [[queue-based-load-leveling|message queues]].
+
+```mermaid
+graph LR
+    subgraph "Peak Hours (Day)"
+        User[User Request] --> API[API Server]
+        API -- "Enqueue Job" --> Queue[(Message Queue)]
+        API -- "202 Accepted" --> User
+    end
+    
+    subgraph "Off-Peak Hours (Night)"
+        Worker[Batch Worker] -- "Polls for Jobs" --> Queue
+        Worker -- "Processes Job" --> DB[(Database / Storage)]
+    end
+```
+*Description: Instead of processing a heavy request immediately, the system places it in a queue. Batch workers then process the jobs from the queue during off-peak hours.*
+
+*   **Example**: A user requests to export a large annual report. Instead of making them wait and tying up server resources, the API accepts the request, returns an immediate "Accepted" response, and places a "generate report" job in a queue. A separate worker process runs at night to generate the reports and notifies the user via email when it's ready.
+
+---
+
 ## Geographic Redundancy Patterns
 
 While the patterns above can be deployed across multiple availability zones within a region, some systems require resilience against the failure of an entire geographic region.
