@@ -67,7 +67,7 @@ The Sidecar pattern is extremely versatile and is a foundational element of many
 
 2.  **[[software-architecture/observability/|Observability]] & [[monitoring|Monitoring]]**
     A sidecar can act as a local agent to collect and export [[monitoring|telemetry]], abstracting this task away from the application.
-    -   **Log Collection**: A `fluentd` or `vector` sidecar can scrape log files from a shared volume and forward them to a centralized logging backend (like Elasticsearch or Loki).
+    -   **Log Collection**: A `fluentd` or `vector` sidecar can scrape log files from a shared volume and forward them to a centralized logging backend (like [[search-engines|Elasticsearch]] or Loki).
     -   **Metrics Collection**: A sidecar can collect application metrics and expose them in a format that a central monitoring system (like Prometheus) can scrape.
 
 3.  **Security**

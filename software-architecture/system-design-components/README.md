@@ -5,4 +5,5 @@ This section provides an overview of the fundamental software components that se
 ## Topics
 
 *   [Web Server](./web-server.md)
+*   [Search Engines](./search-engines.md)
 *   [Databases](../databases/)

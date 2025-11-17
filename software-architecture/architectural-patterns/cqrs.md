@@ -15,7 +15,7 @@ date: 2025-09-27
     * **[[soc|Separation of Concerns]]:** The core idea is to have two distinct models:
         * The **Write Model** (or Command Model) is optimized for validation, business logic execution, and consistency. It processes commands and produces events or state changes.
         * The **Read Model** (or Query Model) is a denormalized and optimized representation of the data, designed specifically for efficient querying and display.
-    * **Asymmetrical Models:** The write model can be a fully normalized, transactional [[rdbms|database]], while the read model could be a [[nosql|NoSQL database]], a full-text search index, or simply materialized views.
+    * **Asymmetrical Models:** The write model can be a fully normalized, transactional [[rdbms|database]], while the read model could be a [[nosql|NoSQL database]], a [[search-engines|full-text search index]], or simply materialized views.
     * **Data Synchronization:** The read model is updated based on changes occurring in the write model. This synchronization is often asynchronous, leading to eventual consistency.
 
 ---
@@ -56,7 +56,7 @@ sequenceDiagram
 2.  **Write Model:** Handles the command, executes business rules, and persists the state change. In an [[event-sourcing|Event Sourcing]] context, this would be an **Aggregate** that produces events.
 3.  **Write Database:** The data store for the write model. It is optimized for writes (e.g., a normalized [[rdbms|SQL database]] or an Event Store).
 4.  **Data Synchronization Mechanism:** A process that updates the read model. This is often done by publishing events from the write model (e.g., via a message bus) that the read side subscribes to.
-5.  **Read Model:** A denormalized data store optimized for queries. It can be a [[nosql|NoSQL database]], a search index, or any other suitable storage. It is essentially a materialized view of the data.
+5.  **Read Model:** A denormalized data store optimized for queries. It can be a [[nosql|NoSQL database]], a [[search-engines|search index]], or any other suitable storage. It is essentially a materialized view of the data.
 6.  **[[poeaa#Commands-and-Queries|Query]]:** A request for data that does not change the state of the system. It returns a [[poeaa#Data-Transfer-Object-DTO|Data Transfer Object (DTO)]].
 
 ---

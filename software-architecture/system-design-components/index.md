@@ -23,5 +23,6 @@ In the broader landscape of [[software-architecture/|Software Architecture]], sy
 ## Core Components
 
 *   [[web-server|Web Server]]
+*   [[search-engines|Search Engines]]
 *   [[software-architecture/databases/|Databases]]
 *   [[containers/|Containers]]

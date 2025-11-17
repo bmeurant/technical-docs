@@ -501,7 +501,7 @@ This approach decouples the application from the log management infrastructure. 
 ### Examples
 *   An application writing a JSON object to `stdout` for each event.
 *   A [[containerization|container]] orchestrator like Kubernetes capturing the `stdout` stream from all containers.
-*   A log router like **Fluentd** or **Logstash** collecting these streams, parsing them, and forwarding them to multiple outputs like **Elasticsearch** for searching and **Amazon S3** for long-term archival.
+*   A log router like **Fluentd** or **Logstash** collecting these streams, parsing them, and forwarding them to multiple outputs like [[search-engines|Elasticsearch]] for searching and **Amazon S3** for long-term archival.
 
 ## XII. Admin Processes
 
