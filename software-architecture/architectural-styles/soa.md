@@ -59,7 +59,7 @@ graph TD
     *   **Routing:** Directing requests to the correct service.
     *   **Transformation:** Converting data between different formats (e.g., XML to JSON).
     *   **[[event-driven#Mediator Topology (Orchestration)|Orchestration]]:** Coordinating calls to multiple services to fulfill a single business process.
-    *   **Protocol Translation:** Bridging different communication protocols (e.g., HTTP and FTP).
+    *   **Protocol Translation:** Bridging different communication protocols (e.g., HTTP and [[communication-protocols#File Transfer Protocol (FTP)|FTP]]).
 
 **Typical Data Flow:**
 * The client searches for a service in the **Service Registry**.

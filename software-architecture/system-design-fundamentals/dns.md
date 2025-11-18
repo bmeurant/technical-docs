@@ -67,7 +67,7 @@ DNS servers store different types of records to provide various services.
 
 - **A Record (Address):** The most common type. It maps a domain name to an IPv4 address.
 - **AAAA Record:** Maps a domain name to an IPv6 address.
-- **CNAME (Canonical Name): Privilege Escalation** Acts as an alias, pointing a domain name to another domain name. For example, `ftp.example.com` could be a CNAME pointing to `example.com`.
+- **CNAME (Canonical Name):** Acts as an alias, pointing a domain name to another domain name. For example, `ftp.example.com` could be a CNAME pointing to `example.com`.
 - **MX (Mail Exchange):** Specifies the mail servers responsible for accepting email messages on behalf of a domain.
 - **NS (Name Server):** Delegates a domain or subdomain to a set of authoritative name servers.
 

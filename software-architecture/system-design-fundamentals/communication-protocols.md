@@ -75,6 +75,75 @@ UDP is suitable for applications where speed is more important than reliability,
 | **Header Size**        | 20 bytes                                 | 8 bytes                                |
 | **Use Cases**          | Web, Email, File Transfer                | Streaming, Gaming, DNS, VoIP           |
 
+## File Transfer Protocol (FTP)
+
+FTP is one of the oldest protocols still in use today, designed specifically for transferring files between a client and a server on a computer network. It operates on a client-server model and uses separate control and data connections between the client and the server.
+
+### Key Characteristics
+
+- **Stateful**: The control connection remains open for the duration of the FTP session, tracking the user's state (e.g., current directory, authentication).
+- **Separate Control and Data Channels**: FTP uses two distinct TCP connections:
+  - **Control Connection (Port 21)**: Used to send commands (e.g., `USER`, `PASS`, `LIST`, `GET`) and receive responses.
+  - **Data Connection (Dynamic Port)**: Used for the actual transfer of files.
+- **Insecure by Default**: FTP credentials and data are transmitted in clear text, making it vulnerable to sniffing. For security, extensions like FTPS (FTP over SSL/TLS) are used.
+
+### How It Works: Control and Data Channels
+
+The dual-channel architecture is a defining feature of FTP.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Client->>Server: TCP Connection for Control (Port 21)
+    Server->>Client: Welcome message
+    Client->>Server: USER username
+    Client->>Server: PASS password
+    Note over Client, Server: Authentication complete
+
+    Client->>Server: PASV (Enter Passive Mode)
+    Server->>Client: Port N for Data
+    
+    Client->>Server: TCP Connection for Data (Port N)
+    Note over Client, Server: Data Channel Established
+
+    Client->>Server: RETR file.txt (via Control Channel)
+    Server->>Client: File contents (via Data Channel)
+    Note over Client, Server: File is transferred
+
+    Client->>Server: QUIT (via Control Channel)
+    Server->>Client: Goodbye
+```
+*Description: The client first establishes a control connection. For a file transfer, it enters passive mode, receives a data port from the server, establishes a separate data connection, and then transfers the file.*
+
+### Use Cases
+
+- **Legacy Systems**: Common in established workflows for batch file transfers.
+- **Web Hosting**: Uploading website files to a hosting provider.
+- **Bulk Data Transfer**: Moving large files where performance is more critical than security (in controlled networks).
+
+## Secure File Transfer Protocol (SFTP)
+
+Despite its name, SFTP is not FTP over SSL. It is a completely different protocol designed as an extension of the Secure Shell (SSH) protocol. It provides secure file transfer, access, and management functionalities over a reliable data stream.
+
+### Key Characteristics
+
+- **Secure**: All traffic, including credentials and data, is encrypted as it runs over an SSH channel.
+- **Single Connection**: SFTP uses a single connection (typically on SSH port 22) for both commands and data, which simplifies firewall configuration.
+- **More than just Transfers**: The protocol allows for a range of operations on remote files, such as file locking, permission management, and symbolic linking.
+- **Reliable**: Built on top of TCP (via the SSH protocol), ensuring data integrity.
+
+### FTP vs. SFTP
+
+| Feature                | FTP                                      | SFTP                                   |
+| ---------------------- | ---------------------------------------- | -------------------------------------- |
+| **Security**           | Insecure (clear text) unless using FTPS  | Secure (encrypted via SSH)             |
+| **Protocol**           | Own protocol (RFC 959)                   | Extension of SSH                       |
+| **Connections**        | 2 (Control + Data)                       | 1 (within SSH tunnel)                  |
+| **Port(s)**            | 21 (Control), plus a dynamic data port   | 22 (or other SSH port)                 |
+| **Firewall Friendliness**| Difficult (due to dynamic ports)       | Easy (single port)                     |
+
 ## HyperText Transfer Protocol (HTTP)
 
 HTTP is the application-layer protocol that forms the foundation of the World Wide Web. It follows a stateless, request-response model and is used for transmitting hypermedia documents and as the primary communication protocol for [[rest|RESTful APIs]].
