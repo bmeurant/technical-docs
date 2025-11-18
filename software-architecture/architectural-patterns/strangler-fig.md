@@ -58,13 +58,13 @@ sequenceDiagram
 
 1.  **Legacy System:** The original [[monolithic|monolithic application]] that is being replaced.
 2.  **New System:** The modern application, typically composed of [[microservices]], that is gradually implementing the new functionality.
-3.  **Strangler Façade (or Proxy/Router):** This is the critical intermediary component that sits in front of the legacy system. It intercepts all incoming requests and makes a routing decision:
+3.  **Strangler Façade (or [[proxy-pattern|Proxy]]/Router):** This is the critical intermediary component that sits in front of the legacy system. It intercepts all incoming requests and makes a routing decision:
     *   If the requested functionality has been migrated, it routes the call to the new service.
     *   Otherwise, it passes the call through to the legacy system.
 
 **Typical Migration Flow:**
 1.  **Identify a Module:** A small, well-defined piece of functionality in the legacy system is chosen for migration.
-2.  **Implement the Façade:** A proxy or router is placed in front of the legacy system to intercept traffic.
+2.  **Implement the Façade:** A [[proxy-pattern|proxy]] or router is placed in front of the legacy system to intercept traffic.
 3.  **Build the New Service:** The functionality is rebuilt as a new, independent service.
 4.  **Switch the Route:** The façade is configured to route traffic for the migrated feature to the new service. All other traffic continues to flow to the legacy system.
 5.  **Repeat:** The process is repeated for other modules, gradually "strangling" the legacy system until it has no remaining responsibilities and can be shut down.
@@ -92,7 +92,7 @@ sequenceDiagram
 *   **[[microservices|Microservices]]:** The Strangler Fig pattern is one of the most common and recommended strategies for migrating a monolith to a microservices architecture.
 *   **[[modular-monolith|Modular Monolith]]:** A modular monolith can be an excellent starting point for a strangler fig migration. Once the modules are well-defined, they are easier to "strangle" and extract into independent services.
 *   **[[anti-corruption-layer|Anti-Corruption Layer (ACL)]]:** Often used in conjunction with the Strangler Fig pattern. The ACL is a translation layer that isolates the new system from the legacy system's data model, preventing "leaky" or outdated concepts from polluting the new domain model.
-*   **[[posa#proxy|Proxy]] and [[gof#facade|Façade]] Patterns:** The Strangler Façade is a specific application of these classic design patterns.
+*   **[[proxy-pattern|Proxy]] and [[gof#facade|Façade]] Patterns:** The Strangler Façade is a specific application of these classic design patterns.
 
 ---
 

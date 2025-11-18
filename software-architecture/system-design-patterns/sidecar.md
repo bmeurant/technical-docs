@@ -62,7 +62,7 @@ The Sidecar pattern addresses these issues by co-locating these concerns in a se
 The Sidecar pattern is extremely versatile and is a foundational element of many modern cloud-native practices.
 
 1.  **Proxying and Networking (Service Mesh)**
-    This is the most prominent use case. A sidecar proxy is deployed alongside each service instance to manage all inbound and outbound network traffic. It handles concerns like [[service-discovery]], [[load-balancing]], traffic encryption (mTLS), [[retry|retries]], and [[circuit-breaker|circuit breaking]]. This is the fundamental building block of a [[service-mesh]].
+    This is the most prominent use case. A sidecar [[proxy-pattern|proxy]] is deployed alongside each service instance to manage all inbound and outbound network traffic. It handles concerns like [[service-discovery]], [[load-balancing]], traffic encryption (mTLS), [[retry|retries]], and [[circuit-breaker|circuit breaking]]. This is the fundamental building block of a [[service-mesh]].
     -   **Technology**: Envoy, Linkerd.
 
 2.  **[[software-architecture/observability/|Observability]] & [[monitoring|Monitoring]]**
@@ -126,7 +126,7 @@ spec:
 
 ## The Ambassador Pattern: A Specialization
 
-The **Ambassador** pattern describes a specific **role or function** within a Sidecar implementation. It is not a separate component but a specialization of the Sidecar pattern. While a general-purpose Sidecar can handle many tasks (logging, metrics, etc.), the Ambassador role focuses specifically on acting as a proxy for **outbound network requests** from the main application to a remote service. Sidecar is the **deployment method**, while Ambassador is the specific **outbound network responsibility**. Think of the Sidecar as the helper container, and the Ambassador as the **outbound network specialist** among the helpers.
+The **Ambassador** pattern describes a specific **role or function** within a Sidecar implementation. It is not a separate component but a specialization of the Sidecar pattern. While a general-purpose Sidecar can handle many tasks (logging, metrics, etc.), the Ambassador role focuses specifically on acting as a [[proxy-pattern|proxy]] for **outbound network requests** from the main application to a remote service. Sidecar is the **deployment method**, while Ambassador is the specific **outbound network responsibility**. Think of the Sidecar as the helper container, and the Ambassador as the **outbound network specialist** among the helpers.
 
 The application simply communicates with the Ambassador running on `localhost`, and the Ambassador handles the complexities of [[service-discovery|service discovery], routing, and resilient communication over the network.
 
@@ -178,7 +178,7 @@ This pattern is particularly useful for legacy applications that are difficult t
 ## Related Patterns
 
 -   **[[service-mesh]]**: The Sidecar pattern is the core implementation detail of a Service Mesh. The mesh's data plane is composed of sidecar proxies deployed next to each service.
--   **[[posa#Proxy|Proxy]]**: The sidecar itself is often implemented as a Proxy, as it intercepts and manages communication on behalf of the main application.
+-   **[[proxy-pattern|Proxy]]**: The sidecar itself is often implemented as a Proxy, as it intercepts and manages communication on behalf of the main application.
 
 ---
 
@@ -193,7 +193,7 @@ This pattern is particularly useful for legacy applications that are difficult t
     A clear article explaining how the Sidecar pattern is used in microservice architectures to handle auxiliary tasks like logging, monitoring, and security.
 
 3.  **[Ambassador pattern - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/patterns/ambassador)**
-    The official documentation for the Ambassador pattern, explaining its role as an out-of-process proxy for client connectivity tasks.
+    The official documentation for the Ambassador pattern, explaining its role as an out-of-process [[proxy-pattern|proxy]] for client connectivity tasks.
 
 ### Videos
 

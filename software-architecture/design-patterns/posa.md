@@ -132,45 +132,8 @@ graph TD
 
 #### Proxy
 
-* **Problem**: How to provide a substitute or **placeholder** for another object to control its access?
-* **Synopsis**: The **Proxy** pattern offers an intermediary that controls access to an underlying object. The `Proxy` and the real object (`Subject`) share the same interface, allowing the `Proxy` to intercept method calls and add functionality, such as security checks, remote communication, or `lazy loading`.
-
-    ```mermaid
-    classDiagram
-        class Client
-        class Subject {
-            &lt;&lt;interface&gt;&gt;
-            +request()
-        }
-        class Proxy {
-            +request()
-            -realSubject: RealSubject
-        }
-        class RealSubject {
-            +request()
-        }
-        
-        Client --> Subject
-        Proxy ..|> Subject
-        RealSubject ..|> Subject
-        Proxy o-- RealSubject
-    ```
-
-    This class diagram shows the structural relationship between a `Client`, a `Proxy`, and the real `Subject`. It illustrates how the `Client` interacts with the `Proxy` via a shared interface. The `Proxy` then delegates the requests to the real `Subject`, adding a layer of control over the interaction.
-
-    This class diagram shows the structural relationship between a `Client`, a `Proxy`, and the `RealSubject`. It illustrates how the `Client` interacts with the `Proxy` via a shared `Subject` interface, making the `Proxy` transparent. The `Proxy` then delegates requests to the `RealSubject`, adding a layer of control and potentially managing the `RealSubject`'s lifecycle (e.g., creating it on demand). This structure allows the `Proxy` to act as a surrogate for the `RealSubject` while adding functionality like access control or lazy initialization.
-
-* **Key Characteristics**:
-    * **Shared interface**: The `Proxy` implements the same interface as the real `Subject`, making it transparent to the client.
-    * **Access control**: The `Proxy` can authorize or deny access to the `Subject`'s methods, acting as a [[gatekeeper|Gatekeeper]].
-    * **Lazy initialization**: The `Proxy` can defer the creation of the `RealSubject` until it is actually needed, improving startup performance.
-*   **Applicability**: This pattern is widely used in [[poeaa#Object-Relational-Mapper-ORM|object-relational mapping (ORM)]] frameworks for lazy loading, in remote procedure call (RPC) mechanisms, for implementing security and caching, and notably in [[web-server|web servers]] acting as reverse proxies.
-* **Limitations and Challenges**: Can introduce an overhead due to the extra layer of indirection. Overuse of this pattern can make the architecture unnecessarily complex.
-* **Relationship with Other Patterns**:
-    * The **Proxy** pattern is one of the original **[[gof#proxy|GoF patterns]]**.
-    * It is often used in conjunction with the **[[#forwarder-receiver|Forwarder-Receiver]]** pattern, where the `Forwarder` acts as a proxy for a remote object.
-    * A **[[#client-dispatcher-server|Client-Dispatcher-Server]]** can use a `Proxy` on the client side to hide the `Dispatcher`'s location.
-    * It can also be used to implement lazy loading for the `Parts` in a **[[#whole-part|Whole-Part]]** structure.
+* **Synopsis**: The **[[gof#Proxy|Proxy]]** pattern provides a substitute or placeholder for another object to control access to it. It is one of the original GoF patterns and is used to add functionality like lazy loading, access control, or remote communication. For a detailed explanation, see the main [[gof|GoF Design Patterns]] page.
+* **Architectural Context**: In system architecture, this pattern is the foundation for the **[[proxy-pattern|Architectural Proxy Pattern]]**, which includes network-level intermediaries like [[proxy-pattern#Forward-Proxy|Forward Proxies]] and [[proxy-pattern#Reverse-Proxy|Reverse Proxies]].
 
 ---
 

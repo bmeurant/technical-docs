@@ -8,13 +8,13 @@ date: 2025-11-01
 ---
 # Gatekeeper Pattern
 
-The **Gatekeeper** pattern is a specialized implementation of the [[posa#Proxy|Proxy]] pattern where a dedicated, hardened component acts as a single entry point to protect a backend application or service. This component, the Gatekeeper, intercepts all incoming requests, performs validation and sanitization, and then forwards valid requests to the protected service. It functions as a security broker, providing an additional layer of defense and reducing the system's attack surface.
+The **Gatekeeper** pattern is a specialized implementation of the [[proxy-pattern|Proxy]] pattern where a dedicated, hardened component acts as a single entry point to protect a backend application or service. This component, the Gatekeeper, intercepts all incoming requests, performs validation and sanitization, and then forwards valid requests to the protected service. It functions as a security broker, providing an additional layer of defense and reducing the system's attack surface.
 
 The primary goal is to isolate sensitive services from direct client access. By channeling all traffic through the Gatekeeper, security policies can be enforced consistently, and potentially malicious requests can be filtered out before they reach the core application.
 
 ## How it Works
 
-The Gatekeeper is placed between the client and the protected service. It can be deployed as a reverse proxy, an [[api-gateway|API Gateway]], or even a [[sidecar|Sidecar]] in a [[microservices]] architecture. All inbound traffic is directed to the Gatekeeper, which is the only component publicly exposed.
+The Gatekeeper is placed between the client and the protected service. It can be deployed as a [[proxy-pattern#Reverse-Proxy|reverse proxy]], an [[api-gateway|API Gateway]], or even a [[sidecar|Sidecar]] in a [[microservices]] architecture. All inbound traffic is directed to the Gatekeeper, which is the only component publicly exposed.
 
 ```mermaid
 sequenceDiagram
@@ -37,7 +37,7 @@ sequenceDiagram
 
 ## Key Responsibilities of a Gatekeeper
 
-A Gatekeeper is more than just a simple [[posa#Proxy|proxy]]. Its responsibilities are focused on security enforcement:
+A Gatekeeper is more than just a simple [[proxy-pattern|proxy]]. Its responsibilities are focused on security enforcement:
 
 *   **Request Validation & Sanitization**: It inspects incoming requests for malformed data, unexpected values, or signs of an attack (e.g., SQL injection, cross-site scripting). It ensures that only well-formed requests are passed on.
 *   **Authentication & Authorization**: It can take on the role of authenticating the client, often by validating tokens or credentials. This offloads the security burden from the backend service. It may integrate with a [[federated-identity|Federated Identity]] provider.
@@ -68,7 +68,7 @@ A Gatekeeper is a specialized role. An API Gateway can *act* as a Gatekeeper if 
 ## Use Cases
 
 *   **Protecting Legacy Applications**: Placing a Gatekeeper in front of a legacy system that is difficult to modify can add a modern security layer without changing the application's code.
-*   **[[microservices|Microservices]] Security**: In a microservices architecture, a Gatekeeper (often in the form of an [[api-gateway|API Gateway]] or a [[sidecar|Sidecar]] proxy) can provide a consistent security enforcement point for all services.
+*   **[[microservices|Microservices]] Security**: In a microservices architecture, a Gatekeeper (often in the form of an [[api-gateway|API Gateway]] or a [[sidecar|Sidecar]] [[proxy-pattern|proxy]]) can provide a consistent security enforcement point for all services.
 *   **Web Application Firewalls (WAF)**: A WAF is a concrete implementation of the Gatekeeper pattern, specifically designed to protect web applications from common vulnerabilities.
 
 ## Related Patterns

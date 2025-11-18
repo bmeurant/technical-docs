@@ -26,6 +26,7 @@ This section covers a collection of reusable patterns for solving common problem
 * [[leader-election|Leader Election]]
 * [[load-balancing|Load Balancing]]
 * [[message-queue|Message Queue]]
+* [[proxy-pattern|Proxy Pattern (Architectural)]]
 * [[publish-subscribe|Publish-Subscribe]]
 * [[queue-based-load-leveling|Queue-Based Load Leveling]]
 * [[real-time-communication|Real-Time Communication]]

@@ -472,7 +472,7 @@ graph TD
 #### **Proxy**
 
 * **Problem**: How to provide a substitute or placeholder for another object to control access to it?
-* **Synopsis**: The **[[posa|Proxy]]** pattern acts as an intermediary for a real object. It can add functionality such as lazy initialization, access control, or logging without modifying the original object.
+* **Synopsis**: The **Proxy** pattern acts as an intermediary for a real object. It can add functionality such as lazy initialization, access control, or logging without modifying the original object.
 
     ```mermaid
     classDiagram

@@ -63,10 +63,10 @@ Modern software load balancers (like NGINX, HAProxy) often provide extra feature
 
 While the terms are often used interchangeably, there is a subtle difference:
 
-- A **[[posa|Reverse Proxy]]** is a server that sits in front of one or more backend servers, forwarding client requests. It can provide caching, security, and SSL termination, even for a single server.
+- A **[[proxy-pattern#Reverse-Proxy|Reverse Proxy]]** is a server that sits in front of one or more backend servers, forwarding client requests. It can provide caching, security, and SSL termination, even for a single server.
 - A **Load Balancer** is a specialized type of reverse proxy that is capable of distributing traffic across *multiple* backend servers.
 
-In short, **all load balancers are reverse proxies, but not all reverse proxies are load balancers.** Tools like NGINX and HAProxy are powerful reverse proxies that can also be configured to act as sophisticated load balancers.
+In short, **all load balancers are [[proxy-pattern#Reverse-Proxy|reverse proxies]], but not all [[proxy-pattern#Reverse-Proxy|reverse proxies]] are load balancers.** Tools like NGINX and HAProxy are powerful reverse proxies that can also be configured to act as sophisticated load balancers.
 
 ---
 

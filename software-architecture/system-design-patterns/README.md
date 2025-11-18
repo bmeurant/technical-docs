@@ -18,6 +18,7 @@ see [index](./index.md)**
 * **[Leader Election](./leader-election.md)**
 * **[Load Balancing](./load-balancing.md)**
 * **[Message Queue](./message-queue.md)**
+* **[Proxy Pattern](./proxy-pattern.md)**
 * **[Publish-Subscribe](./publish-subscribe.md)**
 * **[Queue-Based Load Leveling](./queue-based-load-leveling.md)**
 * **[Rate Limiting](./rate-limiting.md)**

@@ -46,17 +46,17 @@ graph TD
     RP --> AppServer
     LB --> Service1 & Service2
 ```
-*Description: A web server listens for requests and routes them based on their nature. It can serve static files directly from the file system, act as a reverse proxy to application servers, perform load balancing across multiple services, and handle SSL/TLS encryption.*
+*Description: A web server listens for requests and routes them based on their nature. It can serve static files directly from the file system, act as a [[proxy-pattern#Reverse-Proxy|reverse proxy]] to application servers, perform load balancing across multiple services, and handle SSL/TLS encryption.*
 
 ### Key Functions Explained
 
 1.  **[[static-content-hosting|Serving Static Content]]**: This is the most basic function. The web server retrieves files (like `.html`, `.css`, `.jpg`) from the local file system and sends them to the client. This process is highly optimized for speed and efficiency.
 
-2.  **[[posa#Proxy|Reverse Proxy]]**: In modern architectures, a web server often sits in front of application servers (e.g., Node.js, Python, Java servers). It forwards client requests to these backend servers and returns their responses. This pattern is central to [[microservices]] architectures and provides several benefits:
+2.  **[[proxy-pattern#Reverse-Proxy|Reverse Proxy]]**: In modern architectures, a web server often sits in front of application servers (e.g., Node.js, Python, Java servers). It forwards client requests to these backend servers and returns their responses. This pattern is central to [[microservices]] architectures and provides several benefits:
     *   **Abstraction**: Hides the topology of the backend from the client.
     *   **Security**: The application servers are not directly exposed to the internet.
     *   **Flexibility**: Simplifies swapping out or scaling backend services.
-    A web server acting as a reverse proxy shares many characteristics with an [[api-gateway|API Gateway]].
+    A web server acting as a [[proxy-pattern#Reverse-Proxy|reverse proxy]] shares many characteristics with an [[api-gateway|API Gateway]].
 
 3.  **Load Balancing**: To achieve [[software-architecture/system-design-fundamentals#Scalability|horizontal scalability]], traffic must be distributed across multiple servers. Web servers like Nginx can act as a [[load-balancing|load balancer]], distributing incoming requests among a pool of backend servers to prevent any single server from being overwhelmed.
 
@@ -68,10 +68,10 @@ graph TD
 
 While the terms are sometimes used interchangeably, they refer to components with distinct primary roles.
 
-*   A **Web Server** is primarily concerned with handling HTTP requests and serving static content or acting as a proxy.
+*   A **Web Server** is primarily concerned with handling HTTP requests and serving static content or acting as a [[proxy-pattern|proxy]].
 *   An **[[application-server|Application Server]]** is designed to execute business logic and interact with databases, messaging systems, and other services. It provides a runtime environment for applications (e.g., a Java EE environment in Tomcat).
 
-In many modern stacks, they work together: a web server (like Nginx) acts as a reverse proxy that forwards requests to an application server (like Tomcat or Gunicorn).
+In many modern stacks, they work together: a web server (like Nginx) acts as a [[proxy-pattern#Reverse-Proxy|reverse proxy]] that forwards requests to an application server (like Tomcat or Gunicorn).
 
 ```mermaid
 graph LR
@@ -96,7 +96,7 @@ Different web servers are optimized for different use cases. The choice depends 
 | **MS IIS** | Windows integration | Integrated into Windows Server | Hosting ASP.NET applications and enterprise deployments in a Windows environment. |
 
 ### Nginx
-Nginx is a high-performance web server renowned for its efficiency and low resource consumption. Its asynchronous, event-driven architecture allows it to handle tens of thousands of concurrent connections with a small memory footprint, making it a top choice for high-traffic websites and as a reverse proxy or load balancer in modern application deployments.
+Nginx is a high-performance web server renowned for its efficiency and low resource consumption. Its asynchronous, event-driven architecture allows it to handle tens of thousands of concurrent connections with a small memory footprint, making it a top choice for high-traffic websites and as a [[proxy-pattern#Reverse-Proxy|reverse proxy]] or load balancer in modern application deployments.
 
 > [Official Website](https://nginx.org/)
 

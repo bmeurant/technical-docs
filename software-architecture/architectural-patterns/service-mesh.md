@@ -12,12 +12,12 @@ date: 2025-09-27
 
 A **Service Mesh** is a dedicated, configurable infrastructure layer that handles inter-service communication in a microservices architecture. It provides a transparent and language-agnostic way to manage, secure, and observe services. Its primary goal is to move the logic governing communication out of individual services and into the platform itself.
 
-A service mesh is implemented by extending the **[[sidecar]]** pattern. It works by deploying a network of lightweight proxy sidecars alongside each service instance. These proxies intercept all traffic between services, allowing the mesh to control how services interact without requiring any changes to the application code.
+A service mesh is implemented by extending the **[[sidecar]]** pattern. It works by deploying a network of lightweight [[proxy-pattern|proxy]] sidecars alongside each service instance. These proxies intercept all traffic between services, allowing the mesh to control how services interact without requiring any changes to the application code.
 
 * **Core Principles:**
     * **Transparency:** The service mesh is largely invisible to the application code. Services are unaware that their communication is being intercepted and managed.
     * **Decentralized Data Plane, Centralized Control Plane:** The architecture is split into a **Data Plane** (the sidecar proxies that handle traffic) and a **Control Plane** (the management layer that configures the proxies).
-    * **Language Agnostic:** Because the logic is handled in a sidecar proxy, the benefits of the mesh are available to all services, regardless of the language they are written in.
+    * **Language Agnostic:** Because the logic is handled in a sidecar [[proxy-pattern|proxy]], the benefits of the mesh are available to all services, regardless of the language they are written in.
     * **Policy-Driven:** Communication rules (like routing, security, and retries) are defined as policies in the control plane and dynamically pushed to the data plane.
 
 ---
@@ -72,8 +72,8 @@ graph TD
 **Typical Communication Flow:**
 1.  An operator defines a policy in the **Control Plane** (e.g., "all traffic to Service B must have a 1-second [[posa#Timeout|timeout]]").
 2.  The Control Plane translates this policy into a specific configuration and pushes it to all relevant sidecar proxies.
-3.  When Service A wants to call Service B, its outbound call is transparently intercepted by its local sidecar proxy (Proxy A).
-4.  Proxy A, using the configuration from the Control Plane, discovers an instance of Service B, applies the [[posa#Timeout|timeout]] policy, encrypts the traffic using mTLS, and forwards the request to the sidecar proxy of Service B (Proxy B).
+3.  When Service A wants to call Service B, its outbound call is transparently intercepted by its local sidecar [[proxy-pattern|proxy]] (Proxy A).
+4.  Proxy A, using the configuration from the Control Plane, discovers an instance of Service B, applies the [[posa#Timeout|timeout]] policy, encrypts the traffic using mTLS, and forwards the request to the sidecar [[proxy-pattern|proxy]] of Service B (Proxy B).
 5.  Proxy B receives the request, decrypts it, and forwards it to the local Service B instance.
 6.  Throughout this process, both proxies collect detailed metrics and logs and send them back to the Control Plane for centralized observability.
 
@@ -90,7 +90,7 @@ graph TD
 * **Challenges:**
     * **Operational Complexity:** A service mesh is a complex distributed system in its own right. It requires expertise to deploy, manage, and troubleshoot.
     * **Resource Overhead:** The sidecar proxies in the data plane consume additional CPU and memory for every service instance.
-    * **Latency:** The extra proxy hop for every service call introduces a small amount of latency.
+    * **Latency:** The extra [[proxy-pattern|proxy]] hop for every service call introduces a small amount of latency.
     * **Control Plane as a Single Point of Failure:** While the data plane can often continue to function if the control plane goes down, configuration changes and policy updates will not be possible.
 
 ---
@@ -101,7 +101,7 @@ A Service Mesh is not a standalone concept; it integrates and implements several
 
 *   **[[sidecar]]:** The Service Mesh pattern is implemented *using* the Sidecar pattern. The data plane of a service mesh is a network of sidecar proxies.
 *   **[[posa|Ambassador]]:** A service mesh can be seen as a sophisticated evolution of the Ambassador pattern, applied systematically to *all* services in a system for both inbound and outbound traffic, and managed by a central control plane.
-*   **[[posa|Proxy]]:** The sidecar proxies that form the data plane are all instances of the Proxy pattern, as they intercept and manage network communication on behalf of the application.
+*   **[[proxy-pattern|Proxy]]:** The sidecar proxies that form the data plane are all instances of the Proxy pattern, as they intercept and manage network communication on behalf of the application.
 *   **[[posa|Circuit Breaker]], [[retry|Retry]], [[posa|Timeout]]:** A service mesh provides out-of-the-box implementations of these resilience patterns, enforcing them at the platform level rather than in application code.
 
 ### Architectural Context
@@ -121,7 +121,7 @@ A Service Mesh is not a standalone concept; it integrates and implements several
 
 2.  **[Understanding Sidecar and Service Mesh (Medium)](https://medium.com/@dinesharney/understanding-sidecar-and-service-mesh-a-beginners-guide-to-kubernetes-patterns-787c6d90a96e)**
 
-    This beginner's guide introduces the **Sidecar Pattern** as a single helper [[containerization|container]] running alongside the main application container within a Kubernetes Pod, handling tasks like logging or proxying. It then defines a **Service Mesh** as a network of coordinated sidecars that form a powerful traffic control system across multiple microservices. The mesh's architecture is broken down into the **Control Plane** (the brain for configuration and policies, e.g., Istio's components) and the **Data Plane** (the collection of sidecar proxies, e.g., Envoy). The core benefit is separating business logic from communication logic, leading to improved **modularity**, **observability**, and **security**.
+    This beginner's guide introduces the **Sidecar Pattern** as a single helper [[containerization|container]] running alongside the main application container within a Kubernetes Pod, handling tasks like logging or proxying. It then defines a **Service Mesh** as a network of coordinated sidecars that form a powerful traffic control system across multiple microservices. The mesh's architecture is broken down into the **Control Plane** (the brain for configuration and policies, e.g., Istio's components) and the **Data Plane** (the collection of sidecar [[proxy-pattern|proxies]], e.g., Envoy). The core benefit is separating business logic from communication logic, leading to improved **modularity**, **observability**, and **security**.
 
 ---
 
@@ -129,7 +129,7 @@ A Service Mesh is not a standalone concept; it integrates and implements several
 
 1.  **[Istio & Service Mesh - simply explained in 15 mins (TechWorld with Nana)](http://www.youtube.com/watch?v=16fgzklcF7Y)**
 
-    This video explains the concept of a **Service Mesh** by first detailing the communication challenges in a microservices environment, such as the need for service discovery, security (mTLS), retries, and metrics for every service. It then shows how the mesh addresses this by introducing the **Sidecar** pattern, which automatically injects an **Envoy proxy** into every microservice pod. The video focuses on **Istio** as an implementation, describing its architecture with the **Control Plane (Istiod)** and the **Data Plane** (Envoy proxies). It highlights key features like **Traffic Splitting** (Canary Deployment) and the use of Kubernetes **CRDs** (Custom Resource Definitions) for configuration, and the role of the **Ingress Gateway** as the cluster's entry point.
+    This video explains the concept of a **Service Mesh** by first detailing the communication challenges in a microservices environment, such as the need for service discovery, security (mTLS), retries, and metrics for every service. It then shows how the mesh addresses this by introducing the **Sidecar** pattern, which automatically injects an **Envoy [[proxy-pattern|proxy]]** into every microservice pod. The video focuses on **Istio** as an implementation, describing its architecture with the **Control Plane (Istiod)** and the **Data Plane** (Envoy [[proxy-pattern|proxies]]). It highlights key features like **Traffic Splitting** (Canary Deployment) and the use of Kubernetes **CRDs** (Custom Resource Definitions) for configuration, and the role of the **Ingress Gateway** as the cluster's entry point.
 
 2.  **[How Service Meshes Work in Kubernetes (Microsoft Developer)](http://www.youtube.com/watch?v=izVWk7rYqWI)**
 

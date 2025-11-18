@@ -10,7 +10,7 @@ date: 2025-10-27
 
 # API Gateway
 
-An **API Gateway** is an architectural pattern that provides a single, unified entry point for a group of backend services, such as an application's [[microservices]]. It acts as a [[posa#Proxy|reverse proxy]], sitting between the client applications and the backend services, and is responsible for request routing, composition, and protocol translation.
+An **API Gateway** is an architectural pattern that provides a single, unified entry point for a group of backend services, such as an application's [[microservices]]. It acts as a [[proxy-pattern#Reverse-Proxy|reverse proxy]], sitting between the client applications and the backend services, and is responsible for request routing, composition, and protocol translation.
 
 By abstracting the underlying service architecture, the API Gateway simplifies the client-side implementation and [[cohesion-coupling|decouples]] clients from the internal structure of the application.
 
@@ -62,7 +62,7 @@ An API Gateway centralizes these concerns and provides a simplified, unified int
 
 ## Core Functionalities & Implemented Patterns
 
-An API Gateway is more than a simple reverse proxy. It implements several design patterns to manage and secure traffic. These are often described as **[[gateway-patterns|Gateway Patterns]]**. When security is a primary driver, the API Gateway serves as a direct implementation of the **[[gatekeeper]]** pattern, protecting backend services by centralizing security enforcement.
+An API Gateway is more than a simple [[proxy-pattern#Reverse-Proxy|reverse proxy]]. It implements several design patterns to manage and secure traffic. These are often described as **[[gateway-patterns|Gateway Patterns]]**. When security is a primary driver, the API Gateway serves as a direct implementation of the **[[gatekeeper]]** pattern, protecting backend services by centralizing security enforcement.
 
 -   **[[gateway-patterns#Gateway Routing|Gateway Routing]]**: It acts as a Layer 7 router, forwarding client requests to the appropriate backend service based on URL paths, headers, or other request metadata.
 -   **[[gateway-patterns#Gateway Aggregation|Gateway Aggregation]]**: It can consolidate multiple backend service calls into a single client request, reducing chattiness and simplifying the client's interaction model. This is a key pattern for implementing a [[backend-for-frontend|Backend-for-Frontend]].
@@ -80,7 +80,7 @@ An API Gateway is more than a simple reverse proxy. It implements several design
 It's useful to categorize technologies based on whether they provide just the gateway component or a full management platform.
 
 #### Standalone Gateways & Libraries
-These are focused on being the core gateway component, often used when you need a powerful, lightweight proxy without the overhead of a full management suite.
+These are focused on being the core gateway component, often used when you need a powerful, lightweight [[proxy-pattern|proxy]] without the overhead of a full management suite.
 -   **Spring Cloud Gateway**: A library for building gateways within the Spring ecosystem.
 -   **Ocelot**: A .NET based API Gateway.
 -   **NGINX / Envoy**: While powerful proxies, they can be configured and extended to act as highly performant API Gateways.
@@ -100,7 +100,7 @@ These are comprehensive solutions that include a gateway but also add developer 
 
 While the terms are often used interchangeably, it's crucial to distinguish between the API Gateway and a full API Management platform.
 
-*   An **API Gateway** is a runtime component, a proxy that processes live traffic. Its primary job is to route, secure, and mediate API calls as they happen. Think of it as the *enforcement point*.
+*   An **API Gateway** is a runtime component, a [[proxy-pattern|proxy]] that processes live traffic. Its primary job is to route, secure, and mediate API calls as they happen. Think of it as the *enforcement point*.
 
 *   An **API Management** solution is a comprehensive platform that covers the entire lifecycle of an API. It includes a developer portal for documentation, analytics dashboards, monetization features, and policy definition tools. The API Gateway is the core *enforcement component* within a broader API Management platform. For a detailed breakdown of this lifecycle, see the **[[api-keys-and-management|API Keys and Management]]** page.
 
@@ -115,7 +115,7 @@ In short, you can use a standalone API Gateway without a full management platfor
 -   **[[gateway-patterns]]**: Describes the specific tactical patterns implemented by a gateway.
 -   **[[service-mesh|Service Mesh]]**: While a gateway typically manages "North-South" traffic (client-to-service), a service mesh manages "East-West" traffic (service-to-service). They are complementary, and an ingress gateway is often a component of a service mesh.
 -   **[[Backend-for-Frontend]]**: A pattern where a dedicated gateway is created for a specific client type, often using Gateway Aggregation.
--   **[[posa#Proxy|Reverse Proxy]]**: An API Gateway is a specialized form of a reverse proxy with additional application-level capabilities.
+-   **[[proxy-pattern#Reverse-Proxy|Reverse Proxy]]**: An API Gateway is a specialized form of a reverse proxy with additional application-level capabilities.
 
 ---
 

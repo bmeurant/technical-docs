@@ -40,10 +40,10 @@ Firewalls have evolved significantly over the years, leading to several distinct
 -   **Pros**: Offers significantly better security than simple packet filtering.
 -   **Cons**: Can be more resource-intensive.
 
-### Proxy Firewalls (Application-Level Gateway)
+### [[proxy-pattern|Proxy Firewalls]] (Application-Level Gateway)
 
 -   **OSI Layer**: Layer 7 (Application).
--   **Functionality**: A proxy firewall acts as an intermediary for all communication between the client and the server. The client connects to the firewall, and the firewall establishes a separate connection to the destination server. This means there is no direct connection between the client and the server. It can inspect the application-layer payload (e.g., HTTP commands) to filter out malicious content.
+-   **Functionality**: A [[proxy-pattern|proxy firewall]] acts as an intermediary for all communication between the client and the server. The client connects to the firewall, and the firewall establishes a separate connection to the destination server. This means there is no direct connection between the client and the server. It can inspect the application-layer payload (e.g., HTTP commands) to filter out malicious content.
 -   **Pros**: High level of security and detailed logging.
 -   **Cons**: Can introduce latency and may not be compatible with all protocols.
 
