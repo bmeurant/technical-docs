@@ -11,6 +11,8 @@ date: 2025-10-21
 
 RPC is a communication style where a client executes a procedure on a remote server as if it were a local call. It abstracts the network communication, making distributed computing feel more like a traditional, single-process application.
 
+Conceptually, RPC fits into the **Session Layer (Layer 5)** of the [[osi-model|OSI Model]] because it manages the session and dialogue between two computers. However, modern implementations often run on top of Layer 7 protocols (like [[grpc|gRPC]] over HTTP/2).
+
 ## How it Works: Stubs and Marshalling
 
 The core idea is to use a "stub" on the client side that mirrors the remote procedure. When the client calls the stub, it handles the process of **marshalling** (serializing) the arguments into a message, sending them to the server, awaiting the response, and **unmarshalling** (deserializing) the return value.

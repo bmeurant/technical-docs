@@ -150,7 +150,6 @@ The trade-off becomes critical during a **network partition**—a situation wher
 ## Other Topics
 
 * [[cloud-native-principles|Cloud-Native Principles]]
-* [[reliability-engineering|Reliability Engineering]]
 * [[cap|CAP Theorem]]
 * [[consistency|Consistency]]
 * [[data-integrity|Data Integrity]]
@@ -160,4 +159,6 @@ The trade-off becomes critical during a **network partition**—a situation wher
 * [[idempotent-operations|Idempotent Operations]]
 * [[workload-management|Workload Management]]
 * [[messaging|Messaging]]
+* [[osi-model|OSI Model]]
+* [[reliability-engineering|Reliability Engineering]]
 * [[security-fundamentals|Security Fundamentals]]

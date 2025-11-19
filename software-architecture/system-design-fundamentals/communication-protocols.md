@@ -9,7 +9,7 @@ date: 2025-10-21
 
 Network protocols are the foundational rules that govern how data is exchanged between computer systems. In modern system design, understanding these protocols is crucial, as nearly all systems are distributed and rely on communication over a network. They define the syntax, semantics, and synchronization of communication, ensuring that different systems can interact reliably and efficiently.
 
-This document covers fundamental network protocols like TCP, UDP, and HTTP, as well as communication styles like RPC and its modern implementation, gRPC.
+This document covers fundamental network protocols like TCP, UDP, and HTTP, as well as communication styles like RPC and its modern implementation, gRPC. For a conceptual understanding of where these protocols fit in the networking stack, refer to the [[osi-model]].
 
 ## Transmission Control Protocol (TCP)
 
