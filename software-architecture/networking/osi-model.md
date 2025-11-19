@@ -133,3 +133,26 @@ Security controls are often applied at specific layers:
 *   [[graphql]]: Query language for APIs.
 *   [[grpc]]: High-performance RPC framework.
 *   [[api-security]]: Security considerations often spanning Layers 4-7.
+
+---
+
+## Resources & Links
+
+### Articles
+
+1.  **[What is the OSI Model? - Cloudflare](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)**
+    This Cloudflare article defines the OSI model as a conceptual framework that standardizes network communication functions. It details the 7 layers and explains the model's importance for compatibility between different products and software, as well as its role in understanding network attacks like DDoS.
+
+2.  **[What is the OSI model? - IBM](https://www.ibm.com/think/topics/osi-model)**
+    IBM provides an in-depth explanation of the OSI model, from its history to its detailed operation. The article describes each layer, from physical to application, and compares the theoretical OSI model to the practical TCP/IP model, while highlighting the benefits of this layered structure for troubleshooting and interoperability.
+
+3.  **[OSI Model Explained - Imperva](https://www.imperva.com/learn/application-security/osi-model/)**
+    This Imperva guide breaks down the 7 layers of the OSI model starting from the application layer down to the physical layer. It offers concrete examples for each stage, discusses the model's benefits for application security and troubleshooting, and puts into perspective the key differences with the TCP/IP model.
+
+### Videos
+
+1.  **[What is OSI Model? | Real World Examples](https://www.youtube.com/watch?v=0y6FtKsg6J4)**
+    A concise visual explanation of the OSI model. This video uses clear animations and real-world analogies to demystify how each layer works and how data travels from point A to point B on a network.
+
+2.  **[What is OSI Model?](https://www.youtube.com/watch?v=Ilk7UXzV_Qc)**
+    This educational video presents the OSI model in a simple and accessible way. It reviews the 7 layers one by one, explaining the specific role of each in data transmission, which is ideal for visualizing the global information flow.
