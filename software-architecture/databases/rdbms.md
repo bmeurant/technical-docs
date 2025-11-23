@@ -47,13 +47,20 @@ classDiagram
 
 #### Normalization
 
-**Normalization** is the process of structuring a relational database to reduce data redundancy and improve [[data-integrity|data integrity]]. The goal is to ensure that each piece of data is stored in only one place. This is achieved by following a set of rules called **Normal Forms**.
+**Normalization** is the process of structuring a relational database to reduce data redundancy and improve [[data-integrity|data integrity]]. Its primary goal is to prevent **Database Anomalies**:
+
+*   **Insertion Anomaly**: Being unable to add data to the database due to absence of other data (e.g., cannot add a new Student unless they are enrolled in at least one Course).
+*   **Update Anomaly**: Data inconsistency that results from data redundancy and a partial update (e.g., updating a professor's address in one row but forgetting others).
+*   **Deletion Anomaly**: Unintended loss of data due to deletion of other data (e.g., deleting a Course also deletes the only record of a Student).
+
+This is achieved by following a set of rules called **Normal Forms**:
 
 -   **1NF (First Normal Form):** Ensures that table cells hold single, atomic values and each row is unique.
--   **2NF (Second Normal Form):** Requires the table to be in 1NF and all non-key attributes to be fully dependent on the entire primary key.
--   **3NF (Third Normal Form):** Requires the table to be in 2NF and all attributes to depend only on the primary key, not on other non-key attributes (eliminating transitive dependencies).
+-   **2NF (Second Normal Form):** Requires 1NF and that all non-key attributes are fully dependent on the *entire* primary key (no partial dependencies).
+-   **3NF (Third Normal Form):** Requires 2NF and that all attributes depend *only* on the primary key (no transitive dependencies).
+-   **BCNF (Boyce-Codd Normal Form):** A slightly stronger version of 3NF. It handles rare cases where a table is in 3NF but still has anomalies because of overlapping candidate keys.
 
--   **Benefit:** High [[data-integrity|data integrity]] and no redundant data.
+-   **Benefit:** High [[data-integrity|data integrity]] and elimination of anomalies.
 -   **Trade-off:** A highly normalized schema often results in a large number of tables. Retrieving data may require complex and potentially slow JOIN operations across these tables.
 
 ### ACID Transactions: The Guarantee of Reliability
