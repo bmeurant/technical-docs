@@ -80,7 +80,7 @@ Scaling an RDBMS involves two main dimensions: improving read performance and im
 
 Replication is the process of creating and maintaining multiple copies of data on different servers. It is a fundamental pattern for achieving both high [[availability-patterns|availability]] and read [[software-architecture/system-design-fundamentals/index#Scalability|scalability]]. The two most common models are Master-Slave and Master-Master.
 
-For a detailed explanation of these models and their trade-offs, see the main page on [[availability-patterns#Replication-Patterns|Replication Patterns]].
+For a detailed explanation of these models and their trade-offs, see the main page on [[replication|Database Replication]].
 
 ### 2. Partitioning
 

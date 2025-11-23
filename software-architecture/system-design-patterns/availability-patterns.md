@@ -22,49 +22,46 @@ The core strategy for high availability is **redundancy**—eliminating single p
 ---
 
 ## Replication Patterns
-
-Replication is the core strategy for data availability and a prerequisite for failover. It involves keeping identical copies of data on multiple nodes.
-
-### Master-Slave Replication
-
-In this model, one node is designated as the **Master** (or primary), and it handles all write operations. The data is then replicated from the master to one or more **Slave** (or secondary/replica) nodes. The slaves can be used to serve read requests.
-
-```mermaid
-graph TD
-    subgraph Writes
-        W(Write Request) --> M(Master);
-    end
-    subgraph Reads
-        R(Read Request) --> S1(Slave 1);
-        R2(Read Request) --> S2(Slave 2);
-    end
-
-    M -- Replicates to --> S1;
-    M -- Replicates to --> S2;
-```
-*Description: All writes go to a single master, which then propagates the changes to read-only slaves.*
-
-*   **Pros:** Simple write logic (no conflicts), good for read-heavy workloads.
-*   **Cons:** The master is a single point of failure for writes. There can be a replication lag, leading to stale reads from slaves ([[consistency|eventual consistency]]).
-
-### Master-Master (Multi-Master) Replication
-
-In this model, two or more nodes can accept both read and write operations. Each master node replicates its writes to the other master(s).
-
-```mermaid
-graph TD
-    W1(Write Request) --> M1(Master 1);
-    W2(Write Request) --> M2(Master 2);
-
-    M1 <-. Replicates .-> M2;
-
-    R1(Read Request) --> M1;
-    R2(Read Request) --> M2;
-```
-*Description: Both nodes can accept writes and reads, and they synchronize with each other.*
-
-*   **Pros:** High write availability, as there is no single point of failure.
-*   **Cons:** Much more complex. Write conflicts are possible and require a resolution strategy (e.g., last-write-wins, CRDTs).
+ 
+ Replication is the core strategy for data availability and a prerequisite for failover. It involves keeping identical copies of data on multiple nodes.
+ 
+ > [!NOTE]
+ > For a deep dive into replication topologies (Master-Slave, Master-Master) and synchronization methods (Synchronous vs. Asynchronous), see the dedicated page on **[[replication|Database Replication]]**.
+ 
+ ### Master-Slave Replication
+ 
+ In this model, one node is designated as the **Master** (or primary), and it handles all write operations. The data is then replicated from the master to one or more **Slave** (or secondary/replica) nodes.
+ 
+ ```mermaid
+ graph TD
+     subgraph Writes
+         W(Write Request) --> M(Master);
+     end
+     subgraph Reads
+         R(Read Request) --> S1(Slave 1);
+         R2(Read Request) --> S2(Slave 2);
+     end
+ 
+     M -- Replicates to --> S1;
+     M -- Replicates to --> S2;
+ ```
+ *Description: All writes go to a single master, which then propagates the changes to read-only slaves.*
+ 
+ ### Master-Master (Multi-Master) Replication
+ 
+ In this model, two or more nodes can accept both read and write operations. Each master node replicates its writes to the other master(s).
+ 
+ ```mermaid
+ graph TD
+     W1(Write Request) --> M1(Master 1);
+     W2(Write Request) --> M2(Master 2);
+ 
+     M1 <-. Replicates .-> M2;
+ 
+     R1(Read Request) --> M1;
+     R2(Read Request) --> M2;
+ ```
+ *Description: Both nodes can accept writes and reads, and they synchronize with each other.*
 
 ---
 

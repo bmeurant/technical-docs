@@ -51,7 +51,7 @@ This is fundamental to their design for two reasons:
 -   **Availability**: If a node fails, a replica can be automatically promoted to take its place, ensuring the system remains operational.
 -   **Read [[software-architecture/system-design-fundamentals/index#Scalability|Scalability]]**: Read requests can be distributed across multiple replicas, increasing the system's overall read throughput.
 
-The specific replication models and consistency guarantees vary widely between different NoSQL databases. For a detailed explanation of the common models (Master-Slave, Multi-Master), see the main page on [[availability-patterns#Replication-Patterns|Replication Patterns]].
+The specific replication models and consistency guarantees vary widely between different NoSQL databases. For a detailed explanation of the common models (Master-Slave, Multi-Master) and synchronization methods, see the main page on [[replication|Database Replication]].
 
 ---
 

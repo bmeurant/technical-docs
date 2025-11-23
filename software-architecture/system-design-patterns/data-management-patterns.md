@@ -68,8 +68,8 @@ Dividing data into smaller, more manageable pieces to improve [[software-archite
 
 Creating and maintaining multiple copies of data to ensure high availability and read [[software-architecture/system-design-fundamentals/index#Scalability|scalability]].
 
-*   **[[availability-patterns#Master-Slave Replication|Master-Slave Replication]]**: One node handles all writes, and data is replicated to read-only slave nodes.
-*   **[[availability-patterns#Master-Master (Multi-Master) Replication|Multi-Master Replication]]**: Multiple nodes can accept both read and write operations, with writes replicated between them.
+*   **[[replication#1-master-slave-replication|Master-Slave Replication]]**: One node handles all writes, and data is replicated to read-only slave nodes.
+*   **[[replication#2-master-master-replication|Multi-Master Replication]]**: Multiple nodes can accept both read and write operations, with writes replicated between them.
 
 ---
 
