@@ -94,14 +94,14 @@ Partitioning is the act of splitting a large database into smaller, faster, and 
 
 Denormalization is a performance optimization technique where you intentionally violate data normalization rules by adding redundant copies of data to your tables. The goal is to avoid costly JOIN operations during read queries.
 
--   **Example:** Imagine an `orders` table and a `customers` table. To display a list of orders with the customer's name, you would need to JOIN the two tables. With denormalization, you could store a copy of the `customer_name` directly in the `orders` table. 
+-   **Example:** Imagine an `orders` table and a `customers` table. To display a list of orders with the customer's name, you would need to JOIN the two tables. With denormalization, you could store a copy of the `customer_name` directly in the `orders` table. For a deeper dive, see the [[data-management-patterns#Denormalization|Denormalization Pattern]].
 -   **Trade-off:** This makes reads much faster but makes writes more complex and slower, as you now have to update the data in multiple places. It also increases storage requirements. Some RDBMSs, like PostgreSQL, offer **Materialized Views** to help manage denormalized data automatically.
 
 ### 4. SQL Tuning
 
 Sometimes, the biggest performance gains come not from changing the architecture, but from optimizing the SQL queries themselves. SQL tuning is the process of diagnosing and improving poorly performing queries.
 
--   **Use Indexes:** An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space. Creating an index on a column used in a `WHERE` clause can change a query from a slow "full table scan" to a near-instant lookup.
+-   **Use Indexes:** An [[indexing|index]] is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space. Creating an index on a column used in a `WHERE` clause can change a query from a slow "full table scan" to a near-instant lookup. For a detailed explanation of B-Trees and other structures, see [[indexing|Database Indexing]].
 -   **Analyze the Query Plan:** Most databases provide a command (e.g., `EXPLAIN`) that shows the **query execution plan**. This plan reveals how the database intends to execute your query, allowing you to identify bottlenecks, such as inefficient JOINs or missing indexes.
 -   **Benchmark and Profile:** Use tools to simulate high-load situations and enable features like a "slow query log" to identify the most problematic queries in a production environment.
 

@@ -113,6 +113,7 @@ flowchart TD
 1.  **Range-Based Sharding**: Divides data based on a range of values (e.g., User IDs 1-1000 go to Shard A, 1001-2000 to Shard B). Simple to implement but can lead to hotspots if data is not evenly distributed.
 2.  **Hash-Based Sharding**: A hash function is applied to the shard key, and the result determines which shard the data goes to. This typically leads to a more even data distribution but makes range queries (e.g., "find all users in a zip code") very difficult.
 3.  **Directory-Based Sharding**: A lookup table (the "directory") maintains a mapping between shard keys and the physical shard location. This is highly flexible but adds the complexity of managing the lookup table itself.
+4.  **Consistent Hashing**: A special kind of hashing that minimizes the number of keys that need to be remapped when a shard is added or removed. Unlike standard modulo hashing, where changing the number of shards ($N$) reshuffles nearly all data, consistent hashing only moves $K/N$ keys (where $K$ is the total keys). This is critical for elastic scaling in distributed databases like Cassandra or DynamoDB.
 
 ### Considerations
 
@@ -221,3 +222,23 @@ graph TD
 
 1.  **[Index Table pattern - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/patterns/index-table)**
     The official documentation explaining how to use an index table to support efficient queries in data stores with limited native indexing.
+
+---
+
+### Denormalization
+
+Denormalization is a strategy used to improve read performance by intentionally adding redundant copies of data to the database.
+
+### Problem
+In a normalized database (especially [[rdbms|RDBMS]]), data is split across many tables to avoid redundancy. Retrieving a complete view of an entity (e.g., an Order with Customer details and Product names) requires joining multiple tables. These **JOIN operations** are computationally expensive and can become a bottleneck at scale.
+
+### Solution
+Store redundant data directly in the table where it is queried. For example, store `customer_name` inside the `orders` table.
+
+*   **Benefit**: Reads become simple `SELECT` statements on a single table, avoiding expensive joins.
+*   **Trade-off**:
+    *   **Write Complexity**: Updating a customer's name now requires updating the `customers` table AND every row in the `orders` table where that customer appears.
+    *   **Data Consistency**: Risk of data becoming out of sync if the update fails in one place.
+    *   **Storage**: Increases storage usage.
+
+This pattern is the default in many **[[nosql|NoSQL]]** document stores (like MongoDB), where data is often embedded in a single document rather than referenced.
