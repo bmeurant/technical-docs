@@ -42,7 +42,7 @@ sequenceDiagram
 
 TCP is ideal for applications where data integrity is critical and latency is a secondary concern.
 - **Web Browsing**: Historically, and for HTTP/1.x and HTTP/2, [[http|HTTP]] runs on top of TCP to ensure web pages load completely. With HTTP/3, the underlying transport shifts to QUIC/UDP.
-- **Email**: SMTP, POP3, and IMAP use TCP for reliable message delivery.
+- **[[email-protocols|Email]]**: SMTP, POP3, and IMAP use TCP for reliable message delivery.
 - **File Transfer**: FTP and SSH rely on TCP to ensure files are transferred without corruption.
 - **[[software-architecture/databases/|Database Connections]]**: Ensuring that queries and results are transmitted without error.
 

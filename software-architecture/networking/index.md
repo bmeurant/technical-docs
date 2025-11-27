@@ -15,6 +15,7 @@ This section covers the fundamental concepts and protocols of computer networkin
 
 *   **[[osi-model|OSI Model]]**: The conceptual framework describing the seven layers of networking.
 *   **[[communication-protocols|Communication Protocols]]**: Fundamental protocols like TCP and UDP.
+*   **[[email-protocols|Email Protocols]]**: SMTP, IMAP, POP3, and email security (SPF/DKIM/DMARC).
 *   **[[http|HTTP]]**: The foundation of data communication for the World Wide Web.
 *   **[[dns|DNS]]**: The phonebook of the internet.
 
