@@ -17,14 +17,14 @@ Instead of [[software-architecture/system-design-fundamentals/index#Scalability|
 
 The core principle is to define a complete, self-contained application stack and then replicate it.
 
-1.  **Define the Stamp**: A single stamp's architecture is defined using [[iac|Infrastructure as Code (IaC)]]. This includes all necessary resources: web servers, application services, [[databases|databases]], [[message-queue|message queues]], etc.
+1.  **Define the Stamp**: A single stamp's architecture is defined using [[infrastructure-as-code|Infrastructure as Code (IaC)]]. This includes all necessary resources: web servers, application services, [[databases|databases]], [[message-queue|message queues]], etc.
 2.  **Provision Stamps**: Multiple instances of this stamp are provisioned. Each stamp is identical in its composition but is configured for its specific context (e.g., which tenants it serves).
 3.  **Route Traffic**: A global routing component sits in front of all the stamps. It inspects incoming requests and uses metadata (like a tenant ID from a [[jwt|JWT]], a subdomain, or a geographic header) to direct the user to their assigned stamp. This router is often a combination of [[dns|DNS]]-based routing and a Layer 7 [[load-balancing|load balancer]].
 4.  **Manage and Monitor**: A centralized management plane is used to orchestrate deployments, updates, and [[monitoring|monitoring]] across all stamps, ensuring consistency and operational visibility.
 
 ## The Critical Role of Infrastructure as Code
 
-The Deployment Stamp pattern is not merely enhanced by [[iac|Infrastructure as Code (IaC)]]; it is fundamentally enabled by it. Attempting to manage multiple stamps manually is impractical and defeats the purpose of the pattern, which relies on consistency and automation.
+The Deployment Stamp pattern is not merely enhanced by [[infrastructure-as-code|Infrastructure as Code (IaC)]]; it is fundamentally enabled by it. Attempting to manage multiple stamps manually is impractical and defeats the purpose of the pattern, which relies on consistency and automation.
 
 IaC serves as the master **blueprint** for a stamp. This blueprint, written in a declarative language like Terraform, Bicep, or CloudFormation, provides several key guarantees:
 
@@ -113,7 +113,7 @@ While the pattern is platform-agnostic, its implementation varies slightly acros
 
 ## Challenges and Considerations
 
--   **Deployment Complexity**: This pattern is entirely dependent on mature and robust [[iac|Infrastructure as Code (IaC)]] practices. Managing and updating a large number of stamps requires a very high degree of automation, as manual management is not feasible.
+-   **Deployment Complexity**: This pattern is entirely dependent on mature and robust [[infrastructure-as-code|Infrastructure as Code (IaC)]] practices. Managing and updating a large number of stamps requires a very high degree of automation, as manual management is not feasible.
 -   **Cost**: The pattern can be more expensive at a small scale because it duplicates infrastructure that might otherwise be shared. However, it offers more predictable, linear cost scaling as the user base grows.
 -   **Cross-Stamp Operations**: Performing operations that span all tenants, such as global analytics or reporting, is complex. This often requires a separate system to aggregate data from all stamps into a centralized data warehouse.
 -   **Tenant Migration**: Moving a tenant from one stamp to another (e.g., for rebalancing) is a complex operation that requires careful planning and custom tooling to migrate data and update routing rules without downtime.

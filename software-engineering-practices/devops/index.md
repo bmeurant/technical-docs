@@ -14,3 +14,4 @@ This section covers practices and methodologies related to DevOps, a culture and
 
 * [[ci-cd|CI/CD]]
 * [[devops|DevOps]]
+* [[infrastructure-as-code|Infrastructure as Code]]

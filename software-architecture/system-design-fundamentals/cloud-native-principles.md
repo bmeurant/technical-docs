@@ -27,7 +27,7 @@ Cloud-native applications adhere to a set of principles that guide their design 
 *   **API-First Design**: Services expose well-defined APIs, promoting clear contracts and enabling seamless integration between services and with external consumers.
 *   **[[event-driven|Event-Driven Architecture]]**: Many cloud-native applications leverage event-driven patterns for asynchronous communication between services, enhancing decoupling and responsiveness.
 *   **[[observability|Observability]]**: Cloud-native systems are designed with observability in mind, incorporating comprehensive [[monitoring]], [[opentelemetry|tracing]], and logging to understand system behavior and troubleshoot issues in distributed environments.
-*   **Automation**: Manual processes are minimized through extensive automation of infrastructure provisioning ([[iac|Infrastructure as Code]]), deployment, and operational tasks.
+*   **Automation**: Manual processes are minimized through extensive automation of infrastructure provisioning ([[infrastructure-as-code|Infrastructure as Code]]), deployment, and operational tasks.
 
 ---
 
@@ -133,7 +133,7 @@ Cloud-native applications are built upon and heavily leverage numerous architect
 *   **[[api-gateway|API Gateway]]**: Acts as a single entry point for clients, abstracting backend service complexity.
 *   **[[event-driven|Event-Driven Architecture]]**: A common communication paradigm for loosely coupled services.
 *   **[[observability|Observability]]**: Critical for understanding and managing complex distributed systems.
-*   **[[iac|Infrastructure as Code (IaC)]]**: Automates the provisioning and management of cloud resources.
+*   **[[infrastructure-as-code|Infrastructure as Code (IaC)]]**: Automates the provisioning and management of cloud resources.
 
 ---
 

@@ -6,3 +6,4 @@ This section covers fundamental practices and methodologies that bridge the gap 
 
 * **[CI/CD](./ci-cd.md)**
 * **[DevOps](./devops.md)**
+* **[Infrastructure as Code](./infrastructure-as-code.md)**

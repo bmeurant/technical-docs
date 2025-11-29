@@ -90,7 +90,7 @@ Continuous Deployment is the final evolution of the pipeline. It takes Continuou
 - **[[containerization|Containerization]] ([[docker|Docker]], [[lxc|LXC]])**: Containers provide a consistent and reproducible environment for the application to run in, from the developer's machine all the way through the CI/CD pipeline to production.
 - **[[kubernetes|Orchestration (Kubernetes)]]**: Orchestration platforms automate the deployment, scaling, and management of containerized applications, which is a key part of the "deployment" stage of a CD pipeline.
 - **[[twelve-factor-app|The Twelve-Factor App]]**: Principles like "V. Build, Release, Run" and "III. Config" are perfectly aligned with and enabled by CI/CD practices.
-- **[[iac|Infrastructure as Code (IaC)]]**: IaC automates the provisioning and management of infrastructure (servers, databases, networks), ensuring that environments are consistent and reproducible across all stages of the CI/CD pipeline.
+- **[[infrastructure-as-code|Infrastructure as Code (IaC)]]**: IaC automates the provisioning and management of infrastructure (servers, databases, networks), ensuring that environments are consistent and reproducible across all stages of the CI/CD pipeline.
 - **[[monitoring|Monitoring]] & [[observability|Observability]]**: Essential for providing rapid feedback on the health and performance of applications in production, enabling quick detection of issues and supporting automated rollbacks in Continuous Deployment.
 
 ---
