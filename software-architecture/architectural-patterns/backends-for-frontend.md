@@ -132,6 +132,7 @@ BFFs can enhance security by acting as a dedicated enforcement point for client-
 -   **[[gateway-aggregation|Gateway Aggregation]]**: This is the primary pattern used within a BFF. The BFF's main responsibility is to aggregate data from multiple downstream services.
 
 -   **[[microservices]]**: The BFF pattern is most commonly used in the context of a microservices architecture, where it serves as the entry point for clients into the service mesh.
+-   **[[microfrontends]]**: BFFs are a perfect companion for Microfrontends, where each frontend fragment can have its own dedicated BFF to aggregate data.
 
 ---
 

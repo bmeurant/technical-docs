@@ -27,6 +27,7 @@ see [index](./index.md)
 * **[Onion Architecture](./onion.md)**
 * **[Clean Architecture](./clean.md)**
 * **[Modular Monolith](./modular-monolith.md)**
+* **[Microfrontends](./microfrontends.md)**
 
 ## Data Processing
 

@@ -19,6 +19,7 @@ An **architectural pattern** is a reusable, concrete solution to a recurring des
 *   [[hexagonal|Hexagonal Architecture]]
 *   [[modern-application-architectures|Modern Application Architectures]]
 *   [[modular-monolith|Modular Monolith]]
+*   [[microfrontends|Microfrontends]]
 *   [[mvc|Model-View-Controller (MVC)]]
 *   [[mvp|Model-View-Presenter (MVP)]]
 *   [[mvvm|Model-View-ViewModel (MVVM)]]
