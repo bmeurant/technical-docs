@@ -94,6 +94,22 @@ This **stateless**, [[event-driven|event-driven]] model is what enables the mass
 
 ---
 
+## Technology Landscape
+
+### Cloud Provider FaaS
+*   **[AWS Lambda](https://aws.amazon.com/lambda/)**: The pioneer of serverless functions. It offers deep integration with the entire AWS ecosystem (S3, DynamoDB, API Gateway) and supports a wide range of runtimes.
+*   **[Azure Functions](https://azure.microsoft.com/en-us/services/functions/)**: Tightly integrated with the Microsoft ecosystem. It offers excellent support for .NET and enterprise features, along with flexible hosting plans.
+*   **[Google Cloud Functions](https://cloud.google.com/functions)**: A lightweight, event-driven compute solution. It excels in data processing pipelines and integration with Google's data and ML services (BigQuery, Pub/Sub).
+
+### Edge Computing
+*   **[Cloudflare Workers](https://workers.cloudflare.com/)**: Runs V8 JavaScript isolates on Cloudflare's global CDN edge network. This results in extremely low latency (0ms cold starts) but has different constraints compared to traditional container-based FaaS.
+
+### Frontend/Fullstack Platforms
+*   **[Vercel](https://vercel.com/docs/functions)**: Optimized for frontend frameworks like Next.js. It automatically deploys API routes as serverless functions, abstracting away the infrastructure complexity entirely.
+*   **[Netlify](https://docs.netlify.com/functions/overview/)**: A pioneer of the Jamstack architecture. It allows developers to deploy serverless functions alongside their static sites with zero configuration, simply by placing files in a specific folder.
+
+---
+
 ## Related Patterns, Concepts and Variations
 
 * **FaaS (Function as a Service):** The concept that allows for the execution of functions in response to events without managing the underlying infrastructure.
