@@ -87,7 +87,9 @@ graph TD
 
 *   **How it works:** An initial event is sent to the Mediator. The Mediator processes this event and sends a specific command to the next service in the workflow. This continues until the entire process is complete.
 *   **Pros:** The business workflow is centralized and explicit, making it easier to understand, manage, and modify.
-*   **Cons:** The Mediator can become a bottleneck or a single point of failure. It also introduces some coupling, as the Mediator needs to know about the downstream services.---
+*   **Cons:** The Mediator can become a bottleneck or a single point of failure. It also introduces some coupling, as the Mediator needs to know about the downstream services.
+*   **See Also:** [[business-process-management|Business Process Management & Orchestration]]
+---
 
 ## Advantages and Technical Challenges
 

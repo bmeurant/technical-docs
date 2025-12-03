@@ -107,6 +107,10 @@ SOAP and [[rest|REST]] represent two different philosophies for API design.
 -   **Rigidity**: The tight coupling between client and server via the WSDL contract means that a change on the server often requires a change on the client.
 -   **Poor Cacheability**: Unlike [[rest|REST]], which can leverage standard HTTP [[caching]] mechanisms with GET requests, SOAP messages are typically sent via HTTP POST, making them difficult to cache by intermediaries.
 
+## Related Concepts
+- **[[esb|Enterprise Service Bus (ESB)]]**: SOAP is the primary protocol used in traditional ESB implementations.
+- **[[business-process-management|BPEL & Orchestration]]**: SOAP services are often orchestrated using BPEL to form complex business processes.
+
 ## Resources & Links
 
 ### Articles

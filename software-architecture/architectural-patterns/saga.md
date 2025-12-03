@@ -20,7 +20,7 @@ The **Saga** pattern is an [[software-architecture/architectural-patterns/|archi
 
 ## Key Components and Communication Flow
 
-A saga's sequence of local transactions can be coordinated using two main topologies found in an [[event-driven|Event-Driven Architecture]]: **[[event-driven#Broker Topology (Choreography)|Choreography]]** and **[[event-driven#Mediator Topology (Orchestration)|Orchestration]]**. The choice between them trades simplicity and decentralization for explicit control and visibility.
+A saga's sequence of local transactions can be coordinated using two main topologies found in an [[event-driven|Event-Driven Architecture]]: **[[event-driven#Broker Topology (Choreography)|Choreography]]** and **[[business-process-management|Orchestration]]**. The choice between them trades simplicity and decentralization for explicit control and visibility.
 
 ### 1. Choreography-Based Saga
 
@@ -52,7 +52,7 @@ sequenceDiagram
 
 ### 2. Orchestration-Based Saga
 
-In this approach, a central **orchestrator** (or coordinator) is responsible for telling the saga participants what to do. The orchestrator manages the sequence of transactions and compensating transactions. This follows the **[[event-driven#Mediator Topology (Orchestration)|Orchestration]]** model.
+In this approach, a central **orchestrator** (or coordinator) is responsible for telling the saga participants what to do. The orchestrator manages the sequence of transactions and compensating transactions. This follows the **[[business-process-management|Orchestration]]** model.
 
 ```mermaid
 sequenceDiagram
@@ -122,7 +122,7 @@ The need to persist the state of a saga depends on the implementation approach:
 
 #### 2. Orchestration-Based Saga
 
--   **Persistence Required (Very Often):** In the [[event-driven#Mediator Topology (Orchestration)|orchestration model]], a dedicated service, the **Orchestrator** (or Saga Manager), manages the logic of the sequence of steps and compensations.
+-   **Persistence Required (Very Often):** In the [[business-process-management|orchestration model]], a dedicated service, the **Orchestrator** (or Saga Manager), manages the logic of the sequence of steps and compensations.
 -   **Centralized State:** The Orchestrator must maintain the current state of the execution (what is the next step? which step failed? which steps need to be compensated?).
 -   **Reasons for Persistence:**
     -   **Resilience:** If the orchestrator fails or restarts, it must be able to resume the saga exactly where it left off to avoid blocking the transaction or creating inconsistencies.
