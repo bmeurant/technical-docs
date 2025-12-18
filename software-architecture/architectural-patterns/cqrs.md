@@ -11,6 +11,9 @@ date: 2025-09-27
 
 **CQRS** is an [[software-architecture/architectural-patterns/|architectural pattern]] that separates the model for writing data (the **Command** side) from the model for reading data (the **Query** side). While in traditional architectures the same data model is used for both reading and writing, CQRS proposes that these two aspects have very different requirements and should be optimized independently.
 
+> [!IMPORTANT]
+> **One Model vs. Two Models**: The fundamental shift in CQRS is moving from a single "CRUD" model to two distinct models. This allows you to scale reads and writes independently, but at the cost of consistency.
+
 * **Core Principles:**
     * **[[soc|Separation of Concerns]]:** The core idea is to have two distinct models:
         * The **Write Model** (or Command Model) is optimized for validation, business logic execution, and consistency. It processes commands and produces events or state changes.
@@ -74,6 +77,9 @@ sequenceDiagram
     * **Eventual Consistency:** Since the read model is updated asynchronously, there is a delay before changes are visible to the query side. The UI must be designed to handle this (e.g., by showing optimistic updates).
     * **Data Synchronization Logic:** The mechanism to update the read model must be robust and reliable. If events are lost, the read model becomes permanently inconsistent. Patterns like the **Transactional Outbox** can help.
     * **Development Overhead:** Requires a different way of thinking and more initial setup compared to a traditional CRUD approach.
+
+> [!CAUTION]
+> **Complexity Warning**: CQRS is often overkill for simple domains. Only use it when the "Read" load differs significantly from the "Write" load, or when the business logic is incredibly complex. If typical CRUD works, stay with CRUD.
 
 ---
 

@@ -14,6 +14,9 @@ An **API Gateway** is an architectural pattern that provides a single, unified e
 
 By abstracting the underlying service architecture, the API Gateway simplifies the client-side implementation and [[cohesion-coupling|decouples]] clients from the internal structure of the application.
 
+> [!NOTE]
+> Ideally, the client should not even know it is talking to a gateway. It should feel like calling a single, monolithic API.
+
 ```mermaid
 graph TD
     subgraph "Client Tier"
@@ -105,6 +108,9 @@ While the terms are often used interchangeably, it's crucial to distinguish betw
 *   An **API Management** solution is a comprehensive platform that covers the entire lifecycle of an API. It includes a developer portal for documentation, analytics dashboards, monetization features, and policy definition tools. The API Gateway is the core *enforcement component* within a broader API Management platform. For a detailed breakdown of this lifecycle, see the **[[api-keys-and-management|API Keys and Management]]** page.
 
 In short, you can use a standalone API Gateway without a full management platform, but you cannot have an API Management platform without a gateway to enforce the policies it defines.
+
+> [!IMPORTANT]
+> **Don't confuse the Proxy with the Platform.** The Gateway is the **Runtime** (traffic cop). API Management is the **Lifecycle** (city planning). You often need a Gateway without full Management, but rarely the reverse.
 
 ---
 

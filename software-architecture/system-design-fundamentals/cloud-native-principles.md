@@ -11,7 +11,10 @@ date: 2025-11-01
 
 # Cloud-Native Principles
 
-Cloud-native applications are designed and built to take full advantage of cloud computing environments. This approach emphasizes speed, agility, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and resilience, enabling organizations to deliver new features rapidly and operate systems reliably at scale. Cloud-native architectures are not just about *where* applications are deployed, but *how* they are designed and built.
+Cloud-native applications are designed and built to take full advantage of cloud computing environments. This approach emphasizes speed, agility, [[software-architecture/system-design-fundamentals/index#Scalability|scalability]], and resilience, enabling organizations to deliver new features rapidly and operate systems reliably at scale.
+
+> [!NOTE]
+> Cloud-native architectures are not just about *where* applications are deployed, but *how* they are designed and built.
 
 ---
 
@@ -28,6 +31,9 @@ Cloud-native applications adhere to a set of principles that guide their design 
 *   **[[event-driven|Event-Driven Architecture]]**: Many cloud-native applications leverage event-driven patterns for asynchronous communication between services, enhancing decoupling and responsiveness.
 *   **[[observability|Observability]]**: Cloud-native systems are designed with observability in mind, incorporating comprehensive [[monitoring]], [[opentelemetry|tracing]], and logging to understand system behavior and troubleshoot issues in distributed environments.
 *   **Automation**: Manual processes are minimized through extensive automation of infrastructure provisioning ([[infrastructure-as-code|Infrastructure as Code]]), deployment, and operational tasks.
+
+> [!IMPORTANT]
+> The **Twelve-Factor App** is a gold standard methodology. Mastering it is essential for understanding cloud-native app expectations regarding configuration, backing services, and statelessness.
 
 ---
 
@@ -118,6 +124,9 @@ graph TD
 *   **Data [[consistency|Consistency]]**: Maintaining data consistency across multiple, independent databases in a microservices architecture is challenging and often leads to [[consistency#Eventual Consistency|eventual consistency]] models.
 *   **Debugging and Troubleshooting**: Tracing requests across multiple services and identifying root causes of issues can be difficult without proper [[observability|observability]] tools.
 *   **Network Latency**: Inter-service communication over the network introduces latency and potential reliability issues that must be carefully managed.
+
+> [!CAUTION]
+> **Eventual Consistency Shift**: Moving to distributed systems often requires abandoning strong consistency (ACID) for **[[consistency#Eventual Consistency|eventual consistency]]** models (BASE). This is a major paradigm shift that complicates application logic.
 
 ---
 

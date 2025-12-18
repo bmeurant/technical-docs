@@ -11,6 +11,9 @@ date: 2025-09-27
 
 The **Saga** pattern is an [[software-architecture/architectural-patterns/|architectural pattern]] for managing data consistency in a distributed [[microservices|microservices architecture]]. It provides a way to handle long-lived transactions (LLTs) that span multiple services without relying on traditional two-phase commit (2PC) protocols, which are often impractical in a distributed environment due to their locking nature. A saga is a sequence of local transactions where each transaction updates the [[software-architecture/databases/|database]] within a single service and publishes an event or message that triggers the next transaction in the saga.
 
+> [!IMPORTANT]
+> **Saga vs. 2PC**: Sagas trade **Atomicity** (immediate consistency) for **Availability** and **Partition Tolerance**. Unlike 2PC, they do not lock resources across services, making them far more scalable but creating "intermediate states" that you must handle.
+
 * **Core Principles:**
     *   **Sequence of Local Transactions:** A saga is composed of a series of atomic, local transactions, where each one is executed by a different service.
     *   **Compensating Transactions:** If any local transaction fails, the saga must roll back the preceding transactions. This is achieved by executing a corresponding **compensating transaction** for each completed step, in reverse order. A compensating transaction is an operation that undoes the effect of a previous transaction (e.g., a `CancelOrder` action to compensate for a `CreateOrder` action).
@@ -86,6 +89,9 @@ sequenceDiagram
 ## Compensating Transactions
 
 Compensating transactions are a fundamental aspect of the Saga pattern. They are operations designed to semantically undo the effects of previously completed steps in a distributed transaction if a later step fails. This ensures that the system can revert to a consistent state without relying on traditional distributed [[acid|ACID transactions]].
+
+> [!NOTE]
+> **Semantic Undo != Rollback**: A compensating transaction is not a database rollback. You cannot "un-commit" a transaction in another service. You must execute a *new* transaction that effectively reverses the business effect (e.g., "Refund Payment" to compensate "Charge Payment").
 
 For a detailed explanation, refer to the dedicated page: [[compensating-transaction|Compensating Transaction Pattern]].
 
