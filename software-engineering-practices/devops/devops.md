@@ -34,7 +34,7 @@ graph LR
 -   **C - Culture**: This is the most critical pillar. It represents the shift from siloed teams to a culture of shared responsibility, collaboration, and empathy. Developers and operations teams work together towards a common goal, sharing ownership of the entire application lifecycle.
 -   **A - Automation**: DevOps relies heavily on automating repetitive and error-prone tasks. This includes automating the build, testing, and deployment processes through a [[ci-cd|CI/CD]] pipeline, as well as automating infrastructure provisioning with [[infrastructure-as-code|Infrastructure as Code]].
 -   **L - Lean**: Applying principles from lean manufacturing to software development. This involves focusing on delivering value to the customer, eliminating waste (e.g., unnecessary features, manual handoffs), and continuously improving the process.
--   **M - Measurement**: Using data and metrics to drive decisions. This involves implementing robust [[monitoring]] and [[software-architecture/observability/|observability]] to track system performance, application health, and user behavior, creating a tight feedback loop for improvement.
+-   **M - Measurement**: Using data and metrics to drive decisions. This involves implementing robust [[monitoring]] and [[software-architecture/observability/|observability]], as well as tracking [[metrics|Productivity Metrics (DORA, SPACE, DevEx)]] to understand engineering health and performance.
 -   **S - Sharing**: Fostering an environment where knowledge, tools, and responsibilities are shared across teams. This includes sharing code, best practices, and insights from monitoring and incidents.
 
 ---
