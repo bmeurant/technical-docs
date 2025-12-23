@@ -58,6 +58,9 @@ Availability is commonly expressed as a percentage of uptime over a period (usua
 | 99.99%         | 4 nines     | 52m 36s                   | 4m 23s      | 1m 0.48s   | 8.6s      |
 | 99.999%        | 5 nines     | 5m 16s                    | 26s         | 6s         | 0.86s     |
 
+> [!CAUTION]
+> **The Cost of Nines**: Each additional "nine" typically adds **10x the cost** and complexity to your system. Going from 99.9% to 99.99% is a massive engineering undertaking. Don't promise 5 nines unless you have a budget to match.
+
 #### Calculating System Availability
 
 Understanding how component availability affects the total system availability is crucial.
@@ -67,6 +70,9 @@ Understanding how component availability affects the total system availability i
 
 *   **In Parallel:** If components are redundant and in parallel (e.g., multiple servers behind a [[load-balancing|load balancer]]), the total availability is calculated based on the probability of all components failing simultaneously.
     *   `A_total = 1 - (1 - A_component1) * (1 - A_component2) * ...`
+
+> [!NOTE]
+> **Serial vs. Parallel**: Serial dependencies *reduce* total availability. Parallel (redundant) dependencies *increase* total availability. This is the mathematical reason why we add load balancers and backup servers.
 
 ### 2. Resilience
 

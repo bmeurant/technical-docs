@@ -15,6 +15,9 @@ Asynchronism is a fundamental paradigm in modern system design, particularly cru
 
 This approach contrasts sharply with synchronous execution, where each operation must complete sequentially. Asynchronism is vital for improving system responsiveness, throughput, and [[workload-management|workload management]], especially when dealing with I/O-bound operations (like network requests, database queries, or file system access) that involve waiting for external resources.
 
+> [!NOTE]
+> **CPU-Bound vs. I/O-Bound**: Asynchronism is most effective for **I/O-Bound** tasks (waiting for data). For **CPU-Bound** tasks (heavy calculations), splitting threads might be better, but node.js style async/await won't magically make the CPU faster.
+
 ## Key Characteristics and Benefits
 
 -   **Non-Blocking Operations**: The primary characteristic is that operations do not block the main execution thread. This prevents the system from becoming unresponsive while waiting for slow operations.
@@ -69,6 +72,9 @@ Asynchronism is often implemented and managed through various patterns and mecha
 -   **[[back-pressure|Back Pressure]]**: A crucial mechanism in asynchronous systems to prevent a fast producer from overwhelming a slower consumer, ensuring system stability.
 -   **[[event-driven|Event-Driven Architecture]]**: A style where components communicate by emitting and reacting to events, inherently asynchronous.
 -   **[[asynchronous-messaging|Asynchronous Messaging]]**: The broader concept of communication where sender and receiver do not need to be available at the same time.
+
+> [!IMPORTANT]
+> **Back Pressure is non-negotiable**. Without it, an asynchronous system is a ticking time bomb. If your worker crashes, the queue fills up until your broker explodes. You need a way to say "Stop!" to the producer.
 
 ## Resources & links
 

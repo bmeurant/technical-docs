@@ -37,6 +37,9 @@ graph TD
 
 Therefore, the theorem forces a trade-off between C and A. When a network partition occurs, you must decide: do you cancel the operation to ensure consistency (making the system unavailable), or do you proceed with the operation and risk data inconsistency (keeping the system available)?
 
+> [!IMPORTANT]
+> **It's not "Pilot's Choice".** You don't choose P. P chooses you. You only get to choose how you behave *when* P happens (AP or CP). In a distributed system, partitions are inevitable.
+
 ---
 
 ## The Two Main Choices: CP vs. AP
@@ -89,6 +92,9 @@ A limitation of the CAP theorem is that it only describes the trade-off during a
 *   **E**lse (during normal operation), a system must choose between **L**atency and **C**onsistency.
 
 The "Else" part is critical: even without a partition, a system often has to trade lower latency for weaker consistency. For example, to achieve strong consistency, a write operation may need to be replicated to multiple nodes and confirmed before returning a success message, which increases latency. An eventually consistent system can respond faster (lower latency) by writing to a single node and replicating in the background.
+
+> [!NOTE]
+> PACELC is the "grown-up" version of CAP. Use CAP for high-level interviews, but use PACELC for real-world architectural decisions where latency beats consistency 99% of the time (e.g., Amazon Shopping Cart).
 
 ## **Resources & Links**
 

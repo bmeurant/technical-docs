@@ -64,6 +64,9 @@ sequenceDiagram
     *   **Technologies:** Relational databases (PostgreSQL, MySQL) in default configurations; CP-oriented distributed [[software-architecture/databases/|databases]] like Google Spanner, CockroachDB.
     *   **Use Cases:** Financial transaction systems, e-commerce inventory management, and any system where data accuracy is paramount.
 
+> [!CAUTION]
+> **Latency Penalty**: Strong consistency is expensive. In a geo-distributed system, waiting for round-trips across oceans for every write will kill your performance. Don't use it unless you actively need it (e.g., preventing double-spending).
+
 ---
 
 ## Eventual Consistency
@@ -115,6 +118,9 @@ sequenceDiagram
     *   **Technologies:** [[nosql|NoSQL databases]]  like Cassandra, Riak, and Amazon DynamoDB are built on this principle. [[dns|DNS]] (Domain Name System) is a classic example.
     *   **Architectures:** [[event-driven|Event-Driven Architectures]] and systems using asynchronous replication.
     *   **Use Cases:** Social media feeds (likes, comments), [[cdn|content delivery networks (CDNs)]], and other systems where high availability is more critical than immediate, perfect consistency.
+
+> [!NOTE]
+> **The user is the conflict resolver**: In many eventually consistent systems (like Git), if two updates conflict, the system might ask the user to resolve it, or "last write wins" is blindly applied. Know which strategy your DB uses.
 
 ---
 

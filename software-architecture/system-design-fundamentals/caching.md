@@ -20,6 +20,10 @@ By intercepting and serving repeated data requests from the cache, systems can a
 
 However, the power of caching comes with an inherent and critical challenge: **data consistency**. When data is duplicated in a cache, there's always a risk that the cached copy may become "stale" – meaning it no longer reflects the most up-to-date version in the source of truth. Effectively managing this trade-off between maximizing performance (by caching aggressively) and ensuring data freshness (by minimizing staleness) is the central design problem in any caching strategy. This involves careful consideration of cache invalidation, expiration policies, and the acceptable level of eventual consistency for a given application.
 
+> [!CAUTION]
+> **"There are only two hard things in Computer Science: cache invalidation and naming things."** — Phil Karlton.
+> Never underestimate the complexity of keeping a distributed cache consistent with a database. Stale data bugs are notoriously hard to reproduce and fix.
+
 ---
 
 ## Caching Strategies
@@ -140,7 +144,10 @@ This strategy proactively refreshes popular or recently accessed data in the cac
 
 **Cons:**
 - **Prediction Complexity:** If the prediction of which items to refresh is wrong, it can lead to wasted work and potentially reduce performance by loading data that is never used.
-- **Potential Stampede:** If not managed carefully, many items could be scheduled for refresh at the same time, causing a load spike on the database.
+- **Potential Stampede**: If not managed carefully, many items could be scheduled for refresh at the same time, causing a load spike on the database.
+
+> [!TIP]
+> **Stampede Prevention**: Use random "jitter" in your expiration times. If 1000 items expire at exactly 12:00:00, your DB dies. If they expire between 12:00:00 and 12:05:00, your DB survives.
 
 ---
 

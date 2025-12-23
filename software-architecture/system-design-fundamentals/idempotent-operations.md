@@ -18,6 +18,9 @@ This characteristic is crucial in environments where operations might be retried
 
 The core idea behind idempotency is that the *effect* of the operation is the same, not necessarily that the operation itself is identical each time. For example, deleting a resource is idempotent: the first deletion removes it, and subsequent deletions of the same resource will still result in the resource being absent, even if the operation itself might return a "not found" error on subsequent attempts. The *state* of the system (resource is deleted) remains unchanged.
 
+> [!IMPORTANT]
+> **Safe Retries**: Idempotency is the enabler for safe retries. If you can't guarantee idempotency, you can't safely retry failed network requests without risking data corruption (e.g., charging a customer twice).
+
 Key characteristics include:
 -   **Predictable State:** The system's state after one execution is identical to its state after N executions.
 -   **Fault Tolerance:** Operations can be safely retried without adverse effects, which is vital for fault-tolerant systems.
@@ -111,6 +114,9 @@ Common strategies include:
 
 3.  **State-based Idempotency:**
     *   The operation itself checks the current state of the system before making changes. For example, if an "activate user" operation is received, it first checks if the user is already active. If so, it does nothing.
+
+> [!TIP]
+> **Stripe's Strategy**: The "Idempotency Key (Unique Request ID)" pattern is famously used by the Stripe API to ensure reliable payments. If the network cuts out, the client just retries with the same key.
 
 ## Idempotency and Statelessness
 

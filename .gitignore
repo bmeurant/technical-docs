@@ -1,2 +1,5 @@
 # Ignore Gemini-specific configuration files
 .gemini/
+
+# Idea
+.idea/
